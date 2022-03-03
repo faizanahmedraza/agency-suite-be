@@ -1,0 +1,2239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Lumen Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://agency.test";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-3.24.0.js"></script>
+
+    <script src="../docs/js/theme-default-3.24.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                                                                            <ul id="tocify-header-0" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="introduction">
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                                            
+                                                                    </ul>
+                                                <ul id="tocify-header-1" class="tocify-header">
+                    <li class="tocify-item level-1" data-unique="authenticating-requests">
+                        <a href="#authenticating-requests">Authenticating requests</a>
+                    </li>
+                                            
+                                                </ul>
+                    
+                    <ul id="tocify-header-2" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="user-management">
+                    <a href="#user-management">User Management</a>
+                </li>
+                                    <ul id="tocify-subheader-user-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="user-management-PUTv1-change-password">
+                        <a href="#user-management-PUTv1-change-password">Change user password</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-3" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-POSTv1-verification">
+                        <a href="#endpoints-POSTv1-verification">Generate Verification Token
+This function generate new verification token of user</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTv1-auth-login">
+                        <a href="#endpoints-POSTv1-auth-login">Access Token Or Login
+This function is useful for login, to return access token for users.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTv1-auth-register">
+                        <a href="#endpoints-POSTv1-auth-register">Register Customer
+This api is useful for generate new Customer and return access token with user information</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTv1-auth-verify-token">
+                        <a href="#endpoints-POSTv1-auth-verify-token">Verify Token
+This function is useful to check the token is valid or not</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTv1-auth-forget-password">
+                        <a href="#endpoints-POSTv1-auth-forget-password">Forgot Password
+This api will send an email to valid user with token for resetting his/her password</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-POSTv1-auth-create-new-password">
+                        <a href="#endpoints-POSTv1-auth-create-new-password">Create New Password
+authenticate user request and then create new password</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-DELETEv1-logout">
+                        <a href="#endpoints-DELETEv1-logout">Logout
+Hit api and session get out</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+        
+                        
+            </div>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+        <ul class="toc-footer" id="last-updated">
+        <li>Last updated: March 3 2022</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://agency.test</code></pre>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="user-management">User Management</h1>
+
+    
+
+            <h2 id="user-management-PUTv1-change-password">Change user password</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTv1-change-password">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://agency.test/v1/change-password" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/change-password"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTv1-change-password">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Requests\V1;
+
+use Pearl\RequestValidate\RequestAbstract;
+
+class ChangePasswordRequest extends RequestAbstract
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'password' =&gt; 'required|confirmed|min:6',
+            'password_confirmation' =&gt; 'required|min:6'
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            //
+        ];
+    }
+}
+</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTv1-change-password" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTv1-change-password"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTv1-change-password"></code></pre>
+</span>
+<span id="execution-error-PUTv1-change-password" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTv1-change-password"></code></pre>
+</span>
+<form id="form-PUTv1-change-password" data-method="PUT"
+      data-path="v1/change-password"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTv1-change-password', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTv1-change-password"
+                    onclick="tryItOut('PUTv1-change-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTv1-change-password"
+                    onclick="cancelTryOut('PUTv1-change-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTv1-change-password" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>v1/change-password</code></b>
+        </p>
+                <p>
+            <label id="auth-PUTv1-change-password" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="PUTv1-change-password"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+            <h2 id="endpoints-POSTv1-verification">Generate Verification Token
+This function generate new verification token of user</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTv1-verification">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agency.test/v1/verification" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/verification"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-verification">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Resources;
+
+
+class SuccessResponse extends BaseResponse
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return $this-&gt;wrapped();
+    }
+}
+</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-verification" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-verification"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-verification"></code></pre>
+</span>
+<span id="execution-error-POSTv1-verification" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-verification"></code></pre>
+</span>
+<form id="form-POSTv1-verification" data-method="POST"
+      data-path="v1/verification"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-verification', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-verification"
+                    onclick="tryItOut('POSTv1-verification');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-verification"
+                    onclick="cancelTryOut('POSTv1-verification');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-verification" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/verification</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTv1-verification" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTv1-verification"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+            <h2 id="endpoints-POSTv1-auth-login">Access Token Or Login
+This function is useful for login, to return access token for users.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTv1-auth-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agency.test/v1/auth/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"admin@my-app.com\",
+    \"password\": \"Abc*123*\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/auth/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "admin@my-app.com",
+    "password": "Abc*123*"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-auth-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Resources\V1;
+
+use App\Http\Resources\BaseResponse;
+
+class AuthenticationResponse extends BaseResponse
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return $this-&gt;wrapped([
+            'authentication' =&gt; new AuthenticationResource($this-&gt;resource)
+        ]);
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Requests\V1;
+
+use App\Rules\EmailFormatRule;
+use Pearl\RequestValidate\RequestAbstract;
+
+use App\Http\Rules\LowerCaseRule;
+
+class LoginRequest extends RequestAbstract
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'email' =&gt; ['required','email:rfc,dns',new EmailFormatRule(),'max:100'],
+            'password' =&gt; &quot;required|string|max:100&quot;,
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [];
+    }
+}
+</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-auth-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-auth-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-auth-login"></code></pre>
+</span>
+<span id="execution-error-POSTv1-auth-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-auth-login"></code></pre>
+</span>
+<form id="form-POSTv1-auth-login" data-method="POST"
+      data-path="v1/auth/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-auth-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-auth-login"
+                    onclick="tryItOut('POSTv1-auth-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-auth-login"
+                    onclick="cancelTryOut('POSTv1-auth-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-auth-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/auth/login</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>email</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTv1-auth-login"
+               value="admin@my-app.com"
+               data-component="body" hidden>
+    <br>
+<p>The username of user.</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTv1-auth-login"
+               value="Abc*123*"
+               data-component="body" hidden>
+    <br>
+<p>The password of user.</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTv1-auth-register">Register Customer
+This api is useful for generate new Customer and return access token with user information</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTv1-auth-register">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agency.test/v1/auth/register" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"first_name\": \"Bionic\",
+    \"last_name\": \"WP\",
+    \"email\": \"admin@bionicwp.com\",
+    \"password\": \"abcd1234\",
+    \"password_confirmation\": \"abcd1234\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/auth/register"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "first_name": "Bionic",
+    "last_name": "WP",
+    "email": "admin@bionicwp.com",
+    "password": "abcd1234",
+    "password_confirmation": "abcd1234"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-auth-register">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Resources\V1;
+
+use App\Http\Resources\BaseResponse;
+
+class AuthenticationResponse extends BaseResponse
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return $this-&gt;wrapped([
+            'authentication' =&gt; new AuthenticationResource($this-&gt;resource)
+        ]);
+    }
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Requests\V1;
+
+use App\Rules\EmailFormatRule;
+use Pearl\RequestValidate\RequestAbstract;
+
+
+class RegisterRequest extends RequestAbstract
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'first_name' =&gt; 'required|alpha|max:100',
+            'last_name' =&gt; 'required|alpha|max:100',
+            'email' =&gt; ['required','email:rfc,dns',new EmailFormatRule(),'max:100','unique:users,username'],
+            'password' =&gt; 'required|confirmed|min:6||max:100|string',
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'email.unique' =&gt; &quot;Email already exist.&quot;,
+            'password.min' =&gt; &quot;Password length must be greater than 5 characters.&quot;,
+            'password.confirmed' =&gt; &quot;Password not matched.&quot;,
+        ];
+    }
+}
+</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-auth-register" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-auth-register"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-auth-register"></code></pre>
+</span>
+<span id="execution-error-POSTv1-auth-register" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-auth-register"></code></pre>
+</span>
+<form id="form-POSTv1-auth-register" data-method="POST"
+      data-path="v1/auth/register"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-auth-register', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-auth-register"
+                    onclick="tryItOut('POSTv1-auth-register');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-auth-register"
+                    onclick="cancelTryOut('POSTv1-auth-register');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-auth-register" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/auth/register</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>first_name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="first_name"
+               data-endpoint="POSTv1-auth-register"
+               value="Bionic"
+               data-component="body" hidden>
+    <br>
+<p>User first name</p>
+        </p>
+                <p>
+            <b><code>last_name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="last_name"
+               data-endpoint="POSTv1-auth-register"
+               value="WP"
+               data-component="body" hidden>
+    <br>
+<p>User last name</p>
+        </p>
+                <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>email</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTv1-auth-register"
+               value="admin@bionicwp.com"
+               data-component="body" hidden>
+    <br>
+<p>User email address</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTv1-auth-register"
+               value="abcd1234"
+               data-component="body" hidden>
+    <br>
+<p>User password</p>
+        </p>
+                <p>
+            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password_confirmation"
+               data-endpoint="POSTv1-auth-register"
+               value="abcd1234"
+               data-component="body" hidden>
+    <br>
+<p>User password</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTv1-auth-verify-token">Verify Token
+This function is useful to check the token is valid or not</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTv1-auth-verify-token">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agency.test/v1/auth/verify-token" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"token\": \"S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/auth/verify-token"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "token": "S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-auth-verify-token">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Resources;
+
+
+class SuccessResponse extends BaseResponse
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return $this-&gt;wrapped();
+    }
+}
+</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Requests\V1;
+
+use Pearl\RequestValidate\RequestAbstract;
+
+class UserVerificationRequest extends RequestAbstract
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'token' =&gt; &quot;required|string|max:35|exists:user_verifications,verification_code&quot;
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            //
+        ];
+    }
+}
+</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-auth-verify-token" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-auth-verify-token"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-auth-verify-token"></code></pre>
+</span>
+<span id="execution-error-POSTv1-auth-verify-token" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-auth-verify-token"></code></pre>
+</span>
+<form id="form-POSTv1-auth-verify-token" data-method="POST"
+      data-path="v1/auth/verify-token"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-auth-verify-token', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-auth-verify-token"
+                    onclick="tryItOut('POSTv1-auth-verify-token');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-auth-verify-token"
+                    onclick="cancelTryOut('POSTv1-auth-verify-token');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-auth-verify-token" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/auth/verify-token</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>token</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="token"
+               data-endpoint="POSTv1-auth-verify-token"
+               value="S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc"
+               data-component="body" hidden>
+    <br>
+<p>S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTv1-auth-forget-password">Forgot Password
+This api will send an email to valid user with token for resetting his/her password</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTv1-auth-forget-password">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agency.test/v1/auth/forget-password" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"user@bionicwp.com\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/auth/forget-password"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "user@bionicwp.com"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-auth-forget-password">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Resources;
+
+
+class SuccessResponse extends BaseResponse
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return $this-&gt;wrapped();
+    }
+}
+</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Requests\V1;
+
+use App\Rules\EmailFormatRule;
+use Pearl\RequestValidate\RequestAbstract;
+
+class ForgetPasswordRequest extends RequestAbstract
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'email' =&gt; ['required','email:rfc,dns','max:100',new EmailFormatRule()]
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            //
+        ];
+    }
+}
+</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-auth-forget-password" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-auth-forget-password"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-auth-forget-password"></code></pre>
+</span>
+<span id="execution-error-POSTv1-auth-forget-password" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-auth-forget-password"></code></pre>
+</span>
+<form id="form-POSTv1-auth-forget-password" data-method="POST"
+      data-path="v1/auth/forget-password"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-auth-forget-password', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-auth-forget-password"
+                    onclick="tryItOut('POSTv1-auth-forget-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-auth-forget-password"
+                    onclick="cancelTryOut('POSTv1-auth-forget-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-auth-forget-password" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/auth/forget-password</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTv1-auth-forget-password"
+               value="user@bionicwp.com"
+               data-component="body" hidden>
+    <br>
+<p>User valid email address</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-POSTv1-auth-create-new-password">Create New Password
+authenticate user request and then create new password</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTv1-auth-create-new-password">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agency.test/v1/auth/create-new-password" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"token\": \"T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA\",
+    \"password\": \"abcd1234\",
+    \"password_confirmation\": \"abcd1234\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/auth/create-new-password"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "token": "T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA",
+    "password": "abcd1234",
+    "password_confirmation": "abcd1234"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-auth-create-new-password">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Resources;
+
+
+class SuccessResponse extends BaseResponse
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return $this-&gt;wrapped();
+    }
+}
+</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Requests\V1;
+
+use Pearl\RequestValidate\RequestAbstract;
+
+class CreateNewPasswordRequest extends RequestAbstract
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules(): array
+    {
+        return [
+            'token' =&gt; 'required|string|max:35',
+            'password' =&gt; 'required|confirmed|min:6',
+            'password_confirmation' =&gt; 'required|min:6'
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            //
+        ];
+    }
+}
+</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-auth-create-new-password" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-auth-create-new-password"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-auth-create-new-password"></code></pre>
+</span>
+<span id="execution-error-POSTv1-auth-create-new-password" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-auth-create-new-password"></code></pre>
+</span>
+<form id="form-POSTv1-auth-create-new-password" data-method="POST"
+      data-path="v1/auth/create-new-password"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-auth-create-new-password', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-auth-create-new-password"
+                    onclick="tryItOut('POSTv1-auth-create-new-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-auth-create-new-password"
+                    onclick="cancelTryOut('POSTv1-auth-create-new-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-auth-create-new-password" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/auth/create-new-password</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>token</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+                <input type="text"
+               name="token"
+               data-endpoint="POSTv1-auth-create-new-password"
+               value="T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA"
+               data-component="body" hidden>
+    <br>
+<p>T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTv1-auth-create-new-password"
+               value="abcd1234"
+               data-component="body" hidden>
+    <br>
+<p>abcd1234</p>
+        </p>
+                <p>
+            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+                <input type="text"
+               name="password_confirmation"
+               data-endpoint="POSTv1-auth-create-new-password"
+               value="abcd1234"
+               data-component="body" hidden>
+    <br>
+<p>abcd1234</p>
+        </p>
+        </form>
+
+            <h2 id="endpoints-DELETEv1-logout">Logout
+Hit api and session get out</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-DELETEv1-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://agency.test/v1/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEv1-logout">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace App\Http\Resources;
+
+
+class SuccessResponse extends BaseResponse
+{
+    /**
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function toArray($request)
+    {
+        return $this-&gt;wrapped();
+    }
+}
+</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">&lt;?php
+
+namespace Illuminate\Http;
+
+use ArrayAccess;
+use Closure;
+use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
+use Illuminate\Support\Traits\Macroable;
+use RuntimeException;
+use Symfony\Component\HttpFoundation\ParameterBag;
+use Symfony\Component\HttpFoundation\Request as SymfonyRequest;
+
+/**
+ * @method array validate(array $rules, ...$params)
+ * @method array validateWithBag(string $errorBag, array $rules, ...$params)
+ * @method bool hasValidSignature(bool $absolute = true)
+ */
+class Request extends SymfonyRequest implements Arrayable, ArrayAccess
+{
+    use Concerns\InteractsWithContentTypes,
+        Concerns\InteractsWithFlashData,
+        Concerns\InteractsWithInput,
+        Macroable;
+
+    /**
+     * The decoded JSON content for the request.
+     *
+     * @var \Symfony\Component\HttpFoundation\ParameterBag|null
+     */
+    protected $json;
+
+    /**
+     * All of the converted files for the request.
+     *
+     * @var array
+     */
+    protected $convertedFiles;
+
+    /**
+     * The user resolver callback.
+     *
+     * @var \Closure
+     */
+    protected $userResolver;
+
+    /**
+     * The route resolver callback.
+     *
+     * @var \Closure
+     */
+    protected $routeResolver;
+
+    /**
+     * Create a new Illuminate HTTP request from server variables.
+     *
+     * @return static
+     */
+    public static function capture()
+    {
+        static::enableHttpMethodParameterOverride();
+
+        return static::createFromBase(SymfonyRequest::createFromGlobals());
+    }
+
+    /**
+     * Return the Request instance.
+     *
+     * @return $this
+     */
+    public function instance()
+    {
+        return $this;
+    }
+
+    /**
+     * Get the request method.
+     *
+     * @return string
+     */
+    public function method()
+    {
+        return $this-&gt;getMethod();
+    }
+
+    /**
+     * Get the root URL for the application.
+     *
+     * @return string
+     */
+    public function root()
+    {
+        return rtrim($this-&gt;getSchemeAndHttpHost().$this-&gt;getBaseUrl(), '/');
+    }
+
+    /**
+     * Get the URL (no query string) for the request.
+     *
+     * @return string
+     */
+    public function url()
+    {
+        return rtrim(preg_replace('/\?.*/', '', $this-&gt;getUri()), '/');
+    }
+
+    /**
+     * Get the full URL for the request.
+     *
+     * @return string
+     */
+    public function fullUrl()
+    {
+        $query = $this-&gt;getQueryString();
+
+        $question = $this-&gt;getBaseUrl().$this-&gt;getPathInfo() === '/' ? '/?' : '?';
+
+        return $query ? $this-&gt;url().$question.$query : $this-&gt;url();
+    }
+
+    /**
+     * Get the full URL for the request with the added query string parameters.
+     *
+     * @param  array  $query
+     * @return string
+     */
+    public function fullUrlWithQuery(array $query)
+    {
+        $question = $this-&gt;getBaseUrl().$this-&gt;getPathInfo() === '/' ? '/?' : '?';
+
+        return count($this-&gt;query()) &gt; 0
+            ? $this-&gt;url().$question.Arr::query(array_merge($this-&gt;query(), $query))
+            : $this-&gt;fullUrl().$question.Arr::query($query);
+    }
+
+    /**
+     * Get the full URL for the request without the given query string parameters.
+     *
+     * @param  array|string  $query
+     * @return string
+     */
+    public function fullUrlWithoutQuery($keys)
+    {
+        $query = Arr::except($this-&gt;query(), $keys);
+
+        $question = $this-&gt;getBaseUrl().$this-&gt;getPathInfo() === '/' ? '/?' : '?';
+
+        return count($query) &gt; 0
+            ? $this-&gt;url().$question.Arr::query($query)
+            : $this-&gt;url();
+    }
+
+    /**
+     * Get the current path info for the request.
+     *
+     * @return string
+     */
+    public function path()
+    {
+        $pattern = trim($this-&gt;getPathInfo(), '/');
+
+        return $pattern === '' ? '/' : $pattern;
+    }
+
+    /**
+     * Get the current decoded path info for the request.
+     *
+     * @return string
+     */
+    public function decodedPath()
+    {
+        return rawurldecode($this-&gt;path());
+    }
+
+    /**
+     * Get a segment from the URI (1 based index).
+     *
+     * @param  int  $index
+     * @param  string|null  $default
+     * @return string|null
+     */
+    public function segment($index, $default = null)
+    {
+        return Arr::get($this-&gt;segments(), $index - 1, $default);
+    }
+
+    /**
+     * Get all of the segments for the request path.
+     *
+     * @return array
+     */
+    public function segments()
+    {
+        $segments = explode('/', $this-&gt;decodedPath());
+
+        return array_values(array_filter($segments, function ($value) {
+            return $value !== '';
+        }));
+    }
+
+    /**
+     * Determine if the current request URI matches a pattern.
+     *
+     * @param  mixed  ...$patterns
+     * @return bool
+     */
+    public function is(...$patterns)
+    {
+        $path = $this-&gt;decodedPath();
+
+        foreach ($patterns as $pattern) {
+            if (Str::is($pattern, $path)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Determine if the route name matches a given pattern.
+     *
+     * @param  mixed  ...$patterns
+     * @return bool
+     */
+    public function routeIs(...$patterns)
+    {
+        return $this-&gt;route() &amp;&amp; $this-&gt;route()-&gt;named(...$patterns);
+    }
+
+    /**
+     * Determine if the current request URL and query string match a pattern.
+     *
+     * @param  mixed  ...$patterns
+     * @return bool
+     */
+    public function fullUrlIs(...$patterns)
+    {
+        $url = $this-&gt;fullUrl();
+
+        foreach ($patterns as $pattern) {
+            if (Str::is($pattern, $url)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Determine if the request is the result of an AJAX call.
+     *
+     * @return bool
+     */
+    public function ajax()
+    {
+        return $this-&gt;isXmlHttpRequest();
+    }
+
+    /**
+     * Determine if the request is the result of a PJAX call.
+     *
+     * @return bool
+     */
+    public function pjax()
+    {
+        return $this-&gt;headers-&gt;get('X-PJAX') == true;
+    }
+
+    /**
+     * Determine if the request is the result of a prefetch call.
+     *
+     * @return bool
+     */
+    public function prefetch()
+    {
+        return strcasecmp($this-&gt;server-&gt;get('HTTP_X_MOZ') ?? '', 'prefetch') === 0 ||
+               strcasecmp($this-&gt;headers-&gt;get('Purpose') ?? '', 'prefetch') === 0;
+    }
+
+    /**
+     * Determine if the request is over HTTPS.
+     *
+     * @return bool
+     */
+    public function secure()
+    {
+        return $this-&gt;isSecure();
+    }
+
+    /**
+     * Get the client IP address.
+     *
+     * @return string|null
+     */
+    public function ip()
+    {
+        return $this-&gt;getClientIp();
+    }
+
+    /**
+     * Get the client IP addresses.
+     *
+     * @return array
+     */
+    public function ips()
+    {
+        return $this-&gt;getClientIps();
+    }
+
+    /**
+     * Get the client user agent.
+     *
+     * @return string|null
+     */
+    public function userAgent()
+    {
+        return $this-&gt;headers-&gt;get('User-Agent');
+    }
+
+    /**
+     * Merge new input into the current request's input array.
+     *
+     * @param  array  $input
+     * @return $this
+     */
+    public function merge(array $input)
+    {
+        $this-&gt;getInputSource()-&gt;add($input);
+
+        return $this;
+    }
+
+    /**
+     * Merge new input into the request's input, but only when that key is missing from the request.
+     *
+     * @param  array  $input
+     * @return $this
+     */
+    public function mergeIfMissing(array $input)
+    {
+        return $this-&gt;merge(collect($input)-&gt;filter(function ($value, $key) {
+            return $this-&gt;missing($key);
+        })-&gt;toArray());
+    }
+
+    /**
+     * Replace the input for the current request.
+     *
+     * @param  array  $input
+     * @return $this
+     */
+    public function replace(array $input)
+    {
+        $this-&gt;getInputSource()-&gt;replace($input);
+
+        return $this;
+    }
+
+    /**
+     * This method belongs to Symfony HttpFoundation and is not usually needed when using Laravel.
+     *
+     * Instead, you may use the &quot;input&quot; method.
+     *
+     * @param  string  $key
+     * @param  mixed  $default
+     * @return mixed
+     */
+    public function get(string $key, $default = null)
+    {
+        return parent::get($key, $default);
+    }
+
+    /**
+     * Get the JSON payload for the request.
+     *
+     * @param  string|null  $key
+     * @param  mixed  $default
+     * @return \Symfony\Component\HttpFoundation\ParameterBag|mixed
+     */
+    public function json($key = null, $default = null)
+    {
+        if (! isset($this-&gt;json)) {
+            $this-&gt;json = new ParameterBag((array) json_decode($this-&gt;getContent(), true));
+        }
+
+        if (is_null($key)) {
+            return $this-&gt;json;
+        }
+
+        return data_get($this-&gt;json-&gt;all(), $key, $default);
+    }
+
+    /**
+     * Get the input source for the request.
+     *
+     * @return \Symfony\Component\HttpFoundation\ParameterBag
+     */
+    protected function getInputSource()
+    {
+        if ($this-&gt;isJson()) {
+            return $this-&gt;json();
+        }
+
+        return in_array($this-&gt;getRealMethod(), ['GET', 'HEAD']) ? $this-&gt;query : $this-&gt;request;
+    }
+
+    /**
+     * Create a new request instance from the given Laravel request.
+     *
+     * @param  \Illuminate\Http\Request  $from
+     * @param  \Illuminate\Http\Request|null  $to
+     * @return static
+     */
+    public static function createFrom(self $from, $to = null)
+    {
+        $request = $to ?: new static;
+
+        $files = $from-&gt;files-&gt;all();
+
+        $files = is_array($files) ? array_filter($files) : $files;
+
+        $request-&gt;initialize(
+            $from-&gt;query-&gt;all(),
+            $from-&gt;request-&gt;all(),
+            $from-&gt;attributes-&gt;all(),
+            $from-&gt;cookies-&gt;all(),
+            $files,
+            $from-&gt;server-&gt;all(),
+            $from-&gt;getContent()
+        );
+
+        $request-&gt;headers-&gt;replace($from-&gt;headers-&gt;all());
+
+        $request-&gt;setJson($from-&gt;json());
+
+        if ($session = $from-&gt;getSession()) {
+            $request-&gt;setLaravelSession($session);
+        }
+
+        $request-&gt;setUserResolver($from-&gt;getUserResolver());
+
+        $request-&gt;setRouteResolver($from-&gt;getRouteResolver());
+
+        return $request;
+    }
+
+    /**
+     * Create an Illuminate request from a Symfony instance.
+     *
+     * @param  \Symfony\Component\HttpFoundation\Request  $request
+     * @return static
+     */
+    public static function createFromBase(SymfonyRequest $request)
+    {
+        $newRequest = (new static)-&gt;duplicate(
+            $request-&gt;query-&gt;all(), $request-&gt;request-&gt;all(), $request-&gt;attributes-&gt;all(),
+            $request-&gt;cookies-&gt;all(), $request-&gt;files-&gt;all(), $request-&gt;server-&gt;all()
+        );
+
+        $newRequest-&gt;headers-&gt;replace($request-&gt;headers-&gt;all());
+
+        $newRequest-&gt;content = $request-&gt;content;
+
+        $newRequest-&gt;request = $newRequest-&gt;getInputSource();
+
+        return $newRequest;
+    }
+
+    /**
+     * {@inheritdoc}
+     *
+     * @return static
+     */
+    public function duplicate(array $query = null, array $request = null, array $attributes = null, array $cookies = null, array $files = null, array $server = null)
+    {
+        return parent::duplicate($query, $request, $attributes, $cookies, $this-&gt;filterFiles($files), $server);
+    }
+
+    /**
+     * Filter the given array of files, removing any empty values.
+     *
+     * @param  mixed  $files
+     * @return mixed
+     */
+    protected function filterFiles($files)
+    {
+        if (! $files) {
+            return;
+        }
+
+        foreach ($files as $key =&gt; $file) {
+            if (is_array($file)) {
+                $files[$key] = $this-&gt;filterFiles($files[$key]);
+            }
+
+            if (empty($files[$key])) {
+                unset($files[$key]);
+            }
+        }
+
+        return $files;
+    }
+
+    /**
+     * Get the session associated with the request.
+     *
+     * @return \Illuminate\Session\Store
+     *
+     * @throws \RuntimeException
+     */
+    public function session()
+    {
+        if (! $this-&gt;hasSession()) {
+            throw new RuntimeException('Session store not set on request.');
+        }
+
+        return $this-&gt;session;
+    }
+
+    /**
+     * Get the session associated with the request.
+     *
+     * @return \Illuminate\Session\Store|null
+     */
+    public function getSession()
+    {
+        return $this-&gt;session;
+    }
+
+    /**
+     * Set the session instance on the request.
+     *
+     * @param  \Illuminate\Contracts\Session\Session  $session
+     * @return void
+     */
+    public function setLaravelSession($session)
+    {
+        $this-&gt;session = $session;
+    }
+
+    /**
+     * Get the user making the request.
+     *
+     * @param  string|null  $guard
+     * @return mixed
+     */
+    public function user($guard = null)
+    {
+        return call_user_func($this-&gt;getUserResolver(), $guard);
+    }
+
+    /**
+     * Get the route handling the request.
+     *
+     * @param  string|null  $param
+     * @param  mixed  $default
+     * @return \Illuminate\Routing\Route|object|string|null
+     */
+    public function route($param = null, $default = null)
+    {
+        $route = call_user_func($this-&gt;getRouteResolver());
+
+        if (is_null($route) || is_null($param)) {
+            return $route;
+        }
+
+        return $route-&gt;parameter($param, $default);
+    }
+
+    /**
+     * Get a unique fingerprint for the request / route / IP address.
+     *
+     * @return string
+     *
+     * @throws \RuntimeException
+     */
+    public function fingerprint()
+    {
+        if (! $route = $this-&gt;route()) {
+            throw new RuntimeException('Unable to generate fingerprint. Route unavailable.');
+        }
+
+        return sha1(implode('|', array_merge(
+            $route-&gt;methods(),
+            [$route-&gt;getDomain(), $route-&gt;uri(), $this-&gt;ip()]
+        )));
+    }
+
+    /**
+     * Set the JSON payload for the request.
+     *
+     * @param  \Symfony\Component\HttpFoundation\ParameterBag  $json
+     * @return $this
+     */
+    public function setJson($json)
+    {
+        $this-&gt;json = $json;
+
+        return $this;
+    }
+
+    /**
+     * Get the user resolver callback.
+     *
+     * @return \Closure
+     */
+    public function getUserResolver()
+    {
+        return $this-&gt;userResolver ?: function () {
+            //
+        };
+    }
+
+    /**
+     * Set the user resolver callback.
+     *
+     * @param  \Closure  $callback
+     * @return $this
+     */
+    public function setUserResolver(Closure $callback)
+    {
+        $this-&gt;userResolver = $callback;
+
+        return $this;
+    }
+
+    /**
+     * Get the route resolver callback.
+     *
+     * @return \Closure
+     */
+    public function getRouteResolver()
+    {
+        return $this-&gt;routeResolver ?: function () {
+            //
+        };
+    }
+
+    /**
+     * Set the route resolver callback.
+     *
+     * @param  \Closure  $callback
+     * @return $this
+     */
+    public function setRouteResolver(Closure $callback)
+    {
+        $this-&gt;routeResolver = $callback;
+
+        return $this;
+    }
+
+    /**
+     * Get all of the input and files for the request.
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        return $this-&gt;all();
+    }
+
+    /**
+     * Determine if the given offset exists.
+     *
+     * @param  string  $offset
+     * @return bool
+     */
+    #[\ReturnTypeWillChange]
+    public function offsetExists($offset)
+    {
+        return Arr::has(
+            $this-&gt;all() + $this-&gt;route()-&gt;parameters(),
+            $offset
+        );
+    }
+
+    /**
+     * Get the value at the given offset.
+     *
+     * @param  string  $offset
+     * @return mixed
+     */
+    #[\ReturnTypeWillChange]
+    public function offsetGet($offset)
+    {
+        return $this-&gt;__get($offset);
+    }
+
+    /**
+     * Set the value at the given offset.
+     *
+     * @param  string  $offset
+     * @param  mixed  $value
+     * @return void
+     */
+    #[\ReturnTypeWillChange]
+    public function offsetSet($offset, $value)
+    {
+        $this-&gt;getInputSource()-&gt;set($offset, $value);
+    }
+
+    /**
+     * Remove the value at the given offset.
+     *
+     * @param  string  $offset
+     * @return void
+     */
+    #[\ReturnTypeWillChange]
+    public function offsetUnset($offset)
+    {
+        $this-&gt;getInputSource()-&gt;remove($offset);
+    }
+
+    /**
+     * Check if an input element is set on the request.
+     *
+     * @param  string  $key
+     * @return bool
+     */
+    public function __isset($key)
+    {
+        return ! is_null($this-&gt;__get($key));
+    }
+
+    /**
+     * Get an input element from the request.
+     *
+     * @param  string  $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        return Arr::get($this-&gt;all(), $key, function () use ($key) {
+            return $this-&gt;route($key);
+        });
+    }
+}
+</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEv1-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEv1-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEv1-logout"></code></pre>
+</span>
+<span id="execution-error-DELETEv1-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEv1-logout"></code></pre>
+</span>
+<form id="form-DELETEv1-logout" data-method="DELETE"
+      data-path="v1/logout"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEv1-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEv1-logout"
+                    onclick="tryItOut('DELETEv1-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEv1-logout"
+                    onclick="cancelTryOut('DELETEv1-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEv1-logout" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>v1/logout</code></b>
+        </p>
+                <p>
+            <label id="auth-DELETEv1-logout" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="DELETEv1-logout"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+    
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

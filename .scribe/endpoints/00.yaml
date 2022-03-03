@@ -1,0 +1,25 @@
+name: 'User Management'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - PUT
+    uri: v1/change-password
+    metadata:
+      title: 'Change user password'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "<?php\r\n\r\nnamespace App\\Http\\Requests\\V1;\r\n\r\nuse Pearl\\RequestValidate\\RequestAbstract;\r\n\r\nclass ChangePasswordRequest extends RequestAbstract\r\n{\r\n    /**\r\n     * Determine if the user is authorized to make this request.\r\n     *\r\n     * @return bool\r\n     */\r\n    public function authorize(): bool\r\n    {\r\n        return true;\r\n    }\r\n\r\n    /**\r\n     * Get the validation rules that apply to the request.\r\n     *\r\n     * @return array\r\n     */\r\n    public function rules(): array\r\n    {\r\n        return [\r\n            'password' => 'required|confirmed|min:6',\r\n            'password_confirmation' => 'required|min:6'\r\n        ];\r\n    }\r\n\r\n    /**\r\n     * Get custom messages for validator errors.\r\n     *\r\n     * @return array\r\n     */\r\n    public function messages(): array\r\n    {\r\n        return [\r\n            //\r\n        ];\r\n    }\r\n}\r\n"
+        headers: []
+        description: '200'
+    responseFields: []

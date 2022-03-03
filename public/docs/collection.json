@@ -1,0 +1,356 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/agency.test"
+        }
+    ],
+    "info": {
+        "name": "Lumen",
+        "_postman_id": "d58bbeee-6af3-4196-ac8b-846b591bc8b6",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "User Management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Change user password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/change-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/change-password"
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Requests\\V1;\r\n\r\nuse Pearl\\RequestValidate\\RequestAbstract;\r\n\r\nclass ChangePasswordRequest extends RequestAbstract\r\n{\r\n    \/**\r\n     * Determine if the user is authorized to make this request.\r\n     *\r\n     * @return bool\r\n     *\/\r\n    public function authorize(): bool\r\n    {\r\n        return true;\r\n    }\r\n\r\n    \/**\r\n     * Get the validation rules that apply to the request.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function rules(): array\r\n    {\r\n        return [\r\n            'password' => 'required|confirmed|min:6',\r\n            'password_confirmation' => 'required|min:6'\r\n        ];\r\n    }\r\n\r\n    \/**\r\n     * Get custom messages for validator errors.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function messages(): array\r\n    {\r\n        return [\r\n            \/\/\r\n        ];\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Generate Verification Token\nThis function generate new verification token of user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/verification",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/verification"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Resources;\r\n\r\n\r\nclass SuccessResponse extends BaseResponse\r\n{\r\n    \/**\r\n     * Transform the resource into an array.\r\n     *\r\n     * @param  \\Illuminate\\Http\\Request  $request\r\n     * @return array\r\n     *\/\r\n    public function toArray($request)\r\n    {\r\n        return $this->wrapped();\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Access Token Or Login\nThis function is useful for login, to return access token for users.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"admin@my-app.com\",\"password\":\"Abc*123*\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Resources\\V1;\r\n\r\nuse App\\Http\\Resources\\BaseResponse;\r\n\r\nclass AuthenticationResponse extends BaseResponse\r\n{\r\n    \/**\r\n     * Transform the resource into an array.\r\n     *\r\n     * @param  \\Illuminate\\Http\\Request  $request\r\n     * @return array\r\n     *\/\r\n    public function toArray($request)\r\n    {\r\n        return $this->wrapped([\r\n            'authentication' => new AuthenticationResource($this->resource)\r\n        ]);\r\n    }\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Requests\\V1;\r\n\r\nuse App\\Rules\\EmailFormatRule;\r\nuse Pearl\\RequestValidate\\RequestAbstract;\r\n\r\nuse App\\Http\\Rules\\LowerCaseRule;\r\n\r\nclass LoginRequest extends RequestAbstract\r\n{\r\n    \/**\r\n     * Determine if the user is authorized to make this request.\r\n     *\r\n     * @return bool\r\n     *\/\r\n    public function authorize(): bool\r\n    {\r\n        return true;\r\n    }\r\n\r\n    \/**\r\n     * Get the validation rules that apply to the request.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function rules(): array\r\n    {\r\n        return [\r\n            'email' => ['required','email:rfc,dns',new EmailFormatRule(),'max:100'],\r\n            'password' => \"required|string|max:100\",\r\n        ];\r\n    }\r\n\r\n    \/**\r\n     * Get custom messages for validator errors.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function messages(): array\r\n    {\r\n        return [];\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Register Customer\nThis api is useful for generate new Customer and return access token with user information",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/auth\/register",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/auth\/register"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"Bionic\",\"last_name\":\"WP\",\"email\":\"admin@bionicwp.com\",\"password\":\"abcd1234\",\"password_confirmation\":\"abcd1234\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Resources\\V1;\r\n\r\nuse App\\Http\\Resources\\BaseResponse;\r\n\r\nclass AuthenticationResponse extends BaseResponse\r\n{\r\n    \/**\r\n     * Transform the resource into an array.\r\n     *\r\n     * @param  \\Illuminate\\Http\\Request  $request\r\n     * @return array\r\n     *\/\r\n    public function toArray($request)\r\n    {\r\n        return $this->wrapped([\r\n            'authentication' => new AuthenticationResource($this->resource)\r\n        ]);\r\n    }\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Requests\\V1;\r\n\r\nuse App\\Rules\\EmailFormatRule;\r\nuse Pearl\\RequestValidate\\RequestAbstract;\r\n\r\n\r\nclass RegisterRequest extends RequestAbstract\r\n{\r\n    \/**\r\n     * Determine if the user is authorized to make this request.\r\n     *\r\n     * @return bool\r\n     *\/\r\n    public function authorize(): bool\r\n    {\r\n        return true;\r\n    }\r\n\r\n    \/**\r\n     * Get the validation rules that apply to the request.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function rules(): array\r\n    {\r\n        return [\r\n            'first_name' => 'required|alpha|max:100',\r\n            'last_name' => 'required|alpha|max:100',\r\n            'email' => ['required','email:rfc,dns',new EmailFormatRule(),'max:100','unique:users,username'],\r\n            'password' => 'required|confirmed|min:6||max:100|string',\r\n        ];\r\n    }\r\n\r\n    \/**\r\n     * Get custom messages for validator errors.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function messages(): array\r\n    {\r\n        return [\r\n            'email.unique' => \"Email already exist.\",\r\n            'password.min' => \"Password length must be greater than 5 characters.\",\r\n            'password.confirmed' => \"Password not matched.\",\r\n        ];\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Verify Token\nThis function is useful to check the token is valid or not",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/auth\/verify-token",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/auth\/verify-token"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"token\":\"S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Resources;\r\n\r\n\r\nclass SuccessResponse extends BaseResponse\r\n{\r\n    \/**\r\n     * Transform the resource into an array.\r\n     *\r\n     * @param  \\Illuminate\\Http\\Request  $request\r\n     * @return array\r\n     *\/\r\n    public function toArray($request)\r\n    {\r\n        return $this->wrapped();\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Requests\\V1;\r\n\r\nuse Pearl\\RequestValidate\\RequestAbstract;\r\n\r\nclass UserVerificationRequest extends RequestAbstract\r\n{\r\n    \/**\r\n     * Determine if the user is authorized to make this request.\r\n     *\r\n     * @return bool\r\n     *\/\r\n    public function authorize(): bool\r\n    {\r\n        return true;\r\n    }\r\n\r\n    \/**\r\n     * Get the validation rules that apply to the request.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function rules(): array\r\n    {\r\n        return [\r\n            'token' => \"required|string|max:35|exists:user_verifications,verification_code\"\r\n        ];\r\n    }\r\n\r\n    \/**\r\n     * Get custom messages for validator errors.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function messages(): array\r\n    {\r\n        return [\r\n            \/\/\r\n        ];\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Forgot Password\nThis api will send an email to valid user with token for resetting his\/her password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/auth\/forget-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/auth\/forget-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"user@bionicwp.com\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Resources;\r\n\r\n\r\nclass SuccessResponse extends BaseResponse\r\n{\r\n    \/**\r\n     * Transform the resource into an array.\r\n     *\r\n     * @param  \\Illuminate\\Http\\Request  $request\r\n     * @return array\r\n     *\/\r\n    public function toArray($request)\r\n    {\r\n        return $this->wrapped();\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Requests\\V1;\r\n\r\nuse App\\Rules\\EmailFormatRule;\r\nuse Pearl\\RequestValidate\\RequestAbstract;\r\n\r\nclass ForgetPasswordRequest extends RequestAbstract\r\n{\r\n    \/**\r\n     * Determine if the user is authorized to make this request.\r\n     *\r\n     * @return bool\r\n     *\/\r\n    public function authorize(): bool\r\n    {\r\n        return true;\r\n    }\r\n\r\n    \/**\r\n     * Get the validation rules that apply to the request.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function rules(): array\r\n    {\r\n        return [\r\n            'email' => ['required','email:rfc,dns','max:100',new EmailFormatRule()]\r\n        ];\r\n    }\r\n\r\n    \/**\r\n     * Get custom messages for validator errors.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function messages(): array\r\n    {\r\n        return [\r\n            \/\/\r\n        ];\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create New Password\nauthenticate user request and then create new password",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/auth\/create-new-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/auth\/create-new-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"token\":\"T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA\",\"password\":\"abcd1234\",\"password_confirmation\":\"abcd1234\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Resources;\r\n\r\n\r\nclass SuccessResponse extends BaseResponse\r\n{\r\n    \/**\r\n     * Transform the resource into an array.\r\n     *\r\n     * @param  \\Illuminate\\Http\\Request  $request\r\n     * @return array\r\n     *\/\r\n    public function toArray($request)\r\n    {\r\n        return $this->wrapped();\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Requests\\V1;\r\n\r\nuse Pearl\\RequestValidate\\RequestAbstract;\r\n\r\nclass CreateNewPasswordRequest extends RequestAbstract\r\n{\r\n    \/**\r\n     * Determine if the user is authorized to make this request.\r\n     *\r\n     * @return bool\r\n     *\/\r\n    public function authorize(): bool\r\n    {\r\n        return true;\r\n    }\r\n\r\n    \/**\r\n     * Get the validation rules that apply to the request.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function rules(): array\r\n    {\r\n        return [\r\n            'token' => 'required|string|max:35',\r\n            'password' => 'required|confirmed|min:6',\r\n            'password_confirmation' => 'required|min:6'\r\n        ];\r\n    }\r\n\r\n    \/**\r\n     * Get custom messages for validator errors.\r\n     *\r\n     * @return array\r\n     *\/\r\n    public function messages(): array\r\n    {\r\n        return [\r\n            \/\/\r\n        ];\r\n    }\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout\nHit api and session get out",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/logout"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "<?php\r\n\r\nnamespace App\\Http\\Resources;\r\n\r\n\r\nclass SuccessResponse extends BaseResponse\r\n{\r\n    \/**\r\n     * Transform the resource into an array.\r\n     *\r\n     * @param  \\Illuminate\\Http\\Request  $request\r\n     * @return array\r\n     *\/\r\n    public function toArray($request)\r\n    {\r\n        return $this->wrapped();\r\n    }\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "<?php\n\nnamespace Illuminate\\Http;\n\nuse ArrayAccess;\nuse Closure;\nuse Illuminate\\Contracts\\Support\\Arrayable;\nuse Illuminate\\Support\\Arr;\nuse Illuminate\\Support\\Str;\nuse Illuminate\\Support\\Traits\\Macroable;\nuse RuntimeException;\nuse Symfony\\Component\\HttpFoundation\\ParameterBag;\nuse Symfony\\Component\\HttpFoundation\\Request as SymfonyRequest;\n\n\/**\n * @method array validate(array $rules, ...$params)\n * @method array validateWithBag(string $errorBag, array $rules, ...$params)\n * @method bool hasValidSignature(bool $absolute = true)\n *\/\nclass Request extends SymfonyRequest implements Arrayable, ArrayAccess\n{\n    use Concerns\\InteractsWithContentTypes,\n        Concerns\\InteractsWithFlashData,\n        Concerns\\InteractsWithInput,\n        Macroable;\n\n    \/**\n     * The decoded JSON content for the request.\n     *\n     * @var \\Symfony\\Component\\HttpFoundation\\ParameterBag|null\n     *\/\n    protected $json;\n\n    \/**\n     * All of the converted files for the request.\n     *\n     * @var array\n     *\/\n    protected $convertedFiles;\n\n    \/**\n     * The user resolver callback.\n     *\n     * @var \\Closure\n     *\/\n    protected $userResolver;\n\n    \/**\n     * The route resolver callback.\n     *\n     * @var \\Closure\n     *\/\n    protected $routeResolver;\n\n    \/**\n     * Create a new Illuminate HTTP request from server variables.\n     *\n     * @return static\n     *\/\n    public static function capture()\n    {\n        static::enableHttpMethodParameterOverride();\n\n        return static::createFromBase(SymfonyRequest::createFromGlobals());\n    }\n\n    \/**\n     * Return the Request instance.\n     *\n     * @return $this\n     *\/\n    public function instance()\n    {\n        return $this;\n    }\n\n    \/**\n     * Get the request method.\n     *\n     * @return string\n     *\/\n    public function method()\n    {\n        return $this->getMethod();\n    }\n\n    \/**\n     * Get the root URL for the application.\n     *\n     * @return string\n     *\/\n    public function root()\n    {\n        return rtrim($this->getSchemeAndHttpHost().$this->getBaseUrl(), '\/');\n    }\n\n    \/**\n     * Get the URL (no query string) for the request.\n     *\n     * @return string\n     *\/\n    public function url()\n    {\n        return rtrim(preg_replace('\/\\?.*\/', '', $this->getUri()), '\/');\n    }\n\n    \/**\n     * Get the full URL for the request.\n     *\n     * @return string\n     *\/\n    public function fullUrl()\n    {\n        $query = $this->getQueryString();\n\n        $question = $this->getBaseUrl().$this->getPathInfo() === '\/' ? '\/?' : '?';\n\n        return $query ? $this->url().$question.$query : $this->url();\n    }\n\n    \/**\n     * Get the full URL for the request with the added query string parameters.\n     *\n     * @param  array  $query\n     * @return string\n     *\/\n    public function fullUrlWithQuery(array $query)\n    {\n        $question = $this->getBaseUrl().$this->getPathInfo() === '\/' ? '\/?' : '?';\n\n        return count($this->query()) > 0\n            ? $this->url().$question.Arr::query(array_merge($this->query(), $query))\n            : $this->fullUrl().$question.Arr::query($query);\n    }\n\n    \/**\n     * Get the full URL for the request without the given query string parameters.\n     *\n     * @param  array|string  $query\n     * @return string\n     *\/\n    public function fullUrlWithoutQuery($keys)\n    {\n        $query = Arr::except($this->query(), $keys);\n\n        $question = $this->getBaseUrl().$this->getPathInfo() === '\/' ? '\/?' : '?';\n\n        return count($query) > 0\n            ? $this->url().$question.Arr::query($query)\n            : $this->url();\n    }\n\n    \/**\n     * Get the current path info for the request.\n     *\n     * @return string\n     *\/\n    public function path()\n    {\n        $pattern = trim($this->getPathInfo(), '\/');\n\n        return $pattern === '' ? '\/' : $pattern;\n    }\n\n    \/**\n     * Get the current decoded path info for the request.\n     *\n     * @return string\n     *\/\n    public function decodedPath()\n    {\n        return rawurldecode($this->path());\n    }\n\n    \/**\n     * Get a segment from the URI (1 based index).\n     *\n     * @param  int  $index\n     * @param  string|null  $default\n     * @return string|null\n     *\/\n    public function segment($index, $default = null)\n    {\n        return Arr::get($this->segments(), $index - 1, $default);\n    }\n\n    \/**\n     * Get all of the segments for the request path.\n     *\n     * @return array\n     *\/\n    public function segments()\n    {\n        $segments = explode('\/', $this->decodedPath());\n\n        return array_values(array_filter($segments, function ($value) {\n            return $value !== '';\n        }));\n    }\n\n    \/**\n     * Determine if the current request URI matches a pattern.\n     *\n     * @param  mixed  ...$patterns\n     * @return bool\n     *\/\n    public function is(...$patterns)\n    {\n        $path = $this->decodedPath();\n\n        foreach ($patterns as $pattern) {\n            if (Str::is($pattern, $path)) {\n                return true;\n            }\n        }\n\n        return false;\n    }\n\n    \/**\n     * Determine if the route name matches a given pattern.\n     *\n     * @param  mixed  ...$patterns\n     * @return bool\n     *\/\n    public function routeIs(...$patterns)\n    {\n        return $this->route() && $this->route()->named(...$patterns);\n    }\n\n    \/**\n     * Determine if the current request URL and query string match a pattern.\n     *\n     * @param  mixed  ...$patterns\n     * @return bool\n     *\/\n    public function fullUrlIs(...$patterns)\n    {\n        $url = $this->fullUrl();\n\n        foreach ($patterns as $pattern) {\n            if (Str::is($pattern, $url)) {\n                return true;\n            }\n        }\n\n        return false;\n    }\n\n    \/**\n     * Determine if the request is the result of an AJAX call.\n     *\n     * @return bool\n     *\/\n    public function ajax()\n    {\n        return $this->isXmlHttpRequest();\n    }\n\n    \/**\n     * Determine if the request is the result of a PJAX call.\n     *\n     * @return bool\n     *\/\n    public function pjax()\n    {\n        return $this->headers->get('X-PJAX') == true;\n    }\n\n    \/**\n     * Determine if the request is the result of a prefetch call.\n     *\n     * @return bool\n     *\/\n    public function prefetch()\n    {\n        return strcasecmp($this->server->get('HTTP_X_MOZ') ?? '', 'prefetch') === 0 ||\n               strcasecmp($this->headers->get('Purpose') ?? '', 'prefetch') === 0;\n    }\n\n    \/**\n     * Determine if the request is over HTTPS.\n     *\n     * @return bool\n     *\/\n    public function secure()\n    {\n        return $this->isSecure();\n    }\n\n    \/**\n     * Get the client IP address.\n     *\n     * @return string|null\n     *\/\n    public function ip()\n    {\n        return $this->getClientIp();\n    }\n\n    \/**\n     * Get the client IP addresses.\n     *\n     * @return array\n     *\/\n    public function ips()\n    {\n        return $this->getClientIps();\n    }\n\n    \/**\n     * Get the client user agent.\n     *\n     * @return string|null\n     *\/\n    public function userAgent()\n    {\n        return $this->headers->get('User-Agent');\n    }\n\n    \/**\n     * Merge new input into the current request's input array.\n     *\n     * @param  array  $input\n     * @return $this\n     *\/\n    public function merge(array $input)\n    {\n        $this->getInputSource()->add($input);\n\n        return $this;\n    }\n\n    \/**\n     * Merge new input into the request's input, but only when that key is missing from the request.\n     *\n     * @param  array  $input\n     * @return $this\n     *\/\n    public function mergeIfMissing(array $input)\n    {\n        return $this->merge(collect($input)->filter(function ($value, $key) {\n            return $this->missing($key);\n        })->toArray());\n    }\n\n    \/**\n     * Replace the input for the current request.\n     *\n     * @param  array  $input\n     * @return $this\n     *\/\n    public function replace(array $input)\n    {\n        $this->getInputSource()->replace($input);\n\n        return $this;\n    }\n\n    \/**\n     * This method belongs to Symfony HttpFoundation and is not usually needed when using Laravel.\n     *\n     * Instead, you may use the \"input\" method.\n     *\n     * @param  string  $key\n     * @param  mixed  $default\n     * @return mixed\n     *\/\n    public function get(string $key, $default = null)\n    {\n        return parent::get($key, $default);\n    }\n\n    \/**\n     * Get the JSON payload for the request.\n     *\n     * @param  string|null  $key\n     * @param  mixed  $default\n     * @return \\Symfony\\Component\\HttpFoundation\\ParameterBag|mixed\n     *\/\n    public function json($key = null, $default = null)\n    {\n        if (! isset($this->json)) {\n            $this->json = new ParameterBag((array) json_decode($this->getContent(), true));\n        }\n\n        if (is_null($key)) {\n            return $this->json;\n        }\n\n        return data_get($this->json->all(), $key, $default);\n    }\n\n    \/**\n     * Get the input source for the request.\n     *\n     * @return \\Symfony\\Component\\HttpFoundation\\ParameterBag\n     *\/\n    protected function getInputSource()\n    {\n        if ($this->isJson()) {\n            return $this->json();\n        }\n\n        return in_array($this->getRealMethod(), ['GET', 'HEAD']) ? $this->query : $this->request;\n    }\n\n    \/**\n     * Create a new request instance from the given Laravel request.\n     *\n     * @param  \\Illuminate\\Http\\Request  $from\n     * @param  \\Illuminate\\Http\\Request|null  $to\n     * @return static\n     *\/\n    public static function createFrom(self $from, $to = null)\n    {\n        $request = $to ?: new static;\n\n        $files = $from->files->all();\n\n        $files = is_array($files) ? array_filter($files) : $files;\n\n        $request->initialize(\n            $from->query->all(),\n            $from->request->all(),\n            $from->attributes->all(),\n            $from->cookies->all(),\n            $files,\n            $from->server->all(),\n            $from->getContent()\n        );\n\n        $request->headers->replace($from->headers->all());\n\n        $request->setJson($from->json());\n\n        if ($session = $from->getSession()) {\n            $request->setLaravelSession($session);\n        }\n\n        $request->setUserResolver($from->getUserResolver());\n\n        $request->setRouteResolver($from->getRouteResolver());\n\n        return $request;\n    }\n\n    \/**\n     * Create an Illuminate request from a Symfony instance.\n     *\n     * @param  \\Symfony\\Component\\HttpFoundation\\Request  $request\n     * @return static\n     *\/\n    public static function createFromBase(SymfonyRequest $request)\n    {\n        $newRequest = (new static)->duplicate(\n            $request->query->all(), $request->request->all(), $request->attributes->all(),\n            $request->cookies->all(), $request->files->all(), $request->server->all()\n        );\n\n        $newRequest->headers->replace($request->headers->all());\n\n        $newRequest->content = $request->content;\n\n        $newRequest->request = $newRequest->getInputSource();\n\n        return $newRequest;\n    }\n\n    \/**\n     * {@inheritdoc}\n     *\n     * @return static\n     *\/\n    public function duplicate(array $query = null, array $request = null, array $attributes = null, array $cookies = null, array $files = null, array $server = null)\n    {\n        return parent::duplicate($query, $request, $attributes, $cookies, $this->filterFiles($files), $server);\n    }\n\n    \/**\n     * Filter the given array of files, removing any empty values.\n     *\n     * @param  mixed  $files\n     * @return mixed\n     *\/\n    protected function filterFiles($files)\n    {\n        if (! $files) {\n            return;\n        }\n\n        foreach ($files as $key => $file) {\n            if (is_array($file)) {\n                $files[$key] = $this->filterFiles($files[$key]);\n            }\n\n            if (empty($files[$key])) {\n                unset($files[$key]);\n            }\n        }\n\n        return $files;\n    }\n\n    \/**\n     * Get the session associated with the request.\n     *\n     * @return \\Illuminate\\Session\\Store\n     *\n     * @throws \\RuntimeException\n     *\/\n    public function session()\n    {\n        if (! $this->hasSession()) {\n            throw new RuntimeException('Session store not set on request.');\n        }\n\n        return $this->session;\n    }\n\n    \/**\n     * Get the session associated with the request.\n     *\n     * @return \\Illuminate\\Session\\Store|null\n     *\/\n    public function getSession()\n    {\n        return $this->session;\n    }\n\n    \/**\n     * Set the session instance on the request.\n     *\n     * @param  \\Illuminate\\Contracts\\Session\\Session  $session\n     * @return void\n     *\/\n    public function setLaravelSession($session)\n    {\n        $this->session = $session;\n    }\n\n    \/**\n     * Get the user making the request.\n     *\n     * @param  string|null  $guard\n     * @return mixed\n     *\/\n    public function user($guard = null)\n    {\n        return call_user_func($this->getUserResolver(), $guard);\n    }\n\n    \/**\n     * Get the route handling the request.\n     *\n     * @param  string|null  $param\n     * @param  mixed  $default\n     * @return \\Illuminate\\Routing\\Route|object|string|null\n     *\/\n    public function route($param = null, $default = null)\n    {\n        $route = call_user_func($this->getRouteResolver());\n\n        if (is_null($route) || is_null($param)) {\n            return $route;\n        }\n\n        return $route->parameter($param, $default);\n    }\n\n    \/**\n     * Get a unique fingerprint for the request \/ route \/ IP address.\n     *\n     * @return string\n     *\n     * @throws \\RuntimeException\n     *\/\n    public function fingerprint()\n    {\n        if (! $route = $this->route()) {\n            throw new RuntimeException('Unable to generate fingerprint. Route unavailable.');\n        }\n\n        return sha1(implode('|', array_merge(\n            $route->methods(),\n            [$route->getDomain(), $route->uri(), $this->ip()]\n        )));\n    }\n\n    \/**\n     * Set the JSON payload for the request.\n     *\n     * @param  \\Symfony\\Component\\HttpFoundation\\ParameterBag  $json\n     * @return $this\n     *\/\n    public function setJson($json)\n    {\n        $this->json = $json;\n\n        return $this;\n    }\n\n    \/**\n     * Get the user resolver callback.\n     *\n     * @return \\Closure\n     *\/\n    public function getUserResolver()\n    {\n        return $this->userResolver ?: function () {\n            \/\/\n        };\n    }\n\n    \/**\n     * Set the user resolver callback.\n     *\n     * @param  \\Closure  $callback\n     * @return $this\n     *\/\n    public function setUserResolver(Closure $callback)\n    {\n        $this->userResolver = $callback;\n\n        return $this;\n    }\n\n    \/**\n     * Get the route resolver callback.\n     *\n     * @return \\Closure\n     *\/\n    public function getRouteResolver()\n    {\n        return $this->routeResolver ?: function () {\n            \/\/\n        };\n    }\n\n    \/**\n     * Set the route resolver callback.\n     *\n     * @param  \\Closure  $callback\n     * @return $this\n     *\/\n    public function setRouteResolver(Closure $callback)\n    {\n        $this->routeResolver = $callback;\n\n        return $this;\n    }\n\n    \/**\n     * Get all of the input and files for the request.\n     *\n     * @return array\n     *\/\n    public function toArray()\n    {\n        return $this->all();\n    }\n\n    \/**\n     * Determine if the given offset exists.\n     *\n     * @param  string  $offset\n     * @return bool\n     *\/\n    #[\\ReturnTypeWillChange]\n    public function offsetExists($offset)\n    {\n        return Arr::has(\n            $this->all() + $this->route()->parameters(),\n            $offset\n        );\n    }\n\n    \/**\n     * Get the value at the given offset.\n     *\n     * @param  string  $offset\n     * @return mixed\n     *\/\n    #[\\ReturnTypeWillChange]\n    public function offsetGet($offset)\n    {\n        return $this->__get($offset);\n    }\n\n    \/**\n     * Set the value at the given offset.\n     *\n     * @param  string  $offset\n     * @param  mixed  $value\n     * @return void\n     *\/\n    #[\\ReturnTypeWillChange]\n    public function offsetSet($offset, $value)\n    {\n        $this->getInputSource()->set($offset, $value);\n    }\n\n    \/**\n     * Remove the value at the given offset.\n     *\n     * @param  string  $offset\n     * @return void\n     *\/\n    #[\\ReturnTypeWillChange]\n    public function offsetUnset($offset)\n    {\n        $this->getInputSource()->remove($offset);\n    }\n\n    \/**\n     * Check if an input element is set on the request.\n     *\n     * @param  string  $key\n     * @return bool\n     *\/\n    public function __isset($key)\n    {\n        return ! is_null($this->__get($key));\n    }\n\n    \/**\n     * Get an input element from the request.\n     *\n     * @param  string  $key\n     * @return mixed\n     *\/\n    public function __get($key)\n    {\n        return Arr::get($this->all(), $key, function () use ($key) {\n            return $this->route($key);\n        });\n    }\n}\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}
