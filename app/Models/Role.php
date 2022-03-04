@@ -8,4 +8,8 @@ use Spatie\Permission\Models\Role as SpatieRole;
 class Role extends SpatieRole
 {
     use UserAuditTrait;
+
+    const ROLES_PREFIXES = ['admin'=>'admin_'];
+
+    const RESTRICT_ROLES = ['Super Admin','Admin','Customer','Agency','User'];
 }

@@ -3,12 +3,19 @@
 namespace App\Http\Services\V1\Admin;
 
 use App\Exceptions\V1\PermissionException;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\Models\Role;
 
 class PermissionService
 {
+    public static function get()
+    {
+        return Permission::orderBy('id', 'desc')->get();
+    }
+
     public static function assigPermissionsToRole(Role $role, Request $request)
     {
         if (!empty($role)) {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1\Admin;
 
+use App\Models\Role;
 use Pearl\RequestValidate\RequestAbstract;
 use Spatie\Permission\Models\Permission;
 
@@ -18,6 +19,19 @@ class RoleRequest extends RequestAbstract
     }
 
     /**
+     * Get data to be validated from the request.
+     *
+     * @return array
+     */
+    protected function validationData(): array
+    {
+        $all = parent::validationData();
+        //Remove extra white spaces
+        $all['name'] = Role::ROLES_PREFIXES['admin'].$all['name'];
+        return $all;
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -25,8 +39,9 @@ class RoleRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' =>  ($this->isMethod('put')) ? "required|string|max:255|unique:roles,name,". $this->id : "required|string|max:255|unique:roles,name",
-            'permissions' => 'sometimes|nullable|in:'.implode(',',Permission::pluck('id')->toArray())
+            'name' =>  $this->isMethod('PUT') ? "required|string|max:255|unique:roles,name,". $this->id : "required|string|max:255|unique:roles,name",
+            'permissions' => 'sometimes|nullable|array',
+            'permissions.*' => 'sometimes|nullable|in:'.implode(',',Permission::pluck('id')->toArray())
         ];
     }
 

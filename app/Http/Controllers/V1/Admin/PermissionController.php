@@ -2,15 +2,9 @@
 
 namespace App\Http\Controllers\V1\Admin;
 
+use App\Http\Businesses\V1\Admin\PermissionBusiness;
 use App\Http\Controllers\Controller;
-/* Responses*/
-use App\Http\Resources\V1\PermissionResponse;
-use App\Http\Resources\V1\PermissionsResponse;
-use App\Http\Resources\SuccessResponse;
-/* Request */
-use App\Http\Requests\V1\PermissionRequest;
-/* Business */
-use App\Http\Businesses\V1\PermissionBusiness;
+use App\Http\Resources\V1\Admin\PermissionsResponse;
 
 /**
  * @group Permissions Api
@@ -23,7 +17,7 @@ class PermissionController extends Controller
     public function __construct()
     {
         $this->module = 'permissions';
-        $ULP = '|' . $this->module . '_all|access_all'; //UPPER LEVEL PERMISSIONS
+        $ULP = '|' .'access_all'; //UPPER LEVEL PERMISSIONS
         $this->middleware('permission:' . $this->module . '_list'. $ULP, ['only' => ['get']]);
     }
 

@@ -1,6 +1,11 @@
 <?php
 
 return [
+    /**
+     * These are the roles to restrict from users.
+     */
+
+    'restrict_roles' => explode(',', env('RESTRICT_ROLES',implode(',',\App\Models\Role::ROLES_PREFIXES))),
 
     'models' => [
 

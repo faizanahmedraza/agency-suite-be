@@ -36,7 +36,6 @@ class RolePermissionSeeder extends Seeder
             ['name' => 'roles_create', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'roles_update', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'roles_delete', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'permissions_all', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'permissions_list', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
         ];
 

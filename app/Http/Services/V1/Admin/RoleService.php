@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Exceptions\V1\ModelException;
 use App\Exceptions\V1\FailureException;
-use App\Exceptions\V1\UserException;
 use App\Models\Role;
 
 
@@ -28,7 +27,7 @@ class RoleService
     public static function store(Request $request) : Role
     {
         $role = new Role();
-        $role->name = $request->name;
+        $role->name = Role::ROLES_PREFIXES['admin'].$request->name;
         $role->save();
 
         if (!$role) {
@@ -55,7 +54,7 @@ class RoleService
 
     public static function update(Request $request, Role $role) : Role
     {
-        $role->name = $request->name ;
+        $role->name = Role::ROLES_PREFIXES['admin'].$request->name;
         $role->save();
 
         // re asssign new permissions
