@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\V1\Agency;
 
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
 use App\Models\User;
@@ -22,6 +22,8 @@ class UserResource extends Resource
             'email' => ($this->email) ? $this->email : $this->username,
             'last_logged_in' => $this->last_login,
             'status' => array_search($this->status, User::STATUS),
+            'roles' =>  RoleResource::collection($this->whenLoaded('roles')),
+            'permissions' =>  PermissionResource::collection($this->whenLoaded('permissions'))
         ];
     }
 }

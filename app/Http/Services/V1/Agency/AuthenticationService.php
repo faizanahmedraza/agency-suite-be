@@ -1,7 +1,6 @@
 <?php
 
-
-namespace App\Http\Services\V1;
+namespace App\Http\Services\V1\Agency;
 
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -36,7 +35,7 @@ class AuthenticationService
             'token_type' => 'Bearer',
             'expires_at' => ($auth['token']->token->expires_at)->format('Y-m-d H:i:s'),
             'user' => $user,
-
+            'permissions' => $user->getAllPermissions(),
         ];
     }
 

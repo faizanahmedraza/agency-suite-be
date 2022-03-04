@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\V1\Agency;
 
 use App\Http\Resources\BaseResponse;
+use Illuminate\Http\Resources\Json\Resource;
 
-class UserResponse extends BaseResponse
+class RolesResponse extends BaseResponse
 {
     /**
      * Transform the resource into an array.
@@ -14,8 +15,6 @@ class UserResponse extends BaseResponse
      */
     public function toArray($request)
     {
-        return $this->wrapped([
-            'user' => new UserResource($this)
-        ]);
+        return $this->wrapped(['roles' => (!$this->isEmpty()) ? RoleResource::collection($this) : []]);
     }
 }

@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use App\Http\Traits\UserAuditTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class UserVerification extends Model
 {
-    use SoftDeletes;
+    use UserAuditTrait;
     
     /**
     * The attributes that are mass assignable.

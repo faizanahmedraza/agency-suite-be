@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\V1;
+namespace App\Http\Requests\V1\Admin;
 
 use App\Rules\EmailFormatRule;
 use Pearl\RequestValidate\RequestAbstract;

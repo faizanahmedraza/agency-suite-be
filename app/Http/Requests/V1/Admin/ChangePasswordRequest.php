@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\V1;
+namespace App\Http\Requests\V1\Admin;
 
-use App\Rules\EmailFormatRule;
 use Pearl\RequestValidate\RequestAbstract;
 
-class LoginRequest extends RequestAbstract
+class ChangePasswordRequest extends RequestAbstract
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +24,8 @@ class LoginRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'email' => ['required','email:rfc,dns',new EmailFormatRule(),'max:100'],
-            'password' => "required|string|max:100",
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required|min:6'
         ];
     }
 
@@ -37,6 +36,8 @@ class LoginRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [];
+        return [
+            //
+        ];
     }
 }

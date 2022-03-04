@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\V1\Agency;
 
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
 
-class AuthenticationResource extends Resource
+class PermissionResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -15,10 +15,9 @@ class AuthenticationResource extends Resource
     public function toArray($request)
     {
         return [
-            'access_token' => $this['access_token'],
-            'token_type' => $this['token_type'],
-            'expiry' => $this['expires_at'],
-            'user' => new UserResource($this['user'])
+            'id' => $this->id,
+            'name' => $this->name,
+            'created_at' => $this->created_at,
         ];
     }
 }

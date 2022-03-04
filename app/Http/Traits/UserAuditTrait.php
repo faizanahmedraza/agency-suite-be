@@ -4,7 +4,7 @@ namespace App\Http\Traits;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 trait UserAuditTrait
 {

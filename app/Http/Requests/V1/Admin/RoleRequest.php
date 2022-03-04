@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\V1;
+namespace App\Http\Requests\V1\Admin;
 
-use App\Rules\EmailFormatRule;
 use Pearl\RequestValidate\RequestAbstract;
+use Spatie\Permission\Models\Permission;
 
-class LoginRequest extends RequestAbstract
+class RoleRequest extends RequestAbstract
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,8 @@ class LoginRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'email' => ['required','email:rfc,dns',new EmailFormatRule(),'max:100'],
-            'password' => "required|string|max:100",
+            'name' =>  ($this->isMethod('put')) ? "required|string|max:255|unique:roles,name,". $this->id : "required|string|max:255|unique:roles,name",
+            'permissions' => 'sometimes|nullable|in:'.implode(',',Permission::pluck('id')->toArray())
         ];
     }
 
@@ -37,6 +37,8 @@ class LoginRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [];
+        return [
+            //
+        ];
     }
 }

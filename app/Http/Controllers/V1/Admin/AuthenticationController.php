@@ -1,0 +1,72 @@
+<?php
+
+namespace App\Http\Controllers\V1\Admin;
+
+use App\Http\Businesses\V1\Admin\AuthenticationBusiness;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Admin\ChangePasswordRequest;
+use App\Http\Requests\V1\Admin\LoginRequest;
+use App\Http\Resources\SuccessResponse;
+use App\Http\Resources\V1\Admin\AuthenticationResponse;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+class AuthenticationController extends Controller
+{
+    /**
+     * Access Token Or Login
+     * This function is useful for login, to return access token for users.
+     *
+     * @bodyParam email email required The username of user. Example: admin@my-app.com
+     * @bodyParam password string required The password of user. Example: Abc*123*
+     *
+     * @headerParam Client-ID string required
+     * @headerParam Client-Secret string required
+     *
+     * @responseFile 200 app/Http/Resources/V1/AuthenticationResponse.php
+     * @responseFile 422 app/Http/Requests/V1/LoginRequest.php
+     */
+
+    public function login(LoginRequest $request)
+    {
+        $auth = (new AuthenticationBusiness())->verifyLoginInfo($request);
+        return new AuthenticationResponse($auth);
+    }
+
+    /**
+     * Logout
+     * Hit api and session get out
+     *
+     * @authenticated
+     *
+     * @headerParam Authorization string required
+     *
+     * @responseFile 200 app/Http/Resources/SuccessResponse.php
+     * @responseFile 422 vendor/illuminate/http/Request.php
+     */
+    public static function logout(Request $request)
+    {
+        AuthenticationBusiness::logout($request);
+        return new SuccessResponse([]);
+    }
+
+    /**
+     * Change Password
+     * change password request of user
+     *
+     * @authenticated
+     *
+     * @bodyParam password String required abcd1234 Example: abcd1234
+     * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
+     *
+     * @responseFile 200 app/Http/Resources/SuccessResponse.php
+     * @responseFile 422 app/Http/Requests/V1/Admin/ChangePasswordRequest.php
+     */
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        DB::beginTransaction();
+        (new AuthenticationBusiness())->changePassword($request);
+        DB::commit();
+        return new SuccessResponse([]);
+    }
+}

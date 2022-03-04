@@ -48,7 +48,7 @@ class UserException extends BaseException
         );
     }
 
-    public static function Unauthorized(): self
+    public static function unAuthorized(): self
     {
         return new self(
             'Unauthorized access! User does not have access.',

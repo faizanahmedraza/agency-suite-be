@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\V1;
+namespace App\Http\Resources\V1\Admin;
 
 use App\Http\Resources\BaseResponse;
 
-class AuthenticationResponse extends BaseResponse
+class RoleResponse extends BaseResponse
 {
     /**
      * Transform the resource into an array.
@@ -14,8 +14,6 @@ class AuthenticationResponse extends BaseResponse
      */
     public function toArray($request)
     {
-        return $this->wrapped([
-            'authentication' => new AuthenticationResource($this->resource)
-        ]);
+        return $this->wrapped(['role' => new RoleResource($this)]);
     }
 }

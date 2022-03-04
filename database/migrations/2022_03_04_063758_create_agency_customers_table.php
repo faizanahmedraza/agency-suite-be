@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDeletedAtInRolesTable extends Migration
+class CreateAgencyCustomersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class AddDeletedAtInRolesTable extends Migration
      */
     public function up()
     {
-        Schema::table('roles', function (Blueprint $table) {
-            $table->unsignedInteger('created_by')->nullable();
-            $table->unsignedInteger('updated_by')->nullable();
+        Schema::create('agency_customers', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('agency_id')->constrained('agencies')->cascadeOnDelete();
+            $table->timestamps();
             $table->softDeletes();
         });
     }
@@ -27,8 +29,6 @@ class AddDeletedAtInRolesTable extends Migration
      */
     public function down()
     {
-        Schema::table('roles', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('agency_customers');
     }
 }

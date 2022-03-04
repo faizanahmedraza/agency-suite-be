@@ -87,6 +87,9 @@ $app->routeMiddleware([
     'client_credentials' => App\Http\Middleware\ClientCredentialsVerification::class,
     'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
     'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
+    'admin' => \App\Http\Middleware\AdminAllowedMiddleware::class,
+    'agency' => \App\Http\Middleware\AgencyAllowedMiddleware::class,
+    'customer' => \App\Http\Middleware\CustomerAllowedMiddleware::class
 ]);
 
 /*
@@ -108,6 +111,7 @@ $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
+$app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 
 
 if (env('APP_ENV') === "local") {
