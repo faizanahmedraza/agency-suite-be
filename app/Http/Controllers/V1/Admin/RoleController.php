@@ -11,7 +11,8 @@ use App\Http\Resources\V1\Admin\RolesResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @group Role
+ * @group Admin
+ * @group Roles Management
  */
 class RoleController extends Controller
 {
@@ -21,8 +22,7 @@ class RoleController extends Controller
     {
         $this->module = 'roles';
         $ULP = '|' . $this->module . '_all|access_all'; //UPPER LEVEL PERMISSIONS
-        $this->middleware('permission:' . $this->module . '_list'. $ULP, ['only' => ['get']]);
-        $this->middleware('permission:' . $this->module . '_read'. $ULP, ['only' => ['first']]);
+        $this->middleware('permission:' . $this->module . '_read'. $ULP, ['only' => ['first', 'get']]);
         $this->middleware('permission:' . $this->module . '_create'. $ULP, ['only' => ['store']]);
         $this->middleware('permission:' . $this->module . '_update'. $ULP, ['only' => ['update']]);
         $this->middleware('permission:' . $this->module . '_delete'. $ULP, ['only' => ['destroy']]);

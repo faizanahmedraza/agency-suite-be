@@ -10,7 +10,6 @@ use App\Http\Services\V1\Admin\UserService;
 
 use Illuminate\Support\Facades\Hash;
 
-/* Models */
 use App\Models\User;
 
 class AuthenticationBusiness
