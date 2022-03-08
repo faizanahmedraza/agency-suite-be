@@ -2,29 +2,81 @@
 
 namespace App\Http\Businesses\V1\Admin;
 
-use App\Http\Services\V1\AuthenticationService;
-use App\Http\Services\V1\UserService;
-use App\Http\Services\V1\UserVerificationService;
+use App\Exceptions\V1\UserException;
+use App\Http\Services\V1\Admin\PermissionService;
+use App\Http\Services\V1\Admin\RoleService;
+use App\Http\Services\V1\Admin\UserService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserBusiness
 {
-    public static function first()
+    public static function first(int $id)
     {
-        return UserService::first(Auth::user());
+        return UserService::first($id);
     }
 
-    public static function update($request)
+    public static function store(Request $request)
     {
-        $user = UserService::first(Auth::user());
-        // update in users table
-        UserService::update($request, $user);
+        // create user
+        $user = UserService::store($request);
+
+        //assigning roles to the user
+        RoleService::assignRolesToUser($request, $user);
+
+        // assign direct permission to user
+        PermissionService::assignDirectPermissionToUser($request, $user);
 
         return $user;
     }
 
-    public static function changePassword($request)
+    public static function get(Request $request)
     {
-        UserService::changeUserPassword(Auth::user(), $request->password);
+        // get user
+        return UserService::get($request);
+    }
+
+    public static function update(Request $request, int $id)
+    {
+        $user = UserService::first($id);
+
+        // update in users table
+        UserService::update($request, $user);
+
+        RoleService::syncRolesToUser($request, $user);
+
+        PermissionService::assignDirectPermissionToUser($request, $user);
+
+        return $user;
+    }
+
+    public static function destroy(int $id) : void
+    {
+        // delete user
+        $user = UserService::first($id);
+
+        if ($user->id == Auth::id()) {
+            throw UserException::authUserRestrictStatus();
+        }
+
+        UserService::destroy($user);
+    }
+
+    public static function toggleStatus($id)
+    {
+        // get user
+        $user = UserService::first($id);
+
+        if ($user->id == Auth::id()) {
+            throw UserException::authUserRestrictStatus();
+        }
+        // status toggle
+        return  UserService::toggleStatus($user);
+    }
+
+    public  static  function changeAnyPassword(Request $request,$id)
+    {
+        $user = UserService::first($id);
+        UserService::changePassword($user,$request);
     }
 }

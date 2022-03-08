@@ -39,7 +39,6 @@ class RoleService
         return $role;
     }
 
-
     public static function first($id)
     {
         $role = Role::with('permissions')->find($id);
@@ -50,7 +49,6 @@ class RoleService
 
         return $role;
     }
-
 
     public static function update(Request $request, Role $role) : Role
     {

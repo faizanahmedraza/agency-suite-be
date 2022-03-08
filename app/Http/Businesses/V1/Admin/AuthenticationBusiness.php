@@ -30,7 +30,7 @@ class AuthenticationBusiness
         return $authService->generateVerificationResponse($auth, $user);
     }
 
-    public static function logout($request)
+    public function logout($request)
     {
         if (Auth::check()) {
             if (!$request->filled('action')) {
@@ -44,7 +44,7 @@ class AuthenticationBusiness
 
     public function changePassword($request)
     {
-        $user = (new UserService())->first();
-        (new UserService())->changePassword($user, $request->password);
+        $user = (new UserService())->first(Auth::id());
+        UserService::changePassword($user, $request);
     }
 }

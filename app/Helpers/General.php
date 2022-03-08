@@ -13,9 +13,35 @@ if (!function_exists('asset')) {
     }
 }
 
+if (!function_exists('clean')) {
+    function clean($value)
+    {
+        $value = trim(strtolower($value));
+
+        if (strpos($value, ',') !== false) {
+            return explode(",", $value);
+        }
+
+        return $value;
+    }
+}
+
+if (!function_exists('getStatus')) {
+    function getStatus($statusArray,$request)
+    {
+        $flipArr = array_flip(explode(',',$request));
+        return array_intersect_key($statusArray,$flipArr);
+    }
+}
+
+function getIds($value)
+{
+    return array_map('intval', explode(',', $value));
+}
+
 function pageLimit($request): int
 {
-    return ($request->filled('page_limit') && is_numeric($request->input('page_limit'))) ? $request->input('page_limit') : config("bionic_customer.page_limit");
+    return ($request->filled('page_limit') && is_numeric($request->input('page_limit'))) ? $request->input('page_limit') : env('PAGE_LIMIT',20);
 }
 
 

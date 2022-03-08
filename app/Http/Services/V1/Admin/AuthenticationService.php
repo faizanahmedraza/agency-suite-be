@@ -3,6 +3,8 @@
 
 namespace App\Http\Services\V1\Admin;
 
+use Illuminate\Support\Facades\DB;
+
 class AuthenticationService
 {
     public function createToken($user)
@@ -24,5 +26,10 @@ class AuthenticationService
             'user' => $user,
             'permissions' => $user->getAllPermissions(),
         ];
+    }
+
+    public static function revokeUserToken($user)
+    {
+        return DB::table('oauth_access_tokens')->where('user_id', '=', $user->id)->update(['revoked' => true]);
     }
 }

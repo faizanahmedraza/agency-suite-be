@@ -5,7 +5,7 @@ return [
      * These are the roles to restrict from users.
      */
 
-    'restrict_roles' => explode(',', env('RESTRICT_ROLES',implode(',',\App\Models\Role::ROLES_PREFIXES))),
+    'restrict_roles' => explode(',', env('RESTRICT_ROLES',implode(',',\App\Models\Role::RESTRICT_ROLES))),
 
     'models' => [
 

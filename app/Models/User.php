@@ -8,7 +8,6 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
 use Laravel\Lumen\Auth\Authorizable;
 use Laravel\Passport\HasApiTokens;
-use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -51,12 +50,29 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $data->pluck('name')->toArray();
     }
 
-
     public static function revokeToken($user)
     {
         $tokens = $user->tokens->where('revoked', false);
         foreach ($tokens as $token) {
             $token->revoke();
         }
+    }
+
+    public static function clean($value)
+    {
+        $value = strtolower($value);
+
+        if (strpos($value, ',') !== false) {
+            return explode(",", $value);
+        }
+
+        return $value;
+    }
+
+    public function scopeAvoidRole($query, array $names)
+    {
+        return $query->whereHas('roles', function ($query) use ($names) {
+            $query->whereNotIn('name', $names);
+        });
     }
 }

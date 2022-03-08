@@ -63,4 +63,12 @@ class UserException extends BaseException
             '403'
         );
     }
+
+    public static function authUserRestrictStatus(): self
+    {
+        return new self(
+            'Logged in user cannot modifiy its own status',
+            '401'
+        );
+    }
 }

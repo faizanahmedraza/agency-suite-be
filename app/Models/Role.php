@@ -11,5 +11,5 @@ class Role extends SpatieRole
 
     const ROLES_PREFIXES = ['admin'=>'admin_'];
 
-    const RESTRICT_ROLES = ['Super Admin','Admin','Customer','Agency','User'];
+    const RESTRICT_ROLES = ['Super Admin','Agency','Customer'];
 }

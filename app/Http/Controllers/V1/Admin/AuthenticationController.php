@@ -50,7 +50,7 @@ class AuthenticationController extends Controller
      */
     public static function logout(Request $request)
     {
-        AuthenticationBusiness::logout($request);
+        (new AuthenticationBusiness())->logout($request);
         return new SuccessResponse([]);
     }
 

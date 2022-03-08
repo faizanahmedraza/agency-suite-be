@@ -7,6 +7,9 @@ use App\Exceptions\V1\FailureException;
 use App\Exceptions\V1\UnAuthorizedException;
 use App\Exceptions\V1\UserException;
 
+use App\Models\Admin;
+use App\Models\Role;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
@@ -26,60 +29,24 @@ class UserService
      *
      *
      */
-    public static function create($data, $status = null)
+    public static function store(Request $request)
     {
-        $user = new User();
-        $user->first_name = $data->first_name;
-        $user->last_name = $data->last_name;
-        $user->password = Hash::make($data->password);
-        $user->username = strtolower($data->email);
-        $user->status = !empty($status) ? User::STATUS[$status] : User::STATUS['pending'];
+        $user = new User;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->password = Hash::make($request->password);
+        $user->username = clean($request->email);
+        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['pending'];
+        $user->created_by =  Auth::id();
         $user->save();
+
+        $user->admin()->save(new Admin());
 
         if (!$user) {
             throw FailureException::serverError();
         }
 
-        self::assignUserRole($data, $user);
-
-        return $user->fresh();
-    }
-
-    /**
-     *  This function is used to assign Roles to User
-     */
-    public static function assignUserRole($request, $user)
-    {
-        if (!empty($request->get('role'))) {
-            $user->assignRole($request->get('role'));
-        }
-    }
-
-    /**
-    *  This function is used to assign Permissions to User
-    */
-    public static function assignUserPermissions($permissions, $user)
-    {
-        if (!empty($permissions)) {
-            $user->syncPermissions($permissions);
-        }
-    }
-
-    /**
-    *  This function is used to revoke Permissions to User
-    */
-    public static function revokePermissions($permissions, $user)
-    {
-        if (!empty($permissions)) {
-            $user->revokePermissionTo($permissions);
-        }
-    }
-
-    public static function givePermission($permission, $user)
-    {
-        if (!empty($permission)) {
-            $user->givePermissionTo($permission);
-        }
+        return $user->load('permissions');
     }
 
     /**
@@ -91,7 +58,6 @@ class UserService
      * @return User Object
      *
      */
-
     public static function getUserByEmail(String $email): User
     {
         $user = User::where('username', $email)->first();
@@ -101,26 +67,82 @@ class UserService
         return $user;
     }
 
-
-    /** Update User Password
-     *
-     * @param  required User $id , Request $password
-     *
-     * @throw FailureException
-     *
-     * @return $user object
-     */
-
-    public static function changePassword(User $user, string $password)
+    public static function get(Request $request)
     {
-        $user->password = Hash::make($password);
-        $user->save();
+        $users = User::query()->with(['roles', 'permissions']);
 
-        if (!$user) {
-            throw FailureException::serverError();
+        if ($request->has("users")) {
+            $ids = \getIds($request->users);
+            $users->orWhereIn('id', $ids);
         }
 
-        return $user;
+        if ($request->has('full_name')) {
+            $fullName = User::clean($request->full_name);
+
+            if (is_array($fullName)) {
+                $users->whereRaw("CONCAT(TRIM(LOWER(first_name)) , ' ' ,TRIM(LOWER(last_name))) in ('" . join("', '", $fullName) . "')");
+            } else {
+                $users->whereRaw("CONCAT(LOWER(first_name) , ' ' ,LOWER(last_name)) = ? ", $fullName);
+            }
+        }
+
+        if ($request->has('first_name')) {
+            $fname = User::clean($request->first_name);
+
+            if (is_array($fname)) {
+                $users->whereRaw("TRIM(LOWER(first_name)) in  ('" . join("', '", $fname) . "')");
+            } else {
+                $users->whereRaw('TRIM(LOWER(first_name)) = ?', $fname);
+            }
+        }
+
+        if ($request->has('last_name')) {
+            $lname = User::clean($request->last_name);
+
+            if (is_array($lname)) {
+                $users->whereRaw("TRIM(LOWER(last_name)) in  ('" . join("', '", $lname) . "')");
+            } else {
+                $users->whereRaw('TRIM(LOWER(last_name)) = ?', $lname);
+            }
+        }
+
+        if ($request->has('email')) {
+            $email = User::clean($request->email);
+
+            if (is_array($email)) {
+                $users->whereRaw("TRIM(LOWER(username)) in  ('" . join("', '", $email) . "')");
+            } else {
+                $users->whereRaw('TRIM(LOWER(username)) = ?', $email);
+            }
+        }
+
+        if ($request->has('status')) {
+            $arrStatus = getStatus(User::STATUS, clean($request->status));
+            $users->wherein('status', $arrStatus);
+        }
+
+        if ($request->query('order_by')) {
+            $users->orderBy('id', $request->get('order_by'));
+        } else {
+            $users->orderBy('id', 'desc');
+        }
+
+        if ($request->has('from_date')) {
+            $from = TimeStampHelper::formateDate($request->from_date);
+            $users->whereDate('created_at', '>=', $from);
+        }
+
+        if ($request->has('to_date')) {
+            $to = TimeStampHelper::formateDate($request->to_date);
+            $users->whereDate('created_at', '<=', $to);
+        }
+
+        $users->avoidRole(Role::RESTRICT_ROLES);
+
+        return ($request->filled('pagination') && $request->get('pagination') == 'false')
+            ? $users->get()
+            : $users->paginate(\pageLimit($request));
+
     }
 
     /**
@@ -148,22 +170,17 @@ class UserService
         return $user;
     }
 
-    public static function updateStatus(User $user, $status = User::STATUS['active']): User
-    {
-        $user->status = $status;
-        $user->save();
-
-        return $user;
-    }
-
     public static function blockUsers(array $ids)
     {
         return User::whereIn('id', $ids)->update(["status" => User::STATUS['blocked']]);
     }
 
-    public static function first($with = [], $where = null): User
+    public static function first(int $id,$with = ['roles','permissions']): User
     {
-        $user = User::with($with)->where($where)->first();
+        $user = User::with($with)
+            ->where('id', $id)
+            ->avoidRole(Role::RESTRICT_ROLES)
+            ->first();
 
         if (!$user) {
             throw ModelException::dataNotFound();
@@ -176,13 +193,46 @@ class UserService
     {
         $user->first_name = trim($request->first_name);
         $user->last_name = trim($request->last_name);
+        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['pending'];
+        $user->updated_by =  Auth::id();
         $user->save();
+
+        $user->admin()->update([]);
 
         if (!$user) {
             throw FailureException::serverError();
         }
 
         return $user;
+    }
+
+    public static function destroy(User $user): void
+    {
+        $user->delete();
+    }
+
+    public static function toggleStatus(User $user): User
+    {
+        ($user->status == User::STATUS['pending'] || $user->status == User::STATUS['active']) ? $user->status = User::STATUS['blocked'] : $user->status = User::STATUS['active'];
+        $user->save();
+
+        if ($user->status = User::STATUS['blocked']) {
+            AuthenticationService::revokeUserToken($user);
+        }
+    }
+
+    public static function changePassword(User $user, Request $request)
+    {
+        if ($user->status == User::STATUS['blocked']) {
+            throw UnauthorizedException::accountBlocked();
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        if (!$user) {
+            throw FailureException::serverError();
+        }
     }
 
     /**
@@ -203,7 +253,6 @@ class UserService
         }
         return false;
     }
-
 
     public static function validateToken($token)
     {

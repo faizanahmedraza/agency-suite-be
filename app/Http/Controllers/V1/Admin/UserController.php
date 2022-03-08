@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers\V1\Admin;
 
+use App\Http\Businesses\V1\Admin\UserBusiness;
 use App\Http\Controllers\Controller;
 
+use App\Http\Requests\V1\Admin\ChangeAnyPasswordRequest;
+use App\Http\Requests\V1\Admin\UserListRequest;
+use App\Http\Requests\V1\Admin\UserRequest;
 use App\Http\Resources\SuccessResponse;
 
+use App\Http\Resources\V1\Admin\UserResponse;
+use App\Http\Resources\V1\Admin\UsersResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -38,7 +44,6 @@ class UserController extends Controller
      * @bodyParam  email email required
      * @bodyParam  password String required
      * @bodyParam  password_confirmation String required
-     * @bodyParam  phone email Optional
      * @bodyParam  roles Array required
      * @bodyParam  permissions Array
      *
@@ -61,17 +66,26 @@ class UserController extends Controller
      *
      * @authenticated
      *
-     * @urlParam users string [1,2,3,4]
-     * @urlParam status string ['pending' => 0, 'active' => 1, 'blocked' => 2]
-     * @urlParam to_register_date timestamp Optional
-     * @urlParam from_register_date timestamp Optional
+     * @urlParam users string 1,2,3,4
+     * @urlParam email string ex: abc.com,xyz.co
+     * @urlParam first_name string
+     * @urlParam last_name string
+     * @urlParam full_name string
+     * @urlParam status string ex: pending,active,blocked
+     * @urlParam order_by string ex: asc/desc
+     * @urlParam from_date string Example: Y-m-d
+     * @urlParam to_date string Example: Y-m-d
+     * @urlParam pagination boolean
+     * @urlParam page_limit integer
+     * @urlParam page integer
+     * @urlParam roles string ex: admin,test
      *
      * @responseFile 200 responses/V1/User/ListResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      *
      */
 
-    public function get(Request $request)
+    public function get(UserListRequest $request)
     {
         $users = UserBusiness::get($request);
         return (new UsersResponse($users));
@@ -100,7 +114,6 @@ class UserController extends Controller
      *
      * @bodyParam  first_name String required
      * @bodyParam  last_name String required
-     * @bodyParam  email email required
      * @bodyParam  roles Array required
      * @bodyParam  permissions Array
      *
@@ -117,7 +130,6 @@ class UserController extends Controller
         DB::commit();
         return (new UserResponse($user));
     }
-
 
     /**
      * Delete User
@@ -143,56 +155,34 @@ class UserController extends Controller
      *
      * @authentiacte
      *
-     * @urlParam user_id required
+     * @urlParam user_id integer required
      *
      * @responseFile 200 responses/SuccessResponse.json
      */
 
     public static function toggleStatus(int $id)
     {
-        $user = UserBusiness::toggleStatus($id);
-        return new SuccessResponse($user);
+        UserBusiness::toggleStatus($id);
+        return new SuccessResponse([]);
     }
 
     /**
+     * Change Password of Any User
      *
-     * Smart Search For Users
-     * This requeired overall two parameter one for fields and other for values
-     * Fields attr can only have below defined parameter
-     * While value field can only have required string or email to search.
-     * Example:
-     * field = email, full_name
-     * value = bionic@integrit.pk, bionic
+     * @authenticated
      *
-     * @urlParam field required
-     * @urlParam value required
+     * @urlParam id integer required
      *
-     * @responseFile 200 responses/V1/SmartSearchResponse.json
+     * @bodyParam password string required ex: 123456
+     *
+     * @responseFile 200 app/Http/Admin/V1/Resources/UserResponse.php
+     * @responseFile 422 app/Http/Admin/V1/Requests/ChangePasswordRequest.php
      *
      */
-    public static function search(Request $request)
+
+    public static function changeAnyPassword(ChangeAnyPasswordRequest $request, int $id)
     {
-        $users = UserBusiness::search($request);
-        return (new SmartSearchResponse($users));
-    }
-
-
-    /**
-     * Toggle User Status
-     * This api update user password
-     * other then customers.
-     *
-     * @authentiacte
-     *
-     * @urlParam id required
-     * @bodyParam password required string
-     *
-     * @responseFile 200 responses/SuccessResponse.json
-     */
-
-    public static function passwordChange(PasswordChangeRequest $request, int $id)
-    {
-        $user = UserBusiness::passwordChange($request, $id);
-        return new SuccessResponse($user);
+        UserBusiness::changeAnyPassword($request, $id);
+        return new SuccessResponse([]);
     }
 }
