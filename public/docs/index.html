@@ -26,7 +26,7 @@
             </style>
 
     <script>
-        var baseUrl = "http://agency.test";
+        var baseUrl = "http://agt-server.test";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -70,65 +70,86 @@
                                                 </ul>
                     
                     <ul id="tocify-header-2" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="admin">
-                    <a href="#admin">Admin</a>
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
                 </li>
-                                    <ul id="tocify-subheader-admin" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="admin-POSTv1-admins-change-password">
-                        <a href="#admin-POSTv1-admins-change-password">Change Password
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTv1-admins-change-password">
+                        <a href="#authentication-POSTv1-admins-change-password">Change Password
 change password request of user</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="admin-DELETEv1-admins-logout">
-                        <a href="#admin-DELETEv1-admins-logout">Logout
+                                    <li class="tocify-item level-2" data-unique="authentication-DELETEv1-admins-logout">
+                        <a href="#authentication-DELETEv1-admins-logout">Logout
 Hit api and session get out</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="admin-GETv1-admins-users">
-                        <a href="#admin-GETv1-admins-users">Get Users
-This will return logged in user profile.</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="admin-GETv1-admins-users--id-">
-                        <a href="#admin-GETv1-admins-users--id-">Show User Details
-This api show the uer details.</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="admin-POSTv1-admins-users">
-                        <a href="#admin-POSTv1-admins-users">Create Users
-This api create new user.</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="admin-PUTv1-admins-users--id-">
-                        <a href="#admin-PUTv1-admins-users--id-">Update User Details.</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="admin-DELETEv1-admins-users--id-">
-                        <a href="#admin-DELETEv1-admins-users--id-">Delete User</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="admin-POSTv1-admins-users-change-any-password--id-">
-                        <a href="#admin-POSTv1-admins-users-change-any-password--id-">Change Password of Any User</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="admin-DELETEv1-admins-roles--id-">
-                        <a href="#admin-DELETEv1-admins-roles--id-">Delete Role</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="admin-POSTv1-admins-auth-login">
-                        <a href="#admin-POSTv1-admins-auth-login">Access Token Or Login
+                                    <li class="tocify-item level-2" data-unique="authentication-POSTv1-admins-auth-login">
+                        <a href="#authentication-POSTv1-admins-auth-login">Access Token Or Login
 This function is useful for login, to return access token for users.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="admin-GETv1-admins-roles">
-                        <a href="#admin-GETv1-admins-roles">Role List
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-3" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="permissions-api">
+                    <a href="#permissions-api">Permissions Api</a>
+                </li>
+                                    <ul id="tocify-subheader-permissions-api" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="permissions-api-GETv1-admins-permissions">
+                        <a href="#permissions-api-GETv1-admins-permissions">Permission List
+This api return the collection of all Permissions created.</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-4" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="roles-management">
+                    <a href="#roles-management">Roles Management</a>
+                </li>
+                                    <ul id="tocify-subheader-roles-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="roles-management-DELETEv1-admins-roles--id-">
+                        <a href="#roles-management-DELETEv1-admins-roles--id-">Delete Role</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="roles-management-GETv1-admins-roles">
+                        <a href="#roles-management-GETv1-admins-roles">Roles List
 This api return the collection of all Roles created.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="admin-GETv1-admins-roles--id-">
-                        <a href="#admin-GETv1-admins-roles--id-">Role Details
+                                    <li class="tocify-item level-2" data-unique="roles-management-GETv1-admins-roles--id-">
+                        <a href="#roles-management-GETv1-admins-roles--id-">Role Details
 This api show the details of requested Role.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="admin-POSTv1-admins-roles">
-                        <a href="#admin-POSTv1-admins-roles">Create Role
+                                    <li class="tocify-item level-2" data-unique="roles-management-POSTv1-admins-roles">
+                        <a href="#roles-management-POSTv1-admins-roles">Create Role
 This api is for create new Role</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="admin-PUTv1-admins-roles--id-">
-                        <a href="#admin-PUTv1-admins-roles--id-">Role Update
+                                    <li class="tocify-item level-2" data-unique="roles-management-PUTv1-admins-roles--id-">
+                        <a href="#roles-management-PUTv1-admins-roles--id-">Role Update
 This api update the details of requested Role.</a>
                     </li>
-                                    <li class="tocify-item level-2" data-unique="admin-GETv1-admins-permissions">
-                        <a href="#admin-GETv1-admins-permissions">Permission List
-This api return the collection of all Permissions created.</a>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-5" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="user-management">
+                    <a href="#user-management">User Management</a>
+                </li>
+                                    <ul id="tocify-subheader-user-management" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="user-management-GETv1-admins-users">
+                        <a href="#user-management-GETv1-admins-users">Get Users
+This will return logged in user profile.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="user-management-GETv1-admins-users--id-">
+                        <a href="#user-management-GETv1-admins-users--id-">Show User Details
+This api show the uer details.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="user-management-POSTv1-admins-users">
+                        <a href="#user-management-POSTv1-admins-users">Create Users
+This api create new user.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="user-management-PUTv1-admins-users--id-">
+                        <a href="#user-management-PUTv1-admins-users--id-">Update User Details.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="user-management-DELETEv1-admins-users--id-">
+                        <a href="#user-management-DELETEv1-admins-users--id-">Delete User</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="user-management-POSTv1-admins-users-change-any-password--id-">
+                        <a href="#user-management-POSTv1-admins-users-change-any-password--id-">Change Password of Any User</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -161,11 +182,11 @@ You can switch the language used with the tabs at the top right (or from the nav
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
 
-        <h1 id="admin">Admin</h1>
+        <h1 id="authentication">Authentication</h1>
 
     
 
-            <h2 id="admin-POSTv1-admins-change-password">Change Password
+            <h2 id="authentication-POSTv1-admins-change-password">Change Password
 change password request of user</h2>
 
 <p>
@@ -180,7 +201,7 @@ change password request of user</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://agency.test/v1/admins/change-password" \
+    "http://agt-server.test/v1/admins/change-password" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
@@ -192,7 +213,7 @@ change password request of user</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/change-password"
+    "http://agt-server.test/v1/admins/change-password"
 );
 
 const headers = {
@@ -312,7 +333,7 @@ fetch(url, {
         </p>
         </form>
 
-            <h2 id="admin-DELETEv1-admins-logout">Logout
+            <h2 id="authentication-DELETEv1-admins-logout">Logout
 Hit api and session get out</h2>
 
 <p>
@@ -327,14 +348,14 @@ Hit api and session get out</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/admins/logout" \
+    "http://agt-server.test/v1/admins/logout" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/logout"
+    "http://agt-server.test/v1/admins/logout"
 );
 
 const headers = {
@@ -427,7 +448,1237 @@ fetch(url, {
         </p>
                 </form>
 
-            <h2 id="admin-GETv1-admins-users">Get Users
+            <h2 id="authentication-POSTv1-admins-auth-login">Access Token Or Login
+This function is useful for login, to return access token for users.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTv1-admins-auth-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agt-server.test/v1/admins/auth/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"admin@my-app.com\",
+    \"password\": \"Abc*123*\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agt-server.test/v1/admins/auth/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "admin@my-app.com",
+    "password": "Abc*123*"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-admins-auth-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;authentication&quot;: {
+            &quot;access_token&quot;: &quot;eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA&quot;,
+            &quot;token_type&quot;: &quot;Bearer&quot;,
+            &quot;expiry&quot;: &quot;2022-03-18 09:47:07&quot;,
+            &quot;user&quot;: {
+                &quot;id&quot;: 1,
+                &quot;first_name&quot;: &quot;Faizan Ahmed&quot;,
+                &quot;last_name&quot;: &quot;Raza&quot;,
+                &quot;email&quot;: &quot;faizan.raza@saasfa.com&quot;,
+                &quot;last_logged_in&quot;: null,
+                &quot;status&quot;: &quot;pending&quot;,
+                &quot;roles&quot;: [
+                    {
+                        &quot;id&quot;: 1,
+                        &quot;name&quot;: &quot;Super Admin&quot;,
+                        &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                        &quot;permissions&quot;: [
+                            {
+                                &quot;id&quot;: 1,
+                                &quot;name&quot;: &quot;access_all&quot;,
+                                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+                            }
+                        ]
+                    }
+                ],
+                &quot;permissions&quot;: []
+            }
+        }
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-admins-auth-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-admins-auth-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-admins-auth-login"></code></pre>
+</span>
+<span id="execution-error-POSTv1-admins-auth-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-admins-auth-login"></code></pre>
+</span>
+<form id="form-POSTv1-admins-auth-login" data-method="POST"
+      data-path="v1/admins/auth/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-admins-auth-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-admins-auth-login"
+                    onclick="tryItOut('POSTv1-admins-auth-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-admins-auth-login"
+                    onclick="cancelTryOut('POSTv1-admins-auth-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-admins-auth-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/admins/auth/login</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>email</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTv1-admins-auth-login"
+               value="admin@my-app.com"
+               data-component="body" hidden>
+    <br>
+<p>The username of user.</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTv1-admins-auth-login"
+               value="Abc*123*"
+               data-component="body" hidden>
+    <br>
+<p>The password of user.</p>
+        </p>
+        </form>
+
+        <h1 id="permissions-api">Permissions Api</h1>
+
+    
+
+            <h2 id="permissions-api-GETv1-admins-permissions">Permission List
+This api return the collection of all Permissions created.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETv1-admins-permissions">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://agt-server.test/v1/admins/permissions" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agt-server.test/v1/admins/permissions"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETv1-admins-permissions">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;collections&quot;: [
+            {
+                &quot;id&quot;: 13,
+                &quot;name&quot;: &quot;users_toggle_status&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 12,
+                &quot;name&quot;: &quot;users_delete&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 11,
+                &quot;name&quot;: &quot;users_update&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 10,
+                &quot;name&quot;: &quot;users_create&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 9,
+                &quot;name&quot;: &quot;users_read&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 8,
+                &quot;name&quot;: &quot;users_all&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 7,
+                &quot;name&quot;: &quot;permissions_list&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 6,
+                &quot;name&quot;: &quot;roles_delete&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 5,
+                &quot;name&quot;: &quot;roles_update&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;roles_create&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;roles_read&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;roles_all&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;access_all&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+            }
+        ],
+        &quot;permissions&quot;: [
+            &quot;access_all&quot;
+        ]
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETv1-admins-permissions" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETv1-admins-permissions"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETv1-admins-permissions"></code></pre>
+</span>
+<span id="execution-error-GETv1-admins-permissions" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETv1-admins-permissions"></code></pre>
+</span>
+<form id="form-GETv1-admins-permissions" data-method="GET"
+      data-path="v1/admins/permissions"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETv1-admins-permissions', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETv1-admins-permissions"
+                    onclick="tryItOut('GETv1-admins-permissions');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETv1-admins-permissions"
+                    onclick="cancelTryOut('GETv1-admins-permissions');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETv1-admins-permissions" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>v1/admins/permissions</code></b>
+        </p>
+                <p>
+            <label id="auth-GETv1-admins-permissions" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETv1-admins-permissions"
+                                                                data-component="header"></label>
+        </p>
+                </form>
+
+        <h1 id="roles-management">Roles Management</h1>
+
+    
+
+            <h2 id="roles-management-DELETEv1-admins-roles--id-">Delete Role</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Delete Requested Record</p>
+
+<span id="example-requests-DELETEv1-admins-roles--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://agt-server.test/v1/admins/roles/mollitia" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agt-server.test/v1/admins/roles/mollitia"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEv1-admins-roles--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: null,
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEv1-admins-roles--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEv1-admins-roles--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEv1-admins-roles--id-"></code></pre>
+</span>
+<span id="execution-error-DELETEv1-admins-roles--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEv1-admins-roles--id-"></code></pre>
+</span>
+<form id="form-DELETEv1-admins-roles--id-" data-method="DELETE"
+      data-path="v1/admins/roles/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEv1-admins-roles--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEv1-admins-roles--id-"
+                    onclick="tryItOut('DELETEv1-admins-roles--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEv1-admins-roles--id-"
+                    onclick="cancelTryOut('DELETEv1-admins-roles--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEv1-admins-roles--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>v1/admins/roles/{id}</code></b>
+        </p>
+                <p>
+            <label id="auth-DELETEv1-admins-roles--id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="DELETEv1-admins-roles--id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="DELETEv1-admins-roles--id-"
+               value="mollitia"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>role_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="role_id"
+               data-endpoint="DELETEv1-admins-roles--id-"
+               value="harum"
+               data-component="url" hidden>
+    <br>
+<p>Integer</p>
+            </p>
+                    </form>
+
+            <h2 id="roles-management-GETv1-admins-roles">Roles List
+This api return the collection of all Roles created.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETv1-admins-roles">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://agt-server.test/v1/admins/roles" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agt-server.test/v1/admins/roles"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETv1-admins-roles">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;roles&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;name&quot;: &quot;Super Admin&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                &quot;permissions&quot;: [
+                    {
+                        &quot;id&quot;: 1,
+                        &quot;name&quot;: &quot;access_all&quot;,
+                        &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+                    }
+                ]
+            },
+            {
+                &quot;id&quot;: 2,
+                &quot;name&quot;: &quot;Admin&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                &quot;permissions&quot;: []
+            },
+            {
+                &quot;id&quot;: 3,
+                &quot;name&quot;: &quot;Agency&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                &quot;permissions&quot;: []
+            },
+            {
+                &quot;id&quot;: 4,
+                &quot;name&quot;: &quot;Customer&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                &quot;permissions&quot;: []
+            },
+            {
+                &quot;id&quot;: 5,
+                &quot;name&quot;: &quot;User&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                &quot;permissions&quot;: []
+            },
+            {
+                &quot;id&quot;: 6,
+                &quot;name&quot;: &quot;Finance&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                &quot;permissions&quot;: []
+            },
+            {
+                &quot;id&quot;: 7,
+                &quot;name&quot;: &quot;HR&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                &quot;permissions&quot;: []
+            },
+            {
+                &quot;id&quot;: 8,
+                &quot;name&quot;: &quot;Accounts&quot;,
+                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                &quot;permissions&quot;: []
+            }
+        ],
+        &quot;permissions&quot;: [
+            &quot;access_all&quot;
+        ]
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETv1-admins-roles" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETv1-admins-roles"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETv1-admins-roles"></code></pre>
+</span>
+<span id="execution-error-GETv1-admins-roles" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETv1-admins-roles"></code></pre>
+</span>
+<form id="form-GETv1-admins-roles" data-method="GET"
+      data-path="v1/admins/roles"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETv1-admins-roles', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETv1-admins-roles"
+                    onclick="tryItOut('GETv1-admins-roles');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETv1-admins-roles"
+                    onclick="cancelTryOut('GETv1-admins-roles');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETv1-admins-roles" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>v1/admins/roles</code></b>
+        </p>
+                <p>
+            <label id="auth-GETv1-admins-roles" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETv1-admins-roles"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>order_by</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order_by"
+               data-endpoint="GETv1-admins-roles"
+               value="exercitationem"
+               data-component="url" hidden>
+    <br>
+<p>ex: asc/desc</p>
+            </p>
+                    <p>
+                <b><code>from_date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="from_date"
+               data-endpoint="GETv1-admins-roles"
+               value="Y-m-d"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>to_date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="to_date"
+               data-endpoint="GETv1-admins-roles"
+               value="Y-m-d"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>pagination</code></b>&nbsp;&nbsp;<small>boolean</small>     <i>optional</i> &nbsp;
+                <label data-endpoint="GETv1-admins-roles" hidden>
+            <input type="radio" name="pagination"
+                   value="1"
+                   data-endpoint="GETv1-admins-roles"
+                   data-component="url"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETv1-admins-roles" hidden>
+            <input type="radio" name="pagination"
+                   value="0"
+                   data-endpoint="GETv1-admins-roles"
+                   data-component="url"
+            >
+            <code>false</code>
+        </label>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>page_limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page_limit"
+               data-endpoint="GETv1-admins-roles"
+               value="15"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETv1-admins-roles"
+               value="20"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+            <h2 id="roles-management-GETv1-admins-roles--id-">Role Details
+This api show the details of requested Role.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETv1-admins-roles--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://agt-server.test/v1/admins/roles/tempora" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agt-server.test/v1/admins/roles/tempora"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETv1-admins-roles--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;role&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Super Admin&quot;,
+            &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+            &quot;permissions&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;access_all&quot;,
+                    &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+                }
+            ]
+        },
+        &quot;permissions&quot;: [
+            &quot;access_all&quot;
+        ]
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETv1-admins-roles--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETv1-admins-roles--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETv1-admins-roles--id-"></code></pre>
+</span>
+<span id="execution-error-GETv1-admins-roles--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETv1-admins-roles--id-"></code></pre>
+</span>
+<form id="form-GETv1-admins-roles--id-" data-method="GET"
+      data-path="v1/admins/roles/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETv1-admins-roles--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETv1-admins-roles--id-"
+                    onclick="tryItOut('GETv1-admins-roles--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETv1-admins-roles--id-"
+                    onclick="cancelTryOut('GETv1-admins-roles--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETv1-admins-roles--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>v1/admins/roles/{id}</code></b>
+        </p>
+                <p>
+            <label id="auth-GETv1-admins-roles--id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETv1-admins-roles--id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="GETv1-admins-roles--id-"
+               value="tempora"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>role_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="role_id"
+               data-endpoint="GETv1-admins-roles--id-"
+               value="optio"
+               data-component="url" hidden>
+    <br>
+<p>Integer</p>
+            </p>
+                    </form>
+
+            <h2 id="roles-management-POSTv1-admins-roles">Create Role
+This api is for create new Role</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTv1-admins-roles">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agt-server.test/v1/admins/roles" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"nihil\",
+    \"permissions\": [
+        \"mollitia\"
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agt-server.test/v1/admins/roles"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "nihil",
+    "permissions": [
+        "mollitia"
+    ]
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-admins-roles">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;role&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Super Admin&quot;,
+            &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+            &quot;permissions&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;access_all&quot;,
+                    &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+                }
+            ]
+        },
+        &quot;permissions&quot;: [
+            &quot;access_all&quot;
+        ]
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-admins-roles" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-admins-roles"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-admins-roles"></code></pre>
+</span>
+<span id="execution-error-POSTv1-admins-roles" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-admins-roles"></code></pre>
+</span>
+<form id="form-POSTv1-admins-roles" data-method="POST"
+      data-path="v1/admins/roles"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-admins-roles', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-admins-roles"
+                    onclick="tryItOut('POSTv1-admins-roles');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-admins-roles"
+                    onclick="cancelTryOut('POSTv1-admins-roles');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-admins-roles" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/admins/roles</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTv1-admins-roles" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTv1-admins-roles"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="POSTv1-admins-roles"
+               value="nihil"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>permissions</code></b>&nbsp;&nbsp;<small>string[]</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="permissions[0]"
+               data-endpoint="POSTv1-admins-roles"
+               data-component="body" hidden>
+        <input type="text"
+               name="permissions[1]"
+               data-endpoint="POSTv1-admins-roles"
+               data-component="body" hidden>
+    <br>
+<p>optional</p>
+        </p>
+        </form>
+
+            <h2 id="roles-management-PUTv1-admins-roles--id-">Role Update
+This api update the details of requested Role.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-PUTv1-admins-roles--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request PUT \
+    "http://agt-server.test/v1/admins/roles/facilis" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"molestiae\",
+    \"permissions\": [
+        \"dignissimos\"
+    ]
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agt-server.test/v1/admins/roles/facilis"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "molestiae",
+    "permissions": [
+        "dignissimos"
+    ]
+};
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-PUTv1-admins-roles--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;role&quot;: {
+            &quot;id&quot;: 1,
+            &quot;name&quot;: &quot;Super Admin&quot;,
+            &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+            &quot;permissions&quot;: [
+                {
+                    &quot;id&quot;: 1,
+                    &quot;name&quot;: &quot;access_all&quot;,
+                    &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+                }
+            ]
+        },
+        &quot;permissions&quot;: [
+            &quot;access_all&quot;
+        ]
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-PUTv1-admins-roles--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTv1-admins-roles--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTv1-admins-roles--id-"></code></pre>
+</span>
+<span id="execution-error-PUTv1-admins-roles--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTv1-admins-roles--id-"></code></pre>
+</span>
+<form id="form-PUTv1-admins-roles--id-" data-method="PUT"
+      data-path="v1/admins/roles/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('PUTv1-admins-roles--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTv1-admins-roles--id-"
+                    onclick="tryItOut('PUTv1-admins-roles--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTv1-admins-roles--id-"
+                    onclick="cancelTryOut('PUTv1-admins-roles--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTv1-admins-roles--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>v1/admins/roles/{id}</code></b>
+        </p>
+                <p>
+            <label id="auth-PUTv1-admins-roles--id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="PUTv1-admins-roles--id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="PUTv1-admins-roles--id-"
+               value="facilis"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>role_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="role_id"
+               data-endpoint="PUTv1-admins-roles--id-"
+               value="quod"
+               data-component="url" hidden>
+    <br>
+<p>Integer</p>
+            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+                <input type="text"
+               name="name"
+               data-endpoint="PUTv1-admins-roles--id-"
+               value="molestiae"
+               data-component="body" hidden>
+    <br>
+
+        </p>
+                <p>
+            <b><code>permissions</code></b>&nbsp;&nbsp;<small>string[]</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="permissions[0]"
+               data-endpoint="PUTv1-admins-roles--id-"
+               data-component="body" hidden>
+        <input type="text"
+               name="permissions[1]"
+               data-endpoint="PUTv1-admins-roles--id-"
+               data-component="body" hidden>
+    <br>
+<p>optional</p>
+        </p>
+        </form>
+
+        <h1 id="user-management">User Management</h1>
+
+    
+
+            <h2 id="user-management-GETv1-admins-users">Get Users
 This will return logged in user profile.</h2>
 
 <p>
@@ -442,14 +1693,14 @@ This will return logged in user profile.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/users" \
+    --get "http://agt-server.test/v1/admins/users" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users"
+    "http://agt-server.test/v1/admins/users"
 );
 
 const headers = {
@@ -734,7 +1985,7 @@ fetch(url, {
                 <input type="text"
                name="users"
                data-endpoint="GETv1-admins-users"
-               value="facere"
+               value="laborum"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -744,7 +1995,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="GETv1-admins-users"
-               value="occaecati"
+               value="at"
                data-component="url" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -754,7 +2005,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="GETv1-admins-users"
-               value="perspiciatis"
+               value="non"
                data-component="url" hidden>
     <br>
 
@@ -764,7 +2015,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="GETv1-admins-users"
-               value="vitae"
+               value="alias"
                data-component="url" hidden>
     <br>
 
@@ -774,7 +2025,7 @@ fetch(url, {
                 <input type="text"
                name="full_name"
                data-endpoint="GETv1-admins-users"
-               value="adipisci"
+               value="maiores"
                data-component="url" hidden>
     <br>
 
@@ -784,7 +2035,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-admins-users"
-               value="voluptas"
+               value="omnis"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -794,7 +2045,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-admins-users"
-               value="optio"
+               value="culpa"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -845,7 +2096,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-admins-users"
-               value="18"
+               value="13"
                data-component="url" hidden>
     <br>
 
@@ -855,7 +2106,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-admins-users"
-               value="20"
+               value="18"
                data-component="url" hidden>
     <br>
 
@@ -865,14 +2116,14 @@ fetch(url, {
                 <input type="text"
                name="roles"
                data-endpoint="GETv1-admins-users"
-               value="maiores"
+               value="vel"
                data-component="url" hidden>
     <br>
 <p>ex: admin,test</p>
             </p>
                     </form>
 
-            <h2 id="admin-GETv1-admins-users--id-">Show User Details
+            <h2 id="user-management-GETv1-admins-users--id-">Show User Details
 This api show the uer details.</h2>
 
 <p>
@@ -887,14 +2138,14 @@ This api show the uer details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/users/atque" \
+    --get "http://agt-server.test/v1/admins/users/adipisci" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/atque"
+    "http://agt-server.test/v1/admins/users/adipisci"
 );
 
 const headers = {
@@ -1026,7 +2277,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-admins-users--id-"
-               value="atque"
+               value="adipisci"
                data-component="url" hidden>
     <br>
 
@@ -1036,14 +2287,14 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="GETv1-admins-users--id-"
-               value="aut"
+               value="sit"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
             </p>
                     </form>
 
-            <h2 id="admin-POSTv1-admins-users">Create Users
+            <h2 id="user-management-POSTv1-admins-users">Create Users
 This api create new user.</h2>
 
 <p>
@@ -1058,21 +2309,21 @@ This api create new user.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://agency.test/v1/admins/users" \
+    "http://agt-server.test/v1/admins/users" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"dolores\",
-    \"last_name\": \"qui\",
-    \"email\": \"quia\",
-    \"password\": \"dignissimos\",
-    \"password_confirmation\": \"est\",
-    \"status\": \"facilis\",
+    \"first_name\": \"cum\",
+    \"last_name\": \"quas\",
+    \"email\": \"labore\",
+    \"password\": \"animi\",
+    \"password_confirmation\": \"asperiores\",
+    \"status\": \"doloremque\",
     \"roles\": [
-        \"dolorum\"
+        \"ex\"
     ],
     \"permissions\": [
-        \"consectetur\"
+        \"velit\"
     ]
 }"
 </code></pre></div>
@@ -1080,7 +2331,7 @@ This api create new user.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users"
+    "http://agt-server.test/v1/admins/users"
 );
 
 const headers = {
@@ -1089,17 +2340,17 @@ const headers = {
 };
 
 let body = {
-    "first_name": "dolores",
-    "last_name": "qui",
-    "email": "quia",
-    "password": "dignissimos",
-    "password_confirmation": "est",
-    "status": "facilis",
+    "first_name": "cum",
+    "last_name": "quas",
+    "email": "labore",
+    "password": "animi",
+    "password_confirmation": "asperiores",
+    "status": "doloremque",
     "roles": [
-        "dolorum"
+        "ex"
     ],
     "permissions": [
-        "consectetur"
+        "velit"
     ]
 };
 
@@ -1228,7 +2479,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTv1-admins-users"
-               value="dolores"
+               value="cum"
                data-component="body" hidden>
     <br>
 
@@ -1238,7 +2489,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTv1-admins-users"
-               value="qui"
+               value="quas"
                data-component="body" hidden>
     <br>
 
@@ -1248,27 +2499,27 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTv1-admins-users"
-               value="quia"
+               value="labore"
                data-component="body" hidden>
     <br>
 
         </p>
                 <p>
-            <b><code>password</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+            <b><code>password</code></b>&nbsp;&nbsp;<small>String</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="password"
                data-endpoint="POSTv1-admins-users"
-               value="dignissimos"
+               value="animi"
                data-component="body" hidden>
     <br>
 
         </p>
                 <p>
-            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>String</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="password_confirmation"
                data-endpoint="POSTv1-admins-users"
-               value="est"
+               value="asperiores"
                data-component="body" hidden>
     <br>
 
@@ -1278,7 +2529,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="POSTv1-admins-users"
-               value="facilis"
+               value="doloremque"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -1307,11 +2558,11 @@ fetch(url, {
                data-endpoint="POSTv1-admins-users"
                data-component="body" hidden>
     <br>
-<p>optional</p>
+
         </p>
         </form>
 
-            <h2 id="admin-PUTv1-admins-users--id-">Update User Details.</h2>
+            <h2 id="user-management-PUTv1-admins-users--id-">Update User Details.</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1325,18 +2576,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/admins/users/quia" \
+    "http://agt-server.test/v1/admins/users/atque" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"blanditiis\",
-    \"last_name\": \"voluptatem\",
-    \"status\": \"dolores\",
+    \"first_name\": \"a\",
+    \"last_name\": \"in\",
+    \"status\": \"at\",
     \"roles\": [
-        \"reprehenderit\"
+        \"necessitatibus\"
     ],
     \"permissions\": [
-        \"molestiae\"
+        \"velit\"
     ]
 }"
 </code></pre></div>
@@ -1344,7 +2595,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/quia"
+    "http://agt-server.test/v1/admins/users/atque"
 );
 
 const headers = {
@@ -1353,14 +2604,14 @@ const headers = {
 };
 
 let body = {
-    "first_name": "blanditiis",
-    "last_name": "voluptatem",
-    "status": "dolores",
+    "first_name": "a",
+    "last_name": "in",
+    "status": "at",
     "roles": [
-        "reprehenderit"
+        "necessitatibus"
     ],
     "permissions": [
-        "molestiae"
+        "velit"
     ]
 };
 
@@ -1489,7 +2740,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-users--id-"
-               value="quia"
+               value="atque"
                data-component="url" hidden>
     <br>
 
@@ -1499,7 +2750,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="PUTv1-admins-users--id-"
-               value="minima"
+               value="non"
                data-component="url" hidden>
     <br>
 <p>Integer required</p>
@@ -1510,7 +2761,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-admins-users--id-"
-               value="blanditiis"
+               value="a"
                data-component="body" hidden>
     <br>
 
@@ -1520,7 +2771,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-admins-users--id-"
-               value="voluptatem"
+               value="in"
                data-component="body" hidden>
     <br>
 
@@ -1530,7 +2781,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="PUTv1-admins-users--id-"
-               value="dolores"
+               value="at"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -1563,7 +2814,7 @@ fetch(url, {
         </p>
         </form>
 
-            <h2 id="admin-DELETEv1-admins-users--id-">Delete User</h2>
+            <h2 id="user-management-DELETEv1-admins-users--id-">Delete User</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1577,14 +2828,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/admins/users/molestiae" \
+    "http://agt-server.test/v1/admins/users/ex" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/molestiae"
+    "http://agt-server.test/v1/admins/users/ex"
 );
 
 const headers = {
@@ -1681,7 +2932,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-admins-users--id-"
-               value="molestiae"
+               value="ex"
                data-component="url" hidden>
     <br>
 
@@ -1691,14 +2942,14 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="DELETEv1-admins-users--id-"
-               value="qui"
+               value="aspernatur"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
             </p>
                     </form>
 
-            <h2 id="admin-POSTv1-admins-users-change-any-password--id-">Change Password of Any User</h2>
+            <h2 id="user-management-POSTv1-admins-users-change-any-password--id-">Change Password of Any User</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1712,18 +2963,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://agency.test/v1/admins/users/change-any-password/11" \
+    "http://agt-server.test/v1/admins/users/change-any-password/15" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"password\": \"voluptatibus\"
+    \"password\": \"libero\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/change-any-password/11"
+    "http://agt-server.test/v1/admins/users/change-any-password/15"
 );
 
 const headers = {
@@ -1732,7 +2983,7 @@ const headers = {
 };
 
 let body = {
-    "password": "voluptatibus"
+    "password": "libero"
 };
 
 fetch(url, {
@@ -1810,7 +3061,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="POSTv1-admins-users-change-any-password--id-"
-               value="11"
+               value="15"
                data-component="url" hidden>
     <br>
 
@@ -1821,1158 +3072,12 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTv1-admins-users-change-any-password--id-"
-               value="voluptatibus"
+               value="libero"
                data-component="body" hidden>
     <br>
 <p>ex: 123456</p>
         </p>
         </form>
-
-            <h2 id="admin-DELETEv1-admins-roles--id-">Delete Role</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Delete Requested Record</p>
-
-<span id="example-requests-DELETEv1-admins-roles--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/admins/roles/nihil" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/nihil"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEv1-admins-roles--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: null,
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEv1-admins-roles--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEv1-admins-roles--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEv1-admins-roles--id-"></code></pre>
-</span>
-<span id="execution-error-DELETEv1-admins-roles--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEv1-admins-roles--id-"></code></pre>
-</span>
-<form id="form-DELETEv1-admins-roles--id-" data-method="DELETE"
-      data-path="v1/admins/roles/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEv1-admins-roles--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEv1-admins-roles--id-"
-                    onclick="tryItOut('DELETEv1-admins-roles--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEv1-admins-roles--id-"
-                    onclick="cancelTryOut('DELETEv1-admins-roles--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEv1-admins-roles--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>v1/admins/roles/{id}</code></b>
-        </p>
-                <p>
-            <label id="auth-DELETEv1-admins-roles--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="DELETEv1-admins-roles--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="id"
-               data-endpoint="DELETEv1-admins-roles--id-"
-               value="nihil"
-               data-component="url" hidden>
-    <br>
-
-            </p>
-                    <p>
-                <b><code>role_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="role_id"
-               data-endpoint="DELETEv1-admins-roles--id-"
-               value="quibusdam"
-               data-component="url" hidden>
-    <br>
-<p>Integer</p>
-            </p>
-                    </form>
-
-            <h2 id="admin-POSTv1-admins-auth-login">Access Token Or Login
-This function is useful for login, to return access token for users.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-POSTv1-admins-auth-login">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://agency.test/v1/admins/auth/login" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"email\": \"admin@my-app.com\",
-    \"password\": \"Abc*123*\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/auth/login"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "email": "admin@my-app.com",
-    "password": "Abc*123*"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTv1-admins-auth-login">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: {
-        &quot;authentication&quot;: {
-            &quot;access_token&quot;: &quot;eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA&quot;,
-            &quot;token_type&quot;: &quot;Bearer&quot;,
-            &quot;expiry&quot;: &quot;2022-03-18 09:47:07&quot;,
-            &quot;user&quot;: {
-                &quot;id&quot;: 1,
-                &quot;first_name&quot;: &quot;Faizan Ahmed&quot;,
-                &quot;last_name&quot;: &quot;Raza&quot;,
-                &quot;email&quot;: &quot;faizan.raza@saasfa.com&quot;,
-                &quot;last_logged_in&quot;: null,
-                &quot;status&quot;: &quot;pending&quot;,
-                &quot;roles&quot;: [
-                    {
-                        &quot;id&quot;: 1,
-                        &quot;name&quot;: &quot;Super Admin&quot;,
-                        &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                        &quot;permissions&quot;: [
-                            {
-                                &quot;id&quot;: 1,
-                                &quot;name&quot;: &quot;access_all&quot;,
-                                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-                            }
-                        ]
-                    }
-                ],
-                &quot;permissions&quot;: []
-            }
-        }
-    },
-    &quot;error&quot;: {},
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTv1-admins-auth-login" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTv1-admins-auth-login"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTv1-admins-auth-login"></code></pre>
-</span>
-<span id="execution-error-POSTv1-admins-auth-login" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTv1-admins-auth-login"></code></pre>
-</span>
-<form id="form-POSTv1-admins-auth-login" data-method="POST"
-      data-path="v1/admins/auth/login"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTv1-admins-auth-login', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTv1-admins-auth-login"
-                    onclick="tryItOut('POSTv1-admins-auth-login');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTv1-admins-auth-login"
-                    onclick="cancelTryOut('POSTv1-admins-auth-login');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTv1-admins-auth-login" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>v1/admins/auth/login</code></b>
-        </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>email</code></b>&nbsp;&nbsp;<small>email</small>  &nbsp;
-                <input type="text"
-               name="email"
-               data-endpoint="POSTv1-admins-auth-login"
-               value="admin@my-app.com"
-               data-component="body" hidden>
-    <br>
-<p>The username of user.</p>
-        </p>
-                <p>
-            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="password"
-               data-endpoint="POSTv1-admins-auth-login"
-               value="Abc*123*"
-               data-component="body" hidden>
-    <br>
-<p>The password of user.</p>
-        </p>
-        </form>
-
-            <h2 id="admin-GETv1-admins-roles">Role List
-This api return the collection of all Roles created.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETv1-admins-roles">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/roles" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETv1-admins-roles">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: {
-        &quot;roles&quot;: [
-            {
-                &quot;id&quot;: 1,
-                &quot;name&quot;: &quot;Super Admin&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                &quot;permissions&quot;: [
-                    {
-                        &quot;id&quot;: 1,
-                        &quot;name&quot;: &quot;access_all&quot;,
-                        &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-                    }
-                ]
-            },
-            {
-                &quot;id&quot;: 2,
-                &quot;name&quot;: &quot;Admin&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                &quot;permissions&quot;: []
-            },
-            {
-                &quot;id&quot;: 3,
-                &quot;name&quot;: &quot;Agency&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                &quot;permissions&quot;: []
-            },
-            {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;Customer&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                &quot;permissions&quot;: []
-            },
-            {
-                &quot;id&quot;: 5,
-                &quot;name&quot;: &quot;User&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                &quot;permissions&quot;: []
-            },
-            {
-                &quot;id&quot;: 6,
-                &quot;name&quot;: &quot;Finance&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                &quot;permissions&quot;: []
-            },
-            {
-                &quot;id&quot;: 7,
-                &quot;name&quot;: &quot;HR&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                &quot;permissions&quot;: []
-            },
-            {
-                &quot;id&quot;: 8,
-                &quot;name&quot;: &quot;Accounts&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                &quot;permissions&quot;: []
-            }
-        ],
-        &quot;permissions&quot;: [
-            &quot;access_all&quot;
-        ]
-    },
-    &quot;error&quot;: {},
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETv1-admins-roles" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETv1-admins-roles"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETv1-admins-roles"></code></pre>
-</span>
-<span id="execution-error-GETv1-admins-roles" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETv1-admins-roles"></code></pre>
-</span>
-<form id="form-GETv1-admins-roles" data-method="GET"
-      data-path="v1/admins/roles"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETv1-admins-roles', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETv1-admins-roles"
-                    onclick="tryItOut('GETv1-admins-roles');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETv1-admins-roles"
-                    onclick="cancelTryOut('GETv1-admins-roles');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETv1-admins-roles" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>v1/admins/roles</code></b>
-        </p>
-                <p>
-            <label id="auth-GETv1-admins-roles" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="GETv1-admins-roles"
-                                                                data-component="header"></label>
-        </p>
-                </form>
-
-            <h2 id="admin-GETv1-admins-roles--id-">Role Details
-This api show the details of requested Role.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETv1-admins-roles--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/roles/ut" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/ut"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETv1-admins-roles--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: {
-        &quot;role&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Super Admin&quot;,
-            &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-            &quot;permissions&quot;: [
-                {
-                    &quot;id&quot;: 1,
-                    &quot;name&quot;: &quot;access_all&quot;,
-                    &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-                }
-            ]
-        },
-        &quot;permissions&quot;: [
-            &quot;access_all&quot;
-        ]
-    },
-    &quot;error&quot;: {},
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETv1-admins-roles--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETv1-admins-roles--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETv1-admins-roles--id-"></code></pre>
-</span>
-<span id="execution-error-GETv1-admins-roles--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETv1-admins-roles--id-"></code></pre>
-</span>
-<form id="form-GETv1-admins-roles--id-" data-method="GET"
-      data-path="v1/admins/roles/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETv1-admins-roles--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETv1-admins-roles--id-"
-                    onclick="tryItOut('GETv1-admins-roles--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETv1-admins-roles--id-"
-                    onclick="cancelTryOut('GETv1-admins-roles--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETv1-admins-roles--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>v1/admins/roles/{id}</code></b>
-        </p>
-                <p>
-            <label id="auth-GETv1-admins-roles--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="GETv1-admins-roles--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="id"
-               data-endpoint="GETv1-admins-roles--id-"
-               value="ut"
-               data-component="url" hidden>
-    <br>
-
-            </p>
-                    <p>
-                <b><code>role_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="role_id"
-               data-endpoint="GETv1-admins-roles--id-"
-               value="nihil"
-               data-component="url" hidden>
-    <br>
-<p>Integer</p>
-            </p>
-                    </form>
-
-            <h2 id="admin-POSTv1-admins-roles">Create Role
-This api is for create new Role</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTv1-admins-roles">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://agency.test/v1/admins/roles" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name\": \"saepe\",
-    \"permissions\": [
-        \"corporis\"
-    ]
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "name": "saepe",
-    "permissions": [
-        "corporis"
-    ]
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTv1-admins-roles">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: {
-        &quot;role&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Super Admin&quot;,
-            &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-            &quot;permissions&quot;: [
-                {
-                    &quot;id&quot;: 1,
-                    &quot;name&quot;: &quot;access_all&quot;,
-                    &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-                }
-            ]
-        },
-        &quot;permissions&quot;: [
-            &quot;access_all&quot;
-        ]
-    },
-    &quot;error&quot;: {},
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTv1-admins-roles" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTv1-admins-roles"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTv1-admins-roles"></code></pre>
-</span>
-<span id="execution-error-POSTv1-admins-roles" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTv1-admins-roles"></code></pre>
-</span>
-<form id="form-POSTv1-admins-roles" data-method="POST"
-      data-path="v1/admins/roles"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTv1-admins-roles', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTv1-admins-roles"
-                    onclick="tryItOut('POSTv1-admins-roles');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTv1-admins-roles"
-                    onclick="cancelTryOut('POSTv1-admins-roles');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTv1-admins-roles" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>v1/admins/roles</code></b>
-        </p>
-                <p>
-            <label id="auth-POSTv1-admins-roles" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="POSTv1-admins-roles"
-                                                                data-component="header"></label>
-        </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>name</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
-                <input type="text"
-               name="name"
-               data-endpoint="POSTv1-admins-roles"
-               value="saepe"
-               data-component="body" hidden>
-    <br>
-
-        </p>
-                <p>
-            <b><code>permissions</code></b>&nbsp;&nbsp;<small>string[]</small>     <i>optional</i> &nbsp;
-                <input type="text"
-               name="permissions[0]"
-               data-endpoint="POSTv1-admins-roles"
-               data-component="body" hidden>
-        <input type="text"
-               name="permissions[1]"
-               data-endpoint="POSTv1-admins-roles"
-               data-component="body" hidden>
-    <br>
-<p>optional</p>
-        </p>
-        </form>
-
-            <h2 id="admin-PUTv1-admins-roles--id-">Role Update
-This api update the details of requested Role.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-PUTv1-admins-roles--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/admins/roles/distinctio" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"name\": \"quod\",
-    \"permissions\": [
-        \"officiis\"
-    ]
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/distinctio"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "name": "quod",
-    "permissions": [
-        "officiis"
-    ]
-};
-
-fetch(url, {
-    method: "PUT",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-PUTv1-admins-roles--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: {
-        &quot;role&quot;: {
-            &quot;id&quot;: 1,
-            &quot;name&quot;: &quot;Super Admin&quot;,
-            &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-            &quot;permissions&quot;: [
-                {
-                    &quot;id&quot;: 1,
-                    &quot;name&quot;: &quot;access_all&quot;,
-                    &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-                }
-            ]
-        },
-        &quot;permissions&quot;: [
-            &quot;access_all&quot;
-        ]
-    },
-    &quot;error&quot;: {},
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-PUTv1-admins-roles--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-PUTv1-admins-roles--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-PUTv1-admins-roles--id-"></code></pre>
-</span>
-<span id="execution-error-PUTv1-admins-roles--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-PUTv1-admins-roles--id-"></code></pre>
-</span>
-<form id="form-PUTv1-admins-roles--id-" data-method="PUT"
-      data-path="v1/admins/roles/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('PUTv1-admins-roles--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-PUTv1-admins-roles--id-"
-                    onclick="tryItOut('PUTv1-admins-roles--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-PUTv1-admins-roles--id-"
-                    onclick="cancelTryOut('PUTv1-admins-roles--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-PUTv1-admins-roles--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-darkblue">PUT</small>
-            <b><code>v1/admins/roles/{id}</code></b>
-        </p>
-                <p>
-            <label id="auth-PUTv1-admins-roles--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="PUTv1-admins-roles--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="id"
-               data-endpoint="PUTv1-admins-roles--id-"
-               value="distinctio"
-               data-component="url" hidden>
-    <br>
-
-            </p>
-                    <p>
-                <b><code>role_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="role_id"
-               data-endpoint="PUTv1-admins-roles--id-"
-               value="commodi"
-               data-component="url" hidden>
-    <br>
-<p>Integer</p>
-            </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>name</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
-                <input type="text"
-               name="name"
-               data-endpoint="PUTv1-admins-roles--id-"
-               value="quod"
-               data-component="body" hidden>
-    <br>
-
-        </p>
-                <p>
-            <b><code>permissions</code></b>&nbsp;&nbsp;<small>string[]</small>     <i>optional</i> &nbsp;
-                <input type="text"
-               name="permissions[0]"
-               data-endpoint="PUTv1-admins-roles--id-"
-               data-component="body" hidden>
-        <input type="text"
-               name="permissions[1]"
-               data-endpoint="PUTv1-admins-roles--id-"
-               data-component="body" hidden>
-    <br>
-<p>optional</p>
-        </p>
-        </form>
-
-            <h2 id="admin-GETv1-admins-permissions">Permission List
-This api return the collection of all Permissions created.</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETv1-admins-permissions">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/permissions" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/permissions"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETv1-admins-permissions">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: {
-        &quot;collections&quot;: [
-            {
-                &quot;id&quot;: 13,
-                &quot;name&quot;: &quot;users_toggle_status&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 12,
-                &quot;name&quot;: &quot;users_delete&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 11,
-                &quot;name&quot;: &quot;users_update&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 10,
-                &quot;name&quot;: &quot;users_create&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 9,
-                &quot;name&quot;: &quot;users_read&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 8,
-                &quot;name&quot;: &quot;users_all&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 7,
-                &quot;name&quot;: &quot;permissions_list&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 6,
-                &quot;name&quot;: &quot;roles_delete&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 5,
-                &quot;name&quot;: &quot;roles_update&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 4,
-                &quot;name&quot;: &quot;roles_create&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 3,
-                &quot;name&quot;: &quot;roles_read&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 2,
-                &quot;name&quot;: &quot;roles_all&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            },
-            {
-                &quot;id&quot;: 1,
-                &quot;name&quot;: &quot;access_all&quot;,
-                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-            }
-        ],
-        &quot;permissions&quot;: [
-            &quot;access_all&quot;
-        ]
-    },
-    &quot;error&quot;: {},
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETv1-admins-permissions" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETv1-admins-permissions"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETv1-admins-permissions"></code></pre>
-</span>
-<span id="execution-error-GETv1-admins-permissions" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETv1-admins-permissions"></code></pre>
-</span>
-<form id="form-GETv1-admins-permissions" data-method="GET"
-      data-path="v1/admins/permissions"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETv1-admins-permissions', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETv1-admins-permissions"
-                    onclick="tryItOut('GETv1-admins-permissions');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETv1-admins-permissions"
-                    onclick="cancelTryOut('GETv1-admins-permissions');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETv1-admins-permissions" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>v1/admins/permissions</code></b>
-        </p>
-                <p>
-            <label id="auth-GETv1-admins-permissions" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="GETv1-admins-permissions"
-                                                                data-component="header"></label>
-        </p>
-                </form>
 
     
 

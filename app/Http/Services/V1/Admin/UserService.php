@@ -16,6 +16,7 @@ use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\TimeStampHelper;
+use Illuminate\Support\Str;
 
 class UserService
 {
@@ -31,13 +32,15 @@ class UserService
      */
     public static function store(Request $request)
     {
+        $password = empty($request->password) ? '12345678' : $request->password;
+
         $user = new User;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make($password);
         $user->username = clean($request->email);
         $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['pending'];
-        $user->created_by =  Auth::id();
+        $user->created_by = Auth::id();
         $user->save();
 
         $user->admin()->save(new Admin());
@@ -148,7 +151,7 @@ class UserService
     /**
      *  Get User Information by username
      *
-     *  @Param username
+     * @Param username
      */
     public static function getUserByUsername($username)
     {
@@ -170,12 +173,22 @@ class UserService
         return $user;
     }
 
+    public static function checkStatus(User $user)
+    {
+        if ($user->status == User::STATUS['blocked']) {
+            throw UnAuthorizedException::accountBlocked();
+        } else if ($user->status == User::STATUS['suspend']) {
+            throw UserException::suspended();
+        }
+        return $user;
+    }
+
     public static function blockUsers(array $ids)
     {
         return User::whereIn('id', $ids)->update(["status" => User::STATUS['blocked']]);
     }
 
-    public static function first(int $id,$with = ['roles','permissions']): User
+    public static function first(int $id, $with = ['roles', 'permissions']): User
     {
         $user = User::with($with)
             ->where('id', $id)
@@ -194,7 +207,7 @@ class UserService
         $user->first_name = trim($request->first_name);
         $user->last_name = trim($request->last_name);
         $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['pending'];
-        $user->updated_by =  Auth::id();
+        $user->updated_by = Auth::id();
         $user->save();
 
         $user->admin()->update([]);
@@ -221,11 +234,9 @@ class UserService
         }
     }
 
-    public static function changePassword(User $user, Request $request)
+    public static function changePassword(User $user,$request)
     {
-        if ($user->status == User::STATUS['blocked']) {
-            throw UnauthorizedException::accountBlocked();
-        }
+        self::checkStatus($user);
 
         $user->password = Hash::make($request->password);
         $user->save();
@@ -238,14 +249,14 @@ class UserService
     /**
      *  Fetch User By Email
      *
-     *  @Param username
+     * @Param username
      */
     public static function getUserName($username, $excludeAuth = false)
     {
         if ($excludeAuth) {
             $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->where('id', '!=', Auth::user()->id)->first();
         } else {
-            $user =  User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->first();
+            $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->first();
         }
 
         if ($user) {
@@ -263,10 +274,10 @@ class UserService
         $days = TimeStampHelper::countAccurateDays($token->expires_at, TimeStampHelper::now());
 
         if ($days > 1) {
-            return ;
+            return;
         }
 
-        $token->expires_at =  TimeStampHelper::getDate(10, $token->expires_at);
+        $token->expires_at = TimeStampHelper::getDate(10, $token->expires_at);
         $token->save();
     }
 }

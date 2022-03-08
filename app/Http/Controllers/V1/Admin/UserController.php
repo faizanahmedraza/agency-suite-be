@@ -15,7 +15,6 @@ use App\Http\Resources\V1\Admin\UsersResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @group Admin
  * @group User Management
  * @authenticated
  */
@@ -41,11 +40,11 @@ class UserController extends Controller
      * @bodyParam  first_name String required
      * @bodyParam  last_name String required
      * @bodyParam  email email required
-     * @bodyParam  password String required
-     * @bodyParam  password_confirmation String required
-     * @bodyParam   status string required ex: pending,active,blocked
+     * @bodyParam  password String
+     * @bodyParam  password_confirmation String
+     * @bodyParam  status string required ex: pending,active,blocked
      * @bodyParam  roles Array required
-     * @bodyParam  permissions Array optional
+     * @bodyParam  permissions Array
      *
      * @responseFile 200 responses/V1/Admin/UserResponse.json
      * @responseFile 422 responses/ValidationResponse.json

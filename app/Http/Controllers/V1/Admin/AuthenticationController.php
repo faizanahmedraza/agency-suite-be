@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @group Admin
  * @group Authentication
  */
 class AuthenticationController extends Controller

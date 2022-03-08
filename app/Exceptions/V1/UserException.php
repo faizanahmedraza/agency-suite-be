@@ -10,7 +10,7 @@ class UserException extends BaseException
     public static function userAlreadyActive(): self
     {
         return new self(
-            'User you are trying to activate is already activated. If you are facing any issue please contact customer support team.',
+            'User you are trying to activate is already activated. If you are facing any issue please contact er support team.',
             '422'
         );
     }
@@ -27,7 +27,7 @@ class UserException extends BaseException
     public static function suspended(): self
     {
         return new self(
-            'Your account is suspended',
+            'Your account is suspended, if you would like quicker access please contact support',
             '403'
         );
     }

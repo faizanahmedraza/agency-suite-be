@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\V1\Admin\PermissionsResponse;
 
 /**
- * @group Admin
  * @group Permissions Api
  * @authenticated
  */

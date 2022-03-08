@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1\Admin;
 
 use App\Http\Businesses\V1\Admin\RoleBusiness;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Admin\RoleListRequest;
 use App\Http\Requests\V1\Admin\RoleRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Admin\RoleResponse;
@@ -11,7 +12,6 @@ use App\Http\Resources\V1\Admin\RolesResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @group Admin
  * @group Roles Management
  * @authenticated
  */
@@ -30,17 +30,24 @@ class RoleController extends Controller
     }
 
     /**
-     * Role List
+     * Roles List
      * This api return the collection of all Roles created.
      *
      * @headerParam Authorization String required Example: Bearer TOKEN
      *
+     * @urlParam order_by string ex: asc/desc
+     * @urlParam from_date string Example: Y-m-d
+     * @urlParam to_date string Example: Y-m-d
+     * @urlParam pagination boolean
+     * @urlParam page_limit integer
+     * @urlParam page integer
+     *
      * @responseFile 200 responses/V1/Admin/RolesResponse.json
      */
 
-    public function get()
+    public function get(RoleListRequest $request)
     {
-        $roles = RoleBusiness::get();
+        $roles = RoleBusiness::get($request);
         return (new RolesResponse($roles));
     }
 

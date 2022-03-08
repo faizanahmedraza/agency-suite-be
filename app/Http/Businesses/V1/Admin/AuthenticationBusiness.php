@@ -2,6 +2,7 @@
 
 namespace App\Http\Businesses\V1\Admin;
 
+use App\Events\LoginEvent;
 use App\Http\Services\V1\Admin\AuthenticationService;
 use Illuminate\Support\Facades\Auth;
 use App\Exceptions\V1\UnAuthorizedException;
@@ -24,9 +25,15 @@ class AuthenticationBusiness
             throw UnAuthorizedException::InvalidCredentials();
         }
 
+        // check user status
+        UserService::checkStatus($user);
+
         //auth services
         $authService = new AuthenticationService();
         $auth['token'] = $authService->createToken($user);
+
+        //last login tracking event
+        event(new LoginEvent($user));
         return $authService->generateVerificationResponse($auth, $user);
     }
 
@@ -44,7 +51,6 @@ class AuthenticationBusiness
 
     public function changePassword($request)
     {
-        $user = (new UserService())->first(Auth::id());
-        UserService::changePassword($user, $request);
+        UserService::changePassword(Auth::user(), $request);
     }
 }

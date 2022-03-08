@@ -16,7 +16,7 @@ class UserBusiness
         return UserService::first($id);
     }
 
-    public static function store(Request $request)
+    public static function store($request)
     {
         // create user
         $user = UserService::store($request);
@@ -30,13 +30,13 @@ class UserBusiness
         return $user;
     }
 
-    public static function get(Request $request)
+    public static function get($request)
     {
         // get user
         return UserService::get($request);
     }
 
-    public static function update(Request $request, int $id)
+    public static function update($request, int $id)
     {
         $user = UserService::first($id);
 
@@ -74,7 +74,7 @@ class UserBusiness
         return  UserService::toggleStatus($user);
     }
 
-    public  static  function changeAnyPassword(Request $request,$id)
+    public  static  function changeAnyPassword($request,$id)
     {
         $user = UserService::first($id);
         UserService::changePassword($user,$request);

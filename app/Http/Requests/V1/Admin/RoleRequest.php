@@ -27,7 +27,7 @@ class RoleRequest extends RequestAbstract
     {
         $all = parent::validationData();
         //Remove extra white spaces
-        $all['name'] = Role::ROLES_PREFIXES['admin'].$all['name'];
+        $all['name'] = Role::ROLES_PREFIXES['admin'].trim($all['name']);
         return $all;
     }
 

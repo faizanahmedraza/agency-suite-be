@@ -2,13 +2,8 @@
 
 namespace App\Events;
 
-use Illuminate\Queue\SerializesModels;
-
 class LoginEvent extends Event
 {
-    use SerializesModels;
-    
-    public $request;
     public $user;
 
     /**
@@ -16,9 +11,8 @@ class LoginEvent extends Event
      *
      * @return void
      */
-    public function __construct($request, $user)
+    public function __construct($user)
     {
-        $this->request = $request;
         $this->user = $user;
     }
 }

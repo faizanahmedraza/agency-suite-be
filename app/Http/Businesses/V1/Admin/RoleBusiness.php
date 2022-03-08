@@ -7,14 +7,14 @@ use App\Http\Services\V1\Admin\RoleService;
 
 class RoleBusiness
 {
-    public static function store(Request $request)
+    public static function store($request)
     {
         return RoleService::store($request);
     }
 
-    public static function get()
+    public static function get($request)
     {
-        return RoleService::get();
+        return RoleService::get($request);
     }
 
     public static function first(int $id)
@@ -22,7 +22,7 @@ class RoleBusiness
         return RoleService::first($id);
     }
 
-    public static function update(Request $request, int $id)
+    public static function update($request, int $id)
     {
         $role = RoleService::avoidRoleFirst($id);
         return RoleService::update($request, $role);

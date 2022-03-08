@@ -3,6 +3,7 @@
 namespace App\Http\Services\V1\Admin;
 
 use App\Exceptions\V1\RoleException;
+use App\Helpers\TimeStampHelper;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Exceptions\V1\ModelException;
@@ -18,13 +19,34 @@ class RoleService
         return config('permission.restrict_roles');
     }
 
-    public static function get()
+    public static function get($request)
     {
-        $role = Role::with('permissions')->latest()->get();
-        return $role;
+        $roles = Role::query()->with('permissions');
+
+        $roles->whereNotIn('name',Role::RESTRICT_ROLES);
+
+        if ($request->has('from_date')) {
+            $from = TimeStampHelper::formateDate($request->from_date);
+            $roles->whereDate('created_at', '>=', $from);
+        }
+
+        if ($request->has('to_date')) {
+            $to = TimeStampHelper::formateDate($request->to_date);
+            $roles->whereDate('created_at', '<=', $to);
+        }
+
+        if ($request->query('order_by')) {
+            $roles->orderBy('id', $request->get('order_by'));
+        } else {
+            $roles->orderBy('id', 'desc');
+        }
+
+        return ($request->filled('pagination') && $request->get('pagination') == 'false')
+            ? $roles->get()
+            : $roles->paginate(\pageLimit($request));
     }
 
-    public static function store(Request $request) : Role
+    public static function store($request) : Role
     {
         $role = new Role();
         $role->name = Role::ROLES_PREFIXES['admin'].$request->name;
@@ -50,7 +72,7 @@ class RoleService
         return $role;
     }
 
-    public static function update(Request $request, Role $role) : Role
+    public static function update($request, Role $role) : Role
     {
         $role->name = Role::ROLES_PREFIXES['admin'].$request->name;
         $role->save();
@@ -83,7 +105,7 @@ class RoleService
         return $role;
     }
 
-    public static function assignRolesToUser(Request $request, User $user)
+    public static function assignRolesToUser($request, User $user)
     {
         if (!empty($request->get('roles'))) {
             try {
@@ -94,7 +116,7 @@ class RoleService
         }
     }
 
-    public static function syncRolesToUser(Request $request, User $user)
+    public static function syncRolesToUser($request, User $user)
     {
         if (!empty($request->get('roles'))) {
             try {

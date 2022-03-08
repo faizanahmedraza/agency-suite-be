@@ -20,6 +20,22 @@ class UserRequest extends RequestAbstract
     }
 
     /**
+     * Get data to be validated from the request.
+     *
+     * @return array
+     */
+    protected function validationData(): array
+    {
+        $all = parent::validationData();
+        //Convert request value to lowercase
+        if (isset($all['email'])) {
+            $all['email'] = strtolower(preg_replace('/\s+/', '', $all['email']));
+        }
+        return $all;
+    }
+
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -29,11 +45,12 @@ class UserRequest extends RequestAbstract
         return [
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
+            'email' => ($this->isMethod('put')) ? 'required|email:rfc,dns|max:50|email|unique:users,username,' . $this->id : 'required|email:rfc,dns|max:50|unique:users,username',
+            'password' => ($this->isMethod('put')) ? '' : 'sometimes|nullable|string|min:6|max:100|confirmed',
             'roles' => 'required|array',
-            'roles.*' => 'required|string|not_in:'.implode(',',Role::RESTRICT_ROLES),
+            'roles.*' => 'required|string|in:' . implode(',', Role::whereNotIn('name', Role::RESTRICT_ROLES)->pluck('name')->toArray()),
             'permissions' => 'nullable|array',
             'permissions.*' => 'nullable|string',
-            'email' => ($this->isMethod('put')) ? 'required|email:rfc,dns|max:50|email|unique:users,username,' . $this->id : 'required|email:rfc,dns|max:50|unique:users,username',
             'status' => 'required|string|' . Rule::in(array_keys(User::STATUS)),
         ];
     }
@@ -46,7 +63,7 @@ class UserRequest extends RequestAbstract
     public function messages(): array
     {
         return [
-            'roles.*.not_in' => 'One of these selected roles are invalid.',
+            'roles.*.in' => 'One of these selected roles are invalid. roles required such as: Admin, User, HR, Accounts, Finance',
         ];
     }
 }
