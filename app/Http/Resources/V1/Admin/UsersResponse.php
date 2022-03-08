@@ -3,7 +3,6 @@
 namespace App\Http\Resources\V1\Admin;
 
 use App\Http\Resources\BaseResponse;
-use Illuminate\Http\Resources\Json\Resource;
 
 class UsersResponse extends BaseResponse
 {

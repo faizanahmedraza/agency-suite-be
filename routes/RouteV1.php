@@ -12,7 +12,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         });
 
         //Protected Routes
-        $router->group(['middleware' => ['auth','admin']], function () use ($router) {
+        $router->group(['middleware' => ['admin_auth','admin']], function () use ($router) {
             $router->post('/change-password', 'AuthenticationController@changePassword');
             $router->delete('/logout', 'AuthenticationController@logout');
 //            $router->get('/dashboard', 'DashboardController@index');

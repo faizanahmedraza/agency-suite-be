@@ -10,11 +10,790 @@
     ],
     "info": {
         "name": "Lumen",
-        "_postman_id": "6e9e3cfb-45dc-4d67-9b33-1c9b5a06fa44",
+        "_postman_id": "f6dfa527-4090-40b8-b80a-68041babaaec",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
-    "item": [],
+    "item": [
+        {
+            "name": "Admin",
+            "description": "",
+            "item": [
+                {
+                    "name": "Change Password\nchange password request of user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/change-password",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/change-password"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"password\":\"abcd1234\",\"password_confirmation\":\"abcd1234\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Logout\nHit api and session get out",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/logout"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get Users\nThis will return logged in user profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/users",
+                            "variable": [
+                                {
+                                    "id": "users",
+                                    "key": "users",
+                                    "value": "facere",
+                                    "description": "1,2,3,4"
+                                },
+                                {
+                                    "id": "email",
+                                    "key": "email",
+                                    "value": "occaecati",
+                                    "description": "ex: abc.com,xyz.co"
+                                },
+                                {
+                                    "id": "first_name",
+                                    "key": "first_name",
+                                    "value": "perspiciatis",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "last_name",
+                                    "key": "last_name",
+                                    "value": "vitae",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "full_name",
+                                    "key": "full_name",
+                                    "value": "adipisci",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "status",
+                                    "key": "status",
+                                    "value": "voluptas",
+                                    "description": "ex: pending,active,blocked"
+                                },
+                                {
+                                    "id": "order_by",
+                                    "key": "order_by",
+                                    "value": "optio",
+                                    "description": "ex: asc\/desc"
+                                },
+                                {
+                                    "id": "from_date",
+                                    "key": "from_date",
+                                    "value": "Y-m-d",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "to_date",
+                                    "key": "to_date",
+                                    "value": "Y-m-d",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "pagination",
+                                    "key": "pagination",
+                                    "value": "",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "page_limit",
+                                    "key": "page_limit",
+                                    "value": "18",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "page",
+                                    "key": "page",
+                                    "value": "20",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "roles",
+                                    "key": "roles",
+                                    "value": "maiores",
+                                    "description": "ex: admin,test"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"users\": [\r\n      {\r\n        \"id\": 12,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan108@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan107@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 10,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan106@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 9,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan105@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 7,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan102@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 6,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"ahmed\",\r\n        \"email\": \"faizan101@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 5,\r\n        \"first_name\": \"Taimour\",\r\n        \"last_name\": \"Hadi\",\r\n        \"email\": \"taimour.hadi@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 8,\r\n            \"name\": \"Accounts\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 4,\r\n        \"first_name\": \"Fahad\",\r\n        \"last_name\": \"khan\",\r\n        \"email\": \"fahad.khan@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 7,\r\n            \"name\": \"HR\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 3,\r\n        \"first_name\": \"Imran\",\r\n        \"last_name\": \"Mumtaz\",\r\n        \"email\": \"imran.mumtaz@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 6,\r\n            \"name\": \"Finance\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"first_name\": \"Mehmood\",\r\n        \"last_name\": \"Ismail\",\r\n        \"email\": \"mehmood.ismail@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 10,\r\n      \"count\": 10,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Show User Details\nThis api show the uer details.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "atque",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "user_id",
+                                    "key": "user_id",
+                                    "value": "aut",
+                                    "description": "Integer"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"user\": {\r\n      \"id\": 7,\r\n      \"first_name\": \"Faizan\",\r\n      \"last_name\": \"Ahmed\",\r\n      \"email\": \"faizan102@saasfa.com\",\r\n      \"last_logged_in\": null,\r\n      \"status\": \"pending\",\r\n      \"roles\": [\r\n        {\r\n          \"id\": 2,\r\n          \"name\": \"Admin\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ],\r\n      \"permissions\": []\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Users\nThis api create new user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/users",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/users"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"dolores\",\"last_name\":\"qui\",\"email\":\"quia\",\"password\":\"dignissimos\",\"password_confirmation\":\"est\",\"status\":\"facilis\",\"roles\":[\"dolorum\"],\"permissions\":[\"consectetur\"]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"user\": {\r\n      \"id\": 7,\r\n      \"first_name\": \"Faizan\",\r\n      \"last_name\": \"Ahmed\",\r\n      \"email\": \"faizan102@saasfa.com\",\r\n      \"last_logged_in\": null,\r\n      \"status\": \"pending\",\r\n      \"roles\": [\r\n        {\r\n          \"id\": 2,\r\n          \"name\": \"Admin\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ],\r\n      \"permissions\": []\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update User Details.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quia",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "user_id",
+                                    "key": "user_id",
+                                    "value": "minima",
+                                    "description": "Integer required"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"first_name\":\"blanditiis\",\"last_name\":\"voluptatem\",\"status\":\"dolores\",\"roles\":[\"reprehenderit\"],\"permissions\":[\"molestiae\"]}"
+                        },
+                        "description": "This api update user details"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"user\": {\r\n      \"id\": 7,\r\n      \"first_name\": \"Faizan\",\r\n      \"last_name\": \"Ahmed\",\r\n      \"email\": \"faizan102@saasfa.com\",\r\n      \"last_logged_in\": null,\r\n      \"status\": \"pending\",\r\n      \"roles\": [\r\n        {\r\n          \"id\": 2,\r\n          \"name\": \"Admin\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ],\r\n      \"permissions\": []\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/users\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/users\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "molestiae",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "user_id",
+                                    "key": "user_id",
+                                    "value": "qui",
+                                    "description": "Integer"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This api delete user"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Change Password of Any User",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/users\/change-any-password\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/users\/change-any-password\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "11",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"password\":\"voluptatibus\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete Role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "nihil",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "role_id",
+                                    "key": "role_id",
+                                    "value": "quibusdam",
+                                    "description": "Integer"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete Requested Record"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Access Token Or Login\nThis function is useful for login, to return access token for users.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/auth\/login",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/auth\/login"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"email\":\"admin@my-app.com\",\"password\":\"Abc*123*\"}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"authentication\": {\r\n      \"access_token\": \"eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA\",\r\n      \"token_type\": \"Bearer\",\r\n      \"expiry\": \"2022-03-18 09:47:07\",\r\n      \"user\": {\r\n        \"id\": 1,\r\n        \"first_name\": \"Faizan Ahmed\",\r\n        \"last_name\": \"Raza\",\r\n        \"email\": \"faizan.raza@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 1,\r\n            \"name\": \"Super Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n            \"permissions\": [\r\n              {\r\n                \"id\": 1,\r\n                \"name\": \"access_all\",\r\n                \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      }\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Role List\nThis api return the collection of all Roles created.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/roles",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/roles"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"roles\": [\r\n      {\r\n        \"id\": 1,\r\n        \"name\": \"Super Admin\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": [\r\n          {\r\n            \"id\": 1,\r\n            \"name\": \"access_all\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"name\": \"Admin\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 3,\r\n        \"name\": \"Agency\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 4,\r\n        \"name\": \"Customer\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 5,\r\n        \"name\": \"User\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 6,\r\n        \"name\": \"Finance\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 7,\r\n        \"name\": \"HR\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 8,\r\n        \"name\": \"Accounts\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      }\r\n    ],\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Role Details\nThis api show the details of requested Role.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "ut",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "role_id",
+                                    "key": "role_id",
+                                    "value": "nihil",
+                                    "description": "Integer"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"role\": {\r\n      \"id\": 1,\r\n      \"name\": \"Super Admin\",\r\n      \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"id\": 1,\r\n          \"name\": \"access_all\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ]\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Role\nThis api is for create new Role",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/roles",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/roles"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"saepe\",\"permissions\":[\"corporis\"]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"role\": {\r\n      \"id\": 1,\r\n      \"name\": \"Super Admin\",\r\n      \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"id\": 1,\r\n          \"name\": \"access_all\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ]\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Role Update\nThis api update the details of requested Role.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/roles\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/roles\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "distinctio",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "role_id",
+                                    "key": "role_id",
+                                    "value": "commodi",
+                                    "description": "Integer"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"quod\",\"permissions\":[\"officiis\"]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"role\": {\r\n      \"id\": 1,\r\n      \"name\": \"Super Admin\",\r\n      \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"id\": 1,\r\n          \"name\": \"access_all\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ]\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Permission List\nThis api return the collection of all Permissions created.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/admins\/permissions",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/admins\/permissions"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"collections\": [\r\n      {\r\n        \"id\": 13,\r\n        \"name\": \"users_toggle_status\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 12,\r\n        \"name\": \"users_delete\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"name\": \"users_update\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 10,\r\n        \"name\": \"users_create\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 9,\r\n        \"name\": \"users_read\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 8,\r\n        \"name\": \"users_all\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 7,\r\n        \"name\": \"permissions_list\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 6,\r\n        \"name\": \"roles_delete\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 5,\r\n        \"name\": \"roles_update\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 4,\r\n        \"name\": \"roles_create\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 3,\r\n        \"name\": \"roles_read\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"name\": \"roles_all\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 1,\r\n        \"name\": \"access_all\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      }\r\n    ],\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
     "auth": {
         "type": "noauth"
     }

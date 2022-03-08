@@ -27,8 +27,8 @@ class AuthenticationController extends Controller
      * @headerParam Client-ID string required
      * @headerParam Client-Secret string required
      *
-     * @responseFile 200 app/Http/Resources/V1/AuthenticationResponse.php
-     * @responseFile 422 app/Http/Requests/V1/LoginRequest.php
+     * @responseFile 200 responses/V1/Admin/AuthenticationResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
 
     public function login(LoginRequest $request)
@@ -45,8 +45,8 @@ class AuthenticationController extends Controller
      *
      * @headerParam Authorization string required
      *
-     * @responseFile 200 app/Http/Resources/SuccessResponse.php
-     * @responseFile 422 vendor/illuminate/http/Request.php
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
     public static function logout(Request $request)
     {
@@ -63,8 +63,8 @@ class AuthenticationController extends Controller
      * @bodyParam password String required abcd1234 Example: abcd1234
      * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
      *
-     * @responseFile 200 app/Http/Resources/SuccessResponse.php
-     * @responseFile 422 app/Http/Requests/V1/Admin/ChangePasswordRequest.php
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
     public function changePassword(ChangePasswordRequest $request)
     {

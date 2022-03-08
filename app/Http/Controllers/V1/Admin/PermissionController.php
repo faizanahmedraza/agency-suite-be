@@ -9,6 +9,7 @@ use App\Http\Resources\V1\Admin\PermissionsResponse;
 /**
  * @group Admin
  * @group Permissions Api
+ * @authenticated
  */
 
 class PermissionController extends Controller
@@ -28,7 +29,7 @@ class PermissionController extends Controller
      *
      * @headerParam Authorization String required Example: Bearer TOKEN
      *
-     * @responseFile 200 responses/V1/Permission/ListResponse.json
+     * @responseFile 200 responses/V1/Admin/PermissionsResponse.json
      */
 
     public function get()

@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * @group Admin
  * @group Roles Management
+ * @authenticated
  */
 class RoleController extends Controller
 {
@@ -22,20 +23,20 @@ class RoleController extends Controller
     {
         $this->module = 'roles';
         $ULP = '|' . $this->module . '_all|access_all'; //UPPER LEVEL PERMISSIONS
-        $this->middleware('permission:' . $this->module . '_read'. $ULP, ['only' => ['first', 'get']]);
-        $this->middleware('permission:' . $this->module . '_create'. $ULP, ['only' => ['store']]);
-        $this->middleware('permission:' . $this->module . '_update'. $ULP, ['only' => ['update']]);
-        $this->middleware('permission:' . $this->module . '_delete'. $ULP, ['only' => ['destroy']]);
+        $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first', 'get']]);
+        $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['store']]);
+        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
+        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
     }
 
     /**
-    * Role List
-    * This api return the collection of all Roles created.
-    *
-    * @headerParam Authorization String required Example: Bearer TOKEN
-    *
-    * @responseFile 200 responses/V1/Role/ListResponse.json
-    */
+     * Role List
+     * This api return the collection of all Roles created.
+     *
+     * @headerParam Authorization String required Example: Bearer TOKEN
+     *
+     * @responseFile 200 responses/V1/Admin/RolesResponse.json
+     */
 
     public function get()
     {
@@ -50,9 +51,10 @@ class RoleController extends Controller
      * @headerParam Authorization String required Example: Bearer TOKEN
      *
      * @bodyParam name String required
+     * @bodyParam permissions array optional
      *
      *
-     * @responseFile 200 responses/V1/Role/DetailsResponse.json
+     * @responseFile 200 responses/V1/Admin/RoleResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
 
@@ -70,10 +72,10 @@ class RoleController extends Controller
      *
      * @headerParam Authorization String required Example: Bearer TOKEN
      *
-     * @urlParam Role_id required Integer
+     * @urlParam role_id required Integer
      *
-     * @responseFile 200 responses/V1/Role/DetailsResponse.json
-     * @responseFile 200 responses/ValidationResponse.json
+     * @responseFile 200 responses/V1/Admin/RoleResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      *
      */
 
@@ -84,19 +86,20 @@ class RoleController extends Controller
     }
 
     /**
-    * Role Update
-    * This api update the details of requested Role.
-    *
-    * @headerParam Authorization String required Example: Bearer TOKEN
-    *
-    * @urlParam Role_id required Integer
-    *
-    * @bodyParam name String required
-    *
-    * @responseFile 200 responses/V1/Role/DetailsResponse.json
-    * @responseFile 200 responses/ValidationResponse.json
-    *
-    */
+     * Role Update
+     * This api update the details of requested Role.
+     *
+     * @headerParam Authorization String required Example: Bearer TOKEN
+     *
+     * @urlParam role_id required Integer
+     *
+     * @bodyParam name String required
+     * @bodyParam permissions array optional
+     *
+     * @responseFile 200 responses/V1/Admin/RoleResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     *
+     */
 
     public function update(RoleRequest $request, $id)
     {
@@ -113,10 +116,10 @@ class RoleController extends Controller
      *
      * @headerParam Authorization String required Example: Bearer TOKEN
      *
-     * @urlParam Role_id required Integer
+     * @urlParam role_id required Integer
      *
-     * @responseFile 200 app/Http/Resources/SuccessResponse.php
-     * @responseFile 200 responses/ValidationResponse.json
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      *
      * */
 

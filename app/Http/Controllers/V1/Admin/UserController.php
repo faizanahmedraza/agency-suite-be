@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\DB;
 /**
  * @group Admin
  * @group User Management
+ * @authenticated
  */
 class UserController extends Controller
 {
@@ -37,18 +38,17 @@ class UserController extends Controller
      * Create Users
      * This api create new user.
      *
-     * @authenticated
-     *
      * @bodyParam  first_name String required
      * @bodyParam  last_name String required
      * @bodyParam  email email required
      * @bodyParam  password String required
      * @bodyParam  password_confirmation String required
+     * @bodyParam   status string required ex: pending,active,blocked
      * @bodyParam  roles Array required
-     * @bodyParam  permissions Array
+     * @bodyParam  permissions Array optional
      *
-     * @responseFile 200 responses/SuccessResponse.json
-     * @responseFile 200 responses/V1/User/DetailsResponse.json
+     * @responseFile 200 responses/V1/Admin/UserResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
@@ -64,8 +64,6 @@ class UserController extends Controller
      * Get Users
      * This will return logged in user profile.
      *
-     * @authenticated
-     *
      * @urlParam users string 1,2,3,4
      * @urlParam email string ex: abc.com,xyz.co
      * @urlParam first_name string
@@ -80,9 +78,9 @@ class UserController extends Controller
      * @urlParam page integer
      * @urlParam roles string ex: admin,test
      *
-     * @responseFile 200 responses/V1/User/ListResponse.json
+     * @responseFile 200 responses/V1/Admin/UsersResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
-     *
      */
 
     public function get(UserListRequest $request)
@@ -97,8 +95,8 @@ class UserController extends Controller
      *
      * @urlParam  user_id required Integer
      *
-     *
-     * @responseFile 200 responses/V1/User/DetailsResponse.json
+     * @responseFile 200 responses/V1/Admin/UserResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
     public function first(int $id)
@@ -114,12 +112,14 @@ class UserController extends Controller
      *
      * @bodyParam  first_name String required
      * @bodyParam  last_name String required
+     * @bodyParam  status string required ex: pending,active,blocked
      * @bodyParam  roles Array required
      * @bodyParam  permissions Array
      *
      * @urlParam  user_id Integer required
      *
-     * @responseFile 200 responses/V1/User/DetailsResponse.json
+     * @responseFile 200 responses/V1/Admin/UserResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
@@ -153,11 +153,10 @@ class UserController extends Controller
      * This api update the users status to active or deactive
      * other then customers.
      *
-     * @authentiacte
-     *
      * @urlParam user_id integer required
      *
      * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
     public static function toggleStatus(int $id)
@@ -169,15 +168,11 @@ class UserController extends Controller
     /**
      * Change Password of Any User
      *
-     * @authenticated
-     *
      * @urlParam id integer required
      *
      * @bodyParam password string required ex: 123456
      *
-     * @responseFile 200 app/Http/Admin/V1/Resources/UserResponse.php
-     * @responseFile 422 app/Http/Admin/V1/Requests/ChangePasswordRequest.php
-     *
+     * @responseFile 200 responses/SuccessResponse.json
      */
 
     public static function changeAnyPassword(ChangeAnyPasswordRequest $request, int $id)
