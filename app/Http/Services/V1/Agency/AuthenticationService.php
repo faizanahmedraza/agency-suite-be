@@ -3,6 +3,8 @@
 
 namespace App\Http\Services\V1\Agency;
 
+use App\Exceptions\V1\TokenException;
+use App\Models\UserVerification;
 use Illuminate\Support\Facades\DB;
 
 class AuthenticationService
@@ -26,6 +28,21 @@ class AuthenticationService
             'user' => $user,
             'agency' => $agency
         ];
+    }
+
+    public static function getUserVerification($token)
+    {
+        $userVerification = UserVerification::where('verification_code', $token)->first();
+        if (!$userVerification) {
+            throw TokenException::invalidToken();
+        }
+
+        return $userVerification;
+    }
+
+    public static function deleteToken(UserVerification $userVerification): void
+    {
+        $userVerification->delete();
     }
 
     public static function revokeUserToken($user)

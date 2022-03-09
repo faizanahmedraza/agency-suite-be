@@ -7,6 +7,8 @@ use App\Http\Businesses\V1\Agency\AuthenticationBusiness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Agency\LoginRequest;
 use App\Http\Requests\V1\Agency\RegisterRequest;
+use App\Http\Requests\V1\Agency\UserVerificationRequest;
+use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\AuthenticationResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,8 +69,8 @@ class AuthenticationController extends Controller
      * @headerParam Client-ID string required
      * @headerParam Client-Secret string required
      *
-     * @responseFile 200 app/Http/Resources/SuccessResponse.php
-     * @responseFile 422 app/Http/Requests/V1/UserVerificationRequest.php
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
     public function userVerification(UserVerificationRequest $request)
     {
