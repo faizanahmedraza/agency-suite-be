@@ -18,7 +18,7 @@ class AgencyAllowedMiddleware
     public function handle($request, Closure $next)
     {
         if (!Auth::user()->hasRole('Agency')) {
-            return  UserException::unAuthorized();
+            throw UserException::unAuthorized();
         }
 
         $response = $next($request);

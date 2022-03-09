@@ -8,6 +8,7 @@ use App\Exceptions\V1\UserException;
 use App\Helpers\TimeStampHelper;
 use App\Http\Services\V1\Agency\AuthenticationService;
 use App\Http\Services\V1\Agency\UserService;
+use App\Http\Services\V1\Agency\UserVerificationService;
 use Illuminate\Support\Facades\Auth;
 use App\Exceptions\V1\UnAuthorizedException;
 use Illuminate\Support\Facades\Hash;
@@ -41,7 +42,7 @@ class AuthenticationBusiness
         return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 
-    public static function tokenValidation($request): void
+    public function tokenValidation($request): void
     {
         $authService = new AuthenticationService();
         $userService = new UserService();
@@ -51,6 +52,10 @@ class AuthenticationBusiness
 
         // get user data by user id
         $user = $userService->getUserById($userVerification->user_id);
+
+        if (empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
 
         if ($user->status !== User::STATUS['pending']) {
             throw UserException::userAlreadyActive();
@@ -62,8 +67,46 @@ class AuthenticationBusiness
             throw RequestValidationException::errorMessage("Token has been expired");
         }
 
+        UserService::updateStatus($user);
+
         // Delete Token
         $authService->deleteToken($userVerification);
+    }
+
+    public function forgetPassword($request): void
+    {
+        $user = UserService::getUserByEmail(strtolower($request->email));
+        if (empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
+        UserVerificationService::generateVerificationCode($user);
+    }
+
+    public function validateAndCreateNewPassword($request)
+    {
+        $authService = new AuthenticationService();
+        $userService = new UserService();
+
+        $userVerification = $authService->getUserVerification($request->token);
+        $tokenExpiry = TimeStampHelper::expiryValidation(new \DateTime($userVerification->expiry));
+        if (!$tokenExpiry) {
+            throw RequestValidationException::errorMessage("Token has been expired");
+        }
+
+        $user = $userService->getUserById($userVerification->user_id);
+        if (empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
+
+        (new UserService())->changePassword($user, $request->password);
+
+        $authService->deleteToken($userVerification);
+    }
+
+    public function changePassword($request)
+    {
+        $user = Auth::user();
+        UserService::changePassword($user, $request);
     }
 
     public function logout($request)
@@ -78,8 +121,15 @@ class AuthenticationBusiness
         }
     }
 
-    public function changePassword($request)
+    public static function generateToken()
     {
-        UserService::changePassword(Auth::user(), $request);
+        $user = Auth::user();
+
+        if ($user->status == User::STATUS['active']) {
+            throw UserException::userAlreadyActive();
+        }
+
+        AuthenticationService::deleteUserToken($user);
+        UserVerificationService::generateVerificationCode($user);
     }
 }

@@ -5,6 +5,9 @@ namespace App\Http\Controllers\V1\Agency;
 use App\Http\Businesses\V1\Agency\AgencyBusiness;
 use App\Http\Businesses\V1\Agency\AuthenticationBusiness;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Agency\ChangePasswordRequest;
+use App\Http\Requests\V1\Agency\CreateNewPasswordRequest;
+use App\Http\Requests\V1\Agency\ForgetPasswordRequest;
 use App\Http\Requests\V1\Agency\LoginRequest;
 use App\Http\Requests\V1\Agency\RegisterRequest;
 use App\Http\Requests\V1\Agency\UserVerificationRequest;
@@ -75,7 +78,7 @@ class AuthenticationController extends Controller
     public function userVerification(UserVerificationRequest $request)
     {
         DB::beginTransaction();
-        AuthenticationBusiness::tokenValidation($request);
+        (new AuthenticationBusiness())->tokenValidation($request);
         DB::commit();
         return new SuccessResponse([]);
     }
@@ -89,13 +92,13 @@ class AuthenticationController extends Controller
      * @headerParam Client-ID string required
      * @headerParam Client-Secret string required
      *
-     * @responseFile 200 app/Http/Resources/SuccessResponse.php
-     * @responseFile 422 app/Http/Requests/V1/ForgetPasswordRequest.php
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
     public function forgetPassword(ForgetPasswordRequest $request)
     {
         DB::beginTransaction();
-        AuthenticationBusiness::forgetPassword($request);
+        (new AuthenticationBusiness())->forgetPassword($request);
         DB::commit();
         return new SuccessResponse([]);
     }
@@ -111,8 +114,8 @@ class AuthenticationController extends Controller
      * @headerParam Client-ID string required
      * @headerParam Client-Secret string required
      *
-     * @responseFile 200 app/Http/Resources/SuccessResponse.php
-     * @responseFile 422 app/Http/Requests/V1/CreateNewPasswordRequest.php
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
     public function createNewPassword(CreateNewPasswordRequest $request)
     {
@@ -130,12 +133,12 @@ class AuthenticationController extends Controller
      *
      * @headerParam Authorization string required
      *
-     * @responseFile 200 app/Http/Resources/SuccessResponse.php
-     * @responseFile 422 vendor/illuminate/http/Request.php
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
     public static function logout(Request $request)
     {
-        AuthenticationBusiness::logout($request);
+        (new AuthenticationBusiness())->logout($request);
         return new SuccessResponse([]);
     }
 
@@ -147,11 +150,31 @@ class AuthenticationController extends Controller
      *
      * @headerParam Authorization string required
      *
-     * @responseFile 200 app/Http/Resources/SuccessResponse.php
+     * @responseFile 200 responses/SuccessResponse.json
      */
     public function generateToken()
     {
         AuthenticationBusiness::generateToken();
+        return new SuccessResponse([]);
+    }
+
+    /**
+     * Change Password
+     * change password request of user
+     *
+     * @authenticated
+     *
+     * @bodyParam password String required abcd1234 Example: abcd1234
+     * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     */
+    public function changePassword(ChangePasswordRequest $request)
+    {
+        DB::beginTransaction();
+        (new AuthenticationBusiness())->changePassword($request);
+        DB::commit();
         return new SuccessResponse([]);
     }
 }

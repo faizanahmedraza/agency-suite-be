@@ -18,7 +18,7 @@ class AdminAllowedMiddleware
     public function handle($request, Closure $next)
     {
         if (Auth::user()->hasAnyRole(['Agency','Customer'])) {
-            return  UserException::unAuthorized();
+            throw UserException::unAuthorized();
         }
 
         $response = $next($request);

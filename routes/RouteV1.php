@@ -15,7 +15,6 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         $router->group(['middleware' => ['admin_auth','admin']], function () use ($router) {
             $router->post('/change-password', 'AuthenticationController@changePassword');
             $router->delete('/logout', 'AuthenticationController@logout');
-//            $router->get('/dashboard', 'DashboardController@index');
 
             //User Management apis
             $router->group(['prefix' => 'users'], function () use ($router) {
@@ -49,15 +48,14 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             $router->post('/login', 'AuthenticationController@login');
             $router->post('/verify-token', 'AuthenticationController@userVerification');
             $router->post('/forget-password', 'AuthenticationController@forgetPassword');
-//            $router->post('/create-new-password', 'AuthenticationController@createNewPassword');
+            $router->post('/create-new-password', 'AuthenticationController@createNewPassword');
         });
 
         //Protected Routes
         $router->group(['middleware' => ['agency_auth','agency']], function () use ($router) {
-//            $router->delete('/logout', 'AuthenticationController@logout');
-//            $router->get('/dashboard', 'DashboardController@index');
-//            $router->post('/verification', 'AuthenticationController@generateToken');
-//            $router->put('/change-password', 'UserController@changePassword');
+            $router->delete('/logout', 'AuthenticationController@logout');
+            $router->post('/verification', 'AuthenticationController@generateToken');
+            $router->put('/change-password', 'AuthenticationController@changePassword');
         });
     });
 

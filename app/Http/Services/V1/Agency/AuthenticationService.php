@@ -4,6 +4,7 @@
 namespace App\Http\Services\V1\Agency;
 
 use App\Exceptions\V1\TokenException;
+use App\Models\User;
 use App\Models\UserVerification;
 use Illuminate\Support\Facades\DB;
 
@@ -48,5 +49,15 @@ class AuthenticationService
     public static function revokeUserToken($user)
     {
         return DB::table('oauth_access_tokens')->where('user_id', '=', $user->id)->update(['revoked' => true]);
+    }
+
+    public static function deleteUserToken(User $user): void
+    {
+        $tokens = UserVerification::where('user_id', $user->id)->get();
+        if ($tokens) {
+            $tokens->map(function ($token) {
+                $token->delete();
+            });
+        }
     }
 }
