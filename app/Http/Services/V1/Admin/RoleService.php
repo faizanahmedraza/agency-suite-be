@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Exceptions\V1\ModelException;
 use App\Exceptions\V1\FailureException;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
 
 
 class RoleService
@@ -23,7 +24,7 @@ class RoleService
     {
         $roles = Role::query()->with('permissions');
 
-        $roles->whereNotIn('name',Role::RESTRICT_ROLES);
+        $roles->userRoles();
 
         if ($request->has('from_date')) {
             $from = TimeStampHelper::formateDate($request->from_date);
@@ -63,7 +64,7 @@ class RoleService
 
     public static function first($id)
     {
-        $role = Role::with('permissions')->find($id);
+        $role = Role::with('permissions')->userRoles()->find($id);
 
         if (!$role) {
             throw ModelException::dataNotFound();

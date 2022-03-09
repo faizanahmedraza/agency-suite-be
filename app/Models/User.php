@@ -6,6 +6,7 @@ use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Lumen\Auth\Authorizable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -73,6 +74,13 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $query->whereHas('roles', function ($query) use ($names) {
             $query->whereNotIn('name', $names);
+        });
+    }
+
+    public function scopeUserRole($query)
+    {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('created_by',Auth::id());
         });
     }
 }

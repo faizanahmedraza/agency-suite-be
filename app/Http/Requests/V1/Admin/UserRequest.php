@@ -48,7 +48,7 @@ class UserRequest extends RequestAbstract
             'email' => ($this->isMethod('put')) ? 'required|email:rfc,dns|max:50|email|unique:users,username,' . $this->id : 'required|email:rfc,dns|max:50|unique:users,username',
             'password' => ($this->isMethod('put')) ? '' : 'sometimes|nullable|string|min:6|max:100|confirmed',
             'roles' => 'required|array',
-            'roles.*' => 'required|string|in:' . implode(',', Role::whereNotIn('name', Role::RESTRICT_ROLES)->pluck('name')->toArray()),
+            'roles.*' => 'required|string|in:' . implode(',', Role::userRoles()->pluck('name')->toArray()),
             'permissions' => 'nullable|array',
             'permissions.*' => 'nullable|string',
             'status' => 'required|string|' . Rule::in(array_keys(User::STATUS)),
@@ -63,7 +63,7 @@ class UserRequest extends RequestAbstract
     public function messages(): array
     {
         return [
-            'roles.*.in' => 'One of these selected roles are invalid. roles required such as: Admin, User, HR, Accounts, Finance',
+            'roles.*.in' => 'One of these selected roles are invalid.',
         ];
     }
 }
