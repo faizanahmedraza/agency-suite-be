@@ -2,6 +2,7 @@
 
 namespace App\Http\Businesses\V1\Admin;
 
+use App\Exceptions\V1\UnAuthorizedException;
 use App\Exceptions\V1\UserException;
 use App\Http\Services\V1\Admin\PermissionService;
 use App\Http\Services\V1\Admin\RoleService;
@@ -13,7 +14,11 @@ class UserBusiness
 {
     public static function first(int $id)
     {
-        return UserService::first($id);
+        $user = UserService::first($id);
+        if (!empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
+        return $user;
     }
 
     public static function store($request)
@@ -40,6 +45,10 @@ class UserBusiness
     {
         $user = UserService::first($id);
 
+        if (!empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
+
         // update in users table
         UserService::update($request, $user);
 
@@ -55,6 +64,10 @@ class UserBusiness
         // delete user
         $user = UserService::first($id);
 
+        if (!empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
+
         if ($user->id == Auth::id()) {
             throw UserException::authUserRestrictStatus();
         }
@@ -67,6 +80,10 @@ class UserBusiness
         // get user
         $user = UserService::first($id);
 
+        if (!empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
+
         if ($user->id == Auth::id()) {
             throw UserException::authUserRestrictStatus();
         }
@@ -77,6 +94,9 @@ class UserBusiness
     public  static  function changeAnyPassword($request,$id)
     {
         $user = UserService::first($id);
+        if (!empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
         UserService::changePassword($user,$request);
     }
 }

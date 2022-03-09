@@ -27,7 +27,9 @@ class RoleRequest extends RequestAbstract
     {
         $all = parent::validationData();
         //Remove extra white spaces
-        $all['name'] = Role::ROLES_PREFIXES['admin'].trim($all['name']);
+        if (isset($all['name'])) {
+            $all['name'] = Role::ROLES_PREFIXES['admin'] . trim($all['name']);
+        }
         return $all;
     }
 
@@ -39,9 +41,9 @@ class RoleRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' =>  $this->isMethod('PUT') ? "required|string|max:255|unique:roles,name,". $this->id : "required|string|max:255|unique:roles,name",
+            'name' => $this->isMethod('PUT') ? "required|string|max:255|unique:roles,name," . $this->id : "required|string|max:255|unique:roles,name",
             'permissions' => 'sometimes|nullable|array',
-            'permissions.*' => 'sometimes|nullable|in:'.implode(',',Permission::pluck('id')->toArray())
+            'permissions.*' => 'sometimes|nullable|in:' . implode(',', Permission::pluck('id')->toArray())
         ];
     }
 

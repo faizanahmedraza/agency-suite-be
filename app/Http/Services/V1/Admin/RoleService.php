@@ -47,10 +47,10 @@ class RoleService
             : $roles->paginate(\pageLimit($request));
     }
 
-    public static function store($request) : Role
+    public static function store($request): Role
     {
         $role = new Role();
-        $role->name = Role::ROLES_PREFIXES['admin'].$request->name;
+        $role->name = Role::ROLES_PREFIXES['admin'] . $request->name;
         $role->save();
 
         if (!$role) {
@@ -73,9 +73,13 @@ class RoleService
         return $role;
     }
 
-    public static function update($request, Role $role) : Role
+    public static function update($request, Role $role): Role
     {
-        $role->name = Role::ROLES_PREFIXES['admin'].$request->name;
+        if (str_contains('admin_', $request->name) && strpos('admin_', $request->name) === 0) {
+            $role->name = $request->name;
+        } else {
+            $role->name = Role::ROLES_PREFIXES['admin'] . $request->name;
+        }
         $role->save();
 
         // re asssign new permissions
@@ -88,7 +92,7 @@ class RoleService
         return $role;
     }
 
-    public static function destroy(Role $role) : void
+    public static function destroy(Role $role): void
     {
         $role->delete();
     }
@@ -96,8 +100,8 @@ class RoleService
     public static function avoidRoleFirst(int $id)
     {
         $role = Role::where('id', $id)
-        ->whereNotIn('name', self::restrictRoles())
-        ->first();
+            ->whereNotIn('name', self::restrictRoles())
+            ->first();
 
         if (!$role) {
             throw ModelException::dataNotFound();
