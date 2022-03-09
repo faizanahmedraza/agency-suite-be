@@ -192,7 +192,7 @@ class UserService
     {
         $user = User::with($with)
             ->where('id', $id)
-            ->avoidRole(Role::userRoles()->pluck('name')->toArray())
+            ->userRole()
             ->first();
 
         if (!$user) {
