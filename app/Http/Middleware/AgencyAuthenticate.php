@@ -7,8 +7,9 @@ use Illuminate\Contracts\Auth\Factory as Auth;
 
 use App\Exceptions\V1\UserException;
 
+use App\Http\Services\V1\Agency\UserService;
 
-class Authenticate
+class AgencyAuthenticate
 {
     /**
      * The authentication guard factory instance.

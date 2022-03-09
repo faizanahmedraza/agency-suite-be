@@ -41,25 +41,25 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         });
     });
 
-    // Agencies
-//    $router->group(['prefix' => 'agencies', 'namespace' => 'Agency'], function () use ($router) {
-//        //Authentication
-//        $router->group(['prefix' => 'auth', 'middleware' => 'client_credentials'], function () use ($router) {
+//     Agencies
+    $router->group(['prefix' => 'agencies', 'namespace' => 'Agency'], function () use ($router) {
+        //Authentication
+        $router->group(['prefix' => 'auth', 'middleware' => 'client_credentials'], function () use ($router) {
+            $router->post('/register', 'AuthenticationController@register');
 //            $router->post('/login', 'AuthenticationController@login');
-//            $router->post('/register', 'AuthenticationController@register');
 //            $router->post('/verify-token', 'AuthenticationController@userVerification');
 //            $router->post('/forget-password', 'AuthenticationController@forgetPassword');
 //            $router->post('/create-new-password', 'AuthenticationController@createNewPassword');
-//        });
-//
-//        //Protected Routes
-//        $router->group(['middleware' => 'agency'], function () use ($router) {
+        });
+
+        //Protected Routes
+        $router->group(['middleware' => ['agency_auth','agency']], function () use ($router) {
 //            $router->delete('/logout', 'AuthenticationController@logout');
 //            $router->get('/dashboard', 'DashboardController@index');
 //            $router->post('/verification', 'AuthenticationController@generateToken');
 //            $router->put('/change-password', 'UserController@changePassword');
-//        });
-//    });
+        });
+    });
 
     // Agencies Customers
 //    $router->group(['prefix' => 'users'], function () use ($router) {
