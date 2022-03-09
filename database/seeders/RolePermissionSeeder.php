@@ -20,13 +20,8 @@ class RolePermissionSeeder extends Seeder
 
         $roles = [
             ['name' => 'Super Admin', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Admin', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'Agency', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'Customer', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'User', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Finance', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'HR', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
-            ['name' => 'Accounts', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
         ];
 
         $permissions = [

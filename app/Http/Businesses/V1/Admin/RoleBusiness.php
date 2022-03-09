@@ -2,7 +2,6 @@
 
 namespace App\Http\Businesses\V1\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Services\V1\Admin\RoleService;
 
 class RoleBusiness

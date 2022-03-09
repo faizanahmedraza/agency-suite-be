@@ -140,7 +140,7 @@ class UserService
             $users->whereDate('created_at', '<=', $to);
         }
 
-        $users->avoidRole(Role::RESTRICT_ROLES);
+        $users->userRole();
 
         return ($request->filled('pagination') && $request->get('pagination') == 'false')
             ? $users->get()
@@ -192,7 +192,7 @@ class UserService
     {
         $user = User::with($with)
             ->where('id', $id)
-            ->avoidRole(Role::RESTRICT_ROLES)
+            ->avoidRole(Role::userRoles()->pluck('name')->toArray())
             ->first();
 
         if (!$user) {
