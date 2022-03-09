@@ -3,11 +3,10 @@
 namespace App\Http\Businesses\V1\Agency;
 
 use App\Events\LoginEvent;
-use App\Http\Services\V1\Admin\AuthenticationService;
+use App\Http\Services\V1\Agency\AuthenticationService;
+use App\Http\Services\V1\Agency\UserService;
 use Illuminate\Support\Facades\Auth;
 use App\Exceptions\V1\UnAuthorizedException;
-
-use App\Http\Services\V1\Admin\UserService;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -19,6 +18,10 @@ class AuthenticationBusiness
     {
         // get user data from database
         $user = (new UserService())->getUserByUsername($request->email);
+
+        if (empty($user->agency_id)) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
 
         // match password
         if (!Hash::check($request->password, $user->password)) {
@@ -34,7 +37,7 @@ class AuthenticationBusiness
 
         //last login tracking event
         event(new LoginEvent($user));
-        return $authService->generateVerificationResponse($auth, $user);
+        return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 
     public function logout($request)

@@ -46,7 +46,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         //Authentication
         $router->group(['prefix' => 'auth', 'middleware' => 'client_credentials'], function () use ($router) {
             $router->post('/register', 'AuthenticationController@register');
-//            $router->post('/login', 'AuthenticationController@login');
+            $router->post('/login', 'AuthenticationController@login');
 //            $router->post('/verify-token', 'AuthenticationController@userVerification');
 //            $router->post('/forget-password', 'AuthenticationController@forgetPassword');
 //            $router->post('/create-new-password', 'AuthenticationController@createNewPassword');

@@ -38,9 +38,6 @@ class UserService
         return $user->fresh();
     }
 
-    /**
-     *  This function is used to assign Role to User
-     */
     public static function assignUserRole($request, $user)
     {
         if (!empty($request->get('role'))) {
@@ -48,15 +45,6 @@ class UserService
         }
     }
 
-    /**
-     * Get User Info
-     * Get user information from username = email
-     *
-     * @param username = $email Ex: admin@mail.com
-     *
-     * @return User Object
-     *
-     */
     public static function getUserByEmail(String $email): User
     {
         $user = User::where('username', $email)->first();
@@ -66,15 +54,7 @@ class UserService
         return $user;
     }
 
-    /** Update User Password
-     *
-     * @param  required User $id , Request $password
-     *
-     * @throw FailureException
-     *
-     * @return $user object
-     */
-    public static function changeUserPassword(User $user, String $password): User
+    public static function changePassword(User $user, String $password): User
     {
         $user->password = Hash::make($password);
         $user->save();
@@ -86,11 +66,6 @@ class UserService
         return $user;
     }
 
-    /**
-     *  Get User Information by username
-     *
-     *  @Param username
-     */
     public static function getUserByUsername($username)
     {
         $user = User::whereRaw('LOWER(username) = ? ', strtolower($username))->first();
@@ -116,6 +91,16 @@ class UserService
         $user->status = $status;
         $user->save();
 
+        return $user;
+    }
+
+    public static function checkStatus(User $user)
+    {
+        if ($user->status == User::STATUS['blocked']) {
+            throw UnAuthorizedException::accountBlocked();
+        } else if ($user->status == User::STATUS['suspend']) {
+            throw UserException::suspended();
+        }
         return $user;
     }
 
@@ -148,11 +133,6 @@ class UserService
         return $user;
     }
 
-    /**
-     *  Fetch User By Email
-     *
-     *  @Param username
-     */
     public static function getUserName($username, $excludeAuth = false)
     {
         if ($excludeAuth) {
@@ -166,7 +146,6 @@ class UserService
         }
         return false;
     }
-
 
     public static function validateToken($token)
     {

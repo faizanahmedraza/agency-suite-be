@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\V1\Agency;
 
 use App\Http\Businesses\V1\Agency\AgencyBusiness;
+use App\Http\Businesses\V1\Agency\AuthenticationBusiness;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\V1\Agency\LoginRequest;
 use App\Http\Requests\V1\Agency\RegisterRequest;
 use App\Http\Resources\V1\Agency\AuthenticationResponse;
 use Illuminate\Http\Request;
@@ -13,7 +15,7 @@ class AuthenticationController extends Controller
 {
     /**
      * Access Token Or Login
-     * This function is useful for login, to return access token for users.
+     * This function is useful for login, to return access token for agencies.
      *
      * @bodyParam email email required The username of user. Example: admin@my-app.com
      * @bodyParam password string required The password of user. Example: Abc*123*
@@ -21,19 +23,19 @@ class AuthenticationController extends Controller
      * @headerParam Client-ID string required
      * @headerParam Client-Secret string required
      *
-     * @responseFile 200 app/Http/Resources/V1/AuthenticationResponse.php
-     * @responseFile 422 app/Http/Requests/V1/LoginRequest.php
+     * @responseFile 200 responses/V1/Agency/AuthenticationResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
 
     public function login(LoginRequest $request)
     {
-        $auth = (new AuthenticationBusiness)->verifyLoginInfo($request);
+        $auth = (new AuthenticationBusiness())->verifyLoginInfo($request);
         return new AuthenticationResponse($auth);
     }
 
     /**
      * Register Agency
-     * This api is useful for generate new Customer and return access token with user information
+     * This api is useful for register new Agency and return access token with agency and user information
      *
      * @bodyParam first_name string required User first name Example: Bionic
      * @bodyParam last_name string required User last name Example: WP
@@ -45,7 +47,7 @@ class AuthenticationController extends Controller
      * @headerParam Client-ID string required
      * @headerParam Client-Secret string required
      *
-     * @responseFile 200 app/Http/Resources/V1/AuthenticationResponse.php
+     * @responseFile 200 responses/V1/Agency/AuthenticationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
     public function register(RegisterRequest $request)
