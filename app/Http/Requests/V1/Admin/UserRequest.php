@@ -45,7 +45,7 @@ class UserRequest extends RequestAbstract
         return [
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
-            'email' => ($this->isMethod('put')) ? 'required|email:rfc,dns|max:50|email|unique:users,username,' . $this->id : 'required|email:rfc,dns|max:50|unique:users,username',
+            'email' => ($this->isMethod('put')) ? 'sometimes|nullable|email:rfc,dns|max:50|email|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i|unique:users,username,' . $this->id : 'required|email:rfc,dns|max:50|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i|unique:users,username',
             'password' => ($this->isMethod('put')) ? '' : 'sometimes|nullable|string|min:6|max:100|confirmed',
             'roles' => 'required|array',
             'roles.*' => 'required|string|in:' . implode(',', Role::userRoles()->pluck('name')->toArray()),
