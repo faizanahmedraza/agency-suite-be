@@ -24,7 +24,7 @@ class RoleService
     {
         $roles = Role::query()->with('permissions');
 
-        $roles->userRoles();
+        $roles->adminRoles();
 
         if ($request->has('from_date')) {
             $from = TimeStampHelper::formateDate($request->from_date);
@@ -64,7 +64,7 @@ class RoleService
 
     public static function first($id)
     {
-        $role = Role::with('permissions')->userRoles()->find($id);
+        $role = Role::with('permissions')->adminRoles()->find($id);
 
         if (!$role) {
             throw ModelException::dataNotFound();
@@ -96,19 +96,6 @@ class RoleService
     public static function destroy(Role $role): void
     {
         $role->delete();
-    }
-
-    public static function avoidRoleFirst(int $id)
-    {
-        $role = Role::where('id', $id)
-            ->whereNotIn('name', self::restrictRoles())
-            ->first();
-
-        if (!$role) {
-            throw ModelException::dataNotFound();
-        }
-
-        return $role;
     }
 
     public static function assignRolesToUser($request, User $user)

@@ -7,7 +7,6 @@ use App\Exceptions\V1\UserException;
 use App\Http\Services\V1\Admin\PermissionService;
 use App\Http\Services\V1\Admin\RoleService;
 use App\Http\Services\V1\Admin\UserService;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserBusiness

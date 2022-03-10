@@ -140,8 +140,6 @@ class UserService
             $users->whereDate('created_at', '<=', $to);
         }
 
-        $users->userRole();
-
         return ($request->filled('pagination') && $request->get('pagination') == 'false')
             ? $users->get()
             : $users->paginate(\pageLimit($request));

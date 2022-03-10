@@ -13,7 +13,7 @@ class PermissionService
 {
     public static function get()
     {
-        return Permission::orderBy('id', 'desc')->get();
+        return Permission::where('name','not like',Role::ROLES_PREFIXES['agency'].'%')->orderBy('id', 'desc')->get();
     }
 
     public static function assigPermissionsToRole(Role $role, Request $request)
