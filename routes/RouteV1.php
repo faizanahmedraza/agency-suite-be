@@ -56,6 +56,28 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             $router->delete('/logout', 'AuthenticationController@logout');
             $router->post('/verification', 'AuthenticationController@generateToken');
             $router->put('/change-password', 'AuthenticationController@changePassword');
+
+            //User Management apis
+            $router->group(['prefix' => 'users'], function () use ($router) {
+                $router->get('/', 'UserController@get');
+                $router->get('/{id}', 'UserController@first');
+                $router->post('/', 'UserController@store');
+                $router->put('/{id}', 'UserController@update');
+                $router->delete('/{id}', 'UserController@destroy');
+                $router->post('/change-any-password/{id}', 'UserController@changeAnyPassword');
+            });
+
+            // Roles apis
+            $router->group(['prefix' => 'roles'], function () use ($router) {
+                $router->get('/', 'RoleController@get');
+                $router->get('/{id}', 'RoleController@first');
+                $router->post('/', 'RoleController@store');
+                $router->put('/{id}', 'RoleController@update');
+                $router->delete('/{id}', 'RoleController@destroy');
+            });
+
+            // Permissions apis
+            $router->get('/permissions', 'PermissionController@get');
         });
     });
 
