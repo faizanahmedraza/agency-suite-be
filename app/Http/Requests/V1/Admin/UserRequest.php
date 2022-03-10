@@ -64,7 +64,7 @@ class UserRequest extends RequestAbstract
     public function messages(): array
     {
         return [
-            'roles.*.in' => 'One of these selected roles are invalid.',
+            'roles.*.in' => 'The selected roles are invalid.',
         ];
     }
 }
