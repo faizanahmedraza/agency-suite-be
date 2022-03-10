@@ -17,7 +17,7 @@ use App\Helpers\TimeStampHelper;
 
 class UserService
 {
-    public static function create($request,$agency)
+    public static function create($request, $agency)
     {
         $user = new User();
         $user->first_name = $request->first_name;
@@ -100,6 +100,8 @@ class UserService
             throw UnAuthorizedException::accountBlocked();
         } else if ($user->status == User::STATUS['suspend']) {
             throw UserException::suspended();
+        } else if ($user->status == User::STATUS['pending']) {
+            throw UnAuthorizedException::unVerifiedAccount();
         }
         return $user;
     }
@@ -138,7 +140,7 @@ class UserService
         if ($excludeAuth) {
             $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->where('id', '!=', Auth::user()->id)->first();
         } else {
-            $user =  User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->first();
+            $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->first();
         }
 
         if ($user) {
@@ -156,10 +158,10 @@ class UserService
         $days = TimeStampHelper::countAccurateDays($token->expires_at, TimeStampHelper::now());
 
         if ($days > 1) {
-            return ;
+            return;
         }
 
-        $token->expires_at =  TimeStampHelper::getDate(10, $token->expires_at);
+        $token->expires_at = TimeStampHelper::getDate(10, $token->expires_at);
         $token->save();
     }
 }

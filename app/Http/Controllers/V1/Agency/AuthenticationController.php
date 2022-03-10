@@ -16,6 +16,9 @@ use App\Http\Resources\V1\Agency\AuthenticationResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @group Agency Authentication
+ */
 class AuthenticationController extends Controller
 {
     /**

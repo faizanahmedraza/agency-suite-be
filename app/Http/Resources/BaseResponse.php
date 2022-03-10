@@ -2,12 +2,14 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Role;
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
 use App\Exceptions\V1\FailureException;
 
 use Illuminate\Pagination\LengthAwarePaginator;
 
 use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class BaseResponse extends Resource
 {
@@ -28,7 +30,7 @@ class BaseResponse extends Resource
                 'message' => $error->getMessage()
             ];
         } else {
-            $this->error = (object) array();
+            $this->error = (object)array();
         }
 
         parent::__construct($data);
@@ -37,7 +39,7 @@ class BaseResponse extends Resource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -53,7 +55,7 @@ class BaseResponse extends Resource
     public function wrapped($response = [])
     {
         if ($this->resource instanceof LengthAwarePaginator) {
-            $response['pagination'] =  [
+            $response['pagination'] = [
                 'total' => $this->total(),
                 'count' => $this->count(),
                 'per_page' => $this->perPage(),
@@ -61,9 +63,11 @@ class BaseResponse extends Resource
                 'total_pages' => $this->lastPage()
             ];
         }
-      
+
         if (\Auth::check() && $this->success) {
-            $response['permissions'] = \Auth::user()->getAllPermissions()->pluck('name');
+            $response['permissions'] = \Auth::user()->getAllPermissions()->pluck('name')->map(function ($item) {
+                return removePrefix($item, Role::ROLES_PREFIXES['agency']);
+            });
         }
 
         return [
