@@ -34,6 +34,16 @@ if (!function_exists('getStatus')) {
     }
 }
 
+if (!function_exists('removePrefix')) {
+    function removePrefix($value,$prefix)
+    {
+        if (substr($value, 0, strlen($prefix)) == $prefix) {
+            return substr($value, strlen($prefix));
+        }
+        return $value;
+    }
+}
+
 function getIds($value)
 {
     return array_map('intval', explode(',', $value));

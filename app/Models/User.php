@@ -9,12 +9,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Lumen\Auth\Authorizable;
 use Laravel\Passport\HasApiTokens;
+use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
-    use Authenticatable, Authorizable, HasApiTokens, HasRoles, SoftDeletes;
+    use Authenticatable, Authorizable, HasApiTokens, HasRoles, HasPermissions, SoftDeletes;
 
     const STATUS = ['pending' => 0, 'active' => 1, 'blocked' => 2, 'spammer' => 3, 'suspend' => 4, 'review' => 5];
 

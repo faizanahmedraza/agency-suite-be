@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\V1\Admin;
 
+use App\Models\Role;
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
 
 class RoleResource extends Resource
@@ -16,7 +17,7 @@ class RoleResource extends Resource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
+            'name' => removePrefix($this->name,Role::ROLES_PREFIXES['admin']),
             'created_at' => $this->created_at,
             'permissions' =>  PermissionResource::collection($this->whenLoaded('permissions'))
         ];

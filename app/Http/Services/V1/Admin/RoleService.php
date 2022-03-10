@@ -75,11 +75,12 @@ class RoleService
 
     public static function update($request, Role $role): Role
     {
-        if (str_contains('admin_', $request->name) && strpos('admin_', $request->name) === 0) {
+        if ($role->name == trim($request->name)) {
             $role->name = $request->name;
         } else {
             $role->name = Role::ROLES_PREFIXES['admin'] . $request->name;
         }
+
         $role->save();
 
         // re asssign new permissions

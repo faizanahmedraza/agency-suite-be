@@ -29,7 +29,7 @@ class UserRequest extends RequestAbstract
         $all = parent::validationData();
         //Convert request value to lowercase
         if (isset($all['email'])) {
-            $all['email'] = strtolower(preg_replace('/\s+/', '', $all['email']));
+            $all['email'] = preg_replace('/\s+/', '', strtolower(trim($all['email'])));
         }
         return $all;
     }

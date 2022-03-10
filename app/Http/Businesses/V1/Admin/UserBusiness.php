@@ -32,7 +32,7 @@ class UserBusiness
         // assign direct permission to user
         PermissionService::assignDirectPermissionToUser($request, $user);
 
-        return $user;
+        return $user->load(['roles', 'roles.permissions', 'permissions']);
     }
 
     public static function get($request)

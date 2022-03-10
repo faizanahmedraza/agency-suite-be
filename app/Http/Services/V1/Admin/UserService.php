@@ -49,7 +49,7 @@ class UserService
             throw FailureException::serverError();
         }
 
-        return $user->load('permissions');
+        return $user;
     }
 
     /**
@@ -72,7 +72,7 @@ class UserService
 
     public static function get(Request $request)
     {
-        $users = User::query()->with(['roles', 'permissions']);
+        $users = User::query()->with(['roles', 'roles.permissions', 'permissions']);
 
         if ($request->has("users")) {
             $ids = \getIds($request->users);
@@ -179,6 +179,8 @@ class UserService
             throw UnAuthorizedException::accountBlocked();
         } else if ($user->status == User::STATUS['suspend']) {
             throw UserException::suspended();
+        } else if ($user->status == User::STATUS['pending']) {
+            throw UnAuthorizedException::unVerifiedAccount();
         }
         return $user;
     }
@@ -188,7 +190,7 @@ class UserService
         return User::whereIn('id', $ids)->update(["status" => User::STATUS['blocked']]);
     }
 
-    public static function first(int $id, $with = ['roles', 'permissions']): User
+    public static function first(int $id, $with = ['roles','roles.permissions', 'permissions']): User
     {
         $user = User::with($with)
             ->where('id', $id)
@@ -233,7 +235,7 @@ class UserService
         }
     }
 
-    public static function changePassword(User $user,$request)
+    public static function changePassword(User $user, $request)
     {
         self::checkStatus($user);
 
