@@ -66,7 +66,7 @@ class BaseResponse extends Resource
 
         if (\Auth::check() && $this->success) {
             $response['permissions'] = \Auth::user()->getAllPermissions()->pluck('name')->map(function ($item) {
-                return removePrefix($item, Role::ROLES_PREFIXES['agency']);
+                return removePrefix($item, Role::ROLES_PREFIXES['agency'] ?? null);
             });
         }
 
