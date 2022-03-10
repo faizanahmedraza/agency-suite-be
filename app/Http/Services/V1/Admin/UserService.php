@@ -39,7 +39,7 @@ class UserService
         $user->last_name = $request->last_name;
         $user->password = Hash::make($password);
         $user->username = clean($request->email);
-        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['pending'];
+        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['active'];
         $user->created_by = Auth::id();
         $user->save();
 
@@ -205,9 +205,11 @@ class UserService
 
     public static function update($request, User $user)
     {
+        $oldStatus = $user->status;
+
         $user->first_name = trim($request->first_name);
         $user->last_name = trim($request->last_name);
-        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['pending'];
+        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : $oldStatus;
         $user->updated_by = Auth::id();
         $user->save();
 
