@@ -9,7 +9,7 @@ class Role extends SpatieRole
 {
     use UserAuditTrait;
 
-    const ROLES_PREFIXES = ['admin'=>'admin_', 'agency','agency_'];
+    const ROLES_PREFIXES = ['admin'=>'admin_','agency' => 'agency_'];
 
     const RESTRICT_ROLES = ['Super Admin','Agency','Customer'];
 
