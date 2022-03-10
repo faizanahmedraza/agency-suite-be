@@ -82,4 +82,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
             $query->whereNotIn('name', $names);
         });
     }
+
+    public function scopeOwnUsers($query)
+    {
+        return $query->where('created_by',Auth::id());
+    }
 }
