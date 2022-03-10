@@ -70,6 +70,25 @@
                                                 </ul>
                     
                     <ul id="tocify-header-2" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authentication">
+                    <a href="#authentication">Authentication</a>
+                </li>
+                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="authentication-POSTv1-admins-auth-login">
+                        <a href="#authentication-POSTv1-admins-auth-login">Access Token Or Login
+This function is useful for login, to return access token for users.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="authentication-POSTv1-admins-change-password">
+                        <a href="#authentication-POSTv1-admins-change-password">Change Password
+change password request of user</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="authentication-DELETEv1-admins-logout">
+                        <a href="#authentication-DELETEv1-admins-logout">Logout
+Hit api and session get out</a>
+                    </li>
+                                                    </ul>
+                            </ul>
+                    <ul id="tocify-header-3" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="endpoints">
                     <a href="#endpoints">Endpoints</a>
                 </li>
@@ -108,25 +127,6 @@ change password request of user</a>
                     </li>
                                                     </ul>
                             </ul>
-                    <ul id="tocify-header-3" class="tocify-header">
-                <li class="tocify-item level-1" data-unique="authentication">
-                    <a href="#authentication">Authentication</a>
-                </li>
-                                    <ul id="tocify-subheader-authentication" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="authentication-POSTv1-admins-change-password">
-                        <a href="#authentication-POSTv1-admins-change-password">Change Password
-change password request of user</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="authentication-DELETEv1-admins-logout">
-                        <a href="#authentication-DELETEv1-admins-logout">Logout
-Hit api and session get out</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="authentication-POSTv1-admins-auth-login">
-                        <a href="#authentication-POSTv1-admins-auth-login">Access Token Or Login
-This function is useful for login, to return access token for users.</a>
-                    </li>
-                                                    </ul>
-                            </ul>
                     <ul id="tocify-header-4" class="tocify-header">
                 <li class="tocify-item level-1" data-unique="permissions-api">
                     <a href="#permissions-api">Permissions Api</a>
@@ -143,10 +143,7 @@ This api return the collection of all Permissions created.</a>
                     <a href="#roles-management">Roles Management</a>
                 </li>
                                     <ul id="tocify-subheader-roles-management" class="tocify-subheader">
-                                                    <li class="tocify-item level-2" data-unique="roles-management-DELETEv1-admins-roles--id-">
-                        <a href="#roles-management-DELETEv1-admins-roles--id-">Delete Role</a>
-                    </li>
-                                    <li class="tocify-item level-2" data-unique="roles-management-GETv1-admins-roles">
+                                                    <li class="tocify-item level-2" data-unique="roles-management-GETv1-admins-roles">
                         <a href="#roles-management-GETv1-admins-roles">Roles List
 This api return the collection of all Roles created.</a>
                     </li>
@@ -161,6 +158,9 @@ This api is for create new Role</a>
                                     <li class="tocify-item level-2" data-unique="roles-management-PUTv1-admins-roles--id-">
                         <a href="#roles-management-PUTv1-admins-roles--id-">Role Update
 This api update the details of requested Role.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="roles-management-DELETEv1-admins-roles--id-">
+                        <a href="#roles-management-DELETEv1-admins-roles--id-">Delete Role</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -202,7 +202,7 @@ This api create new user.</a>
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: March 9 2022</li>
+        <li>Last updated: March 10 2022</li>
     </ul>
 </div>
 
@@ -220,6 +220,439 @@ You can switch the language used with the tabs at the top right (or from the nav
 
         <h1 id="authenticating-requests">Authenticating requests</h1>
 <p>This API is not authenticated.</p>
+
+        <h1 id="authentication">Authentication</h1>
+
+    
+
+            <h2 id="authentication-POSTv1-admins-auth-login">Access Token Or Login
+This function is useful for login, to return access token for users.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTv1-admins-auth-login">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agency.test/v1/admins/auth/login" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"email\": \"admin@my-app.com\",
+    \"password\": \"Abc*123*\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/admins/auth/login"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "admin@my-app.com",
+    "password": "Abc*123*"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-admins-auth-login">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;authentication&quot;: {
+            &quot;access_token&quot;: &quot;eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA&quot;,
+            &quot;token_type&quot;: &quot;Bearer&quot;,
+            &quot;expiry&quot;: &quot;2022-03-18 09:47:07&quot;,
+            &quot;user&quot;: {
+                &quot;id&quot;: 1,
+                &quot;first_name&quot;: &quot;Faizan Ahmed&quot;,
+                &quot;last_name&quot;: &quot;Raza&quot;,
+                &quot;email&quot;: &quot;faizan.raza@saasfa.com&quot;,
+                &quot;last_logged_in&quot;: null,
+                &quot;status&quot;: &quot;pending&quot;,
+                &quot;roles&quot;: [
+                    {
+                        &quot;id&quot;: 1,
+                        &quot;name&quot;: &quot;Super Admin&quot;,
+                        &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
+                        &quot;permissions&quot;: [
+                            {
+                                &quot;id&quot;: 1,
+                                &quot;name&quot;: &quot;access_all&quot;,
+                                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
+                            }
+                        ]
+                    }
+                ],
+                &quot;permissions&quot;: []
+            }
+        }
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-admins-auth-login" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-admins-auth-login"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-admins-auth-login"></code></pre>
+</span>
+<span id="execution-error-POSTv1-admins-auth-login" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-admins-auth-login"></code></pre>
+</span>
+<form id="form-POSTv1-admins-auth-login" data-method="POST"
+      data-path="v1/admins/auth/login"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-admins-auth-login', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-admins-auth-login"
+                    onclick="tryItOut('POSTv1-admins-auth-login');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-admins-auth-login"
+                    onclick="cancelTryOut('POSTv1-admins-auth-login');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-admins-auth-login" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/admins/auth/login</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>email</code></b>&nbsp;&nbsp;<small>email</small>  &nbsp;
+                <input type="text"
+               name="email"
+               data-endpoint="POSTv1-admins-auth-login"
+               value="admin@my-app.com"
+               data-component="body" hidden>
+    <br>
+<p>The username of user.</p>
+        </p>
+                <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTv1-admins-auth-login"
+               value="Abc*123*"
+               data-component="body" hidden>
+    <br>
+<p>The password of user.</p>
+        </p>
+        </form>
+
+            <h2 id="authentication-POSTv1-admins-change-password">Change Password
+change password request of user</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTv1-admins-change-password">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://agency.test/v1/admins/change-password" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"password\": \"abcd1234\",
+    \"password_confirmation\": \"abcd1234\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/admins/change-password"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "password": "abcd1234",
+    "password_confirmation": "abcd1234"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-admins-change-password">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: null,
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-admins-change-password" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-admins-change-password"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-admins-change-password"></code></pre>
+</span>
+<span id="execution-error-POSTv1-admins-change-password" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-admins-change-password"></code></pre>
+</span>
+<form id="form-POSTv1-admins-change-password" data-method="POST"
+      data-path="v1/admins/change-password"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-admins-change-password', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-admins-change-password"
+                    onclick="tryItOut('POSTv1-admins-change-password');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-admins-change-password"
+                    onclick="cancelTryOut('POSTv1-admins-change-password');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-admins-change-password" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/admins/change-password</code></b>
+        </p>
+                <p>
+            <label id="auth-POSTv1-admins-change-password" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="POSTv1-admins-change-password"
+                                                                data-component="header"></label>
+        </p>
+                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>password</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+                <input type="text"
+               name="password"
+               data-endpoint="POSTv1-admins-change-password"
+               value="abcd1234"
+               data-component="body" hidden>
+    <br>
+<p>abcd1234</p>
+        </p>
+                <p>
+            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
+                <input type="text"
+               name="password_confirmation"
+               data-endpoint="POSTv1-admins-change-password"
+               value="abcd1234"
+               data-component="body" hidden>
+    <br>
+<p>abcd1234</p>
+        </p>
+        </form>
+
+            <h2 id="authentication-DELETEv1-admins-logout">Logout
+Hit api and session get out</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-DELETEv1-admins-logout">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://agency.test/v1/admins/logout" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/admins/logout"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEv1-admins-logout">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: null,
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEv1-admins-logout" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEv1-admins-logout"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEv1-admins-logout"></code></pre>
+</span>
+<span id="execution-error-DELETEv1-admins-logout" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEv1-admins-logout"></code></pre>
+</span>
+<form id="form-DELETEv1-admins-logout" data-method="DELETE"
+      data-path="v1/admins/logout"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEv1-admins-logout', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEv1-admins-logout"
+                    onclick="tryItOut('DELETEv1-admins-logout');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEv1-admins-logout"
+                    onclick="cancelTryOut('DELETEv1-admins-logout');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEv1-admins-logout" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>v1/admins/logout</code></b>
+        </p>
+                <p>
+            <label id="auth-DELETEv1-admins-logout" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="DELETEv1-admins-logout"
+                                                                data-component="header"></label>
+        </p>
+                </form>
 
         <h1 id="endpoints">Endpoints</h1>
 
@@ -1351,439 +1784,6 @@ fetch(url, {
         </p>
         </form>
 
-        <h1 id="authentication">Authentication</h1>
-
-    
-
-            <h2 id="authentication-POSTv1-admins-change-password">Change Password
-change password request of user</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-POSTv1-admins-change-password">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://agency.test/v1/admins/change-password" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"password\": \"abcd1234\",
-    \"password_confirmation\": \"abcd1234\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/change-password"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "password": "abcd1234",
-    "password_confirmation": "abcd1234"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTv1-admins-change-password">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: null,
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTv1-admins-change-password" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTv1-admins-change-password"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTv1-admins-change-password"></code></pre>
-</span>
-<span id="execution-error-POSTv1-admins-change-password" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTv1-admins-change-password"></code></pre>
-</span>
-<form id="form-POSTv1-admins-change-password" data-method="POST"
-      data-path="v1/admins/change-password"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTv1-admins-change-password', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTv1-admins-change-password"
-                    onclick="tryItOut('POSTv1-admins-change-password');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTv1-admins-change-password"
-                    onclick="cancelTryOut('POSTv1-admins-change-password');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTv1-admins-change-password" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>v1/admins/change-password</code></b>
-        </p>
-                <p>
-            <label id="auth-POSTv1-admins-change-password" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="POSTv1-admins-change-password"
-                                                                data-component="header"></label>
-        </p>
-                        <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>password</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
-                <input type="text"
-               name="password"
-               data-endpoint="POSTv1-admins-change-password"
-               value="abcd1234"
-               data-component="body" hidden>
-    <br>
-<p>abcd1234</p>
-        </p>
-                <p>
-            <b><code>password_confirmation</code></b>&nbsp;&nbsp;<small>String</small>  &nbsp;
-                <input type="text"
-               name="password_confirmation"
-               data-endpoint="POSTv1-admins-change-password"
-               value="abcd1234"
-               data-component="body" hidden>
-    <br>
-<p>abcd1234</p>
-        </p>
-        </form>
-
-            <h2 id="authentication-DELETEv1-admins-logout">Logout
-Hit api and session get out</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-DELETEv1-admins-logout">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/admins/logout" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/logout"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEv1-admins-logout">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: null,
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEv1-admins-logout" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEv1-admins-logout"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEv1-admins-logout"></code></pre>
-</span>
-<span id="execution-error-DELETEv1-admins-logout" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEv1-admins-logout"></code></pre>
-</span>
-<form id="form-DELETEv1-admins-logout" data-method="DELETE"
-      data-path="v1/admins/logout"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEv1-admins-logout', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEv1-admins-logout"
-                    onclick="tryItOut('DELETEv1-admins-logout');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEv1-admins-logout"
-                    onclick="cancelTryOut('DELETEv1-admins-logout');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEv1-admins-logout" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>v1/admins/logout</code></b>
-        </p>
-                <p>
-            <label id="auth-DELETEv1-admins-logout" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="DELETEv1-admins-logout"
-                                                                data-component="header"></label>
-        </p>
-                </form>
-
-            <h2 id="authentication-POSTv1-admins-auth-login">Access Token Or Login
-This function is useful for login, to return access token for users.</h2>
-
-<p>
-</p>
-
-
-
-<span id="example-requests-POSTv1-admins-auth-login">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request POST \
-    "http://agency.test/v1/admins/auth/login" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json" \
-    --data "{
-    \"email\": \"admin@my-app.com\",
-    \"password\": \"Abc*123*\"
-}"
-</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/auth/login"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-let body = {
-    "email": "admin@my-app.com",
-    "password": "Abc*123*"
-};
-
-fetch(url, {
-    method: "POST",
-    headers,
-    body: JSON.stringify(body),
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-POSTv1-admins-auth-login">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: {
-        &quot;authentication&quot;: {
-            &quot;access_token&quot;: &quot;eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA&quot;,
-            &quot;token_type&quot;: &quot;Bearer&quot;,
-            &quot;expiry&quot;: &quot;2022-03-18 09:47:07&quot;,
-            &quot;user&quot;: {
-                &quot;id&quot;: 1,
-                &quot;first_name&quot;: &quot;Faizan Ahmed&quot;,
-                &quot;last_name&quot;: &quot;Raza&quot;,
-                &quot;email&quot;: &quot;faizan.raza@saasfa.com&quot;,
-                &quot;last_logged_in&quot;: null,
-                &quot;status&quot;: &quot;pending&quot;,
-                &quot;roles&quot;: [
-                    {
-                        &quot;id&quot;: 1,
-                        &quot;name&quot;: &quot;Super Admin&quot;,
-                        &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;,
-                        &quot;permissions&quot;: [
-                            {
-                                &quot;id&quot;: 1,
-                                &quot;name&quot;: &quot;access_all&quot;,
-                                &quot;created_at&quot;: &quot;2022-03-04T14:54:53.000000Z&quot;
-                            }
-                        ]
-                    }
-                ],
-                &quot;permissions&quot;: []
-            }
-        }
-    },
-    &quot;error&quot;: {},
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-POSTv1-admins-auth-login" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-POSTv1-admins-auth-login"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTv1-admins-auth-login"></code></pre>
-</span>
-<span id="execution-error-POSTv1-admins-auth-login" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTv1-admins-auth-login"></code></pre>
-</span>
-<form id="form-POSTv1-admins-auth-login" data-method="POST"
-      data-path="v1/admins/auth/login"
-      data-authed="0"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTv1-admins-auth-login', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTv1-admins-auth-login"
-                    onclick="tryItOut('POSTv1-admins-auth-login');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTv1-admins-auth-login"
-                    onclick="cancelTryOut('POSTv1-admins-auth-login');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTv1-admins-auth-login" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-black">POST</small>
-            <b><code>v1/admins/auth/login</code></b>
-        </p>
-                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
-        <p>
-            <b><code>email</code></b>&nbsp;&nbsp;<small>email</small>  &nbsp;
-                <input type="text"
-               name="email"
-               data-endpoint="POSTv1-admins-auth-login"
-               value="admin@my-app.com"
-               data-component="body" hidden>
-    <br>
-<p>The username of user.</p>
-        </p>
-                <p>
-            <b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="password"
-               data-endpoint="POSTv1-admins-auth-login"
-               value="Abc*123*"
-               data-component="body" hidden>
-    <br>
-<p>The password of user.</p>
-        </p>
-        </form>
-
         <h1 id="permissions-api">Permissions Api</h1>
 
     
@@ -1963,141 +1963,6 @@ fetch(url, {
 
     
 
-            <h2 id="roles-management-DELETEv1-admins-roles--id-">Delete Role</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-<p>Delete Requested Record</p>
-
-<span id="example-requests-DELETEv1-admins-roles--id-">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/admins/roles/iste" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/iste"
-);
-
-const headers = {
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "DELETE",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-DELETEv1-admins-roles--id-">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: null,
-    &quot;success&quot;: true,
-    &quot;message&quot;: &quot;Operation successful&quot;
-}</code>
- </pre>
-            <blockquote>
-            <p>Example response (422):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json">{
-    &quot;data&quot;: [],
-    &quot;error&quot;: {
-        &quot;code&quot;: &quot;Error code&quot;,
-        &quot;message&quot;: &quot;Error Message.&quot;
-    },
-    &quot;success&quot;: false,
-    &quot;message&quot;: &quot;Operation failed&quot;
-}</code>
- </pre>
-    </span>
-<span id="execution-results-DELETEv1-admins-roles--id-" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-DELETEv1-admins-roles--id-"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-DELETEv1-admins-roles--id-"></code></pre>
-</span>
-<span id="execution-error-DELETEv1-admins-roles--id-" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-DELETEv1-admins-roles--id-"></code></pre>
-</span>
-<form id="form-DELETEv1-admins-roles--id-" data-method="DELETE"
-      data-path="v1/admins/roles/{id}"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('DELETEv1-admins-roles--id-', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-DELETEv1-admins-roles--id-"
-                    onclick="tryItOut('DELETEv1-admins-roles--id-');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-DELETEv1-admins-roles--id-"
-                    onclick="cancelTryOut('DELETEv1-admins-roles--id-');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-DELETEv1-admins-roles--id-" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-red">DELETE</small>
-            <b><code>v1/admins/roles/{id}</code></b>
-        </p>
-                <p>
-            <label id="auth-DELETEv1-admins-roles--id-" hidden>Authorization header:
-                <b><code>Bearer </code></b><input type="text"
-                                                                name="Authorization"
-                                                                data-prefix="Bearer "
-                                                                data-endpoint="DELETEv1-admins-roles--id-"
-                                                                data-component="header"></label>
-        </p>
-                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
-                    <p>
-                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="id"
-               data-endpoint="DELETEv1-admins-roles--id-"
-               value="iste"
-               data-component="url" hidden>
-    <br>
-
-            </p>
-                    <p>
-                <b><code>role_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
-                <input type="text"
-               name="role_id"
-               data-endpoint="DELETEv1-admins-roles--id-"
-               value="est"
-               data-component="url" hidden>
-    <br>
-<p>Integer</p>
-            </p>
-                    </form>
-
             <h2 id="roles-management-GETv1-admins-roles">Roles List
 This api return the collection of all Roles created.</h2>
 
@@ -2262,7 +2127,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-admins-roles"
-               value="laboriosam"
+               value="fugit"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -2313,7 +2178,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-admins-roles"
-               value="12"
+               value="5"
                data-component="url" hidden>
     <br>
 
@@ -2323,7 +2188,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-admins-roles"
-               value="9"
+               value="10"
                data-component="url" hidden>
     <br>
 
@@ -2345,14 +2210,14 @@ This api show the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/roles/earum" \
+    --get "http://agency.test/v1/admins/roles/quaerat" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/earum"
+    "http://agency.test/v1/admins/roles/quaerat"
 );
 
 const headers = {
@@ -2465,7 +2330,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-admins-roles--id-"
-               value="earum"
+               value="quaerat"
                data-component="url" hidden>
     <br>
 
@@ -2475,7 +2340,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="GETv1-admins-roles--id-"
-               value="earum"
+               value="pariatur"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -2501,9 +2366,9 @@ This api is for create new Role</h2>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"sit\",
+    \"name\": \"voluptas\",
     \"permissions\": [
-        \"alias\"
+        \"temporibus\"
     ]
 }"
 </code></pre></div>
@@ -2520,9 +2385,9 @@ const headers = {
 };
 
 let body = {
-    "name": "sit",
+    "name": "voluptas",
     "permissions": [
-        "alias"
+        "temporibus"
     ]
 };
 
@@ -2632,7 +2497,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTv1-admins-roles"
-               value="sit"
+               value="voluptas"
                data-component="body" hidden>
     <br>
 
@@ -2667,13 +2532,13 @@ This api update the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/admins/roles/temporibus" \
+    "http://agency.test/v1/admins/roles/nihil" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
     \"name\": \"est\",
     \"permissions\": [
-        \"non\"
+        \"rerum\"
     ]
 }"
 </code></pre></div>
@@ -2681,7 +2546,7 @@ This api update the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/temporibus"
+    "http://agency.test/v1/admins/roles/nihil"
 );
 
 const headers = {
@@ -2692,7 +2557,7 @@ const headers = {
 let body = {
     "name": "est",
     "permissions": [
-        "non"
+        "rerum"
     ]
 };
 
@@ -2802,7 +2667,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-roles--id-"
-               value="temporibus"
+               value="nihil"
                data-component="url" hidden>
     <br>
 
@@ -2812,7 +2677,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="PUTv1-admins-roles--id-"
-               value="tempora"
+               value="aspernatur"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -2842,6 +2707,141 @@ fetch(url, {
 <p>optional</p>
         </p>
         </form>
+
+            <h2 id="roles-management-DELETEv1-admins-roles--id-">Delete Role</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+<p>Delete Requested Record</p>
+
+<span id="example-requests-DELETEv1-admins-roles--id-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request DELETE \
+    "http://agency.test/v1/admins/roles/omnis" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/admins/roles/omnis"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-DELETEv1-admins-roles--id-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: null,
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (422):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: [],
+    &quot;error&quot;: {
+        &quot;code&quot;: &quot;Error code&quot;,
+        &quot;message&quot;: &quot;Error Message.&quot;
+    },
+    &quot;success&quot;: false,
+    &quot;message&quot;: &quot;Operation failed&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-DELETEv1-admins-roles--id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEv1-admins-roles--id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEv1-admins-roles--id-"></code></pre>
+</span>
+<span id="execution-error-DELETEv1-admins-roles--id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEv1-admins-roles--id-"></code></pre>
+</span>
+<form id="form-DELETEv1-admins-roles--id-" data-method="DELETE"
+      data-path="v1/admins/roles/{id}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('DELETEv1-admins-roles--id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEv1-admins-roles--id-"
+                    onclick="tryItOut('DELETEv1-admins-roles--id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEv1-admins-roles--id-"
+                    onclick="cancelTryOut('DELETEv1-admins-roles--id-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEv1-admins-roles--id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>v1/admins/roles/{id}</code></b>
+        </p>
+                <p>
+            <label id="auth-DELETEv1-admins-roles--id-" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="DELETEv1-admins-roles--id-"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="id"
+               data-endpoint="DELETEv1-admins-roles--id-"
+               value="omnis"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>role_id</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+                <input type="text"
+               name="role_id"
+               data-endpoint="DELETEv1-admins-roles--id-"
+               value="accusamus"
+               data-component="url" hidden>
+    <br>
+<p>Integer</p>
+            </p>
+                    </form>
 
         <h1 id="user-management">User Management</h1>
 
@@ -3154,7 +3154,7 @@ fetch(url, {
                 <input type="text"
                name="users"
                data-endpoint="GETv1-admins-users"
-               value="omnis"
+               value="sit"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -3164,7 +3164,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="GETv1-admins-users"
-               value="quod"
+               value="assumenda"
                data-component="url" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -3174,7 +3174,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="GETv1-admins-users"
-               value="animi"
+               value="architecto"
                data-component="url" hidden>
     <br>
 
@@ -3184,7 +3184,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="GETv1-admins-users"
-               value="illum"
+               value="omnis"
                data-component="url" hidden>
     <br>
 
@@ -3194,7 +3194,7 @@ fetch(url, {
                 <input type="text"
                name="full_name"
                data-endpoint="GETv1-admins-users"
-               value="dolorum"
+               value="at"
                data-component="url" hidden>
     <br>
 
@@ -3204,7 +3204,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-admins-users"
-               value="beatae"
+               value="assumenda"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -3214,7 +3214,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-admins-users"
-               value="unde"
+               value="reprehenderit"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -3265,7 +3265,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-admins-users"
-               value="10"
+               value="13"
                data-component="url" hidden>
     <br>
 
@@ -3275,7 +3275,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-admins-users"
-               value="19"
+               value="5"
                data-component="url" hidden>
     <br>
 
@@ -3285,7 +3285,7 @@ fetch(url, {
                 <input type="text"
                name="roles"
                data-endpoint="GETv1-admins-users"
-               value="reprehenderit"
+               value="quia"
                data-component="url" hidden>
     <br>
 <p>ex: admin,test</p>
@@ -3307,14 +3307,14 @@ This api show the uer details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/users/ab" \
+    --get "http://agency.test/v1/admins/users/aut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/ab"
+    "http://agency.test/v1/admins/users/aut"
 );
 
 const headers = {
@@ -3446,7 +3446,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-admins-users--id-"
-               value="ab"
+               value="aut"
                data-component="url" hidden>
     <br>
 
@@ -3456,7 +3456,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="GETv1-admins-users--id-"
-               value="eveniet"
+               value="voluptatibus"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -3482,17 +3482,17 @@ This api create new user.</h2>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"officia\",
-    \"last_name\": \"quo\",
-    \"email\": \"harum\",
-    \"password\": \"culpa\",
-    \"password_confirmation\": \"molestiae\",
-    \"status\": \"voluptatem\",
+    \"first_name\": \"fugit\",
+    \"last_name\": \"omnis\",
+    \"email\": \"nulla\",
+    \"password\": \"deserunt\",
+    \"password_confirmation\": \"aut\",
+    \"status\": \"est\",
     \"roles\": [
-        \"sed\"
+        \"voluptatibus\"
     ],
     \"permissions\": [
-        \"rerum\"
+        \"possimus\"
     ]
 }"
 </code></pre></div>
@@ -3509,17 +3509,17 @@ const headers = {
 };
 
 let body = {
-    "first_name": "officia",
-    "last_name": "quo",
-    "email": "harum",
-    "password": "culpa",
-    "password_confirmation": "molestiae",
-    "status": "voluptatem",
+    "first_name": "fugit",
+    "last_name": "omnis",
+    "email": "nulla",
+    "password": "deserunt",
+    "password_confirmation": "aut",
+    "status": "est",
     "roles": [
-        "sed"
+        "voluptatibus"
     ],
     "permissions": [
-        "rerum"
+        "possimus"
     ]
 };
 
@@ -3648,7 +3648,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTv1-admins-users"
-               value="officia"
+               value="fugit"
                data-component="body" hidden>
     <br>
 
@@ -3658,7 +3658,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTv1-admins-users"
-               value="quo"
+               value="omnis"
                data-component="body" hidden>
     <br>
 
@@ -3668,7 +3668,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTv1-admins-users"
-               value="harum"
+               value="nulla"
                data-component="body" hidden>
     <br>
 
@@ -3678,7 +3678,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTv1-admins-users"
-               value="culpa"
+               value="deserunt"
                data-component="body" hidden>
     <br>
 
@@ -3688,17 +3688,17 @@ fetch(url, {
                 <input type="text"
                name="password_confirmation"
                data-endpoint="POSTv1-admins-users"
-               value="molestiae"
+               value="aut"
                data-component="body" hidden>
     <br>
 
         </p>
                 <p>
-            <b><code>status</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+            <b><code>status</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
                 <input type="text"
                name="status"
                data-endpoint="POSTv1-admins-users"
-               value="voluptatem"
+               value="est"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -3745,18 +3745,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/admins/users/iure" \
+    "http://agency.test/v1/admins/users/repudiandae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"occaecati\",
-    \"last_name\": \"eligendi\",
-    \"status\": \"qui\",
+    \"first_name\": \"fuga\",
+    \"last_name\": \"molestiae\",
+    \"status\": \"ea\",
     \"roles\": [
-        \"omnis\"
+        \"velit\"
     ],
     \"permissions\": [
-        \"sint\"
+        \"odit\"
     ]
 }"
 </code></pre></div>
@@ -3764,7 +3764,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/iure"
+    "http://agency.test/v1/admins/users/repudiandae"
 );
 
 const headers = {
@@ -3773,14 +3773,14 @@ const headers = {
 };
 
 let body = {
-    "first_name": "occaecati",
-    "last_name": "eligendi",
-    "status": "qui",
+    "first_name": "fuga",
+    "last_name": "molestiae",
+    "status": "ea",
     "roles": [
-        "omnis"
+        "velit"
     ],
     "permissions": [
-        "sint"
+        "odit"
     ]
 };
 
@@ -3909,7 +3909,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-users--id-"
-               value="iure"
+               value="repudiandae"
                data-component="url" hidden>
     <br>
 
@@ -3919,7 +3919,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="PUTv1-admins-users--id-"
-               value="itaque"
+               value="nesciunt"
                data-component="url" hidden>
     <br>
 <p>Integer required</p>
@@ -3930,7 +3930,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-admins-users--id-"
-               value="occaecati"
+               value="fuga"
                data-component="body" hidden>
     <br>
 
@@ -3940,7 +3940,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-admins-users--id-"
-               value="eligendi"
+               value="molestiae"
                data-component="body" hidden>
     <br>
 
@@ -3950,7 +3950,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="PUTv1-admins-users--id-"
-               value="qui"
+               value="ea"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -3997,14 +3997,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/admins/users/qui" \
+    "http://agency.test/v1/admins/users/perspiciatis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/qui"
+    "http://agency.test/v1/admins/users/perspiciatis"
 );
 
 const headers = {
@@ -4101,7 +4101,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-admins-users--id-"
-               value="qui"
+               value="perspiciatis"
                data-component="url" hidden>
     <br>
 
@@ -4111,7 +4111,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="DELETEv1-admins-users--id-"
-               value="doloremque"
+               value="ea"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -4132,18 +4132,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://agency.test/v1/admins/users/change-any-password/14" \
+    "http://agency.test/v1/admins/users/change-any-password/18" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"password\": \"eaque\"
+    \"password\": \"dolores\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/change-any-password/14"
+    "http://agency.test/v1/admins/users/change-any-password/18"
 );
 
 const headers = {
@@ -4152,7 +4152,7 @@ const headers = {
 };
 
 let body = {
-    "password": "eaque"
+    "password": "dolores"
 };
 
 fetch(url, {
@@ -4230,7 +4230,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="POSTv1-admins-users-change-any-password--id-"
-               value="14"
+               value="18"
                data-component="url" hidden>
     <br>
 
@@ -4241,7 +4241,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTv1-admins-users-change-any-password--id-"
-               value="eaque"
+               value="dolores"
                data-component="body" hidden>
     <br>
 <p>ex: 123456</p>

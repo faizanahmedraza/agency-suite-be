@@ -51,7 +51,7 @@ class UserRequest extends RequestAbstract
             'roles.*' => 'required|string|in:' . implode(',', Role::userRoles()->pluck('name')->toArray()),
             'permissions' => 'nullable|array',
             'permissions.*' => 'nullable|string',
-            'status' => 'required|string|' . Rule::in(array_keys(User::STATUS)),
+            'status' => ($this->isMethod('put')) ? 'required|string|' . Rule::in(array_keys(User::STATUS)) : 'sometimes|nullable|string|' . Rule::in(array_keys(User::STATUS)),
         ];
     }
 

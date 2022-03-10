@@ -42,7 +42,7 @@ class UserController extends Controller
      * @bodyParam  email email required
      * @bodyParam  password String
      * @bodyParam  password_confirmation String
-     * @bodyParam  status string required ex: pending,active,blocked
+     * @bodyParam  status string ex: pending,active,blocked
      * @bodyParam  roles Array required
      * @bodyParam  permissions Array
      *

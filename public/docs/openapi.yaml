@@ -7,6 +7,309 @@ servers:
   -
     url: 'http://agency.test'
 paths:
+  /v1/admins/auth/login:
+    post:
+      summary: "Access Token Or Login\nThis function is useful for login, to return access token for users."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    authentication:
+                      access_token: eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA
+                      token_type: Bearer
+                      expiry: '2022-03-18 09:47:07'
+                      user:
+                        id: 1
+                        first_name: 'Faizan Ahmed'
+                        last_name: Raza
+                        email: faizan.raza@saasfa.com
+                        last_logged_in: null
+                        status: pending
+                        roles:
+                          -
+                            id: 1
+                            name: 'Super Admin'
+                            created_at: '2022-03-04T14:54:53.000000Z'
+                            permissions:
+                              -
+                                id: 1
+                                name: access_all
+                                created_at: '2022-03-04T14:54:53.000000Z'
+                        permissions: []
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      authentication:
+                        access_token: eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA
+                        token_type: Bearer
+                        expiry: '2022-03-18 09:47:07'
+                        user:
+                          id: 1
+                          first_name: 'Faizan Ahmed'
+                          last_name: Raza
+                          email: faizan.raza@saasfa.com
+                          last_logged_in: null
+                          status: pending
+                          roles:
+                            -
+                              id: 1
+                              name: 'Super Admin'
+                              created_at: '2022-03-04T14:54:53.000000Z'
+                              permissions:
+                                -
+                                  id: 1
+                                  name: access_all
+                                  created_at: '2022-03-04T14:54:53.000000Z'
+                          permissions: []
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: email
+                  description: 'The username of user.'
+                  example: admin@my-app.com
+                password:
+                  type: string
+                  description: 'The password of user.'
+                  example: 'Abc*123*'
+              required:
+                - email
+                - password
+      security: []
+  /v1/admins/change-password:
+    post:
+      summary: "Change Password\nchange password request of user"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+                password_confirmation:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+              required:
+                - password
+                - password_confirmation
+  /v1/admins/logout:
+    delete:
+      summary: "Logout\nHit api and session get out"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - Authentication
   /v1/agencies/auth/register:
     post:
       summary: "Register Agency\nThis api is useful for register new Agency and return access token with agency and user information"
@@ -759,309 +1062,6 @@ paths:
               required:
                 - password
                 - password_confirmation
-  /v1/admins/change-password:
-    post:
-      summary: "Change Password\nchange password request of user"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - Authentication
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-                password_confirmation:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-              required:
-                - password
-                - password_confirmation
-  /v1/admins/logout:
-    delete:
-      summary: "Logout\nHit api and session get out"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - Authentication
-  /v1/admins/auth/login:
-    post:
-      summary: "Access Token Or Login\nThis function is useful for login, to return access token for users."
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    authentication:
-                      access_token: eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA
-                      token_type: Bearer
-                      expiry: '2022-03-18 09:47:07'
-                      user:
-                        id: 1
-                        first_name: 'Faizan Ahmed'
-                        last_name: Raza
-                        email: faizan.raza@saasfa.com
-                        last_logged_in: null
-                        status: pending
-                        roles:
-                          -
-                            id: 1
-                            name: 'Super Admin'
-                            created_at: '2022-03-04T14:54:53.000000Z'
-                            permissions:
-                              -
-                                id: 1
-                                name: access_all
-                                created_at: '2022-03-04T14:54:53.000000Z'
-                        permissions: []
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      authentication:
-                        access_token: eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA
-                        token_type: Bearer
-                        expiry: '2022-03-18 09:47:07'
-                        user:
-                          id: 1
-                          first_name: 'Faizan Ahmed'
-                          last_name: Raza
-                          email: faizan.raza@saasfa.com
-                          last_logged_in: null
-                          status: pending
-                          roles:
-                            -
-                              id: 1
-                              name: 'Super Admin'
-                              created_at: '2022-03-04T14:54:53.000000Z'
-                              permissions:
-                                -
-                                  id: 1
-                                  name: access_all
-                                  created_at: '2022-03-04T14:54:53.000000Z'
-                          permissions: []
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - Authentication
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: email
-                  description: 'The username of user.'
-                  example: admin@my-app.com
-                password:
-                  type: string
-                  description: 'The password of user.'
-                  example: 'Abc*123*'
-              required:
-                - email
-                - password
-      security: []
   /v1/admins/permissions:
     get:
       summary: "Permission List\nThis api return the collection of all Permissions created."
@@ -1218,307 +1218,6 @@ paths:
                     example: 'Operation successful'
       tags:
         - 'Permissions Api'
-  '/v1/admins/roles/{id}':
-    delete:
-      summary: 'Delete Role'
-      description: 'Delete Requested Record'
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Roles Management'
-    get:
-      summary: "Role Details\nThis api show the details of requested Role."
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    role:
-                      id: 1
-                      name: 'Super Admin'
-                      created_at: '2022-03-04T14:54:53.000000Z'
-                      permissions:
-                        -
-                          id: 1
-                          name: access_all
-                          created_at: '2022-03-04T14:54:53.000000Z'
-                    permissions:
-                      - access_all
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      role:
-                        id: 1
-                        name: 'Super Admin'
-                        created_at: '2022-03-04T14:54:53.000000Z'
-                        permissions:
-                          -
-                            id: 1
-                            name: access_all
-                            created_at: '2022-03-04T14:54:53.000000Z'
-                      permissions:
-                        - access_all
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Roles Management'
-    put:
-      summary: "Role Update\nThis api update the details of requested Role."
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    role:
-                      id: 1
-                      name: 'Super Admin'
-                      created_at: '2022-03-04T14:54:53.000000Z'
-                      permissions:
-                        -
-                          id: 1
-                          name: access_all
-                          created_at: '2022-03-04T14:54:53.000000Z'
-                    permissions:
-                      - access_all
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      role:
-                        id: 1
-                        name: 'Super Admin'
-                        created_at: '2022-03-04T14:54:53.000000Z'
-                        permissions:
-                          -
-                            id: 1
-                            name: access_all
-                            created_at: '2022-03-04T14:54:53.000000Z'
-                      permissions:
-                        - access_all
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Roles Management'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: String
-                  description: ''
-                  example: est
-                permissions:
-                  type: array
-                  description: optional
-                  example:
-                    - non
-                  items:
-                    type: string
-              required:
-                - name
-    parameters:
-      -
-        in: path
-        name: id
-        description: ''
-        example: iste
-        required: true
-        schema:
-          type: string
-      -
-        in: path
-        name: role_id
-        description: Integer
-        example: est
-        required: true
-        schema:
-          type: string
   /v1/admins/roles:
     get:
       summary: "Roles List\nThis api return the collection of all Roles created."
@@ -1764,12 +1463,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: sit
+                  example: voluptas
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - alias
+                    - temporibus
                   items:
                     type: string
               required:
@@ -1788,7 +1487,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: laboriosam
+            value: fugit
       -
         in: path
         name: from_date
@@ -1830,7 +1529,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: true
+            value: false
       -
         in: path
         name: page_limit
@@ -1844,7 +1543,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 12
+            value: 5
       -
         in: path
         name: page
@@ -1858,7 +1557,308 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 9
+            value: 10
+  '/v1/admins/roles/{id}':
+    get:
+      summary: "Role Details\nThis api show the details of requested Role."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    role:
+                      id: 1
+                      name: 'Super Admin'
+                      created_at: '2022-03-04T14:54:53.000000Z'
+                      permissions:
+                        -
+                          id: 1
+                          name: access_all
+                          created_at: '2022-03-04T14:54:53.000000Z'
+                    permissions:
+                      - access_all
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      role:
+                        id: 1
+                        name: 'Super Admin'
+                        created_at: '2022-03-04T14:54:53.000000Z'
+                        permissions:
+                          -
+                            id: 1
+                            name: access_all
+                            created_at: '2022-03-04T14:54:53.000000Z'
+                      permissions:
+                        - access_all
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Roles Management'
+    put:
+      summary: "Role Update\nThis api update the details of requested Role."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    role:
+                      id: 1
+                      name: 'Super Admin'
+                      created_at: '2022-03-04T14:54:53.000000Z'
+                      permissions:
+                        -
+                          id: 1
+                          name: access_all
+                          created_at: '2022-03-04T14:54:53.000000Z'
+                    permissions:
+                      - access_all
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      role:
+                        id: 1
+                        name: 'Super Admin'
+                        created_at: '2022-03-04T14:54:53.000000Z'
+                        permissions:
+                          -
+                            id: 1
+                            name: access_all
+                            created_at: '2022-03-04T14:54:53.000000Z'
+                      permissions:
+                        - access_all
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Roles Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: String
+                  description: ''
+                  example: est
+                permissions:
+                  type: array
+                  description: optional
+                  example:
+                    - rerum
+                  items:
+                    type: string
+              required:
+                - name
+    delete:
+      summary: 'Delete Role'
+      description: 'Delete Requested Record'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Roles Management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: ''
+        example: quaerat
+        required: true
+        schema:
+          type: string
+      -
+        in: path
+        name: role_id
+        description: Integer
+        example: pariatur
+        required: true
+        schema:
+          type: string
   /v1/admins/users:
     get:
       summary: "Get Users\nThis will return logged in user profile."
@@ -2380,46 +2380,45 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: officia
+                  example: fugit
                 last_name:
                   type: String
                   description: ''
-                  example: quo
+                  example: omnis
                 email:
                   type: email
                   description: ''
-                  example: harum
+                  example: nulla
                 password:
                   type: String
                   description: ''
-                  example: culpa
+                  example: deserunt
                 password_confirmation:
                   type: String
                   description: ''
-                  example: molestiae
+                  example: aut
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: voluptatem
+                  example: est
                 roles:
                   type: array
                   description: ''
                   example:
-                    - sed
+                    - voluptatibus
                   items:
                     type: string
                 permissions:
                   type: array
                   description: ''
                   example:
-                    - rerum
+                    - possimus
                   items:
                     type: string
               required:
                 - first_name
                 - last_name
                 - email
-                - status
                 - roles
     parameters:
       -
@@ -2435,7 +2434,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: omnis
+            value: sit
       -
         in: path
         name: email
@@ -2449,7 +2448,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: quod
+            value: assumenda
       -
         in: path
         name: first_name
@@ -2463,7 +2462,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: animi
+            value: architecto
       -
         in: path
         name: last_name
@@ -2477,7 +2476,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: illum
+            value: omnis
       -
         in: path
         name: full_name
@@ -2491,7 +2490,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dolorum
+            value: at
       -
         in: path
         name: status
@@ -2505,7 +2504,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: beatae
+            value: assumenda
       -
         in: path
         name: order_by
@@ -2519,7 +2518,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: unde
+            value: reprehenderit
       -
         in: path
         name: from_date
@@ -2575,7 +2574,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 10
+            value: 13
       -
         in: path
         name: page
@@ -2589,7 +2588,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 19
+            value: 5
       -
         in: path
         name: roles
@@ -2603,7 +2602,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: reprehenderit
+            value: quia
   '/v1/admins/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -2877,27 +2876,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: occaecati
+                  example: fuga
                 last_name:
                   type: String
                   description: ''
-                  example: eligendi
+                  example: molestiae
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: qui
+                  example: ea
                 roles:
                   type: array
                   description: ''
                   example:
-                    - omnis
+                    - velit
                   items:
                     type: string
                 permissions:
                   type: array
                   description: ''
                   example:
-                    - sint
+                    - odit
                   items:
                     type: string
               required:
@@ -2983,7 +2982,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: ab
+        example: aut
         required: true
         schema:
           type: string
@@ -2991,7 +2990,7 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: eveniet
+        example: voluptatibus
         required: true
         schema:
           type: string
@@ -3051,7 +3050,7 @@ paths:
                 password:
                   type: string
                   description: 'ex: 123456'
-                  example: eaque
+                  example: dolores
               required:
                 - password
     parameters:
@@ -3059,16 +3058,16 @@ paths:
         in: path
         name: id
         description: ''
-        example: 14
+        example: 18
         required: true
         schema:
           type: integer
 tags:
   -
-    name: Endpoints
+    name: Authentication
     description: ''
   -
-    name: Authentication
+    name: Endpoints
     description: ''
   -
     name: 'Permissions Api'

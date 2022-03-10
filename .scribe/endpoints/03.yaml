@@ -3,47 +3,6 @@ description: ''
 endpoints:
   -
     httpMethods:
-      - DELETE
-    uri: 'v1/admins/roles/{id}'
-    metadata:
-      title: 'Delete Role'
-      description: 'Delete Requested Record'
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: iste
-        type: string
-        custom: []
-      role_id:
-        name: role_id
-        description: Integer
-        required: true
-        example: est
-        type: string
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-    responseFields: []
-  -
-    httpMethods:
       - GET
     uri: v1/admins/roles
     metadata:
@@ -61,7 +20,7 @@ endpoints:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: laboriosam
+        example: fugit
         type: string
         custom: []
       from_date:
@@ -82,21 +41,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 12
+        example: 5
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 9
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -127,14 +86,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: earum
+        example: quaerat
         type: string
         custom: []
       role_id:
         name: role_id
         description: Integer
         required: true
-        example: earum
+        example: pariatur
         type: string
         custom: []
     queryParameters: []
@@ -172,7 +131,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: sit
+        example: voluptas
         type: String
         custom: []
       permissions:
@@ -180,7 +139,7 @@ endpoints:
         description: optional
         required: false
         example:
-          - alias
+          - temporibus
         type: 'string[]'
         custom: []
     responses:
@@ -214,14 +173,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: temporibus
+        example: nihil
         type: string
         custom: []
       role_id:
         name: role_id
         description: Integer
         required: true
-        example: tempora
+        example: aspernatur
         type: string
         custom: []
     queryParameters: []
@@ -238,13 +197,54 @@ endpoints:
         description: optional
         required: false
         example:
-          - non
+          - rerum
         type: 'string[]'
         custom: []
     responses:
       -
         status: 200
         content: "{\r\n  \"data\": {\r\n    \"role\": {\r\n      \"id\": 1,\r\n      \"name\": \"Super Admin\",\r\n      \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"id\": 1,\r\n          \"name\": \"access_all\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ]\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'v1/admins/roles/{id}'
+    metadata:
+      title: 'Delete Role'
+      description: 'Delete Requested Record'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: omnis
+        type: string
+        custom: []
+      role_id:
+        name: role_id
+        description: Integer
+        required: true
+        example: accusamus
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
         headers: []
         description: '200'
       -
