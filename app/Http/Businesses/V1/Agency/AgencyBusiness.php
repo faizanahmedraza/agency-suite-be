@@ -21,6 +21,9 @@ class AgencyBusiness
         // create agency owner
         $user = (new UserService())->create($request,$agency, true);
 
+        //assign Role
+        (new UserService())->assignUserRole($request,$user);
+
         //auth services
         $authService = new AuthenticationService();
         $auth['token'] = $authService->createToken($user);
