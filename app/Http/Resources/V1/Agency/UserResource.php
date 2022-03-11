@@ -21,7 +21,9 @@ class UserResource extends Resource
             'last_name' => $this->last_name,
             'email' => ($this->email) ? $this->email : $this->username,
             'last_logged_in' => $this->last_login,
-            'status' => array_search($this->status, User::STATUS)
+            'status' => array_search($this->status, User::STATUS),
+            'roles' =>  RoleResource::collection($this->whenLoaded('roles')),
+            'permissions' =>  PermissionResource::collection($this->whenLoaded('permissions'))
         ];
     }
 }

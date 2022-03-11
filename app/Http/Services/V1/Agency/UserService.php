@@ -33,8 +33,6 @@ class UserService
             throw FailureException::serverError();
         }
 
-        self::assignUserRole($request, $user);
-
         return $user->fresh();
     }
 
