@@ -39,7 +39,7 @@ class UserService
         $user->last_name = $request->last_name;
         $user->password = Hash::make($password);
         $user->username = clean($request->email);
-        $user->status = User::STATUS['active'];
+        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['active'];
         $user->created_by = Auth::id();
         $user->save();
 
