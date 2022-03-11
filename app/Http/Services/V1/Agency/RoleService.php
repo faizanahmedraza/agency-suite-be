@@ -22,9 +22,7 @@ class RoleService
     {
         $roles = Role::query()->with('permissions');
 
-        $prefix = Role::ROLES_PREFIXES['agency'];
-
-        $roles->userRoles()->userPermissions($prefix);
+        $roles->agencyRoles();
 
         if ($request->has('from_date')) {
             $from = TimeStampHelper::formateDate($request->from_date);
@@ -64,7 +62,7 @@ class RoleService
 
     public static function first($id)
     {
-        $role = Role::with('permissions')->userRoles()->find($id);
+        $role = Role::with('permissions')->agencyRoles()->find($id);
 
         if (!$role) {
             throw ModelException::dataNotFound();
@@ -78,7 +76,7 @@ class RoleService
         if ($role->name == trim($request->name)) {
             $role->name = $request->name;
         } else {
-            $role->name = Role::ROLES_PREFIXES['admin'] . $request->name;
+            $role->name = Role::ROLES_PREFIXES['agency'] . $request->name;
         }
 
         $role->save();
@@ -96,19 +94,6 @@ class RoleService
     public static function destroy(Role $role): void
     {
         $role->delete();
-    }
-
-    public static function avoidRoleFirst(int $id)
-    {
-        $role = Role::where('id', $id)
-            ->whereNotIn('name', self::restrictRoles())
-            ->first();
-
-        if (!$role) {
-            throw ModelException::dataNotFound();
-        }
-
-        return $role;
     }
 
     public static function assignRolesToUser($request, User $user)

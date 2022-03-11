@@ -17,7 +17,7 @@ use App\Helpers\TimeStampHelper;
 
 class UserService
 {
-    public static function create($request, $agency)
+    public static function create($request, $agency, $owner = false)
     {
         $user = new User();
         $user->first_name = $request->first_name;
@@ -26,7 +26,7 @@ class UserService
         $user->username = strtolower($request->email);
         $user->status = User::STATUS['pending'];
         $user->agency_id = $agency->id;
-        $user->owner = true;
+        $user->owner = $owner ? $owner : null;
         $user->save();
 
         if (!$user) {

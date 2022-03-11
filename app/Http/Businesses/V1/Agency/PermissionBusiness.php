@@ -2,7 +2,7 @@
 
 namespace App\Http\Businesses\V1\Agency;
 
-use App\Http\Services\V1\Admin\PermissionService;
+use App\Http\Services\V1\Agency\PermissionService;
 
 class PermissionBusiness
 {

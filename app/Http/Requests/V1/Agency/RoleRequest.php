@@ -55,7 +55,7 @@ class RoleRequest extends RequestAbstract
     public function messages(): array
     {
         return [
-            //
+            'permissions.*.in' => 'The selected permissions are invalid.',
         ];
     }
 }

@@ -19,7 +19,7 @@ class AgencyBusiness
         $agency = (new AgencyService())->create($request);
 
         // create agency owner
-        $user = (new UserService())->create($request,$agency);
+        $user = (new UserService())->create($request,$agency, true);
 
         //auth services
         $authService = new AuthenticationService();

@@ -5,9 +5,9 @@ namespace App\Http\Businesses\V1\Agency;
 use App\Exceptions\V1\UnAuthorizedException;
 use App\Exceptions\V1\UserException;
 use App\Http\Services\V1\Admin\PermissionService;
-use App\Http\Services\V1\Admin\RoleService;
-use App\Http\Services\V1\Admin\UserService;
-use Illuminate\Http\Request;
+use App\Http\Services\V1\Agency\AgencyService;
+use App\Http\Services\V1\Agency\RoleService;
+use App\Http\Services\V1\Agency\UserService;
 use Illuminate\Support\Facades\Auth;
 
 class UserBusiness
@@ -23,8 +23,8 @@ class UserBusiness
 
     public static function store($request)
     {
-        // create user
-        $user = UserService::store($request);
+        // create agency users
+        $user = (new UserService())->create($request,Auth::user()->agency);
 
         //assigning roles to the user
         RoleService::assignRolesToUser($request, $user);

@@ -23,13 +23,13 @@ class RoleBusiness
 
     public static function update($request, int $id)
     {
-        $role = RoleService::avoidRoleFirst($id);
+        $role = RoleService::first($id);
         return RoleService::update($request, $role);
     }
 
     public static function destroy(int $id): void
     {
-        $role = RoleService::avoidRoleFirst($id);
+        $role = RoleService::first($id);
         RoleService::destroy($role);
     }
 }

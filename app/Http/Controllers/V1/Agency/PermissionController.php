@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers\V1\Agency;
 
-use App\Http\Businesses\V1\Admin\PermissionBusiness;
+use App\Http\Businesses\V1\Agency\PermissionBusiness;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\V1\Admin\PermissionsResponse;
+use App\Http\Resources\V1\Agency\PermissionsResponse;
 
 /**
  * @group Agency Permissions Api
  * @authenticated
  */
-
 class PermissionController extends Controller
 {
     private $module;
