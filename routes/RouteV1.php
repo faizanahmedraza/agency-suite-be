@@ -57,6 +57,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             $router->delete('/logout', 'AuthenticationController@logout');
             $router->post('/verification', 'AuthenticationController@generateToken');
             $router->put('/change-password', 'AuthenticationController@changePassword');
+            $router->put('/agency-profile', 'AuthenticationController@changePassword');
 
             //User Management apis
             $router->group(['prefix' => 'users'], function () use ($router) {

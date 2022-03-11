@@ -25,7 +25,7 @@ class UserService
         $user->last_name = $request->last_name;
         $user->password = Hash::make($request->password);
         $user->username = strtolower($request->email);
-        $user->status = User::STATUS['pending'];
+        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['active'];
         $user->agency_id = $agency->id;
         $user->owner = $owner ? $owner : null;
         $user->created_by = Auth::id();
