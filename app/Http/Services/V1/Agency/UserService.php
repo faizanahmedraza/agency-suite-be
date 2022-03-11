@@ -8,6 +8,7 @@ use App\Exceptions\V1\FailureException;
 use App\Exceptions\V1\UnAuthorizedException;
 use App\Exceptions\V1\UserException;
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
@@ -34,6 +35,84 @@ class UserService
         }
 
         return $user->fresh();
+    }
+
+    public static function get(Request $request)
+    {
+        $users = User::query()->with(['roles', 'roles.permissions', 'permissions']);
+
+        if ($request->has("users")) {
+            $ids = \getIds($request->users);
+            $users->orWhereIn('id', $ids);
+        }
+
+        if ($request->has('full_name')) {
+            $fullName = User::clean($request->full_name);
+
+            if (is_array($fullName)) {
+                $users->whereRaw("CONCAT(TRIM(LOWER(first_name)) , ' ' ,TRIM(LOWER(last_name))) in ('" . join("', '", $fullName) . "')");
+            } else {
+                $users->whereRaw("CONCAT(LOWER(first_name) , ' ' ,LOWER(last_name)) = ? ", $fullName);
+            }
+        }
+
+        if ($request->has('first_name')) {
+            $fname = User::clean($request->first_name);
+
+            if (is_array($fname)) {
+                $users->whereRaw("TRIM(LOWER(first_name)) in  ('" . join("', '", $fname) . "')");
+            } else {
+                $users->whereRaw('TRIM(LOWER(first_name)) = ?', $fname);
+            }
+        }
+
+        if ($request->has('last_name')) {
+            $lname = User::clean($request->last_name);
+
+            if (is_array($lname)) {
+                $users->whereRaw("TRIM(LOWER(last_name)) in  ('" . join("', '", $lname) . "')");
+            } else {
+                $users->whereRaw('TRIM(LOWER(last_name)) = ?', $lname);
+            }
+        }
+
+        if ($request->has('email')) {
+            $email = User::clean($request->email);
+
+            if (is_array($email)) {
+                $users->whereRaw("TRIM(LOWER(username)) in  ('" . join("', '", $email) . "')");
+            } else {
+                $users->whereRaw('TRIM(LOWER(username)) = ?', $email);
+            }
+        }
+
+        if ($request->has('status')) {
+            $arrStatus = getStatus(User::STATUS, clean($request->status));
+            $users->wherein('status', $arrStatus);
+        }
+
+        if ($request->query('order_by')) {
+            $users->orderBy('id', $request->get('order_by'));
+        } else {
+            $users->orderBy('id', 'desc');
+        }
+
+        if ($request->has('from_date')) {
+            $from = TimeStampHelper::formateDate($request->from_date);
+            $users->whereDate('created_at', '>=', $from);
+        }
+
+        if ($request->has('to_date')) {
+            $to = TimeStampHelper::formateDate($request->to_date);
+            $users->whereDate('created_at', '<=', $to);
+        }
+
+        $users->ownUsers();
+
+        return ($request->filled('pagination') && $request->get('pagination') == 'false')
+            ? $users->get()
+            : $users->paginate(\pageLimit($request));
+
     }
 
     public static function assignUserRole($request, $user)
