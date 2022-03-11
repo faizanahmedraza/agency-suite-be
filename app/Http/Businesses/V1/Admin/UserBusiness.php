@@ -7,6 +7,7 @@ use App\Exceptions\V1\UserException;
 use App\Http\Services\V1\Admin\PermissionService;
 use App\Http\Services\V1\Admin\RoleService;
 use App\Http\Services\V1\Admin\UserService;
+use App\Models\Role;
 use Illuminate\Support\Facades\Auth;
 
 class UserBusiness
@@ -22,6 +23,12 @@ class UserBusiness
 
     public static function store($request)
     {
+        if ($request->has('roles')) {
+            $roles = array_map('self::addPrefix', $request->roles);
+            unset($request['roles']);
+            $request->merge(['roles' => $roles]);
+        }
+
         // create user
         $user = UserService::store($request);
 
@@ -42,6 +49,12 @@ class UserBusiness
 
     public static function update($request, int $id)
     {
+        if ($request->has('roles')) {
+            $roles = array_map('self::addPrefix', $request->roles);
+            unset($request['roles']);
+            $request->merge(['roles' => $roles]);
+        }
+
         $user = UserService::first($id);
 
         if (!empty($user->agency_id)) {
@@ -97,5 +110,10 @@ class UserBusiness
             throw UnAuthorizedException::InvalidCredentials();
         }
         UserService::changePassword($user,$request);
+    }
+
+    public static function addPrefix($v)
+    {
+        return Role::ROLES_PREFIXES['admin'] . $v;
     }
 }
