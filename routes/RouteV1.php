@@ -23,6 +23,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->post('/', 'UserController@store');
                 $router->put('/{id}', 'UserController@update');
                 $router->delete('/{id}', 'UserController@destroy');
+                $router->put('/change-status/{id}', 'UserController@toggleStatus');
                 $router->post('/change-any-password/{id}', 'UserController@changeAnyPassword');
             });
 
@@ -64,6 +65,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->post('/', 'UserController@store');
                 $router->put('/{id}', 'UserController@update');
                 $router->delete('/{id}', 'UserController@destroy');
+                $router->put('/change-status/{id}', 'UserController@toggleStatus');
                 $router->post('/change-any-password/{id}', 'UserController@changeAnyPassword');
             });
 
