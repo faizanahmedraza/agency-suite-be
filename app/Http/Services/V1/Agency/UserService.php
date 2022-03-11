@@ -28,6 +28,7 @@ class UserService
         $user->status = User::STATUS['pending'];
         $user->agency_id = $agency->id;
         $user->owner = $owner ? $owner : null;
+        $user->created_by = Auth::id();
         $user->save();
 
         if (!$user) {
@@ -183,14 +184,26 @@ class UserService
         return $user;
     }
 
+    public static function toggleStatus(User $user)
+    {
+        ($user->status == User::STATUS['pending'] || $user->status == User::STATUS['active']) ? $user->status = User::STATUS['blocked'] : $user->status = User::STATUS['active'];
+        $user->save();
+
+        if ($user->status = User::STATUS['blocked']) {
+            AuthenticationService::revokeUserToken($user);
+        }
+    }
+
     public static function blockUsers(array $ids)
     {
         return User::whereIn('id', $ids)->update(["status" => User::STATUS['blocked']]);
     }
 
-    public static function first($with = [], $where = null): User
+    public static function first(int $id, $with = ['roles','roles.permissions', 'permissions']): User
     {
-        $user = User::with($with)->where($where)->first();
+        $user = User::with($with)
+            ->where('id', $id)
+            ->first();
 
         if (!$user) {
             throw ModelException::dataNotFound();
@@ -203,6 +216,7 @@ class UserService
     {
         $user->first_name = trim($request->first_name);
         $user->last_name = trim($request->last_name);
+        $user->updated_by = Auth::id();
         $user->save();
 
         if (!$user) {

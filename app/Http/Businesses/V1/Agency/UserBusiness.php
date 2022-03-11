@@ -16,7 +16,7 @@ class UserBusiness
     public static function first(int $id)
     {
         $user = UserService::first($id);
-        if (!empty($user->agency_id)) {
+        if (empty($user->agency_id)) {
             throw UnAuthorizedException::InvalidCredentials();
         }
         return $user;
@@ -58,7 +58,7 @@ class UserBusiness
 
         $user = UserService::first($id);
 
-        if (!empty($user->agency_id)) {
+        if (empty($user->agency_id)) {
             throw UnAuthorizedException::InvalidCredentials();
         }
 
@@ -69,7 +69,7 @@ class UserBusiness
 
         PermissionService::assignDirectPermissionToUser($request, $user);
 
-        return $user;
+        return $user->load(['roles', 'roles.permissions', 'permissions']);
     }
 
     public static function destroy(int $id): void
@@ -77,7 +77,7 @@ class UserBusiness
         // delete user
         $user = UserService::first($id);
 
-        if (!empty($user->agency_id)) {
+        if (empty($user->agency_id)) {
             throw UnAuthorizedException::InvalidCredentials();
         }
 
@@ -93,7 +93,7 @@ class UserBusiness
         // get user
         $user = UserService::first($id);
 
-        if (!empty($user->agency_id)) {
+        if (empty($user->agency_id)) {
             throw UnAuthorizedException::InvalidCredentials();
         }
 
@@ -101,13 +101,13 @@ class UserBusiness
             throw UserException::authUserRestrictStatus();
         }
         // status toggle
-        return UserService::toggleStatus($user);
+        UserService::toggleStatus($user);
     }
 
     public static function changeAnyPassword($request, $id)
     {
         $user = UserService::first($id);
-        if (!empty($user->agency_id)) {
+        if (empty($user->agency_id)) {
             throw UnAuthorizedException::InvalidCredentials();
         }
         UserService::changePassword($user, $request);

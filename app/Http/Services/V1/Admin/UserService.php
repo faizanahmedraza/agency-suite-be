@@ -227,7 +227,7 @@ class UserService
         $user->delete();
     }
 
-    public static function toggleStatus(User $user): User
+    public static function toggleStatus(User $user)
     {
         ($user->status == User::STATUS['pending'] || $user->status == User::STATUS['active']) ? $user->status = User::STATUS['blocked'] : $user->status = User::STATUS['active'];
         $user->save();
