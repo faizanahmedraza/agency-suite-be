@@ -87,7 +87,7 @@ class UserBusiness
             throw UserException::authUserRestrictStatus();
         }
         // status toggle
-        return  UserService::toggleStatus($user);
+        UserService::toggleStatus($user);
     }
 
     public  static  function changeAnyPassword($request,$id)
