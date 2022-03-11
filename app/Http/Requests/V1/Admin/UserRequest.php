@@ -32,6 +32,9 @@ class UserRequest extends RequestAbstract
         if (isset($all['email'])) {
             $all['email'] = preg_replace('/\s+/', '', strtolower(trim($all['email'])));
         }
+        if (isset($all['roles'])) {
+            $all['roles'] = array_map(array($this, 'addPrefix'), $all['roles']);
+        }
         return $all;
     }
 
@@ -51,9 +54,14 @@ class UserRequest extends RequestAbstract
             'roles' => 'required|array',
             'roles.*' => 'required|string|in:' . implode(',', Role::adminRoles()->pluck('name')->toArray()),
             'permissions' => 'sometimes|nullable|array',
-            'permissions.*' => 'sometimes|nullable|in:' . implode(',', Permission::where('name','not like',Role::ROLES_PREFIXES['agency'].'%')->pluck('id')->toArray()),
+            'permissions.*' => 'sometimes|nullable|in:' . implode(',', Permission::where('name', 'not like', Role::ROLES_PREFIXES['agency'] . '%')->pluck('id')->toArray()),
             'status' => ($this->isMethod('put')) ? 'required|string|' . Rule::in(array_keys(User::STATUS)) : 'sometimes|nullable|string|' . Rule::in(array_keys(User::STATUS)),
         ];
+    }
+
+    public function addPrefix($v)
+    {
+        return Role::ROLES_PREFIXES['admin'].$v;
     }
 
     /**
@@ -65,6 +73,7 @@ class UserRequest extends RequestAbstract
     {
         return [
             'roles.*.in' => 'The selected roles are invalid.',
+            'permissions.*.in' => 'The selected permissions are invalid.',
         ];
     }
 }
