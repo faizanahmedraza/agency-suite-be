@@ -216,6 +216,7 @@ class UserService
     {
         $user->first_name = trim($request->first_name);
         $user->last_name = trim($request->last_name);
+        $user->status = User::STATUS[$request->status];
         $user->updated_by = Auth::id();
         $user->save();
 

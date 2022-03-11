@@ -205,11 +205,9 @@ class UserService
 
     public static function update($request, User $user)
     {
-        $oldStatus = $user->status;
-
         $user->first_name = trim($request->first_name);
         $user->last_name = trim($request->last_name);
-        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : $oldStatus;
+        $user->status = User::STATUS[$request->status];
         $user->updated_by = Auth::id();
         $user->save();
 
