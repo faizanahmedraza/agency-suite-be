@@ -203,6 +203,7 @@ class UserService
     {
         $user = User::with($with)
             ->where('id', $id)
+            ->ownUsers()
             ->first();
 
         if (!$user) {
