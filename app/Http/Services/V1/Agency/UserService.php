@@ -25,7 +25,9 @@ class UserService
         $user->last_name = $request->last_name;
         $user->password = Hash::make($request->password);
         $user->username = strtolower($request->email);
-        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['active'];
+        if (!$owner) {
+            $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['active'];
+        }
         $user->agency_id = $agency->id;
         $user->owner = $owner ? $owner : null;
         $user->created_by = Auth::id();
@@ -199,7 +201,7 @@ class UserService
         return User::whereIn('id', $ids)->update(["status" => User::STATUS['blocked']]);
     }
 
-    public static function first(int $id, $with = ['roles','roles.permissions', 'permissions']): User
+    public static function first(int $id, $with = ['roles', 'roles.permissions', 'permissions']): User
     {
         $user = User::with($with)
             ->where('id', $id)
