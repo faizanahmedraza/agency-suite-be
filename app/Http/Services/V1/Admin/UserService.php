@@ -194,6 +194,7 @@ class UserService
     {
         $user = User::with($with)
             ->where('id', $id)
+            ->avoidRole(Role::RESTRICT_ROLES)
             ->first();
 
         if (!$user) {
