@@ -18,7 +18,7 @@ class UnAuthorizedException extends BaseException
 
     public static function accountBlocked(): self
     {
-        return new self("Your account has been blocked. Please contact with administrator.s", '401');
+        return new self("Your account has been blocked. Please contact with administrator.", '401');
     }
 
     public static function unVerifiedAccount(): self
