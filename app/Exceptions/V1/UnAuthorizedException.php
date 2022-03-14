@@ -23,7 +23,7 @@ class UnAuthorizedException extends BaseException
 
     public static function unVerifiedAccount(): self
     {
-        return new self("Verify your account by clicking on the link sent to your email address.", '401');
+        return new self("Your account has been pending. Please contact with administrator.", '401');
     }
 
     public static function review(): self
