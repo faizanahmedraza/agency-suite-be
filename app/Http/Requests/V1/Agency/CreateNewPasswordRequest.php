@@ -17,6 +17,20 @@ class CreateNewPasswordRequest extends RequestAbstract
     }
 
     /**
+     * Get data to be validated from the request.
+     *
+     * @return array
+     */
+    protected function validationData(): array
+    {
+        $all = parent::validationData();
+        if (isset($all['password'])) {
+            $all['password'] = preg_replace('/\s+/', '', $all['password']);
+        }
+        return $all;
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array

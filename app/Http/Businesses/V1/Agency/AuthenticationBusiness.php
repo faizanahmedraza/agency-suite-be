@@ -22,7 +22,11 @@ class AuthenticationBusiness
         // get user data from database
         $user = (new UserService())->getUserByUsername($request->email);
 
-        if (empty($user->agency_id)) {
+        if (!empty(app('agency')) && !empty($user->agency_id)) {
+            if ($user->agency_id != (app('agency')->id)) {
+                throw UnAuthorizedException::InvalidCredentials();
+            }
+        } else {
             throw UnAuthorizedException::InvalidCredentials();
         }
 
@@ -73,7 +77,7 @@ class AuthenticationBusiness
         // Delete Token
         $authService->deleteToken($userVerification);
 
-        $agency = Agency::where('id',$user->agency_id)->first();
+        $agency = Agency::where('id', $user->agency_id)->first();
         return $agency->domains->first();
     }
 
