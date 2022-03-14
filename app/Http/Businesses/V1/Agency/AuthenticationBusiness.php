@@ -23,7 +23,7 @@ class AuthenticationBusiness
         $user = (new UserService())->getUserByUsername($request->email);
 
         if (!empty(app('agency')) && !empty($user->agency_id)) {
-            if ($user->agency_id != (app('agency')->id)) {
+            if ($user->agency_id != (app('agency'))->id) {
                 throw UnAuthorizedException::InvalidCredentials();
             }
         } else {
