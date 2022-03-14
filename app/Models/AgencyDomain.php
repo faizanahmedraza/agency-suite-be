@@ -24,6 +24,11 @@ class AgencyDomain extends Model
         return Str::slug(strtolower(preg_replace('/[^A-Za-z0-9. -]/s', '', $data)));
     }
 
+    public static function cleanAgencyName($domain)
+    {
+        return preg_replace("/[^a-zA-Z0-9]+/", "", $domain);
+    }
+
     public static function domainsFilter($query, $domain)
     {
         return $query->where('domain', $domain)->first();

@@ -22,7 +22,7 @@ class AgencyBusiness
         // create agency
         $agency = (new AgencyService())->create($request);
 
-        $newDomain = AgencyDomain::cleanDomain($request->input('agency_name'));
+        $newDomain = AgencyDomain::cleanAgencyName($request->input('agency_name'));
 
         $domain = AgencyDomain::domainsFilter($agency->domains, $newDomain);
 
@@ -33,7 +33,7 @@ class AgencyBusiness
         //Agency Domain
         $domainData = new \stdClass;
         $domainData->agency_id = $agency->id;
-        $domainData->domain = $newDomain;
+        $domainData->domain = $newDomain.(env('AGENCY_BASE_DOMAIN','agency.test'));
         $domainData->type = AgencyDomain::TYPE['staging'];
         $domainData->default = true;
 
