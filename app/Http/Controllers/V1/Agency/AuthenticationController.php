@@ -29,8 +29,8 @@ class AuthenticationController extends Controller
      * @bodyParam email email required The username of user. Example: admin@my-app.com
      * @bodyParam password string required The password of user. Example: Abc*123*
      *
-     * @headerParam Client-ID string required
-     * @headerParam Client-Secret string required
+     * @header Client-ID string required
+     * @header Client-Secret string required
      *
      * @responseFile 200 responses/V1/Agency/AuthenticationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -53,8 +53,8 @@ class AuthenticationController extends Controller
      * @bodyParam password_confirmation string required User password Example: abcd1234
      * @bodyParam agency_name string required Example: abc-agency, abc agency
      *
-     * @headerParam Client-ID string required
-     * @headerParam Client-Secret string required
+     * @header Client-ID string required
+     * @header Client-Secret string required
      *
      * @responseFile 200 responses/V1/Agency/AuthenticationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -73,8 +73,8 @@ class AuthenticationController extends Controller
      *
      * @bodyParam token string required S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc Example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
      *
-     * @headerParam Client-ID string required
-     * @headerParam Client-Secret string required
+     * @header Client-ID string required
+     * @header Client-Secret string required
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -93,8 +93,8 @@ class AuthenticationController extends Controller
      *
      * @bodyParam email String required User valid email address Example: user@bionicwp.com
      *
-     * @headerParam Client-ID string required
-     * @headerParam Client-Secret string required
+     * @header Client-ID string required
+     * @header Client-Secret string required
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -115,8 +115,8 @@ class AuthenticationController extends Controller
      * @bodyParam password String required abcd1234 Example: abcd1234
      * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
      *
-     * @headerParam Client-ID string required
-     * @headerParam Client-Secret string required
+     * @header Client-ID string required
+     * @header Client-Secret string required
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -135,7 +135,7 @@ class AuthenticationController extends Controller
      *
      * @authenticated
      *
-     * @headerParam Authorization string required
+     * @header Authorization string required
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -152,7 +152,7 @@ class AuthenticationController extends Controller
      *
      * @authenticated
      *
-     * @headerParam Authorization string required
+     * @header Authorization string required
      *
      * @responseFile 200 responses/SuccessResponse.json
      */

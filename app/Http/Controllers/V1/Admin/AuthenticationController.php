@@ -23,8 +23,8 @@ class AuthenticationController extends Controller
      * @bodyParam email email required The username of user. Example: admin@my-app.com
      * @bodyParam password string required The password of user. Example: Abc*123*
      *
-     * @headerParam Client-ID string required
-     * @headerParam Client-Secret string required
+     * @header Client-ID string required
+     * @header Client-Secret string required
      *
      * @responseFile 200 responses/V1/Admin/AuthenticationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -42,7 +42,7 @@ class AuthenticationController extends Controller
      *
      * @authenticated
      *
-     * @headerParam Authorization string required
+     * @header Authorization string required
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json

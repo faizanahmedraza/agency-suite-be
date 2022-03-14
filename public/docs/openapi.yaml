@@ -26,6 +26,20 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -88,7 +102,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -96,8 +110,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -169,6 +183,20 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -231,7 +259,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -239,8 +267,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -292,6 +320,20 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -324,7 +366,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -332,8 +374,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -380,6 +422,20 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -412,7 +468,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -420,8 +476,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -468,6 +524,20 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -500,7 +570,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -508,8 +578,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -566,6 +636,13 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -598,7 +675,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -606,8 +683,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -638,6 +715,13 @@ paths:
           name: Accept
           description: ''
           example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'string required'
           schema:
             type: string
       responses:
@@ -718,7 +802,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -726,8 +810,100 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+                password_confirmation:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+              required:
+                - password
+                - password_confirmation
+  /v1/agencies/agency-profile:
+    put:
+      summary: "Change Password\nchange password request of user"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
                     type: array
                     example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -776,6 +952,13 @@ paths:
           name: Accept
           description: ''
           example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
           schema:
             type: string
       responses:
@@ -934,6 +1117,13 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -1073,6 +1263,13 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -1127,7 +1324,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -1135,8 +1332,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -1160,12 +1357,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: facilis
+                  example: temporibus
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - pariatur
+                    - iure
                   items:
                     type: string
               required:
@@ -1184,7 +1381,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: hic
+            value: voluptatum
       -
         in: path
         name: from_date
@@ -1240,7 +1437,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 10
+            value: 7
       -
         in: path
         name: page
@@ -1254,7 +1451,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 20
+            value: 15
   '/v1/agencies/roles/{id}':
     get:
       summary: "Role Details\nThis api show the details of requested Role."
@@ -1272,6 +1469,13 @@ paths:
           name: Accept
           description: ''
           example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
           schema:
             type: string
       responses:
@@ -1328,7 +1532,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -1336,8 +1540,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -1369,6 +1573,13 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -1423,7 +1634,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -1431,8 +1642,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -1456,12 +1667,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: eos
+                  example: aliquam
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - voluptatum
+                    - cupiditate
                   items:
                     type: string
               required:
@@ -1482,6 +1693,13 @@ paths:
           name: Accept
           description: ''
           example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
           schema:
             type: string
       responses:
@@ -1516,7 +1734,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -1524,8 +1742,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -1544,7 +1762,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: quasi
+        example: facilis
         required: true
         schema:
           type: string
@@ -1552,7 +1770,7 @@ paths:
         in: path
         name: role_id
         description: Integer
-        example: mollitia
+        example: modi
         required: true
         schema:
           type: string
@@ -1885,7 +2103,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -1893,8 +2111,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -2016,7 +2234,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -2024,8 +2242,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -2077,39 +2295,39 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: qui
+                  example: cum
                 last_name:
                   type: String
                   description: ''
-                  example: temporibus
+                  example: voluptatem
                 email:
                   type: email
                   description: ''
-                  example: iste
+                  example: consequatur
                 password:
                   type: String
                   description: ''
-                  example: voluptatem
+                  example: vel
                 password_confirmation:
                   type: String
                   description: ''
-                  example: est
+                  example: commodi
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: accusamus
+                  example: aut
                 roles:
                   type: array
                   description: ''
                   example:
-                    - consequatur
+                    - libero
                   items:
                     type: string
                 permissions:
                   type: array
                   description: ''
                   example:
-                    - praesentium
+                    - est
                   items:
                     type: string
               required:
@@ -2131,7 +2349,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: vero
+            value: enim
       -
         in: path
         name: email
@@ -2145,7 +2363,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: nemo
+            value: autem
       -
         in: path
         name: first_name
@@ -2159,7 +2377,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: et
+            value: magni
       -
         in: path
         name: last_name
@@ -2173,7 +2391,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: qui
+            value: aut
       -
         in: path
         name: full_name
@@ -2187,7 +2405,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sed
+            value: qui
       -
         in: path
         name: status
@@ -2201,7 +2419,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: debitis
+            value: optio
       -
         in: path
         name: order_by
@@ -2215,7 +2433,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: ex
+            value: aliquid
       -
         in: path
         name: from_date
@@ -2271,7 +2489,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 1
+            value: 16
       -
         in: path
         name: page
@@ -2285,7 +2503,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 14
+            value: 7
       -
         in: path
         name: roles
@@ -2299,7 +2517,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: beatae
+            value: ipsa
   '/v1/agencies/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -2381,7 +2599,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -2389,8 +2607,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -2512,7 +2730,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -2520,8 +2738,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -2573,27 +2791,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: eum
+                  example: repudiandae
                 last_name:
                   type: String
                   description: ''
-                  example: fuga
+                  example: porro
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: non
+                  example: quos
                 roles:
                   type: array
                   description: ''
                   example:
-                    - officia
+                    - ratione
                   items:
                     type: string
                 permissions:
                   type: array
                   description: ''
                   example:
-                    - amet
+                    - velit
                   items:
                     type: string
               required:
@@ -2679,7 +2897,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: doloribus
+        example: odio
         required: true
         schema:
           type: string
@@ -2687,7 +2905,7 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: asperiores
+        example: blanditiis
         required: true
         schema:
           type: string
@@ -2770,7 +2988,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: sed
+        example: odio
         required: true
         schema:
           type: string
@@ -2778,11 +2996,11 @@ paths:
         in: path
         name: user_id
         description: ''
-        example: 1
+        example: 7
         required: true
         schema:
           type: integer
-  '/v1/agencies/users/change-any-password/{id}':
+  '/v1/agencies/users/change-password/{id}':
     post:
       summary: 'Change Password of Any User'
       description: ''
@@ -2838,7 +3056,7 @@ paths:
                 password:
                   type: string
                   description: 'ex: 123456'
-                  example: voluptatibus
+                  example: mollitia
               required:
                 - password
     parameters:
@@ -2846,7 +3064,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 2
+        example: 8
         required: true
         schema:
           type: integer
@@ -2867,6 +3085,20 @@ paths:
           name: Accept
           description: ''
           example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
           schema:
             type: string
       responses:
@@ -2945,7 +3177,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -2953,8 +3185,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -3038,7 +3270,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -3046,8 +3278,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -3098,6 +3330,13 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -3130,7 +3369,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -3138,8 +3377,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -3170,6 +3409,13 @@ paths:
           name: Accept
           description: ''
           example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
           schema:
             type: string
       responses:
@@ -3328,6 +3574,13 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -3467,6 +3720,13 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -3521,7 +3781,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -3529,8 +3789,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -3554,12 +3814,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: tenetur
+                  example: unde
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - voluptatem
+                    - ipsa
                   items:
                     type: string
               required:
@@ -3578,7 +3838,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: quidem
+            value: nobis
       -
         in: path
         name: from_date
@@ -3620,7 +3880,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: false
+            value: true
       -
         in: path
         name: page_limit
@@ -3634,7 +3894,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 3
+            value: 19
       -
         in: path
         name: page
@@ -3648,7 +3908,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 6
+            value: 14
   '/v1/admins/roles/{id}':
     get:
       summary: "Role Details\nThis api show the details of requested Role."
@@ -3666,6 +3926,13 @@ paths:
           name: Accept
           description: ''
           example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
           schema:
             type: string
       responses:
@@ -3722,7 +3989,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -3730,8 +3997,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -3763,6 +4030,13 @@ paths:
           example: application/json
           schema:
             type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
       responses:
         200:
           description: ''
@@ -3817,7 +4091,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -3825,8 +4099,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -3850,12 +4124,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: praesentium
+                  example: dignissimos
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - totam
+                    - nihil
                   items:
                     type: string
               required:
@@ -3876,6 +4150,13 @@ paths:
           name: Accept
           description: ''
           example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
           schema:
             type: string
       responses:
@@ -3910,7 +4191,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -3918,8 +4199,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -3938,7 +4219,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: dicta
+        example: reiciendis
         required: true
         schema:
           type: string
@@ -3946,7 +4227,7 @@ paths:
         in: path
         name: role_id
         description: Integer
-        example: culpa
+        example: sit
         required: true
         schema:
           type: string
@@ -4279,7 +4560,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -4287,8 +4568,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -4410,7 +4691,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -4418,8 +4699,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -4471,39 +4752,39 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: exercitationem
+                  example: blanditiis
                 last_name:
                   type: String
                   description: ''
-                  example: iure
+                  example: expedita
                 email:
                   type: email
                   description: ''
-                  example: soluta
+                  example: recusandae
                 password:
                   type: String
                   description: ''
-                  example: vel
+                  example: perspiciatis
                 password_confirmation:
                   type: String
                   description: ''
-                  example: voluptatibus
+                  example: et
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: temporibus
+                  example: quasi
                 roles:
                   type: array
                   description: ''
                   example:
-                    - est
+                    - at
                   items:
                     type: string
                 permissions:
                   type: array
                   description: ''
                   example:
-                    - est
+                    - illum
                   items:
                     type: string
               required:
@@ -4525,7 +4806,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: non
+            value: neque
       -
         in: path
         name: email
@@ -4539,7 +4820,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: eligendi
+            value: inventore
       -
         in: path
         name: first_name
@@ -4553,7 +4834,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: magnam
+            value: ut
       -
         in: path
         name: last_name
@@ -4567,7 +4848,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: ut
+            value: voluptatem
       -
         in: path
         name: full_name
@@ -4581,7 +4862,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dolore
+            value: quia
       -
         in: path
         name: status
@@ -4595,7 +4876,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: omnis
+            value: vero
       -
         in: path
         name: order_by
@@ -4609,7 +4890,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sunt
+            value: officia
       -
         in: path
         name: from_date
@@ -4665,7 +4946,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 6
+            value: 10
       -
         in: path
         name: page
@@ -4679,7 +4960,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 9
+            value: 4
       -
         in: path
         name: roles
@@ -4693,7 +4974,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: voluptatem
+            value: maiores
   '/v1/admins/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -4775,7 +5056,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -4783,8 +5064,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -4906,7 +5187,7 @@ paths:
               schema:
                 type: object
                 example:
-                  data: []
+                  data: {  }
                   error:
                     code: 'Error code'
                     message: 'Error Message.'
@@ -4914,8 +5195,8 @@ paths:
                   message: 'Operation failed'
                 properties:
                   data:
-                    type: array
-                    example: []
+                    type: object
+                    example: {  }
                   error:
                     type: object
                     example:
@@ -4967,27 +5248,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: quia
+                  example: itaque
                 last_name:
                   type: String
                   description: ''
-                  example: assumenda
+                  example: voluptatem
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: nihil
+                  example: quo
                 roles:
                   type: array
                   description: ''
                   example:
-                    - soluta
+                    - aut
                   items:
                     type: string
                 permissions:
                   type: array
                   description: ''
                   example:
-                    - neque
+                    - quod
                   items:
                     type: string
               required:
@@ -5073,7 +5354,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: unde
+        example: distinctio
         required: true
         schema:
           type: string
@@ -5081,78 +5362,10 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: illum
+        example: non
         required: true
         schema:
           type: string
-  '/v1/admins/users/change-any-password/{id}':
-    post:
-      summary: 'Change Password of Any User'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-      tags:
-        - 'User Management'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: string
-                  description: 'ex: 123456'
-                  example: in
-              required:
-                - password
-    parameters:
-      -
-        in: path
-        name: id
-        description: ''
-        example: 18
-        required: true
-        schema:
-          type: integer
   '/v1/admins/users/change-status/{id}':
     put:
       summary: "Toggle User Status\nThis api update the users status to active or deactive\nother then customers."
@@ -5232,7 +5445,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: voluptate
+        example: dignissimos
         required: true
         schema:
           type: string
@@ -5241,6 +5454,74 @@ paths:
         name: user_id
         description: ''
         example: 7
+        required: true
+        schema:
+          type: integer
+  '/v1/admins/users/change-password/{id}':
+    post:
+      summary: 'Change Password of Any User'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  description: 'ex: 123456'
+                  example: eum
+              required:
+                - password
+    parameters:
+      -
+        in: path
+        name: id
+        description: ''
+        example: 13
         required: true
         schema:
           type: integer
