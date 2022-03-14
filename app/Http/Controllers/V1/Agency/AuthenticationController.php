@@ -13,6 +13,7 @@ use App\Http\Requests\V1\Agency\RegisterRequest;
 use App\Http\Requests\V1\Agency\UserVerificationRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\AuthenticationResponse;
+use App\Http\Resources\V1\Agency\RedirectDomainResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -81,9 +82,9 @@ class AuthenticationController extends Controller
     public function userVerification(UserVerificationRequest $request)
     {
         DB::beginTransaction();
-        (new AuthenticationBusiness())->tokenValidation($request);
+        $url = (new AuthenticationBusiness())->tokenValidation($request);
         DB::commit();
-        return new SuccessResponse([]);
+        return new RedirectDomainResponse($url);
     }
 
     /**

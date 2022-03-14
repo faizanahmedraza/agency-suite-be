@@ -9,6 +9,7 @@ use App\Helpers\TimeStampHelper;
 use App\Http\Services\V1\Agency\AuthenticationService;
 use App\Http\Services\V1\Agency\UserService;
 use App\Http\Services\V1\Agency\UserVerificationService;
+use App\Models\Agency;
 use Illuminate\Support\Facades\Auth;
 use App\Exceptions\V1\UnAuthorizedException;
 use Illuminate\Support\Facades\Hash;
@@ -42,7 +43,7 @@ class AuthenticationBusiness
         return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 
-    public function tokenValidation($request): void
+    public function tokenValidation($request)
     {
         $authService = new AuthenticationService();
         $userService = new UserService();
@@ -71,6 +72,9 @@ class AuthenticationBusiness
 
         // Delete Token
         $authService->deleteToken($userVerification);
+
+        $agency = Agency::where('id',$user->agency_id)->first();
+        return $agency->domains->first();
     }
 
     public function forgetPassword($request): void
