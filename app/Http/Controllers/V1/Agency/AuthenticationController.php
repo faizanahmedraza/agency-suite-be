@@ -61,9 +61,9 @@ class AuthenticationController extends Controller
     public function register(RegisterRequest $request)
     {
         DB::beginTransaction();
-        $agency = (new AgencyBusiness())->register($request);
+        (new AgencyBusiness())->register($request);
         DB::commit();
-        return new AuthenticationResponse($agency);
+        return new SuccessResponse([]);
     }
 
     /**

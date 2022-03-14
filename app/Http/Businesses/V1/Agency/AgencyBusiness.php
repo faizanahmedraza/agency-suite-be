@@ -45,12 +45,6 @@ class AgencyBusiness
         //assign Role
         (new UserService())->assignUserRole($request,$user);
 
-        //auth services
-        $authService = new AuthenticationService();
-        $auth['token'] = $authService->createToken($user);
-
         (new UserVerificationService())->generateVerificationCode($user);
-
-        return $authService->generateVerificationResponse($auth, $user, $agency);
     }
 }

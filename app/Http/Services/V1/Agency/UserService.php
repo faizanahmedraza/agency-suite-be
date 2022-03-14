@@ -31,6 +31,8 @@ class UserService
             } else {
                 $user->status = User::STATUS['active'];
             }
+        } else {
+            $user->status = User::STATUS['pending'];
         }
         $user->agency_id = $agency->id;
         $user->owner = $owner ? $owner : null;
@@ -212,7 +214,7 @@ class UserService
             ->avoidRole(['Super Admin'])
             ->first();
 
-        if (!$user) {
+        if (!$user || $user->created_by != Auth::id()) {
             throw ModelException::dataNotFound();
         }
 
