@@ -56,7 +56,7 @@ class AuthenticationController extends Controller
      * @header Client-ID string required
      * @header Client-Secret string required
      *
-     * @responseFile 200 responses/V1/Agency/AuthenticationResponse.json
+     * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
     public function register(RegisterRequest $request)
@@ -76,7 +76,7 @@ class AuthenticationController extends Controller
      * @header Client-ID string required
      * @header Client-Secret string required
      *
-     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 200 responses/V1/Agency/RedirectDomainResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
     public function userVerification(UserVerificationRequest $request)

@@ -14,6 +14,6 @@ class RedirectDomainResponse extends BaseResponse
      */
     public function toArray($request)
     {
-        return $this->wrapped(['redirectUrl' => new RedirectDomainResource($this)]);
+        return $this->wrapped(new RedirectDomainResource($this));
     }
 }

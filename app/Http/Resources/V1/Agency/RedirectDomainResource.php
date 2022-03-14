@@ -16,7 +16,7 @@ class RedirectDomainResource extends Resource
     public function toArray($request)
     {
         return [
-           'domain' => $this->domain
+           'redirectUrl' => $this->domain
         ];
     }
 }
