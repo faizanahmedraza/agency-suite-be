@@ -28,7 +28,7 @@ class AgencyService
             throw FailureException::serverError();
         }
 
-        return $agency->fresh();
+        return $agency;
     }
 
     /**

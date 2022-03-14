@@ -16,4 +16,9 @@ class Agency extends Model
     {
         return $this->hasOne(User::class,'agency_id','id');
     }
+
+    public function domains()
+    {
+        return $this->hasMany(AgencyDomain::class,'agency_id','id');
+    }
 }

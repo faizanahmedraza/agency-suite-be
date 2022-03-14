@@ -39,7 +39,13 @@ class UserService
         $user->last_name = $request->last_name;
         $user->password = Hash::make($password);
         $user->username = clean($request->email);
-        $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['active'];
+
+        if (isset($request->status)) {
+            $user->status = User::STATUS[$request->status];
+        } else {
+            $user->status = User::STATUS['active'];
+        }
+
         $user->created_by = Auth::id();
         $user->save();
 
@@ -190,11 +196,11 @@ class UserService
         return User::whereIn('id', $ids)->update(["status" => User::STATUS['blocked']]);
     }
 
-    public static function first(int $id, $with = ['roles','roles.permissions', 'permissions']): User
+    public static function first(int $id, $with = ['roles', 'roles.permissions', 'permissions']): User
     {
         $user = User::with($with)
             ->where('id', $id)
-            ->avoidRole(Role::RESTRICT_ROLES)
+            ->avoidRole(['Agency','Customer'])
             ->first();
 
         if (!$user) {

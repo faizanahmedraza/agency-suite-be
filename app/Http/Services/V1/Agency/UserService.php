@@ -26,7 +26,11 @@ class UserService
         $user->password = Hash::make($request->password);
         $user->username = strtolower($request->email);
         if (!$owner) {
-            $user->status = User::STATUS[$request->status] ? User::STATUS[$request->status] : User::STATUS['active'];
+            if (isset($request->status)) {
+                $user->status = User::STATUS[$request->status];
+            } else {
+                $user->status = User::STATUS['active'];
+            }
         }
         $user->agency_id = $agency->id;
         $user->owner = $owner ? $owner : null;
@@ -205,7 +209,7 @@ class UserService
     {
         $user = User::with($with)
             ->where('id', $id)
-            ->ownUsers()
+            ->avoidRole(['Super Admin'])
             ->first();
 
         if (!$user) {

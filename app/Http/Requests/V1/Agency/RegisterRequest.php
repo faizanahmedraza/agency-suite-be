@@ -46,7 +46,7 @@ class RegisterRequest extends RequestAbstract
             'last_name' => 'required|alpha|max:100',
             'email' => 'required|email:rfc,dns|max:50|email|unique:users,username',
             'password' => 'required|string|min:6|max:100|confirmed',
-            'agency_name' => 'required|string|max:150|unique:agencies,name',
+            'agency_name' => 'required|string|max:100|unique:agencies,name',
         ];
     }
 
