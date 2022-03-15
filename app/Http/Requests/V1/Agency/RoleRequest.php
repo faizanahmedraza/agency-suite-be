@@ -41,7 +41,7 @@ class RoleRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' => $this->isMethod('PUT') ? "required|string|max:255|unique:roles,name," . $this->id.',id,agency_id,'.app('agency')->id : "required|string|max:255|unique:roles,name,NULL,id,agency_id,".app('agency')->id,
+            'name' => $this->isMethod('PUT') ? "required|string|max:255|regex:/^[A-Za-z0-9_-]+[A-Za-z0-9]$/i|unique:roles,name," . $this->id.',id,agency_id,'.app('agency')->id : "required|string|max:255|regex:/^[A-Za-z0-9_-]+[A-Za-z0-9]$/i|unique:roles,name,NULL,id,agency_id,".app('agency')->id,
             'permissions' => 'sometimes|nullable|array',
             'permissions.*' => 'sometimes|nullable|in:' . implode(',', Permission::where('name', 'like', Role::ROLES_PREFIXES['agency'].'%')->pluck('id')->toArray())
         ];
