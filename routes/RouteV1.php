@@ -42,7 +42,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
     });
 
 //     Agencies
-    $router->group(['prefix' => 'agencies', 'namespace' => 'Agency','middleware' => 'agency_domain'], function () use ($router) {
+    $router->group(['prefix' => 'agencies', 'namespace' => 'Agency'], function () use ($router) {
         //Authentication
         $router->group(['prefix' => 'auth', 'middleware' => 'client_credentials'], function () use ($router) {
             $router->post('/register', 'AuthenticationController@register');
