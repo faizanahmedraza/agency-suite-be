@@ -22,9 +22,8 @@ class AuthenticationBusiness
     {
         // get user data from database
         if (isset(app('agency')->id)) {
-
             $user = (new UserService())->getUserByAgency([
-                ['email', '=', $request->email],
+                ['username', '=', $request->email],
                 ['agency_id', '=', (app('agency'))->id],
             ]);
         } else {
@@ -89,7 +88,7 @@ class AuthenticationBusiness
         if (isset(app('agency')->id)) {
 
             $user = (new UserService())->getUserByAgency([
-                ['email', '=', $request->email],
+                ['username', '=', $request->email],
                 ['agency_id', '=', (app('agency'))->id],
             ]);
         } else {
