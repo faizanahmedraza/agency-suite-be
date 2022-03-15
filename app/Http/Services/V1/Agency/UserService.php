@@ -265,4 +265,15 @@ class UserService
         $token->expires_at = TimeStampHelper::getDate(10, $token->expires_at);
         $token->save();
     }
+
+    public static function getUserByAgency($where = null)
+    {
+        $user = User::where($where)->first();
+
+        if (!$user) {
+            throw UnAuthorizedException::InvalidCredentials();
+        }
+
+        return $user;
+    }
 }

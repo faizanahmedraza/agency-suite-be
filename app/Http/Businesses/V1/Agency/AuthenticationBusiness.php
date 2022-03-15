@@ -4,6 +4,7 @@ namespace App\Http\Businesses\V1\Agency;
 
 use App\Events\LoginEvent;
 use App\Exceptions\V1\RequestValidationException;
+use App\Exceptions\V1\TokenException;
 use App\Exceptions\V1\UserException;
 use App\Helpers\TimeStampHelper;
 use App\Http\Services\V1\Agency\AuthenticationService;
@@ -20,12 +21,12 @@ class AuthenticationBusiness
     public function verifyLoginInfo($request)
     {
         // get user data from database
-        $user = (new UserService())->getUserByUsername($request->email);
+        if (isset(app('agency')->id)) {
 
-        if (!empty(app('agency')) && !empty($user->agency_id)) {
-            if ($user->agency_id != (app('agency'))->id) {
-                throw UnAuthorizedException::InvalidCredentials();
-            }
+            $user = (new UserService())->getUserByAgency([
+                ['email', '=', $request->email],
+                ['agency_id', '=', (app('agency'))->id],
+            ]);
         } else {
             throw UnAuthorizedException::InvalidCredentials();
         }
@@ -50,16 +51,18 @@ class AuthenticationBusiness
     public function tokenValidation($request)
     {
         $authService = new AuthenticationService();
-        $userService = new UserService();
 
         // verify user token
         $userVerification = $authService->getUserVerification($request->token);
 
         // get user data by user id
-        $user = $userService->getUserById($userVerification->user_id);
-
-        if (empty($user->agency_id)) {
-            throw UnAuthorizedException::InvalidCredentials();
+        if (isset(app('agency')->id)) {
+            $user = (new UserService())->getUserByAgency([
+                ['id', '=', $userVerification->user_id],
+                ['agency_id', '=', (app('agency'))->id],
+            ]);
+        } else {
+            throw TokenException::invalidToken();
         }
 
         if ($user->status !== User::STATUS['pending']) {
@@ -83,8 +86,13 @@ class AuthenticationBusiness
 
     public function forgetPassword($request): void
     {
-        $user = UserService::getUserByEmail(strtolower($request->email));
-        if (empty($user->agency_id)) {
+        if (isset(app('agency')->id)) {
+
+            $user = (new UserService())->getUserByAgency([
+                ['email', '=', $request->email],
+                ['agency_id', '=', (app('agency'))->id],
+            ]);
+        } else {
             throw UnAuthorizedException::InvalidCredentials();
         }
         UserVerificationService::generateVerificationCode($user);
@@ -93,7 +101,6 @@ class AuthenticationBusiness
     public function validateAndCreateNewPassword($request)
     {
         $authService = new AuthenticationService();
-        $userService = new UserService();
 
         $userVerification = $authService->getUserVerification($request->token);
         $tokenExpiry = TimeStampHelper::expiryValidation(new \DateTime($userVerification->expiry));
@@ -101,9 +108,13 @@ class AuthenticationBusiness
             throw RequestValidationException::errorMessage("Token has been expired");
         }
 
-        $user = $userService->getUserById($userVerification->user_id);
-        if (empty($user->agency_id)) {
-            throw UnAuthorizedException::InvalidCredentials();
+        if (isset(app('agency')->id)) {
+            $user = (new UserService())->getUserByAgency([
+                ['id', '=', $userVerification->user_id],
+                ['agency_id', '=', (app('agency'))->id],
+            ]);
+        } else {
+            throw TokenException::invalidToken();
         }
 
         (new UserService())->changePassword($user, $request->password);

@@ -49,6 +49,7 @@ class RoleService
     {
         $role = new Role();
         $role->name = Role::ROLES_PREFIXES['agency'] . $request->name;
+        $role->agency_id = app('agency')->id;
         $role->save();
 
         if (!$role) {
@@ -79,6 +80,7 @@ class RoleService
             $role->name = Role::ROLES_PREFIXES['agency'] . $request->name;
         }
 
+        $role->agency_id = app('agency')->id;
         $role->save();
 
         // re asssign new permissions

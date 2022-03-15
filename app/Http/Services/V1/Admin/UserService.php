@@ -161,11 +161,12 @@ class UserService
      */
     public static function getUserByUsername($username)
     {
-        $user = User::whereRaw('LOWER(username) = ? ', strtolower($username))->first();
+        $user = User::whereRaw('LOWER(username) = ? ', strtolower($username))->whereNull('agency_id')->first();
 
         if (!$user) {
             throw UnAuthorizedException::InvalidCredentials();
         }
+
         return $user;
     }
 
@@ -200,6 +201,7 @@ class UserService
     {
         $user = User::with($with)
             ->where('id', $id)
+             ->whereNull('agency_id')
             ->avoidRole(['Agency','Customer'])
             ->first();
 

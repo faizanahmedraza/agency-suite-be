@@ -71,7 +71,7 @@ class AuthenticationController extends Controller
      * Verify Token
      * This function is useful to check the token is valid or not
      *
-     * @bodyParam token string required S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc Example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+     * @queryParam token string required S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc Example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
      *
      * @header Client-ID string required
      * @header Client-Secret string required
@@ -111,7 +111,7 @@ class AuthenticationController extends Controller
      * Create New Password
      * authenticate user request and then create new password
      *
-     * @bodyParam token String required T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA Example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
+     * @queryParam token String required T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA Example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
      * @bodyParam password String required abcd1234 Example: abcd1234
      * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
      *

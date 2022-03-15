@@ -18,7 +18,8 @@ class AppServiceProvider extends ServiceProvider
             $request = app(\Illuminate\Http\Request::class);
             $agencyDomain = \App\Models\AgencyDomain::where('domain',$request->getHost())->first();
 
-            $agency = new \stdClass;
+//            $agency = new \stdClass;
+            $agency = (object)[];
             if($agencyDomain){
                 $agency->id = $agencyDomain->agency_id;
                 $agency->domain_name = $agencyDomain->domain;
