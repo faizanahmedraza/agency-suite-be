@@ -90,7 +90,8 @@ $app->routeMiddleware([
     'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
     'admin' => \App\Http\Middleware\AdminAllowedMiddleware::class,
     'agency' => \App\Http\Middleware\AgencyAllowedMiddleware::class,
-    'customer' => \App\Http\Middleware\CustomerAllowedMiddleware::class
+    'customer' => \App\Http\Middleware\CustomerAllowedMiddleware::class,
+    'agency_domain' => \App\Http\Middleware\AgencyDomainMiddleware::class,
 ]);
 
 /*

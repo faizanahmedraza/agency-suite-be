@@ -2,13 +2,13 @@
 
 namespace App\Http\Services\V1\Agency;
 
+use App\Exceptions\V1\DomainException;
 use App\Exceptions\V1\RoleException;
 use App\Helpers\TimeStampHelper;
 use App\Models\User;
 use App\Exceptions\V1\ModelException;
 use App\Exceptions\V1\FailureException;
 use App\Models\Role;
-use Illuminate\Database\Eloquent\Builder;
 
 class RoleService
 {

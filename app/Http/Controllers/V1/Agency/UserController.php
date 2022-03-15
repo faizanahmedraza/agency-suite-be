@@ -41,8 +41,8 @@ class UserController extends Controller
      * @bodyParam  password String
      * @bodyParam  password_confirmation String
      * @bodyParam  status string ex: pending,active,blocked
-     * @bodyParam  roles Array required
-     * @bodyParam  permissions Array
+     * @bodyParam  roles Array required ex: [1,2,3]
+     * @bodyParam  permissions Array ex: [1,2,3]
      *
      * @responseFile 200 responses/V1/Admin/UserResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -110,8 +110,8 @@ class UserController extends Controller
      * @bodyParam  first_name String required
      * @bodyParam  last_name String required
      * @bodyParam  status string required ex: pending,active,blocked
-     * @bodyParam  roles Array required
-     * @bodyParam  permissions Array
+     * @bodyParam  roles Array required ex: [1,2,3]
+     * @bodyParam  permissions Array ex: [1,2,3]
      *
      * @urlParam  user_id Integer required
      *
