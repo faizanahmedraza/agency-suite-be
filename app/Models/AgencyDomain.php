@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use App\Http\Traits\UserAuditTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class AgencyDomain extends Model
 {
+    use UserAuditTrait;
+
     protected $table = "agency_domains";
 
     const TYPE = ['live' => 1, 'staging' => 2, 'testing' => 3, 'pending' => 4];
