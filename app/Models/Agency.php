@@ -19,6 +19,6 @@ class Agency extends Model
 
     public function domains()
     {
-        return $this->hasMany(AgencyDomain::class,'agency_id','id');
+        return $this->hasMany(AgencyDomain::class,'agency_id','id')->orderBy('created_at');
     }
 }

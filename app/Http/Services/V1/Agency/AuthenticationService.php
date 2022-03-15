@@ -33,7 +33,7 @@ class AuthenticationService
 
     public static function getUserVerification($token)
     {
-        $userVerification = UserVerification::where('verification_code', $token)->first();
+        $userVerification = UserVerification::where('verification_code', $token)->where('agency_id',app('agency')->id)->first();
         if (!$userVerification) {
             throw TokenException::invalidToken();
         }

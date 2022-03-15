@@ -81,6 +81,7 @@ class AuthenticationController extends Controller
      */
     public function userVerification(UserVerificationRequest $request)
     {
+
         DB::beginTransaction();
         $url = (new AuthenticationBusiness())->tokenValidation($request);
         DB::commit();

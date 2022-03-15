@@ -2,33 +2,30 @@
 
 namespace App\Http\Businesses\V1\Agency;
 
-use App\Events\LoginEvent;
-use App\Exceptions\V1\RequestValidationException;
-use App\Exceptions\V1\TokenException;
-use App\Exceptions\V1\UserException;
-use App\Helpers\TimeStampHelper;
-use App\Http\Services\V1\Agency\AuthenticationService;
-use App\Http\Services\V1\Agency\UserService;
-use App\Http\Services\V1\Agency\UserVerificationService;
-use App\Models\Agency;
-use Illuminate\Support\Facades\Auth;
-use App\Exceptions\V1\UnAuthorizedException;
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Models\Agency;
+use App\Events\LoginEvent;
+use App\Helpers\TimeStampHelper;
+use App\Exceptions\V1\UserException;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use App\Exceptions\V1\TokenException;
+use App\Exceptions\V1\DomainException;
+use App\Exceptions\V1\UnAuthorizedException;
+use App\Http\Services\V1\Agency\UserService;
+use App\Exceptions\V1\RequestValidationException;
+use App\Http\Services\V1\Agency\AuthenticationService;
+use App\Http\Services\V1\Agency\UserVerificationService;
 
 class AuthenticationBusiness
 {
     public function verifyLoginInfo($request)
     {
         // get user data from database
-        if (isset(app('agency')->id)) {
-            $user = (new UserService())->getUserByAgency([
-                ['username', '=', $request->email],
-                ['agency_id', '=', (app('agency'))->id],
-            ]);
-        } else {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
+        $user = (new UserService())->getUserByAgency([
+            ['username', '=', $request->email],
+            ['agency_id', '=', (app('agency'))->id],
+        ]);
 
         // match password
         if (!Hash::check($request->password, $user->password)) {
@@ -49,51 +46,34 @@ class AuthenticationBusiness
 
     public function tokenValidation($request)
     {
+
         $authService = new AuthenticationService();
 
         // verify user token
         $userVerification = $authService->getUserVerification($request->token);
 
-        // get user data by user id
-        if (isset(app('agency')->id)) {
-            $user = (new UserService())->getUserByAgency([
-                ['id', '=', $userVerification->user_id],
-                ['agency_id', '=', (app('agency'))->id],
-            ]);
-        } else {
-            throw TokenException::invalidToken();
-        }
-
-        if ($user->status !== User::STATUS['pending']) {
-            throw UserException::userAlreadyActive();
-        }
-
         // validate token expiry
         $tokenExpiry = TimeStampHelper::expiryValidation(new \DateTime($userVerification->expiry));
         if (!$tokenExpiry) {
-            throw RequestValidationException::errorMessage("Token has been expired");
+            throw RequestValidationException::errorMessage("Token has been expired. Please contact our support team.");
         }
 
-        UserService::updateStatus($user);
+        UserService::updateStatus($userVerification->user);
+
+        $agency = Agency::where('id', $userVerification->agency_id)->first();
 
         // Delete Token
         $authService->deleteToken($userVerification);
 
-        $agency = Agency::where('id', $user->agency_id)->first();
         return $agency->domains->first();
     }
 
     public function forgetPassword($request): void
     {
-        if (isset(app('agency')->id)) {
-
-            $user = (new UserService())->getUserByAgency([
-                ['username', '=', $request->email],
-                ['agency_id', '=', (app('agency'))->id],
-            ]);
-        } else {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
+        $user = (new UserService())->getUserByAgency([
+            ['username', '=', $request->email],
+            ['agency_id', '=', (app('agency'))->id],
+        ]);
         UserVerificationService::generateVerificationCode($user);
     }
 
@@ -107,16 +87,7 @@ class AuthenticationBusiness
             throw RequestValidationException::errorMessage("Token has been expired");
         }
 
-        if (isset(app('agency')->id)) {
-            $user = (new UserService())->getUserByAgency([
-                ['id', '=', $userVerification->user_id],
-                ['agency_id', '=', (app('agency'))->id],
-            ]);
-        } else {
-            throw TokenException::invalidToken();
-        }
-
-        (new UserService())->changePassword($user, $request->password);
+        (new UserService())->changePassword($userVerification->user, $request->password);
 
         $authService->deleteToken($userVerification);
     }

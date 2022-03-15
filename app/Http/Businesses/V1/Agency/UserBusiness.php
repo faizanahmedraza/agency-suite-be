@@ -16,9 +16,7 @@ class UserBusiness
     public static function first(int $id)
     {
         $user = UserService::first($id);
-        if (empty($user->agency_id)) {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
+
         return $user;
     }
 
@@ -58,10 +56,6 @@ class UserBusiness
 
         $user = UserService::first($id);
 
-        if (empty($user->agency_id)) {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
-
         // update in users table
         UserService::update($request, $user);
 
@@ -77,10 +71,6 @@ class UserBusiness
         // delete user
         $user = UserService::first($id);
 
-        if (empty($user->agency_id)) {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
-
         if ($user->id == Auth::id()) {
             throw UserException::authUserRestrictStatus();
         }
@@ -93,10 +83,6 @@ class UserBusiness
         // get user
         $user = UserService::first($id);
 
-        if (empty($user->agency_id)) {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
-
         if ($user->id == Auth::id()) {
             throw UserException::authUserRestrictStatus();
         }
@@ -107,9 +93,7 @@ class UserBusiness
     public static function changeAnyPassword($request, $id)
     {
         $user = UserService::first($id);
-        if (empty($user->agency_id)) {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
+
         UserService::changePassword($user, $request);
     }
 
