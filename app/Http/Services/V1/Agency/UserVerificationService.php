@@ -20,6 +20,7 @@ class UserVerificationService
         $userVerification->user_id = $user->id;
         $userVerification->verification_code =  Str::random(32);
         $userVerification->expiry = (new \DateTime("now"))->modify('+2 days');
+        $userVerification->agency_id =$user->agency_id;
         $userVerification->save();
 
         if (!$userVerification) {

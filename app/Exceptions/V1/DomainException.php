@@ -21,4 +21,11 @@ class DomainException extends BaseException
             '422'
         );
     }
+    public static function agencyDomainNotExist(): self
+    {
+        return new self(
+            'Domain does not exist.',
+            '404'
+        );
+    }
 }

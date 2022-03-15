@@ -182,6 +182,7 @@ class UserService
 
     public static function checkStatus(User $user)
     {
+
         if ($user->status == User::STATUS['blocked']) {
             throw UnAuthorizedException::accountBlocked();
         } else if ($user->status == User::STATUS['suspend']) {
