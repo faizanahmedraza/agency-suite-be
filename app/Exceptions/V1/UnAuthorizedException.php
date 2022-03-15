@@ -30,9 +30,4 @@ class UnAuthorizedException extends BaseException
     {
         return new self("Your account is in review. Please contact with support for more details", '401');
     }
-
-    public static function review(): self
-    {
-        return new self("Your account is in review. Please contact with support for more details", '401');
-    }
 }
