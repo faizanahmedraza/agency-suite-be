@@ -27,7 +27,8 @@ class AuthenticationService
             'token_type' => 'Bearer',
             'expires_at' => ($auth['token']->token->expires_at)->format('Y-m-d H:i:s'),
             'user' => $user,
-            'agency' => $agency
+            'agency' => $agency,
+            'permissions' => $user->getAllPermissions(),
         ];
     }
 
