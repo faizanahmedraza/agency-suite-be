@@ -32,9 +32,6 @@ class UserRequest extends RequestAbstract
         if (isset($all['email'])) {
             $all['email'] = preg_replace('/\s+/', '', strtolower(trim($all['email'])));
         }
-        if (isset($all['roles'])) {
-            $all['roles'] = array_map(array($this, 'addPrefix'), $all['roles']);
-        }
         return $all;
     }
 

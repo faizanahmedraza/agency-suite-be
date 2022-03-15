@@ -20,12 +20,6 @@ class UserBusiness
 
     public static function store($request)
     {
-        if ($request->has('roles')) {
-            $roles = array_map('self::addPrefix', $request->roles);
-            unset($request['roles']);
-            $request->merge(['roles' => $roles]);
-        }
-
         // create user
         $user = UserService::store($request);
 
@@ -46,12 +40,6 @@ class UserBusiness
 
     public static function update($request, int $id)
     {
-        if ($request->has('roles')) {
-            $roles = array_map('self::addPrefix', $request->roles);
-            unset($request['roles']);
-            $request->merge(['roles' => $roles]);
-        }
-
         $user = UserService::first($id);
 
         // update in users table
