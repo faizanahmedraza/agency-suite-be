@@ -82,7 +82,7 @@ class UserBusiness
     {
         $user = UserService::first($id);
 
-        UserService::changePassword($user, $request);
+        UserService::changePassword($user, $request->password);
     }
 
     public static function addPrefix($v)

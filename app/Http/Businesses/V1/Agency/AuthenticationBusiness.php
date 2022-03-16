@@ -95,7 +95,7 @@ class AuthenticationBusiness
     public function changePassword($request)
     {
         $user = Auth::user();
-        UserService::changePassword($user, $request);
+        UserService::changePassword($user, $request->password);
     }
 
     public function logout($request)

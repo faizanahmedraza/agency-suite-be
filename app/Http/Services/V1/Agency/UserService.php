@@ -142,6 +142,8 @@ class UserService
 
     public static function changePassword(User $user, String $password): User
     {
+        self::checkStatus($user);
+
         $user->password = Hash::make(trim($password));
         $user->save();
 
@@ -182,7 +184,6 @@ class UserService
 
     public static function checkStatus(User $user)
     {
-
         if ($user->status == User::STATUS['blocked']) {
             throw UnAuthorizedException::accountBlocked();
         } else if ($user->status == User::STATUS['suspend']) {
