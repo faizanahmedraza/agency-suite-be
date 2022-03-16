@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use App\Exceptions\V1\DomainException;
 use App\Http\Traits\UserAuditTrait;
-use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role as SpatieRole;
 
 class Role extends SpatieRole

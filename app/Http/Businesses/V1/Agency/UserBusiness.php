@@ -82,11 +82,6 @@ class UserBusiness
     {
         $user = UserService::first($id);
 
-        UserService::changePassword($user, $request);
-    }
-
-    public static function addPrefix($v)
-    {
-        return Role::ROLES_PREFIXES['agency'] . $v;
+        UserService::changePassword($user, $request->password);
     }
 }

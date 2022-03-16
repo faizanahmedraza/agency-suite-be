@@ -5,11 +5,9 @@ namespace App\Http\Businesses\V1\Agency;
 use App\Exceptions\V1\DomainException;
 use App\Http\Services\V1\Agency\AgencyDomainService;
 use App\Http\Services\V1\Agency\AgencyService;
-use App\Http\Services\V1\Agency\AuthenticationService;
 use App\Http\Services\V1\Agency\UserService;
 use App\Http\Services\V1\Agency\UserVerificationService;
 use App\Models\AgencyDomain;
-use Illuminate\Support\Str;
 
 class AgencyBusiness
 {

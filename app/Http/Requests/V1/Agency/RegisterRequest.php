@@ -29,7 +29,6 @@ class RegisterRequest extends RequestAbstract
         //Convert request value to lowercase
         if (isset($all['email']) && isset($all['agency_name']) && isset($all['password'])) {
             $all['email'] = strtolower(preg_replace('/\s+/', '', $all['email']));
-            $all['password'] = preg_replace('/\s+/', '', $all['password']);
             $all['agency_name'] = preg_replace('/\s+/', ' ', $all['agency_name']);
         }
         return $all;
@@ -47,7 +46,7 @@ class RegisterRequest extends RequestAbstract
             'last_name' => 'required|alpha|max:100',
             'email' => 'required|email:rfc,dns|max:100|email|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i',
             'password' => 'required|string|min:6|max:100|confirmed',
-            'agency_name' => 'required|string|max:100|unique:agencies,name',
+            'agency_name' => 'required|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name',
         ];
     }
 

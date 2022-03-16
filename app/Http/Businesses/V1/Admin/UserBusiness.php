@@ -82,9 +82,4 @@ class UserBusiness
 
         UserService::changePassword($user,$request);
     }
-
-    public static function addPrefix($v)
-    {
-        return Role::ROLES_PREFIXES['admin'] . $v;
-    }
 }

@@ -88,6 +88,7 @@ $app->routeMiddleware([
     'client_credentials' => App\Http\Middleware\ClientCredentialsVerification::class,
     'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
     'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,
+    'permission' => \App\Http\Middleware\PermissionMiddlware::class,
     'admin' => \App\Http\Middleware\AdminAllowedMiddleware::class,
     'agency' => \App\Http\Middleware\AgencyAllowedMiddleware::class,
     'customer' => \App\Http\Middleware\CustomerAllowedMiddleware::class,
