@@ -32,7 +32,7 @@ class UserService
      */
     public static function store(Request $request)
     {
-        $password = empty($request->password) ? '12345678' : $request->password;
+        $password = empty($request->password) ? '12345678' : trim($request->password);
 
         $user = new User;
         $user->first_name = $request->first_name;

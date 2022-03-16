@@ -10,6 +10,7 @@ use App\Http\Requests\V1\Agency\UserRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\UsersResponse;
 use App\Http\Resources\V1\Agency\UserResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 /**

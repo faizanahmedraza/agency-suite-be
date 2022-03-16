@@ -17,7 +17,7 @@ class AgencyAllowedMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::user()->hasRole('Agency')) {
+        if (Auth::user()->hasAnyRole(['Super Admin','Customer']) || app('agency')->id != Auth::user()->agency_id) {
             throw UserException::unAuthorized();
         }
 

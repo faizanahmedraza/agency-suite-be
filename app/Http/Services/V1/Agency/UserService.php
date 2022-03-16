@@ -20,10 +20,12 @@ class UserService
 {
     public static function create($request, $agency, $owner = false)
     {
+        $password = empty($request->password) ? '12345678' : trim($request->password);
+
         $user = new User();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->password = Hash::make(trim($request->password));
+        $user->password = Hash::make($password);
         $user->username = strtolower($request->email);
         if (!$owner) {
             if (isset($request->status)) {
@@ -133,7 +135,7 @@ class UserService
 
     public static function getUserByEmail(String $email): User
     {
-        $user = User::where('username', $email)->where('agency_id',app('agency_id')->id)->first();
+        $user = User::where('username', $email)->where('agency_id',app('agency')->id)->first();
         if (!$user) {
             throw ModelException::dataNotFound();
         }
@@ -156,7 +158,7 @@ class UserService
 
     public static function getUserByUsername($username)
     {
-        $user = User::where('agency_id',app('agency_id')->id)->whereRaw('LOWER(username) = ? ', strtolower($username))->first();
+        $user = User::where('agency_id',app('agency')->id)->whereRaw('LOWER(username) = ? ', strtolower($username))->first();
 
         if (!$user) {
             throw UnAuthorizedException::InvalidCredentials();
@@ -166,7 +168,7 @@ class UserService
 
     public static function getUserById(Int $id): User
     {
-        $user = User::where(['id' => $id])->where('agency_id',app('agency_id')->id)->first();
+        $user = User::where(['id' => $id])->where('agency_id',app('agency')->id)->first();
 
         if (!$user) {
             throw UnAuthorizedException::InvalidCredentials();
@@ -206,18 +208,18 @@ class UserService
 
     public static function blockUsers(array $ids)
     {
-        return User::whereIn('id', $ids)->where('agency_id',app('agency_id')->id)->update(["status" => User::STATUS['blocked']]);
+        return User::whereIn('id', $ids)->where('agency_id',app('agency')->id)->update(["status" => User::STATUS['blocked']]);
     }
 
     public static function first(int $id, $with = ['roles', 'roles.permissions', 'permissions']): User
     {
         $user = User::with($with)
             ->where('id', $id)
-            ->where('agency_id',app('agency_id')->id)
-            ->avoidRole(['Super Admin'])
+            ->where('agency_id',app('agency')->id)
+            ->avoidRole(['Super Admin','Customer'])
             ->first();
 
-        if (!$user || $user->created_by != Auth::id()) {
+        if (!$user) {
             throw ModelException::dataNotFound();
         }
 
@@ -242,9 +244,9 @@ class UserService
     public static function getUserName($username, $excludeAuth = false)
     {
         if ($excludeAuth) {
-            $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->where('id', '!=', Auth::user()->id)->where('agency_id',app('agency_id')->id)->first();
+            $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->where('id', '!=', Auth::user()->id)->where('agency_id',app('agency')->id)->first();
         } else {
-            $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->where('agency_id',app('agency_id')->id)->first();
+            $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->where('agency_id',app('agency')->id)->first();
         }
 
         if ($user) {
