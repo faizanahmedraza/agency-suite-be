@@ -18,6 +18,21 @@ class LoginRequest extends RequestAbstract
     }
 
     /**
+     * Get data to be validated from the request.
+     *
+     * @return array
+     */
+    protected function validationData(): array
+    {
+        $all = parent::validationData();
+        //Convert request value to lowercase
+        if (isset($all['email'])) {
+            $all['email'] = preg_replace('/\s+/', '', strtolower(trim($all['email'])));
+        }
+        return $all;
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array

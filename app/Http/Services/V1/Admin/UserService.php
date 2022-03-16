@@ -32,7 +32,7 @@ class UserService
      */
     public static function store(Request $request)
     {
-        $password = empty($request->password) ? '12345678' : trim($request->password);
+        $password = empty($request->password) ? '12345678' : $request->password;
 
         $user = new User;
         $user->first_name = $request->first_name;
@@ -248,7 +248,7 @@ class UserService
     {
         self::checkStatus($user);
 
-        $user->password = Hash::make(trim($request->password));
+        $user->password = Hash::make($request->password);
         $user->save();
 
         if (!$user) {

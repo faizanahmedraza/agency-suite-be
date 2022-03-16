@@ -29,7 +29,6 @@ class RegisterRequest extends RequestAbstract
         //Convert request value to lowercase
         if (isset($all['email']) && isset($all['agency_name']) && isset($all['password'])) {
             $all['email'] = strtolower(preg_replace('/\s+/', '', $all['email']));
-            $all['password'] = preg_replace('/\s+/', '', $all['password']);
             $all['agency_name'] = preg_replace('/\s+/', ' ', $all['agency_name']);
         }
         return $all;
