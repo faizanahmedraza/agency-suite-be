@@ -2,6 +2,7 @@
 
 namespace App\Http\Businesses\V1\Admin;
 
+use App\Exceptions\V1\RoleException;
 use App\Http\Services\V1\Admin\RoleService;
 
 class RoleBusiness
@@ -30,6 +31,10 @@ class RoleBusiness
     public static function destroy(int $id): void
     {
         $role = RoleService::first($id);
+        if(count($role->users) > 0)
+        {
+            RoleException::customError('You cannot delete this role. It assigned to users.',403);
+        }
         RoleService::destroy($role);
     }
 }

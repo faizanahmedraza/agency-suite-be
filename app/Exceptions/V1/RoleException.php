@@ -21,4 +21,12 @@ class RoleException extends BaseException
             '422'
         );
     }
+
+    public static function customError($message,$code): self
+    {
+        return new self(
+            $message,
+            $code
+        );
+    }
 }
