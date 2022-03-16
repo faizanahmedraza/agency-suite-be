@@ -248,7 +248,7 @@ class UserService
     {
         self::checkStatus($user);
 
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make(trim($request->password));
         $user->save();
 
         if (!$user) {

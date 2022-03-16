@@ -23,7 +23,7 @@ class UserService
         $user = new User();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->password = Hash::make($request->password);
+        $user->password = Hash::make(trim($request->password));
         $user->username = strtolower($request->email);
         if (!$owner) {
             if (isset($request->status)) {
@@ -142,7 +142,7 @@ class UserService
 
     public static function changePassword(User $user, String $password): User
     {
-        $user->password = Hash::make($password);
+        $user->password = Hash::make(trim($password));
         $user->save();
 
         if (!$user) {
