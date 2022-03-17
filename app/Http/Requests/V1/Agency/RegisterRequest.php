@@ -28,7 +28,7 @@ class RegisterRequest extends RequestAbstract
         $all = parent::validationData();
         //Convert request value to lowercase
         if (isset($all['email']) && isset($all['agency_name']) && isset($all['password'])) {
-            $all['email'] = strtolower(preg_replace('/\s+/', '', $all['email']));
+            $all['email'] = preg_replace('/\s+/', '', strtolower(trim($all['email'])));
             $all['agency_name'] = preg_replace('/\s+/', ' ', $all['agency_name']);
         }
         return $all;
@@ -60,7 +60,7 @@ class RegisterRequest extends RequestAbstract
         return [
             'email.unique' => "Email already exist.",
             'password.min' => "Password length must be greater than 5 characters.",
-            'password.confirmed' => "Password not matched.",
+            'password.confirmed' => "Password did not matched.",
         ];
     }
 }

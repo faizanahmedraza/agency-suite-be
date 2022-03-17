@@ -66,6 +66,7 @@ class UserRequest extends RequestAbstract
         return [
             'roles.*.in' => 'The selected roles are invalid.',
             'permissions.*.in' => 'The selected permissions are invalid.',
+            'password.confirmed' => "Password did not matched.",
         ];
     }
 }

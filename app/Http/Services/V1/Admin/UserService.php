@@ -187,7 +187,7 @@ class UserService
         } else if ($user->status == User::STATUS['suspend']) {
             throw UserException::suspended();
         } else if ($user->status == User::STATUS['pending']) {
-            throw UnAuthorizedException::unVerifiedAccount();
+            throw UnAuthorizedException::pendingAccount();
         }
         return $user;
     }
