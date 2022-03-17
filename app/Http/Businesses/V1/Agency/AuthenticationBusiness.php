@@ -23,7 +23,7 @@ class AuthenticationBusiness
     {
         // get user data from database
         $user = (new UserService())->getUserByAgency([
-            ['username', '=', $request->email],
+            ['username', '=', clean($request->email)],
             ['agency_id', '=', (app('agency'))->id],
         ]);
 
