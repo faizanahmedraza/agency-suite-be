@@ -21,10 +21,11 @@ class UnAuthorizedException extends BaseException
         return new self("Your account has been blocked. Please contact with administrator.", '401');
     }
 
-    // public static function unVerifiedAccount(): self
-    // {
-    //     return new self("Your account has been pending. Please contact with administrator.", '401');
-    // }
+     public static function pendingAccount(): self
+     {
+         return new self("Your account has been pending. Please contact with administrator.", '401');
+     }
+
     public static function unVerifiedAccount(): self
     {
         return new self("Your account is not verified. Please verify your account.", '401');
