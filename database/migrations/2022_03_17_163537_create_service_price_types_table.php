@@ -15,8 +15,6 @@ class CreateServicePriceTypesTable extends Migration
     {
         Schema::create('service_price_types', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('service_id')->constrained('services');
-            $table->foreignId('agency_id')->constrained('agencies');
             $table->integer('price')->default(0);
             $table->integer('purchase_limit')->default(0);
             $table->integer('weekly')->default(0);
@@ -26,6 +24,8 @@ class CreateServicePriceTypesTable extends Migration
             $table->integer('annually')->default(0);
             $table->integer('max_concurrent_requests')->default(0);
             $table->integer('max_requests_per_month')->default(0);
+            $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
+            $table->foreignId('agency_id')->constrained('agencies')->cascadeOnDelete();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();
             $table->timestamps();

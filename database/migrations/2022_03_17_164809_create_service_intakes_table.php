@@ -16,8 +16,8 @@ class CreateServiceIntakesTable extends Migration
         Schema::create('service_intakes', function (Blueprint $table) {
             $table->id();
             $table->string('intake');
-            $table->foreignId('service_id')->constrained('services');
-            $table->foreignId('agency_id')->constrained('agencies');
+            $table->foreignId('service_id')->constrained('services')->cascadeOnDelete();
+            $table->foreignId('agency_id')->constrained('agencies')->cascadeOnDelete();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();
             $table->timestamps();

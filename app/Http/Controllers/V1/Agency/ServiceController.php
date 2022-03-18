@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers\V1\Agency;
 
+use App\Http\Businesses\V1\Agency\ServiceBusiness;
 use App\Http\Businesses\V1\Agency\UserBusiness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Agency\ChangeAnyPasswordRequest;
+use App\Http\Requests\V1\Agency\ServiceRequest;
 use App\Http\Requests\V1\Agency\UserListRequest;
 use App\Http\Requests\V1\Agency\UserRequest;
 use App\Http\Resources\SuccessResponse;
+use App\Http\Resources\V1\Agency\ServiceResponse;
 use App\Http\Resources\V1\Agency\UsersResponse;
 use App\Http\Resources\V1\Agency\UserResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @group Agency Users Management
+ * @group Agency Services
  * @authenticated
  */
 class ServiceController extends Controller
@@ -49,17 +52,17 @@ class ServiceController extends Controller
      * @bodyParam  max_concurrent_requests integer optional if subscription_type is recurring ex: 12
      * @bodyParam  max_requests_per_month integer optional if subscription_type is recurring ex: 12
      *
-     * @responseFile 200 responses/V1/Agency/UserResponse.json
+     * @responseFile 200 responses/V1/Agency
      * @responseFile 422 responses/ValidationResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public function store(UserRequest $request)
+    public function store(ServiceRequest $request)
     {
         DB::beginTransaction();
-        $user = UserBusiness::store($request);
+        $service = ServiceBusiness::store($request);
         DB::commit();
-        return (new UserResponse($user));
+        return (new ServiceResponse($service));
     }
 
     /**
