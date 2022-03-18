@@ -17,8 +17,8 @@ class CustomerAllowedMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->hasRole(['Customer'])) {
-            return  UserException::unAuthorized();
+        if (Auth::user() == null || !Auth::user()->hasRole(['Customer'])) {
+            throw  UserException::unAuthorized();
         }
 
         $response = $next($request);

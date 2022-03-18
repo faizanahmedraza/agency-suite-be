@@ -65,7 +65,7 @@ class BaseResponse extends Resource
         }
 
 
-        if (\Auth::check() && $this->success) {
+        if (\Auth::check() && $this->success && ! \Auth::user()->hasRole(['Customer'])) {
             $response['permissions'] = \Auth::user()->getAllPermissions()->pluck('name')->map(function ($item) {
                 return removePrefix($item, Role::ROLES_PREFIXES['agency'] ?? null);
             });

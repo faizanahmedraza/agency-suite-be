@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Resources\SuccessResponse;
+
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router) {
@@ -41,7 +43,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         });
     });
 
-//     Agencies
+    // Agencies
     $router->group(['prefix' => 'agencies', 'namespace' => 'Agency'], function () use ($router) {
         //Authentication
         $router->group(['prefix' => 'auth', 'middleware' => 'client_credentials'], function () use ($router) {
@@ -87,6 +89,21 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
     });
 
     // Agencies Customers
+    $router->group(['prefix' => 'customers', 'namespace' => 'Customer','middleware' => 'agency_domain'],function () use ($router) {
+        $router->post('/register', 'AuthenticationController@register');
+        $router->post('/verify-token', 'AuthenticationController@userVerification');
+        $router->post('/login', 'AuthenticationController@login');
+        $router->post('/forget-password', 'AuthenticationController@forgetPassword');
+        $router->post('/create-new-password', 'AuthenticationController@createNewPassword');
+        $router->group(['middleware' => ['customer']], function () use ($router) {
+            $router->delete('/logout', 'AuthenticationController@logout');
+        });
+        // $router->get('/', function () use ($router) {
+        //     return new SuccessResponse([]);
+        // });
+    });
+
+
 //    $router->group(['prefix' => 'users'], function () use ($router) {
 //        $router->group(['prefix' => 'auth', 'middleware' => 'client_credentials'], function () use ($router) {
 //            $router->post('/login', 'AuthenticationController@login');
