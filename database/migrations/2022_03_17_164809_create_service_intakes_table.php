@@ -18,7 +18,10 @@ class CreateServiceIntakesTable extends Migration
             $table->string('intake');
             $table->foreignId('service_id')->constrained('services');
             $table->foreignId('agency_id')->constrained('agencies');
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -20,7 +20,11 @@ class CreateServicesTable extends Migration
             $table->string('image')->nullable();
             $table->integer('subscription_type');
             $table->foreignId('agency_id')->constrained('agencies');
+            $table->integer('status')->default(0);
+            $table->unsignedInteger('created_by')->nullable();
+            $table->unsignedInteger('updated_by')->nullable();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
