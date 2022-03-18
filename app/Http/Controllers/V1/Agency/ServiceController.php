@@ -36,7 +36,7 @@ class ServiceController extends Controller
 
     /**
      * Create Services
-     * This api create new user.
+     * This api create new service.
      *
      * @bodyParam  name string required
      * @bodyParam  description string required
@@ -66,7 +66,7 @@ class ServiceController extends Controller
     }
 
     /**
-     * Get Users
+     * Get Services
      * This will return logged in user profile.
      *
      * @urlParam services string 1,2,3,4
@@ -112,18 +112,24 @@ class ServiceController extends Controller
 
 
     /**
-     * Update User Details.
-     * This api update user details
+     * Update Services
+     * This api update service.
      *
-     * @bodyParam  first_name String required
-     * @bodyParam  last_name String required
-     * @bodyParam  status string required ex: pending,active,blocked
-     * @bodyParam  roles Array required ex: [1,2,3]
-     * @bodyParam  permissions Array ex: [1,2,3]
+     * @bodyParam  name string required
+     * @bodyParam  description string required
+     * @bodyParam  image string ex: base64imageFile
+     * @bodyParam  subscription_type string ex: 'one-off' ,'recurring'
+     * @bodyParam  price integer required if subscription_type is one_off ex: 123
+     * @bodyParam  purchase_limit integer optional if subscription_type is one_off ex: 12
+     * @bodyParam  weekly integer required if subscription_type is recurring ex: 123
+     * @bodyParam  monthly integer required if subscription_type is recurring ex: 123
+     * @bodyParam  quarterly integer required if subscription_type is recurring ex: 123
+     * @bodyParam  biannually integer required if subscription_type is recurring ex: 123
+     * @bodyParam  annually integer required if subscription_type is recurring ex: 123
+     * @bodyParam  max_concurrent_requests integer optional if subscription_type is recurring ex: 12
+     * @bodyParam  max_requests_per_month integer optional if subscription_type is recurring ex: 12
      *
-     * @urlParam  user_id Integer required
-     *
-     * @responseFile 200 responses/V1/Admin/UserResponse.json
+     * @responseFile 200 responses/V1/Agency
      * @responseFile 422 responses/ValidationResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */

@@ -2,8 +2,8 @@
 
 namespace App\Http\Resources\V1\Agency;
 
+use App\Models\Service;
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
-use App\Models\User;
 
 class ServiceResource extends Resource
 {
@@ -17,13 +17,15 @@ class ServiceResource extends Resource
     {
         return [
             'id' => $this->id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'email' => ($this->email) ? $this->email : $this->username,
-            'last_logged_in' => $this->last_login,
-            'status' => array_search($this->status, User::STATUS),
-            'roles' =>  RoleResource::collection($this->whenLoaded('roles')),
-            'permissions' =>  PermissionResource::collection($this->whenLoaded('permissions'))
+            'name' => $this->name,
+            'description' => $this->description,
+            'image' => $this->image,
+            'subscription_type' => array_search($this->subscription_type,Service::SUBSCRIPTION_TYPES),
+            'status' => array_search($this->status, Service::STATUS),
+            'price_types' =>  ServicePriceTypeResource::collection($this->whenLoaded('priceTypes')),
+            'intakes' =>  ServiceIntakeResource::collection($this->whenLoaded('intakes')),
+            'created_at' => $this->created_at,
+            'updated_at' => $this->updated_at,
         ];
     }
 }

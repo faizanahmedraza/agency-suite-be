@@ -44,6 +44,32 @@ if (!function_exists('removePrefix')) {
     }
 }
 
+if (!function_exists('validate_base64')) {
+    function validate_base64($value, array $allowedMime)
+    {
+        //check base64 string
+        if (strpos($value, ';base64') !== false) {
+            list($format, $data) = explode(';', $value);
+            list(, $format) = explode('/', $format);
+            list(, $data) = explode(',', $data);
+        } else {
+            return false;
+        }
+
+        // check file format
+        if (!in_array($format, $allowedMime)) {
+            return false;
+        }
+
+        // check base64 format
+        if (!preg_match('%^[a-zA-Z0-9/+]*={0,2}$%',$data)) {
+            return false;
+        }
+
+        return true;
+    }
+}
+
 function getIds($value)
 {
     return array_map('intval', explode(',', $value));

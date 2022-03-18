@@ -83,6 +83,15 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
             // Permissions apis
             $router->get('/permissions', 'PermissionController@get');
+
+            //Services apis
+            $router->group(['prefix' => 'services'], function () use ($router) {
+                $router->get('/', 'ServiceController@get');
+                $router->get('/{id}', 'ServiceController@first');
+                $router->post('/', 'ServiceController@store');
+                $router->put('/{id}', 'ServiceController@update');
+                $router->delete('/{id}', 'ServiceController@destroy');
+            });
         });
     });
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Requests\V1\Agency;
 
-use App\Rules\EmailFormatRule;
+use App\Models\Service;
 use Pearl\RequestValidate\RequestAbstract;
 
 
@@ -27,9 +27,8 @@ class ServiceRequest extends RequestAbstract
     {
         $all = parent::validationData();
         //Convert request value to lowercase
-        if (isset($all['email']) && isset($all['agency_name']) && isset($all['password'])) {
-            $all['email'] = preg_replace('/\s+/', '', strtolower(trim($all['email'])));
-            $all['agency_name'] = preg_replace('/\s+/', ' ', $all['agency_name']);
+        if (isset($all['name'])) {
+            $all['name'] = preg_replace('/\s+/', ' ', trim(strtolower($all['name'])));
         }
         return $all;
     }
@@ -42,11 +41,20 @@ class ServiceRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'first_name' => 'required|alpha|max:100',
-            'last_name' => 'required|alpha|max:100',
-            'email' => 'required|email:rfc,dns|max:100|email|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i',
-            'password' => 'required|string|min:6|max:100|confirmed',
-            'agency_name' => 'required|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name',
+            'name' => 'required|string|max:100',
+            'description' => 'required|string',
+            'image' => 'sometimes|string',
+            'subscription_type' => 'required|in:' . implode(',', array_keys(Service::SUBSCRIPTION_TYPES)),
+            'status' => 'required|in:' . implode(',', array_keys(Service::STATUS)),
+            'price' => 'numeric|required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[0],
+            'purchase_limit' => 'sometimes|nullable|numeric',
+            'weekly' => 'numeric|required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1],
+            'monthly' => 'numeric|required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1],
+            'quarterly' => 'numeric|required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1],
+            'biannually' => 'numeric|required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1],
+            'annually' => 'numeric|required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1],
+            'max_concurrent_requests' => 'sometimes|nullable|numeric',
+            'max_requests_per_month' => 'sometimes|nullable|numeric',
         ];
     }
 
@@ -57,10 +65,6 @@ class ServiceRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [
-            'email.unique' => "Email already exist.",
-            'password.min' => "Password length must be greater than 5 characters.",
-            'password.confirmed' => "Password did not matched.",
-        ];
+        return [];
     }
 }

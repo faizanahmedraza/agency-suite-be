@@ -12,7 +12,9 @@ class Service extends Model
 
     const STATUS = ['pending' => 0, 'active' => 1];
 
-    protected $cascadeDeletes = ['intakes','priceTypes'];
+    const SUBSCRIPTION_TYPES = ['one-off' => 0,'recurring' => 1];
+
+    protected $cascadeDeletes = ['intakes', 'priceTypes'];
 
     /**
      * The attributes that are mass assignable.
@@ -20,21 +22,21 @@ class Service extends Model
      * @var array
      */
     protected $fillable = [
-        'first_name', 'last_name', 'email', 'username', 'password', 'status','last_login'
+        'name', 'description', 'image', 'subscription_type', 'status','agency_id'
     ];
 
     public function agency()
     {
-        return $this->belongsTo(Agency::class,'agency_id','id');
+        return $this->belongsTo(Agency::class, 'agency_id', 'id');
     }
 
     public function intakes()
     {
-        return $this->hasMany(ServiceIntake::class,'service_id','id');
+        return $this->hasOne(ServiceIntake::class, 'service_id', 'id');
     }
 
     public function priceTypes()
     {
-        return $this->hasOne(ServicePriceType::class,'service_id','id');
+        return $this->hasOne(ServicePriceType::class, 'service_id', 'id');
     }
 }

@@ -63,6 +63,7 @@ $app->configure('cors');
 $app->configure('auth');
 $app->configure('database');
 $app->configure('permission');
+$app->configure('cloudinary');
 
 if (env('APP_ENV') === "local") {
     //scribe for documentation
@@ -81,6 +82,10 @@ if (env('APP_ENV') === "local") {
 | route or middleware that'll be assigned to some specific routes.
 |
 */
+
+$app->middleware([
+    'Nord\Lumen\Cors\CorsMiddleware',
+]);
 
 $app->routeMiddleware([
     'admin_auth' => App\Http\Middleware\AdminAuthenticate::class,
@@ -115,6 +120,7 @@ $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+$app->register(Nord\Lumen\Cors\CorsServiceProvider::class);
 
 
 if (env('APP_ENV') === "local") {
@@ -125,6 +131,7 @@ if (env('APP_ENV') === "local") {
 }
 
 $app->alias('cache', \Illuminate\Cache\CacheManager::class);
+$app->alias('Cloudinary', \CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

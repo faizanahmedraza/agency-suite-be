@@ -2,22 +2,18 @@
 
 namespace App\Http\Businesses\V1\Agency;
 
+use App\Exceptions\V1\RequestValidationException;
+use App\Http\Services\V1\Agency\AgencyBusinessService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ServiceBusiness
 {
     public static function store(Request $request)
     {
-        // create agency users
-        $user = (new UserService())->create($request, Auth::user()->agency);
-
-        //assigning roles to the user
-        RoleService::assignRolesToUser($request, $user);
-
-        // assign direct permission to user
-        PermissionService::assignDirectPermissionToUser($request, $user);
-
-        return $user->load(['roles', 'roles.permissions', 'permissions']);
+        if (!validate_base64($request->image, ['png', 'jpg', 'jpeg'])) {
+            throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are png,jpg,jpeg.');
+        }
+        // create agency service
+        return AgencyBusinessService::create($request);
     }
 }
