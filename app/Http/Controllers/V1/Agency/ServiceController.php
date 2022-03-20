@@ -6,13 +6,11 @@ use App\Http\Businesses\V1\Agency\ServiceBusiness;
 use App\Http\Businesses\V1\Agency\UserBusiness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Agency\ChangeAnyPasswordRequest;
+use App\Http\Requests\V1\Agency\ServiceListRequest;
 use App\Http\Requests\V1\Agency\ServiceRequest;
-use App\Http\Requests\V1\Agency\UserListRequest;
-use App\Http\Requests\V1\Agency\UserRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\ServiceResponse;
-use App\Http\Resources\V1\Agency\UsersResponse;
-use App\Http\Resources\V1\Agency\UserResponse;
+use App\Http\Resources\V1\Agency\ServicesResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
@@ -88,10 +86,10 @@ class ServiceController extends Controller
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public function get(UserListRequest $request)
+    public function get(ServiceListRequest $request)
     {
-        $services = UserBusiness::get($request);
-        return (new UsersResponse($services));
+        $services = ServiceBusiness::get($request);
+        return (new ServicesResponse($services));
     }
 
     /**
@@ -106,8 +104,8 @@ class ServiceController extends Controller
      */
     public function first(int $id)
     {
-        $user = UserBusiness::first($id);
-        return (new UserResponse($user));
+        $service = ServiceBusiness::first($id);
+        return (new ServiceResponse($service));
     }
 
 
@@ -134,12 +132,12 @@ class ServiceController extends Controller
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public function update(UserRequest $request, int $id)
+    public function update(ServiceRequest $request, int $id)
     {
         DB::beginTransaction();
-        $user = UserBusiness::update($request, $id);
+        $service = ServiceBusiness::update($request, $id);
         DB::commit();
-        return (new UserResponse($user));
+        return (new ServiceResponse($service));
     }
 
     /**
@@ -155,7 +153,7 @@ class ServiceController extends Controller
 
     public function destroy(int $id)
     {
-        UserBusiness::destroy($id);
+        ServiceBusiness::destroy($id);
         return new SuccessResponse([]);
     }
 
@@ -173,22 +171,6 @@ class ServiceController extends Controller
     public static function toggleStatus(int $id)
     {
         UserBusiness::toggleStatus($id);
-        return new SuccessResponse([]);
-    }
-
-    /**
-     * Change Password of Any User
-     *
-     * @urlParam id integer required
-     *
-     * @bodyParam password string required ex: 123456
-     *
-     * @responseFile 200 responses/SuccessResponse.json
-     */
-
-    public static function changeAnyPassword(ChangeAnyPasswordRequest $request, int $id)
-    {
-        UserBusiness::changeAnyPassword($request, $id);
         return new SuccessResponse([]);
     }
 }

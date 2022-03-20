@@ -3,11 +3,13 @@
 namespace App\Http\Services\V1\Agency;
 
 use App\Exceptions\V1\ModelException;
+use App\Helpers\TimeStampHelper;
 use App\Http\Services\V1\CloudinaryService;
 use App\Models\Service;
 use App\Models\ServiceIntake;
 use App\Models\ServicePriceType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class AgencyBusinessService
 {
@@ -30,7 +32,9 @@ class AgencyBusinessService
         $service = new Service();
         $service->name = $request->name;
         $service->description = $request->description;
-        $service->image = CloudinaryService::upload($request->image)->secureUrl;
+        if ($request->has('image') && !empty($request->image)) {
+            $service->image = CloudinaryService::upload($request->image)->secureUrl;
+        }
         $service->subscription_type = Service::SUBSCRIPTION_TYPES[$request->subscription_type];
         $service->status = Service::STATUS['pending'];
         $service->agency_id = app('agency')->id;
@@ -62,7 +66,7 @@ class AgencyBusinessService
 
     public static function update(Service $service, Request $request)
     {
-        if ($request->has('image') && !empty($request->image)) {
+        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['res', 'https', 'cloudinary'])) {
             $service->image = CloudinaryService::upload($request->image)->secureUrl;
         }
         $service->name = $request->name;
@@ -95,4 +99,49 @@ class AgencyBusinessService
 
         return $service->refresh();
     }
+
+    public static function get(Request $request)
+    {
+        $services = Service::query()->with(['intakes', 'priceTypes']);
+
+        if ($request->query("services")) {
+            $ids = \getIds($request->services);
+            $services->orWhereIn('id', $ids);
+        }
+
+        if ($request->query('name')) {
+            $services->whereRaw("TRIM(LOWER(name)) = ? ", trim(strtolower($request->name)));
+        }
+
+        if ($request->query('status')) {
+            $arrStatus = getStatus(Service::STATUS, clean($request->status));
+            $services->wherein('status', $arrStatus);
+        }
+
+        if ($request->query('order_by')) {
+            $services->orderBy('id', $request->get('order_by'));
+        } else {
+            $services->orderBy('id', 'desc');
+        }
+
+        if ($request->query('from_date')) {
+            $from = TimeStampHelper::formateDate($request->from_date);
+            $services->whereDate('created_at', '>=', $from);
+        }
+
+        if ($request->query('to_date')) {
+            $to = TimeStampHelper::formateDate($request->to_date);
+            $services->whereDate('created_at', '<=', $to);
+        }
+
+        return ($request->filled('pagination') && $request->get('pagination') == 'false')
+            ? $services->get()
+            : $services->paginate(\pageLimit($request));
+    }
+
+    public static function destroy(Service $service)
+    {
+        $service->delete();
+    }
+
 }
