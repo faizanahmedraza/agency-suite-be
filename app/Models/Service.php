@@ -10,7 +10,7 @@ class Service extends Model
 {
     use UserAuditTrait, CascadeSoftDeletes;
 
-    const STATUS = ['pending' => 0, 'active' => 1];
+    const CATALOG_STATUS = ['pending' => 0, 'active' => 1];
 
     const SUBSCRIPTION_TYPES = ['one-off' => 0,'recurring' => 1];
 
@@ -22,7 +22,7 @@ class Service extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'image', 'subscription_type', 'status','agency_id'
+        'name', 'description', 'image', 'subscription_type', 'catalog_status','agency_id'
     ];
 
     public function agency()

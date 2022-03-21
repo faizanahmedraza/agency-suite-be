@@ -36,7 +36,7 @@ class AgencyBusinessService
             $service->image = CloudinaryService::upload($request->image)->secureUrl;
         }
         $service->subscription_type = Service::SUBSCRIPTION_TYPES[$request->subscription_type];
-        $service->status = Service::STATUS['pending'];
+        $service->catalog_status = Service::CATALOG_STATUS['pending'];
         $service->agency_id = app('agency')->id;
         $service->save();
 
@@ -130,7 +130,7 @@ class AgencyBusinessService
         }
 
         if ($request->query('status')) {
-            $arrStatus = getStatus(Service::STATUS, clean($request->status));
+            $arrStatus = getStatus(Service::CATALOG_STATUS, clean($request->status));
             $services->wherein('status', $arrStatus);
         }
 
@@ -162,7 +162,7 @@ class AgencyBusinessService
 
     public static function toggleStatus(Service $service)
     {
-        ($service->status == Service::STATUS['pending']) ? $service->status = Service::STATUS['active'] : $service->status = Service::STATUS['pending'];
+        ($service->catalog_status == Service::CATALOG_STATUS['pending']) ? $service->catalog_status = Service::CATALOG_STATUS['active'] : $service->catalog_status = Service::CATALOG_STATUS['pending'];
         $service->save();
     }
 }
