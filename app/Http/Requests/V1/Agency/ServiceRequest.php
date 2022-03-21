@@ -41,7 +41,7 @@ class ServiceRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:150',
+            'name' => 'required|string|max:150|regex:/^[A-Za-z0-9_-]+[A-Za-z0-9]$/i',
             'description' => 'required|string',
             'image' => 'sometimes|string',
             'subscription_type' => 'required|in:' . implode(',', array_keys(Service::SUBSCRIPTION_TYPES)),
