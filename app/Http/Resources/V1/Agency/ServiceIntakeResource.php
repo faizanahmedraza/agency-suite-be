@@ -18,7 +18,7 @@ class ServiceIntakeResource extends Resource
     {
         return [
             'id' => $this->id,
-            'intake' => $this->name,
+            'intake' => json_decode($this->intake),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at
         ];

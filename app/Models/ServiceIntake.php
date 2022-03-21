@@ -16,8 +16,4 @@ class ServiceIntake extends Model
         'service_id',
         'agency_id',
     ];
-
-    protected $casts = [
-        'intake' => 'array'
-    ];
 }

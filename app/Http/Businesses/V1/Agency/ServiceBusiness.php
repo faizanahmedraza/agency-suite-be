@@ -44,4 +44,12 @@ class ServiceBusiness
         $service = AgencyBusinessService::first($id);
         AgencyBusinessService::destroy($service);
     }
+
+    public static function toggleStatus($id)
+    {
+        // get user
+        $service = AgencyBusinessService::first($id);
+        // status toggle
+        AgencyBusinessService::toggleStatus($service);
+    }
 }

@@ -41,8 +41,11 @@ class AgencyBusinessService
         $service->save();
 
         $serviceIntake = new ServiceIntake();
-        $serviceIntake->intake = json_encode(['title', 'description']);
-        $service->agency_id = app('agency')->id;
+        $serviceIntake->intake = json_encode([
+            ['field' => 'text','name' => 'title'],
+            ['field' => 'text','name' => 'description']
+        ]);
+        $serviceIntake->agency_id = app('agency')->id;
         $service->intakes()->save($serviceIntake);
 
         $servicePriceType = new ServicePriceType();
@@ -58,9 +61,10 @@ class AgencyBusinessService
             $servicePriceType->max_concurrent_requests = $request->max_concurrent_requests;
             $servicePriceType->max_requests_per_month = $request->max_requests_per_month;
         }
-        $service->agency_id = app('agency')->id;
+        $servicePriceType->agency_id = app('agency')->id;
         $service->priceTypes()->save($servicePriceType);
 
+        $service->load(['intakes', 'priceTypes']);
         return $service->refresh();
     }
 
@@ -72,20 +76,31 @@ class AgencyBusinessService
         $service->name = $request->name;
         $service->description = $request->description;
         $service->subscription_type = Service::SUBSCRIPTION_TYPES[$request->subscription_type];
-        $service->status = Service::STATUS['pending'];
         $service->agency_id = app('agency')->id;
         $service->save();
 
         $serviceIntake = ServiceIntake::where('service_id', $service->id)->first();
-        $serviceIntake->intake = json_encode(['title', 'description']);
-        $service->agency_id = app('agency')->id;
+        $serviceIntake->intake = json_encode([
+            ['field' => 'text','name' => 'title'],
+            ['field' => 'text','name' => 'description']
+        ]);
+        $serviceIntake->agency_id = app('agency')->id;
         $service->intakes()->save($serviceIntake);
 
         $servicePriceType = ServicePriceType::where('service_id', $service->id)->first();
         if (Service::SUBSCRIPTION_TYPES[$request->subscription_type] === 0) {
             $servicePriceType->price = $request->price;
             $servicePriceType->purchase_limit = $request->purchase_limit;
+            $servicePriceType->weekly = null;
+            $servicePriceType->monthly = null;
+            $servicePriceType->quarterly = null;
+            $servicePriceType->biannually = null;
+            $servicePriceType->annually = null;
+            $servicePriceType->max_concurrent_requests = null;
+            $servicePriceType->max_requests_per_month = null;
         } else {
+            $servicePriceType->price = null;
+            $servicePriceType->purchase_limit = null;
             $servicePriceType->weekly = $request->weekly;
             $servicePriceType->monthly = $request->monthly;
             $servicePriceType->quarterly = $request->quarterly;
@@ -94,9 +109,10 @@ class AgencyBusinessService
             $servicePriceType->max_concurrent_requests = $request->max_concurrent_requests;
             $servicePriceType->max_requests_per_month = $request->max_requests_per_month;
         }
-        $service->agency_id = app('agency')->id;
+        $servicePriceType->agency_id = app('agency')->id;
         $service->priceTypes()->save($servicePriceType);
 
+        $service->load(['intakes', 'priceTypes']);
         return $service->refresh();
     }
 
@@ -144,4 +160,9 @@ class AgencyBusinessService
         $service->delete();
     }
 
+    public static function toggleStatus(Service $service)
+    {
+        ($service->status == Service::STATUS['pending']) ? $service->status = Service::STATUS['active'] : $service->status = Service::STATUS['pending'];
+        $service->save();
+    }
 }

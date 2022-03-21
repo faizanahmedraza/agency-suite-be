@@ -28,7 +28,7 @@ class ServiceRequest extends RequestAbstract
         $all = parent::validationData();
         //Convert request value to lowercase
         if (isset($all['name'])) {
-            $all['name'] = preg_replace('/\s+/', ' ', trim(strtolower($all['name'])));
+            $all['name'] = preg_replace('/\s+/', ' ', trim($all['name']));
         }
         return $all;
     }
@@ -41,11 +41,10 @@ class ServiceRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:100',
+            'name' => 'required|string|max:150',
             'description' => 'required|string',
             'image' => 'sometimes|string',
             'subscription_type' => 'required|in:' . implode(',', array_keys(Service::SUBSCRIPTION_TYPES)),
-            'status' => 'required|in:' . implode(',', array_keys(Service::STATUS)),
             'price' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[0].'|numeric',
             'purchase_limit' => 'sometimes|nullable|numeric',
             'weekly' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1].'|numeric',

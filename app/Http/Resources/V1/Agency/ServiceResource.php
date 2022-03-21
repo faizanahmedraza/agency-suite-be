@@ -22,8 +22,8 @@ class ServiceResource extends Resource
             'image' => $this->image,
             'subscription_type' => array_search($this->subscription_type,Service::SUBSCRIPTION_TYPES),
             'status' => array_search($this->status, Service::STATUS),
-            'price_types' =>  ServicePriceTypeResource::collection($this->whenLoaded('priceTypes')),
-            'intakes' =>  ServiceIntakeResource::collection($this->whenLoaded('intakes')),
+            'price_types' => new ServicePriceTypeResource($this->whenLoaded('priceTypes')),
+            'intakes' => new ServiceIntakeResource($this->whenLoaded('intakes')),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];

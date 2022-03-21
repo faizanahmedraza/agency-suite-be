@@ -12,7 +12,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         });
 
         //Protected Routes
-        $router->group(['middleware' => ['admin_auth','admin']], function () use ($router) {
+        $router->group(['middleware' => ['admin_auth', 'admin']], function () use ($router) {
             $router->post('/change-password', 'AuthenticationController@changePassword');
             $router->delete('/logout', 'AuthenticationController@logout');
 
@@ -46,7 +46,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         //Authentication
         $router->group(['prefix' => 'auth', 'middleware' => 'client_credentials'], function () use ($router) {
             $router->post('/register', 'AuthenticationController@register');
-            $router->group(['middleware' => 'agency_domain'],function () use ($router) {
+            $router->group(['middleware' => 'agency_domain'], function () use ($router) {
                 $router->post('/login', 'AuthenticationController@login');
                 $router->post('/verify-token', 'AuthenticationController@userVerification');
                 $router->post('/forget-password', 'AuthenticationController@forgetPassword');
@@ -55,7 +55,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         });
 
         //Protected Routes
-        $router->group(['middleware' => ['agency_domain','agency_auth','agency']], function () use ($router) {
+        $router->group(['middleware' => ['agency_domain', 'agency_auth', 'agency']], function () use ($router) {
             $router->delete('/logout', 'AuthenticationController@logout');
             $router->post('/verification', 'AuthenticationController@generateToken');
             $router->put('/change-password', 'AuthenticationController@changePassword');
@@ -91,6 +91,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->post('/', 'ServiceController@store');
                 $router->put('/{id}', 'ServiceController@update');
                 $router->delete('/{id}', 'ServiceController@destroy');
+                $router->put('/change-status/{id}', 'ServiceController@toggleStatus');
             });
         });
     });
