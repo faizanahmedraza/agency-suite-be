@@ -6,11 +6,11 @@ use App\Exceptions\BaseException;
 
 class RequestValidationException extends BaseException
 {
-    public static function errorMessage($message): self
+    public static function errorMessage($message, $code = 422): self
     {
         return new self(
             $message,
-            '422'
+            $code
         );
     }
 

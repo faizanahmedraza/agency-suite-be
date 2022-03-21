@@ -27,20 +27,50 @@ if (!function_exists('clean')) {
 }
 
 if (!function_exists('getStatus')) {
-    function getStatus($statusArray,$request)
+    function getStatus($statusArray, $request)
     {
-        $flipArr = array_flip(explode(',',$request));
-        return array_intersect_key($statusArray,$flipArr);
+        $flipArr = array_flip(explode(',', $request));
+        return array_intersect_key($statusArray, $flipArr);
     }
 }
 
 if (!function_exists('removePrefix')) {
-    function removePrefix($value,$prefix)
+    function removePrefix($value, $prefix)
     {
         if (substr($value, 0, strlen($prefix)) == $prefix) {
             return substr($value, strlen($prefix));
         }
         return $value;
+    }
+}
+
+if (!function_exists('validate_base64')) {
+    function validate_base64($value, array $allowedMime)
+    {
+        //check base64 string
+        if (strpos($value, ';base64') !== false) {
+            list($format, $data) = explode(';', $value);
+            if (\Illuminate\Support\Str::contains($format, ['/'])) {
+                list(, $format) = explode('/', $format);
+            }
+            if (\Illuminate\Support\Str::contains($data, [','])) {
+                list(, $data) = explode(',', $data);
+            }
+        } else {
+            return false;
+        }
+
+        // check file format
+        if (!in_array($format, $allowedMime)) {
+            return false;
+        }
+
+        // check base64 format
+        if (!preg_match('%^[a-zA-Z0-9/+]*={0,2}$%', $data)) {
+            return false;
+        }
+
+        return true;
     }
 }
 
@@ -51,7 +81,7 @@ function getIds($value)
 
 function pageLimit($request): int
 {
-    return ($request->filled('page_limit') && is_numeric($request->input('page_limit'))) ? $request->input('page_limit') : env('PAGE_LIMIT',20);
+    return ($request->filled('page_limit') && is_numeric($request->input('page_limit'))) ? $request->input('page_limit') : env('PAGE_LIMIT', 20);
 }
 
 
