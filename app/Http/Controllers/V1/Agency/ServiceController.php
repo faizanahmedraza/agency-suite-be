@@ -36,7 +36,7 @@ class ServiceController extends Controller
      *
      * @bodyParam  name string required
      * @bodyParam  description string required
-     * @bodyParam  image string ex: base64imageFile
+     * @bodyParam  image string optional ex: base64imageFile formats: png,jpeg,jpg
      * @bodyParam  subscription_type string required ex: 'one-off' ,'recurring'
      * @bodyParam  price integer required only if subscription_type is one_off ex: 123
      * @bodyParam  purchase_limit integer optional only if subscription_type is one_off ex: 12
@@ -106,8 +106,8 @@ class ServiceController extends Controller
      *
      * @bodyParam  name string required
      * @bodyParam  description string required
-     * @bodyParam  image string ex: base64imageFile
-     * @bodyParam  subscription_type string ex: 'one-off' ,'recurring'
+     * @bodyParam  image string optional ex: base64imageFile formats: png,jpeg,jpg
+     * @bodyParam  subscription_type string required ex: 'one-off' ,'recurring'
      * @bodyParam  price integer required only if subscription_type is one_off ex: 123
      * @bodyParam  purchase_limit integer optional only if subscription_type is one_off ex: 12
      * @bodyParam  weekly integer required only if subscription_type is recurring ex: 123
