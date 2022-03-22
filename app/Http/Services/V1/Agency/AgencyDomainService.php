@@ -23,7 +23,7 @@ class AgencyDomainService
     {
         $agency = new AgencyDomain();
         $agency->agency_id = $data->agency_id;
-        $agency->domain = $data->domain;
+        $agency->domain = $data->domain.(env('AGENCY_BASE_DOMAIN','.agency.test'));
         $agency->type = $data->type;
         $agency->default = $data->default;
         $agency->save();
