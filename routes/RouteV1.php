@@ -95,6 +95,9 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->delete('/{id}', 'ServiceController@destroy');
                 $router->put('/change-status/{id}', 'ServiceController@toggleStatus');
             });
+
+            //portal-settings
+            $router->put('/portal-settings', 'PortalSettingController@update');
         });
     });
 
