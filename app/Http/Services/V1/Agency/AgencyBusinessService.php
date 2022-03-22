@@ -51,15 +51,15 @@ class AgencyBusinessService
         $servicePriceType = new ServicePriceType();
         if (Service::SUBSCRIPTION_TYPES[$request->subscription_type] === 0) {
             $servicePriceType->price = $request->price;
-            $servicePriceType->purchase_limit = !empty($request->purchase_limit) ?: null;
+            $servicePriceType->purchase_limit = !empty($request->purchase_limit) ? $request->purchase_limit : null;
         } else {
             $servicePriceType->weekly = $request->weekly;
             $servicePriceType->monthly = $request->monthly;
             $servicePriceType->quarterly = $request->quarterly;
             $servicePriceType->biannually = $request->biannually;
             $servicePriceType->annually = $request->annually;
-            $servicePriceType->max_concurrent_requests = !empty($request->max_concurrent_requests) ? : null;
-            $servicePriceType->max_requests_per_month = !empty($request->max_requests_per_month) ? : null;
+            $servicePriceType->max_concurrent_requests = !empty($request->max_concurrent_requests) ? $request->max_concurrent_requests : null;
+            $servicePriceType->max_requests_per_month = !empty($request->max_requests_per_month) ? $request->max_requests_per_month : null;
         }
         $servicePriceType->agency_id = app('agency')->id;
         $service->priceTypes()->save($servicePriceType);
@@ -90,7 +90,7 @@ class AgencyBusinessService
         $servicePriceType = ServicePriceType::where('service_id', $service->id)->first();
         if (Service::SUBSCRIPTION_TYPES[$request->subscription_type] === 0) {
             $servicePriceType->price = $request->price;
-            $servicePriceType->purchase_limit = !empty($request->purchase_limit) ? : null;
+            $servicePriceType->purchase_limit = !empty($request->purchase_limit) ? $request->purchase_limit : null;
             $servicePriceType->weekly = null;
             $servicePriceType->monthly = null;
             $servicePriceType->quarterly = null;
@@ -106,8 +106,8 @@ class AgencyBusinessService
             $servicePriceType->quarterly = $request->quarterly;
             $servicePriceType->biannually = $request->biannually;
             $servicePriceType->annually = $request->annually;
-            $servicePriceType->max_concurrent_requests = !empty($request->max_concurrent_requests) ? : null;
-            $servicePriceType->max_requests_per_month = !empty($request->max_requests_per_month) ? : null;
+            $servicePriceType->max_concurrent_requests = !empty($request->max_concurrent_requests) ? $request->max_concurrent_requests : null;
+            $servicePriceType->max_requests_per_month = !empty($request->max_requests_per_month) ? $request->max_requests_per_month : null;
         }
         $servicePriceType->agency_id = app('agency')->id;
         $service->priceTypes()->save($servicePriceType);
