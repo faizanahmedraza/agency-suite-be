@@ -27,7 +27,7 @@ class PortalSettingRequest extends RequestAbstract
         $all = parent::validationData();
         //Convert request value to lowercase
         if (isset($all['name'])) {
-            $all['name'] = preg_replace('/\s+/', ' ', $all['agency_name']);
+            $all['name'] = preg_replace('/\s+/', ' ', $all['name']);
         }
         return $all;
     }
@@ -40,7 +40,7 @@ class PortalSettingRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name',
+            'name' => 'sometimes|nullable|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name',
             'logo' => 'sometimes|nullable|string',
             'favicon' => 'sometimes|nullable|string',
             'primary_color' => 'sometimes|nullable|string'

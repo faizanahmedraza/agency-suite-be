@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
-use App\Http\Traits\UserAuditTrait;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PortalSetting extends Model
 {
-    use UserAuditTrait;
+    use SoftDeletes;
 
     protected $table = "portal_settings";
 

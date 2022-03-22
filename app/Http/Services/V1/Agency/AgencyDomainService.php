@@ -10,6 +10,7 @@ use App\Exceptions\V1\UserException;
 
 use App\Models\Agency;
 use App\Models\AgencyDomain;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
@@ -35,5 +36,15 @@ class AgencyDomainService
         return $agency;
     }
 
+    public static function update(AgencyDomain $agencyDomain,$domain)
+    {
+        $agencyDomain->domain = $domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
+        $agencyDomain->save();
 
+        if (!$agencyDomain) {
+            throw FailureException::serverError();
+        }
+
+        return $agencyDomain;
+    }
 }

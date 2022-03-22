@@ -17,13 +17,12 @@ class PortalSettingService
 {
     public static function update(Request $request)
     {
-        $agency = Agency::where('id', app('agency')->id)->first();
+        if ($request->has('name') && !empty($request->name)) {
+            $agency = Agency::where('id', app('agency')->id)->first();
 
-        if (!$agency) {
-            throw ModelException::dataNotFound();
-        }
-
-        if ($request->has('name') && !empty('name')) {
+            if (!$agency) {
+                throw ModelException::dataNotFound();
+            }
             $agency->name = $request->name;
             $agency->save();
 
@@ -41,26 +40,29 @@ class PortalSettingService
 
             //Agency Domain
             $agencyDomain = AgencyDomain::where('default', true)->where('agency_id', app('agency')->id)->first();
-            $agencyDomain->agency_id = $agency->id;
-            $agencyDomain->domain = $newDomain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
-            $agencyDomain->updated_by = Auth::id();
-            $agencyDomain->save();
+
+            AgencyDomainService::update($agencyDomain,$newDomain);
 
             if (!$agencyDomain) {
                 throw FailureException::serverError();
             }
         }
 
-        $setting = new PortalSetting();
+        $setting = PortalSetting::where('agency_id', app('agency')->id)->where('user_id', Auth::id())->first();
+
+        if (!$setting) {
+            $setting = new PortalSetting();
+        }
+
         if ($request->has('logo') && !empty($request->logo)) {
             $setting->logo = CloudinaryService::upload($request->logo)->secureUrl;
         }
         if ($request->has('favicon') && !empty($request->favicon)) {
             $setting->favicon = CloudinaryService::upload($request->favicon)->secureUrl;
         }
-        $setting->agency_id = $agency->id;
+        $setting->agency_id = app('agency')->id;
         $setting->user_id = Auth::id();
-        $setting->primary_color = $request->primary_color;
+        $setting->primary_color = !empty($request->primary_color) ? trim($request->primary_color) : null;
         $setting->save();
 
         if (!$setting) {
