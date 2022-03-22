@@ -17,13 +17,13 @@ class PortalSettingService
 {
     public static function update(Request $request)
     {
+        $agency = Agency::where('id', app('agency')->id)->first();
+
+        if (!$agency) {
+            throw ModelException::dataNotFound();
+        }
+
         if ($request->has('name') && !empty('name')) {
-            $agency = Agency::where('id', app('agency')->id)->first();
-
-            if (!$agency) {
-                throw ModelException::dataNotFound();
-            }
-
             $agency->name = $request->name;
             $agency->save();
 
@@ -50,6 +50,7 @@ class PortalSettingService
                 throw FailureException::serverError();
             }
         }
+
         $setting = new PortalSetting();
         if ($request->has('logo') && !empty($request->logo)) {
             $setting->logo = CloudinaryService::upload($request->logo)->secureUrl;
@@ -57,6 +58,8 @@ class PortalSettingService
         if ($request->has('favicon') && !empty($request->favicon)) {
             $setting->favicon = CloudinaryService::upload($request->favicon)->secureUrl;
         }
+        $setting->agency_id = $agency->id;
+        $setting->user_id = Auth::id();
         $setting->primary_color = $request->primary_color;
         $setting->save();
 

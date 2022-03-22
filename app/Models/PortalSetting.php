@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use App\Http\Traits\UserAuditTrait;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class PortalSetting extends Model
 {
-    use SoftDeletes;
+    use UserAuditTrait;
 
     protected $table = "portal_settings";
 
@@ -15,6 +15,17 @@ class PortalSetting extends Model
         'logo',
         'favicon',
         'primary_color',
-        'agency_id'
+        'agency_id',
+        'user_id'
     ];
+
+    public function agency()
+    {
+        return $this->belongsTo(Agency::class, 'agency_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

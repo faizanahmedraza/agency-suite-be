@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\DB;
  */
 class PortalSettingController extends Controller
 {
-//    private $module;
-//
-//    public function __construct()
-//    {
-//        $this->module = 'agency_portal_settings';
-//        $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
-//        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
-//    }
+    private $module;
+
+    public function __construct()
+    {
+        $this->module = 'agency_portal_settings';
+        $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
+        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
+    }
 
     /**
      * Update Portal Settings
