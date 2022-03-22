@@ -25,7 +25,7 @@ class DomainException extends BaseException
     public static function agencyDomainNotExist(): self
     {
         return new self(
-            'Domain does not exist.',
+            'Request is from unknown source.',
             '404'
         );
     }
