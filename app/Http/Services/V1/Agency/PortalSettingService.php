@@ -42,10 +42,6 @@ class PortalSettingService
             $agencyDomain = AgencyDomain::where('default', true)->where('agency_id', app('agency')->id)->first();
 
             AgencyDomainService::update($agencyDomain,$newDomain);
-
-            if (!$agencyDomain) {
-                throw FailureException::serverError();
-            }
         }
 
         $setting = PortalSetting::where('agency_id', app('agency')->id)->where('user_id', Auth::id())->first();
