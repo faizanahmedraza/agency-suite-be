@@ -31,7 +31,7 @@ class AgencyBusiness
         //Agency Domain
         $domainData = new \stdClass;
         $domainData->agency_id = $agency->id;
-        $domainData->domain = $newDomain.(env('AGENCY_BASE_DOMAIN','.agency.test'));
+        $domainData->domain = $newDomain;
         $domainData->type = AgencyDomain::TYPE['staging'];
         $domainData->default = true;
 
