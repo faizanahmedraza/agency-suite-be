@@ -7,602 +7,6 @@ servers:
   -
     url: 'http://agency.test'
 paths:
-  '/v1/agencies/customers/{id}':
-    get:
-      summary: "Role Details\nThis api show the details of requested Role."
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'String required Example: Bearer TOKEN'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    customers:
-                      -
-                        id: 12
-                        first_name: Faizan
-                        last_name: Ahmed
-                        email: faizan108@saasfa.com
-                        last_logged_in: null
-                        status: active
-                      -
-                        id: 11
-                        first_name: Faizan
-                        last_name: Ahmed
-                        email: faizan107@saasfa.com
-                        last_logged_in: null
-                        status: active
-                    pagination:
-                      total: 10
-                      count: 10
-                      per_page: 20
-                      current_page: 1
-                      total_pages: 1
-                    permissions:
-                      - access_all
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      customers:
-                        -
-                          id: 12
-                          first_name: Faizan
-                          last_name: Ahmed
-                          email: faizan108@saasfa.com
-                          last_logged_in: null
-                          status: active
-                        -
-                          id: 11
-                          first_name: Faizan
-                          last_name: Ahmed
-                          email: faizan107@saasfa.com
-                          last_logged_in: null
-                          status: active
-                      pagination:
-                        total: 10
-                        count: 10
-                        per_page: 20
-                        current_page: 1
-                        total_pages: 1
-                      permissions:
-                        - access_all
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Customers'
-    put:
-      summary: "Customer Update\nThis api update the details of requested Customer."
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'String required Example: Bearer TOKEN'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    customers:
-                      -
-                        id: 12
-                        first_name: Faizan
-                        last_name: Ahmed
-                        email: faizan108@saasfa.com
-                        last_logged_in: null
-                        status: active
-                      -
-                        id: 11
-                        first_name: Faizan
-                        last_name: Ahmed
-                        email: faizan107@saasfa.com
-                        last_logged_in: null
-                        status: active
-                    pagination:
-                      total: 10
-                      count: 10
-                      per_page: 20
-                      current_page: 1
-                      total_pages: 1
-                    permissions:
-                      - access_all
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      customers:
-                        -
-                          id: 12
-                          first_name: Faizan
-                          last_name: Ahmed
-                          email: faizan108@saasfa.com
-                          last_logged_in: null
-                          status: active
-                        -
-                          id: 11
-                          first_name: Faizan
-                          last_name: Ahmed
-                          email: faizan107@saasfa.com
-                          last_logged_in: null
-                          status: active
-                      pagination:
-                        total: 10
-                        count: 10
-                        per_page: 20
-                        current_page: 1
-                        total_pages: 1
-                      permissions:
-                        - access_all
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Customers'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: String
-                  description: ''
-                  example: voluptatem
-                last_name:
-                  type: String
-                  description: ''
-                  example: tenetur
-              required:
-                - first_name
-                - last_name
-    delete:
-      summary: 'Delete Customer'
-      description: 'Delete Requested Record'
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'String required Example: Bearer TOKEN'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Customers'
-    parameters:
-      -
-        in: path
-        name: id
-        description: Integer
-        example: commodi
-        required: true
-        schema:
-          type: string
-  /v1/agencies/customers:
-    post:
-      summary: "Create Customer\nThis api is for create new Customer"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'String required Example: Bearer TOKEN'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    customers:
-                      -
-                        id: 12
-                        first_name: Faizan
-                        last_name: Ahmed
-                        email: faizan108@saasfa.com
-                        last_logged_in: null
-                        status: active
-                      -
-                        id: 11
-                        first_name: Faizan
-                        last_name: Ahmed
-                        email: faizan107@saasfa.com
-                        last_logged_in: null
-                        status: active
-                    pagination:
-                      total: 10
-                      count: 10
-                      per_page: 20
-                      current_page: 1
-                      total_pages: 1
-                    permissions:
-                      - access_all
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      customers:
-                        -
-                          id: 12
-                          first_name: Faizan
-                          last_name: Ahmed
-                          email: faizan108@saasfa.com
-                          last_logged_in: null
-                          status: active
-                        -
-                          id: 11
-                          first_name: Faizan
-                          last_name: Ahmed
-                          email: faizan107@saasfa.com
-                          last_logged_in: null
-                          status: active
-                      pagination:
-                        total: 10
-                        count: 10
-                        per_page: 20
-                        current_page: 1
-                        total_pages: 1
-                      permissions:
-                        - access_all
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Customers'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: String
-                  description: ''
-                  example: et
-                last_name:
-                  type: String
-                  description: ''
-                  example: debitis
-                email:
-                  type: array
-                  description: ''
-                  example:
-                    - excepturi
-                  items:
-                    type: string
-              required:
-                - first_name
-                - last_name
-                - email
-  '/v1/agencies/customers/change-status/{id}':
-    put:
-      summary: "Toggle Customer Status\nThis api update the customers status to active or deactive"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        401:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error:
-                    code: 401
-                    message: 'Unaothorized access! User does not have access.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: object
-                    example:
-                      code: 401
-                      message: 'Unaothorized access! User does not have access.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Customers'
-    parameters:
-      -
-        in: path
-        name: id
-        description: ''
-        example: 4
-        required: true
-        schema:
-          type: integer
   /v1/agencies/auth/register:
     post:
       summary: "Register Agency\nThis api is useful for register new Agency and return access token with agency and user information"
@@ -1486,6 +890,672 @@ paths:
               required:
                 - password
                 - password_confirmation
+  '/v1/agencies/customers/{id}':
+    get:
+      summary: "Role Details\nThis api show the details of requested Role."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    user:
+                      id: 7
+                      first_name: Faizan
+                      last_name: Ahmed
+                      email: faizan102@saasfa.com
+                      last_logged_in: null
+                      status: pending
+                    permissions:
+                      - access_all
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      user:
+                        id: 7
+                        first_name: Faizan
+                        last_name: Ahmed
+                        email: faizan102@saasfa.com
+                        last_logged_in: null
+                        status: pending
+                      permissions:
+                        - access_all
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Customers'
+    put:
+      summary: "Customer Update\nThis api update the details of requested Customer."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    customers:
+                      -
+                        id: 12
+                        first_name: Faizan
+                        last_name: Ahmed
+                        email: faizan108@saasfa.com
+                        last_logged_in: null
+                        status: active
+                      -
+                        id: 11
+                        first_name: Faizan
+                        last_name: Ahmed
+                        email: faizan107@saasfa.com
+                        last_logged_in: null
+                        status: active
+                    pagination:
+                      total: 10
+                      count: 10
+                      per_page: 20
+                      current_page: 1
+                      total_pages: 1
+                    permissions:
+                      - access_all
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      customers:
+                        -
+                          id: 12
+                          first_name: Faizan
+                          last_name: Ahmed
+                          email: faizan108@saasfa.com
+                          last_logged_in: null
+                          status: active
+                        -
+                          id: 11
+                          first_name: Faizan
+                          last_name: Ahmed
+                          email: faizan107@saasfa.com
+                          last_logged_in: null
+                          status: active
+                      pagination:
+                        total: 10
+                        count: 10
+                        per_page: 20
+                        current_page: 1
+                        total_pages: 1
+                      permissions:
+                        - access_all
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Customers'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: String
+                  description: ''
+                  example: ut
+                last_name:
+                  type: String
+                  description: ''
+                  example: occaecati
+              required:
+                - first_name
+                - last_name
+    delete:
+      summary: 'Delete Customer'
+      description: 'Delete Requested Record'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Customers'
+    parameters:
+      -
+        in: path
+        name: id
+        description: Integer
+        example: voluptatem
+        required: true
+        schema:
+          type: string
+  /v1/agencies/customers:
+    post:
+      summary: "Create Customer\nThis api is for create new Customer"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    user:
+                      id: 7
+                      first_name: Faizan
+                      last_name: Ahmed
+                      email: faizan102@saasfa.com
+                      last_logged_in: null
+                      status: pending
+                    permissions:
+                      - access_all
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      user:
+                        id: 7
+                        first_name: Faizan
+                        last_name: Ahmed
+                        email: faizan102@saasfa.com
+                        last_logged_in: null
+                        status: pending
+                      permissions:
+                        - access_all
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Customers'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: String
+                  description: ''
+                  example: dicta
+                last_name:
+                  type: String
+                  description: ''
+                  example: et
+                email:
+                  type: array
+                  description: ''
+                  example:
+                    - laborum
+                  items:
+                    type: string
+              required:
+                - first_name
+                - last_name
+                - email
+    get:
+      summary: "Customers List\nThis api return the collection of all Agency Customers."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'String required Example: Bearer TOKEN'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    customers:
+                      -
+                        id: 12
+                        first_name: Faizan
+                        last_name: Ahmed
+                        email: faizan108@saasfa.com
+                        last_logged_in: null
+                        status: active
+                      -
+                        id: 11
+                        first_name: Faizan
+                        last_name: Ahmed
+                        email: faizan107@saasfa.com
+                        last_logged_in: null
+                        status: active
+                    pagination:
+                      total: 10
+                      count: 10
+                      per_page: 20
+                      current_page: 1
+                      total_pages: 1
+                    permissions:
+                      - access_all
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      customers:
+                        -
+                          id: 12
+                          first_name: Faizan
+                          last_name: Ahmed
+                          email: faizan108@saasfa.com
+                          last_logged_in: null
+                          status: active
+                        -
+                          id: 11
+                          first_name: Faizan
+                          last_name: Ahmed
+                          email: faizan107@saasfa.com
+                          last_logged_in: null
+                          status: active
+                      pagination:
+                        total: 10
+                        count: 10
+                        per_page: 20
+                        current_page: 1
+                        total_pages: 1
+                      permissions:
+                        - access_all
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Customers'
+  '/v1/agencies/customers/change-status/{id}':
+    put:
+      summary: "Toggle Customer Status\nThis api update the customers status to active or deactive"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error:
+                    code: 401
+                    message: 'Unaothorized access! User does not have access.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: object
+                    example:
+                      code: 401
+                      message: 'Unaothorized access! User does not have access.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Customers'
+    parameters:
+      -
+        in: path
+        name: id
+        description: ''
+        example: 14
+        required: true
+        schema:
+          type: integer
   /v1/agencies/permissions:
     get:
       summary: "Permission List\nThis api return the collection of all Permissions created."
@@ -1908,12 +1978,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: et
+                  example: harum
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - aut
+                    - quae
                   items:
                     type: string
               required:
@@ -1932,7 +2002,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: ratione
+            value: dolorem
       -
         in: path
         name: from_date
@@ -2002,7 +2072,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 3
+            value: 2
   '/v1/agencies/roles/{id}':
     get:
       summary: "Role Details\nThis api show the details of requested Role."
@@ -2218,12 +2288,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: quia
+                  example: commodi
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - voluptatibus
+                    - ea
                   items:
                     type: string
               required:
@@ -2313,7 +2383,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: aut
+        example: eligendi
         required: true
         schema:
           type: string
@@ -2321,7 +2391,7 @@ paths:
         in: path
         name: role_id
         description: Integer
-        example: ipsam
+        example: qui
         required: true
         schema:
           type: string
@@ -2664,55 +2734,55 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: voluptatum
+                  example: quo
                 description:
                   type: string
                   description: ''
-                  example: libero
+                  example: aut
                 image:
                   type: string
                   description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: molestiae
+                  example: neque
                 subscription_type:
                   type: string
                   description: 'ex: ''one-off'' ,''recurring'''
-                  example: eos
+                  example: velit
                 price:
                   type: integer
                   description: 'only if subscription_type is one_off ex: 123'
-                  example: 20
+                  example: 2
                 purchase_limit:
                   type: integer
                   description: 'optional only if subscription_type is one_off ex: 12'
-                  example: 12
+                  example: 3
                 weekly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 10
+                  example: 5
                 monthly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 7
+                  example: 10
                 quarterly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 13
+                  example: 4
                 biannually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 14
+                  example: 8
                 annually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 1
+                  example: 18
                 max_concurrent_requests:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 5
+                  example: 18
                 max_requests_per_month:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 15
+                  example: 8
               required:
                 - name
                 - description
@@ -2737,7 +2807,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: animi
+            value: nam
       -
         in: path
         name: name
@@ -2751,7 +2821,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: quaerat
+            value: non
       -
         in: path
         name: status
@@ -2765,7 +2835,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dolorum
+            value: et
       -
         in: path
         name: order_by
@@ -2779,7 +2849,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: voluptatum
+            value: consequatur
       -
         in: path
         name: from_date
@@ -2821,7 +2891,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: false
+            value: true
       -
         in: path
         name: page_limit
@@ -2835,7 +2905,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 6
+            value: 7
       -
         in: path
         name: page
@@ -2849,7 +2919,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 6
+            value: 8
   '/v1/agencies/services/{id}':
     get:
       summary: "Show Service Details\nThis api show the service details."
@@ -3147,55 +3217,55 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quod
+                  example: odit
                 description:
                   type: string
                   description: ''
-                  example: eius
+                  example: quis
                 image:
                   type: string
                   description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: enim
+                  example: perspiciatis
                 subscription_type:
                   type: string
                   description: 'ex: ''one-off'' ,''recurring'''
-                  example: veritatis
+                  example: ex
                 price:
                   type: integer
                   description: 'only if subscription_type is one_off ex: 123'
-                  example: 18
+                  example: 8
                 purchase_limit:
                   type: integer
                   description: 'optional only if subscription_type is one_off ex: 12'
-                  example: 10
+                  example: 9
                 weekly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 3
+                  example: 17
                 monthly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 3
+                  example: 15
                 quarterly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 7
+                  example: 1
                 biannually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 12
+                  example: 13
                 annually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 20
+                  example: 2
                 max_concurrent_requests:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 3
+                  example: 13
                 max_requests_per_month:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 19
+                  example: 5
               required:
                 - name
                 - description
@@ -3284,7 +3354,7 @@ paths:
         in: path
         name: id
         description: Integer
-        example: similique
+        example: et
         required: true
         schema:
           type: string
@@ -3367,7 +3437,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 4
+        example: 14
         required: true
         schema:
           type: integer
@@ -3892,39 +3962,39 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: corrupti
+                  example: molestias
                 last_name:
                   type: String
                   description: ''
-                  example: neque
+                  example: minima
                 email:
                   type: email
                   description: ''
-                  example: repudiandae
+                  example: molestiae
                 password:
                   type: String
                   description: ''
-                  example: esse
+                  example: recusandae
                 password_confirmation:
                   type: String
                   description: ''
-                  example: officia
+                  example: error
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: ut
+                  example: cum
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - dolor
+                    - temporibus
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - voluptatem
+                    - vero
                   items:
                     type: string
               required:
@@ -3946,7 +4016,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: eaque
+            value: est
       -
         in: path
         name: email
@@ -3960,7 +4030,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sapiente
+            value: necessitatibus
       -
         in: path
         name: first_name
@@ -3974,7 +4044,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: omnis
+            value: harum
       -
         in: path
         name: last_name
@@ -3988,7 +4058,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sed
+            value: non
       -
         in: path
         name: full_name
@@ -4002,7 +4072,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: corrupti
+            value: fugit
       -
         in: path
         name: status
@@ -4016,7 +4086,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sit
+            value: facere
       -
         in: path
         name: order_by
@@ -4030,7 +4100,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: qui
+            value: totam
       -
         in: path
         name: from_date
@@ -4086,7 +4156,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 19
+            value: 13
       -
         in: path
         name: page
@@ -4100,7 +4170,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 2
+            value: 11
       -
         in: path
         name: roles
@@ -4114,7 +4184,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: at
+            value: et
   '/v1/agencies/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -4388,27 +4458,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: tempore
+                  example: dolorum
                 last_name:
                   type: String
                   description: ''
-                  example: ut
+                  example: in
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: aut
+                  example: illo
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - eos
+                    - blanditiis
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - aliquid
+                    - blanditiis
                   items:
                     type: string
               required:
@@ -4494,7 +4564,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: deserunt
+        example: nostrum
         required: true
         schema:
           type: string
@@ -4502,7 +4572,7 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: dolores
+        example: voluptatibus
         required: true
         schema:
           type: string
@@ -4585,7 +4655,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: fuga
+        example: non
         required: true
         schema:
           type: string
@@ -4593,7 +4663,7 @@ paths:
         in: path
         name: user_id
         description: ''
-        example: 10
+        example: 14
         required: true
         schema:
           type: integer
@@ -4653,7 +4723,7 @@ paths:
                 password:
                   type: string
                   description: 'ex: 123456'
-                  example: porro
+                  example: ratione
               required:
                 - password
     parameters:
@@ -4661,7 +4731,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 11
+        example: 9
         required: true
         schema:
           type: integer
@@ -5922,19 +5992,19 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: eaque
+                  example: recusandae
                 logo:
                   type: string
                   description: 'ex: base64imageFile formats: png,jpeg,jpg'
-                  example: ut
+                  example: voluptates
                 favicon:
                   type: string
                   description: 'ex: base64imageFile formats: png,x-icon'
-                  example: reprehenderit
+                  example: vitae
                 primary_color:
                   type: string
                   description: 'ex: ''#fsfsd'''
-                  example: repudiandae
+                  example: nisi
   /v1/admins/roles:
     get:
       summary: "Roles List\nThis api return the collection of all Roles created."
@@ -6194,12 +6264,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: voluptas
+                  example: rerum
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - dolor
+                    - neque
                   items:
                     type: string
               required:
@@ -6218,7 +6288,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: ratione
+            value: eligendi
       -
         in: path
         name: from_date
@@ -6274,7 +6344,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 20
+            value: 5
       -
         in: path
         name: page
@@ -6288,7 +6358,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 19
+            value: 6
   '/v1/admins/roles/{id}':
     get:
       summary: "Role Details\nThis api show the details of requested Role."
@@ -6504,12 +6574,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: itaque
+                  example: sapiente
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - aut
+                    - ut
                   items:
                     type: string
               required:
@@ -6599,7 +6669,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: aut
+        example: sapiente
         required: true
         schema:
           type: string
@@ -6607,7 +6677,7 @@ paths:
         in: path
         name: role_id
         description: Integer
-        example: nisi
+        example: id
         required: true
         schema:
           type: string
@@ -7132,39 +7202,39 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: accusantium
+                  example: eveniet
                 last_name:
                   type: String
                   description: ''
-                  example: explicabo
+                  example: voluptate
                 email:
                   type: email
                   description: ''
-                  example: qui
+                  example: rem
                 password:
                   type: String
                   description: ''
-                  example: aut
+                  example: repellendus
                 password_confirmation:
                   type: String
                   description: ''
-                  example: in
+                  example: officia
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: et
+                  example: aliquid
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - ducimus
+                    - officia
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - nisi
+                    - qui
                   items:
                     type: string
               required:
@@ -7186,7 +7256,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: voluptatem
+            value: deleniti
       -
         in: path
         name: email
@@ -7200,7 +7270,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: illum
+            value: occaecati
       -
         in: path
         name: first_name
@@ -7214,7 +7284,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: incidunt
+            value: sit
       -
         in: path
         name: last_name
@@ -7228,7 +7298,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: voluptate
+            value: et
       -
         in: path
         name: full_name
@@ -7242,7 +7312,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: et
+            value: voluptates
       -
         in: path
         name: status
@@ -7256,7 +7326,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: quia
+            value: vel
       -
         in: path
         name: order_by
@@ -7270,7 +7340,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: voluptates
+            value: qui
       -
         in: path
         name: from_date
@@ -7312,7 +7382,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: true
+            value: false
       -
         in: path
         name: page_limit
@@ -7340,7 +7410,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 17
+            value: 1
       -
         in: path
         name: roles
@@ -7354,7 +7424,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dolor
+            value: minus
   '/v1/admins/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -7628,27 +7698,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: officiis
+                  example: sed
                 last_name:
                   type: String
                   description: ''
-                  example: est
+                  example: rem
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: suscipit
+                  example: quam
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - est
+                    - aliquam
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - asperiores
+                    - et
                   items:
                     type: string
               required:
@@ -7734,7 +7804,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: qui
+        example: vero
         required: true
         schema:
           type: string
@@ -7742,7 +7812,7 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: velit
+        example: praesentium
         required: true
         schema:
           type: string
@@ -7825,7 +7895,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: vitae
+        example: unde
         required: true
         schema:
           type: string
@@ -7833,7 +7903,7 @@ paths:
         in: path
         name: user_id
         description: ''
-        example: 1
+        example: 18
         required: true
         schema:
           type: integer
@@ -7893,7 +7963,7 @@ paths:
                 password:
                   type: string
                   description: 'ex: 123456'
-                  example: sequi
+                  example: perferendis
               required:
                 - password
     parameters:
@@ -7901,16 +7971,16 @@ paths:
         in: path
         name: id
         description: ''
-        example: 19
+        example: 10
         required: true
         schema:
           type: integer
 tags:
   -
-    name: 'Agency Customers'
+    name: 'Agency Authentication'
     description: ''
   -
-    name: 'Agency Authentication'
+    name: 'Agency Customers'
     description: ''
   -
     name: 'Agency Permissions Api'

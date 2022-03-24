@@ -21,7 +21,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: commodi
+        example: voluptatem
         type: string
         custom: []
     queryParameters: []
@@ -29,7 +29,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customers\": [\r\n      {\r\n        \"id\": 12,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan108@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan107@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 10,\r\n      \"count\": 10,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n  \"data\": {\r\n    \"user\": {\r\n      \"id\": 7,\r\n      \"first_name\": \"Faizan\",\r\n      \"last_name\": \"Ahmed\",\r\n      \"email\": \"faizan102@saasfa.com\",\r\n      \"last_logged_in\": null,\r\n      \"status\": \"pending\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
       -
@@ -60,14 +60,14 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: et
+        example: dicta
         type: String
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: debitis
+        example: et
         type: String
         custom: []
       email:
@@ -75,13 +75,13 @@ endpoints:
         description: ''
         required: true
         example:
-          - excepturi
+          - laborum
         type: 'string[]'
         custom: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customers\": [\r\n      {\r\n        \"id\": 12,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan108@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan107@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 10,\r\n      \"count\": 10,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n  \"data\": {\r\n    \"user\": {\r\n      \"id\": 7,\r\n      \"first_name\": \"Faizan\",\r\n      \"last_name\": \"Ahmed\",\r\n      \"email\": \"faizan102@saasfa.com\",\r\n      \"last_logged_in\": null,\r\n      \"status\": \"pending\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
       -
@@ -110,7 +110,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: sed
+        example: qui
         type: string
         custom: []
     queryParameters: []
@@ -119,14 +119,14 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: voluptatem
+        example: ut
         type: String
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: tenetur
+        example: occaecati
         type: String
         custom: []
     responses:
@@ -159,7 +159,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: voluptas
+        example: optio
         type: string
         custom: []
     queryParameters: []
@@ -195,7 +195,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 4
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -211,4 +211,118 @@ endpoints:
         content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
         headers: []
         description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/agencies/customers
+    metadata:
+      title: |-
+        Customers List
+        This api return the collection of all Agency Customers.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'String required Example: Bearer TOKEN'
+    urlParameters:
+      customers:
+        name: customers
+        description: '1,2,3,4'
+        required: false
+        example: rerum
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'ex: abc.com,xyz.co'
+        required: false
+        example: occaecati
+        type: string
+        custom: []
+      first_name:
+        name: first_name
+        description: ''
+        required: false
+        example: dignissimos
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: false
+        example: ex
+        type: string
+        custom: []
+      full_name:
+        name: full_name
+        description: ''
+        required: false
+        example: odit
+        type: string
+        custom: []
+      status:
+        name: status
+        description: 'ex: pending,active,blocked'
+        required: false
+        example: consequatur
+        type: string
+        custom: []
+      order_by:
+        name: order_by
+        description: 'ex: asc/desc'
+        required: false
+        example: quia
+        type: string
+        custom: []
+      from_date:
+        name: from_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      to_date:
+        name: to_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      pagination:
+        name: pagination
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+      page_limit:
+        name: page_limit
+        description: ''
+        required: false
+        example: 5
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 15
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"customers\": [\r\n      {\r\n        \"id\": 12,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan108@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan107@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 10,\r\n      \"count\": 10,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
     responseFields: []
