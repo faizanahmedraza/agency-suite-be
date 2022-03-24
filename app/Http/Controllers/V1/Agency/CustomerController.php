@@ -66,7 +66,7 @@ class CustomerController extends Controller
      *
      * @bodyParam first_name String required
      * @bodyParam last_name String required
-     * @bodyParam email array required
+     * @bodyParam email String required ex: abc.com,xyz.co
      *
      * @responseFile 200 responses/V1/Agency/CustomerResponse.json
      * @responseFile 422 responses/ValidationResponse.json
