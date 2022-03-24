@@ -36,17 +36,17 @@ class ServiceController extends Controller
      *
      * @bodyParam  name string required
      * @bodyParam  description string required
-     * @bodyParam  image string ex: base64imageFile
-     * @bodyParam  subscription_type string ex: 'one-off' ,'recurring'
-     * @bodyParam  price integer required if subscription_type is one_off ex: 123
-     * @bodyParam  purchase_limit integer optional if subscription_type is one_off ex: 12
-     * @bodyParam  weekly integer required if subscription_type is recurring ex: 123
-     * @bodyParam  monthly integer required if subscription_type is recurring ex: 123
-     * @bodyParam  quarterly integer required if subscription_type is recurring ex: 123
-     * @bodyParam  biannually integer required if subscription_type is recurring ex: 123
-     * @bodyParam  annually integer required if subscription_type is recurring ex: 123
-     * @bodyParam  max_concurrent_requests integer optional if subscription_type is recurring ex: 12
-     * @bodyParam  max_requests_per_month integer optional if subscription_type is recurring ex: 12
+     * @bodyParam  image string optional ex: base64imageFile formats: png,jpeg,jpg
+     * @bodyParam  subscription_type string required ex: 'one-off' ,'recurring'
+     * @bodyParam  price integer required only if subscription_type is one_off ex: 123
+     * @bodyParam  purchase_limit integer optional only if subscription_type is one_off ex: 12
+     * @bodyParam  weekly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  monthly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  quarterly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  biannually integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  annually integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  max_concurrent_requests integer optional only if subscription_type is recurring ex: 12
+     * @bodyParam  max_requests_per_month integer optional only if subscription_type is recurring ex: 12
      *
      * @responseFile 200 responses/V1/Agency/ServiceResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -106,17 +106,17 @@ class ServiceController extends Controller
      *
      * @bodyParam  name string required
      * @bodyParam  description string required
-     * @bodyParam  image string ex: base64imageFile
-     * @bodyParam  subscription_type string ex: 'one-off' ,'recurring'
-     * @bodyParam  price integer required if subscription_type is one_off ex: 123
-     * @bodyParam  purchase_limit integer optional if subscription_type is one_off ex: 12
-     * @bodyParam  weekly integer required if subscription_type is recurring ex: 123
-     * @bodyParam  monthly integer required if subscription_type is recurring ex: 123
-     * @bodyParam  quarterly integer required if subscription_type is recurring ex: 123
-     * @bodyParam  biannually integer required if subscription_type is recurring ex: 123
-     * @bodyParam  annually integer required if subscription_type is recurring ex: 123
-     * @bodyParam  max_concurrent_requests integer optional if subscription_type is recurring ex: 12
-     * @bodyParam  max_requests_per_month integer optional if subscription_type is recurring ex: 12
+     * @bodyParam  image string optional ex: base64imageFile formats: png,jpeg,jpg
+     * @bodyParam  subscription_type string required ex: 'one-off' ,'recurring'
+     * @bodyParam  price integer required only if subscription_type is one_off ex: 123
+     * @bodyParam  purchase_limit integer optional only if subscription_type is one_off ex: 12
+     * @bodyParam  weekly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  monthly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  quarterly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  biannually integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  annually integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  max_concurrent_requests integer optional only if subscription_type is recurring ex: 12
+     * @bodyParam  max_requests_per_month integer optional only if subscription_type is recurring ex: 12
      *
      * @responseFile 200 responses/V1/Agency/ServiceResponse.json
      * @responseFile 422 responses/ValidationResponse.json
