@@ -17,31 +17,19 @@ class PortalSettingService
 {
     public static function update(Request $request)
     {
-        if ($request->has('name') && !empty($request->name)) {
-            $agency = Agency::where('id', app('agency')->id)->first();
+        $agency = Agency::with('domains')->where('id', app('agency')->id)->first();
 
-            if (!$agency) {
-                throw ModelException::dataNotFound();
-            }
+        if (!$agency) {
+            throw ModelException::dataNotFound();
+        }
+
+        if ($request->has('name') && !empty($request->name)) {
             $agency->name = $request->name;
             $agency->save();
 
             if (!$agency) {
                 throw FailureException::serverError();
             }
-
-            $newDomain = AgencyDomain::cleanAgencyName($request->name);
-
-            $domain = AgencyDomain::domainsFilter($agency->domains, $newDomain);
-
-            if ($domain) {
-                throw DomainException::alreadyAvaliable();
-            }
-
-            //Agency Domain
-            $agencyDomain = AgencyDomain::where('default', true)->where('agency_id', app('agency')->id)->first();
-
-            AgencyDomainService::update($agencyDomain,$newDomain);
         }
 
         $setting = PortalSetting::where('agency_id', app('agency')->id)->where('user_id', Auth::id())->first();
