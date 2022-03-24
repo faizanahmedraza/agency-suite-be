@@ -118,10 +118,14 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         $router->post('/create-new-password', 'AuthenticationController@createNewPassword');
         $router->group(['middleware' => ['customer']], function () use ($router) {
             $router->delete('/logout', 'AuthenticationController@logout');
+
+            $router->group(['prefix' => 'billing-information'], function () use ($router) {
+                $router->get('/{id}', 'CustomerController@first');
+                $router->post('/', 'CustomerController@store');
+                $router->put('/{id}', 'CustomerController@update');
+                $router->delete('/{id}', 'CustomerController@destroy');
+            });
         });
-        // $router->get('/', function () use ($router) {
-        //     return new SuccessResponse([]);
-        // });
     });
 
 
