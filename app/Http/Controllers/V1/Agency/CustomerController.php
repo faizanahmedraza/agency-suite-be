@@ -48,7 +48,8 @@ class CustomerController extends Controller
      * @urlParam page_limit integer
      * @urlParam page integer
      *
-     * @responseFile 200 responses/V1/Agency/RolesResponse.json
+     * @responseFile 200 responses/V1/Agency/CustomersResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
 
     public function get(UserListRequest $request)
@@ -67,7 +68,7 @@ class CustomerController extends Controller
      * @bodyParam last_name String required
      * @bodyParam email array required
      *
-     * @responseFile 200 responses/V1/Agency/CustomersResponse.json
+     * @responseFile 200 responses/V1/Agency/CustomerResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
 
@@ -87,7 +88,7 @@ class CustomerController extends Controller
      *
      * @urlParam id required Integer
      *
-     * @responseFile 200 responses/V1/Agency/CustomersResponse.json
+     * @responseFile 200 responses/V1/Agency/CustomerResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      *
      */
