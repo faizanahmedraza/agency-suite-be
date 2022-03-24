@@ -81,8 +81,8 @@ class CustomerController extends Controller
     }
 
     /**
-     * Role Details
-     * This api show the details of requested Role.
+     * Customer Details
+     * This api show the details of requested Customer.
      *
      * @header Authorization String required Example: Bearer TOKEN
      *
