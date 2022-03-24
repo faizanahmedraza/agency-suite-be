@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Resources\SuccessResponse;
-
 /** @var \Laravel\Lumen\Routing\Router $router */
 
 $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router) {
@@ -98,6 +96,16 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
             //portal-settings
             $router->put('/portal-settings', 'PortalSettingController@update');
+
+            //customers
+            $router->group(['prefix' => 'customers'], function () use ($router) {
+                $router->get('/', 'CustomerController@get');
+                $router->get('/{id}', 'CustomerController@first');
+                $router->post('/', 'CustomerController@store');
+                $router->put('/{id}', 'CustomerController@update');
+                $router->delete('/{id}', 'CustomerController@destroy');
+                $router->put('/change-status/{id}', 'CustomerController@toggleStatus');
+            });
         });
     });
 

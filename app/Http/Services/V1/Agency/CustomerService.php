@@ -5,9 +5,7 @@ namespace App\Http\Services\V1\Agency;
 
 use App\Exceptions\V1\ModelException;
 use App\Exceptions\V1\FailureException;
-use App\Exceptions\V1\UnAuthorizedException;
-use App\Exceptions\V1\UserException;
-
+use App\Http\Services\V1\Customer\CustomerService as AgencyCustomerService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -23,13 +21,15 @@ class CustomerService
         $user = new User();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->email = clean($request->email);
+        $user->username = clean($request->email);
         $user->password = Hash::make('12345678');
         $user->agency_id = app('agency')->id;
         $user->created_by = Auth::id();
         $user->save();
 
-        if (!$user) {
+        $customer = (new AgencyCustomerService())->create($user);
+
+        if (!$user || !$customer) {
             throw FailureException::serverError();
         }
 
