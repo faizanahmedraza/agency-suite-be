@@ -13,7 +13,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
         //Protected Routes
         $router->group(['middleware' => ['admin_auth', 'admin']], function () use ($router) {
-            $router->post('/change-password', 'AuthenticationController@changePassword');
+            $router->put('/change-password', 'AuthenticationController@changePassword');
             $router->delete('/logout', 'AuthenticationController@logout');
 
             //User Management apis
@@ -24,7 +24,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->put('/{id}', 'UserController@update');
                 $router->delete('/{id}', 'UserController@destroy');
                 $router->put('/change-status/{id}', 'UserController@toggleStatus');
-                $router->post('/change-password/{id}', 'UserController@changeAnyPassword');
+                $router->put('/change-password/{id}', 'UserController@changeAnyPassword');
             });
 
             // Roles apis
@@ -69,7 +69,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->put('/{id}', 'UserController@update');
                 $router->delete('/{id}', 'UserController@destroy');
                 $router->put('/change-status/{id}', 'UserController@toggleStatus');
-                $router->post('/change-password/{id}', 'UserController@changeAnyPassword');
+                $router->put('/change-password/{id}', 'UserController@changeAnyPassword');
             });
 
             // Roles apis

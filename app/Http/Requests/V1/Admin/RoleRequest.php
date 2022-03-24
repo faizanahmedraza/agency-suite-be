@@ -55,6 +55,7 @@ class RoleRequest extends RequestAbstract
     public function messages(): array
     {
         return [
+            'name.regex' => 'The role name format is invalid. Please submit a role name with underscore or dash. No other special characters are allowed.',
             'permissions.*.in' => 'The selected permissions are invalid.',
         ];
     }
