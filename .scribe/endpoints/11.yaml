@@ -1,10 +1,10 @@
-name: 'Agency Users Management'
+name: 'User Management'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: v1/agencies/users
+    uri: v1/admins/users
     metadata:
       title: |-
         Get Users
@@ -20,49 +20,49 @@ endpoints:
         name: users
         description: '1,2,3,4'
         required: false
-        example: eaque
+        example: voluptatem
         type: string
         custom: []
       email:
         name: email
         description: 'ex: abc.com,xyz.co'
         required: false
-        example: sapiente
+        example: illum
         type: string
         custom: []
       first_name:
         name: first_name
         description: ''
         required: false
-        example: omnis
+        example: incidunt
         type: string
         custom: []
       last_name:
         name: last_name
         description: ''
         required: false
-        example: sed
+        example: voluptate
         type: string
         custom: []
       full_name:
         name: full_name
         description: ''
         required: false
-        example: corrupti
+        example: et
         type: string
         custom: []
       status:
         name: status
         description: 'ex: pending,active,blocked'
         required: false
-        example: sit
+        example: quia
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: qui
+        example: voluptates
         type: string
         custom: []
       from_date:
@@ -90,21 +90,21 @@ endpoints:
         name: page_limit
         description: ''
         required: false
-        example: 19
+        example: 10
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 2
+        example: 17
         type: integer
         custom: []
       roles:
         name: roles
         description: 'ex: admin,test'
         required: false
-        example: at
+        example: dolor
         type: string
         custom: []
     queryParameters: []
@@ -129,7 +129,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'v1/agencies/users/{id}'
+    uri: 'v1/admins/users/{id}'
     metadata:
       title: |-
         Show User Details
@@ -145,14 +145,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: deserunt
+        example: qui
         type: string
         custom: []
       user_id:
         name: user_id
         description: Integer
         required: true
-        example: dolores
+        example: velit
         type: string
         custom: []
     queryParameters: []
@@ -177,7 +177,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/agencies/users
+    uri: v1/admins/users
     metadata:
       title: |-
         Create Users
@@ -195,42 +195,42 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: corrupti
+        example: accusantium
         type: String
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: neque
+        example: explicabo
         type: String
         custom: []
       email:
         name: email
         description: ''
         required: true
-        example: repudiandae
+        example: qui
         type: email
         custom: []
       password:
         name: password
         description: ''
         required: false
-        example: esse
+        example: aut
         type: String
         custom: []
       password_confirmation:
         name: password_confirmation
         description: ''
         required: false
-        example: officia
+        example: in
         type: String
         custom: []
       status:
         name: status
         description: 'ex: pending,active,blocked'
         required: false
-        example: ut
+        example: et
         type: string
         custom: []
       roles:
@@ -238,7 +238,7 @@ endpoints:
         description: 'ex: [1,2,3]'
         required: true
         example:
-          - dolor
+          - ducimus
         type: 'string[]'
         custom: []
       permissions:
@@ -246,7 +246,7 @@ endpoints:
         description: 'ex: [1,2,3]'
         required: false
         example:
-          - voluptatem
+          - nisi
         type: 'string[]'
         custom: []
     responses:
@@ -269,7 +269,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'v1/agencies/users/{id}'
+    uri: 'v1/admins/users/{id}'
     metadata:
       title: 'Update User Details.'
       description: 'This api update user details'
@@ -283,14 +283,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: fugiat
+        example: in
         type: string
         custom: []
       user_id:
         name: user_id
         description: 'Integer required'
         required: false
-        example: nulla
+        example: et
         type: string
         custom: []
     queryParameters: []
@@ -299,21 +299,21 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: tempore
+        example: officiis
         type: String
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: ut
+        example: est
         type: String
         custom: []
       status:
         name: status
         description: 'ex: pending,active,blocked'
         required: true
-        example: aut
+        example: suscipit
         type: string
         custom: []
       roles:
@@ -321,7 +321,7 @@ endpoints:
         description: 'ex: [1,2,3]'
         required: true
         example:
-          - eos
+          - est
         type: 'string[]'
         custom: []
       permissions:
@@ -329,7 +329,7 @@ endpoints:
         description: 'ex: [1,2,3]'
         required: false
         example:
-          - aliquid
+          - asperiores
         type: 'string[]'
         custom: []
     responses:
@@ -352,7 +352,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'v1/agencies/users/{id}'
+    uri: 'v1/admins/users/{id}'
     metadata:
       title: 'Delete User'
       description: 'This api delete user'
@@ -366,14 +366,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: ea
+        example: aperiam
         type: string
         custom: []
       user_id:
         name: user_id
         description: Integer
         required: true
-        example: quas
+        example: rerum
         type: string
         custom: []
     queryParameters: []
@@ -393,7 +393,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'v1/agencies/users/change-status/{id}'
+    uri: 'v1/admins/users/change-status/{id}'
     metadata:
       title: |-
         Toggle User Status
@@ -410,14 +410,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: fuga
+        example: vitae
         type: string
         custom: []
       user_id:
         name: user_id
         description: ''
         required: true
-        example: 10
+        example: 1
         type: integer
         custom: []
     queryParameters: []
@@ -437,7 +437,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: 'v1/agencies/users/change-password/{id}'
+    uri: 'v1/admins/users/change-password/{id}'
     metadata:
       title: 'Change Password of Any User'
       description: ''
@@ -451,7 +451,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 11
+        example: 19
         type: integer
         custom: []
     queryParameters: []
@@ -460,7 +460,7 @@ endpoints:
         name: password
         description: 'ex: 123456'
         required: true
-        example: porro
+        example: sequi
         type: string
         custom: []
     responses:

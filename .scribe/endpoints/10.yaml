@@ -1,68 +1,27 @@
-name: 'User Management'
+name: 'Roles Management'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: v1/admins/users
+    uri: v1/admins/roles
     metadata:
       title: |-
-        Get Users
-        This will return logged in user profile.
+        Roles List
+        This api return the collection of all Roles created.
       description: ''
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'String required Example: Bearer TOKEN'
     urlParameters:
-      users:
-        name: users
-        description: '1,2,3,4'
-        required: false
-        example: consectetur
-        type: string
-        custom: []
-      email:
-        name: email
-        description: 'ex: abc.com,xyz.co'
-        required: false
-        example: voluptatem
-        type: string
-        custom: []
-      first_name:
-        name: first_name
-        description: ''
-        required: false
-        example: quia
-        type: string
-        custom: []
-      last_name:
-        name: last_name
-        description: ''
-        required: false
-        example: eaque
-        type: string
-        custom: []
-      full_name:
-        name: full_name
-        description: ''
-        required: false
-        example: esse
-        type: string
-        custom: []
-      status:
-        name: status
-        description: 'ex: pending,active,blocked'
-        required: false
-        example: eius
-        type: string
-        custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: deleniti
+        example: ratione
         type: string
         custom: []
       from_date:
@@ -83,76 +42,60 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 19
+        example: 20
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 5
+        example: 19
         type: integer
-        custom: []
-      roles:
-        name: roles
-        description: 'ex: admin,test'
-        required: false
-        example: qui
-        type: string
         custom: []
     queryParameters: []
     bodyParameters: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"users\": [\r\n      {\r\n        \"id\": 12,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan108@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan107@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 10,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan106@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 9,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan105@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 7,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan102@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 6,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"ahmed\",\r\n        \"email\": \"faizan101@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 5,\r\n        \"first_name\": \"Taimour\",\r\n        \"last_name\": \"Hadi\",\r\n        \"email\": \"taimour.hadi@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 8,\r\n            \"name\": \"Accounts\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 4,\r\n        \"first_name\": \"Fahad\",\r\n        \"last_name\": \"khan\",\r\n        \"email\": \"fahad.khan@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 7,\r\n            \"name\": \"HR\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 3,\r\n        \"first_name\": \"Imran\",\r\n        \"last_name\": \"Mumtaz\",\r\n        \"email\": \"imran.mumtaz@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 6,\r\n            \"name\": \"Finance\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"first_name\": \"Mehmood\",\r\n        \"last_name\": \"Ismail\",\r\n        \"email\": \"mehmood.ismail@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 2,\r\n            \"name\": \"Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 10,\r\n      \"count\": 10,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n  \"data\": {\r\n    \"roles\": [\r\n      {\r\n        \"id\": 1,\r\n        \"name\": \"Super Admin\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": [\r\n          {\r\n            \"id\": 1,\r\n            \"name\": \"access_all\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n          }\r\n        ]\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"name\": \"Admin\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 3,\r\n        \"name\": \"Agency\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 4,\r\n        \"name\": \"Customer\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 5,\r\n        \"name\": \"User\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 6,\r\n        \"name\": \"Finance\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 7,\r\n        \"name\": \"HR\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      },\r\n      {\r\n        \"id\": 8,\r\n        \"name\": \"Accounts\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n        \"permissions\": []\r\n      }\r\n    ],\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
     responseFields: []
   -
     httpMethods:
       - GET
-    uri: 'v1/admins/users/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
       title: |-
-        Show User Details
-        This api show the uer details.
+        Role Details
+        This api show the details of requested Role.
       description: ''
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'String required Example: Bearer TOKEN'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: eligendi
+        example: aut
         type: string
         custom: []
-      user_id:
-        name: user_id
+      role_id:
+        name: role_id
         description: Integer
         required: true
-        example: vero
+        example: nisi
         type: string
         custom: []
     queryParameters: []
@@ -160,7 +103,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"user\": {\r\n      \"id\": 7,\r\n      \"first_name\": \"Faizan\",\r\n      \"last_name\": \"Ahmed\",\r\n      \"email\": \"faizan102@saasfa.com\",\r\n      \"last_logged_in\": null,\r\n      \"status\": \"pending\",\r\n      \"roles\": [\r\n        {\r\n          \"id\": 2,\r\n          \"name\": \"Admin\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ],\r\n      \"permissions\": []\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n  \"data\": {\r\n    \"role\": {\r\n      \"id\": 1,\r\n      \"name\": \"Super Admin\",\r\n      \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"id\": 1,\r\n          \"name\": \"access_all\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ]\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
       -
@@ -168,91 +111,44 @@ endpoints:
         content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
         description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
     responseFields: []
   -
     httpMethods:
       - POST
-    uri: v1/admins/users
+    uri: v1/admins/roles
     metadata:
       title: |-
-        Create Users
-        This api create new user.
+        Create Role
+        This api is for create new Role
       description: ''
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'String required Example: Bearer TOKEN'
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      first_name:
-        name: first_name
+      name:
+        name: name
         description: ''
         required: true
-        example: vel
+        example: voluptas
         type: String
-        custom: []
-      last_name:
-        name: last_name
-        description: ''
-        required: true
-        example: mollitia
-        type: String
-        custom: []
-      email:
-        name: email
-        description: ''
-        required: true
-        example: quae
-        type: email
-        custom: []
-      password:
-        name: password
-        description: ''
-        required: false
-        example: vel
-        type: String
-        custom: []
-      password_confirmation:
-        name: password_confirmation
-        description: ''
-        required: false
-        example: quaerat
-        type: String
-        custom: []
-      status:
-        name: status
-        description: 'ex: pending,active,blocked'
-        required: false
-        example: veritatis
-        type: string
-        custom: []
-      roles:
-        name: roles
-        description: 'ex: [1,2,3]'
-        required: true
-        example:
-          - consectetur
-        type: 'string[]'
         custom: []
       permissions:
         name: permissions
-        description: 'ex: [1,2,3]'
+        description: optional
         required: false
         example:
-          - doloribus
+          - dolor
         type: 'string[]'
         custom: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"user\": {\r\n      \"id\": 7,\r\n      \"first_name\": \"Faizan\",\r\n      \"last_name\": \"Ahmed\",\r\n      \"email\": \"faizan102@saasfa.com\",\r\n      \"last_logged_in\": null,\r\n      \"status\": \"pending\",\r\n      \"roles\": [\r\n        {\r\n          \"id\": 2,\r\n          \"name\": \"Admin\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ],\r\n      \"permissions\": []\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n  \"data\": {\r\n    \"role\": {\r\n      \"id\": 1,\r\n      \"name\": \"Super Admin\",\r\n      \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"id\": 1,\r\n          \"name\": \"access_all\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ]\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
       -
@@ -260,82 +156,58 @@ endpoints:
         content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
         description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
     responseFields: []
   -
     httpMethods:
       - PUT
-    uri: 'v1/admins/users/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
-      title: 'Update User Details.'
-      description: 'This api update user details'
+      title: |-
+        Role Update
+        This api update the details of requested Role.
+      description: ''
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'String required Example: Bearer TOKEN'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: ut
+        example: sunt
         type: string
         custom: []
-      user_id:
-        name: user_id
-        description: 'Integer required'
-        required: false
-        example: optio
+      role_id:
+        name: role_id
+        description: Integer
+        required: true
+        example: possimus
         type: string
         custom: []
     queryParameters: []
     bodyParameters:
-      first_name:
-        name: first_name
+      name:
+        name: name
         description: ''
         required: true
-        example: harum
+        example: itaque
         type: String
-        custom: []
-      last_name:
-        name: last_name
-        description: ''
-        required: true
-        example: velit
-        type: String
-        custom: []
-      status:
-        name: status
-        description: 'ex: pending,active,blocked'
-        required: true
-        example: vitae
-        type: string
-        custom: []
-      roles:
-        name: roles
-        description: 'ex: [1,2,3]'
-        required: true
-        example:
-          - esse
-        type: 'string[]'
         custom: []
       permissions:
         name: permissions
-        description: 'ex: [1,2,3]'
+        description: optional
         required: false
         example:
-          - ut
+          - aut
         type: 'string[]'
         custom: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"user\": {\r\n      \"id\": 7,\r\n      \"first_name\": \"Faizan\",\r\n      \"last_name\": \"Ahmed\",\r\n      \"email\": \"faizan102@saasfa.com\",\r\n      \"last_logged_in\": null,\r\n      \"status\": \"pending\",\r\n      \"roles\": [\r\n        {\r\n          \"id\": 2,\r\n          \"name\": \"Admin\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ],\r\n      \"permissions\": []\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n  \"data\": {\r\n    \"role\": {\r\n      \"id\": 1,\r\n      \"name\": \"Super Admin\",\r\n      \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n      \"permissions\": [\r\n        {\r\n          \"id\": 1,\r\n          \"name\": \"access_all\",\r\n          \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n        }\r\n      ]\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
       -
@@ -343,37 +215,33 @@ endpoints:
         content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
         description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
     responseFields: []
   -
     httpMethods:
       - DELETE
-    uri: 'v1/admins/users/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
-      title: 'Delete User'
-      description: 'This api delete user'
+      title: 'Delete Role'
+      description: 'Delete Requested Record'
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Authorization: 'String required Example: Bearer TOKEN'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: quisquam
+        example: fugit
         type: string
         custom: []
-      user_id:
-        name: user_id
+      role_id:
+        name: role_id
         description: Integer
         required: true
-        example: et
+        example: nesciunt
         type: string
         custom: []
     queryParameters: []
@@ -385,88 +253,8 @@ endpoints:
         headers: []
         description: '200'
       -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: 'v1/admins/users/change-status/{id}'
-    metadata:
-      title: |-
-        Toggle User Status
-        This api update the users status to active or deactive
-        other then customers.
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: laborum
-        type: string
-        custom: []
-      user_id:
-        name: user_id
-        description: ''
-        required: true
-        example: 10
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: 'v1/admins/users/change-password/{id}'
-    metadata:
-      title: 'Change Password of Any User'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 13
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      password:
-        name: password
-        description: 'ex: 123456'
-        required: true
-        example: iusto
-        type: string
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
+        description: '422'
     responseFields: []
