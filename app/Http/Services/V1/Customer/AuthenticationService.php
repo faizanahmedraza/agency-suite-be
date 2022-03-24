@@ -28,7 +28,6 @@ class AuthenticationService
             'expires_at' => ($auth['token']->token->expires_at)->format('Y-m-d H:i:s'),
             'user' => $user,
             'agency' => $agency,
-            // 'permissions' => $user->getAllPermissions(),
         ];
     }
 

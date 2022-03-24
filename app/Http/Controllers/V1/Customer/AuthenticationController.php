@@ -5,15 +5,13 @@ namespace App\Http\Controllers\V1\Customer;
 use App\Http\Businesses\V1\Customer\CustomerBusiness;
 use App\Http\Businesses\V1\Customer\AuthenticationBusiness;
 use App\Http\Controllers\Controller;
-// use App\Http\Requests\V1\Agency\ChangePasswordRequest;
 use App\Http\Requests\V1\Customer\CreateNewPasswordRequest;
 use App\Http\Requests\V1\Customer\ForgetPasswordRequest;
 use App\Http\Requests\V1\Customer\LoginRequest;
 use App\Http\Requests\V1\Customer\RegisterRequest;
 use App\Http\Requests\V1\Customer\UserVerificationRequest;
 use App\Http\Resources\SuccessResponse;
-use App\Http\Resources\V1\Agency\AuthenticationResponse;
-// use App\Http\Resources\V1\Agency\RedirectDomainResponse;
+use App\Http\Resources\V1\Customer\AuthenticationResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,24 +65,25 @@ class AuthenticationController extends Controller
     }
 
     /**
-     * Verify Token
-     * This function is useful to check the token is valid or not
-     *
-     * @queryParam token string required S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc Example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+     * Verify Customer
+     * This function is useful to verify a new customer
      *
      * @header Client-ID string required
      * @header Client-Secret string required
      *
-     * @responseFile 200 responses/SuccessResponse.json
+     * @queryParam token String required T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA Example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
+     * @bodyParam password String required abcd1234 Example: abcd1234
+     * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
+     *
+     * @responseFile 200 responses/V1/Customer/AuthenticationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
     public function userVerification(UserVerificationRequest $request)
     {
-
         DB::beginTransaction();
-        (new AuthenticationBusiness())->tokenValidation($request);
+        $auth = (new AuthenticationBusiness())->userVerification($request);
         DB::commit();
-        return new SuccessResponse([]);
+        return new AuthenticationResponse($auth);
     }
 
     /**
@@ -145,40 +144,4 @@ class AuthenticationController extends Controller
         (new AuthenticationBusiness())->logout($request);
         return new SuccessResponse([]);
     }
-
-    // /**
-    //  * Generate Verification Token
-    //  * This function generate new verification token of user
-    //  *
-    //  * @authenticated
-    //  *
-    //  * @header Authorization string required
-    //  *
-    //  * @responseFile 200 responses/SuccessResponse.json
-    //  */
-    // public function generateToken()
-    // {
-    //     AuthenticationBusiness::generateToken();
-    //     return new SuccessResponse([]);
-    // }
-
-    // /**
-    //  * Change Password
-    //  * change password request of user
-    //  *
-    //  * @authenticated
-    //  *
-    //  * @bodyParam password String required abcd1234 Example: abcd1234
-    //  * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
-    //  *
-    //  * @responseFile 200 responses/SuccessResponse.json
-    //  * @responseFile 422 responses/ValidationResponse.json
-    //  */
-    // public function changePassword(ChangePasswordRequest $request)
-    // {
-    //     DB::beginTransaction();
-    //     (new AuthenticationBusiness())->changePassword($request);
-    //     DB::commit();
-    //     return new SuccessResponse([]);
-    // }
 }

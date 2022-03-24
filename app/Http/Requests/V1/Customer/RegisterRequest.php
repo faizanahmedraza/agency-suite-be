@@ -43,8 +43,6 @@ class RegisterRequest extends RequestAbstract
             'first_name' => 'required|string|max:100',
             'last_name' => 'required|string|max:100',
             'email' => 'required|email:rfc,dns|max:50|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i|unique:users,username,NULL,id,agency_id,'.app('agency')->id,
-            'password' => 'required|string|min:6|max:100|confirmed',
-            // 'status' =>  'sometimes|nullable|string|' . Rule::in(array_keys(User::STATUS)),
         ];
     }
 
