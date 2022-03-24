@@ -17,7 +17,7 @@ class CustomerAllowedMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() == null || !Auth::user()->hasRole(['Customer'])) {
+        if (Auth::user() == null || !Auth::user()->hasRole(['Customer']) || app('agency')->id != Auth::user()->agency_id) {
             throw  UserException::unAuthorized();
         }
 
