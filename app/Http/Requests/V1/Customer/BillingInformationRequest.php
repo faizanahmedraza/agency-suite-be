@@ -40,8 +40,8 @@ class BillingInformationRequest extends RequestAbstract
             'country' => 'required|string',
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:100',
-            'zip_code' => 'required|numeric',
-            'tax_code' => 'sometimes|nullable|string',
+            'zip_code' => 'required|numeric|digits_between:5,20',
+            'tax_code' => 'sometimes|nullable|string|max:30',
         ];
     }
 
@@ -52,6 +52,8 @@ class BillingInformationRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [];
+        return [
+            'zip_code.digits_between' => 'The zip code must be greater than 4 and less than 20 digits.'
+        ];
     }
 }

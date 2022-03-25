@@ -27,7 +27,7 @@ class BillingInformationController extends Controller
      * @bodyParam  zip_code integer required
      * @bodyParam  tax_code string optional
      *
-     * @responseFile 200
+     * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
@@ -44,13 +44,11 @@ class BillingInformationController extends Controller
      * Show Billing Information
      * This api show the billing information details.
      *
-     * @urlParam  id required Integer
-     *
-     * @responseFile 200
+     * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
      */
-    public function first(int $id)
+    public function first()
     {
-        $billing = BillingInformationBusiness::first($id);
+        $billing = BillingInformationBusiness::first();
         return (new BillingInformationResponse($billing));
     }
 
@@ -66,15 +64,15 @@ class BillingInformationController extends Controller
      * @bodyParam  zip_code integer required
      * @bodyParam  tax_code string optional
      *
-     * @responseFile 200
+     * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public function update(BillingInformationRequest $request, int $id)
+    public function update(BillingInformationRequest $request)
     {
         DB::beginTransaction();
-        $billing = BillingInformationBusiness::update($request, $id);
+        $billing = BillingInformationBusiness::update($request);
         DB::commit();
         return (new BillingInformationResponse($billing));
     }
@@ -84,15 +82,13 @@ class BillingInformationController extends Controller
      *
      * This api delete billing information
      *
-     * @urlParam  id required Integer
-     *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public function destroy(int $id)
+    public function destroy()
     {
-        BillingInformationBusiness::destroy($id);
+        BillingInformationBusiness::destroy();
         return new SuccessResponse([]);
     }
 }

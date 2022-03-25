@@ -25,7 +25,7 @@ class CustomerBillingInformation extends Model
 
     public function customer()
     {
-        return $this->hasOne(Customer::class,'customer_id','user_id');
+        return $this->belongsTo(Customer::class,'customer_id','user_id');
     }
 
     public function agency()

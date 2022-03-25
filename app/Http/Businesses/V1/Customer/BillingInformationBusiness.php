@@ -11,20 +11,20 @@ class BillingInformationBusiness
         return BillingInformationService::store($request);
     }
 
-    public static function first(int $id)
+    public static function first()
     {
-        return BillingInformationService::first($id);
+        return BillingInformationService::first();
     }
 
-    public static function update($request, int $id)
+    public static function update($request)
     {
-        $billing = BillingInformationService::first($id);
+        $billing = BillingInformationService::first();
         return BillingInformationService::update($request, $billing);
     }
 
-    public static function destroy(int $id)
+    public static function destroy()
     {
-        $billing = BillingInformationService::first($id);
+        $billing = BillingInformationService::first();
         BillingInformationService::destroy($billing);
     }
 }
