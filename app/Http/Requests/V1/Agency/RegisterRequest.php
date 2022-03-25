@@ -42,8 +42,6 @@ class RegisterRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'first_name' => 'required|alpha|max:100',
-            'last_name' => 'required|alpha|max:100',
             'email' => 'required|email:rfc,dns|max:100|email|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i',
             'password' => 'required|string|min:6|max:100|confirmed',
             'agency_name' => 'required|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name',

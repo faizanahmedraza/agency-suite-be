@@ -46,12 +46,10 @@ class AuthenticationController extends Controller
      * Register Agency
      * This api is useful for register new Agency and return access token with agency and user information
      *
-     * @bodyParam first_name string required User first name Example: Bionic
-     * @bodyParam last_name string required User last name Example: WP
+     * @bodyParam agency_name string required Example: abc-agency, abc agency
      * @bodyParam email email required User email address Example: admin@bionicwp.com
      * @bodyParam password string required User password Example: abcd1234
      * @bodyParam password_confirmation string required User password Example: abcd1234
-     * @bodyParam agency_name string required Example: abc-agency, abc agency
      *
      * @header Client-ID string required
      * @header Client-Secret string required
