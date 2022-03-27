@@ -121,7 +121,7 @@ $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Nord\Lumen\Cors\CorsServiceProvider::class);
-
+$app->register(Sentry\Laravel\ServiceProvider::class);
 
 if (env('APP_ENV') === "local") {
     //scribe for documentation
