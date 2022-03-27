@@ -12,7 +12,7 @@ class BillingInformationService
 {
     public static function store(Request $request)
     {
-        $billing = CustomerBillingInformation::where('agency_id', app('agency')->id)->where('customer_id', Auth::id())->first();
+        $billing = self::first();
 
         if (empty($billing)) {
             $billing = new CustomerBillingInformation();
