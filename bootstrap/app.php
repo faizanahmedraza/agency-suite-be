@@ -64,6 +64,9 @@ $app->configure('auth');
 $app->configure('database');
 $app->configure('permission');
 $app->configure('cloudinary');
+$app->configure('sentry');
+$app->configure('segment');
+$app->configure('agency_events');
 
 if (env('APP_ENV') === "local") {
     //scribe for documentation

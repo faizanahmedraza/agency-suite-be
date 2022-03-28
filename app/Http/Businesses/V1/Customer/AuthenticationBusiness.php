@@ -2,15 +2,12 @@
 
 namespace App\Http\Businesses\V1\Customer;
 
+use App\Http\Wrappers\SegmentWrapper;
 use App\Models\User;
-use App\Models\Agency;
 use App\Events\LoginEvent;
 use App\Helpers\TimeStampHelper;
-use App\Exceptions\V1\UserException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Exceptions\V1\TokenException;
-use App\Exceptions\V1\DomainException;
 use App\Exceptions\V1\UnAuthorizedException;
 use App\Http\Services\V1\Customer\UserService;
 use App\Exceptions\V1\RequestValidationException;
@@ -41,6 +38,9 @@ class AuthenticationBusiness
 
         //last login tracking event
         event(new LoginEvent($user));
+
+        //segment login event
+        SegmentWrapper::login($user);
         return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 

@@ -7,6 +7,7 @@ use App\Http\Services\V1\Agency\AgencyDomainService;
 use App\Http\Services\V1\Agency\AgencyService;
 use App\Http\Services\V1\Agency\UserService;
 use App\Http\Services\V1\Agency\UserVerificationService;
+use App\Http\Wrappers\SegmentWrapper;
 use App\Models\AgencyDomain;
 use Illuminate\Http\Request;
 
@@ -48,6 +49,9 @@ class AgencyBusiness
 
         //assign Role
         (new UserService())->assignUserRole($request, $user);
+
+        //segment registration event
+        SegmentWrapper::registration($user);
 
         (new UserVerificationService())->generateVerificationCode($user);
     }
