@@ -44,9 +44,8 @@ class AuthenticationBusiness
         return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 
-    public function tokenValidation($request)
+    public function userVerification($request)
     {
-
         $authService = new AuthenticationService();
 
         // verify user token
@@ -58,10 +57,18 @@ class AuthenticationBusiness
             throw RequestValidationException::errorMessage("Token has been expired. Please contact our support team.");
         }
 
-        UserService::updateStatus($userVerification->user);
+        $user = (new UserService())->first($userVerification->user->id);
+
+        UserService::updateStatus($user);
+
+        (new UserService())->changePassword($user, $request->password);
 
         // Delete Token
         $authService->deleteToken($userVerification);
+
+        $auth['token'] = $authService->createToken($user);
+
+        return $authService->generateVerificationResponse($auth, $user, $user->agency);
 
     }
 
@@ -88,6 +95,7 @@ class AuthenticationBusiness
 
         $authService->deleteToken($userVerification);
     }
+
     public function logout($request)
     {
         if (Auth::check()) {
@@ -99,24 +107,4 @@ class AuthenticationBusiness
             }
         }
     }
-
-    // public function changePassword($request)
-    // {
-    //     $user = Auth::user();
-    //     UserService::changePassword($user, $request->password);
-    // }
-
-
-
-    // public static function generateToken()
-    // {
-    //     $user = Auth::user();
-
-    //     if ($user->status == User::STATUS['active']) {
-    //         throw UserException::userAlreadyActive();
-    //     }
-
-    //     AuthenticationService::deleteUserToken($user);
-    //     UserVerificationService::generateVerificationCode($user);
-    // }
 }

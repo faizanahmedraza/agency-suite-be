@@ -4,7 +4,7 @@ namespace App\Http\Requests\V1\Customer;
 
 use Pearl\RequestValidate\RequestAbstract;
 
-class RegisterRequest extends RequestAbstract
+class BillingInformationRequest extends RequestAbstract
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,8 @@ class RegisterRequest extends RequestAbstract
     protected function validationData(): array
     {
         $all = parent::validationData();
-        //Convert request value to lowercase
-        if (isset($all['email'])) {
-            $all['email'] = preg_replace('/\s+/', '', strtolower(trim($all['email'])));
-        }
         return $all;
     }
-
 
     /**
      * Get the validation rules that apply to the request.
@@ -40,9 +35,13 @@ class RegisterRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
-            'email' => 'required|email:rfc,dns|max:50|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i|unique:users,username,NULL,id,agency_id,'.app('agency')->id,
+            'invoice_to' => 'required|string|max:100',
+            'address' => 'required|string',
+            'country' => 'required|string',
+            'city' => 'required|string|max:100',
+            'state' => 'required|string|max:100',
+            'zip_code' => 'required|numeric|digits_between:5,20',
+            'tax_code' => 'sometimes|nullable|string|max:30',
         ];
     }
 
@@ -54,7 +53,7 @@ class RegisterRequest extends RequestAbstract
     public function messages(): array
     {
         return [
-            'password.confirmed' => "Password did not matched.",
+            'zip_code.digits_between' => 'The zip code must be greater than 4 and less than 20 digits.'
         ];
     }
 }

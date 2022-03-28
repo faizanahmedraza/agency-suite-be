@@ -126,10 +126,14 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
             });
 
+            //customer billing information
+            $router->group(['prefix' => 'billing-information'], function () use ($router) {
+                $router->get('/', 'BillingInformationController@first');
+                $router->post('/', 'BillingInformationController@store');
+                $router->put('/', 'BillingInformationController@update');
+                $router->delete('/', 'BillingInformationController@destroy');
+            });
         });
-        // $router->get('/', function () use ($router) {
-        //     return new SuccessResponse([]);
-        // });
     });
 
 

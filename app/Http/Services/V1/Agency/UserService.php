@@ -273,7 +273,7 @@ class UserService
 
     public static function getUserByAgency($where = null)
     {
-        $user = User::where($where)->first();
+        $user = User::where($where)->avoidRole(['Super Admin','Customer'])->first();
 
         if (!$user) {
             throw UnAuthorizedException::InvalidCredentials();
