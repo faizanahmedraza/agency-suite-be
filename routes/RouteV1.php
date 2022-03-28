@@ -111,13 +111,21 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
     // Agencies Customers
     $router->group(['prefix' => 'customers', 'namespace' => 'Customer','middleware' => 'agency_domain'],function () use ($router) {
-        $router->post('/register', 'AuthenticationController@register');
-        $router->post('/verify-token', 'AuthenticationController@userVerification');
-        $router->post('/login', 'AuthenticationController@login');
-        $router->post('/forget-password', 'AuthenticationController@forgetPassword');
-        $router->post('/create-new-password', 'AuthenticationController@createNewPassword');
+        $router->group(['middleware' => 'client_credentials'], function () use ($router) {
+            $router->post('/register', 'AuthenticationController@register');
+            $router->post('/verify-token', 'AuthenticationController@userVerification');
+            $router->post('/login', 'AuthenticationController@login');
+            $router->post('/forget-password', 'AuthenticationController@forgetPassword');
+            $router->post('/create-new-password', 'AuthenticationController@createNewPassword');
+        });
         $router->group(['middleware' => ['customer']], function () use ($router) {
             $router->delete('/logout', 'AuthenticationController@logout');
+
+            $router->group(['prefix' => 'request-services'],function () use ($router) {
+                $router->post('/', 'RequestServiceController@create');
+
+            });
+
         });
         // $router->get('/', function () use ($router) {
         //     return new SuccessResponse([]);
