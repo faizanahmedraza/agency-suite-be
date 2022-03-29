@@ -9,7 +9,7 @@ return [
         'logged_in' => 'Logged In',
         'forgot_password' => 'Forgot Password',
         'create_password' => 'Create Password',
-        'reset_password' => 'Reset Password',
-        'token_validation' => 'Token Validation'
+        'user_verification' => 'User Verification',
+        'generate_token' => 'Generate Verification Token',
     ],
 ];

@@ -68,6 +68,9 @@ class AuthenticationBusiness
         // Delete Token
         $authService->deleteToken($userVerification);
 
+        //segment user verification event
+        SegmentWrapper::userVerification($userVerification->user);
+
         return $agency->domains->first();
     }
 
@@ -77,6 +80,8 @@ class AuthenticationBusiness
             ['username', '=', $request->email],
             ['agency_id', '=', (app('agency'))->id],
         ]);
+        //segment forgot password event
+        SegmentWrapper::forgotPassword($user);
         UserVerificationService::generateVerificationCode($user);
     }
 
@@ -92,12 +97,17 @@ class AuthenticationBusiness
 
         (new UserService())->changePassword($userVerification->user, $request->password);
 
+        //segment create password event
+        SegmentWrapper::createPassword($userVerification->user);
+
         $authService->deleteToken($userVerification);
     }
 
     public function changePassword($request)
     {
         $user = Auth::user();
+        //segment create password event
+        SegmentWrapper::createPassword($user);
         UserService::changePassword($user, $request->password);
     }
 
@@ -122,6 +132,8 @@ class AuthenticationBusiness
         }
 
         AuthenticationService::deleteUserToken($user);
+        //segment verification token event
+        SegmentWrapper::generateToken($user);
         UserVerificationService::generateVerificationCode($user);
     }
 }
