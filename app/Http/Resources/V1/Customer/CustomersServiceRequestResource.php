@@ -22,7 +22,7 @@ class CustomersServiceRequestResource extends Resource
             'service_name' => optional($this->service)->name ?? '',
             'status' =>$status[$this->status] ?? '',
             'intake_form' => (object)$intakeForm,
-            'invoice' => (object) $this->invoices,//Invoice ki resource bnalo
+            'invoices' => InvoiceResource::collection($this->invoices) ??(object)[],
             'created_at' => $this->created_at ?? '',
         ];
     }
