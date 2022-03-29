@@ -57,4 +57,84 @@ class SegmentWrapper
             )
         ));
     }
+
+    public static function userVerification(User $user)
+    {
+        SegmentClient::init(config('segment.write_key'));
+
+        if ($user->hasRole(['Agency'])) {
+            $properties = 'Agency';
+        } else {
+            $properties = 'Agency Customer';
+        }
+
+        SegmentClient::track(array(
+            "userId" => $user->id,
+            "event" => config('agency_events.events.user_verification'),
+            "properties" => array(
+                "agency_name" => $user->agency()->first()->name,
+                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "verification_of" => $properties
+            )
+        ));
+    }
+
+    public static function forgotPassword(User $user)
+    {
+        SegmentClient::init(config('segment.write_key'));
+
+        if ($user->hasRole(['Agency'])) {
+            $properties = 'Agency';
+        } else {
+            $properties = 'Agency Customer';
+        }
+
+        SegmentClient::track(array(
+            "userId" => $user->id,
+            "event" => config('agency_events.events.forgot_password'),
+            "properties" => array(
+                "agency_name" => $user->agency()->first()->name,
+                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "forgot_password_of" => $properties
+            )
+        ));
+    }
+
+    public static function createPassword(User $user)
+    {
+        SegmentClient::init(config('segment.write_key'));
+
+        if ($user->hasRole(['Agency'])) {
+            $properties = 'Agency';
+        } else {
+            $properties = 'Agency Customer';
+        }
+
+        SegmentClient::track(array(
+            "userId" => $user->id,
+            "event" => config('agency_events.events.create_password'),
+            "properties" => array(
+                "agency_name" => $user->agency()->first()->name,
+                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "create_password_of" => $properties
+            )
+        ));
+    }
+
+    public static function generateToken(User $user)
+    {
+        SegmentClient::init(config('segment.write_key'));
+
+        $properties = 'Agency';
+
+        SegmentClient::track(array(
+            "userId" => $user->id,
+            "event" => config('agency_events.events.generate_token'),
+            "properties" => array(
+                "agency_name" => $user->agency()->first()->name,
+                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "generate_token_as" => $properties
+            )
+        ));
+    }
 }

@@ -68,6 +68,9 @@ class AuthenticationBusiness
 
         $auth['token'] = $authService->createToken($user);
 
+        //segment user verification event
+        SegmentWrapper::userVerification($user);
+
         return $authService->generateVerificationResponse($auth, $user, $user->agency);
 
     }
@@ -78,6 +81,8 @@ class AuthenticationBusiness
             ['username', '=', $request->email],
             ['agency_id', '=', (app('agency'))->id],
         ]);
+        //segment forgot password event
+        SegmentWrapper::forgotPassword($user);
         UserVerificationService::generateVerificationCode($user);
     }
 
@@ -92,6 +97,9 @@ class AuthenticationBusiness
         }
 
         (new UserService())->changePassword($userVerification->user, $request->password);
+
+        //segment create password event
+        SegmentWrapper::createPassword($userVerification->user);
 
         $authService->deleteToken($userVerification);
     }
