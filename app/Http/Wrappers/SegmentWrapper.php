@@ -22,7 +22,7 @@ class SegmentWrapper
             "event" => config('agency_events.events.logged_in'),
             "properties" => array(
                 "agency_name" => app('agency')->name,
-                "agency_domain" => app('agency')->domain_name,
+                "default_domain" => app('agency')->domain_name,
                 "logged_in_as" => $properties
             )
         ));
@@ -52,7 +52,7 @@ class SegmentWrapper
             "event" => config('agency_events.events.registration'),
             "properties" => array(
                 "agency_name" => $user->agency()->first()->name,
-                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "default_domain" => $user->agency()->first()->defaultDomain(),
                 "registered_as" => $properties
             )
         ));
@@ -73,7 +73,7 @@ class SegmentWrapper
             "event" => config('agency_events.events.user_verification'),
             "properties" => array(
                 "agency_name" => $user->agency()->first()->name,
-                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "default_domain" => $user->agency()->first()->defaultDomain(),
                 "verification_of" => $properties
             )
         ));
@@ -94,7 +94,7 @@ class SegmentWrapper
             "event" => config('agency_events.events.forgot_password'),
             "properties" => array(
                 "agency_name" => $user->agency()->first()->name,
-                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "default_domain" => $user->agency()->first()->defaultDomain(),
                 "forgot_password_of" => $properties
             )
         ));
@@ -115,7 +115,7 @@ class SegmentWrapper
             "event" => config('agency_events.events.create_password'),
             "properties" => array(
                 "agency_name" => $user->agency()->first()->name,
-                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "default_domain" => $user->agency()->first()->defaultDomain(),
                 "create_password_of" => $properties
             )
         ));
@@ -132,7 +132,7 @@ class SegmentWrapper
             "event" => config('agency_events.events.generate_token'),
             "properties" => array(
                 "agency_name" => $user->agency()->first()->name,
-                "agency_domain" => $user->agency()->first()->domains()->where('default', true)->first()->domain,
+                "default_domain" => $user->agency()->first()->defaultDomain(),
                 "generate_token_as" => $properties
             )
         ));
