@@ -9,7 +9,7 @@ class CustomerInvoice extends Model
 {
     use  SoftDeletes;
 
-    protected $table = "customer_service_requests";
+    protected $table = "customer_invoices";
 
 
 

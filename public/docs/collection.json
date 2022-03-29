@@ -5,12 +5,12 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "http:\/\/agency.test"
+            "value": "http:\/\/localhost"
         }
     ],
     "info": {
         "name": "Lumen",
-        "_postman_id": "22923c3f-4100-4d98-8eb0-9b2e8d097bd6",
+        "_postman_id": "25cc3e7c-a551-4b3b-a962-7319b53947a4",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -453,6 +453,53 @@
             ]
         },
         {
+            "name": "Customer Request Service",
+            "description": "",
+            "item": [
+                {
+                    "name": "Request Service\nRequesting for service",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/customers\/request-services",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/customers\/request-services"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"service_id\":13,\"recurring_type\":\"omnis\",\"refrence_no\":\"quia\",\"intake_form\":[\"corporis\"]}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Agency Customers",
             "description": "",
             "item": [
@@ -468,7 +515,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "vel",
+                                    "value": "sint",
                                     "description": "Integer"
                                 }
                             ]
@@ -532,7 +579,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"quis\",\"last_name\":\"consequatur\",\"email\":\"error\"}"
+                            "raw": "{\"first_name\":\"sit\",\"last_name\":\"dolorem\",\"email\":\"accusamus\"}"
                         },
                         "description": ""
                     },
@@ -563,7 +610,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "est",
+                                    "value": "omnis",
                                     "description": "Integer"
                                 }
                             ]
@@ -585,7 +632,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"hic\",\"last_name\":\"molestias\"}"
+                            "raw": "{\"first_name\":\"earum\",\"last_name\":\"est\"}"
                         },
                         "description": ""
                     },
@@ -616,7 +663,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "atque",
+                                    "value": "rerum",
                                     "description": "Integer"
                                 }
                             ]
@@ -666,7 +713,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "17",
+                                    "value": "2",
                                     "description": ""
                                 }
                             ]
@@ -712,43 +759,43 @@
                                 {
                                     "id": "customers",
                                     "key": "customers",
-                                    "value": "voluptatem",
+                                    "value": "architecto",
                                     "description": "1,2,3,4"
                                 },
                                 {
                                     "id": "email",
                                     "key": "email",
-                                    "value": "aut",
+                                    "value": "necessitatibus",
                                     "description": "ex: abc.com,xyz.co"
                                 },
                                 {
                                     "id": "first_name",
                                     "key": "first_name",
-                                    "value": "accusamus",
+                                    "value": "vel",
                                     "description": ""
                                 },
                                 {
                                     "id": "last_name",
                                     "key": "last_name",
-                                    "value": "eos",
+                                    "value": "odio",
                                     "description": ""
                                 },
                                 {
                                     "id": "full_name",
                                     "key": "full_name",
-                                    "value": "et",
+                                    "value": "velit",
                                     "description": ""
                                 },
                                 {
                                     "id": "status",
                                     "key": "status",
-                                    "value": "odio",
+                                    "value": "in",
                                     "description": "ex: pending,active,blocked"
                                 },
                                 {
                                     "id": "order_by",
                                     "key": "order_by",
-                                    "value": "distinctio",
+                                    "value": "et",
                                     "description": "ex: asc\/desc"
                                 },
                                 {
@@ -766,19 +813,19 @@
                                 {
                                     "id": "pagination",
                                     "key": "pagination",
-                                    "value": "",
+                                    "value": "1",
                                     "description": ""
                                 },
                                 {
                                     "id": "page_limit",
                                     "key": "page_limit",
-                                    "value": "18",
+                                    "value": "7",
                                     "description": ""
                                 },
                                 {
                                     "id": "page",
                                     "key": "page",
-                                    "value": "1",
+                                    "value": "5",
                                     "description": ""
                                 }
                             ]
@@ -876,7 +923,7 @@
                                 {
                                     "id": "order_by",
                                     "key": "order_by",
-                                    "value": "deserunt",
+                                    "value": "rem",
                                     "description": "ex: asc\/desc"
                                 },
                                 {
@@ -906,7 +953,7 @@
                                 {
                                     "id": "page",
                                     "key": "page",
-                                    "value": "12",
+                                    "value": "20",
                                     "description": ""
                                 }
                             ]
@@ -950,13 +997,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "pariatur",
+                                    "value": "earum",
                                     "description": ""
                                 },
                                 {
                                     "id": "role_id",
                                     "key": "role_id",
-                                    "value": "dolores",
+                                    "value": "omnis",
                                     "description": "Integer"
                                 }
                             ]
@@ -1020,7 +1067,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ducimus\",\"permissions\":[\"et\"]}"
+                            "raw": "{\"name\":\"similique\",\"permissions\":[\"esse\"]}"
                         },
                         "description": ""
                     },
@@ -1051,13 +1098,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "consequatur",
+                                    "value": "nesciunt",
                                     "description": ""
                                 },
                                 {
                                     "id": "role_id",
                                     "key": "role_id",
-                                    "value": "tempore",
+                                    "value": "et",
                                     "description": "Integer"
                                 }
                             ]
@@ -1079,7 +1126,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"saepe\",\"permissions\":[\"unde\"]}"
+                            "raw": "{\"name\":\"corrupti\",\"permissions\":[\"commodi\"]}"
                         },
                         "description": ""
                     },
@@ -1110,13 +1157,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "eos",
+                                    "value": "non",
                                     "description": ""
                                 },
                                 {
                                     "id": "role_id",
                                     "key": "role_id",
-                                    "value": "nulla",
+                                    "value": "sit",
                                     "description": "Integer"
                                 }
                             ]
@@ -1172,25 +1219,25 @@
                                 {
                                     "id": "services",
                                     "key": "services",
-                                    "value": "hic",
+                                    "value": "maiores",
                                     "description": "1,2,3,4"
                                 },
                                 {
                                     "id": "name",
                                     "key": "name",
-                                    "value": "laborum",
+                                    "value": "porro",
                                     "description": "ex: my service"
                                 },
                                 {
                                     "id": "status",
                                     "key": "status",
-                                    "value": "fuga",
+                                    "value": "rerum",
                                     "description": "ex: pending,active"
                                 },
                                 {
                                     "id": "order_by",
                                     "key": "order_by",
-                                    "value": "totam",
+                                    "value": "vitae",
                                     "description": "ex: asc\/desc"
                                 },
                                 {
@@ -1208,19 +1255,19 @@
                                 {
                                     "id": "pagination",
                                     "key": "pagination",
-                                    "value": "",
+                                    "value": "1",
                                     "description": ""
                                 },
                                 {
                                     "id": "page_limit",
                                     "key": "page_limit",
-                                    "value": "6",
+                                    "value": "14",
                                     "description": ""
                                 },
                                 {
                                     "id": "page",
                                     "key": "page",
-                                    "value": "16",
+                                    "value": "9",
                                     "description": ""
                                 }
                             ]
@@ -1266,7 +1313,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "inventore",
+                                    "value": "et",
                                     "description": "Integer"
                                 }
                             ]
@@ -1316,7 +1363,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"vel\",\"description\":\"sapiente\",\"image\":\"occaecati\",\"subscription_type\":\"debitis\",\"price\":5,\"purchase_limit\":10,\"weekly\":13,\"monthly\":13,\"quarterly\":6,\"biannually\":1,\"annually\":16,\"max_concurrent_requests\":16,\"max_requests_per_month\":15}"
+                            "raw": "{\"name\":\"id\",\"description\":\"minima\",\"image\":\"non\",\"subscription_type\":\"voluptatem\",\"price\":9,\"purchase_limit\":6,\"weekly\":19,\"monthly\":11,\"quarterly\":15,\"biannually\":13,\"annually\":16,\"max_concurrent_requests\":10,\"max_requests_per_month\":1}"
                         },
                         "description": ""
                     },
@@ -1353,7 +1400,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "quo",
+                                    "value": "ducimus",
                                     "description": ""
                                 }
                             ]
@@ -1371,7 +1418,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"voluptate\",\"description\":\"excepturi\",\"image\":\"quia\",\"subscription_type\":\"dolor\",\"price\":16,\"purchase_limit\":8,\"weekly\":2,\"monthly\":9,\"quarterly\":16,\"biannually\":5,\"annually\":20,\"max_concurrent_requests\":11,\"max_requests_per_month\":20}"
+                            "raw": "{\"name\":\"eaque\",\"description\":\"omnis\",\"image\":\"quasi\",\"subscription_type\":\"quia\",\"price\":1,\"purchase_limit\":11,\"weekly\":16,\"monthly\":1,\"quarterly\":15,\"biannually\":5,\"annually\":6,\"max_concurrent_requests\":11,\"max_requests_per_month\":7}"
                         },
                         "description": ""
                     },
@@ -1408,7 +1455,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "molestiae",
+                                    "value": "voluptatem",
                                     "description": "Integer"
                                 }
                             ]
@@ -1454,7 +1501,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "5",
+                                    "value": "2",
                                     "description": ""
                                 }
                             ]
@@ -1506,43 +1553,43 @@
                                 {
                                     "id": "users",
                                     "key": "users",
-                                    "value": "temporibus",
+                                    "value": "saepe",
                                     "description": "1,2,3,4"
                                 },
                                 {
                                     "id": "email",
                                     "key": "email",
-                                    "value": "exercitationem",
+                                    "value": "ut",
                                     "description": "ex: abc.com,xyz.co"
                                 },
                                 {
                                     "id": "first_name",
                                     "key": "first_name",
-                                    "value": "velit",
+                                    "value": "molestiae",
                                     "description": ""
                                 },
                                 {
                                     "id": "last_name",
                                     "key": "last_name",
-                                    "value": "ut",
+                                    "value": "accusamus",
                                     "description": ""
                                 },
                                 {
                                     "id": "full_name",
                                     "key": "full_name",
-                                    "value": "nostrum",
+                                    "value": "ipsam",
                                     "description": ""
                                 },
                                 {
                                     "id": "status",
                                     "key": "status",
-                                    "value": "dignissimos",
+                                    "value": "qui",
                                     "description": "ex: pending,active,blocked"
                                 },
                                 {
                                     "id": "order_by",
                                     "key": "order_by",
-                                    "value": "labore",
+                                    "value": "repellat",
                                     "description": "ex: asc\/desc"
                                 },
                                 {
@@ -1560,25 +1607,25 @@
                                 {
                                     "id": "pagination",
                                     "key": "pagination",
-                                    "value": "",
+                                    "value": "1",
                                     "description": ""
                                 },
                                 {
                                     "id": "page_limit",
                                     "key": "page_limit",
-                                    "value": "13",
+                                    "value": "12",
                                     "description": ""
                                 },
                                 {
                                     "id": "page",
                                     "key": "page",
-                                    "value": "2",
+                                    "value": "14",
                                     "description": ""
                                 },
                                 {
                                     "id": "roles",
                                     "key": "roles",
-                                    "value": "id",
+                                    "value": "earum",
                                     "description": "ex: admin,test"
                                 }
                             ]
@@ -1630,13 +1677,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "et",
+                                    "value": "omnis",
                                     "description": ""
                                 },
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "voluptatem",
+                                    "value": "hic",
                                     "description": "Integer"
                                 }
                             ]
@@ -1698,7 +1745,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"et\",\"last_name\":\"amet\",\"email\":\"et\",\"password\":\"sint\",\"password_confirmation\":\"ut\",\"status\":\"ab\",\"roles\":[\"quis\"],\"permissions\":[\"repellendus\"]}"
+                            "raw": "{\"first_name\":\"quibusdam\",\"last_name\":\"nostrum\",\"email\":\"voluptatibus\",\"password\":\"voluptates\",\"password_confirmation\":\"odio\",\"status\":\"tempore\",\"roles\":[\"fuga\"],\"permissions\":[\"rerum\"]}"
                         },
                         "description": ""
                     },
@@ -1735,13 +1782,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "molestias",
+                                    "value": "amet",
                                     "description": ""
                                 },
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "voluptatem",
+                                    "value": "ab",
                                     "description": "Integer required"
                                 }
                             ]
@@ -1759,7 +1806,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"voluptatem\",\"last_name\":\"voluptatem\",\"status\":\"enim\",\"roles\":[\"voluptas\"],\"permissions\":[\"at\"]}"
+                            "raw": "{\"first_name\":\"aliquam\",\"last_name\":\"ut\",\"status\":\"aliquid\",\"roles\":[\"est\"],\"permissions\":[\"soluta\"]}"
                         },
                         "description": "This api update user details"
                     },
@@ -1796,13 +1843,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "ut",
+                                    "value": "unde",
                                     "description": ""
                                 },
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "est",
+                                    "value": "vero",
                                     "description": "Integer"
                                 }
                             ]
@@ -1848,13 +1895,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "consequuntur",
+                                    "value": "eum",
                                     "description": ""
                                 },
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "13",
+                                    "value": "18",
                                     "description": ""
                                 }
                             ]
@@ -1900,7 +1947,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "3",
+                                    "value": "10",
                                     "description": ""
                                 }
                             ]
@@ -1918,7 +1965,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"password\":\"recusandae\"}"
+                            "raw": "{\"password\":\"est\"}"
                         },
                         "description": ""
                     },
@@ -2397,6 +2444,176 @@
             ]
         },
         {
+            "name": "Customer Billing Information",
+            "description": "",
+            "item": [
+                {
+                    "name": "Show Billing Information\nThis api show the billing information details.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/customers\/billing-information",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/customers\/billing-information"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"invoice_to\": \"Agency 101\",\r\n      \"address\": \"My new address\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"zip_code\": 12345,\r\n      \"tax_code\": \"dsad2\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\"\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Create Billing Information\nThis api create new billing information.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/customers\/billing-information",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/customers\/billing-information"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"invoice_to\":\"eos\",\"address\":\"enim\",\"country\":\"eos\",\"city\":\"sint\",\"state\":\"aut\",\"zip_code\":5,\"tax_code\":\"saepe\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"invoice_to\": \"Agency 101\",\r\n      \"address\": \"My new address\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"zip_code\": 12345,\r\n      \"tax_code\": \"dsad2\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\"\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update Billing Information\nThis api update billing information.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/customers\/billing-information",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/customers\/billing-information"
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"invoice_to\":\"molestiae\",\"address\":\"consectetur\",\"country\":\"aut\",\"city\":\"iusto\",\"state\":\"nobis\",\"zip_code\":15,\"tax_code\":\"tenetur\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"invoice_to\": \"Agency 101\",\r\n      \"address\": \"My new address\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"zip_code\": 12345,\r\n      \"tax_code\": \"dsad2\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\"\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete Billing Information",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "v1\/customers\/billing-information",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/v1\/customers\/billing-information"
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This api delete billing information"
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "Permissions Api",
             "description": "",
             "item": [
@@ -2464,7 +2681,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"autem\",\"logo\":\"aut\",\"favicon\":\"eaque\",\"primary_color\":\"dolor\"}"
+                            "raw": "{\"name\":\"id\",\"logo\":\"ut\",\"favicon\":\"est\",\"primary_color\":\"odio\"}"
                         },
                         "description": ""
                     },
@@ -2507,7 +2724,7 @@
                                 {
                                     "id": "order_by",
                                     "key": "order_by",
-                                    "value": "non",
+                                    "value": "vitae",
                                     "description": "ex: asc\/desc"
                                 },
                                 {
@@ -2525,19 +2742,19 @@
                                 {
                                     "id": "pagination",
                                     "key": "pagination",
-                                    "value": "1",
+                                    "value": "",
                                     "description": ""
                                 },
                                 {
                                     "id": "page_limit",
                                     "key": "page_limit",
-                                    "value": "15",
+                                    "value": "20",
                                     "description": ""
                                 },
                                 {
                                     "id": "page",
                                     "key": "page",
-                                    "value": "2",
+                                    "value": "7",
                                     "description": ""
                                 }
                             ]
@@ -2581,13 +2798,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "quia",
+                                    "value": "ut",
                                     "description": ""
                                 },
                                 {
                                     "id": "role_id",
                                     "key": "role_id",
-                                    "value": "quos",
+                                    "value": "voluptas",
                                     "description": "Integer"
                                 }
                             ]
@@ -2651,7 +2868,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ipsa\",\"permissions\":[\"repellat\"]}"
+                            "raw": "{\"name\":\"necessitatibus\",\"permissions\":[\"dolorum\"]}"
                         },
                         "description": ""
                     },
@@ -2682,13 +2899,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "earum",
+                                    "value": "nihil",
                                     "description": ""
                                 },
                                 {
                                     "id": "role_id",
                                     "key": "role_id",
-                                    "value": "quia",
+                                    "value": "non",
                                     "description": "Integer"
                                 }
                             ]
@@ -2710,7 +2927,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"eligendi\",\"permissions\":[\"consectetur\"]}"
+                            "raw": "{\"name\":\"amet\",\"permissions\":[\"similique\"]}"
                         },
                         "description": ""
                     },
@@ -2741,13 +2958,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "eum",
+                                    "value": "quia",
                                     "description": ""
                                 },
                                 {
                                     "id": "role_id",
                                     "key": "role_id",
-                                    "value": "harum",
+                                    "value": "est",
                                     "description": "Integer"
                                 }
                             ]
@@ -2803,43 +3020,43 @@
                                 {
                                     "id": "users",
                                     "key": "users",
-                                    "value": "quis",
+                                    "value": "dolores",
                                     "description": "1,2,3,4"
                                 },
                                 {
                                     "id": "email",
                                     "key": "email",
-                                    "value": "omnis",
+                                    "value": "rerum",
                                     "description": "ex: abc.com,xyz.co"
                                 },
                                 {
                                     "id": "first_name",
                                     "key": "first_name",
-                                    "value": "ad",
+                                    "value": "ducimus",
                                     "description": ""
                                 },
                                 {
                                     "id": "last_name",
                                     "key": "last_name",
-                                    "value": "consequatur",
+                                    "value": "quo",
                                     "description": ""
                                 },
                                 {
                                     "id": "full_name",
                                     "key": "full_name",
-                                    "value": "minus",
+                                    "value": "voluptas",
                                     "description": ""
                                 },
                                 {
                                     "id": "status",
                                     "key": "status",
-                                    "value": "adipisci",
+                                    "value": "fugiat",
                                     "description": "ex: pending,active,blocked"
                                 },
                                 {
                                     "id": "order_by",
                                     "key": "order_by",
-                                    "value": "dignissimos",
+                                    "value": "unde",
                                     "description": "ex: asc\/desc"
                                 },
                                 {
@@ -2863,19 +3080,19 @@
                                 {
                                     "id": "page_limit",
                                     "key": "page_limit",
-                                    "value": "15",
+                                    "value": "2",
                                     "description": ""
                                 },
                                 {
                                     "id": "page",
                                     "key": "page",
-                                    "value": "9",
+                                    "value": "12",
                                     "description": ""
                                 },
                                 {
                                     "id": "roles",
                                     "key": "roles",
-                                    "value": "iure",
+                                    "value": "nam",
                                     "description": "ex: admin,test"
                                 }
                             ]
@@ -2927,13 +3144,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "fugit",
+                                    "value": "qui",
                                     "description": ""
                                 },
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "dolorem",
+                                    "value": "quasi",
                                     "description": "Integer"
                                 }
                             ]
@@ -2995,7 +3212,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"eveniet\",\"last_name\":\"dolores\",\"email\":\"dolorem\",\"password\":\"quod\",\"password_confirmation\":\"incidunt\",\"status\":\"voluptate\",\"roles\":[\"quo\"],\"permissions\":[\"corrupti\"]}"
+                            "raw": "{\"first_name\":\"quia\",\"last_name\":\"ratione\",\"email\":\"dolore\",\"password\":\"excepturi\",\"password_confirmation\":\"qui\",\"status\":\"incidunt\",\"roles\":[\"nesciunt\"],\"permissions\":[\"non\"]}"
                         },
                         "description": ""
                     },
@@ -3032,13 +3249,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "odio",
+                                    "value": "qui",
                                     "description": ""
                                 },
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "nisi",
+                                    "value": "eos",
                                     "description": "Integer required"
                                 }
                             ]
@@ -3056,7 +3273,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"first_name\":\"hic\",\"last_name\":\"pariatur\",\"status\":\"aperiam\",\"roles\":[\"harum\"],\"permissions\":[\"exercitationem\"]}"
+                            "raw": "{\"first_name\":\"sit\",\"last_name\":\"et\",\"status\":\"rerum\",\"roles\":[\"totam\"],\"permissions\":[\"aperiam\"]}"
                         },
                         "description": "This api update user details"
                     },
@@ -3093,13 +3310,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "quam",
+                                    "value": "placeat",
                                     "description": ""
                                 },
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "dolores",
+                                    "value": "magni",
                                     "description": "Integer"
                                 }
                             ]
@@ -3145,13 +3362,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "reiciendis",
+                                    "value": "beatae",
                                     "description": ""
                                 },
                                 {
                                     "id": "user_id",
                                     "key": "user_id",
-                                    "value": "3",
+                                    "value": "13",
                                     "description": ""
                                 }
                             ]
@@ -3197,7 +3414,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "13",
+                                    "value": "9",
                                     "description": ""
                                 }
                             ]
@@ -3215,7 +3432,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"password\":\"nihil\"}"
+                            "raw": "{\"password\":\"consequatur\"}"
                         },
                         "description": ""
                     },

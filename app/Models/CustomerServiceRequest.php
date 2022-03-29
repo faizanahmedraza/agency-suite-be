@@ -11,7 +11,9 @@ class CustomerServiceRequest extends Model
 
     protected $table = "customer_service_requests";
 
-    const STATUS = ['pending' => 0, 'submitted' => 1];
+    // const STATUS = ['pending' => 0, 'submitted' => 1 ,'completed' => 2];
+    const STATUS = ['submitted' => 0, 'completed' => 1 ];
+
 
     const RECURRING_TYPE=['weekly','monthly','quarterly','biannually','annually'];
 
@@ -23,9 +25,13 @@ class CustomerServiceRequest extends Model
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'user_id');
     }
+    public function service()
+    {
+        return $this->belongsTo(Service::class, 'service_id', 'id');
+    }
 
-    // public function priceTypes()
-    // {
-    //     return $this->hasOne(ServicePriceType::class, 'service_id', 'id');
-    // }
+    public function invoices()
+    {
+        return $this->hasMany(CustomerInvoice::class, 'customer_service_request_id', 'id');
+    }
 }

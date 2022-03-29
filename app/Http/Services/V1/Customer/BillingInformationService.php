@@ -36,11 +36,11 @@ class BillingInformationService
         return $billing;
     }
 
-    public static function first($with = ['customer', 'agency'])
+    public static function first($with = ['customer', 'agency'],$bypass=false)
     {
         $billing = CustomerBillingInformation::with($with)->where('agency_id', app('agency')->id)->where('customer_id', Auth::id())->first();
 
-        if (!$billing) {
+        if (!$billing && $bypass==false) {
             throw ModelException::dataNotFound();
         }
 

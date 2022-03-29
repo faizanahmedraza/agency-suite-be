@@ -1,10 +1,10 @@
-name: 'Agency Roles Management'
+name: 'Roles Management'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: v1/agencies/roles
+    uri: v1/admins/roles
     metadata:
       title: |-
         Roles List
@@ -21,7 +21,7 @@ endpoints:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: rem
+        example: vitae
         type: string
         custom: []
       from_date:
@@ -49,14 +49,14 @@ endpoints:
         name: page_limit
         description: ''
         required: false
-        example: 7
+        example: 20
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 20
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -71,7 +71,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'v1/agencies/roles/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
       title: |-
         Role Details
@@ -88,14 +88,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: earum
+        example: ut
         type: string
         custom: []
       role_id:
         name: role_id
         description: Integer
         required: true
-        example: omnis
+        example: voluptas
         type: string
         custom: []
     queryParameters: []
@@ -115,7 +115,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/agencies/roles
+    uri: v1/admins/roles
     metadata:
       title: |-
         Create Role
@@ -134,7 +134,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: similique
+        example: necessitatibus
         type: String
         custom: []
       permissions:
@@ -142,7 +142,7 @@ endpoints:
         description: optional
         required: false
         example:
-          - esse
+          - dolorum
         type: 'string[]'
         custom: []
     responses:
@@ -160,7 +160,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'v1/agencies/roles/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
       title: |-
         Role Update
@@ -177,14 +177,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: nesciunt
+        example: nihil
         type: string
         custom: []
       role_id:
         name: role_id
         description: Integer
         required: true
-        example: et
+        example: non
         type: string
         custom: []
     queryParameters: []
@@ -193,7 +193,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: corrupti
+        example: amet
         type: String
         custom: []
       permissions:
@@ -201,7 +201,7 @@ endpoints:
         description: optional
         required: false
         example:
-          - commodi
+          - similique
         type: 'string[]'
         custom: []
     responses:
@@ -219,7 +219,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'v1/agencies/roles/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
       title: 'Delete Role'
       description: 'Delete Requested Record'
@@ -234,14 +234,14 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: non
+        example: quia
         type: string
         custom: []
       role_id:
         name: role_id
         description: Integer
         required: true
-        example: sit
+        example: est
         type: string
         custom: []
     queryParameters: []
