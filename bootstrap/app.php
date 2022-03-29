@@ -64,6 +64,9 @@ $app->configure('auth');
 $app->configure('database');
 $app->configure('permission');
 $app->configure('cloudinary');
+$app->configure('sentry');
+$app->configure('segment');
+$app->configure('agency_events');
 
 if (env('APP_ENV') === "local") {
     //scribe for documentation
@@ -121,7 +124,7 @@ $app->register(Pearl\RequestValidate\RequestServiceProvider::class);
 $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Nord\Lumen\Cors\CorsServiceProvider::class);
-
+$app->register(Sentry\Laravel\ServiceProvider::class);
 
 if (env('APP_ENV') === "local") {
     //scribe for documentation

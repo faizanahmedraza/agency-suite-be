@@ -24,7 +24,8 @@ class UserVerificationRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'token' => "required|string|max:35|exists:user_verifications,verification_code"
+            'token' => "required|string|max:35|exists:user_verifications,verification_code",
+            'password' => "required|string|max:100|confirmed",
         ];
     }
 

@@ -65,7 +65,7 @@ class RequestServiceController extends Controller
     /**
      * Request Service
      *
-     * @urlParam id integer
+     * @urlParam id integer required
      *
      * @responseFile 200 responses/V1/Customer/RequestServiceResponse.json
      * @responseFile 422 responses/ValidationResponse.json

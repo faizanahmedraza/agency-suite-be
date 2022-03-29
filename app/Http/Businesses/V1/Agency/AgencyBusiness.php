@@ -7,20 +7,23 @@ use App\Http\Services\V1\Agency\AgencyDomainService;
 use App\Http\Services\V1\Agency\AgencyService;
 use App\Http\Services\V1\Agency\UserService;
 use App\Http\Services\V1\Agency\UserVerificationService;
+use App\Http\Wrappers\SegmentWrapper;
 use App\Models\AgencyDomain;
+use Illuminate\Http\Request;
 
 class AgencyBusiness
 {
-    public function register($request)
+    public function register(Request $request)
     {
         // add role
         $request->request->remove('role');
-        $request->request->add(['role' =>  'Agency']);
+        $request->request->add(['role' => 'Agency']);
 
         // create agency
         $agency = (new AgencyService())->create($request);
 
-        $newDomain = AgencyDomain::cleanAgencyName($request->input('agency_name'));
+        $agencyName = trim($request->input('agency_name'));
+        $newDomain = AgencyDomain::cleanAgencyName($agencyName);
 
         $domain = AgencyDomain::domainsFilter($agency->domains, $newDomain);
 
@@ -37,11 +40,18 @@ class AgencyBusiness
 
         AgencyDomainService::create($domainData);
 
+        unset($request['first_name']);
+        unset($request['last_name']);
+        $request->merge(['first_name' => $agencyName, 'last_name' => $agencyName]);
+
         // create agency owner
-        $user = (new UserService())->create($request,$agency, true);
+        $user = (new UserService())->create($request, $agency, true);
 
         //assign Role
-        (new UserService())->assignUserRole($request,$user);
+        (new UserService())->assignUserRole($request, $user);
+
+        //segment registration event
+        SegmentWrapper::registration($user);
 
         (new UserVerificationService())->generateVerificationCode($user);
     }

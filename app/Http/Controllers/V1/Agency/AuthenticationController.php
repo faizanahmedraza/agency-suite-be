@@ -46,12 +46,8 @@ class AuthenticationController extends Controller
      * Register Agency
      * This api is useful for register new Agency and return access token with agency and user information
      *
-     * @bodyParam first_name string required User first name Example: Bionic
-     * @bodyParam last_name string required User last name Example: WP
-     * @bodyParam email email required User email address Example: admin@bionicwp.com
-     * @bodyParam password string required User password Example: abcd1234
-     * @bodyParam password_confirmation string required User password Example: abcd1234
      * @bodyParam agency_name string required Example: abc-agency, abc agency
+     * @bodyParam email email required User email address Example: admin@bionicwp.com
      *
      * @header Client-ID string required
      * @header Client-Secret string required
@@ -68,24 +64,25 @@ class AuthenticationController extends Controller
     }
 
     /**
-     * Verify Token
-     * This function is useful to check the token is valid or not
-     *
-     * @queryParam token string required S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc Example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+     * Verify Agency
+     * This function is used to verify a new agency
      *
      * @header Client-ID string required
      * @header Client-Secret string required
      *
-     * @responseFile 200 responses/V1/Agency/RedirectDomainResponse.json
+     * @queryParam token string required S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc Example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+     * @bodyParam password String required abcd1234 Example: abcd1234
+     * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
+     *
+     * @responseFile 200 responses/V1/Agency/AuthenticationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
     public function userVerification(UserVerificationRequest $request)
     {
-
         DB::beginTransaction();
-        $url = (new AuthenticationBusiness())->tokenValidation($request);
+        $auth = (new AuthenticationBusiness())->userVerification($request);
         DB::commit();
-        return new RedirectDomainResponse($url);
+        return new AuthenticationResponse($auth);
     }
 
     /**

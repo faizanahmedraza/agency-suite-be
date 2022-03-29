@@ -5,6 +5,7 @@ namespace App\Http\Businesses\V1\Customer;
 use App\Http\Services\V1\Customer\CustomerService;
 use App\Http\Services\V1\Customer\UserService;
 use App\Http\Services\V1\Customer\UserVerificationService;
+use App\Http\Wrappers\SegmentWrapper;
 
 class CustomerBusiness
 {
@@ -23,6 +24,9 @@ class CustomerBusiness
 
         //assign Role
         (new UserService())->assignUserRole($request,$user);
+
+        //segment registration event
+        SegmentWrapper::registration($user);
 
         (new UserVerificationService())->generateVerificationCode($user);
     }

@@ -3,7 +3,6 @@
 namespace App\Http\Resources\V1\Agency;
 
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
-use App\Models\User;
 
 class AgencyResource extends Resource
 {
@@ -17,7 +16,8 @@ class AgencyResource extends Resource
     {
         return [
             'id' => $this->id,
-            'agency_name' => $this->name,
+            'name' => $this->name,
+            'default_domain' => $this->defaultDomain(),
             'created_at' => $this->created_at,
         ];
     }

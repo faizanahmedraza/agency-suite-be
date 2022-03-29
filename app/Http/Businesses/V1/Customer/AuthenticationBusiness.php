@@ -2,15 +2,12 @@
 
 namespace App\Http\Businesses\V1\Customer;
 
+use App\Http\Wrappers\SegmentWrapper;
 use App\Models\User;
-use App\Models\Agency;
 use App\Events\LoginEvent;
 use App\Helpers\TimeStampHelper;
-use App\Exceptions\V1\UserException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Exceptions\V1\TokenException;
-use App\Exceptions\V1\DomainException;
 use App\Exceptions\V1\UnAuthorizedException;
 use App\Http\Services\V1\Customer\UserService;
 use App\Exceptions\V1\RequestValidationException;
@@ -41,6 +38,9 @@ class AuthenticationBusiness
 
         //last login tracking event
         event(new LoginEvent($user));
+
+        //segment login event
+        SegmentWrapper::login($user);
         return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 
@@ -66,10 +66,13 @@ class AuthenticationBusiness
         // Delete Token
         $authService->deleteToken($userVerification);
 
+        //auth access token
         $auth['token'] = $authService->createToken($user);
 
-        return $authService->generateVerificationResponse($auth, $user, $user->agency);
+        //segment user verification event
+        SegmentWrapper::userVerification($user);
 
+        return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 
     public function forgetPassword($request): void
@@ -78,6 +81,8 @@ class AuthenticationBusiness
             ['username', '=', $request->email],
             ['agency_id', '=', (app('agency'))->id],
         ]);
+        //segment forgot password event
+        SegmentWrapper::forgotPassword($user);
         UserVerificationService::generateVerificationCode($user);
     }
 
@@ -92,6 +97,9 @@ class AuthenticationBusiness
         }
 
         (new UserService())->changePassword($userVerification->user, $request->password);
+
+        //segment create password event
+        SegmentWrapper::createPassword($userVerification->user);
 
         $authService->deleteToken($userVerification);
     }

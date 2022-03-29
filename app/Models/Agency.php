@@ -24,4 +24,9 @@ class Agency extends Model
     {
         return $this->hasMany(AgencyDomain::class,'agency_id','id')->orderBy('created_at');
     }
+
+    public function defaultDomain()
+    {
+        return $this->domains()->where('default',true)->first()->domain;
+    }
 }
