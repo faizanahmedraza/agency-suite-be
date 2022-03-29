@@ -47,9 +47,8 @@ class AuthenticationBusiness
         return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 
-    public function tokenValidation($request)
+    public function userVerification($request)
     {
-
         $authService = new AuthenticationService();
 
         // verify user token
@@ -61,17 +60,22 @@ class AuthenticationBusiness
             throw RequestValidationException::errorMessage("Token has been expired. Please contact our support team.");
         }
 
-        UserService::updateStatus($userVerification->user);
+        $user = (new UserService())->first($userVerification->user->id);
 
-        $agency = Agency::where('id', $userVerification->agency_id)->first();
+        UserService::updateStatus($user);
+
+        (new UserService())->changePassword($user, $request->password);
 
         // Delete Token
         $authService->deleteToken($userVerification);
 
-        //segment user verification event
-        SegmentWrapper::userVerification($userVerification->user);
+        //auth access token
+        $auth['token'] = $authService->createToken($user);
 
-        return $agency->domains->first();
+        //segment user verification event
+        SegmentWrapper::userVerification($user);
+
+        return $authService->generateVerificationResponse($auth, $user, $user->agency);
     }
 
     public function forgetPassword($request): void

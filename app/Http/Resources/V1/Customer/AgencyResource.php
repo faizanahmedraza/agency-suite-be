@@ -17,7 +17,8 @@ class AgencyResource extends Resource
     {
         return [
             'id' => $this->id,
-            'agency_name' => $this->name,
+            'name' => $this->name,
+            'default_domain' => $this->defaultDomain(),
             'created_at' => $this->created_at,
         ];
     }

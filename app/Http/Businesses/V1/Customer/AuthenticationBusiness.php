@@ -66,13 +66,13 @@ class AuthenticationBusiness
         // Delete Token
         $authService->deleteToken($userVerification);
 
+        //auth access token
         $auth['token'] = $authService->createToken($user);
 
         //segment user verification event
         SegmentWrapper::userVerification($user);
 
         return $authService->generateVerificationResponse($auth, $user, $user->agency);
-
     }
 
     public function forgetPassword($request): void
