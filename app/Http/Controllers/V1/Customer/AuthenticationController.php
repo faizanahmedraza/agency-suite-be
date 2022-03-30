@@ -49,8 +49,6 @@ class AuthenticationController extends Controller
      * @bodyParam first_name string required User first name Example: Bionic
      * @bodyParam last_name string required User last name Example: WP
      * @bodyParam email email required User email address Example: admin@bionicwp.com
-     * @bodyParam password string required User password Example: abcd1234
-     * @bodyParam password_confirmation string required User password Example: abcd1234
      *
      * @header Client-ID string required
      * @header Client-Secret string required
