@@ -5,62 +5,6 @@ description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: v1/customers/request-services
-    metadata:
-      title: 'Request Service'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      service_id:
-        name: service_id
-        description: ''
-        required: true
-        example: 4
-        type: integer
-        custom: []
-      recurring_type:
-        name: recurring_type
-        description: 'Example : weekly,monthly,quarterly,biannually,annually'
-        required: true
-        example: asperiores
-        type: string
-        custom: []
-      refrence_no:
-        name: refrence_no
-        description: ''
-        required: true
-        example: vero
-        type: string
-        custom: []
-      intake_form:
-        name: intake_form
-        description: 'Example :{key1:value1,key2:value2}'
-        required: true
-        example:
-          - facere
-        type: 'string[]'
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-    responseFields: []
-  -
-    httpMethods:
       - GET
     uri: v1/customers/request-services
     metadata:
@@ -76,21 +20,21 @@ endpoints:
         name: status
         description: 'pending,submitted'
         required: false
-        example: ad
+        example: qui
         type: string
         custom: []
       title:
         name: title
         description: 'ex: abc,xyz'
         required: false
-        example: saepe
+        example: iusto
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: ullam
+        example: veniam
         type: string
         custom: []
       from_date:
@@ -111,21 +55,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 10
+        example: 4
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 19
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -159,7 +103,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 8
+        example: 18
         type: integer
         custom: []
     queryParameters: []
@@ -168,6 +112,62 @@ endpoints:
       -
         status: 200
         content: "{\r\n    \"data\": {\r\n        \"customer_service_request\": {\r\n            \"id\": 12,\r\n            \"service_name\": \"qwerty-!@#\",\r\n            \"status\": \"submitted\",\r\n            \"intake_form\": {\r\n                \"name\": \"test\",\r\n                \"description\": \"test description\"\r\n            },\r\n            \"invoices\": [\r\n                {\r\n                    \"id\": 6,\r\n                    \"invoice_number\": \"INV-0000006\",\r\n                    \"customer_service_request_id\": 12,\r\n                    \"is_paid\": false,\r\n                    \"amount\": \"2\",\r\n                    \"created_at\": \"2022-03-29T06:52:49.000000Z\"\r\n                }\r\n            ],\r\n            \"created_at\": \"2022-03-29T06:52:48.000000Z\"\r\n        }\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/customers/request-services
+    metadata:
+      title: 'Request Service'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      service_id:
+        name: service_id
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        custom: []
+      recurring_type:
+        name: recurring_type
+        description: 'Example : weekly,monthly,quarterly,biannually,annually'
+        required: true
+        example: impedit
+        type: string
+        custom: []
+      refrence_no:
+        name: refrence_no
+        description: ''
+        required: true
+        example: sapiente
+        type: string
+        custom: []
+      intake_form:
+        name: intake_form
+        description: 'Example :{key1:value1,key2:value2}'
+        required: true
+        example:
+          - non
+        type: 'string[]'
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
         headers: []
         description: '200'
       -

@@ -4,6 +4,120 @@ endpoints:
   -
     httpMethods:
       - GET
+    uri: v1/agencies/customers
+    metadata:
+      title: |-
+        Customers List
+        This api return the collection of all Agency Customers.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Authorization: 'String required Example: Bearer TOKEN'
+    urlParameters:
+      customers:
+        name: customers
+        description: '1,2,3,4'
+        required: false
+        example: natus
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'ex: abc.com,xyz.co'
+        required: false
+        example: et
+        type: string
+        custom: []
+      first_name:
+        name: first_name
+        description: ''
+        required: false
+        example: voluptatum
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: false
+        example: veniam
+        type: string
+        custom: []
+      full_name:
+        name: full_name
+        description: ''
+        required: false
+        example: et
+        type: string
+        custom: []
+      status:
+        name: status
+        description: 'ex: pending,active,blocked'
+        required: false
+        example: necessitatibus
+        type: string
+        custom: []
+      order_by:
+        name: order_by
+        description: 'ex: asc/desc'
+        required: false
+        example: et
+        type: string
+        custom: []
+      from_date:
+        name: from_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      to_date:
+        name: to_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      pagination:
+        name: pagination
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      page_limit:
+        name: page_limit
+        description: ''
+        required: false
+        example: 1
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 12
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"customers\": [\r\n      {\r\n        \"id\": 12,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan108@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan107@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 10,\r\n      \"count\": 10,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
     uri: 'v1/agencies/customers/{id}'
     metadata:
       title: |-
@@ -21,7 +135,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: soluta
+        example: qui
         type: string
         custom: []
     queryParameters: []
@@ -60,21 +174,21 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: omnis
+        example: hic
         type: String
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: cum
+        example: deserunt
         type: String
         custom: []
       email:
         name: email
         description: 'ex: abc.com,xyz.co'
         required: true
-        example: ullam
+        example: perspiciatis
         type: String
         custom: []
     responses:
@@ -109,7 +223,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: sapiente
+        example: voluptatem
         type: string
         custom: []
     queryParameters: []
@@ -118,14 +232,14 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: vel
+        example: neque
         type: String
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: voluptas
+        example: et
         type: String
         custom: []
     responses:
@@ -158,7 +272,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: quibusdam
+        example: facilis
         type: string
         custom: []
     queryParameters: []
@@ -194,7 +308,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 12
+        example: 4
         type: integer
         custom: []
     queryParameters: []
@@ -210,118 +324,4 @@ endpoints:
         content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
         headers: []
         description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: v1/agencies/customers
-    metadata:
-      title: |-
-        Customers List
-        This api return the collection of all Agency Customers.
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Authorization: 'String required Example: Bearer TOKEN'
-    urlParameters:
-      customers:
-        name: customers
-        description: '1,2,3,4'
-        required: false
-        example: porro
-        type: string
-        custom: []
-      email:
-        name: email
-        description: 'ex: abc.com,xyz.co'
-        required: false
-        example: ut
-        type: string
-        custom: []
-      first_name:
-        name: first_name
-        description: ''
-        required: false
-        example: id
-        type: string
-        custom: []
-      last_name:
-        name: last_name
-        description: ''
-        required: false
-        example: laborum
-        type: string
-        custom: []
-      full_name:
-        name: full_name
-        description: ''
-        required: false
-        example: eos
-        type: string
-        custom: []
-      status:
-        name: status
-        description: 'ex: pending,active,blocked'
-        required: false
-        example: provident
-        type: string
-        custom: []
-      order_by:
-        name: order_by
-        description: 'ex: asc/desc'
-        required: false
-        example: qui
-        type: string
-        custom: []
-      from_date:
-        name: from_date
-        description: ''
-        required: false
-        example: Y-m-d
-        type: string
-        custom: []
-      to_date:
-        name: to_date
-        description: ''
-        required: false
-        example: Y-m-d
-        type: string
-        custom: []
-      pagination:
-        name: pagination
-        description: ''
-        required: false
-        example: true
-        type: boolean
-        custom: []
-      page_limit:
-        name: page_limit
-        description: ''
-        required: false
-        example: 20
-        type: integer
-        custom: []
-      page:
-        name: page
-        description: ''
-        required: false
-        example: 19
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customers\": [\r\n      {\r\n        \"id\": 12,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan108@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"first_name\": \"Faizan\",\r\n        \"last_name\": \"Ahmed\",\r\n        \"email\": \"faizan107@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 10,\r\n      \"count\": 10,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
     responseFields: []
