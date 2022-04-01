@@ -13,26 +13,27 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters:
       status:
         name: status
         description: 'pending,submitted'
         required: false
-        example: qui
+        example: incidunt
         type: string
         custom: []
       title:
         name: title
         description: 'ex: abc,xyz'
         required: false
-        example: iusto
+        example: rerum
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: veniam
+        example: aut
         type: string
         custom: []
       from_date:
@@ -53,21 +54,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 4
+        example: 11
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 14
+        example: 15
         type: integer
         custom: []
     queryParameters: []
@@ -96,12 +97,13 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: 18
+        example: 20
         type: integer
         custom: []
     queryParameters: []
@@ -130,6 +132,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters: []
     queryParameters: []
     bodyParameters:
@@ -137,21 +140,21 @@ endpoints:
         name: service_id
         description: ''
         required: true
-        example: 11
+        example: 18
         type: integer
         custom: []
       recurring_type:
         name: recurring_type
         description: 'Example : weekly,monthly,quarterly,biannually,annually'
         required: true
-        example: impedit
+        example: nihil
         type: string
         custom: []
       refrence_no:
         name: refrence_no
         description: ''
         required: true
-        example: sapiente
+        example: expedita
         type: string
         custom: []
       intake_form:
@@ -159,7 +162,7 @@ endpoints:
         description: 'Example :{key1:value1,key2:value2}'
         required: true
         example:
-          - non
+          - qui
         type: 'string[]'
         custom: []
     responses:

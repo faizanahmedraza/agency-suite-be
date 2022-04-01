@@ -24,6 +24,8 @@ class RequestServiceController extends Controller
     /**
      * Request Service
      *
+     * @header Domain string required
+     *
      * @bodyParam service_id integer required
      * @bodyParam recurring_type string required Example : weekly,monthly,quarterly,biannually,annually
      * @bodyParam refrence_no string required
@@ -43,6 +45,8 @@ class RequestServiceController extends Controller
 
     /**
      * Get Requested Services
+     *
+     * @header Domain string required
      *
      * @urlParam status string pending,submitted
      * @urlParam title string ex: abc,xyz
@@ -64,6 +68,8 @@ class RequestServiceController extends Controller
     }
     /**
      * Request Service
+     *
+     * @header Domain string required
      *
      * @urlParam id integer required
      *

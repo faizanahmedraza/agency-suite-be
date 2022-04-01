@@ -33,6 +33,7 @@ class RoleController extends Controller
      * Roles List
      * This api return the collection of all Roles created.
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @urlParam order_by string ex: asc/desc
@@ -55,6 +56,7 @@ class RoleController extends Controller
      * Create Role
      * This api is for create new Role
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @bodyParam name String required
@@ -76,6 +78,7 @@ class RoleController extends Controller
      * Role Details
      * This api show the details of requested Role.
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @urlParam role_id required Integer
@@ -95,6 +98,7 @@ class RoleController extends Controller
      * Role Update
      * This api update the details of requested Role.
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @urlParam role_id required Integer
@@ -120,6 +124,7 @@ class RoleController extends Controller
      *
      * Delete Requested Record
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @urlParam role_id required Integer

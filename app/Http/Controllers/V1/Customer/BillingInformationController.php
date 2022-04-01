@@ -19,6 +19,8 @@ class BillingInformationController extends Controller
      * Create Billing Information
      * This api create new billing information.
      *
+     * @header Domain string required
+     *
      * @bodyParam  invoice_to string required
      * @bodyParam  address string required
      * @bodyParam  country string required
@@ -44,6 +46,8 @@ class BillingInformationController extends Controller
      * Show Billing Information
      * This api show the billing information details.
      *
+     * @header Domain string required
+     *
      * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
      */
     public function first()
@@ -55,6 +59,8 @@ class BillingInformationController extends Controller
     /**
      * Update Billing Information
      * This api update billing information.
+     *
+     * @header Domain string required
      *
      * @bodyParam  invoice_to string required
      * @bodyParam  address string required
@@ -81,6 +87,8 @@ class BillingInformationController extends Controller
      * Delete Billing Information
      *
      * This api delete billing information
+     *
+     * @header Domain string required
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json

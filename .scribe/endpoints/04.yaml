@@ -15,33 +15,34 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters:
       services:
         name: services
         description: '1,2,3,4'
         required: false
-        example: deleniti
+        example: est
         type: string
         custom: []
       name:
         name: name
         description: 'ex: my service'
         required: false
-        example: ratione
+        example: sunt
         type: string
         custom: []
       status:
         name: status
         description: 'ex: pending,active'
         required: false
-        example: natus
+        example: maxime
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: consequatur
+        example: doloribus
         type: string
         custom: []
       from_date:
@@ -62,21 +63,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 12
+        example: 2
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 19
+        example: 5
         type: integer
         custom: []
     queryParameters: []
@@ -107,12 +108,13 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters:
       id:
         name: id
         description: Integer
         required: true
-        example: est
+        example: id
         type: string
         custom: []
     queryParameters: []
@@ -138,6 +140,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters: []
     queryParameters: []
     bodyParameters:
@@ -145,42 +148,42 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: quia
+        example: iusto
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: praesentium
+        example: aspernatur
         type: string
         custom: []
       image:
         name: image
         description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
         required: false
-        example: non
+        example: laudantium
         type: string
         custom: []
       subscription_type:
         name: subscription_type
         description: 'ex: ''one-off'' ,''recurring'''
         required: true
-        example: aliquam
+        example: voluptatem
         type: string
         custom: []
       price:
         name: price
         description: 'only if subscription_type is one_off ex: 123'
         required: true
-        example: 4
+        example: 12
         type: integer
         custom: []
       purchase_limit:
         name: purchase_limit
         description: 'optional only if subscription_type is one_off ex: 12'
         required: false
-        example: 8
+        example: 19
         type: integer
         custom: []
       weekly:
@@ -194,42 +197,42 @@ endpoints:
         name: monthly
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 2
+        example: 11
         type: integer
         custom: []
       quarterly:
         name: quarterly
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 7
+        example: 12
         type: integer
         custom: []
       biannually:
         name: biannually
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 10
+        example: 5
         type: integer
         custom: []
       annually:
         name: annually
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 19
+        example: 3
         type: integer
         custom: []
       max_concurrent_requests:
         name: max_concurrent_requests
         description: 'optional only if subscription_type is recurring ex: 12'
         required: false
-        example: 3
+        example: 5
         type: integer
         custom: []
       max_requests_per_month:
         name: max_requests_per_month
         description: 'optional only if subscription_type is recurring ex: 12'
         required: false
-        example: 15
+        example: 11
         type: integer
         custom: []
     responses:
@@ -263,12 +266,13 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: voluptates
+        example: soluta
         type: string
         custom: []
     queryParameters: []
@@ -277,91 +281,91 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: in
+        example: dolor
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: ut
+        example: voluptatum
         type: string
         custom: []
       image:
         name: image
         description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
         required: false
-        example: nisi
+        example: a
         type: string
         custom: []
       subscription_type:
         name: subscription_type
         description: 'ex: ''one-off'' ,''recurring'''
         required: true
-        example: aperiam
+        example: veniam
         type: string
         custom: []
       price:
         name: price
         description: 'only if subscription_type is one_off ex: 123'
         required: true
-        example: 19
+        example: 4
         type: integer
         custom: []
       purchase_limit:
         name: purchase_limit
         description: 'optional only if subscription_type is one_off ex: 12'
         required: false
-        example: 17
+        example: 18
         type: integer
         custom: []
       weekly:
         name: weekly
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 10
+        example: 7
         type: integer
         custom: []
       monthly:
         name: monthly
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 3
+        example: 13
         type: integer
         custom: []
       quarterly:
         name: quarterly
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 18
+        example: 1
         type: integer
         custom: []
       biannually:
         name: biannually
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 19
+        example: 11
         type: integer
         custom: []
       annually:
         name: annually
         description: 'only if subscription_type is recurring ex: 123'
         required: true
-        example: 15
+        example: 19
         type: integer
         custom: []
       max_concurrent_requests:
         name: max_concurrent_requests
         description: 'optional only if subscription_type is recurring ex: 12'
         required: false
-        example: 16
+        example: 8
         type: integer
         custom: []
       max_requests_per_month:
         name: max_requests_per_month
         description: 'optional only if subscription_type is recurring ex: 12'
         required: false
-        example: 15
+        example: 9
         type: integer
         custom: []
     responses:
@@ -393,12 +397,13 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters:
       id:
         name: id
         description: Integer
         required: true
-        example: voluptatum
+        example: asperiores
         type: string
         custom: []
     queryParameters: []
@@ -429,12 +434,13 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: 4
+        example: 6
         type: integer
         custom: []
     queryParameters: []

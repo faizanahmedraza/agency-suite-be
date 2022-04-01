@@ -30,6 +30,8 @@ class PortalSettingController extends Controller
      * Update Portal Settings
      * This api update portal settings.
      *
+     * @header Domain string required
+     *
      * @bodyParam  name string
      * @bodyParam  logo string ex: base64imageFile formats: png,jpeg,jpg
      * @bodyParam  favicon string ex: base64imageFile formats: png,x-icon

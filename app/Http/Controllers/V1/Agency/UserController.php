@@ -35,6 +35,8 @@ class UserController extends Controller
      * Create Users
      * This api create new user.
      *
+     * @header Domain string required
+     *
      * @bodyParam  first_name String required
      * @bodyParam  last_name String required
      * @bodyParam  email email required
@@ -60,6 +62,8 @@ class UserController extends Controller
     /**
      * Get Users
      * This will return logged in user profile.
+     *
+     * @header Domain string required
      *
      * @urlParam users string 1,2,3,4
      * @urlParam email string ex: abc.com,xyz.co
@@ -90,6 +94,8 @@ class UserController extends Controller
      * Show User Details
      * This api show the uer details.
      *
+     * @header Domain string required
+     *
      * @urlParam  user_id required Integer
      *
      * @responseFile 200 responses/V1/Admin/UserResponse.json
@@ -106,6 +112,8 @@ class UserController extends Controller
     /**
      * Update User Details.
      * This api update user details
+     *
+     * @header Domain string required
      *
      * @bodyParam  first_name String required
      * @bodyParam  last_name String required
@@ -133,6 +141,8 @@ class UserController extends Controller
      *
      * This api delete user
      *
+     * @header Domain string required
+     *
      * @urlParam  user_id required Integer
      *
      * @responseFile 200 responses/SuccessResponse.json
@@ -150,6 +160,8 @@ class UserController extends Controller
      * This api update the users status to active or deactive
      * other then customers.
      *
+     * @header Domain string required
+     *
      * @urlParam user_id integer required
      *
      * @responseFile 200 responses/SuccessResponse.json
@@ -164,6 +176,8 @@ class UserController extends Controller
 
     /**
      * Change Password of Any User
+     *
+     * @header Domain string required
      *
      * @urlParam id integer required
      *

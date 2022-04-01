@@ -27,6 +27,7 @@ class AuthenticationController extends Controller
      * @bodyParam email email required The username of user. Example: customer@my-app.com
      * @bodyParam password string required The password of user. Example: Abc*123*
      *
+     * @header Domain string required
      * @header Client-ID string required
      * @header Client-Secret string required
      *
@@ -48,6 +49,7 @@ class AuthenticationController extends Controller
      * @bodyParam last_name string required User last name Example: WP
      * @bodyParam email email required User email address Example: admin@bionicwp.com
      *
+     * @header Domain string required
      * @header Client-ID string required
      * @header Client-Secret string required
      *
@@ -66,6 +68,7 @@ class AuthenticationController extends Controller
      * Verify Customer
      * This function is useful to verify a new customer
      *
+     * @header Domain string required
      * @header Client-ID string required
      * @header Client-Secret string required
      *
@@ -90,6 +93,7 @@ class AuthenticationController extends Controller
      *
      * @bodyParam email String required User valid email address Example: user@bionicwp.com
      *
+     * @header Domain string required
      * @header Client-ID string required
      * @header Client-Secret string required
      *
@@ -112,6 +116,7 @@ class AuthenticationController extends Controller
      * @bodyParam password String required abcd1234 Example: abcd1234
      * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
      *
+     * @header Domain string required
      * @header Client-ID string required
      * @header Client-Secret string required
      *
@@ -132,6 +137,7 @@ class AuthenticationController extends Controller
      *
      * @authenticated
      *
+     * @header Domain string required
      * @header Authorization string required
      *
      * @responseFile 200 responses/SuccessResponse.json

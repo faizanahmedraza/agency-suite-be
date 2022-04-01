@@ -62,6 +62,7 @@ class CustomerController extends Controller
      * Create Customer
      * This api is for create new Customer
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @bodyParam first_name String required
@@ -84,6 +85,7 @@ class CustomerController extends Controller
      * Customer Details
      * This api show the details of requested Customer.
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @urlParam id required Integer
@@ -103,6 +105,7 @@ class CustomerController extends Controller
      * Customer Update
      * This api update the details of requested Customer.
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @urlParam id required Integer
@@ -128,6 +131,7 @@ class CustomerController extends Controller
      *
      * Delete Requested Record
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @urlParam id required Integer
@@ -146,6 +150,8 @@ class CustomerController extends Controller
     /**
      * Toggle Customer Status
      * This api update the customers status to active or deactive
+     *
+     * @header Domain string required
      *
      * @urlParam id integer required
      *

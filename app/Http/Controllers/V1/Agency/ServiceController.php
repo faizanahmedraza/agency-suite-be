@@ -34,6 +34,8 @@ class ServiceController extends Controller
      * Create Service
      * This api create new service.
      *
+     * @header Domain string required
+     *
      * @bodyParam  name string required
      * @bodyParam  description string required
      * @bodyParam  image string optional ex: base64imageFile formats: png,jpeg,jpg
@@ -65,6 +67,8 @@ class ServiceController extends Controller
      * Get Services
      * This api return services collection.
      *
+     * @header Domain string required
+     *
      * @urlParam services string 1,2,3,4
      * @urlParam name string ex: my service
      * @urlParam status string ex: pending,active
@@ -89,6 +93,8 @@ class ServiceController extends Controller
      * Show Service Details
      * This api show the service details.
      *
+     * @header Domain string required
+     *
      * @urlParam  id required Integer
      *
      * @responseFile 200 responses/V1/Agency/ServiceResponse.json
@@ -103,6 +109,8 @@ class ServiceController extends Controller
     /**
      * Update Service
      * This api update service.
+     *
+     * @header Domain string required
      *
      * @bodyParam  name string required
      * @bodyParam  description string required
@@ -136,6 +144,8 @@ class ServiceController extends Controller
      *
      * This api delete service
      *
+     * @header Domain string required
+     *
      * @urlParam  id required Integer
      *
      * @responseFile 200 responses/SuccessResponse.json
@@ -151,6 +161,8 @@ class ServiceController extends Controller
     /**
      * Toggle Service Status
      * This api update the services status to active or pending.
+     *
+     * @header Domain string required
      *
      * @urlParam id integer required
      *

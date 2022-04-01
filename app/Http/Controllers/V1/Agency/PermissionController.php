@@ -25,6 +25,7 @@ class PermissionController extends Controller
      * Permission List
      * This api return the collection of all Permissions created.
      *
+     * @header Domain string required
      * @header Authorization String required Example: Bearer TOKEN
      *
      * @responseFile 200 responses/V1/Admin/PermissionsResponse.json
