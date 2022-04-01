@@ -29,4 +29,19 @@ class DomainException extends BaseException
             '404'
         );
     }
+
+    public static function hostRequired(): self
+    {
+        return new self(
+            'Domain is required in headers.',
+            '422'
+        );
+    }
+    public static function customMsg($msg,$code=422): self
+    {
+        return new self(
+            $msg,
+            $code
+        );
+    }
 }
