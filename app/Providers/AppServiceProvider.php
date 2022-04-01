@@ -18,20 +18,11 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('agency', function () {
             $request = app(\Illuminate\Http\Request::class);
             $hasDomainName = $request->headers->has('Domain');
-            if (!$hasDomainName) {
-                throw DomainException::hostRequired();
+            $domainName ='';
+            if ($hasDomainName) {
+                $domainName = $request->header('Domain');
             }
-            $domainName = $request->header('Domain');
-            if ($domainName == null) {
-                throw DomainException::customMsg('Domain in headers can not be null.');
-            }
-            // $agencyDomain = \App\Models\AgencyDomain::where('domain',$request->getHost())->first();
             $agencyDomain = \App\Models\AgencyDomain::where('domain',$domainName)->first();
-
-            if($agencyDomain == null){
-                throw DomainException::agencyDomainNotExist();
-            }
-
 
             $agency = (object)[];
             if($agencyDomain){
