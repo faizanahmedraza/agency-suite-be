@@ -50,7 +50,6 @@ class AuthenticationController extends Controller
      * @bodyParam agency_name string required Example: abc-agency, abc agency
      * @bodyParam email email required User email address Example: admin@bionicwp.com
      *
-     * @header Domain string required
      * @header Client-ID string required
      * @header Client-Secret string required
      *
