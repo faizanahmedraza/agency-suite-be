@@ -25,7 +25,7 @@ class UserVerificationRequest extends RequestAbstract
     {
         return [
             'token' => "required|string|max:35|exists:user_verifications,verification_code",
-            'password' => "required|string|max:100|confirmed",
+            'password' => "required|string|min:6|max:100|confirmed",
         ];
     }
 

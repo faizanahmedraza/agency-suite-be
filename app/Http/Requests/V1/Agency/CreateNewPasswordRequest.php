@@ -39,7 +39,7 @@ class CreateNewPasswordRequest extends RequestAbstract
     {
         return [
             'token' => 'required|string|max:35',
-            'password' => 'required|string|min:6|confirmed'
+            'password' => 'required|string|min:6|max:100|confirmed'
         ];
     }
 

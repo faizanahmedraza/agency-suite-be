@@ -24,8 +24,8 @@ class ChangePasswordRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required|min:6'
+            'password' => 'required|confirmed|min:6|max:100',
+            'password_confirmation' => 'required|min:6|max:100'
         ];
     }
 
