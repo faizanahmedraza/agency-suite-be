@@ -62,6 +62,13 @@ class AuthenticationBusiness
 
         $user = (new UserService())->first($userVerification->user->id);
 
+        //check user status
+        if ($user->status == User::STATUS['blocked']) {
+            throw UnAuthorizedException::accountBlocked();
+        } elseif ($user->status == User::STATUS['suspend']) {
+            throw UserException::suspended();
+        }
+
         UserService::updateStatus($user);
 
         (new UserService())->changePassword($user, $request->password);
@@ -84,6 +91,12 @@ class AuthenticationBusiness
             ['username', '=', $request->email],
             ['agency_id', '=', (app('agency'))->id],
         ]);
+        //check user status
+        if ($user->status == User::STATUS['blocked']) {
+            throw UnAuthorizedException::accountBlocked();
+        } elseif ($user->status == User::STATUS['suspend']) {
+            throw UserException::suspended();
+        }
         //segment forgot password event
         SegmentWrapper::forgotPassword($user);
         UserVerificationService::generateVerificationCode($user);
@@ -110,6 +123,8 @@ class AuthenticationBusiness
     public function changePassword($request)
     {
         $user = Auth::user();
+        // check user status
+        UserService::checkStatus($user);
         //segment create password event
         SegmentWrapper::createPassword($user);
         UserService::changePassword($user, $request->password);
