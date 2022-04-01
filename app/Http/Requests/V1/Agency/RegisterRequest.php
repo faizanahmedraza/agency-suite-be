@@ -54,6 +54,8 @@ class RegisterRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [];
+        return [
+            'agency_name.regex' => 'Invalid agency name. Only single white space, dot, dash and underscore are allowed.'
+        ];
     }
 }
