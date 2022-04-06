@@ -44,7 +44,7 @@ class RequestServiceController extends Controller
     }
 
     /**
-     * Get Requested Services
+     * Get Requested Services List
      *
      * @header Domain string required
      *
@@ -67,7 +67,7 @@ class RequestServiceController extends Controller
         return (new CustomersServiceRequestListResponse($customerServiceRequests));
     }
     /**
-     * Request Service
+     * Get Request Service details by Id
      *
      * @header Domain string required
      *

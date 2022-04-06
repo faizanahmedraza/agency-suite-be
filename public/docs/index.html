@@ -316,10 +316,10 @@ This api update billing information.</a>
                 </li>
                                     <ul id="tocify-subheader-customer-request-service" class="tocify-subheader">
                                                     <li class="tocify-item level-2" data-unique="customer-request-service-GETv1-customers-request-services">
-                        <a href="#customer-request-service-GETv1-customers-request-services">Get Requested Services</a>
+                        <a href="#customer-request-service-GETv1-customers-request-services">Get Requested Services List</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="customer-request-service-GETv1-customers-request-services--id-">
-                        <a href="#customer-request-service-GETv1-customers-request-services--id-">Request Service</a>
+                        <a href="#customer-request-service-GETv1-customers-request-services--id-">Get Request Service details by Id</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="customer-request-service-POSTv1-customers-request-services">
                         <a href="#customer-request-service-POSTv1-customers-request-services">Request Service</a>
@@ -417,7 +417,7 @@ other then customers.</a>
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: April 1 2022</li>
+        <li>Last updated: April 6 2022</li>
     </ul>
 </div>
 
@@ -457,7 +457,6 @@ This api is useful for register new Agency and return access token with agency a
     "http://localhost/v1/agencies/auth/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
-    --header "Domain: string required" \
     --header "Client-ID: string required" \
     --header "Client-Secret: string required" \
     --data "{
@@ -475,7 +474,6 @@ This api is useful for register new Agency and return access token with agency a
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
-    "Domain": "string required",
     "Client-ID": "string required",
     "Client-Secret": "string required",
 };
@@ -537,7 +535,7 @@ fetch(url, {
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
-      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Domain":"string required","Client-ID":"string required","Client-Secret":"string required"}'
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Client-ID":"string required","Client-Secret":"string required"}'
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTv1-agencies-auth-register', this);">
     <h3>
@@ -1748,7 +1746,7 @@ fetch(url, {
                 <input type="text"
                name="customers"
                data-endpoint="GETv1-agencies-customers"
-               value="ullam"
+               value="esse"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -1758,7 +1756,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="GETv1-agencies-customers"
-               value="quidem"
+               value="numquam"
                data-component="url" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -1768,7 +1766,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="GETv1-agencies-customers"
-               value="et"
+               value="adipisci"
                data-component="url" hidden>
     <br>
 
@@ -1778,7 +1776,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="GETv1-agencies-customers"
-               value="quidem"
+               value="eos"
                data-component="url" hidden>
     <br>
 
@@ -1788,7 +1786,7 @@ fetch(url, {
                 <input type="text"
                name="full_name"
                data-endpoint="GETv1-agencies-customers"
-               value="quia"
+               value="et"
                data-component="url" hidden>
     <br>
 
@@ -1798,7 +1796,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-agencies-customers"
-               value="quae"
+               value="officiis"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -1808,7 +1806,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-customers"
-               value="dolorem"
+               value="perspiciatis"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -1859,7 +1857,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-agencies-customers"
-               value="18"
+               value="12"
                data-component="url" hidden>
     <br>
 
@@ -1869,7 +1867,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-customers"
-               value="12"
+               value="16"
                data-component="url" hidden>
     <br>
 
@@ -1891,7 +1889,7 @@ This api show the details of requested Customer.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/agencies/customers/iure" \
+    --get "http://localhost/v1/agencies/customers/expedita" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
@@ -1900,7 +1898,7 @@ This api show the details of requested Customer.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/customers/iure"
+    "http://localhost/v1/agencies/customers/expedita"
 );
 
 const headers = {
@@ -2011,7 +2009,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-agencies-customers--id-"
-               value="iure"
+               value="expedita"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -2039,9 +2037,9 @@ This api is for create new Customer</h2>
     --header "Domain: string required" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"first_name\": \"laboriosam\",
-    \"last_name\": \"quaerat\",
-    \"email\": \"aut\"
+    \"first_name\": \"placeat\",
+    \"last_name\": \"nostrum\",
+    \"email\": \"sed\"
 }"
 </code></pre></div>
 
@@ -2059,9 +2057,9 @@ const headers = {
 };
 
 let body = {
-    "first_name": "laboriosam",
-    "last_name": "quaerat",
-    "email": "aut"
+    "first_name": "placeat",
+    "last_name": "nostrum",
+    "email": "sed"
 };
 
 fetch(url, {
@@ -2166,7 +2164,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTv1-agencies-customers"
-               value="laboriosam"
+               value="placeat"
                data-component="body" hidden>
     <br>
 
@@ -2176,7 +2174,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTv1-agencies-customers"
-               value="quaerat"
+               value="nostrum"
                data-component="body" hidden>
     <br>
 
@@ -2186,7 +2184,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTv1-agencies-customers"
-               value="aut"
+               value="sed"
                data-component="body" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -2208,21 +2206,21 @@ This api update the details of requested Customer.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/agencies/customers/sit" \
+    "http://localhost/v1/agencies/customers/molestiae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"first_name\": \"minus\",
-    \"last_name\": \"officiis\"
+    \"first_name\": \"voluptatem\",
+    \"last_name\": \"est\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/customers/sit"
+    "http://localhost/v1/agencies/customers/molestiae"
 );
 
 const headers = {
@@ -2233,8 +2231,8 @@ const headers = {
 };
 
 let body = {
-    "first_name": "minus",
-    "last_name": "officiis"
+    "first_name": "voluptatem",
+    "last_name": "est"
 };
 
 fetch(url, {
@@ -2356,7 +2354,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-customers--id-"
-               value="sit"
+               value="molestiae"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -2367,7 +2365,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-agencies-customers--id-"
-               value="minus"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 
@@ -2377,7 +2375,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-agencies-customers--id-"
-               value="officiis"
+               value="est"
                data-component="body" hidden>
     <br>
 
@@ -2398,7 +2396,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/v1/agencies/customers/fugiat" \
+    "http://localhost/v1/agencies/customers/officia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
@@ -2407,7 +2405,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/customers/fugiat"
+    "http://localhost/v1/agencies/customers/officia"
 );
 
 const headers = {
@@ -2506,7 +2504,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-agencies-customers--id-"
-               value="fugiat"
+               value="officia"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -2992,7 +2990,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-roles"
-               value="dicta"
+               value="necessitatibus"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -3043,7 +3041,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-agencies-roles"
-               value="17"
+               value="13"
                data-component="url" hidden>
     <br>
 
@@ -3053,7 +3051,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-roles"
-               value="16"
+               value="9"
                data-component="url" hidden>
     <br>
 
@@ -3075,7 +3073,7 @@ This api show the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/agencies/roles/voluptatem" \
+    --get "http://localhost/v1/agencies/roles/amet" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
@@ -3084,7 +3082,7 @@ This api show the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/roles/voluptatem"
+    "http://localhost/v1/agencies/roles/amet"
 );
 
 const headers = {
@@ -3199,7 +3197,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-agencies-roles--id-"
-               value="voluptatem"
+               value="amet"
                data-component="url" hidden>
     <br>
 
@@ -3209,7 +3207,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="GETv1-agencies-roles--id-"
-               value="reprehenderit"
+               value="voluptatem"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -3237,9 +3235,9 @@ This api is for create new Role</h2>
     --header "Domain: string required" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"name\": \"in\",
+    \"name\": \"occaecati\",
     \"permissions\": [
-        \"distinctio\"
+        \"quia\"
     ]
 }"
 </code></pre></div>
@@ -3258,9 +3256,9 @@ const headers = {
 };
 
 let body = {
-    "name": "in",
+    "name": "occaecati",
     "permissions": [
-        "distinctio"
+        "quia"
     ]
 };
 
@@ -3370,7 +3368,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTv1-agencies-roles"
-               value="in"
+               value="occaecati"
                data-component="body" hidden>
     <br>
 
@@ -3405,15 +3403,15 @@ This api update the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/agencies/roles/magni" \
+    "http://localhost/v1/agencies/roles/iusto" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"name\": \"maxime\",
+    \"name\": \"possimus\",
     \"permissions\": [
-        \"unde\"
+        \"voluptatem\"
     ]
 }"
 </code></pre></div>
@@ -3421,7 +3419,7 @@ This api update the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/roles/magni"
+    "http://localhost/v1/agencies/roles/iusto"
 );
 
 const headers = {
@@ -3432,9 +3430,9 @@ const headers = {
 };
 
 let body = {
-    "name": "maxime",
+    "name": "possimus",
     "permissions": [
-        "unde"
+        "voluptatem"
     ]
 };
 
@@ -3544,7 +3542,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-roles--id-"
-               value="magni"
+               value="iusto"
                data-component="url" hidden>
     <br>
 
@@ -3554,7 +3552,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="PUTv1-agencies-roles--id-"
-               value="dolores"
+               value="non"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -3565,7 +3563,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTv1-agencies-roles--id-"
-               value="maxime"
+               value="possimus"
                data-component="body" hidden>
     <br>
 
@@ -3599,7 +3597,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/v1/agencies/roles/ut" \
+    "http://localhost/v1/agencies/roles/omnis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
@@ -3608,7 +3606,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/roles/ut"
+    "http://localhost/v1/agencies/roles/omnis"
 );
 
 const headers = {
@@ -3707,7 +3705,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-agencies-roles--id-"
-               value="ut"
+               value="omnis"
                data-component="url" hidden>
     <br>
 
@@ -3717,7 +3715,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="DELETEv1-agencies-roles--id-"
-               value="maxime"
+               value="mollitia"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -3901,7 +3899,7 @@ fetch(url, {
                 <input type="text"
                name="services"
                data-endpoint="GETv1-agencies-services"
-               value="est"
+               value="velit"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -3911,7 +3909,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="GETv1-agencies-services"
-               value="sunt"
+               value="enim"
                data-component="url" hidden>
     <br>
 <p>ex: my service</p>
@@ -3921,7 +3919,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-agencies-services"
-               value="maxime"
+               value="quia"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active</p>
@@ -3931,7 +3929,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-services"
-               value="doloribus"
+               value="architecto"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -3982,7 +3980,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-agencies-services"
-               value="2"
+               value="12"
                data-component="url" hidden>
     <br>
 
@@ -3992,7 +3990,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-services"
-               value="5"
+               value="19"
                data-component="url" hidden>
     <br>
 
@@ -4014,7 +4012,7 @@ This api show the service details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/agencies/services/id" \
+    --get "http://localhost/v1/agencies/services/pariatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -4022,7 +4020,7 @@ This api show the service details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/services/id"
+    "http://localhost/v1/agencies/services/pariatur"
 );
 
 const headers = {
@@ -4148,7 +4146,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-agencies-services--id-"
-               value="id"
+               value="pariatur"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -4175,19 +4173,19 @@ This api create new service.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"name\": \"iusto\",
-    \"description\": \"aspernatur\",
-    \"image\": \"laudantium\",
-    \"subscription_type\": \"voluptatem\",
+    \"name\": \"deserunt\",
+    \"description\": \"quo\",
+    \"image\": \"qui\",
+    \"subscription_type\": \"ea\",
     \"price\": 12,
-    \"purchase_limit\": 19,
-    \"weekly\": 4,
-    \"monthly\": 11,
-    \"quarterly\": 12,
-    \"biannually\": 5,
-    \"annually\": 3,
-    \"max_concurrent_requests\": 5,
-    \"max_requests_per_month\": 11
+    \"purchase_limit\": 11,
+    \"weekly\": 19,
+    \"monthly\": 8,
+    \"quarterly\": 17,
+    \"biannually\": 11,
+    \"annually\": 8,
+    \"max_concurrent_requests\": 20,
+    \"max_requests_per_month\": 6
 }"
 </code></pre></div>
 
@@ -4204,19 +4202,19 @@ const headers = {
 };
 
 let body = {
-    "name": "iusto",
-    "description": "aspernatur",
-    "image": "laudantium",
-    "subscription_type": "voluptatem",
+    "name": "deserunt",
+    "description": "quo",
+    "image": "qui",
+    "subscription_type": "ea",
     "price": 12,
-    "purchase_limit": 19,
-    "weekly": 4,
-    "monthly": 11,
-    "quarterly": 12,
-    "biannually": 5,
-    "annually": 3,
-    "max_concurrent_requests": 5,
-    "max_requests_per_month": 11
+    "purchase_limit": 11,
+    "weekly": 19,
+    "monthly": 8,
+    "quarterly": 17,
+    "biannually": 11,
+    "annually": 8,
+    "max_concurrent_requests": 20,
+    "max_requests_per_month": 6
 };
 
 fetch(url, {
@@ -4367,7 +4365,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTv1-agencies-services"
-               value="iusto"
+               value="deserunt"
                data-component="body" hidden>
     <br>
 
@@ -4377,7 +4375,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="POSTv1-agencies-services"
-               value="aspernatur"
+               value="quo"
                data-component="body" hidden>
     <br>
 
@@ -4387,7 +4385,7 @@ fetch(url, {
                 <input type="text"
                name="image"
                data-endpoint="POSTv1-agencies-services"
-               value="laudantium"
+               value="qui"
                data-component="body" hidden>
     <br>
 <p>optional ex: base64imageFile formats: png,jpeg,jpg</p>
@@ -4397,7 +4395,7 @@ fetch(url, {
                 <input type="text"
                name="subscription_type"
                data-endpoint="POSTv1-agencies-services"
-               value="voluptatem"
+               value="ea"
                data-component="body" hidden>
     <br>
 <p>ex: 'one-off' ,'recurring'</p>
@@ -4417,7 +4415,7 @@ fetch(url, {
                 <input type="number"
                name="purchase_limit"
                data-endpoint="POSTv1-agencies-services"
-               value="19"
+               value="11"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is one_off ex: 12</p>
@@ -4427,7 +4425,7 @@ fetch(url, {
                 <input type="number"
                name="weekly"
                data-endpoint="POSTv1-agencies-services"
-               value="4"
+               value="19"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4437,7 +4435,7 @@ fetch(url, {
                 <input type="number"
                name="monthly"
                data-endpoint="POSTv1-agencies-services"
-               value="11"
+               value="8"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4447,7 +4445,7 @@ fetch(url, {
                 <input type="number"
                name="quarterly"
                data-endpoint="POSTv1-agencies-services"
-               value="12"
+               value="17"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4457,7 +4455,7 @@ fetch(url, {
                 <input type="number"
                name="biannually"
                data-endpoint="POSTv1-agencies-services"
-               value="5"
+               value="11"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4467,7 +4465,7 @@ fetch(url, {
                 <input type="number"
                name="annually"
                data-endpoint="POSTv1-agencies-services"
-               value="3"
+               value="8"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4477,7 +4475,7 @@ fetch(url, {
                 <input type="number"
                name="max_concurrent_requests"
                data-endpoint="POSTv1-agencies-services"
-               value="5"
+               value="20"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is recurring ex: 12</p>
@@ -4487,7 +4485,7 @@ fetch(url, {
                 <input type="number"
                name="max_requests_per_month"
                data-endpoint="POSTv1-agencies-services"
-               value="11"
+               value="6"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is recurring ex: 12</p>
@@ -4509,31 +4507,31 @@ This api update service.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/agencies/services/soluta" \
+    "http://localhost/v1/agencies/services/ad" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"name\": \"dolor\",
-    \"description\": \"voluptatum\",
-    \"image\": \"a\",
-    \"subscription_type\": \"veniam\",
-    \"price\": 4,
-    \"purchase_limit\": 18,
+    \"name\": \"saepe\",
+    \"description\": \"blanditiis\",
+    \"image\": \"beatae\",
+    \"subscription_type\": \"qui\",
+    \"price\": 19,
+    \"purchase_limit\": 3,
     \"weekly\": 7,
-    \"monthly\": 13,
-    \"quarterly\": 1,
-    \"biannually\": 11,
-    \"annually\": 19,
-    \"max_concurrent_requests\": 8,
-    \"max_requests_per_month\": 9
+    \"monthly\": 6,
+    \"quarterly\": 3,
+    \"biannually\": 20,
+    \"annually\": 16,
+    \"max_concurrent_requests\": 16,
+    \"max_requests_per_month\": 10
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/services/soluta"
+    "http://localhost/v1/agencies/services/ad"
 );
 
 const headers = {
@@ -4543,19 +4541,19 @@ const headers = {
 };
 
 let body = {
-    "name": "dolor",
-    "description": "voluptatum",
-    "image": "a",
-    "subscription_type": "veniam",
-    "price": 4,
-    "purchase_limit": 18,
+    "name": "saepe",
+    "description": "blanditiis",
+    "image": "beatae",
+    "subscription_type": "qui",
+    "price": 19,
+    "purchase_limit": 3,
     "weekly": 7,
-    "monthly": 13,
-    "quarterly": 1,
-    "biannually": 11,
-    "annually": 19,
-    "max_concurrent_requests": 8,
-    "max_requests_per_month": 9
+    "monthly": 6,
+    "quarterly": 3,
+    "biannually": 20,
+    "annually": 16,
+    "max_concurrent_requests": 16,
+    "max_requests_per_month": 10
 };
 
 fetch(url, {
@@ -4706,7 +4704,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="soluta"
+               value="ad"
                data-component="url" hidden>
     <br>
 
@@ -4717,7 +4715,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="dolor"
+               value="saepe"
                data-component="body" hidden>
     <br>
 
@@ -4727,7 +4725,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="voluptatum"
+               value="blanditiis"
                data-component="body" hidden>
     <br>
 
@@ -4737,7 +4735,7 @@ fetch(url, {
                 <input type="text"
                name="image"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="a"
+               value="beatae"
                data-component="body" hidden>
     <br>
 <p>optional ex: base64imageFile formats: png,jpeg,jpg</p>
@@ -4747,7 +4745,7 @@ fetch(url, {
                 <input type="text"
                name="subscription_type"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="veniam"
+               value="qui"
                data-component="body" hidden>
     <br>
 <p>ex: 'one-off' ,'recurring'</p>
@@ -4757,7 +4755,7 @@ fetch(url, {
                 <input type="number"
                name="price"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="4"
+               value="19"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is one_off ex: 123</p>
@@ -4767,7 +4765,7 @@ fetch(url, {
                 <input type="number"
                name="purchase_limit"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="18"
+               value="3"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is one_off ex: 12</p>
@@ -4787,7 +4785,7 @@ fetch(url, {
                 <input type="number"
                name="monthly"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="13"
+               value="6"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4797,7 +4795,7 @@ fetch(url, {
                 <input type="number"
                name="quarterly"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="1"
+               value="3"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4807,7 +4805,7 @@ fetch(url, {
                 <input type="number"
                name="biannually"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="11"
+               value="20"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4817,7 +4815,7 @@ fetch(url, {
                 <input type="number"
                name="annually"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="19"
+               value="16"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4827,7 +4825,7 @@ fetch(url, {
                 <input type="number"
                name="max_concurrent_requests"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="8"
+               value="16"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is recurring ex: 12</p>
@@ -4837,7 +4835,7 @@ fetch(url, {
                 <input type="number"
                name="max_requests_per_month"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="9"
+               value="10"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is recurring ex: 12</p>
@@ -4858,7 +4856,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/v1/agencies/services/asperiores" \
+    "http://localhost/v1/agencies/services/doloribus" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -4866,7 +4864,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/services/asperiores"
+    "http://localhost/v1/agencies/services/doloribus"
 );
 
 const headers = {
@@ -4964,7 +4962,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-agencies-services--id-"
-               value="asperiores"
+               value="doloribus"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -4986,7 +4984,7 @@ This api update the services status to active or pending.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/agencies/services/change-status/6" \
+    "http://localhost/v1/agencies/services/change-status/16" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -4994,7 +4992,7 @@ This api update the services status to active or pending.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/services/change-status/6"
+    "http://localhost/v1/agencies/services/change-status/16"
 );
 
 const headers = {
@@ -5092,7 +5090,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-agencies-services-change-status--id-"
-               value="6"
+               value="16"
                data-component="url" hidden>
     <br>
 
@@ -5412,7 +5410,7 @@ fetch(url, {
                 <input type="text"
                name="users"
                data-endpoint="GETv1-agencies-users"
-               value="qui"
+               value="quo"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -5422,7 +5420,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="GETv1-agencies-users"
-               value="possimus"
+               value="non"
                data-component="url" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -5432,7 +5430,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="GETv1-agencies-users"
-               value="veniam"
+               value="sint"
                data-component="url" hidden>
     <br>
 
@@ -5442,7 +5440,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="GETv1-agencies-users"
-               value="et"
+               value="dolor"
                data-component="url" hidden>
     <br>
 
@@ -5452,7 +5450,7 @@ fetch(url, {
                 <input type="text"
                name="full_name"
                data-endpoint="GETv1-agencies-users"
-               value="corporis"
+               value="velit"
                data-component="url" hidden>
     <br>
 
@@ -5462,7 +5460,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-agencies-users"
-               value="eaque"
+               value="eum"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -5472,7 +5470,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-users"
-               value="tenetur"
+               value="voluptas"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -5523,7 +5521,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-agencies-users"
-               value="5"
+               value="15"
                data-component="url" hidden>
     <br>
 
@@ -5533,7 +5531,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-users"
-               value="13"
+               value="14"
                data-component="url" hidden>
     <br>
 
@@ -5543,7 +5541,7 @@ fetch(url, {
                 <input type="text"
                name="roles"
                data-endpoint="GETv1-agencies-users"
-               value="officiis"
+               value="occaecati"
                data-component="url" hidden>
     <br>
 <p>ex: admin,test</p>
@@ -5565,7 +5563,7 @@ This api show the uer details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/agencies/users/et" \
+    --get "http://localhost/v1/agencies/users/illo" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -5573,7 +5571,7 @@ This api show the uer details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/users/et"
+    "http://localhost/v1/agencies/users/illo"
 );
 
 const headers = {
@@ -5706,7 +5704,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-agencies-users--id-"
-               value="et"
+               value="illo"
                data-component="url" hidden>
     <br>
 
@@ -5716,7 +5714,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="GETv1-agencies-users--id-"
-               value="qui"
+               value="magni"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -5743,17 +5741,17 @@ This api create new user.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"first_name\": \"veniam\",
-    \"last_name\": \"quo\",
-    \"email\": \"cupiditate\",
-    \"password\": \"tenetur\",
-    \"password_confirmation\": \"aut\",
-    \"status\": \"nemo\",
+    \"first_name\": \"sit\",
+    \"last_name\": \"rem\",
+    \"email\": \"doloribus\",
+    \"password\": \"nihil\",
+    \"password_confirmation\": \"id\",
+    \"status\": \"et\",
     \"roles\": [
-        \"aut\"
+        \"vel\"
     ],
     \"permissions\": [
-        \"pariatur\"
+        \"dolor\"
     ]
 }"
 </code></pre></div>
@@ -5771,17 +5769,17 @@ const headers = {
 };
 
 let body = {
-    "first_name": "veniam",
-    "last_name": "quo",
-    "email": "cupiditate",
-    "password": "tenetur",
-    "password_confirmation": "aut",
-    "status": "nemo",
+    "first_name": "sit",
+    "last_name": "rem",
+    "email": "doloribus",
+    "password": "nihil",
+    "password_confirmation": "id",
+    "status": "et",
     "roles": [
-        "aut"
+        "vel"
     ],
     "permissions": [
-        "pariatur"
+        "dolor"
     ]
 };
 
@@ -5910,7 +5908,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTv1-agencies-users"
-               value="veniam"
+               value="sit"
                data-component="body" hidden>
     <br>
 
@@ -5920,7 +5918,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTv1-agencies-users"
-               value="quo"
+               value="rem"
                data-component="body" hidden>
     <br>
 
@@ -5930,7 +5928,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTv1-agencies-users"
-               value="cupiditate"
+               value="doloribus"
                data-component="body" hidden>
     <br>
 
@@ -5940,7 +5938,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTv1-agencies-users"
-               value="tenetur"
+               value="nihil"
                data-component="body" hidden>
     <br>
 
@@ -5950,7 +5948,7 @@ fetch(url, {
                 <input type="text"
                name="password_confirmation"
                data-endpoint="POSTv1-agencies-users"
-               value="aut"
+               value="id"
                data-component="body" hidden>
     <br>
 
@@ -5960,7 +5958,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="POSTv1-agencies-users"
-               value="nemo"
+               value="et"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -6007,19 +6005,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/agencies/users/excepturi" \
+    "http://localhost/v1/agencies/users/consequatur" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"first_name\": \"excepturi\",
-    \"last_name\": \"dolorem\",
-    \"status\": \"rerum\",
+    \"first_name\": \"deleniti\",
+    \"last_name\": \"pariatur\",
+    \"status\": \"vel\",
     \"roles\": [
-        \"harum\"
+        \"facilis\"
     ],
     \"permissions\": [
-        \"voluptate\"
+        \"nisi\"
     ]
 }"
 </code></pre></div>
@@ -6027,7 +6025,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/users/excepturi"
+    "http://localhost/v1/agencies/users/consequatur"
 );
 
 const headers = {
@@ -6037,14 +6035,14 @@ const headers = {
 };
 
 let body = {
-    "first_name": "excepturi",
-    "last_name": "dolorem",
-    "status": "rerum",
+    "first_name": "deleniti",
+    "last_name": "pariatur",
+    "status": "vel",
     "roles": [
-        "harum"
+        "facilis"
     ],
     "permissions": [
-        "voluptate"
+        "nisi"
     ]
 };
 
@@ -6173,7 +6171,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="excepturi"
+               value="consequatur"
                data-component="url" hidden>
     <br>
 
@@ -6183,7 +6181,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="facere"
+               value="asperiores"
                data-component="url" hidden>
     <br>
 <p>Integer required</p>
@@ -6194,7 +6192,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="excepturi"
+               value="deleniti"
                data-component="body" hidden>
     <br>
 
@@ -6204,7 +6202,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="dolorem"
+               value="pariatur"
                data-component="body" hidden>
     <br>
 
@@ -6214,7 +6212,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="rerum"
+               value="vel"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -6261,7 +6259,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/v1/agencies/users/veritatis" \
+    "http://localhost/v1/agencies/users/est" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -6269,7 +6267,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/users/veritatis"
+    "http://localhost/v1/agencies/users/est"
 );
 
 const headers = {
@@ -6367,7 +6365,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-agencies-users--id-"
-               value="veritatis"
+               value="est"
                data-component="url" hidden>
     <br>
 
@@ -6377,7 +6375,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="DELETEv1-agencies-users--id-"
-               value="eum"
+               value="sit"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -6400,7 +6398,7 @@ other then customers.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/agencies/users/change-status/aut" \
+    "http://localhost/v1/agencies/users/change-status/tempore" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -6408,7 +6406,7 @@ other then customers.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/users/change-status/aut"
+    "http://localhost/v1/agencies/users/change-status/tempore"
 );
 
 const headers = {
@@ -6506,7 +6504,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-users-change-status--id-"
-               value="aut"
+               value="tempore"
                data-component="url" hidden>
     <br>
 
@@ -6516,7 +6514,7 @@ fetch(url, {
                 <input type="number"
                name="user_id"
                data-endpoint="PUTv1-agencies-users-change-status--id-"
-               value="14"
+               value="18"
                data-component="url" hidden>
     <br>
 
@@ -6537,19 +6535,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/agencies/users/change-password/20" \
+    "http://localhost/v1/agencies/users/change-password/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"password\": \"repellendus\"
+    \"password\": \"libero\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/agencies/users/change-password/20"
+    "http://localhost/v1/agencies/users/change-password/17"
 );
 
 const headers = {
@@ -6559,7 +6557,7 @@ const headers = {
 };
 
 let body = {
-    "password": "repellendus"
+    "password": "libero"
 };
 
 fetch(url, {
@@ -6637,7 +6635,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-agencies-users-change-password--id-"
-               value="20"
+               value="17"
                data-component="url" hidden>
     <br>
 
@@ -6648,7 +6646,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="PUTv1-agencies-users-change-password--id-"
-               value="repellendus"
+               value="libero"
                data-component="body" hidden>
     <br>
 <p>ex: 123456</p>
@@ -8149,13 +8147,13 @@ This api create new billing information.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"invoice_to\": \"consequatur\",
-    \"address\": \"aut\",
-    \"country\": \"voluptas\",
-    \"city\": \"a\",
-    \"state\": \"voluptas\",
-    \"zip_code\": 18,
-    \"tax_code\": \"quos\"
+    \"invoice_to\": \"quisquam\",
+    \"address\": \"et\",
+    \"country\": \"hic\",
+    \"city\": \"velit\",
+    \"state\": \"doloribus\",
+    \"zip_code\": 14,
+    \"tax_code\": \"omnis\"
 }"
 </code></pre></div>
 
@@ -8172,13 +8170,13 @@ const headers = {
 };
 
 let body = {
-    "invoice_to": "consequatur",
-    "address": "aut",
-    "country": "voluptas",
-    "city": "a",
-    "state": "voluptas",
-    "zip_code": 18,
-    "tax_code": "quos"
+    "invoice_to": "quisquam",
+    "address": "et",
+    "country": "hic",
+    "city": "velit",
+    "state": "doloribus",
+    "zip_code": 14,
+    "tax_code": "omnis"
 };
 
 fetch(url, {
@@ -8298,7 +8296,7 @@ fetch(url, {
                 <input type="text"
                name="invoice_to"
                data-endpoint="POSTv1-customers-billing-information"
-               value="consequatur"
+               value="quisquam"
                data-component="body" hidden>
     <br>
 
@@ -8308,7 +8306,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="POSTv1-customers-billing-information"
-               value="aut"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -8318,7 +8316,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="POSTv1-customers-billing-information"
-               value="voluptas"
+               value="hic"
                data-component="body" hidden>
     <br>
 
@@ -8328,7 +8326,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="POSTv1-customers-billing-information"
-               value="a"
+               value="velit"
                data-component="body" hidden>
     <br>
 
@@ -8338,7 +8336,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="POSTv1-customers-billing-information"
-               value="voluptas"
+               value="doloribus"
                data-component="body" hidden>
     <br>
 
@@ -8348,7 +8346,7 @@ fetch(url, {
                 <input type="number"
                name="zip_code"
                data-endpoint="POSTv1-customers-billing-information"
-               value="18"
+               value="14"
                data-component="body" hidden>
     <br>
 
@@ -8358,7 +8356,7 @@ fetch(url, {
                 <input type="text"
                name="tax_code"
                data-endpoint="POSTv1-customers-billing-information"
-               value="quos"
+               value="omnis"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -8385,13 +8383,13 @@ This api update billing information.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"invoice_to\": \"adipisci\",
-    \"address\": \"consectetur\",
-    \"country\": \"similique\",
-    \"city\": \"non\",
-    \"state\": \"dolores\",
-    \"zip_code\": 15,
-    \"tax_code\": \"sint\"
+    \"invoice_to\": \"deleniti\",
+    \"address\": \"minima\",
+    \"country\": \"quia\",
+    \"city\": \"sed\",
+    \"state\": \"et\",
+    \"zip_code\": 8,
+    \"tax_code\": \"iusto\"
 }"
 </code></pre></div>
 
@@ -8408,13 +8406,13 @@ const headers = {
 };
 
 let body = {
-    "invoice_to": "adipisci",
-    "address": "consectetur",
-    "country": "similique",
-    "city": "non",
-    "state": "dolores",
-    "zip_code": 15,
-    "tax_code": "sint"
+    "invoice_to": "deleniti",
+    "address": "minima",
+    "country": "quia",
+    "city": "sed",
+    "state": "et",
+    "zip_code": 8,
+    "tax_code": "iusto"
 };
 
 fetch(url, {
@@ -8534,7 +8532,7 @@ fetch(url, {
                 <input type="text"
                name="invoice_to"
                data-endpoint="PUTv1-customers-billing-information"
-               value="adipisci"
+               value="deleniti"
                data-component="body" hidden>
     <br>
 
@@ -8544,7 +8542,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="PUTv1-customers-billing-information"
-               value="consectetur"
+               value="minima"
                data-component="body" hidden>
     <br>
 
@@ -8554,7 +8552,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="PUTv1-customers-billing-information"
-               value="similique"
+               value="quia"
                data-component="body" hidden>
     <br>
 
@@ -8564,7 +8562,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="PUTv1-customers-billing-information"
-               value="non"
+               value="sed"
                data-component="body" hidden>
     <br>
 
@@ -8574,7 +8572,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="PUTv1-customers-billing-information"
-               value="dolores"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -8584,7 +8582,7 @@ fetch(url, {
                 <input type="number"
                name="zip_code"
                data-endpoint="PUTv1-customers-billing-information"
-               value="15"
+               value="8"
                data-component="body" hidden>
     <br>
 
@@ -8594,7 +8592,7 @@ fetch(url, {
                 <input type="text"
                name="tax_code"
                data-endpoint="PUTv1-customers-billing-information"
-               value="sint"
+               value="iusto"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -8721,7 +8719,7 @@ fetch(url, {
 
     
 
-            <h2 id="customer-request-service-GETv1-customers-request-services">Get Requested Services</h2>
+            <h2 id="customer-request-service-GETv1-customers-request-services">Get Requested Services List</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -8863,7 +8861,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-customers-request-services"
-               value="incidunt"
+               value="soluta"
                data-component="url" hidden>
     <br>
 <p>pending,submitted</p>
@@ -8873,7 +8871,7 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="GETv1-customers-request-services"
-               value="rerum"
+               value="voluptas"
                data-component="url" hidden>
     <br>
 <p>ex: abc,xyz</p>
@@ -8883,7 +8881,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-customers-request-services"
-               value="aut"
+               value="explicabo"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -8934,7 +8932,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-customers-request-services"
-               value="11"
+               value="5"
                data-component="url" hidden>
     <br>
 
@@ -8944,14 +8942,14 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-customers-request-services"
-               value="15"
+               value="19"
                data-component="url" hidden>
     <br>
 
             </p>
                     </form>
 
-            <h2 id="customer-request-service-GETv1-customers-request-services--id-">Request Service</h2>
+            <h2 id="customer-request-service-GETv1-customers-request-services--id-">Get Request Service details by Id</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -8965,7 +8963,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/customers/request-services/20" \
+    --get "http://localhost/v1/customers/request-services/11" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -8973,7 +8971,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/customers/request-services/20"
+    "http://localhost/v1/customers/request-services/11"
 );
 
 const headers = {
@@ -9092,7 +9090,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="GETv1-customers-request-services--id-"
-               value="20"
+               value="11"
                data-component="url" hidden>
     <br>
 
@@ -9118,9 +9116,9 @@ fetch(url, {
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"service_id\": 18,
-    \"recurring_type\": \"nihil\",
-    \"refrence_no\": \"expedita\",
+    \"service_id\": 16,
+    \"recurring_type\": \"quisquam\",
+    \"refrence_no\": \"consequatur\",
     \"intake_form\": [
         \"qui\"
     ]
@@ -9140,9 +9138,9 @@ const headers = {
 };
 
 let body = {
-    "service_id": 18,
-    "recurring_type": "nihil",
-    "refrence_no": "expedita",
+    "service_id": 16,
+    "recurring_type": "quisquam",
+    "refrence_no": "consequatur",
     "intake_form": [
         "qui"
     ]
@@ -9238,7 +9236,7 @@ fetch(url, {
                 <input type="number"
                name="service_id"
                data-endpoint="POSTv1-customers-request-services"
-               value="18"
+               value="16"
                data-component="body" hidden>
     <br>
 
@@ -9248,7 +9246,7 @@ fetch(url, {
                 <input type="text"
                name="recurring_type"
                data-endpoint="POSTv1-customers-request-services"
-               value="nihil"
+               value="quisquam"
                data-component="body" hidden>
     <br>
 <p>Example : weekly,monthly,quarterly,biannually,annually</p>
@@ -9258,7 +9256,7 @@ fetch(url, {
                 <input type="text"
                name="refrence_no"
                data-endpoint="POSTv1-customers-request-services"
-               value="expedita"
+               value="consequatur"
                data-component="body" hidden>
     <br>
 
@@ -9479,10 +9477,10 @@ This api update portal settings.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"name\": \"fugiat\",
-    \"logo\": \"recusandae\",
-    \"favicon\": \"mollitia\",
-    \"primary_color\": \"magni\"
+    \"name\": \"minus\",
+    \"logo\": \"nulla\",
+    \"favicon\": \"voluptas\",
+    \"primary_color\": \"at\"
 }"
 </code></pre></div>
 
@@ -9499,10 +9497,10 @@ const headers = {
 };
 
 let body = {
-    "name": "fugiat",
-    "logo": "recusandae",
-    "favicon": "mollitia",
-    "primary_color": "magni"
+    "name": "minus",
+    "logo": "nulla",
+    "favicon": "voluptas",
+    "primary_color": "at"
 };
 
 fetch(url, {
@@ -9610,7 +9608,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="fugiat"
+               value="minus"
                data-component="body" hidden>
     <br>
 
@@ -9620,7 +9618,7 @@ fetch(url, {
                 <input type="text"
                name="logo"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="recusandae"
+               value="nulla"
                data-component="body" hidden>
     <br>
 <p>ex: base64imageFile formats: png,jpeg,jpg</p>
@@ -9630,7 +9628,7 @@ fetch(url, {
                 <input type="text"
                name="favicon"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="mollitia"
+               value="voluptas"
                data-component="body" hidden>
     <br>
 <p>ex: base64imageFile formats: png,x-icon</p>
@@ -9640,7 +9638,7 @@ fetch(url, {
                 <input type="text"
                name="primary_color"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="magni"
+               value="at"
                data-component="body" hidden>
     <br>
 <p>ex: '#fsfsd'</p>
@@ -9817,7 +9815,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-admins-roles"
-               value="corporis"
+               value="sunt"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -9868,7 +9866,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-admins-roles"
-               value="4"
+               value="8"
                data-component="url" hidden>
     <br>
 
@@ -9878,7 +9876,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-admins-roles"
-               value="5"
+               value="15"
                data-component="url" hidden>
     <br>
 
@@ -9900,7 +9898,7 @@ This api show the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/admins/roles/qui" \
+    --get "http://localhost/v1/admins/roles/dolorem" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: String required Example: Bearer TOKEN"</code></pre></div>
@@ -9908,7 +9906,7 @@ This api show the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/admins/roles/qui"
+    "http://localhost/v1/admins/roles/dolorem"
 );
 
 const headers = {
@@ -10022,7 +10020,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-admins-roles--id-"
-               value="qui"
+               value="dolorem"
                data-component="url" hidden>
     <br>
 
@@ -10032,7 +10030,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="GETv1-admins-roles--id-"
-               value="et"
+               value="quibusdam"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -10059,9 +10057,9 @@ This api is for create new Role</h2>
     --header "Accept: application/json" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"name\": \"alias\",
+    \"name\": \"et\",
     \"permissions\": [
-        \"ut\"
+        \"voluptatem\"
     ]
 }"
 </code></pre></div>
@@ -10079,9 +10077,9 @@ const headers = {
 };
 
 let body = {
-    "name": "alias",
+    "name": "et",
     "permissions": [
-        "ut"
+        "voluptatem"
     ]
 };
 
@@ -10191,7 +10189,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTv1-admins-roles"
-               value="alias"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -10226,14 +10224,14 @@ This api update the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/admins/roles/asperiores" \
+    "http://localhost/v1/admins/roles/et" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"name\": \"fugit\",
+    \"name\": \"repellendus\",
     \"permissions\": [
-        \"quidem\"
+        \"rem\"
     ]
 }"
 </code></pre></div>
@@ -10241,7 +10239,7 @@ This api update the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/admins/roles/asperiores"
+    "http://localhost/v1/admins/roles/et"
 );
 
 const headers = {
@@ -10251,9 +10249,9 @@ const headers = {
 };
 
 let body = {
-    "name": "fugit",
+    "name": "repellendus",
     "permissions": [
-        "quidem"
+        "rem"
     ]
 };
 
@@ -10363,7 +10361,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-roles--id-"
-               value="asperiores"
+               value="et"
                data-component="url" hidden>
     <br>
 
@@ -10373,7 +10371,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="PUTv1-admins-roles--id-"
-               value="atque"
+               value="voluptas"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -10384,7 +10382,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTv1-admins-roles--id-"
-               value="fugit"
+               value="repellendus"
                data-component="body" hidden>
     <br>
 
@@ -10418,7 +10416,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/v1/admins/roles/est" \
+    "http://localhost/v1/admins/roles/quod" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: String required Example: Bearer TOKEN"</code></pre></div>
@@ -10426,7 +10424,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/admins/roles/est"
+    "http://localhost/v1/admins/roles/quod"
 );
 
 const headers = {
@@ -10524,7 +10522,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-admins-roles--id-"
-               value="est"
+               value="quod"
                data-component="url" hidden>
     <br>
 
@@ -10534,7 +10532,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="DELETEv1-admins-roles--id-"
-               value="architecto"
+               value="aut"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -10852,7 +10850,7 @@ fetch(url, {
                 <input type="text"
                name="users"
                data-endpoint="GETv1-admins-users"
-               value="commodi"
+               value="ad"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -10862,7 +10860,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="GETv1-admins-users"
-               value="soluta"
+               value="eius"
                data-component="url" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -10872,7 +10870,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="GETv1-admins-users"
-               value="qui"
+               value="ut"
                data-component="url" hidden>
     <br>
 
@@ -10882,7 +10880,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="GETv1-admins-users"
-               value="qui"
+               value="natus"
                data-component="url" hidden>
     <br>
 
@@ -10892,7 +10890,7 @@ fetch(url, {
                 <input type="text"
                name="full_name"
                data-endpoint="GETv1-admins-users"
-               value="officiis"
+               value="assumenda"
                data-component="url" hidden>
     <br>
 
@@ -10902,7 +10900,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-admins-users"
-               value="et"
+               value="culpa"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -10912,7 +10910,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-admins-users"
-               value="architecto"
+               value="rerum"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -10963,7 +10961,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-admins-users"
-               value="10"
+               value="1"
                data-component="url" hidden>
     <br>
 
@@ -10973,7 +10971,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-admins-users"
-               value="3"
+               value="6"
                data-component="url" hidden>
     <br>
 
@@ -10983,7 +10981,7 @@ fetch(url, {
                 <input type="text"
                name="roles"
                data-endpoint="GETv1-admins-users"
-               value="consequatur"
+               value="sit"
                data-component="url" hidden>
     <br>
 <p>ex: admin,test</p>
@@ -11005,14 +11003,14 @@ This api show the uer details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/admins/users/perspiciatis" \
+    --get "http://localhost/v1/admins/users/molestiae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/admins/users/perspiciatis"
+    "http://localhost/v1/admins/users/molestiae"
 );
 
 const headers = {
@@ -11144,7 +11142,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-admins-users--id-"
-               value="perspiciatis"
+               value="molestiae"
                data-component="url" hidden>
     <br>
 
@@ -11154,7 +11152,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="GETv1-admins-users--id-"
-               value="reprehenderit"
+               value="rerum"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -11180,17 +11178,17 @@ This api create new user.</h2>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"incidunt\",
-    \"last_name\": \"at\",
-    \"email\": \"fuga\",
-    \"password\": \"odio\",
-    \"password_confirmation\": \"voluptas\",
-    \"status\": \"nulla\",
+    \"first_name\": \"et\",
+    \"last_name\": \"pariatur\",
+    \"email\": \"praesentium\",
+    \"password\": \"illo\",
+    \"password_confirmation\": \"minima\",
+    \"status\": \"inventore\",
     \"roles\": [
-        \"temporibus\"
+        \"impedit\"
     ],
     \"permissions\": [
-        \"quo\"
+        \"quis\"
     ]
 }"
 </code></pre></div>
@@ -11207,17 +11205,17 @@ const headers = {
 };
 
 let body = {
-    "first_name": "incidunt",
-    "last_name": "at",
-    "email": "fuga",
-    "password": "odio",
-    "password_confirmation": "voluptas",
-    "status": "nulla",
+    "first_name": "et",
+    "last_name": "pariatur",
+    "email": "praesentium",
+    "password": "illo",
+    "password_confirmation": "minima",
+    "status": "inventore",
     "roles": [
-        "temporibus"
+        "impedit"
     ],
     "permissions": [
-        "quo"
+        "quis"
     ]
 };
 
@@ -11346,7 +11344,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTv1-admins-users"
-               value="incidunt"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -11356,7 +11354,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTv1-admins-users"
-               value="at"
+               value="pariatur"
                data-component="body" hidden>
     <br>
 
@@ -11366,7 +11364,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTv1-admins-users"
-               value="fuga"
+               value="praesentium"
                data-component="body" hidden>
     <br>
 
@@ -11376,7 +11374,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTv1-admins-users"
-               value="odio"
+               value="illo"
                data-component="body" hidden>
     <br>
 
@@ -11386,7 +11384,7 @@ fetch(url, {
                 <input type="text"
                name="password_confirmation"
                data-endpoint="POSTv1-admins-users"
-               value="voluptas"
+               value="minima"
                data-component="body" hidden>
     <br>
 
@@ -11396,7 +11394,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="POSTv1-admins-users"
-               value="nulla"
+               value="inventore"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -11443,18 +11441,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/admins/users/et" \
+    "http://localhost/v1/admins/users/in" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"quisquam\",
-    \"last_name\": \"eveniet\",
-    \"status\": \"alias\",
+    \"first_name\": \"possimus\",
+    \"last_name\": \"molestias\",
+    \"status\": \"est\",
     \"roles\": [
-        \"praesentium\"
+        \"commodi\"
     ],
     \"permissions\": [
-        \"est\"
+        \"quis\"
     ]
 }"
 </code></pre></div>
@@ -11462,7 +11460,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/admins/users/et"
+    "http://localhost/v1/admins/users/in"
 );
 
 const headers = {
@@ -11471,14 +11469,14 @@ const headers = {
 };
 
 let body = {
-    "first_name": "quisquam",
-    "last_name": "eveniet",
-    "status": "alias",
+    "first_name": "possimus",
+    "last_name": "molestias",
+    "status": "est",
     "roles": [
-        "praesentium"
+        "commodi"
     ],
     "permissions": [
-        "est"
+        "quis"
     ]
 };
 
@@ -11607,7 +11605,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-users--id-"
-               value="et"
+               value="in"
                data-component="url" hidden>
     <br>
 
@@ -11617,7 +11615,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="PUTv1-admins-users--id-"
-               value="provident"
+               value="ut"
                data-component="url" hidden>
     <br>
 <p>Integer required</p>
@@ -11628,7 +11626,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-admins-users--id-"
-               value="quisquam"
+               value="possimus"
                data-component="body" hidden>
     <br>
 
@@ -11638,7 +11636,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-admins-users--id-"
-               value="eveniet"
+               value="molestias"
                data-component="body" hidden>
     <br>
 
@@ -11648,7 +11646,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="PUTv1-admins-users--id-"
-               value="alias"
+               value="est"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -11695,14 +11693,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/v1/admins/users/consectetur" \
+    "http://localhost/v1/admins/users/occaecati" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/admins/users/consectetur"
+    "http://localhost/v1/admins/users/occaecati"
 );
 
 const headers = {
@@ -11799,7 +11797,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-admins-users--id-"
-               value="consectetur"
+               value="occaecati"
                data-component="url" hidden>
     <br>
 
@@ -11809,7 +11807,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="DELETEv1-admins-users--id-"
-               value="et"
+               value="qui"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -11832,14 +11830,14 @@ other then customers.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/admins/users/change-status/officia" \
+    "http://localhost/v1/admins/users/change-status/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/admins/users/change-status/officia"
+    "http://localhost/v1/admins/users/change-status/ut"
 );
 
 const headers = {
@@ -11936,7 +11934,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-users-change-status--id-"
-               value="officia"
+               value="ut"
                data-component="url" hidden>
     <br>
 
@@ -11946,7 +11944,7 @@ fetch(url, {
                 <input type="number"
                name="user_id"
                data-endpoint="PUTv1-admins-users-change-status--id-"
-               value="14"
+               value="10"
                data-component="url" hidden>
     <br>
 
@@ -11967,18 +11965,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/admins/users/change-password/19" \
+    "http://localhost/v1/admins/users/change-password/16" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"password\": \"qui\"
+    \"password\": \"hic\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/admins/users/change-password/19"
+    "http://localhost/v1/admins/users/change-password/16"
 );
 
 const headers = {
@@ -11987,7 +11985,7 @@ const headers = {
 };
 
 let body = {
-    "password": "qui"
+    "password": "hic"
 };
 
 fetch(url, {
@@ -12065,7 +12063,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-admins-users-change-password--id-"
-               value="19"
+               value="16"
                data-component="url" hidden>
     <br>
 
@@ -12076,7 +12074,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="PUTv1-admins-users-change-password--id-"
-               value="qui"
+               value="hic"
                data-component="body" hidden>
     <br>
 <p>ex: 123456</p>
