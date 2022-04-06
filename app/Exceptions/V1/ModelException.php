@@ -9,7 +9,7 @@ class ModelException extends BaseException
     public static function dataNotFound(): self
     {
         return new self(
-            'Data trying to access does not exists.',
+            'Data trying to access does not exist.',
             '404'
         );
     }
