@@ -13,7 +13,7 @@ class UnAuthorizedException extends BaseException
 
     public static function InvalidCredentials(): self
     {
-        return new self("Invalid Email or Password", '401');
+        return new self("Invalid Credentials", '401');
     }
 
     public static function accountBlocked(): self
