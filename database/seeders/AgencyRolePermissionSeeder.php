@@ -32,6 +32,7 @@ class AgencyRolePermissionSeeder extends Seeder
             ['name' => 'agency_users_update', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'agency_users_delete', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
             ['name' => 'agency_users_toggle_status', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
+            ['name' => 'agency_request_service_read', 'guard_name' => 'api', 'created_at' => $now, 'updated_at' => $now],
         ];
 
         DB::table('permissions')->insert($permissions);
