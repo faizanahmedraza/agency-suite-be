@@ -59,7 +59,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             $router->delete('/logout', 'AuthenticationController@logout');
             $router->post('/verification', 'AuthenticationController@generateToken');
             $router->put('/change-password', 'AuthenticationController@changePassword');
-//            $router->put('/agency-profile', 'AuthenticationController@changePassword');
+            // $router->put('/agency-profile', 'AuthenticationController@changePassword');
 
             //User Management apis
             $router->group(['prefix' => 'users'], function () use ($router) {
@@ -105,6 +105,12 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->put('/{id}', 'CustomerController@update');
                 $router->delete('/{id}', 'CustomerController@destroy');
                 $router->put('/change-status/{id}', 'CustomerController@toggleStatus');
+            });
+
+            // request services
+            $router->group(['prefix' => 'request-services'],function () use ($router) {
+                $router->get('/', 'RequestServiceController@get');
+                $router->get('/{id}', 'RequestServiceController@first');
             });
         });
     });
