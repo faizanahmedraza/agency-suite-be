@@ -40,7 +40,7 @@ class CustomerService
 
     public static function get(Request $request)
     {
-        $users = User::query();
+        $users = User::query()->with('agencyCustomers');
 
         if ($request->query("customers")) {
             $ids = \getIds($request->customers);
@@ -108,7 +108,9 @@ class CustomerService
             $users->whereDate('created_at', '<=', $to);
         }
 
-        $users->ownUsers();
+        $users->whereHas('agencyCustomers',function ($q){
+            $q->where('agency_id',app('agency')->id);
+        });
 
         return ($request->filled('pagination') && $request->get('pagination') == 'false')
             ? $users->get()
