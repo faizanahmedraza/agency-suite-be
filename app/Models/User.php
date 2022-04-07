@@ -47,6 +47,11 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         return $this->belongsTo(Agency::class,'agency_id','id');
     }
 
+    public function agencyCustomers()
+    {
+        return $this->hasOne(Customer::class,'user_id','id');
+    }
+
     public function userVerifications()
     {
         return $this->hasMany(UserVerification::class);
