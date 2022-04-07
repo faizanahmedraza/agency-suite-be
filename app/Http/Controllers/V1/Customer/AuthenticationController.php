@@ -2,18 +2,20 @@
 
 namespace App\Http\Controllers\V1\Customer;
 
-use App\Http\Businesses\V1\Customer\CustomerBusiness;
-use App\Http\Businesses\V1\Customer\AuthenticationBusiness;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\Customer\CreateNewPasswordRequest;
-use App\Http\Requests\V1\Customer\ForgetPasswordRequest;
-use App\Http\Requests\V1\Customer\LoginRequest;
-use App\Http\Requests\V1\Customer\RegisterRequest;
-use App\Http\Requests\V1\Customer\UserVerificationRequest;
-use App\Http\Resources\SuccessResponse;
-use App\Http\Resources\V1\Customer\AuthenticationResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\SuccessResponse;
+use App\Http\Requests\V1\Customer\LoginRequest;
+use App\Http\Requests\V1\Customer\RegisterRequest;
+use App\Http\Resources\V1\Customer\ProfileResponse;
+use App\Http\Businesses\V1\Customer\CustomerBusiness;
+use App\Http\Requests\V1\Customer\ForgetPasswordRequest;
+use App\Http\Requests\V1\Customer\UserVerificationRequest;
+use App\Http\Resources\V1\Customer\AuthenticationResponse;
+use App\Http\Businesses\V1\Customer\AuthenticationBusiness;
+use App\Http\Requests\V1\Customer\CreateNewPasswordRequest;
 
 /**
  * @group Customer Authentication
@@ -147,5 +149,21 @@ class AuthenticationController extends Controller
     {
         (new AuthenticationBusiness())->logout($request);
         return new SuccessResponse([]);
+    }
+
+     /**
+     * Profile
+     * Get Profile Info
+     *
+     * @authenticated
+     *
+     * @header Domain string required
+     *
+     * @responseFile 200 responses/V1/Customer/ProfileResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     */
+    public static function profile()
+    {
+        return new ProfileResponse(Auth::user());
     }
 }

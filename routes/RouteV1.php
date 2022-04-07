@@ -57,6 +57,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         //Protected Routes
         $router->group(['middleware' => ['agency_domain', 'agency_auth', 'agency']], function () use ($router) {
             $router->delete('/logout', 'AuthenticationController@logout');
+            $router->get('/profile', 'AuthenticationController@profile');
             $router->post('/verification', 'AuthenticationController@generateToken');
             $router->put('/change-password', 'AuthenticationController@changePassword');
             // $router->put('/agency-profile', 'AuthenticationController@changePassword');
@@ -126,6 +127,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         });
         $router->group(['middleware' => ['customer']], function () use ($router) {
             $router->delete('/logout', 'AuthenticationController@logout');
+            $router->get('/profile', 'AuthenticationController@profile');
 
             $router->group(['prefix' => 'request-services'],function () use ($router) {
                 $router->get('/', 'RequestServiceController@get');
