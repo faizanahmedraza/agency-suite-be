@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\V1\Agency;
 
-use App\Http\Businesses\V1\Agency\AgencyBusiness;
-use App\Http\Businesses\V1\Agency\AuthenticationBusiness;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\Agency\ChangePasswordRequest;
-use App\Http\Requests\V1\Agency\CreateNewPasswordRequest;
-use App\Http\Requests\V1\Agency\ForgetPasswordRequest;
-use App\Http\Requests\V1\Agency\LoginRequest;
-use App\Http\Requests\V1\Agency\RegisterRequest;
-use App\Http\Requests\V1\Agency\UserVerificationRequest;
-use App\Http\Resources\SuccessResponse;
-use App\Http\Resources\V1\Agency\AuthenticationResponse;
-use App\Http\Resources\V1\Agency\RedirectDomainResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\SuccessResponse;
+use App\Http\Requests\V1\Agency\LoginRequest;
+use App\Http\Requests\V1\Agency\RegisterRequest;
+use App\Http\Businesses\V1\Agency\AgencyBusiness;
+use App\Http\Resources\V1\Agency\ProfileResponse;
+use App\Http\Requests\V1\Agency\ChangePasswordRequest;
+use App\Http\Requests\V1\Agency\ForgetPasswordRequest;
+use App\Http\Requests\V1\Agency\UserVerificationRequest;
+use App\Http\Resources\V1\Agency\AuthenticationResponse;
+use App\Http\Resources\V1\Agency\RedirectDomainResponse;
+use App\Http\Businesses\V1\Agency\AuthenticationBusiness;
+use App\Http\Requests\V1\Agency\CreateNewPasswordRequest;
 
 /**
  * @group Agency Authentication
@@ -186,5 +188,21 @@ class AuthenticationController extends Controller
         (new AuthenticationBusiness())->changePassword($request);
         DB::commit();
         return new SuccessResponse([]);
+    }
+
+    /**
+     * Profile
+     * Get Profile Info
+     *
+     * @authenticated
+     *
+     * @header Domain string required
+     *
+     * @responseFile 200 responses/V1/Agency/ProfileResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     */
+    public static function profile()
+    {
+        return new ProfileResponse(Auth::user());
     }
 }

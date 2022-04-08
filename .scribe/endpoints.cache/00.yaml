@@ -340,3 +340,47 @@ endpoints:
         headers: []
         description: '422'
     responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/agencies/profile
+    metadata:
+      title: |-
+        Profile
+        Get Profile Info
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |
+          {
+              "data": {
+                  "profile": {
+                      "name": "agencytest12",
+                      "image": ""
+                  },
+                  "permissions": [
+                      "access_all"
+                  ]
+              },
+              "error": {},
+              "success": true,
+              "message": "Operation successful"
+          }
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
