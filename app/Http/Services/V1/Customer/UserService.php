@@ -3,18 +3,19 @@
 
 namespace App\Http\Services\V1\Customer;
 
-use App\Exceptions\V1\ModelException;
-use App\Exceptions\V1\FailureException;
-use App\Exceptions\V1\UnAuthorizedException;
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Helpers\TimeStampHelper;
 use App\Exceptions\V1\UserException;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-use App\Models\User;
+use App\Exceptions\V1\ModelException;
 
-use Illuminate\Support\Facades\Auth;
-use App\Helpers\TimeStampHelper;
+use App\Exceptions\V1\FailureException;
+use App\Http\Services\V1\CloudinaryService;
+use App\Exceptions\V1\UnAuthorizedException;
 
 class UserService
 {
@@ -95,6 +96,25 @@ class UserService
 
         if (!$user) {
             throw ModelException::dataNotFound();
+        }
+
+        return $user;
+    }
+
+    public static function updateCustomerProfile($request,User $user=null)
+    {
+        if($user==null){
+            $user=Auth::user();
+        }
+        $user->first_name = trim($request->first_name);
+        $user->last_name = trim($request->last_name);
+        if ($request->has('image') && !empty($request->image)) {
+            $user->image = CloudinaryService::upload($request->image)->secureUrl;
+        }
+        $user->save();
+
+        if (!$user) {
+            throw FailureException::serverError();
         }
 
         return $user;

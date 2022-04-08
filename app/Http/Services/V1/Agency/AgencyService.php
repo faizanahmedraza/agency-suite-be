@@ -3,18 +3,19 @@
 
 namespace App\Http\Services\V1\Agency;
 
-use App\Exceptions\V1\ModelException;
-use App\Exceptions\V1\FailureException;
-use App\Exceptions\V1\UnAuthorizedException;
+use App\Models\User;
+use App\Models\Agency;
+use App\Helpers\TimeStampHelper;
 use App\Exceptions\V1\UserException;
 
-use App\Models\Agency;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-use App\Models\User;
+use App\Exceptions\V1\ModelException;
 
-use Illuminate\Support\Facades\Auth;
-use App\Helpers\TimeStampHelper;
+use App\Exceptions\V1\FailureException;
+use App\Http\Services\V1\CloudinaryService;
+use App\Exceptions\V1\UnAuthorizedException;
 
 class AgencyService
 {
@@ -175,5 +176,24 @@ class AgencyService
 
         $token->expires_at =  TimeStampHelper::getDate(10, $token->expires_at);
         $token->save();
+    }
+
+    public static function updateProfile($request,User $user=null)
+    {
+        if($user==null){
+            $user=Auth::user();
+        }
+        $user->first_name = trim($request->name);
+        $user->last_name = trim($request->name);
+        if ($request->has('image') && !empty($request->image)) {
+            $user->image = CloudinaryService::upload($request->image)->secureUrl;
+        }
+        $user->save();
+
+        if (!$user) {
+            throw FailureException::serverError();
+        }
+
+        return $user;
     }
 }

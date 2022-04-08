@@ -11,6 +11,7 @@ use App\Http\Requests\V1\Customer\LoginRequest;
 use App\Http\Requests\V1\Customer\RegisterRequest;
 use App\Http\Resources\V1\Customer\ProfileResponse;
 use App\Http\Businesses\V1\Customer\CustomerBusiness;
+use App\Http\Requests\V1\Customer\UpdateProfileRequest;
 use App\Http\Requests\V1\Customer\ForgetPasswordRequest;
 use App\Http\Requests\V1\Customer\UserVerificationRequest;
 use App\Http\Resources\V1\Customer\AuthenticationResponse;
@@ -165,5 +166,26 @@ class AuthenticationController extends Controller
     public static function profile()
     {
         return new ProfileResponse(Auth::user());
+    }
+    /**
+     * Update Profile
+     *
+     * @authenticated
+     *
+     * @header Domain string required
+     *
+     * @bodyParam first_name String required
+     * @bodyParam last_name String required
+     * @bodyParam image String optional ex: base64imageFile formats: png,jpeg,jpg
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     */
+    public function profileUpdate(UpdateProfileRequest $request)
+    {
+        DB::beginTransaction();
+        (new AuthenticationBusiness())->profileUpdate($request);
+        DB::commit();
+        return new SuccessResponse([]);
     }
 }

@@ -2,7 +2,6 @@
 
 namespace App\Http\Businesses\V1\Agency;
 
-use App\Http\Wrappers\SegmentWrapper;
 use App\Models\User;
 use App\Models\Agency;
 use App\Events\LoginEvent;
@@ -10,8 +9,10 @@ use App\Helpers\TimeStampHelper;
 use App\Exceptions\V1\UserException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Wrappers\SegmentWrapper;
 use App\Exceptions\V1\UnAuthorizedException;
 use App\Http\Services\V1\Agency\UserService;
+use App\Http\Services\V1\Agency\AgencyService;
 use App\Exceptions\V1\RequestValidationException;
 use App\Http\Services\V1\Agency\AuthenticationService;
 use App\Http\Services\V1\Agency\UserVerificationService;
@@ -154,5 +155,14 @@ class AuthenticationBusiness
         //segment verification token event
         SegmentWrapper::generateToken($user);
         UserVerificationService::generateVerificationCode($user);
+    }
+
+    public function profileUpdate($request)
+    {
+        if ($request->has('image') && !empty($request->image) && !validate_base64($request->image, ['png', 'jpg', 'jpeg'])) {
+            throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are png,jpg,jpeg.');
+        }
+        // update profile
+        return AgencyService::updateProfile($request);
     }
 }

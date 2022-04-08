@@ -115,4 +115,13 @@ class AuthenticationBusiness
             }
         }
     }
+
+    public function profileUpdate($request)
+    {
+        if ($request->has('image') && !empty($request->image) && !validate_base64($request->image, ['png', 'jpg', 'jpeg'])) {
+            throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are png,jpg,jpeg.');
+        }
+        // update profile
+        return UserService::updateCustomerProfile($request);
+    }
 }
