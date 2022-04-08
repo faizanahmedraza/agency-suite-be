@@ -40,7 +40,7 @@ class CustomerService
 
     public static function get(Request $request)
     {
-        $users = User::query()->with('agencyCustomers');
+        $users = User::query()->with('agencyCustomer');
 
         if ($request->query("customers")) {
             $ids = \getIds($request->customers);
@@ -108,7 +108,7 @@ class CustomerService
             $users->whereDate('created_at', '<=', $to);
         }
 
-        $users->whereHas('agencyCustomers',function ($q){
+        $users->whereHas('agencyCustomer',function ($q){
             $q->where('agency_id',app('agency')->id);
         });
 
@@ -166,6 +166,7 @@ class CustomerService
 
     public static function destroy(User $user)
     {
+        $user->agencyCustomer()->delete();
         $user->delete();
     }
 }
