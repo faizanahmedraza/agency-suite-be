@@ -15,6 +15,7 @@ class PortalSetting extends Model
         'logo',
         'favicon',
         'primary_color',
+        'secondary_color',
         'agency_id',
         'user_id'
     ];
