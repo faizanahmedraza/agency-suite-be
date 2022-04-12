@@ -160,9 +160,15 @@ class AgencyBusinessService
         $service->delete();
     }
 
-    public static function toggleStatus(Service $service)
+    public static function toggleCatalogStatus(Service $service)
     {
         ($service->catalog_status == Service::CATALOG_STATUS['pending']) ? $service->catalog_status = Service::CATALOG_STATUS['active'] : $service->catalog_status = Service::CATALOG_STATUS['pending'];
+        $service->save();
+    }
+
+    public static function toggleStatus(Service $service)
+    {
+        ($service->status == Service::STATUS['pending']) ? $service->status = Service::STATUS['active'] : $service->status = Service::STATUS['pending'];
         $service->save();
     }
 }
