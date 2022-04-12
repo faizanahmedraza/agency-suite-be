@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class PortalSettingBusiness
 {
+    public static function first()
+    {
+        return PortalSettingService::first();
+    }
+
     public static function update(Request $request)
     {
         if ($request->has('logo') && !empty($request->logo) && !validate_base64($request->logo, ['png', 'jpg', 'jpeg'])) {
@@ -17,6 +22,6 @@ class PortalSettingBusiness
         if ($request->has('favicon') && !empty($request->favicon) && !validate_base64($request->favicon, ['x-icon','png'])) {
             throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are x-icon,png.');
         }
-        PortalSettingService::update($request);
+        return PortalSettingService::update($request);
     }
 }

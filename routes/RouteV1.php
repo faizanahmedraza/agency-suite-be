@@ -54,6 +54,12 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             });
         });
 
+        //public routes
+        $router->group(['middleware' => 'agency_domain'], function () use ($router) {
+            //portal-settings
+            $router->get('/portal-settings', 'PublicPortalSettingController@index');
+        });
+
         //Protected Routes
         $router->group(['middleware' => ['agency_domain', 'agency_auth', 'agency']], function () use ($router) {
             $router->delete('/logout', 'AuthenticationController@logout');

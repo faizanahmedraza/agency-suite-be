@@ -15,6 +15,16 @@ use Illuminate\Support\Facades\Auth;
 
 class PortalSettingService
 {
+    public static function first()
+    {
+        $agency = Agency::with('domains')->where('id', app('agency')->id)->first();
+
+        if (!$agency) {
+            throw ModelException::dataNotFound();
+        }
+        return $agency;
+    }
+
     public static function update(Request $request)
     {
         $agency = Agency::with('domains')->where('id', app('agency')->id)->first();
@@ -52,5 +62,6 @@ class PortalSettingService
         if (!$setting) {
             throw FailureException::serverError();
         }
+        return $setting;
     }
 }
