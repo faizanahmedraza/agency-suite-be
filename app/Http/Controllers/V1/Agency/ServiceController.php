@@ -160,7 +160,7 @@ class ServiceController extends Controller
 
     /**
      * Toggle Service Status
-     * This api update the services status to active or pending.
+     * This api update the service status to active or pending.
      *
      * @header Domain string required
      *
@@ -173,6 +173,23 @@ class ServiceController extends Controller
     public static function toggleStatus(int $id)
     {
         ServiceBusiness::toggleStatus($id);
+        return new SuccessResponse([]);
+    }
+
+    /**
+     * Toggle Service Catalog Status
+     * This api update the service catalog status to active or pending.
+     *
+     * @header Domain string required
+     *
+     * @urlParam id integer required
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 401 responses/UnAuthorizedResponse.json
+     */
+    public static function toggleCatalogStatus(int $id)
+    {
+        ServiceBusiness::toggleCatalogStatus($id);
         return new SuccessResponse([]);
     }
 }
