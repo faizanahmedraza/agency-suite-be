@@ -100,6 +100,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->put('/{id}', 'ServiceController@update');
                 $router->delete('/{id}', 'ServiceController@destroy');
                 $router->put('/change-status/{id}', 'ServiceController@toggleStatus');
+                $router->put('/change-catalog-status/{id}', 'ServiceController@toggleCatalogStatus');
             });
 
             //portal-settings

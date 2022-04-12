@@ -45,9 +45,17 @@ class ServiceBusiness
         AgencyBusinessService::destroy($service);
     }
 
+    public static function toggleCatalogStatus($id)
+    {
+        // get service
+        $service = AgencyBusinessService::first($id);
+        // catalog status toggle
+        AgencyBusinessService::toggleCatalogStatus($service);
+    }
+
     public static function toggleStatus($id)
     {
-        // get user
+        // get service
         $service = AgencyBusinessService::first($id);
         // status toggle
         AgencyBusinessService::toggleStatus($service);
