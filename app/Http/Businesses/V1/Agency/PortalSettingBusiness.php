@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 
 class PortalSettingBusiness
 {
-    public static function first()
+    public static function first($agencyId = null)
     {
-        return PortalSettingService::first();
+        return PortalSettingService::first($agencyId);
     }
 
     public static function update(Request $request)

@@ -3,6 +3,7 @@
 
 namespace App\Http\Services\V1\Agency;
 
+use App\Exceptions\V1\DomainException;
 use App\Exceptions\V1\ModelException;
 use App\Exceptions\V1\FailureException;
 use App\Exceptions\V1\UnAuthorizedException;
@@ -24,7 +25,7 @@ class AgencyDomainService
     {
         $agency = new AgencyDomain();
         $agency->agency_id = $data->agency_id;
-        $agency->domain = $data->domain.(env('AGENCY_BASE_DOMAIN','.agency.test'));
+        $agency->domain = $data->domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
         $agency->type = $data->type;
         $agency->default = $data->default;
         $agency->save();
@@ -36,7 +37,7 @@ class AgencyDomainService
         return $agency;
     }
 
-    public static function update(AgencyDomain $agencyDomain,$domain)
+    public static function update(AgencyDomain $agencyDomain, $domain)
     {
         $agencyDomain->domain = $domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
         $agencyDomain->save();
@@ -45,6 +46,16 @@ class AgencyDomainService
             throw FailureException::serverError();
         }
 
+        return $agencyDomain;
+    }
+
+    public static function first($where)
+    {
+        $agencyDomain = AgencyDomain::where($where)->first();
+
+        if (!$agencyDomain) {
+            throw DomainException::agencyDomainNotExist();
+        }
         return $agencyDomain;
     }
 }

@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Auth;
 
 class PortalSettingService
 {
-    public static function first()
+    public static function first($agencyId = null)
     {
-        $setting = PortalSetting::with('agency')->where('agency_id', app('agency')->id)->first();
+        $_agencyId = empty($agencyId) ? app('agency')->id : $agencyId;
+        $setting = PortalSetting::with('agency')->where('agency_id', $_agencyId)->first();
 
         if (!$setting) {
             throw ModelException::dataNotFound();

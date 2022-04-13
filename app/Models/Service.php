@@ -12,7 +12,7 @@ class Service extends Model
 
     const CATALOG_STATUS = ['pending' => 0, 'active' => 1];
 
-    const STATUS = ['pending' => 0, 'active' => 1];
+    const STATUS = ['pending' => 0, 'active' => 1,'blocked' => 2];
 
     const SUBSCRIPTION_TYPES = ['one-off' => 0,'recurring' => 1];
 

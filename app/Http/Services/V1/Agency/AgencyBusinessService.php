@@ -37,6 +37,7 @@ class AgencyBusinessService
         }
         $service->subscription_type = Service::SUBSCRIPTION_TYPES[$request->subscription_type];
         $service->catalog_status = Service::CATALOG_STATUS['pending'];
+        $service->status = Service::STATUS['pending'];
         $service->agency_id = app('agency')->id;
         $service->save();
 
@@ -130,7 +131,12 @@ class AgencyBusinessService
         }
 
         if ($request->query('status')) {
-            $arrStatus = getStatus(Service::CATALOG_STATUS, clean($request->status));
+            $arrStatus = getStatus(Service::STATUS, clean($request->status));
+            $services->wherein('status', $arrStatus);
+        }
+
+        if ($request->query('catalog_status')) {
+            $arrStatus = getStatus(Service::CATALOG_STATUS, clean($request->catalog_status));
             $services->wherein('status', $arrStatus);
         }
 
@@ -170,7 +176,7 @@ class AgencyBusinessService
 
     public static function toggleStatus(Service $service)
     {
-        ($service->status == Service::STATUS['pending']) ? $service->status = Service::STATUS['active'] : $service->status = Service::STATUS['pending'];
+        ($service->status == Service::STATUS['pending'] || $service->status == Service::STATUS['active']) ? $service->status = Service::STATUS['blocked'] : $service->status = Service::STATUS['active'];
         $service->save();
     }
 }

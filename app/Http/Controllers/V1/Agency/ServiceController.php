@@ -71,7 +71,8 @@ class ServiceController extends Controller
      *
      * @urlParam services string 1,2,3,4
      * @urlParam name string ex: my service
-     * @urlParam status string ex: pending,active
+     * @urlParam status string ex: pending,active,blocked
+     * @urlParam catalog_status string ex: pending,active
      * @urlParam order_by string ex: asc/desc
      * @urlParam from_date string Example: Y-m-d
      * @urlParam to_date string Example: Y-m-d
