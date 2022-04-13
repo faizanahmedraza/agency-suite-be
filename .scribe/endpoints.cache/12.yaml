@@ -25,7 +25,7 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: qui
+        example: nobis
         type: string
         custom: []
       logo:
@@ -39,20 +39,27 @@ endpoints:
         name: favicon
         description: 'ex: base64imageFile formats: png,x-icon'
         required: false
-        example: in
+        example: unde
         type: string
         custom: []
       primary_color:
         name: primary_color
         description: 'ex: ''#fsfsd'''
         required: false
-        example: deserunt
+        example: sint
+        type: string
+        custom: []
+      secondary_color:
+        name: secondary_color
+        description: 'ex: ''#fsfsd'''
+        required: false
+        example: explicabo
         type: string
         custom: []
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        content: "{\r\n  \"data\": {\r\n    \"portal_settings\": {\r\n      \"id\": 1,\r\n      \"primary_color\": \"#re343\",\r\n      \"secondary_color\": \"#re343\",\r\n      \"logo\": \"https://res.cloudinary.com/saasfa/image/upload/v1649398902/service-624fd476069c5.png\",\r\n      \"favicon\": \"https://res.cloudinary.com/saasfa/image/upload/v1649398902/service-624fd476069c5.png\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\",\r\n      \"agency\": {\r\n        \"id\": 3,\r\n        \"name\": \"abc agency 123\",\r\n        \"default_domain\": \"abcagency123.agency.test\",\r\n        \"created_at\": \"2022-03-09T07:41:21.000000Z\"\r\n      }\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
       -
@@ -65,4 +72,29 @@ endpoints:
         content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
         description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/agencies/portal-settings
+    metadata:
+      title: |-
+        Public Portal Settings Api
+        This api update portal settings.
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"portal_settings\": {\r\n      \"id\": 1,\r\n      \"primary_color\": \"#re343\",\r\n      \"secondary_color\": \"#re343\",\r\n      \"logo\": \"https://res.cloudinary.com/saasfa/image/upload/v1649398902/service-624fd476069c5.png\",\r\n      \"favicon\": \"https://res.cloudinary.com/saasfa/image/upload/v1649398902/service-624fd476069c5.png\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\",\r\n      \"agency\": {\r\n        \"id\": 3,\r\n        \"name\": \"abc agency 123\",\r\n        \"default_domain\": \"abcagency123.agency.test\",\r\n        \"created_at\": \"2022-03-09T07:41:21.000000Z\"\r\n      }\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
     responseFields: []
