@@ -35,6 +35,8 @@ class CustomerService
 
         self::assignUserRole($request,$user);
 
+        (new UserVerificationService())->generateVerificationCode($user);
+
         return $user->fresh();
     }
 

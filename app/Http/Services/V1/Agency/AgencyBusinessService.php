@@ -150,6 +150,8 @@ class AgencyBusinessService
             $services->whereDate('created_at', '<=', $to);
         }
 
+        $services->where('agency_id',app('agency')->id);
+
         return ($request->filled('pagination') && $request->get('pagination') == 'false')
             ? $services->get()
             : $services->paginate(\pageLimit($request));

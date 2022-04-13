@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 class PublicPortalSettingController extends Controller
 {
     /**
-     * Public Portal Settings
+     * Public Portal Settings Api
      * This api update portal settings.
      *
      * @header Domain string required

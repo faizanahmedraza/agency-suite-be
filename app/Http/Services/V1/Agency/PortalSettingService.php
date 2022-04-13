@@ -17,12 +17,12 @@ class PortalSettingService
 {
     public static function first()
     {
-        $agency = Agency::with('domains')->where('id', app('agency')->id)->first();
+        $setting = PortalSetting::with('agency')->where('agency_id', app('agency')->id)->first();
 
-        if (!$agency) {
+        if (!$setting) {
             throw ModelException::dataNotFound();
         }
-        return $agency;
+        return $setting;
     }
 
     public static function update(Request $request)
@@ -42,7 +42,7 @@ class PortalSettingService
             }
         }
 
-        $setting = PortalSetting::where('agency_id', app('agency')->id)->where('user_id', Auth::id())->first();
+        $setting = PortalSetting::where('agency_id', app('agency')->id)->first();
 
         if (!$setting) {
             $setting = new PortalSetting();
@@ -63,6 +63,7 @@ class PortalSettingService
         if (!$setting) {
             throw FailureException::serverError();
         }
+        $setting->load('agency');
         return $setting;
     }
 }
