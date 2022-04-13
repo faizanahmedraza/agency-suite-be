@@ -10,7 +10,6 @@ use App\Http\Services\V1\Agency\AgencyDomainService;
 
 /**
  * @group Agency Domain Launch
- * @authenticated
  */
 class DomainLaunchController extends Controller
 {
