@@ -8,7 +8,9 @@ endpoints:
       - POST
     uri: v1/agencies/public/domain-launch
     metadata:
-      title: ''
+      title: |-
+        Public Agency Domain Launch Api
+        This api to verify the domain before jump to agency portal.
       description: ''
       authenticated: false
       custom: []
@@ -17,6 +19,23 @@ endpoints:
       Accept: application/json
     urlParameters: []
     queryParameters: []
-    bodyParameters: []
-    responses: []
+    bodyParameters:
+      domain:
+        name: domain
+        description: ''
+        required: true
+        example: ad
+        type: string
+        custom: []
+    responses:
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"portal_settings\": {\r\n      \"id\": 1,\r\n      \"primary_color\": \"#re343\",\r\n      \"secondary_color\": \"#re343\",\r\n      \"logo\": \"https://res.cloudinary.com/saasfa/image/upload/v1649398902/service-624fd476069c5.png\",\r\n      \"favicon\": \"https://res.cloudinary.com/saasfa/image/upload/v1649398902/service-624fd476069c5.png\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\",\r\n      \"agency\": {\r\n        \"id\": 3,\r\n        \"name\": \"abc agency 123\",\r\n        \"default_domain\": \"abcagency123.agency.test\",\r\n        \"created_at\": \"2022-03-09T07:41:21.000000Z\"\r\n      }\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
     responseFields: []
