@@ -50,10 +50,14 @@ class PortalSettingService
         }
 
         if ($request->has('logo') && !empty($request->logo)) {
-            $setting->logo = CloudinaryService::upload($request->logo)->secureUrl;
+            if (empty($setting->logo)) {
+                $setting->logo = CloudinaryService::upload($request->logo)->secureUrl;
+            }
         }
         if ($request->has('favicon') && !empty($request->favicon)) {
-            $setting->favicon = CloudinaryService::upload($request->favicon)->secureUrl;
+            if (empty($setting->favicon)) {
+                $setting->favicon = CloudinaryService::upload($request->favicon)->secureUrl;
+            }
         }
         $setting->agency_id = app('agency')->id;
         $setting->user_id = Auth::id();
