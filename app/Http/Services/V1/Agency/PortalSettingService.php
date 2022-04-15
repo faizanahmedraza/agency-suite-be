@@ -12,6 +12,7 @@ use App\Models\AgencyDomain;
 use App\Models\PortalSetting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class PortalSettingService
 {
@@ -49,15 +50,11 @@ class PortalSettingService
             $setting = new PortalSetting();
         }
 
-        if ($request->has('logo') && !empty($request->logo)) {
-            if (empty($setting->logo)) {
-                $setting->logo = CloudinaryService::upload($request->logo)->secureUrl;
-            }
+        if ($request->has('logo') && !empty($request->logo) && !Str::contains($request->logo, ['res', 'https', 'cloudinary'])) {
+            $setting->logo = CloudinaryService::upload($request->logo)->secureUrl;
         }
-        if ($request->has('favicon') && !empty($request->favicon)) {
-            if (empty($setting->favicon)) {
-                $setting->favicon = CloudinaryService::upload($request->favicon)->secureUrl;
-            }
+        if ($request->has('favicon') && !empty($request->favicon) && !Str::contains($request->favicon, ['res', 'https', 'cloudinary'])) {
+            $setting->favicon = CloudinaryService::upload($request->favicon)->secureUrl;
         }
         $setting->agency_id = app('agency')->id;
         $setting->user_id = Auth::id();
