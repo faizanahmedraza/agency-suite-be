@@ -16,10 +16,11 @@ class PortalSettingBusiness
 
     public static function update(Request $request)
     {
-        if ($request->has('logo') && !empty($request->logo) && !validate_base64($request->logo, ['png', 'jpg', 'jpeg'])) {
+        $setting = self::first();
+        if ($request->has('logo') && !empty($request->logo) && !validate_base64($request->logo, ['png', 'jpg', 'jpeg']) && empty($setting) && empty($setting->log)) {
             throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are png,jpg,jpeg.');
         }
-        if ($request->has('favicon') && !empty($request->favicon) && !validate_base64($request->favicon, ['x-icon','png'])) {
+        if ($request->has('favicon') && !empty($request->favicon) && !validate_base64($request->favicon, ['x-icon','png']) && empty($setting) && empty($setting->favicon)) {
             throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are x-icon,png.');
         }
         return PortalSettingService::update($request);

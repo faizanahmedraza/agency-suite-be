@@ -42,7 +42,7 @@ class PortalSettingService
             }
         }
 
-        $setting = PortalSetting::where('agency_id', app('agency')->id)->where('user_id', Auth::id())->first();
+        $setting = PortalSetting::where('agency_id', app('agency')->id)->first();
 
         if (!$setting) {
             $setting = new PortalSetting();
