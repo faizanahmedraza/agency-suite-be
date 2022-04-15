@@ -60,8 +60,8 @@ class PortalSettingService
         }
         $setting->agency_id = app('agency')->id;
         $setting->user_id = Auth::id();
-        $setting->primary_color = !empty($request->primary_color) ? trim($request->primary_color) : null;
-        $setting->secondary_color = !empty($request->secondary_color) ? trim($request->secondary_color) : null;
+        $setting->primary_color = trim($request->primary_color) ?? '';
+        $setting->secondary_color = trim($request->secondary_color) ?? '';
         $setting->save();
 
         if (!$setting) {
