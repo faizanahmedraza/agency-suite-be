@@ -17,8 +17,8 @@ class PortalSettingResource extends Resource
     {
         return [
             'id' => $this->id,
-            "primary_color" => "#re343",
-            "secondary_color" => "#re343",
+            "primary_color" => $this->primary_color,
+            "secondary_color" => $this->secondary_color,
             "logo" => $this->logo,
             "favicon" => $this->favicon,
             'created_at' => $this->created_at,
