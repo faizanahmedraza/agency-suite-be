@@ -67,4 +67,12 @@ class PortalSettingService
         $setting->load('agency');
         return $setting;
     }
+
+    public static function create($user)
+    {
+        $setting = new PortalSetting;
+        $setting->agency_id = $user->agency_id;
+        $setting->user_id = $user->id;
+        $setting->save();
+    }
 }

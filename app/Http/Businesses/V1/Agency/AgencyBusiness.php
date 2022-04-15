@@ -5,6 +5,7 @@ namespace App\Http\Businesses\V1\Agency;
 use App\Exceptions\V1\DomainException;
 use App\Http\Services\V1\Agency\AgencyDomainService;
 use App\Http\Services\V1\Agency\AgencyService;
+use App\Http\Services\V1\Agency\PortalSettingService;
 use App\Http\Services\V1\Agency\UserService;
 use App\Http\Services\V1\Agency\UserVerificationService;
 use App\Http\Wrappers\SegmentWrapper;
@@ -46,6 +47,9 @@ class AgencyBusiness
 
         // create agency owner
         $user = (new UserService())->create($request, $agency, true);
+
+        // create default portal settings
+        PortalSettingService::create($user);
 
         //assign Role
         (new UserService())->assignUserRole($request, $user);
