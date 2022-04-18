@@ -45,7 +45,9 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
     $router->group(['namespace' => 'Agency'], function () use ($router) {
         //Agency + Customer Authentication
         $router->group(['prefix' => 'auth', 'middleware' => 'client_credentials'], function () use ($router) {
-            $router->post('/register', 'AuthenticationController@register');
+            $router->group(['prefix' => 'agencies'], function () use ($router) {
+                $router->post('/register', 'AuthenticationController@register');
+            });
 
             $router->group(['middleware' => 'agency_domain'], function () use ($router) {
                 $router->post('/login', 'AuthenticationController@login');
@@ -73,11 +75,8 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
         //Protected Routes
         $router->group(['prefix' => 'agencies', 'middleware' => ['agency_domain', 'auth', 'agency']], function () use ($router) {
-//            $router->delete('/logout', 'AuthenticationController@logout');
             $router->get('/profile', 'AuthenticationController@profile');
             $router->put('/profile', 'AuthenticationController@profileUpdate');
-//            $router->post('/verification', 'AuthenticationController@generateToken');
-//            $router->put('/change-password', 'AuthenticationController@changePassword');
 
             //User Management apis
             $router->group(['prefix' => 'users'], function () use ($router) {
@@ -135,11 +134,12 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
     });
 
     // Agencies Customers
-    $router->group(['prefix' => 'customers', 'namespace' => 'Customer', 'middleware' => 'agency_domain'], function () use ($router) {
-        $router->group(['middleware' => 'client_credentials'], function () use ($router) {
+    $router->group(['namespace' => 'Customer', 'middleware' => 'agency_domain'], function () use ($router) {
+        $router->group(['prefix' => 'auth/customers', 'middleware' => 'client_credentials'], function () use ($router) {
             $router->post('/register', 'AuthenticationController@register');
         });
-        $router->group(['middleware' => ['customer']], function () use ($router) {
+
+        $router->group(['prefix' => 'customers', 'middleware' => ['customer']], function () use ($router) {
             $router->get('/profile', 'AuthenticationController@profile');
             $router->put('/profile', 'AuthenticationController@profileUpdate');
 
