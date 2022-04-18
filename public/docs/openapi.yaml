@@ -7,895 +7,6 @@ servers:
   -
     url: 'http://agency.test'
 paths:
-  /v1/agencies/auth/register:
-    post:
-      summary: "Register Agency\nThis api is useful for register new Agency and return access token with agency and user information"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                agency_name:
-                  type: string
-                  description: ''
-                  example: 'abc-agency, abc agency'
-                email:
-                  type: email
-                  description: 'User email address'
-                  example: admin@bionicwp.com
-              required:
-                - agency_name
-                - email
-      security: []
-  /v1/agencies/auth/login:
-    post:
-      summary: "Access Token Or Login\nThis function is useful for login, to return access token for agencies."
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    authentication:
-                      access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
-                      token_type: Bearer
-                      expiry: '2022-03-19 07:41:22'
-                      agency:
-                        id: 3
-                        name: 'abc agency 123'
-                        default_domain: abcagency123.agency.test
-                        created_at: '2022-03-09T07:41:21.000000Z'
-                      user:
-                        id: 15
-                        first_name: faizan
-                        last_name: raza
-                        email: agency102@agt.com
-                        last_logged_in: null
-                        status: pending
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      authentication:
-                        access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
-                        token_type: Bearer
-                        expiry: '2022-03-19 07:41:22'
-                        agency:
-                          id: 3
-                          name: 'abc agency 123'
-                          default_domain: abcagency123.agency.test
-                          created_at: '2022-03-09T07:41:21.000000Z'
-                        user:
-                          id: 15
-                          first_name: faizan
-                          last_name: raza
-                          email: agency102@agt.com
-                          last_logged_in: null
-                          status: pending
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: email
-                  description: 'The username of user.'
-                  example: admin@my-app.com
-                password:
-                  type: string
-                  description: 'The password of user.'
-                  example: 'Abc*123*'
-              required:
-                - email
-                - password
-      security: []
-  /v1/agencies/auth/verify-token:
-    post:
-      summary: "Verify Agency\nThis function is used to verify a new agency"
-      description: ''
-      parameters:
-        -
-          in: query
-          name: token
-          description: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
-          example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
-          required: true
-          schema:
-            type: string
-            description: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
-            example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    authentication:
-                      access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
-                      token_type: Bearer
-                      expiry: '2022-03-19 07:41:22'
-                      agency:
-                        id: 3
-                        name: 'abc agency 123'
-                        default_domain: abcagency123.agency.test
-                        created_at: '2022-03-09T07:41:21.000000Z'
-                      user:
-                        id: 15
-                        first_name: faizan
-                        last_name: raza
-                        email: agency102@agt.com
-                        last_logged_in: null
-                        status: pending
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      authentication:
-                        access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
-                        token_type: Bearer
-                        expiry: '2022-03-19 07:41:22'
-                        agency:
-                          id: 3
-                          name: 'abc agency 123'
-                          default_domain: abcagency123.agency.test
-                          created_at: '2022-03-09T07:41:21.000000Z'
-                        user:
-                          id: 15
-                          first_name: faizan
-                          last_name: raza
-                          email: agency102@agt.com
-                          last_logged_in: null
-                          status: pending
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-                password_confirmation:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-              required:
-                - password
-                - password_confirmation
-      security: []
-  /v1/agencies/auth/forget-password:
-    post:
-      summary: "Forgot Password\nThis api will send an email to valid user with token for resetting his/her password"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: String
-                  description: 'User valid email address'
-                  example: user@bionicwp.com
-              required:
-                - email
-      security: []
-  /v1/agencies/auth/create-new-password:
-    post:
-      summary: "Create New Password\nauthenticate user request and then create new password"
-      description: ''
-      parameters:
-        -
-          in: query
-          name: token
-          description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
-          example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
-          required: true
-          schema:
-            type: string
-            description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
-            example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-                password_confirmation:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-              required:
-                - password
-                - password_confirmation
-      security: []
-  /v1/agencies/logout:
-    delete:
-      summary: "Logout\nHit api and session get out"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Authentication'
-  /v1/agencies/verification:
-    post:
-      summary: "Generate Verification Token\nThis function generate new verification token of user"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-      tags:
-        - 'Agency Authentication'
-  /v1/agencies/change-password:
-    put:
-      summary: "Change Password\nchange password request of user"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-                password_confirmation:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-              required:
-                - password
-                - password_confirmation
   /v1/agencies/profile:
     get:
       summary: "Profile\nGet Profile Info"
@@ -1077,13 +188,902 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: aliquam
+                  example: et
                 image:
                   type: String
                   description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: ratione
+                  example: molestiae
               required:
                 - name
+  /v1/auth/agencies/register:
+    post:
+      summary: "Register Agency\nThis api is useful for register new Agency and return access token with agency and user information"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                agency_name:
+                  type: string
+                  description: ''
+                  example: 'abc-agency, abc agency'
+                email:
+                  type: email
+                  description: 'User email address'
+                  example: admin@bionicwp.com
+              required:
+                - agency_name
+                - email
+      security: []
+  /v1/auth/login:
+    post:
+      summary: "Access Token Or Login\nThis function is useful for login, to return access token for agencies."
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    authentication:
+                      access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
+                      token_type: Bearer
+                      expiry: '2022-03-19 07:41:22'
+                      agency:
+                        id: 3
+                        name: 'abc agency 123'
+                        default_domain: abcagency123.agency.test
+                        created_at: '2022-03-09T07:41:21.000000Z'
+                      user:
+                        id: 15
+                        first_name: faizan
+                        last_name: raza
+                        email: agency102@agt.com
+                        last_logged_in: null
+                        status: pending
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      authentication:
+                        access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
+                        token_type: Bearer
+                        expiry: '2022-03-19 07:41:22'
+                        agency:
+                          id: 3
+                          name: 'abc agency 123'
+                          default_domain: abcagency123.agency.test
+                          created_at: '2022-03-09T07:41:21.000000Z'
+                        user:
+                          id: 15
+                          first_name: faizan
+                          last_name: raza
+                          email: agency102@agt.com
+                          last_logged_in: null
+                          status: pending
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: email
+                  description: 'The username of user.'
+                  example: admin@my-app.com
+                password:
+                  type: string
+                  description: 'The password of user.'
+                  example: 'Abc*123*'
+              required:
+                - email
+                - password
+      security: []
+  /v1/auth/verify-token:
+    post:
+      summary: "Verify Agency\nThis function is used to verify a new agency"
+      description: ''
+      parameters:
+        -
+          in: query
+          name: token
+          description: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+          example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+          required: true
+          schema:
+            type: string
+            description: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+            example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    authentication:
+                      access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
+                      token_type: Bearer
+                      expiry: '2022-03-19 07:41:22'
+                      agency:
+                        id: 3
+                        name: 'abc agency 123'
+                        default_domain: abcagency123.agency.test
+                        created_at: '2022-03-09T07:41:21.000000Z'
+                      user:
+                        id: 15
+                        first_name: faizan
+                        last_name: raza
+                        email: agency102@agt.com
+                        last_logged_in: null
+                        status: pending
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      authentication:
+                        access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
+                        token_type: Bearer
+                        expiry: '2022-03-19 07:41:22'
+                        agency:
+                          id: 3
+                          name: 'abc agency 123'
+                          default_domain: abcagency123.agency.test
+                          created_at: '2022-03-09T07:41:21.000000Z'
+                        user:
+                          id: 15
+                          first_name: faizan
+                          last_name: raza
+                          email: agency102@agt.com
+                          last_logged_in: null
+                          status: pending
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+                password_confirmation:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+              required:
+                - password
+                - password_confirmation
+      security: []
+  /v1/auth/forget-password:
+    post:
+      summary: "Forgot Password\nThis api will send an email to valid user with token for resetting his/her password"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: String
+                  description: 'User valid email address'
+                  example: user@bionicwp.com
+              required:
+                - email
+      security: []
+  /v1/auth/create-new-password:
+    post:
+      summary: "Create New Password\nauthenticate user request and then create new password"
+      description: ''
+      parameters:
+        -
+          in: query
+          name: token
+          description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
+          example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
+          required: true
+          schema:
+            type: string
+            description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
+            example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+                password_confirmation:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+              required:
+                - password
+                - password_confirmation
+      security: []
+  /v1/logout:
+    delete:
+      summary: "Logout\nHit api and session get out"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Authentication'
+  /v1/verification:
+    post:
+      summary: "Generate Verification Token\nThis function generate new verification token of user"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+      tags:
+        - 'Agency Authentication'
+  /v1/change-password:
+    put:
+      summary: "Change Password\nchange password request of user"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Agency Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+                password_confirmation:
+                  type: String
+                  description: abcd1234
+                  example: abcd1234
+              required:
+                - password
+                - password_confirmation
   /v1/agencies/customers:
     get:
       summary: "Customers List\nThis api return the collection of all Agency Customers."
@@ -1326,15 +1326,15 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: itaque
+                  example: quia
                 last_name:
                   type: String
                   description: ''
-                  example: molestias
+                  example: saepe
                 email:
                   type: String
                   description: 'ex: abc.com,xyz.co'
-                  example: est
+                  example: incidunt
               required:
                 - first_name
                 - last_name
@@ -1353,7 +1353,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sint
+            value: sit
       -
         in: path
         name: email
@@ -1367,7 +1367,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: autem
+            value: quas
       -
         in: path
         name: first_name
@@ -1381,7 +1381,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: vitae
+            value: eum
       -
         in: path
         name: last_name
@@ -1395,7 +1395,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: esse
+            value: dolor
       -
         in: path
         name: full_name
@@ -1409,7 +1409,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: itaque
+            value: atque
       -
         in: path
         name: status
@@ -1423,7 +1423,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: cumque
+            value: minima
       -
         in: path
         name: order_by
@@ -1437,7 +1437,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: omnis
+            value: ad
       -
         in: path
         name: from_date
@@ -1479,7 +1479,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: true
+            value: false
       -
         in: path
         name: page_limit
@@ -1493,7 +1493,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 9
+            value: 3
       -
         in: path
         name: page
@@ -1507,7 +1507,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 8
+            value: 4
   '/v1/agencies/customers/{id}':
     get:
       summary: "Customer Details\nThis api show the details of requested Customer."
@@ -1757,11 +1757,11 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: autem
+                  example: officiis
                 last_name:
                   type: String
                   description: ''
-                  example: voluptatum
+                  example: distinctio
               required:
                 - first_name
                 - last_name
@@ -1857,7 +1857,7 @@ paths:
         in: path
         name: id
         description: Integer
-        example: recusandae
+        example: qui
         required: true
         schema:
           type: string
@@ -1947,11 +1947,11 @@ paths:
         in: path
         name: id
         description: ''
-        example: 3
+        example: 19
         required: true
         schema:
           type: integer
-  /v1/agencies/public/domain-launch:
+  /v1/public/domain-launch:
     post:
       summary: "Public Agency Domain Launch Api\nThis api to verify the domain before jump to agency portal."
       description: ''
@@ -2059,7 +2059,7 @@ paths:
                 domain:
                   type: string
                   description: ''
-                  example: ad
+                  example: perferendis
               required:
                 - domain
       security: []
@@ -2362,7 +2362,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: pariatur
+            value: quasi
       -
         in: path
         name: customer_id
@@ -2376,7 +2376,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 20
+            value: 17
       -
         in: path
         name: title
@@ -2390,7 +2390,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: qui
+            value: dolore
       -
         in: path
         name: order_by
@@ -2404,7 +2404,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dolor
+            value: autem
       -
         in: path
         name: from_date
@@ -2446,7 +2446,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: false
+            value: true
       -
         in: path
         name: page_limit
@@ -2474,7 +2474,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 16
+            value: 3
   '/v1/agencies/request-services/{id}':
     get:
       summary: 'Get Request Service details by Id'
@@ -2593,7 +2593,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 2
+        example: 11
         required: true
         schema:
           type: integer
@@ -2870,12 +2870,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: delectus
+                  example: velit
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - consequatur
+                    - quia
                   items:
                     type: string
               required:
@@ -2894,7 +2894,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: soluta
+            value: tempore
       -
         in: path
         name: from_date
@@ -2936,7 +2936,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: false
+            value: true
       -
         in: path
         name: page_limit
@@ -2950,7 +2950,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 15
+            value: 1
       -
         in: path
         name: page
@@ -2964,7 +2964,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 14
+            value: 8
   '/v1/agencies/roles/{id}':
     get:
       summary: "Role Details\nThis api show the details of requested Role."
@@ -3194,12 +3194,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: pariatur
+                  example: sint
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - enim
+                    - consequatur
                   items:
                     type: string
               required:
@@ -3296,7 +3296,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: perferendis
+        example: error
         required: true
         schema:
           type: string
@@ -3304,7 +3304,7 @@ paths:
         in: path
         name: role_id
         description: Integer
-        example: sapiente
+        example: quas
         required: true
         schema:
           type: string
@@ -3661,43 +3661,43 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: laudantium
+                  example: ea
                 description:
                   type: string
                   description: ''
-                  example: delectus
+                  example: possimus
                 image:
                   type: string
                   description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: similique
+                  example: quibusdam
                 subscription_type:
                   type: string
                   description: 'ex: ''one-off'' ,''recurring'''
-                  example: fugit
+                  example: numquam
                 price:
                   type: integer
                   description: 'only if subscription_type is one_off ex: 123'
-                  example: 1
+                  example: 12
                 purchase_limit:
                   type: integer
                   description: 'optional only if subscription_type is one_off ex: 12'
-                  example: 16
+                  example: 4
                 weekly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 4
+                  example: 14
                 monthly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 17
+                  example: 8
                 quarterly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 2
+                  example: 3
                 biannually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 20
+                  example: 4
                 annually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
@@ -3705,11 +3705,11 @@ paths:
                 max_concurrent_requests:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 10
+                  example: 11
                 max_requests_per_month:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 8
+                  example: 6
               required:
                 - name
                 - description
@@ -3734,7 +3734,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: veniam
+            value: illum
       -
         in: path
         name: name
@@ -3748,7 +3748,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: expedita
+            value: recusandae
       -
         in: path
         name: status
@@ -3762,7 +3762,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sed
+            value: cumque
       -
         in: path
         name: catalog_status
@@ -3776,7 +3776,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: labore
+            value: aut
       -
         in: path
         name: order_by
@@ -3790,7 +3790,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: facere
+            value: dolor
       -
         in: path
         name: from_date
@@ -3846,7 +3846,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 3
+            value: 16
       -
         in: path
         name: page
@@ -3860,7 +3860,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 1
+            value: 14
   '/v1/agencies/services/{id}':
     get:
       summary: "Show Service Details\nThis api show the service details."
@@ -4172,55 +4172,55 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: nostrum
+                  example: fugit
                 description:
                   type: string
                   description: ''
-                  example: explicabo
+                  example: repellendus
                 image:
                   type: string
                   description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: quam
+                  example: eveniet
                 subscription_type:
                   type: string
                   description: 'ex: ''one-off'' ,''recurring'''
-                  example: quisquam
+                  example: ipsam
                 price:
                   type: integer
                   description: 'only if subscription_type is one_off ex: 123'
-                  example: 12
+                  example: 8
                 purchase_limit:
                   type: integer
                   description: 'optional only if subscription_type is one_off ex: 12'
-                  example: 11
+                  example: 20
                 weekly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 1
+                  example: 15
                 monthly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 19
+                  example: 17
                 quarterly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 12
+                  example: 15
                 biannually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 7
+                  example: 3
                 annually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 20
+                  example: 8
                 max_concurrent_requests:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 3
+                  example: 11
                 max_requests_per_month:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 16
+                  example: 5
               required:
                 - name
                 - description
@@ -4316,7 +4316,7 @@ paths:
         in: path
         name: id
         description: Integer
-        example: illum
+        example: non
         required: true
         schema:
           type: string
@@ -4406,7 +4406,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 7
+        example: 5
         required: true
         schema:
           type: integer
@@ -4496,7 +4496,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 9
+        example: 6
         required: true
         schema:
           type: integer
@@ -5035,39 +5035,39 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: mollitia
+                  example: consequatur
                 last_name:
                   type: String
                   description: ''
-                  example: corporis
+                  example: voluptatem
                 email:
                   type: email
                   description: ''
-                  example: porro
+                  example: qui
                 password:
                   type: String
                   description: ''
-                  example: tenetur
+                  example: veniam
                 password_confirmation:
                   type: String
                   description: ''
-                  example: architecto
+                  example: esse
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: qui
+                  example: tempora
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - itaque
+                    - sit
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - dolorem
+                    - harum
                   items:
                     type: string
               required:
@@ -5089,7 +5089,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: rem
+            value: aut
       -
         in: path
         name: email
@@ -5103,7 +5103,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: cumque
+            value: maiores
       -
         in: path
         name: first_name
@@ -5117,7 +5117,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: doloribus
+            value: quia
       -
         in: path
         name: last_name
@@ -5131,7 +5131,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: debitis
+            value: aut
       -
         in: path
         name: full_name
@@ -5145,7 +5145,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: molestiae
+            value: deserunt
       -
         in: path
         name: status
@@ -5159,7 +5159,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dicta
+            value: error
       -
         in: path
         name: order_by
@@ -5173,7 +5173,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: molestias
+            value: unde
       -
         in: path
         name: from_date
@@ -5215,7 +5215,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: true
+            value: false
       -
         in: path
         name: page_limit
@@ -5229,7 +5229,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 2
+            value: 9
       -
         in: path
         name: page
@@ -5243,7 +5243,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 14
+            value: 1
       -
         in: path
         name: roles
@@ -5257,7 +5257,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sint
+            value: ex
   '/v1/agencies/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -5545,27 +5545,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: architecto
+                  example: deleniti
                 last_name:
                   type: String
                   description: ''
-                  example: minus
+                  example: autem
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: nisi
+                  example: natus
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - ut
+                    - perspiciatis
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - cum
+                    - cumque
                   items:
                     type: string
               required:
@@ -5658,7 +5658,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: dolore
+        example: ducimus
         required: true
         schema:
           type: string
@@ -5666,7 +5666,7 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: repellat
+        example: ut
         required: true
         schema:
           type: string
@@ -5756,7 +5756,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: laborum
+        example: eveniet
         required: true
         schema:
           type: string
@@ -5764,7 +5764,7 @@ paths:
         in: path
         name: user_id
         description: ''
-        example: 13
+        example: 4
         required: true
         schema:
           type: integer
@@ -5831,7 +5831,7 @@ paths:
                 password:
                   type: string
                   description: 'ex: 123456'
-                  example: ducimus
+                  example: saepe
               required:
                 - password
     parameters:
@@ -5839,7 +5839,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 9
+        example: 18
         required: true
         schema:
           type: integer
@@ -6167,748 +6167,6 @@ paths:
                     example: 'Operation failed'
       tags:
         - Authentication
-  /v1/customers/register:
-    post:
-      summary: "Register Customer\nThis api is useful for register new Customer and return access token with Customer information"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                  description: 'User first name'
-                  example: Bionic
-                last_name:
-                  type: string
-                  description: 'User last name'
-                  example: WP
-                email:
-                  type: email
-                  description: 'User email address'
-                  example: admin@bionicwp.com
-              required:
-                - first_name
-                - last_name
-                - email
-      security: []
-  /v1/customers/verify-token:
-    post:
-      summary: "Verify Customer\nThis function is useful to verify a new customer"
-      description: ''
-      parameters:
-        -
-          in: query
-          name: token
-          description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
-          example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
-          required: true
-          schema:
-            type: string
-            description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
-            example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    authentication:
-                      access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
-                      token_type: Bearer
-                      expiry: '2022-03-19 07:41:22'
-                      agency:
-                        id: 3
-                        name: 'abc agency 123'
-                        default_domain: abcagency123.agency.test
-                        created_at: '2022-03-09T07:41:21.000000Z'
-                      user:
-                        id: 15
-                        first_name: faizan
-                        last_name: raza
-                        email: agency102@agt.com
-                        last_logged_in: null
-                        status: pending
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      authentication:
-                        access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
-                        token_type: Bearer
-                        expiry: '2022-03-19 07:41:22'
-                        agency:
-                          id: 3
-                          name: 'abc agency 123'
-                          default_domain: abcagency123.agency.test
-                          created_at: '2022-03-09T07:41:21.000000Z'
-                        user:
-                          id: 15
-                          first_name: faizan
-                          last_name: raza
-                          email: agency102@agt.com
-                          last_logged_in: null
-                          status: pending
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-                password_confirmation:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-              required:
-                - password
-                - password_confirmation
-      security: []
-  /v1/customers/login:
-    post:
-      summary: "Access Token Or Login\nThis function is useful for login, to return access token for customer."
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    authentication:
-                      access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
-                      token_type: Bearer
-                      expiry: '2022-03-19 07:41:22'
-                      agency:
-                        id: 3
-                        name: 'abc agency 123'
-                        default_domain: abcagency123.agency.test
-                        created_at: '2022-03-09T07:41:21.000000Z'
-                      user:
-                        id: 15
-                        first_name: faizan
-                        last_name: raza
-                        email: agency102@agt.com
-                        last_logged_in: null
-                        status: pending
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      authentication:
-                        access_token: eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw
-                        token_type: Bearer
-                        expiry: '2022-03-19 07:41:22'
-                        agency:
-                          id: 3
-                          name: 'abc agency 123'
-                          default_domain: abcagency123.agency.test
-                          created_at: '2022-03-09T07:41:21.000000Z'
-                        user:
-                          id: 15
-                          first_name: faizan
-                          last_name: raza
-                          email: agency102@agt.com
-                          last_logged_in: null
-                          status: pending
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: email
-                  description: 'The username of user.'
-                  example: customer@my-app.com
-                password:
-                  type: string
-                  description: 'The password of user.'
-                  example: 'Abc*123*'
-              required:
-                - email
-                - password
-      security: []
-  /v1/customers/forget-password:
-    post:
-      summary: "Forgot Password\nThis api will send an email to valid customer with token for resetting the password"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: String
-                  description: 'User valid email address'
-                  example: user@bionicwp.com
-              required:
-                - email
-      security: []
-  /v1/customers/create-new-password:
-    post:
-      summary: "Create New Password\nauthenticate customer request and then create new password"
-      description: ''
-      parameters:
-        -
-          in: query
-          name: token
-          description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
-          example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
-          required: true
-          schema:
-            type: string
-            description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
-            example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                password:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-                password_confirmation:
-                  type: String
-                  description: abcd1234
-                  example: abcd1234
-              required:
-                - password
-                - password_confirmation
-      security: []
-  /v1/customers/logout:
-    delete:
-      summary: "Logout\nHit api and session logout"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
   /v1/customers/profile:
     get:
       summary: "Profile\nGet Profile Info"
@@ -7086,18 +6344,137 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: dolor
+                  example: vitae
                 last_name:
                   type: String
                   description: ''
-                  example: voluptatem
+                  example: rerum
                 image:
                   type: String
                   description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: doloribus
+                  example: voluptatem
               required:
                 - first_name
                 - last_name
+  /v1/auth/customers/register:
+    post:
+      summary: "Register Customer\nThis api is useful for register new Customer and return access token with Customer information"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-ID
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+        -
+          in: header
+          name: Client-Secret
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Customer Authentication'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                  description: 'User first name'
+                  example: Bionic
+                last_name:
+                  type: string
+                  description: 'User last name'
+                  example: WP
+                email:
+                  type: email
+                  description: 'User email address'
+                  example: admin@bionicwp.com
+              required:
+                - first_name
+                - last_name
+                - email
+      security: []
   /v1/customers/billing-information:
     get:
       summary: "Show Billing Information\nThis api show the billing information details."
@@ -7309,31 +6686,31 @@ paths:
                 invoice_to:
                   type: string
                   description: ''
-                  example: id
+                  example: rerum
                 address:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: voluptate
                 country:
                   type: string
                   description: ''
-                  example: minima
+                  example: sed
                 city:
                   type: string
                   description: ''
-                  example: odit
+                  example: inventore
                 state:
                   type: string
                   description: ''
-                  example: tempora
+                  example: sed
                 zip_code:
                   type: integer
                   description: ''
-                  example: 10
+                  example: 9
                 tax_code:
                   type: string
                   description: optional
-                  example: ut
+                  example: corporis
               required:
                 - invoice_to
                 - address
@@ -7479,31 +6856,31 @@ paths:
                 invoice_to:
                   type: string
                   description: ''
-                  example: officia
+                  example: est
                 address:
                   type: string
                   description: ''
-                  example: voluptatem
+                  example: ut
                 country:
                   type: string
                   description: ''
-                  example: earum
+                  example: voluptate
                 city:
                   type: string
                   description: ''
-                  example: saepe
+                  example: voluptates
                 state:
                   type: string
                   description: ''
-                  example: facere
+                  example: sit
                 zip_code:
                   type: integer
                   description: ''
-                  example: 14
+                  example: 6
                 tax_code:
                   type: string
                   description: optional
-                  example: beatae
+                  example: alias
               required:
                 - invoice_to
                 - address
@@ -7796,20 +7173,20 @@ paths:
                 service_id:
                   type: integer
                   description: ''
-                  example: 3
+                  example: 12
                 recurring_type:
                   type: string
                   description: 'Example : weekly,monthly,quarterly,biannually,annually'
-                  example: earum
+                  example: optio
                 refrence_no:
                   type: string
                   description: ''
-                  example: commodi
+                  example: cum
                 intake_form:
                   type: array
                   description: 'Example :{key1:value1,key2:value2}'
                   example:
-                    - repellendus
+                    - eligendi
                   items:
                     type: string
               required:
@@ -7831,7 +7208,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: explicabo
+            value: rem
       -
         in: path
         name: title
@@ -7845,7 +7222,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: culpa
+            value: sunt
       -
         in: path
         name: order_by
@@ -7859,7 +7236,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: maiores
+            value: veritatis
       -
         in: path
         name: from_date
@@ -7915,7 +7292,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 16
+            value: 6
       -
         in: path
         name: page
@@ -7929,7 +7306,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 4
+            value: 7
   '/v1/customers/request-services/{id}':
     get:
       summary: 'Get Request Service details by Id'
@@ -8048,7 +7425,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 13
+        example: 3
         required: true
         schema:
           type: integer
@@ -8358,24 +7735,24 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: dicta
+                  example: quo
                 logo:
                   type: string
                   description: 'ex: base64imageFile formats: png,jpeg,jpg'
-                  example: dignissimos
+                  example: excepturi
                 favicon:
                   type: string
                   description: 'ex: base64imageFile formats: png,x-icon'
-                  example: dignissimos
+                  example: aut
                 primary_color:
                   type: string
                   description: 'ex: ''#fsfsd'''
-                  example: voluptas
+                  example: exercitationem
                 secondary_color:
                   type: string
                   description: 'ex: ''#fsfsd'''
-                  example: ipsa
-  /v1/agencies/public/portal-settings:
+                  example: numquam
+  /v1/public/portal-settings:
     get:
       summary: "Public Portal Settings Api\nThis api update portal settings."
       description: ''
@@ -8712,12 +8089,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: numquam
+                  example: laudantium
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - qui
+                    - consequatur
                   items:
                     type: string
               required:
@@ -8736,7 +8113,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: facilis
+            value: occaecati
       -
         in: path
         name: from_date
@@ -8778,7 +8155,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: true
+            value: false
       -
         in: path
         name: page_limit
@@ -8792,7 +8169,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 9
+            value: 19
       -
         in: path
         name: page
@@ -8806,7 +8183,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 5
+            value: 9
   '/v1/admins/roles/{id}':
     get:
       summary: "Role Details\nThis api show the details of requested Role."
@@ -9022,12 +8399,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: nostrum
+                  example: dolores
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - nihil
+                    - voluptatum
                   items:
                     type: string
               required:
@@ -9117,7 +8494,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: placeat
+        example: voluptatem
         required: true
         schema:
           type: string
@@ -9125,7 +8502,7 @@ paths:
         in: path
         name: role_id
         description: Integer
-        example: eligendi
+        example: earum
         required: true
         schema:
           type: string
@@ -9650,39 +9027,39 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: magni
+                  example: sequi
                 last_name:
                   type: String
                   description: ''
-                  example: ea
+                  example: molestiae
                 email:
                   type: email
                   description: ''
-                  example: voluptatem
+                  example: aperiam
                 password:
                   type: String
                   description: ''
-                  example: eos
+                  example: qui
                 password_confirmation:
                   type: String
                   description: ''
-                  example: quisquam
+                  example: illum
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: omnis
+                  example: quis
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - nam
+                    - omnis
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - asperiores
+                    - et
                   items:
                     type: string
               required:
@@ -9704,7 +9081,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: ad
+            value: et
       -
         in: path
         name: email
@@ -9718,7 +9095,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: architecto
+            value: blanditiis
       -
         in: path
         name: first_name
@@ -9732,7 +9109,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: perspiciatis
+            value: veritatis
       -
         in: path
         name: last_name
@@ -9746,7 +9123,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: quis
+            value: ut
       -
         in: path
         name: full_name
@@ -9760,7 +9137,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: voluptatem
+            value: necessitatibus
       -
         in: path
         name: status
@@ -9774,7 +9151,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: deserunt
+            value: hic
       -
         in: path
         name: order_by
@@ -9788,7 +9165,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: est
+            value: voluptas
       -
         in: path
         name: from_date
@@ -9844,7 +9221,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 6
+            value: 12
       -
         in: path
         name: page
@@ -9858,7 +9235,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 11
+            value: 14
       -
         in: path
         name: roles
@@ -9872,7 +9249,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: qui
+            value: sed
   '/v1/admins/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -10146,27 +9523,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: ea
+                  example: quidem
                 last_name:
                   type: String
                   description: ''
-                  example: est
+                  example: ut
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: qui
+                  example: cupiditate
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - eaque
+                    - expedita
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - consequatur
+                    - et
                   items:
                     type: string
               required:
@@ -10252,7 +9629,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: illum
+        example: quo
         required: true
         schema:
           type: string
@@ -10260,7 +9637,7 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: vero
+        example: aspernatur
         required: true
         schema:
           type: string
@@ -10343,7 +9720,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: quam
+        example: amet
         required: true
         schema:
           type: string
@@ -10351,7 +9728,7 @@ paths:
         in: path
         name: user_id
         description: ''
-        example: 5
+        example: 12
         required: true
         schema:
           type: integer
@@ -10411,7 +9788,7 @@ paths:
                 password:
                   type: string
                   description: 'ex: 123456'
-                  example: perspiciatis
+                  example: velit
               required:
                 - password
     parameters:
@@ -10419,7 +9796,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 2
+        example: 8
         required: true
         schema:
           type: integer

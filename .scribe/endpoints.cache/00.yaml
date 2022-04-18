@@ -5,8 +5,80 @@ description: ''
 endpoints:
   -
     httpMethods:
+      - GET
+    uri: v1/agencies/profile
+    metadata:
+      title: |-
+        Profile
+        Get Profile Info
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": {\r\n        \"profile\": {\r\n            \"name\": \"agencytest12\",\r\n            \"image\": \"\"\r\n        },\r\n        \"permissions\": [\r\n            \"access_all\"\r\n        ]\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: v1/agencies/profile
+    metadata:
+      title: 'Update Profile'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: et
+        type: String
+        custom: []
+      image:
+        name: image
+        description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
+        required: false
+        example: molestiae
+        type: String
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
       - POST
-    uri: v1/agencies/auth/register
+    uri: v1/auth/agencies/register
     metadata:
       title: |-
         Register Agency
@@ -51,7 +123,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/agencies/auth/login
+    uri: v1/auth/login
     metadata:
       title: |-
         Access Token Or Login
@@ -97,7 +169,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/agencies/auth/verify-token
+    uri: v1/auth/verify-token
     metadata:
       title: |-
         Verify Agency
@@ -150,7 +222,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/agencies/auth/forget-password
+    uri: v1/auth/forget-password
     metadata:
       title: |-
         Forgot Password
@@ -189,7 +261,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/agencies/auth/create-new-password
+    uri: v1/auth/create-new-password
     metadata:
       title: |-
         Create New Password
@@ -242,7 +314,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: v1/agencies/logout
+    uri: v1/logout
     metadata:
       title: |-
         Logout
@@ -273,7 +345,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/agencies/verification
+    uri: v1/verification
     metadata:
       title: |-
         Generate Verification Token
@@ -299,7 +371,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: v1/agencies/change-password
+    uri: v1/change-password
     metadata:
       title: |-
         Change Password
@@ -326,78 +398,6 @@ endpoints:
         description: abcd1234
         required: true
         example: abcd1234
-        type: String
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: v1/agencies/profile
-    metadata:
-      title: |-
-        Profile
-        Get Profile Info
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": {\r\n        \"profile\": {\r\n            \"name\": \"agencytest12\",\r\n            \"image\": \"\"\r\n        },\r\n        \"permissions\": [\r\n            \"access_all\"\r\n        ]\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: v1/agencies/profile
-    metadata:
-      title: 'Update Profile'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: true
-        example: aliquam
-        type: String
-        custom: []
-      image:
-        name: image
-        description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-        required: false
-        example: ratione
         type: String
         custom: []
     responses:
