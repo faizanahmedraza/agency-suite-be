@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Services\V1\Agency\UserService;
 use Closure;
 use Illuminate\Contracts\Auth\Factory as Auth;
 

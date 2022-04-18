@@ -24,7 +24,7 @@ class UserService
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->password = Hash::make('12345678');
-        $user->username = strtolower($request->email);
+        $user->username = clean($request->email);
         if (!$owner) {
             if (isset($request->status)) {
                 $user->status = User::STATUS[$request->status];

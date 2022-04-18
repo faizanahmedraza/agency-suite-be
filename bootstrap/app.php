@@ -91,8 +91,8 @@ $app->middleware([
 ]);
 
 $app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
     'admin_auth' => App\Http\Middleware\AdminAuthenticate::class,
-    'agency_auth' => App\Http\Middleware\AgencyAuthenticate::class,
     'client_credentials' => App\Http\Middleware\ClientCredentialsVerification::class,
     'permission' => Spatie\Permission\Middlewares\PermissionMiddleware::class,
     'role' => Spatie\Permission\Middlewares\RoleMiddleware::class,

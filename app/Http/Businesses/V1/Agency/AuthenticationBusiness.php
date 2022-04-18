@@ -89,7 +89,7 @@ class AuthenticationBusiness
     public function forgetPassword($request): void
     {
         $user = (new UserService())->getUserByAgency([
-            ['username', '=', $request->email],
+            ['username', '=', clean($request->email)],
             ['agency_id', '=', (app('agency'))->id],
         ]);
         //check user status
