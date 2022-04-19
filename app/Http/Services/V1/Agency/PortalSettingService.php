@@ -74,6 +74,10 @@ class PortalSettingService
         $setting = new PortalSetting;
         $setting->agency_id = $user->agency_id;
         $setting->user_id = $user->id;
+        $setting->primary_color = config('portal_settings.primary_color');
+        $setting->secondary_color = config('portal_settings.secondary_color');
+        $setting->logo = config('portal_settings.logo');
+        $setting->favicon = config('portal_settings.favicon');
         $setting->save();
     }
 }
