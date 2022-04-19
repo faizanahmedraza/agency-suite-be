@@ -63,7 +63,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             $router->put('/change-password', 'AuthenticationController@changePassword');
         });
 
-        //public routes
+        //public agency routes
         $router->group(['prefix' => 'public'], function () use ($router) {
             $router->group(['middleware' => 'agency_domain'], function () use ($router) {
                 //portal-settings

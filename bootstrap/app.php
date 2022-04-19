@@ -67,6 +67,7 @@ $app->configure('cloudinary');
 $app->configure('sentry');
 $app->configure('segment');
 $app->configure('agency_events');
+$app->configure('portal_settings');
 
 if (env('APP_ENV') === "local") {
     //scribe for documentation
