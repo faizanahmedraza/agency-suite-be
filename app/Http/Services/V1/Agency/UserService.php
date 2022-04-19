@@ -214,7 +214,7 @@ class UserService
         $user = User::with($with)
             ->where('id', $id)
             ->where('agency_id', app('agency')->id)
-            ->avoidRole(['Super Admin', 'Customer'])
+            ->avoidRole(['Super Admin'])
             ->first();
 
         if (!$user) {
