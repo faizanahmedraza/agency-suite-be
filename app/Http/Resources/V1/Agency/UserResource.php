@@ -20,6 +20,7 @@ class UserResource extends Resource
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'email' => ($this->email) ? $this->email : $this->username,
+            'image' => $this->image,
             'last_logged_in' => $this->last_login,
             'status' => array_search($this->status, User::STATUS),
             'roles' =>  RoleResource::collection($this->whenLoaded('roles')),
