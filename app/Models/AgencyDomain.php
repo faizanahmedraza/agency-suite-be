@@ -27,14 +27,16 @@ class AgencyDomain extends Model
         return Str::slug(strtolower(preg_replace('/[^A-Za-z0-9. -]/s', '', $data)));
     }
 
-    public static function domainsFilter($query, $domain)
+    public static function scopeDomainsFilter($filter, $domain)
     {
-        return $query->where('domain', $domain)->first();
+        return $filter->where(function ($query) use ($domain) {
+            $query->where('domain', $domain);
+        });
     }
 
     public function agency()
     {
-        return $this->belongsTo(Agency::class,'agency_id','id');
+        return $this->belongsTo(Agency::class, 'agency_id', 'id');
     }
 
 }

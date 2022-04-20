@@ -26,7 +26,7 @@ class AgencyBusiness
         $agencyName = trim($request->input('agency_name'));
         $newDomain = AgencyDomain::cleanAgencyDomainName($agencyName);
 
-        $domain = AgencyDomain::domainsFilter($agency->domains, $newDomain);
+        $domain = AgencyDomain::domainsFilter($newDomain.(env('AGENCY_BASE_DOMAIN', '.agency.test')))->first();
 
         if ($domain) {
             throw DomainException::alreadyAvaliable();
