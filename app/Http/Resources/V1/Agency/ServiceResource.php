@@ -24,6 +24,7 @@ class ServiceResource extends Resource
             'catalog_status' => array_search($this->catalog_status, Service::CATALOG_STATUS),
             'price_types' => new ServicePriceTypeResource($this->whenLoaded('priceTypes')),
             'intakes' => new ServiceIntakeResource($this->whenLoaded('intakes')),
+            'status' => array_search($this->status, Service::STATUS),
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
