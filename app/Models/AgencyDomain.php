@@ -21,15 +21,10 @@ class AgencyDomain extends Model
         'type'
     ];
 
-    public static function cleanDomain($domain)
+    public static function cleanAgencyDomainName($domain)
     {
         $data = preg_replace('#^(http(s)?://)?w{3}\.#', '', $domain);
         return Str::slug(strtolower(preg_replace('/[^A-Za-z0-9. -]/s', '', $data)));
-    }
-
-    public static function cleanAgencyName($domain)
-    {
-        return preg_replace("/[^a-zA-Z0-9]+/", "", $domain);
     }
 
     public static function domainsFilter($query, $domain)

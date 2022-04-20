@@ -24,7 +24,7 @@ class AgencyBusiness
         $agency = (new AgencyService())->create($request);
 
         $agencyName = trim($request->input('agency_name'));
-        $newDomain = AgencyDomain::cleanAgencyName($agencyName);
+        $newDomain = AgencyDomain::cleanAgencyDomainName($agencyName);
 
         $domain = AgencyDomain::domainsFilter($agency->domains, $newDomain);
 

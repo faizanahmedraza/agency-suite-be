@@ -22,7 +22,7 @@ class AgencyService
     public static function create($data)
     {
         $agency = new Agency();
-        $agency->name = $data->agency_name;
+        $agency->name = trim($data->agency_name);
         $agency->save();
 
         if (!$agency) {
