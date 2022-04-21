@@ -10,9 +10,9 @@ use Illuminate\Support\Str;
 
 class PortalSettingBusiness
 {
-    public static function first()
+    public static function first($agency_id = null)
     {
-        return PortalSettingService::first();
+        return PortalSettingService::first($agency_id);
     }
 
     public static function update(Request $request)
