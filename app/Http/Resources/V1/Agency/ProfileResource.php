@@ -15,7 +15,8 @@ class ProfileResource extends Resource
     public function toArray($request)
     {
         return [
-            'user' => new UserResource($this->user),
+            'name' => $this->first_name ?? '',
+            'image' =>$this->image ?? '',
         ];
     }
 }

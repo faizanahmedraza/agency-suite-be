@@ -205,7 +205,7 @@ class AuthenticationController extends Controller
      */
     public static function profile()
     {
-        return new UserResponse(Auth::user());
+        return new ProfileResponse(Auth::user());
     }
 
     /**
