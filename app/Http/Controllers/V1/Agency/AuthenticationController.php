@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\V1\Agency;
 
+use App\Http\Resources\V1\Admin\UserResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -204,7 +205,7 @@ class AuthenticationController extends Controller
      */
     public static function profile()
     {
-        return new ProfileResponse(Auth::user());
+        return new UserResponse(Auth::user());
     }
 
     /**
@@ -223,9 +224,9 @@ class AuthenticationController extends Controller
     public function profileUpdate(UpdateProfileRequest $request)
     {
         DB::beginTransaction();
-        (new AuthenticationBusiness())->profileUpdate($request);
+        $user = (new AuthenticationBusiness())->profileUpdate($request);
         DB::commit();
-        return new SuccessResponse([]);
+        return new UserResponse($user);
     }
 
 
