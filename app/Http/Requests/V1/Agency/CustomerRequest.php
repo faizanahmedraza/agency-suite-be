@@ -40,8 +40,8 @@ class CustomerRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
+            'first_name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/i|string|max:100',
+            'last_name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/i|string|max:100',
             'email' => ($this->isMethod('put')) ? '' : 'required|email:rfc,dns|max:50|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i|unique:users,username,NULL,id,agency_id,'.app('agency')->id.',deleted_at,NULL',
         ];
     }
@@ -53,6 +53,9 @@ class CustomerRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [];
+        return [
+            'first_name.regex' => 'The first name should not contain numbers and special characters.',
+            'last_name.regex' => 'The last name should not contain numbers and special characters.',
+        ];
     }
 }

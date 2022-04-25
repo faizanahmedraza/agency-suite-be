@@ -24,7 +24,7 @@ class UpdateProfileRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' => 'required|string|max:150',
+            'name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/i|string|max:150',
             'image' => 'sometimes|string',
         ];
     }
@@ -37,7 +37,7 @@ class UpdateProfileRequest extends RequestAbstract
     public function messages(): array
     {
         return [
-            //
+            'name.regex' => 'The name should not contain numbers and special characters.'
         ];
     }
 }
