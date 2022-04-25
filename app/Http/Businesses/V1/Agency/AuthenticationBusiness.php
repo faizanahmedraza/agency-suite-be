@@ -78,7 +78,7 @@ class AuthenticationBusiness
         UserService::updateStatus($user);
 
         if ($user->owner) {
-            $agency = AgencyService::first(['domains'], ['id', '=', $userVerification->agency_id]);
+            $agency = AgencyService::first($userVerification->agency_id,['domains']);
             AgencyService::updateStatus($agency);
         }
 
