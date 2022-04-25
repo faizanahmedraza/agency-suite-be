@@ -24,9 +24,7 @@ class AgencyDomainMiddleware
             throw DomainException::agencyDomainNotExist();
         }
 
-        if (app('agency')->status == Agency::STATUS['pending']) {
-            throw AgencyException::pending();
-        } elseif (app('agency')->status == Agency::STATUS['blocked']) {
+        if (app('agency')->status == Agency::STATUS['blocked']) {
             throw AgencyException::blocked();
         }
 
