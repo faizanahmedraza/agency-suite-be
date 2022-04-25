@@ -15,7 +15,6 @@ use App\Exceptions\V1\ModelException;
 
 use App\Exceptions\V1\FailureException;
 use App\Http\Services\V1\CloudinaryService;
-use App\Exceptions\V1\UnAuthorizedException;
 
 class AgencyService
 {
@@ -23,6 +22,7 @@ class AgencyService
     {
         $agency = new Agency();
         $agency->name = trim($data->agency_name);
+        $agency->status = Agency::STATUS['pending'];
         $agency->save();
 
         if (!$agency) {
@@ -32,150 +32,23 @@ class AgencyService
         return $agency;
     }
 
-    /**
-     *  This function is used to assign Role to User
-     */
-    public static function assignUserRole($request, $user)
+    public static function updateStatus(Agency $agency, $status = Agency::STATUS['active'])
     {
-        if (!empty($request->get('role'))) {
-            $user->assignRole($request->get('role'));
-        }
+        $agency->status = $status;
+        $agency->save();
+
+        return $agency;
     }
 
-    /**
-     * Get User Info
-     * Get user information from username = email
-     *
-     * @param username = $email Ex: admin@mail.com
-     *
-     * @return User Object
-     *
-     */
-    public static function getUserByEmail(String $email): User
+    public static function first($with = [], $where = null)
     {
-        $user = User::where('username', $email)->first();
-        if (!$user) {
-            throw ModelException::dataNotFound();
-        }
-        return $user;
-    }
+        $agency = Agency::with($with)->where($where)->first();
 
-    /** Update User Password
-     *
-     * @param  required User $id , Request $password
-     *
-     * @throw FailureException
-     *
-     * @return $user object
-     */
-    public static function changeUserPassword(User $user, String $password): User
-    {
-        $user->password = Hash::make($password);
-        $user->save();
-
-        if (!$user) {
-            throw FailureException::serverError();
-        }
-
-        return $user;
-    }
-
-    /**
-     *  Get User Information by username
-     *
-     *  @Param username
-     */
-    public static function getUserByUsername($username)
-    {
-        $user = User::whereRaw('LOWER(username) = ? ', strtolower($username))->first();
-
-        if (!$user) {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
-        return $user;
-    }
-
-    public static function getUserById(Int $id): User
-    {
-        $user = User::where(['id' => $id])->first();
-
-        if (!$user) {
-            throw UnAuthorizedException::InvalidCredentials();
-        }
-        return $user;
-    }
-
-    public static function updateStatus(User $user, $status = User::STATUS['active']): User
-    {
-        $user->status = $status;
-        $user->save();
-
-        return $user;
-    }
-
-    public static function blockUsers(array $ids)
-    {
-        return User::whereIn('id', $ids)->update(["status" => User::STATUS['blocked']]);
-    }
-
-    public static function first($with = [], $where = null): User
-    {
-        $user = User::with($with)->where($where)->first();
-
-        if (!$user) {
+        if (!$agency) {
             throw ModelException::dataNotFound();
         }
 
-        return $user;
-    }
-
-    public static function update($request, User $user)
-    {
-        $user->first_name = trim($request->first_name);
-        $user->last_name = trim($request->last_name);
-        $user->save();
-
-        if (!$user) {
-            throw FailureException::serverError();
-        }
-
-        return $user;
-    }
-
-    /**
-     *  Fetch User By Email
-     *
-     *  @Param username
-     */
-    public static function getUserName($username, $excludeAuth = false)
-    {
-        if ($excludeAuth) {
-            $user = User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->where('id', '!=', Auth::user()->id)->first();
-        } else {
-            $user =  User::whereRaw("LOWER(username) like ? ", '%' . $username . '%')->first();
-        }
-
-        if ($user) {
-            return strtolower($user->username);
-        }
-        return false;
-    }
-
-
-    public static function validateToken($token)
-    {
-        if ($token->expires_at < TimeStampHelper::now()) {
-            throw UserException::sessionExpired();
-        }
-
-        $days = TimeStampHelper::countAccurateDays($token->expires_at, TimeStampHelper::now());
-
-        if ($days > 1) {
-            return ;
-        }
-
-        $token->expires_at =  TimeStampHelper::getDate(10, $token->expires_at);
-        $token->save();
+        return $agency;
     }
 
     public static function updateProfile($request,User $user=null)

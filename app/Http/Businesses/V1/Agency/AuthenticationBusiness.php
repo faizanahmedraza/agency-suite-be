@@ -72,6 +72,11 @@ class AuthenticationBusiness
 
         UserService::updateStatus($user);
 
+        if ($user->owner) {
+            $agency = AgencyService::first(['domains'], ['id', '=', $userVerification->agency_id]);
+            AgencyService::updateStatus($agency);
+        }
+
         (new UserService())->changePassword($user, $request->password);
 
         // Delete Token
