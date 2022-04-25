@@ -40,7 +40,7 @@ class PortalSettingRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' => 'sometimes|nullable|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name,'.app('agency')->id,
+            'name' => 'sometimes|nullable|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name,'.app('agency')->id,',deleted_at,NULL',
             'logo' => 'sometimes|nullable|string',
             'favicon' => 'sometimes|nullable|string',
             'primary_color' => 'sometimes|nullable|string'
