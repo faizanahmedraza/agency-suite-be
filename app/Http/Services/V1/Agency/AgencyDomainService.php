@@ -49,9 +49,9 @@ class AgencyDomainService
         return $agencyDomain;
     }
 
-    public static function first($where)
+    public static function first($attribute,$value,$operator = "=")
     {
-        $agencyDomain = AgencyDomain::where($where)->first();
+        $agencyDomain = AgencyDomain::where($attribute,$operator,$value)->first();
 
         if (!$agencyDomain) {
             throw DomainException::agencyDomainNotExist();

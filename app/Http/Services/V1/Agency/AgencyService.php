@@ -40,9 +40,9 @@ class AgencyService
         return $agency;
     }
 
-    public static function first($with = [], $where = null)
+    public static function first($id,$with = [])
     {
-        $agency = Agency::with($with)->where($where)->first();
+        $agency = Agency::with($with)->where('id',$id)->first();
 
         if (!$agency) {
             throw ModelException::dataNotFound();

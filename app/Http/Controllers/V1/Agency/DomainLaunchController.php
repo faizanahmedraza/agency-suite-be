@@ -24,7 +24,7 @@ class DomainLaunchController extends Controller
      */
     public function index(DomainLaunchRequest $request)
     {
-        $resp = AgencyDomainService::first(['domain','=',clean($request->domain)]);
+        $resp = AgencyDomainService::first('domain',clean($request->domain));
         $setting  = PortalSettingBusiness::first($resp->agency_id);
         return new PortalSettingResponse($setting);
     }
