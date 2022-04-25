@@ -29,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
                 $agency->id = $agencyDomain->agency_id;
                 $agency->domain_name = $agencyDomain->domain;
                 $agency->name=optional($agencyDomain->agency)->name;
+                $agency->status=optional($agencyDomain->agency)->status;
             }
             return $agency;
         });

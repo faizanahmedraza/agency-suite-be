@@ -2,8 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Exceptions\V1\AgencyException;
 use App\Exceptions\V1\DomainException;
 use App\Exceptions\V1\UserException;
+use App\Models\Agency;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,6 +23,13 @@ class AgencyDomainMiddleware
         if (!isset(app('agency')->id)) {
             throw DomainException::agencyDomainNotExist();
         }
+
+        if (app('agency')->status == Agency::STATUS['pending']) {
+            throw AgencyException::pending();
+        } elseif (app('agency')->status == Agency::STATUS['blocked']) {
+            throw AgencyException::blocked();
+        }
+
         $response = $next($request);
 
         return $response;

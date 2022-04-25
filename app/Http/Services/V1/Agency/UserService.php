@@ -274,7 +274,7 @@ class UserService
         $user = User::where($where)->avoidRole(['Super Admin'])->first();
 
         if (!$user) {
-            throw ModelException::dataNotFound();
+            throw UnAuthorizedException::InvalidCredentials();
         }
 
         return $user;

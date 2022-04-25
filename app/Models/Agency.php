@@ -12,8 +12,12 @@ class Agency extends Model
     protected $table = "agencies";
 
     protected $fillable = [
-        'name'
+        'name',
+        'status',
+        'plan_id'
     ];
+
+    const STATUS = ['pending' => 0, 'active' => 1, 'blocked' => 2];
 
     public function user()
     {
