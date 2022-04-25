@@ -2,6 +2,7 @@
 
 namespace App\Http\Businesses\V1\Agency;
 
+use App\Exceptions\V1\AgencyException;
 use App\Models\User;
 use App\Models\Agency;
 use App\Events\LoginEvent;
@@ -26,6 +27,10 @@ class AuthenticationBusiness
             ['username', '=', clean($request->email)],
             ['agency_id', '=', (app('agency'))->id],
         ]);
+
+        if (app('agency')->status == Agency::STATUS['pending']) {
+            throw AgencyException::pending();
+        }
 
         // match password
         if (!Hash::check($request->password, $user->password)) {
