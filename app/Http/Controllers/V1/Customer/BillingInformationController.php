@@ -15,6 +15,18 @@ use Illuminate\Support\Facades\DB;
  */
 class BillingInformationController extends Controller
 {
+    private $module;
+
+    public function __construct()
+    {
+        $this->module = 'agency_customers_billing_information';
+        $ULP = '|' . $this->module . '_all'; //UPPER LEVEL PERMISSIONS
+        $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first']]);
+        $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['store']]);
+        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
+        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
+    }
+
     /**
      * Create Billing Information
      * This api create new billing information.

@@ -19,7 +19,17 @@ use App\Http\Resources\V1\Customer\CustomersServiceRequestListResponse;
  */
 class RequestServiceController extends Controller
 {
+    private $module;
 
+    public function __construct()
+    {
+        $this->module = 'agency_services_request';
+        $ULP = '|' . $this->module . '_all'; //UPPER LEVEL PERMISSIONS
+        $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
+        $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['create']]);
+//        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
+//        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
+    }
 
     /**
      * Request Service

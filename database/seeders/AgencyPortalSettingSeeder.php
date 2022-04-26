@@ -16,6 +16,9 @@ class AgencyPortalSettingSeeder extends Seeder
      */
     public function run()
     {
+        // reset cached roles and permissions
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
         $now = Carbon::now()->toDateTimeString();
 
         $permissions = [

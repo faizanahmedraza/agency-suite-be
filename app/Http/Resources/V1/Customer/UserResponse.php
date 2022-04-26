@@ -4,7 +4,7 @@ namespace App\Http\Resources\V1\Customer;
 
 use App\Http\Resources\BaseResponse;
 
-class AuthenticationResponse extends BaseResponse
+class UserResponse extends BaseResponse
 {
     /**
      * Transform the resource into an array.
@@ -15,7 +15,7 @@ class AuthenticationResponse extends BaseResponse
     public function toArray($request)
     {
         return $this->wrapped([
-            'authentication' => new AuthenticationResource($this->resource)
+            'user' => new UserResource($this)
         ]);
     }
 }
