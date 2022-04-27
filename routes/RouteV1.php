@@ -61,6 +61,8 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             $router->delete('/logout', 'AuthenticationController@logout');
             $router->post('/verification', 'AuthenticationController@generateToken');
             $router->put('/change-password', 'AuthenticationController@changePassword');
+            $router->get('/profile', 'AuthenticationController@profile');
+            $router->put('/profile', 'AuthenticationController@profileUpdate');
         });
 
         //public agency routes
@@ -75,9 +77,6 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
         //Protected Routes
         $router->group(['prefix' => 'agencies', 'middleware' => ['agency_domain', 'auth', 'agency']], function () use ($router) {
-            $router->get('/profile', 'AuthenticationController@profile');
-            $router->put('/profile', 'AuthenticationController@profileUpdate');
-
             //User Management apis
             $router->group(['prefix' => 'users'], function () use ($router) {
                 $router->get('/', 'UserController@get');
@@ -140,10 +139,6 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         });
 
         $router->group(['prefix' => 'customers', 'middleware' => ['customer']], function () use ($router) {
-            $router->get('/profile', 'AuthenticationController@profile');
-            $router->put('/profile', 'AuthenticationController@profileUpdate');
-
-
             $router->group(['prefix' => 'request-services'], function () use ($router) {
                 $router->get('/', 'RequestServiceController@get');
                 $router->get('/{id}', 'RequestServiceController@first');

@@ -24,7 +24,8 @@ class UpdateProfileRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/i|string|max:150',
+            'first_name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/i|max:100',
+            'last_name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/i|max:100',
             'image' => 'sometimes|string',
         ];
     }

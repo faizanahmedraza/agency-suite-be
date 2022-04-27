@@ -17,6 +17,7 @@ use App\Http\Services\V1\Agency\AgencyService;
 use App\Exceptions\V1\RequestValidationException;
 use App\Http\Services\V1\Agency\AuthenticationService;
 use App\Http\Services\V1\Agency\UserVerificationService;
+use Illuminate\Support\Str;
 
 class AuthenticationBusiness
 {
@@ -169,7 +170,7 @@ class AuthenticationBusiness
 
     public function profileUpdate($request)
     {
-        if ($request->has('image') && !empty($request->image) && !validate_base64($request->image, ['png', 'jpg', 'jpeg'])) {
+        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['res', 'https', 'cloudinary']) && !validate_base64($request->image, ['png', 'jpg', 'jpeg'])) {
             throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are png,jpg,jpeg.');
         }
         // update profile

@@ -215,7 +215,8 @@ class AuthenticationController extends Controller
      *
      * @header Domain string required
      *
-     * @bodyParam name String required
+     * @bodyParam first_name String required
+     * @bodyParam last_name String required
      * @bodyParam image String optional ex: base64imageFile formats: png,jpeg,jpg
      *
      * @responseFile 200 responses/SuccessResponse.json
