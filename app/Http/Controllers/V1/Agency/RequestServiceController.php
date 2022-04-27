@@ -4,9 +4,12 @@ namespace App\Http\Controllers\V1\Agency;
 
 use App\Http\Controllers\Controller;
 use App\Http\Businesses\V1\Agency\RequestServiceBuisness;
+use App\Http\Requests\V1\Agency\RequestServiceRequest;
+use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\CustomersServiceRequestResponse;
 use App\Http\Requests\V1\Agency\CustomerRequestServiceListRequest;
 use App\Http\Resources\V1\Agency\CustomersServiceRequestListResponse;
+use Illuminate\Support\Facades\DB;
 
 /**
  * @group Agency Request Service
@@ -22,9 +25,9 @@ class RequestServiceController extends Controller
         $this->module = 'agency_services_request';
         $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
         $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
-//        $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['create']]);
-//        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
-//        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
+        $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['create']]);
+        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
+        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
     }
 
     /**
@@ -69,4 +72,25 @@ class RequestServiceController extends Controller
         return (new CustomersServiceRequestResponse($customerServiceRequest));
     }
 
+
+    /**
+     * Request Service
+     *
+     * @header Domain string required
+     *
+     * @bodyParam service_id integer required
+     * @bodyParam customer_id integer required
+     * @bodyParam recurring_type string optional if one-off Example : weekly,monthly,quarterly,biannually,annually
+     * @bodyParam intake_form array required Example :{key1:value1,key2:value2}
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     */
+    public function create(RequestServiceRequest $request)
+    {
+        DB::beginTransaction();
+        RequestServiceBuisness::requestService($request);
+        DB::commit();
+        return new SuccessResponse([]);
+    }
 }

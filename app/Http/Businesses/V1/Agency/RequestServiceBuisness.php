@@ -6,8 +6,6 @@ use App\Http\Services\V1\Agency\CustomerServiceRequestService;
 
 class RequestServiceBuisness
 {
-
-
     public static function get($request)
     {
         return CustomerServiceRequestService::get($request);
