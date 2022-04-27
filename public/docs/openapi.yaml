@@ -7,9 +7,9 @@ servers:
   -
     url: 'http://agency.test'
 paths:
-  /v1/agencies/profile:
-    get:
-      summary: "Profile\nGet Profile Info"
+  /v1/auth/customers/register:
+    post:
+      summary: "Register Customer\nThis api is useful for register new Customer and return access token with Customer information"
       description: ''
       parameters:
         -
@@ -33,92 +33,16 @@ paths:
           example: 'string required'
           schema:
             type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    profile:
-                      name: agencytest12
-                      image: ''
-                    permissions:
-                      - access_all
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      profile:
-                        name: agencytest12
-                        image: ''
-                      permissions:
-                        - access_all
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Agency Authentication'
-    put:
-      summary: 'Update Profile'
-      description: ''
-      parameters:
         -
           in: header
-          name: Content-Type
+          name: Client-ID
           description: ''
-          example: application/json
+          example: 'string required'
           schema:
             type: string
         -
           in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
+          name: Client-Secret
           description: ''
           example: 'string required'
           schema:
@@ -177,7 +101,7 @@ paths:
                     type: string
                     example: 'Operation failed'
       tags:
-        - 'Agency Authentication'
+        - 'Customer Register and Profile Settings'
       requestBody:
         required: true
         content:
@@ -185,16 +109,23 @@ paths:
             schema:
               type: object
               properties:
-                name:
-                  type: String
-                  description: ''
-                  example: et
-                image:
-                  type: String
-                  description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: molestiae
+                first_name:
+                  type: string
+                  description: 'User first name'
+                  example: Bionic
+                last_name:
+                  type: string
+                  description: 'User last name'
+                  example: WP
+                email:
+                  type: email
+                  description: 'User email address'
+                  example: admin@bionicwp.com
               required:
-                - name
+                - first_name
+                - last_name
+                - email
+      security: []
   /v1/auth/agencies/register:
     post:
       summary: "Register Agency\nThis api is useful for register new Agency and return access token with agency and user information"
@@ -282,7 +213,7 @@ paths:
                     type: string
                     example: 'Operation failed'
       tags:
-        - 'Agency Authentication'
+        - 'Authentication and Agency Profile Settings'
       requestBody:
         required: true
         content:
@@ -428,7 +359,7 @@ paths:
                     type: string
                     example: 'Operation failed'
       tags:
-        - 'Agency Authentication'
+        - 'Authentication and Agency Profile Settings'
       requestBody:
         required: true
         content:
@@ -584,7 +515,7 @@ paths:
                     type: string
                     example: 'Operation failed'
       tags:
-        - 'Agency Authentication'
+        - 'Authentication and Agency Profile Settings'
       requestBody:
         required: true
         content:
@@ -698,7 +629,7 @@ paths:
                     type: string
                     example: 'Operation failed'
       tags:
-        - 'Agency Authentication'
+        - 'Authentication and Agency Profile Settings'
       requestBody:
         required: true
         content:
@@ -817,7 +748,7 @@ paths:
                     type: string
                     example: 'Operation failed'
       tags:
-        - 'Agency Authentication'
+        - 'Authentication and Agency Profile Settings'
       requestBody:
         required: true
         content:
@@ -924,7 +855,7 @@ paths:
                     type: string
                     example: 'Operation failed'
       tags:
-        - 'Agency Authentication'
+        - 'Authentication and Agency Profile Settings'
   /v1/verification:
     post:
       summary: "Generate Verification Token\nThis function generate new verification token of user"
@@ -984,7 +915,7 @@ paths:
                     type: string
                     example: 'Operation successful'
       tags:
-        - 'Agency Authentication'
+        - 'Authentication and Agency Profile Settings'
   /v1/change-password:
     put:
       summary: "Change Password\nchange password request of user"
@@ -1065,7 +996,7 @@ paths:
                     type: string
                     example: 'Operation failed'
       tags:
-        - 'Agency Authentication'
+        - 'Authentication and Agency Profile Settings'
       requestBody:
         required: true
         content:
@@ -1084,6 +1015,199 @@ paths:
               required:
                 - password
                 - password_confirmation
+  /v1/profile:
+    get:
+      summary: "Profile\nGet Profile Info"
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    profile:
+                      name: agencytest12
+                      image: ''
+                    permissions:
+                      - access_all
+                  error: {  }
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: object
+                    example:
+                      profile:
+                        name: agencytest12
+                        image: ''
+                      permissions:
+                        - access_all
+                  error:
+                    type: object
+                    example: {  }
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Authentication and Agency Profile Settings'
+    put:
+      summary: 'Update Profile'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Domain
+          description: ''
+          example: 'string required'
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  error: null
+                  success: true
+                  message: 'Operation successful'
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  error:
+                    type: string
+                    example: null
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Operation successful'
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: {  }
+                  error:
+                    code: 'Error code'
+                    message: 'Error Message.'
+                  success: false
+                  message: 'Operation failed'
+                properties:
+                  data:
+                    type: object
+                    example: {  }
+                  error:
+                    type: object
+                    example:
+                      code: 'Error code'
+                      message: 'Error Message.'
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Operation failed'
+      tags:
+        - 'Authentication and Agency Profile Settings'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: String
+                  description: ''
+                  example: consequatur
+                last_name:
+                  type: String
+                  description: ''
+                  example: error
+                image:
+                  type: String
+                  description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
+                  example: dolorem
+              required:
+                - first_name
+                - last_name
   /v1/agencies/customers:
     get:
       summary: "Customers List\nThis api return the collection of all Agency Customers."
@@ -1326,15 +1450,15 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: quia
+                  example: labore
                 last_name:
                   type: String
                   description: ''
-                  example: saepe
+                  example: molestias
                 email:
                   type: String
                   description: 'ex: abc.com,xyz.co'
-                  example: incidunt
+                  example: voluptatum
               required:
                 - first_name
                 - last_name
@@ -1353,7 +1477,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sit
+            value: error
       -
         in: path
         name: email
@@ -1367,7 +1491,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: quas
+            value: autem
       -
         in: path
         name: first_name
@@ -1381,7 +1505,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: eum
+            value: et
       -
         in: path
         name: last_name
@@ -1395,7 +1519,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dolor
+            value: est
       -
         in: path
         name: full_name
@@ -1409,7 +1533,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: atque
+            value: et
       -
         in: path
         name: status
@@ -1423,7 +1547,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: minima
+            value: eos
       -
         in: path
         name: order_by
@@ -1437,7 +1561,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: ad
+            value: vel
       -
         in: path
         name: from_date
@@ -1479,7 +1603,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: false
+            value: true
       -
         in: path
         name: page_limit
@@ -1493,7 +1617,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 3
+            value: 20
       -
         in: path
         name: page
@@ -1507,7 +1631,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 4
+            value: 18
   '/v1/agencies/customers/{id}':
     get:
       summary: "Customer Details\nThis api show the details of requested Customer."
@@ -1757,11 +1881,11 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: officiis
+                  example: quo
                 last_name:
                   type: String
                   description: ''
-                  example: distinctio
+                  example: ut
               required:
                 - first_name
                 - last_name
@@ -1857,7 +1981,7 @@ paths:
         in: path
         name: id
         description: Integer
-        example: qui
+        example: voluptas
         required: true
         schema:
           type: string
@@ -2059,7 +2183,7 @@ paths:
                 domain:
                   type: string
                   description: ''
-                  example: perferendis
+                  example: sed
               required:
                 - domain
       security: []
@@ -2362,7 +2486,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: quasi
+            value: laboriosam
       -
         in: path
         name: customer_id
@@ -2376,7 +2500,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 17
+            value: 20
       -
         in: path
         name: title
@@ -2390,7 +2514,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dolore
+            value: vitae
       -
         in: path
         name: order_by
@@ -2404,7 +2528,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: autem
+            value: iste
       -
         in: path
         name: from_date
@@ -2446,7 +2570,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: true
+            value: false
       -
         in: path
         name: page_limit
@@ -2460,7 +2584,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 19
+            value: 14
       -
         in: path
         name: page
@@ -2474,7 +2598,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 3
+            value: 20
   '/v1/agencies/request-services/{id}':
     get:
       summary: 'Get Request Service details by Id'
@@ -2593,7 +2717,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 11
+        example: 10
         required: true
         schema:
           type: integer
@@ -2870,12 +2994,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: velit
+                  example: repellat
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - quia
+                    - nihil
                   items:
                     type: string
               required:
@@ -2894,7 +3018,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: tempore
+            value: id
       -
         in: path
         name: from_date
@@ -2936,7 +3060,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: true
+            value: false
       -
         in: path
         name: page_limit
@@ -2950,7 +3074,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 1
+            value: 18
       -
         in: path
         name: page
@@ -2964,7 +3088,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 8
+            value: 20
   '/v1/agencies/roles/{id}':
     get:
       summary: "Role Details\nThis api show the details of requested Role."
@@ -3194,12 +3318,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: sint
+                  example: excepturi
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - consequatur
+                    - qui
                   items:
                     type: string
               required:
@@ -3296,7 +3420,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: error
+        example: omnis
         required: true
         schema:
           type: string
@@ -3304,7 +3428,7 @@ paths:
         in: path
         name: role_id
         description: Integer
-        example: quas
+        example: aperiam
         required: true
         schema:
           type: string
@@ -3661,27 +3785,27 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: ea
+                  example: beatae
                 description:
                   type: string
                   description: ''
-                  example: possimus
+                  example: ipsam
                 image:
                   type: string
                   description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: quibusdam
+                  example: labore
                 subscription_type:
                   type: string
                   description: 'ex: ''one-off'' ,''recurring'''
-                  example: numquam
+                  example: quia
                 price:
                   type: integer
                   description: 'only if subscription_type is one_off ex: 123'
-                  example: 12
+                  example: 16
                 purchase_limit:
                   type: integer
                   description: 'optional only if subscription_type is one_off ex: 12'
-                  example: 4
+                  example: 17
                 weekly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
@@ -3689,27 +3813,27 @@ paths:
                 monthly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 8
+                  example: 2
                 quarterly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 3
+                  example: 16
                 biannually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 4
+                  example: 1
                 annually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 7
+                  example: 9
                 max_concurrent_requests:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 11
+                  example: 3
                 max_requests_per_month:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 6
+                  example: 3
               required:
                 - name
                 - description
@@ -3734,7 +3858,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: illum
+            value: voluptas
       -
         in: path
         name: name
@@ -3748,7 +3872,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: recusandae
+            value: debitis
       -
         in: path
         name: status
@@ -3762,7 +3886,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: cumque
+            value: similique
       -
         in: path
         name: catalog_status
@@ -3776,7 +3900,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: aut
+            value: laborum
       -
         in: path
         name: order_by
@@ -3790,7 +3914,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: dolor
+            value: quis
       -
         in: path
         name: from_date
@@ -3846,7 +3970,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 16
+            value: 7
       -
         in: path
         name: page
@@ -3860,7 +3984,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 14
+            value: 12
   '/v1/agencies/services/{id}':
     get:
       summary: "Show Service Details\nThis api show the service details."
@@ -4172,55 +4296,55 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: fugit
+                  example: accusamus
                 description:
                   type: string
                   description: ''
-                  example: repellendus
+                  example: natus
                 image:
                   type: string
                   description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: eveniet
+                  example: sequi
                 subscription_type:
                   type: string
                   description: 'ex: ''one-off'' ,''recurring'''
-                  example: ipsam
+                  example: nostrum
                 price:
                   type: integer
                   description: 'only if subscription_type is one_off ex: 123'
-                  example: 8
+                  example: 19
                 purchase_limit:
                   type: integer
                   description: 'optional only if subscription_type is one_off ex: 12'
-                  example: 20
+                  example: 8
                 weekly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 15
+                  example: 13
                 monthly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 17
+                  example: 3
                 quarterly:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 15
+                  example: 12
                 biannually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 3
+                  example: 7
                 annually:
                   type: integer
                   description: 'only if subscription_type is recurring ex: 123'
-                  example: 8
+                  example: 10
                 max_concurrent_requests:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 11
+                  example: 20
                 max_requests_per_month:
                   type: integer
                   description: 'optional only if subscription_type is recurring ex: 12'
-                  example: 5
+                  example: 9
               required:
                 - name
                 - description
@@ -4316,7 +4440,7 @@ paths:
         in: path
         name: id
         description: Integer
-        example: non
+        example: et
         required: true
         schema:
           type: string
@@ -4406,7 +4530,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 5
+        example: 13
         required: true
         schema:
           type: integer
@@ -4496,7 +4620,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 6
+        example: 2
         required: true
         schema:
           type: integer
@@ -5035,39 +5159,39 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: consequatur
+                  example: aliquam
                 last_name:
                   type: String
                   description: ''
-                  example: voluptatem
+                  example: mollitia
                 email:
                   type: email
                   description: ''
-                  example: qui
+                  example: sequi
                 password:
                   type: String
                   description: ''
-                  example: veniam
+                  example: et
                 password_confirmation:
                   type: String
                   description: ''
-                  example: esse
+                  example: excepturi
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: tempora
+                  example: dolor
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - sit
+                    - eveniet
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - harum
+                    - omnis
                   items:
                     type: string
               required:
@@ -5089,7 +5213,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: aut
+            value: amet
       -
         in: path
         name: email
@@ -5103,7 +5227,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: maiores
+            value: sint
       -
         in: path
         name: first_name
@@ -5117,7 +5241,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: quia
+            value: aut
       -
         in: path
         name: last_name
@@ -5131,7 +5255,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: aut
+            value: maxime
       -
         in: path
         name: full_name
@@ -5145,7 +5269,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: deserunt
+            value: hic
       -
         in: path
         name: status
@@ -5159,7 +5283,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: error
+            value: assumenda
       -
         in: path
         name: order_by
@@ -5173,7 +5297,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: unde
+            value: maiores
       -
         in: path
         name: from_date
@@ -5215,7 +5339,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: false
+            value: true
       -
         in: path
         name: page_limit
@@ -5229,7 +5353,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 9
+            value: 19
       -
         in: path
         name: page
@@ -5243,7 +5367,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 1
+            value: 19
       -
         in: path
         name: roles
@@ -5257,7 +5381,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: ex
+            value: consequatur
   '/v1/agencies/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -5545,27 +5669,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: deleniti
+                  example: qui
                 last_name:
                   type: String
                   description: ''
-                  example: autem
+                  example: assumenda
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: natus
+                  example: pariatur
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - perspiciatis
+                    - error
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - cumque
+                    - iste
                   items:
                     type: string
               required:
@@ -5658,7 +5782,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: ducimus
+        example: est
         required: true
         schema:
           type: string
@@ -5666,7 +5790,7 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: ut
+        example: atque
         required: true
         schema:
           type: string
@@ -5756,7 +5880,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: eveniet
+        example: veritatis
         required: true
         schema:
           type: string
@@ -5764,7 +5888,7 @@ paths:
         in: path
         name: user_id
         description: ''
-        example: 4
+        example: 1
         required: true
         schema:
           type: integer
@@ -5831,7 +5955,7 @@ paths:
                 password:
                   type: string
                   description: 'ex: 123456'
-                  example: saepe
+                  example: voluptatibus
               required:
                 - password
     parameters:
@@ -5839,7 +5963,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 18
+        example: 15
         required: true
         schema:
           type: integer
@@ -6167,314 +6291,6 @@ paths:
                     example: 'Operation failed'
       tags:
         - Authentication
-  /v1/customers/profile:
-    get:
-      summary: "Profile\nGet Profile Info"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data:
-                    profile:
-                      name: test
-                      image: ''
-                  error: {  }
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: object
-                    example:
-                      profile:
-                        name: test
-                        image: ''
-                  error:
-                    type: object
-                    example: {  }
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
-    put:
-      summary: 'Update Profile'
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: String
-                  description: ''
-                  example: vitae
-                last_name:
-                  type: String
-                  description: ''
-                  example: rerum
-                image:
-                  type: String
-                  description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-                  example: voluptatem
-              required:
-                - first_name
-                - last_name
-  /v1/auth/customers/register:
-    post:
-      summary: "Register Customer\nThis api is useful for register new Customer and return access token with Customer information"
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Domain
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-ID
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-        -
-          in: header
-          name: Client-Secret
-          description: ''
-          example: 'string required'
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: []
-                  error: null
-                  success: true
-                  message: 'Operation successful'
-                properties:
-                  data:
-                    type: array
-                    example: []
-                  error:
-                    type: string
-                    example: null
-                  success:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'Operation successful'
-        422:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  data: {  }
-                  error:
-                    code: 'Error code'
-                    message: 'Error Message.'
-                  success: false
-                  message: 'Operation failed'
-                properties:
-                  data:
-                    type: object
-                    example: {  }
-                  error:
-                    type: object
-                    example:
-                      code: 'Error code'
-                      message: 'Error Message.'
-                  success:
-                    type: boolean
-                    example: false
-                  message:
-                    type: string
-                    example: 'Operation failed'
-      tags:
-        - 'Customer Authentication'
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                  description: 'User first name'
-                  example: Bionic
-                last_name:
-                  type: string
-                  description: 'User last name'
-                  example: WP
-                email:
-                  type: email
-                  description: 'User email address'
-                  example: admin@bionicwp.com
-              required:
-                - first_name
-                - last_name
-                - email
-      security: []
   /v1/customers/billing-information:
     get:
       summary: "Show Billing Information\nThis api show the billing information details."
@@ -6686,31 +6502,31 @@ paths:
                 invoice_to:
                   type: string
                   description: ''
-                  example: rerum
+                  example: deserunt
                 address:
                   type: string
                   description: ''
-                  example: voluptate
+                  example: et
                 country:
                   type: string
                   description: ''
-                  example: sed
+                  example: provident
                 city:
                   type: string
                   description: ''
-                  example: inventore
+                  example: at
                 state:
                   type: string
                   description: ''
-                  example: sed
+                  example: numquam
                 zip_code:
                   type: integer
                   description: ''
-                  example: 9
+                  example: 20
                 tax_code:
                   type: string
                   description: optional
-                  example: corporis
+                  example: nemo
               required:
                 - invoice_to
                 - address
@@ -6856,31 +6672,31 @@ paths:
                 invoice_to:
                   type: string
                   description: ''
-                  example: est
+                  example: sequi
                 address:
                   type: string
                   description: ''
-                  example: ut
+                  example: temporibus
                 country:
                   type: string
                   description: ''
-                  example: voluptate
+                  example: sed
                 city:
                   type: string
                   description: ''
-                  example: voluptates
+                  example: voluptatum
                 state:
                   type: string
                   description: ''
-                  example: sit
+                  example: fugiat
                 zip_code:
                   type: integer
                   description: ''
-                  example: 6
+                  example: 11
                 tax_code:
                   type: string
                   description: optional
-                  example: alias
+                  example: vel
               required:
                 - invoice_to
                 - address
@@ -7173,20 +6989,20 @@ paths:
                 service_id:
                   type: integer
                   description: ''
-                  example: 12
+                  example: 1
                 recurring_type:
                   type: string
                   description: 'Example : weekly,monthly,quarterly,biannually,annually'
-                  example: optio
+                  example: non
                 refrence_no:
                   type: string
                   description: ''
-                  example: cum
+                  example: fugit
                 intake_form:
                   type: array
                   description: 'Example :{key1:value1,key2:value2}'
                   example:
-                    - eligendi
+                    - officiis
                   items:
                     type: string
               required:
@@ -7208,7 +7024,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: rem
+            value: praesentium
       -
         in: path
         name: title
@@ -7222,7 +7038,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sunt
+            value: omnis
       -
         in: path
         name: order_by
@@ -7236,7 +7052,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: veritatis
+            value: et
       -
         in: path
         name: from_date
@@ -7292,7 +7108,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 6
+            value: 3
       -
         in: path
         name: page
@@ -7306,7 +7122,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 7
+            value: 4
   '/v1/customers/request-services/{id}':
     get:
       summary: 'Get Request Service details by Id'
@@ -7425,7 +7241,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: 3
+        example: 1
         required: true
         schema:
           type: integer
@@ -7735,23 +7551,23 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: quo
+                  example: laboriosam
                 logo:
                   type: string
                   description: 'ex: base64imageFile formats: png,jpeg,jpg'
-                  example: excepturi
+                  example: et
                 favicon:
                   type: string
                   description: 'ex: base64imageFile formats: png,x-icon'
-                  example: aut
+                  example: et
                 primary_color:
                   type: string
                   description: 'ex: ''#fsfsd'''
-                  example: exercitationem
+                  example: ut
                 secondary_color:
                   type: string
                   description: 'ex: ''#fsfsd'''
-                  example: numquam
+                  example: ab
   /v1/public/portal-settings:
     get:
       summary: "Public Portal Settings Api\nThis api update portal settings."
@@ -8089,12 +7905,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: laudantium
+                  example: nobis
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - consequatur
+                    - eaque
                   items:
                     type: string
               required:
@@ -8113,7 +7929,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: occaecati
+            value: incidunt
       -
         in: path
         name: from_date
@@ -8155,7 +7971,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: false
+            value: true
       -
         in: path
         name: page_limit
@@ -8169,7 +7985,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 19
+            value: 7
       -
         in: path
         name: page
@@ -8399,12 +8215,12 @@ paths:
                 name:
                   type: String
                   description: ''
-                  example: dolores
+                  example: ut
                 permissions:
                   type: array
                   description: optional
                   example:
-                    - voluptatum
+                    - eaque
                   items:
                     type: string
               required:
@@ -8494,7 +8310,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: voluptatem
+        example: aut
         required: true
         schema:
           type: string
@@ -8502,7 +8318,7 @@ paths:
         in: path
         name: role_id
         description: Integer
-        example: earum
+        example: voluptas
         required: true
         schema:
           type: string
@@ -9027,39 +8843,39 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: sequi
+                  example: qui
                 last_name:
                   type: String
                   description: ''
-                  example: molestiae
+                  example: qui
                 email:
                   type: email
                   description: ''
-                  example: aperiam
+                  example: soluta
                 password:
                   type: String
                   description: ''
-                  example: qui
+                  example: minima
                 password_confirmation:
                   type: String
                   description: ''
-                  example: illum
+                  example: perferendis
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: quis
+                  example: architecto
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - omnis
+                    - in
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - et
+                    - totam
                   items:
                     type: string
               required:
@@ -9081,7 +8897,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: et
+            value: molestias
       -
         in: path
         name: email
@@ -9095,7 +8911,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: blanditiis
+            value: beatae
       -
         in: path
         name: first_name
@@ -9109,7 +8925,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: veritatis
+            value: esse
       -
         in: path
         name: last_name
@@ -9123,7 +8939,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: ut
+            value: aspernatur
       -
         in: path
         name: full_name
@@ -9137,7 +8953,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: necessitatibus
+            value: alias
       -
         in: path
         name: status
@@ -9151,7 +8967,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: hic
+            value: beatae
       -
         in: path
         name: order_by
@@ -9165,7 +8981,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: voluptas
+            value: saepe
       -
         in: path
         name: from_date
@@ -9221,7 +9037,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 12
+            value: 14
       -
         in: path
         name: page
@@ -9235,7 +9051,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: 14
+            value: 9
       -
         in: path
         name: roles
@@ -9249,7 +9065,7 @@ paths:
             value: ''
           present:
             summary: 'When the value is present'
-            value: sed
+            value: et
   '/v1/admins/users/{id}':
     get:
       summary: "Show User Details\nThis api show the uer details."
@@ -9523,27 +9339,27 @@ paths:
                 first_name:
                   type: String
                   description: ''
-                  example: quidem
+                  example: pariatur
                 last_name:
                   type: String
                   description: ''
-                  example: ut
+                  example: nulla
                 status:
                   type: string
                   description: 'ex: pending,active,blocked'
-                  example: cupiditate
+                  example: odit
                 roles:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - expedita
+                    - doloremque
                   items:
                     type: string
                 permissions:
                   type: array
                   description: 'ex: [1,2,3]'
                   example:
-                    - et
+                    - eveniet
                   items:
                     type: string
               required:
@@ -9629,7 +9445,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: quo
+        example: earum
         required: true
         schema:
           type: string
@@ -9637,7 +9453,7 @@ paths:
         in: path
         name: user_id
         description: Integer
-        example: aspernatur
+        example: rerum
         required: true
         schema:
           type: string
@@ -9720,7 +9536,7 @@ paths:
         in: path
         name: id
         description: ''
-        example: amet
+        example: minus
         required: true
         schema:
           type: string
@@ -9728,7 +9544,7 @@ paths:
         in: path
         name: user_id
         description: ''
-        example: 12
+        example: 14
         required: true
         schema:
           type: integer
@@ -9788,7 +9604,7 @@ paths:
                 password:
                   type: string
                   description: 'ex: 123456'
-                  example: velit
+                  example: itaque
               required:
                 - password
     parameters:
@@ -9796,13 +9612,16 @@ paths:
         in: path
         name: id
         description: ''
-        example: 8
+        example: 4
         required: true
         schema:
           type: integer
 tags:
   -
-    name: 'Agency Authentication'
+    name: 'Customer Register and Profile Settings'
+    description: ''
+  -
+    name: 'Authentication and Agency Profile Settings'
     description: ''
   -
     name: 'Agency Customers'
@@ -9827,9 +9646,6 @@ tags:
     description: ''
   -
     name: Authentication
-    description: ''
-  -
-    name: 'Customer Authentication'
     description: ''
   -
     name: 'Customer Billing Information'

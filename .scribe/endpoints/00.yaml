@@ -1,78 +1,6 @@
-name: 'Agency Authentication'
+name: 'Authentication and Agency Profile Settings'
 description: ''
 endpoints:
-  -
-    httpMethods:
-      - GET
-    uri: v1/agencies/profile
-    metadata:
-      title: |-
-        Profile
-        Get Profile Info
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": {\r\n        \"profile\": {\r\n            \"name\": \"agencytest12\",\r\n            \"image\": \"\"\r\n        },\r\n        \"permissions\": [\r\n            \"access_all\"\r\n        ]\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: v1/agencies/profile
-    metadata:
-      title: 'Update Profile'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      name:
-        name: name
-        description: ''
-        required: true
-        example: et
-        type: String
-        custom: []
-      image:
-        name: image
-        description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
-        required: false
-        example: molestiae
-        type: String
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-    responseFields: []
   -
     httpMethods:
       - POST
@@ -396,6 +324,85 @@ endpoints:
         description: abcd1234
         required: true
         example: abcd1234
+        type: String
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/profile
+    metadata:
+      title: |-
+        Profile
+        Get Profile Info
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": {\r\n        \"profile\": {\r\n            \"name\": \"agencytest12\",\r\n            \"image\": \"\"\r\n        },\r\n        \"permissions\": [\r\n            \"access_all\"\r\n        ]\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: v1/profile
+    metadata:
+      title: 'Update Profile'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: ''
+        required: true
+        example: consequatur
+        type: String
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: true
+        example: error
+        type: String
+        custom: []
+      image:
+        name: image
+        description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
+        required: false
+        example: dolorem
         type: String
         custom: []
     responses:
