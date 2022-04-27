@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Spatie\Permission\Models\Role;
 
 class AgencyPortalSettingSeeder extends Seeder
 {
@@ -16,6 +15,9 @@ class AgencyPortalSettingSeeder extends Seeder
      */
     public function run()
     {
+        // reset cached roles and permissions
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
         $now = Carbon::now()->toDateTimeString();
 
         $permissions = [

@@ -22,10 +22,20 @@ use App\Http\Businesses\V1\Agency\AuthenticationBusiness;
 use App\Http\Requests\V1\Agency\CreateNewPasswordRequest;
 
 /**
- * @group Agency Authentication
+ * @group Authentication and Agency Profile Settings
  */
 class AuthenticationController extends Controller
 {
+    private $module;
+
+    public function __construct()
+    {
+        $this->module = 'agency_profile';
+        $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
+        $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['profile']]);
+        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['profileUpdate']]);
+    }
+
     /**
      * Access Token Or Login
      * This function is useful for login, to return access token for agencies.
