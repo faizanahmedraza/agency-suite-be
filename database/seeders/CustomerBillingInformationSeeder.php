@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class CustomerBillingInformationSeeder extends Seeder
 {
@@ -28,9 +29,12 @@ class CustomerBillingInformationSeeder extends Seeder
         ];
 
         $permissions = collect($arrayOfPermissionNames)->map(function ($permission) {
-            return ['name' => $permission, 'guard_name' => 'web', 'created_at' => Carbon::now()->toDateTimeString()];
+            return ['name' => $permission, 'guard_name' => 'api', 'created_at' => Carbon::now()->toDateTimeString()];
         });
 
         Permission::insert($permissions->toArray());
+
+        $role = Role::findByName('Customer');
+        $role->givePermissionTo($arrayOfPermissionNames);
     }
 }
