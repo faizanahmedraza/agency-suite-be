@@ -5,16 +5,14 @@ namespace App\Http\Services\V1\Agency;
 
 use App\Models\User;
 use App\Models\Agency;
-use App\Helpers\TimeStampHelper;
-use App\Exceptions\V1\UserException;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
 
 use App\Exceptions\V1\ModelException;
 
 use App\Exceptions\V1\FailureException;
 use App\Http\Services\V1\CloudinaryService;
+use Illuminate\Support\Str;
 
 class AgencyService
 {
@@ -40,9 +38,9 @@ class AgencyService
         return $agency;
     }
 
-    public static function first($id,$with = [])
+    public static function first($id, $with = [])
     {
-        $agency = Agency::with($with)->where('id',$id)->first();
+        $agency = Agency::with($with)->where('id', $id)->first();
 
         if (!$agency) {
             throw ModelException::dataNotFound();
@@ -51,14 +49,14 @@ class AgencyService
         return $agency;
     }
 
-    public static function updateProfile($request,User $user=null)
+    public static function updateProfile($request, User $user = null)
     {
-        if($user==null){
-            $user=Auth::user();
+        if ($user == null) {
+            $user = Auth::user();
         }
-        $user->first_name = trim($request->name);
-        $user->last_name = trim($request->name);
-        if ($request->has('image') && !empty($request->image)) {
+        $user->first_name = trim($request->first_name);
+        $user->last_name = trim($request->last_name);
+        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['res', 'https', 'cloudinary'])) {
             $user->image = CloudinaryService::upload($request->image)->secureUrl;
         }
         $user->save();
