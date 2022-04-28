@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Services\V1\Customer;
+namespace App\Http\Services\V1\Agency;
 
 use App\Exceptions\V1\ModelException;
 use App\Exceptions\V1\FailureException;

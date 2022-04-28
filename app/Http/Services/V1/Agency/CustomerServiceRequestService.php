@@ -13,6 +13,27 @@ use App\Exceptions\V1\FailureException;
 
 class CustomerServiceRequestService
 {
+    public static function create(array $data,$service)
+    {
+        $customerServiceRequest = new CustomerServiceRequest();
+        $customerServiceRequest->agency_id = app('agency')->id;
+        $customerServiceRequest->customer_id = $data['customer_id'];
+        $customerServiceRequest->service_id = $data['service_id'];
+        $customerServiceRequest->is_recurring = $service->subscription_type;
+        $customerServiceRequest->status = CustomerServiceRequest::STATUS['submitted'];
+        $customerServiceRequest->intake_form = json_encode($data['intake_form']);
+        if($service->subscription_type == 1){
+            $customerServiceRequest->recurring_type=$data['recurring_type'];
+        }
+        $customerServiceRequest->save();
+
+        if (!$customerServiceRequest) {
+            throw FailureException::serverError();
+        }
+
+        return $customerServiceRequest;
+    }
+
     public static function first(int $id, $with = ['agency', 'customer','service'])
     {
         $service = CustomerServiceRequest::with($with)
@@ -65,4 +86,15 @@ class CustomerServiceRequestService
 
     }
 
+    public static function getByCustomer($id,$where=[])
+    {
+        $service = CustomerServiceRequest::where('customer_id', $id)
+            ->where('agency_id', app('agency')->id)->where($where)->get();
+
+        if (!$service) {
+            throw ModelException::dataNotFound();
+        }
+
+        return $service;
+    }
 }

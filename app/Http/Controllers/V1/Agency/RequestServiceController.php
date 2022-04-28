@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\V1\Agency;
 
 use App\Http\Controllers\Controller;
-use App\Http\Businesses\V1\Agency\RequestServiceBuisness;
+use App\Http\Businesses\V1\Agency\RequestServiceBusiness;
 use App\Http\Requests\V1\Agency\RequestServiceRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\CustomersServiceRequestResponse;
@@ -52,7 +52,7 @@ class RequestServiceController extends Controller
      */
     public function get(CustomerRequestServiceListRequest $request)
     {
-        $customerServiceRequests =  RequestServiceBuisness::get($request);
+        $customerServiceRequests =  RequestServiceBusiness::get($request);
         return (new CustomersServiceRequestListResponse($customerServiceRequests));
     }
 
@@ -68,7 +68,7 @@ class RequestServiceController extends Controller
      */
     public function first($id)
     {
-        $customerServiceRequest=RequestServiceBuisness::first($id);
+        $customerServiceRequest=RequestServiceBusiness::first($id);
         return (new CustomersServiceRequestResponse($customerServiceRequest));
     }
 
@@ -89,7 +89,7 @@ class RequestServiceController extends Controller
     public function create(RequestServiceRequest $request)
     {
         DB::beginTransaction();
-        RequestServiceBuisness::requestService($request);
+        RequestServiceBusiness::requestService($request);
         DB::commit();
         return new SuccessResponse([]);
     }
