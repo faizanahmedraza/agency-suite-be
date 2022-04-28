@@ -1,56 +1,39 @@
-name: 'Customer Register and Profile Settings'
+name: 'Agency Domain Launch'
 description: ''
 endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/auth/customers/register
+    uri: v1/public/domain-launch
     metadata:
       title: |-
-        Register Customer
-        This api is useful for register new Customer and return access token with Customer information
+        Public Agency Domain Launch Api
+        This api to verify the domain before jump to agency portal.
       description: ''
       authenticated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-      Domain: 'string required'
-      Client-ID: 'string required'
-      Client-Secret: 'string required'
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      first_name:
-        name: first_name
-        description: 'User first name'
+      domain:
+        name: domain
+        description: ''
         required: true
-        example: Bionic
+        example: id
         type: string
-        custom: []
-      last_name:
-        name: last_name
-        description: 'User last name'
-        required: true
-        example: WP
-        type: string
-        custom: []
-      email:
-        name: email
-        description: 'User email address'
-        required: true
-        example: admin@bionicwp.com
-        type: email
         custom: []
     responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
       -
         status: 422
         content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
         description: '422'
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"portal_settings\": {\r\n      \"id\": 1,\r\n      \"primary_color\": \"#re343\",\r\n      \"secondary_color\": \"#re343\",\r\n      \"logo\": \"https://res.cloudinary.com/saasfa/image/upload/v1649398902/service-624fd476069c5.png\",\r\n      \"favicon\": \"https://res.cloudinary.com/saasfa/image/upload/v1649398902/service-624fd476069c5.png\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\",\r\n      \"agency\": {\r\n        \"id\": 3,\r\n        \"name\": \"abc agency 123\",\r\n        \"default_domain\": \"abcagency123.agency.test\",\r\n        \"created_at\": \"2022-03-09T07:41:21.000000Z\"\r\n      }\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
     responseFields: []

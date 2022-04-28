@@ -1,215 +1,47 @@
-name: 'Customer Billing Information'
+name: 'Customer Register and Profile Settings'
 description: ''
 endpoints:
   -
     httpMethods:
-      - GET
-    uri: v1/customers/billing-information
-    metadata:
-      title: |-
-        Show Billing Information
-        This api show the billing information details.
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"invoice_to\": \"Agency 101\",\r\n      \"address\": \"My new address\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"zip_code\": 12345,\r\n      \"tax_code\": \"dsad2\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\"\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
-    responseFields: []
-  -
-    httpMethods:
       - POST
-    uri: v1/customers/billing-information
+    uri: v1/auth/customers/register
     metadata:
       title: |-
-        Create Billing Information
-        This api create new billing information.
+        Register Customer
+        This api is useful for register new Customer and return access token with Customer information
       description: ''
-      authenticated: true
+      authenticated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Domain: 'string required'
+      Client-ID: 'string required'
+      Client-Secret: 'string required'
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      invoice_to:
-        name: invoice_to
-        description: ''
+      first_name:
+        name: first_name
+        description: 'User first name'
         required: true
-        example: deserunt
+        example: Bionic
         type: string
         custom: []
-      address:
-        name: address
-        description: ''
+      last_name:
+        name: last_name
+        description: 'User last name'
         required: true
-        example: et
+        example: WP
         type: string
         custom: []
-      country:
-        name: country
-        description: ''
+      email:
+        name: email
+        description: 'User email address'
         required: true
-        example: provident
-        type: string
+        example: admin@bionicwp.com
+        type: email
         custom: []
-      city:
-        name: city
-        description: ''
-        required: true
-        example: at
-        type: string
-        custom: []
-      state:
-        name: state
-        description: ''
-        required: true
-        example: numquam
-        type: string
-        custom: []
-      zip_code:
-        name: zip_code
-        description: ''
-        required: true
-        example: 20
-        type: integer
-        custom: []
-      tax_code:
-        name: tax_code
-        description: optional
-        required: false
-        example: nemo
-        type: string
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"invoice_to\": \"Agency 101\",\r\n      \"address\": \"My new address\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"zip_code\": 12345,\r\n      \"tax_code\": \"dsad2\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\"\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: v1/customers/billing-information
-    metadata:
-      title: |-
-        Update Billing Information
-        This api update billing information.
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      invoice_to:
-        name: invoice_to
-        description: ''
-        required: true
-        example: sequi
-        type: string
-        custom: []
-      address:
-        name: address
-        description: ''
-        required: true
-        example: temporibus
-        type: string
-        custom: []
-      country:
-        name: country
-        description: ''
-        required: true
-        example: sed
-        type: string
-        custom: []
-      city:
-        name: city
-        description: ''
-        required: true
-        example: voluptatum
-        type: string
-        custom: []
-      state:
-        name: state
-        description: ''
-        required: true
-        example: fugiat
-        type: string
-        custom: []
-      zip_code:
-        name: zip_code
-        description: ''
-        required: true
-        example: 11
-        type: integer
-        custom: []
-      tax_code:
-        name: tax_code
-        description: optional
-        required: false
-        example: vel
-        type: string
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"invoice_to\": \"Agency 101\",\r\n      \"address\": \"My new address\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"zip_code\": 12345,\r\n      \"tax_code\": \"dsad2\",\r\n      \"created_at\": \"2022-03-25T05:50:29.000000Z\"\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: v1/customers/billing-information
-    metadata:
-      title: 'Delete Billing Information'
-      description: 'This api delete billing information'
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters: []
     responses:
       -
         status: 200
@@ -217,8 +49,8 @@ endpoints:
         headers: []
         description: '200'
       -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
-        description: '401'
+        description: '422'
     responseFields: []
