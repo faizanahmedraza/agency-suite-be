@@ -55,7 +55,7 @@ class CustomerService
             if (is_array($fullName)) {
                 $users->whereRaw("CONCAT(TRIM(LOWER(first_name)) , ' ' ,TRIM(LOWER(last_name))) in ('" . join("', '", $fullName) . "')");
             } else {
-                $users->whereRaw("CONCAT(LOWER(first_name) , ' ' ,LOWER(last_name)) = ? ", $fullName);
+                $users->whereRaw("CONCAT(LOWER(first_name) , ' ' ,LOWER(last_name)) like ? ", '%'.$fullName.'%');
             }
         }
 
@@ -65,7 +65,7 @@ class CustomerService
             if (is_array($fname)) {
                 $users->whereRaw("TRIM(LOWER(first_name)) in  ('" . join("', '", $fname) . "')");
             } else {
-                $users->whereRaw('TRIM(LOWER(first_name)) = ?', $fname);
+                $users->whereRaw('TRIM(LOWER(first_name)) like ?', '%'.$fname.'%');
             }
         }
 
@@ -75,7 +75,7 @@ class CustomerService
             if (is_array($lname)) {
                 $users->whereRaw("TRIM(LOWER(last_name)) in  ('" . join("', '", $lname) . "')");
             } else {
-                $users->whereRaw('TRIM(LOWER(last_name)) = ?', $lname);
+                $users->whereRaw('TRIM(LOWER(last_name)) like ?', '%'.$lname.'%');
             }
         }
 
