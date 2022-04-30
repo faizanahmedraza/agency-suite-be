@@ -127,7 +127,7 @@ class AgencyBusinessService
         }
 
         if ($request->query('name')) {
-            $services->whereRaw("TRIM(LOWER(name)) = ? ", trim(strtolower($request->name)));
+            $services->whereRaw("TRIM(LOWER(name)) like ? ", '%'.trim(strtolower($request->name)).'%');
         }
 
         if ($request->query('status')) {
