@@ -92,4 +92,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
     {
         return $query->where('created_by',Auth::id());
     }
+
+    public function getFullNameAttribute()
+    {
+        return "{$this->first_name} {$this->last_name}";
+    }
 }

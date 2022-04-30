@@ -19,7 +19,7 @@ class CustomersServiceRequestListResource extends Resource
         return [
             'id' => $this->id ?? '',
             'service_name' => optional($this->service)->name ?? '',
-            'customer_name' => optional($this->customer)->name ?? '',
+            'customer_name' => optional($this->customer->user)->full_name ?? '',
             'status' =>$status[$this->status] ?? '',
             'created_at' => $this->created_at ?? '',
         ];
