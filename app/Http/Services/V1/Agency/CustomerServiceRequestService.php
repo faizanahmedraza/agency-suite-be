@@ -36,7 +36,7 @@ class CustomerServiceRequestService
 
     public static function first(int $id, $with = ['agency', 'customer','service'])
     {
-        $service = CustomerServiceRequest::with($with)
+        $service = CustomerServiceRequest::with(['agency', 'customer','service','service.priceTypes'])
             ->where('id', $id)
             ->where('agency_id', app('agency')->id)
             ->first();
