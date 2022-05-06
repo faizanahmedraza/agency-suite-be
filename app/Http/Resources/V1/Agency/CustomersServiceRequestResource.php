@@ -21,6 +21,8 @@ class CustomersServiceRequestResource extends Resource
             'id' => $this->id ?? '',
             'service_name' => optional($this->service)->name ?? '',
             'customer_name' => optional($this->customer->user)->full_name ?? '',
+            'is_recurring' => $this->is_recurring ?? '',
+            'recurring_type' => $this->recurring_type ?? '',
             'status' =>$status[$this->status] ?? '',
             'intake_form' => (object)$intakeForm,
             'invoices' => InvoiceResource::collection($this->invoices) ??(object)[],
