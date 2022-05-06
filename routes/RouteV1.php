@@ -129,6 +129,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->get('/', 'RequestServiceController@get');
                 $router->get('/{id}', 'RequestServiceController@first');
                 $router->post('/', 'RequestServiceController@create');
+                $router->put('/change-status/{id}', 'RequestServiceController@changeStatus');
             });
         });
     });

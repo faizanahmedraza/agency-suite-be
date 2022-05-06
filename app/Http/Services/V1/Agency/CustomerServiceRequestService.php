@@ -6,14 +6,13 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Helpers\TimeStampHelper;
 
-use Illuminate\Support\Facades\Auth;
 use App\Exceptions\V1\ModelException;
 use App\Models\CustomerServiceRequest;
 use App\Exceptions\V1\FailureException;
 
 class CustomerServiceRequestService
 {
-    public static function create(array $data,$service)
+    public static function create(array $data, $service)
     {
         $customerServiceRequest = new CustomerServiceRequest();
         $customerServiceRequest->agency_id = app('agency')->id;
@@ -22,8 +21,8 @@ class CustomerServiceRequestService
         $customerServiceRequest->is_recurring = $service->subscription_type;
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['submitted'];
         $customerServiceRequest->intake_form = json_encode($data['intake_form']);
-        if($service->subscription_type == 1){
-            $customerServiceRequest->recurring_type=$data['recurring_type'];
+        if ($service->subscription_type == 1) {
+            $customerServiceRequest->recurring_type = $data['recurring_type'];
         }
         $customerServiceRequest->save();
 
@@ -34,9 +33,9 @@ class CustomerServiceRequestService
         return $customerServiceRequest;
     }
 
-    public static function first(int $id, $with = ['agency', 'customer','service'])
+    public static function first(int $id, $with = ['agency', 'customer', 'service'])
     {
-        $service = CustomerServiceRequest::with(['agency', 'customer','service','service.priceTypes'])
+        $service = CustomerServiceRequest::with(['agency', 'customer', 'service', 'service.priceTypes'])
             ->where('id', $id)
             ->where('agency_id', app('agency')->id)
             ->first();
@@ -86,7 +85,7 @@ class CustomerServiceRequestService
 
     }
 
-    public static function getByCustomer($id,$where=[])
+    public static function getByCustomer($id, $where = [])
     {
         $service = CustomerServiceRequest::where('customer_id', $id)
             ->where('agency_id', app('agency')->id)->where($where)->get();
@@ -96,5 +95,11 @@ class CustomerServiceRequestService
         }
 
         return $service;
+    }
+
+    public static function changeStatus(CustomerServiceRequest $requestService, Request $request)
+    {
+        $requestService->status = CustomerServiceRequest::STATUS[trim(strtolower($request->status))];
+        $requestService->save();
     }
 }

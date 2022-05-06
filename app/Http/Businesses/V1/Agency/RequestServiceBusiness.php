@@ -14,36 +14,36 @@ class RequestServiceBusiness
 {
     public static function requestService(Request $request)
     {
-        $data= $request->all();
+        $data = $request->all();
 
 //        $customerBillingInfo = BillingInformationService::first($data['customer_id'],[],true);
 //        if($customerBillingInfo == null){
 //            throw RequestValidationException::errorMessage("Please add customer billing info first.");
 //        }
 
-        $service = AgencyBusinessService::first($data['service_id'],[]);
+        $service = AgencyBusinessService::first($data['service_id'], []);
 
-        if($service->subscription_type == 1 && !isset($data['recurring_type'])){
+        if ($service->subscription_type == 1 && !isset($data['recurring_type'])) {
             throw RequestValidationException::errorMessage("Recurring type is required.");
         }
 
-        if($service->subscription_type == 1){
-            $maxReq=$service->priceTypes->max_requests_per_month;
-        }else{
-            $maxReq=$service->priceTypes->purchase_limit;
+        if ($service->subscription_type == 1) {
+            $maxReq = $service->priceTypes->max_requests_per_month;
+        } else {
+            $maxReq = $service->priceTypes->purchase_limit;
         }
 
-        $customerRequests=CustomerServiceRequestService::getByCustomer($data['customer_id'],['service_id'=>$data['service_id']]);
+        $customerRequests = CustomerServiceRequestService::getByCustomer($data['customer_id'], ['service_id' => $data['service_id']]);
 
-        if(count($customerRequests) == $maxReq) {
+        if (count($customerRequests) == $maxReq) {
             throw RequestValidationException::errorMessage("Request limit reached.");
         }
 
-        $customerServiceRequest=CustomerServiceRequestService::create($data,$service);
+        $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
 
-        $customerInvoice=CustomerInvoiceService::create($customerServiceRequest,$service);
+        $customerInvoice = CustomerInvoiceService::create($customerServiceRequest, $service);
 
-        $trancsaction=TransactionService::create($customerInvoice,$service);
+        $trancsaction = TransactionService::create($customerInvoice, $service);
     }
 
     public static function get($request)
@@ -51,10 +51,14 @@ class RequestServiceBusiness
         return CustomerServiceRequestService::get($request);
     }
 
-
     public static function first($id)
     {
-        return CustomerServiceRequestService::first($id,[]);
+        return CustomerServiceRequestService::first($id, []);
     }
 
+    public static function changeStatus(Request $request, $id)
+    {
+        $requestService = self::first($id);
+        CustomerServiceRequestService::changeStatus($requestService,$request);
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\V1\Agency;
 
 use App\Http\Controllers\Controller;
 use App\Http\Businesses\V1\Agency\RequestServiceBusiness;
+use App\Http\Requests\V1\Agency\RequestServiceChangeStatusRequest;
 use App\Http\Requests\V1\Agency\RequestServiceRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\CustomersServiceRequestResponse;
@@ -90,6 +91,25 @@ class RequestServiceController extends Controller
     {
         DB::beginTransaction();
         RequestServiceBusiness::requestService($request);
+        DB::commit();
+        return new SuccessResponse([]);
+    }
+
+    /**
+     * Request Service Change Status
+     *
+     * @header Domain string required
+     *
+     * @urlParam  id required Integer
+     * @bodyParam status required string ex: pending,active,hold,completed
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     */
+    public function changeStatus(RequestServiceChangeStatusRequest $request,$id)
+    {
+        DB::beginTransaction();
+        RequestServiceBusiness::changeStatus($request,$id);
         DB::commit();
         return new SuccessResponse([]);
     }
