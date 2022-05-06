@@ -19,8 +19,8 @@ class CustomersServiceRequestResource extends Resource
         $intakeForm=json_decode($this->intake_form,true) ?? [];
         return [
             'id' => $this->id ?? '',
-            'service_name' => optional($this->service)->name ?? '',
-            'customer_name' => optional($this->customer->user)->full_name ?? '',
+            'service' => new ServiceResource($this->service),
+            'customer' => new CustomerResource($this->customer->user),
             'is_recurring' => $this->is_recurring ?? '',
             'recurring_type' => $this->recurring_type ?? '',
             'status' =>$status[$this->status] ?? '',
