@@ -20,6 +20,7 @@ class CustomersServiceRequestResource extends Resource
         return [
             'id' => $this->id ?? '',
             'service_name' => optional($this->service)->name ?? '',
+            'customer_name' => optional($this->customer->user)->full_name ?? '',
             'status' =>$status[$this->status] ?? '',
             'intake_form' => (object)$intakeForm,
             'invoices' => InvoiceResource::collection($this->invoices) ??(object)[],

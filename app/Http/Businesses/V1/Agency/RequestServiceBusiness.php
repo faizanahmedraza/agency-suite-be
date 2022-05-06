@@ -16,10 +16,10 @@ class RequestServiceBusiness
     {
         $data= $request->all();
 
-        $customerBillingInfo = BillingInformationService::first($data['customer_id'],[],true);
-        if($customerBillingInfo == null){
-            throw RequestValidationException::errorMessage("Please add customer billing info first.");
-        }
+//        $customerBillingInfo = BillingInformationService::first($data['customer_id'],[],true);
+//        if($customerBillingInfo == null){
+//            throw RequestValidationException::errorMessage("Please add customer billing info first.");
+//        }
 
         $service = AgencyBusinessService::first($data['service_id'],[]);
 
