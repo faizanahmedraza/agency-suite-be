@@ -18,8 +18,8 @@ class CustomersServiceRequestListResource extends Resource
         $status=array_flip(CustomerServiceRequest::STATUS);
         return [
             'id' => $this->id ?? '',
-            'service_name' => optional($this->service)->name ?? '',
-            'customer_name' => optional($this->customer->user)->full_name ?? '',
+            'service' => new ServiceResource($this->service),
+            'customer' => new CustomerResource($this->customer->user),
             'status' =>$status[$this->status] ?? '',
             'created_at' => $this->created_at ?? '',
         ];
