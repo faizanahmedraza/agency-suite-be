@@ -19,7 +19,7 @@ class CustomerServiceRequestService
         $customerServiceRequest->customer_id = $data['customer_id'];
         $customerServiceRequest->service_id = $data['service_id'];
         $customerServiceRequest->is_recurring = $service->subscription_type;
-        $customerServiceRequest->status = CustomerServiceRequest::STATUS['submitted'];
+        $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
         $customerServiceRequest->intake_form = json_encode($data['intake_form']);
         if ($service->subscription_type == 1) {
             $customerServiceRequest->recurring_type = $data['recurring_type'];
