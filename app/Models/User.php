@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Traits\UserAuditTrait;
+use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
@@ -11,13 +13,14 @@ use Laravel\Lumen\Auth\Authorizable;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasPermissions;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Model implements AuthenticatableContract, AuthorizableContract
 {
-    use Authenticatable, Authorizable, HasApiTokens, HasRoles, HasPermissions, SoftDeletes;
+    use Authenticatable, Authorizable, HasApiTokens, HasRoles, HasPermissions, UserAuditTrait, CascadeSoftDeletes;
 
     const STATUS = ['pending' => 0, 'active' => 1, 'blocked' => 2, 'spammer' => 3, 'suspend' => 4, 'review' => 5];
+
+    protected $cascadeDeletes = ['agencyCustomer'];
 
     /**
      * The attributes that are mass assignable.

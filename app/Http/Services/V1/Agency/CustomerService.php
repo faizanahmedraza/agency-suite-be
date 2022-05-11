@@ -168,7 +168,6 @@ class CustomerService
 
     public static function destroy(User $user)
     {
-        $user->agencyCustomer()->delete();
         $user->delete();
     }
 }
