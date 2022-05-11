@@ -141,11 +141,15 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
         });
 
         $router->group(['prefix' => 'customers', 'middleware' => ['customer']], function () use ($router) {
+            $router->group(['prefix' => 'services'], function () use ($router) {
+                $router->get('/', 'ServiceController@get');
+                $router->get('/{id}', 'ServiceController@first');
+            });
+
             $router->group(['prefix' => 'request-services'], function () use ($router) {
                 $router->get('/', 'RequestServiceController@get');
                 $router->get('/{id}', 'RequestServiceController@first');
                 $router->post('/', 'RequestServiceController@create');
-
             });
 
             //customer billing information
