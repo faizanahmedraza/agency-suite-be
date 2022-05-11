@@ -51,7 +51,7 @@ class CustomerServiceRequestService
 
     public static function get(Request $request)
     {
-        $customerServiceRequest = CustomerServiceRequest::query()->where('customer_id', Auth::id())->where('agency_id', app('agency')->id);
+        $customerServiceRequest = CustomerServiceRequest::query()->with(['service','customer','customer.user'])->where('customer_id', Auth::id())->where('agency_id', app('agency')->id);
 
         if ($request->query('title')) {
             $arrTitleIds = Service::where('name', 'like', '%' . $request->query('title') . '%')->pluck('id');
