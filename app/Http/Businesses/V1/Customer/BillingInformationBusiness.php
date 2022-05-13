@@ -13,18 +13,18 @@ class BillingInformationBusiness
 
     public static function first()
     {
-        return BillingInformationService::first();
+        return BillingInformationService::first(auth()->id());
     }
 
     public static function update($request)
     {
-        $billing = BillingInformationService::first();
+        $billing = self::first();
         return BillingInformationService::update($request, $billing);
     }
 
     public static function destroy()
     {
-        $billing = BillingInformationService::first();
+        $billing = self::first();
         BillingInformationService::destroy($billing);
     }
 }
