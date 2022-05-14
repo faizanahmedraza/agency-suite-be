@@ -15,7 +15,6 @@ class CustomerServiceRequestService
 {
     public static function create(array $data,$service)
     {
-
         $customerServiceRequest = new CustomerServiceRequest();
         $customerServiceRequest->agency_id = app('agency')->id;
         $customerServiceRequest->customer_id = Auth::id();
@@ -34,6 +33,7 @@ class CustomerServiceRequestService
 
         return $customerServiceRequest;
     }
+
     public static function first(int $id, $with = ['agency', 'customer','service'])
     {
         $service = CustomerServiceRequest::with($with)
@@ -83,6 +83,7 @@ class CustomerServiceRequestService
             : $customerServiceRequest->paginate(\pageLimit($request));
 
     }
+
     public function getByCustomer($where=[])
     {
         $service = CustomerServiceRequest::where('customer_id', Auth::id())

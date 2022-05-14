@@ -132,12 +132,12 @@ class AgencyBusinessService
 
         if ($request->query('status')) {
             $arrStatus = getStatus(Service::STATUS, clean($request->status));
-            $services->wherein('status', $arrStatus);
+            $services->whereIn('status', $arrStatus);
         }
 
         if ($request->query('catalog_status')) {
             $arrStatus = getStatus(Service::CATALOG_STATUS, clean($request->catalog_status));
-            $services->wherein('status', $arrStatus);
+            $services->whereIn('catalog_status', $arrStatus);
         }
 
         if ($request->query('order_by')) {

@@ -24,8 +24,6 @@ class ServiceBusinessService
         return $service;
     }
 
-
-
     public static function get(Request $request)
     {
         $services = Service::query()->with(['intakes', 'priceTypes']);
@@ -37,11 +35,6 @@ class ServiceBusinessService
 
         if ($request->query('name')) {
             $services->whereRaw("TRIM(LOWER(name)) = ? ", trim(strtolower($request->name)));
-        }
-
-        if ($request->query('status')) {
-            $arrStatus = getStatus(Service::CATALOG_STATUS, clean($request->status));
-            $services->wherein('status', $arrStatus);
         }
 
         if ($request->query('order_by')) {
@@ -59,6 +52,8 @@ class ServiceBusinessService
             $to = TimeStampHelper::formateDate($request->to_date);
             $services->whereDate('created_at', '<=', $to);
         }
+
+        $services->where('agency_id', app('agency')->id)->where('catalog_status', 1)->where('status', 1);
 
         return ($request->filled('pagination') && $request->get('pagination') == 'false')
             ? $services->get()

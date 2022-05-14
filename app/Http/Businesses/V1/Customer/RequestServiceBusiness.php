@@ -13,7 +13,7 @@ class RequestServiceBusiness
     public static function requestService($request)
     {
         $customerBillingInfo = BillingInformationBusiness::first();
-        if ($customerBillingInfo == null) {
+        if (empty($customerBillingInfo)) {
             throw RequestValidationException::errorMessage("Please add your billing info first.");
         }
         $data = $request->all();

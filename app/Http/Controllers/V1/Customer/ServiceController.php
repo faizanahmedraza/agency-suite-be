@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\V1\Customer;
 
-use App\Http\Businesses\V1\Agency\ServiceBusiness;
+use App\Http\Businesses\V1\Customer\ServiceBusiness;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\Agency\ServiceListRequest;
-use App\Http\Resources\V1\Agency\ServiceResponse;
-use App\Http\Resources\V1\Agency\ServicesResponse;
+use App\Http\Requests\V1\Customer\ServiceListRequest;
+use App\Http\Resources\V1\Customer\ServiceResponse;
+use App\Http\Resources\V1\Customer\ServicesResponse;
 
 /**
  * @group Agency Services

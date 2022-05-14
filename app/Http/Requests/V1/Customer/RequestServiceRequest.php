@@ -3,6 +3,7 @@
 namespace App\Http\Requests\V1\Customer;
 
 use App\Models\CustomerServiceRequest;
+use Illuminate\Validation\Rule;
 use Pearl\RequestValidate\RequestAbstract;
 
 class RequestServiceRequest extends RequestAbstract
@@ -26,10 +27,17 @@ class RequestServiceRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'service_id' => 'required|exists:services,id',
-            'recurring_type' => 'nullable|in:'.implode(",",CustomerServiceRequest::RECURRING_TYPE),
+            'service_id' => [
+                'required',
+                Rule::exists('services')->where(function ($query) {
+                    $query->where('agency_id', app('agency')->id)->where('catalog_status', 1)->where('status', 1);
+                })
+            ],
+            'recurring_type' => 'nullable|in:' . implode(",", CustomerServiceRequest::RECURRING_TYPE),
             'reference_no' => 'required',
             'intake_form' => "required|array",
+            'intake_form.0.title' => "required|string",
+            'intake_form.0.description' => "required|string",
         ];
     }
 
@@ -40,6 +48,11 @@ class RequestServiceRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [];
+        return [
+            'intake_form.0.title.required' => "The intake form title field is required.",
+            'intake_form.0.title.string' => "The intake form title must be a string.",
+            'intake_form.0.description.required' => "The intake form description field is required.",
+            'intake_form.0.description.string' => "The intake form description must be a string.",
+        ];
     }
 }
