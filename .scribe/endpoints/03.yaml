@@ -19,7 +19,7 @@ endpoints:
         name: status
         description: 'pending,submitted'
         required: false
-        example: dolores
+        example: dolorem
         type: string
         custom: []
       customer_id:
@@ -33,14 +33,14 @@ endpoints:
         name: title
         description: 'ex: abc,xyz'
         required: false
-        example: impedit
+        example: fuga
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: nisi
+        example: nemo
         type: string
         custom: []
       from_date:
@@ -61,21 +61,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 2
+        example: 12
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 11
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -110,7 +110,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 14
+        example: 9
         type: integer
         custom: []
     queryParameters: []
@@ -147,21 +147,21 @@ endpoints:
         name: service_id
         description: ''
         required: true
-        example: 12
+        example: 2
         type: integer
         custom: []
       customer_id:
         name: customer_id
         description: ''
         required: true
-        example: 8
+        example: 6
         type: integer
         custom: []
       recurring_type:
         name: recurring_type
         description: 'optional if one-off Example : weekly,monthly,quarterly,biannually,annually'
         required: false
-        example: nihil
+        example: rerum
         type: string
         custom: []
       intake_form:
@@ -169,8 +169,50 @@ endpoints:
         description: 'Example :{key1:value1,key2:value2}'
         required: true
         example:
-          - ullam
+          - praesentium
         type: 'string[]'
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'v1/agencies/request-services/change-status/{id}'
+    metadata:
+      title: 'Request Service Change Status'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: Integer
+        required: true
+        example: tempore
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      status:
+        name: status
+        description: 'string ex: pending,active,hold,completed'
+        required: false
+        example: qui
+        type: required
         custom: []
     responses:
       -

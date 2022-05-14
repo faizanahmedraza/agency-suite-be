@@ -29,7 +29,7 @@ class RequestServiceRequest extends RequestAbstract
         return [
             'service_id' => [
                 'required',
-                Rule::exists('services')->where(function ($query) {
+                Rule::exists('services','id')->where(function ($query) {
                     $query->where('agency_id', app('agency')->id)->where('catalog_status', 1)->where('status', 1);
                 })
             ],
