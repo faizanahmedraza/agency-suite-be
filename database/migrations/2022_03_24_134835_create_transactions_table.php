@@ -19,7 +19,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('customer_id');
             $table->integer('invoice_id');
             $table->integer('card_id')->nullable();
-            $table->string('refrence_no')->nullable();
+            $table->string('reference_no')->nullable();
             $table->tinyInteger('type');
             $table->string('charge_id')->nullable();
             $table->timestamps();

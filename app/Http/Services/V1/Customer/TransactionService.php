@@ -20,7 +20,7 @@ class TransactionService
         $transaction->agency_id = app('agency')->id;
         $transaction->invoice_id =$data->id;
         $transaction->type =Transaction::TYPE[$type];
-        $transaction->refrence_no =$data->refrence_no;
+        $transaction->reference_no =$data->reference_no;
         $transaction->save();
 
         if (!$transaction) {

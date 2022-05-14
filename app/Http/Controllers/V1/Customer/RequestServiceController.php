@@ -36,7 +36,7 @@ class RequestServiceController extends Controller
      *
      * @bodyParam service_id integer required
      * @bodyParam recurring_type string required Example : weekly,monthly,quarterly,biannually,annually
-     * @bodyParam refrence_no string required
+     * @bodyParam reference_no string required
      * @bodyParam intake_form array required Example :{key1:value1,key2:value2}
      *
      *

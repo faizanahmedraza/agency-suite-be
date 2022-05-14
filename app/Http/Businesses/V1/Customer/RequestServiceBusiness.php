@@ -32,7 +32,7 @@ class RequestServiceBusiness
         }
         $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
         $customerInvoice = CustomerInvoiceService::create($customerServiceRequest, $service);
-        $customerInvoice->refrence_no = $data['refrence_no'];
+        $customerInvoice->reference_no = $data['reference_no'];
         $trancsaction = TransactionService::create($customerInvoice, $service);
     }
 
