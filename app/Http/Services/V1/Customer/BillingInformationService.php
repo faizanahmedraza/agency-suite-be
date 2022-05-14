@@ -10,10 +10,8 @@ use Illuminate\Support\Facades\Auth;
 
 class BillingInformationService
 {
-    public static function store(Request $request)
+    public static function store(Request $request, $billing = null)
     {
-        $billing = self::first();
-
         if (empty($billing)) {
             $billing = new CustomerBillingInformation();
             $billing->agency_id = app('agency')->id;

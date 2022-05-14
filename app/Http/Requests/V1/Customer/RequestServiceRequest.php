@@ -28,7 +28,6 @@ class RequestServiceRequest extends RequestAbstract
         return [
             'service_id' => 'required|exists:services,id',
             'recurring_type' => 'nullable|in:'.implode(",",CustomerServiceRequest::RECURRING_TYPE),
-            'refrence_no'=>'required',
             'intake_form' => "required|array",
         ];
     }
