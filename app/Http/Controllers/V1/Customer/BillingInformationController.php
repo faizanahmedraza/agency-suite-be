@@ -33,13 +33,11 @@ class BillingInformationController extends Controller
      *
      * @header Domain string required
      *
-     * @bodyParam  invoice_to string required
      * @bodyParam  address string required
      * @bodyParam  country string required
      * @bodyParam  city string required
      * @bodyParam  state string required
      * @bodyParam  zip_code integer required
-     * @bodyParam  tax_code string optional
      *
      * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
