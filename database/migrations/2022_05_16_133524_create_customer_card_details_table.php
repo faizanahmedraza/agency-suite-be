@@ -16,9 +16,9 @@ class CreateCustomerCardDetailsTable extends Migration
         Schema::create('customer_card_details', function (Blueprint $table) {
             $table->id();
             $table->string('card_id')->nullable();
-            $table->string('exp_month');
-            $table->string('exp_year');
-            $table->string('last_digits');
+            $table->integer('exp_month');
+            $table->integer('exp_year');
+            $table->integer('last_digits');
             $table->string('brand')->nullable();
             $table->string('holder_name');
             $table->string('address');

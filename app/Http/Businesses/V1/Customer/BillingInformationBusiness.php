@@ -8,13 +8,17 @@ class BillingInformationBusiness
 {
     public static function store($request)
     {
-        $billing = self::first();
-        return BillingInformationService::store($request,$billing);
+        return BillingInformationService::store($request);
+    }
+
+    public static function get()
+    {
+        return BillingInformationService::get();
     }
 
     public static function first()
     {
-        return BillingInformationService::first(auth()->id(),['agency','customer'],true);
+        return BillingInformationService::first(auth()->id(),['agency','customer']);
     }
 
     public static function update($request)

@@ -12,7 +12,7 @@ class Customer extends Model
 
     protected $table = "agency_customers";
 
-    protected $cascadeDeletes = ['billingInformation', 'serviceRequests'];
+    protected $cascadeDeletes = ['customerCardDetails', 'serviceRequests'];
 
     public function user()
     {
@@ -24,9 +24,9 @@ class Customer extends Model
         return $this->belongsTo(Agency::class, 'agency_id', 'id');
     }
 
-    public function billingInformation()
+    public function customerCardDetails()
     {
-        return $this->hasOne(CustomerBillingInformation::class, 'customer_id', 'user_id');
+        return $this->hasOne(CustomerCardDetail::class, 'customer_id', 'user_id');
     }
 
     public function serviceRequests()

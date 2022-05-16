@@ -17,13 +17,16 @@ class BillingInformationResource extends Resource
     {
         return [
             'id' => $this->id ?? '',
-            'invoice_to' => $this->invoice_to ?? '',
+            'holder_name' => $this->holder_name ?? '',
+            'last_digits' => $this->last_digits ?? '',
+            'exp_month' => $this->exp_month ?? '',
+            'exp_year' => $this->exp_year ?? '',
             'address' => $this->address ?? '',
             'country' => $this->country ?? '',
             'city' => $this->city ?? '',
             'state' => $this->state ?? '',
+            'street' => $this->street ?? '',
             'zip_code' => $this->zip_code ?? '',
-            'tax_code' => $this->tax_code ?? '',
             'created_at' => $this->created_at ?? '',
         ];
     }

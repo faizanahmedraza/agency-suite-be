@@ -35,13 +35,17 @@ class BillingInformationRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'invoice_to' => 'required|string|max:100',
+            'holder_name' => 'required|max:100|regex:/^[a-zA-Z ]*$/i',
+            'card_no' => 'required|regex:/^[0-9]{13,19}$/',
+            'cvc' => 'required|regex:/^[0-9]{3,4}$/',
+            'expiry_month' => 'required|regex:/\d*[1-9]/',
+            'expiry_year' => 'required|regex:/^[0-9]{1,2}$/',
             'address' => 'required|string',
             'country' => 'required|string',
             'city' => 'required|string|max:100',
             'state' => 'required|string|max:100',
             'zip_code' => 'required|numeric|digits_between:5,20',
-            'tax_code' => 'sometimes|nullable|string|max:30',
+            'street' => 'sometimes|nullable|string|max:50',
         ];
     }
 
@@ -53,6 +57,11 @@ class BillingInformationRequest extends RequestAbstract
     public function messages(): array
     {
         return [
+            'holder_name.regex' => 'The holder name should contain alphabets.',
+            'card_no.regex' => 'The card no should contain only 13 to 19 digits.',
+            'cvc.regex' => 'The cvc should contain only 3 to 4 digits.',
+            'expiry_month.regex' => 'The expiry month should contain only 1 to 2 digits.',
+            'expiry_year.regex' => 'The expiry year should contain only 1 to 2 digits.',
             'zip_code.digits_between' => 'The zip code must be greater than 4 and less than 20 digits.'
         ];
     }

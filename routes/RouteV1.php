@@ -155,6 +155,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             //customer billing information
             $router->group(['prefix' => 'billing-information'], function () use ($router) {
                 $router->get('/', 'BillingInformationController@first');
+                $router->get('/all', 'BillingInformationController@get');
                 $router->post('/', 'BillingInformationController@store');
                 $router->put('/', 'BillingInformationController@update');
                 $router->delete('/', 'BillingInformationController@destroy');

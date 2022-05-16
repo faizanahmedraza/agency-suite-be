@@ -6,6 +6,7 @@ use App\Http\Businesses\V1\Customer\BillingInformationBusiness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Customer\BillingInformationRequest;
 use App\Http\Resources\SuccessResponse;
+use App\Http\Resources\V1\Customer\BillingInformationListResponse;
 use App\Http\Resources\V1\Customer\BillingInformationResponse;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +22,7 @@ class BillingInformationController extends Controller
     {
         $this->module = 'agency_customers_billing_information';
         $ULP = '|' . $this->module . '_all'; //UPPER LEVEL PERMISSIONS
-        $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first']]);
+        $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
         $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['store']]);
         $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
         $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
@@ -33,11 +34,17 @@ class BillingInformationController extends Controller
      *
      * @header Domain string required
      *
+     * @bodyParam  holder_name string required ex: haesw
+     * @bodyParam  card_no integer required ex: 1233321321321312
+     * @bodyParam  cvc integer required ex: 123
+     * @bodyParam  expiry_month integer required ex: 12
+     * @bodyParam  expiry_month integer required ex: 20
      * @bodyParam  address string required
      * @bodyParam  country string required
      * @bodyParam  city string required
      * @bodyParam  state string required
-     * @bodyParam  zip_code integer required
+     * @bodyParam  street string optional
+     * @bodyParam  zip_code integer required ex: 2321
      *
      * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -50,6 +57,20 @@ class BillingInformationController extends Controller
         $billing = BillingInformationBusiness::store($request);
         DB::commit();
         return (new BillingInformationResponse($billing));
+    }
+
+    /**
+     * Show All Billings Information
+     * This api show the billing information details.
+     *
+     * @header Domain string required
+     *
+     * @responseFile 200 responses/V1/Customer/BillingInformationListResponse.json
+     */
+    public function get()
+    {
+        $billings = BillingInformationBusiness::get();
+        return (new BillingInformationListResponse($billings));
     }
 
     /**
@@ -72,13 +93,17 @@ class BillingInformationController extends Controller
      *
      * @header Domain string required
      *
-     * @bodyParam  invoice_to string required
+     * @bodyParam  holder_name string required ex: haesw
+     * @bodyParam  card_no numeric required ex: 1233321321321312
+     * @bodyParam  cvc integer required ex: 123
+     * @bodyParam  expiry_month integer required ex: 12
+     * @bodyParam  expiry_month integer required ex: 20
      * @bodyParam  address string required
      * @bodyParam  country string required
      * @bodyParam  city string required
      * @bodyParam  state string required
-     * @bodyParam  zip_code integer required
-     * @bodyParam  tax_code string optional
+     * @bodyParam  street string optional
+     * @bodyParam  zip_code integer required ex: 2321
      *
      * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
      * @responseFile 422 responses/ValidationResponse.json
