@@ -16,15 +16,15 @@ class BillingInformationResource extends Resource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'invoice_to' => $this->invoice_to,
-            'address' => $this->address,
-            'country' => $this->country,
-            'city' => $this->city,
-            'state' => $this->state,
-            'zip_code' => $this->zip_code,
-            'tax_code' => $this->tax_code,
-            'created_at' => $this->created_at,
+            'id' => $this->id ?? '',
+            'invoice_to' => $this->invoice_to ?? '',
+            'address' => $this->address ?? '',
+            'country' => $this->country ?? '',
+            'city' => $this->city ?? '',
+            'state' => $this->state ?? '',
+            'zip_code' => $this->zip_code ?? '',
+            'tax_code' => $this->tax_code ?? '',
+            'created_at' => $this->created_at ?? '',
         ];
     }
 }
