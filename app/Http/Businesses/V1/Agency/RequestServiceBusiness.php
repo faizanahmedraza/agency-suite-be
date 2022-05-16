@@ -3,8 +3,8 @@
 namespace App\Http\Businesses\V1\Agency;
 
 use App\Exceptions\V1\RequestValidationException;
+use App\Exceptions\V1\ServerException;
 use App\Http\Services\V1\Agency\AgencyBusinessService;
-use App\Http\Services\V1\Agency\BillingInformationService;
 use App\Http\Services\V1\Agency\CustomerInvoiceService;
 use App\Http\Services\V1\Agency\CustomerServiceRequestService;
 use App\Http\Services\V1\Agency\TransactionService;
@@ -22,6 +22,14 @@ class RequestServiceBusiness
 //        }
 
         $service = AgencyBusinessService::first($data['service_id'], []);
+
+        if (auth()->user()->status == 2) {
+            throw RequestValidationException::errorMessage('The customer you selected is blocked, if you would like quicker access please contact support',422);
+        }
+
+        if ($service->status == 2) {
+            throw ServerException::errorMessage('The service you selected is blocked, if you would like quicker access please contact support',422);
+        }
 
         if ($service->subscription_type == 1 && !isset($data['recurring_type'])) {
             throw RequestValidationException::errorMessage("Recurring type is required.");
@@ -59,6 +67,6 @@ class RequestServiceBusiness
     public static function changeStatus(Request $request, $id)
     {
         $requestService = self::first($id);
-        CustomerServiceRequestService::changeStatus($requestService,$request);
+        CustomerServiceRequestService::changeStatus($requestService, $request);
     }
 }
