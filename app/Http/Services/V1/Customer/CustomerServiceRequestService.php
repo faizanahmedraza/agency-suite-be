@@ -34,7 +34,7 @@ class CustomerServiceRequestService
         return $customerServiceRequest;
     }
 
-    public static function first(int $id, $with = ['agency', 'customer','service'])
+    public static function first(int $id, $with = ['agency', 'customer','service','service.priceTypes'])
     {
         $service = CustomerServiceRequest::with($with)
             ->where('id', $id)
