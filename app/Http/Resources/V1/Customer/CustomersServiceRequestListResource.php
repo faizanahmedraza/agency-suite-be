@@ -19,6 +19,8 @@ class CustomersServiceRequestListResource extends Resource
         return [
             'id' => $this->id ?? '',
             'service_name' => optional($this->service)->name ?? '',
+            'is_recurring' => $this->is_recurring ?? '',
+            'recurring_type' => $this->recurring_type ?? '',
             'status' =>$status[$this->status] ?? '',
             'created_at' => $this->created_at ?? '',
         ];

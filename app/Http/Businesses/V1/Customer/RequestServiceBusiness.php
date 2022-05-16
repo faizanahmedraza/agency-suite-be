@@ -27,7 +27,7 @@ class RequestServiceBusiness
             $maxReq = $service->priceTypes->purchase_limit;
         }
         $customerRequests = CustomerServiceRequestService::getByCustomer(['service_id' => $data['service_id']]);
-        if (count($customerRequests) == $maxReq) {
+        if (!is_null($maxReq) && count($customerRequests) == $maxReq) {
             throw RequestValidationException::errorMessage("Request limit reached.");
         }
         $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
@@ -44,7 +44,7 @@ class RequestServiceBusiness
 
     public static function first($id)
     {
-        return CustomerServiceRequestService::first($id, []);
+        return CustomerServiceRequestService::first($id);
     }
 
 }

@@ -20,6 +20,8 @@ class CustomersServiceRequestResource extends Resource
         return [
             'id' => $this->id ?? '',
             'service' => new ServiceResource($this->service),
+            'is_recurring' => $this->is_recurring ?? '',
+            'recurring_type' => $this->recurring_type ?? '',
             'status' =>$status[$this->status] ?? '',
             'intake_form' => (object)$intakeForm,
             'invoices' => InvoiceResource::collection($this->invoices) ??(object)[],

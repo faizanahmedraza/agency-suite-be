@@ -43,7 +43,7 @@ class RequestServiceBusiness
 
         $customerRequests = CustomerServiceRequestService::getByCustomer($data['customer_id'], ['service_id' => $data['service_id']]);
 
-        if (count($customerRequests) == $maxReq) {
+        if (!is_null($maxReq) && count($customerRequests) == $maxReq) {
             throw RequestValidationException::errorMessage("Request limit reached.");
         }
 
