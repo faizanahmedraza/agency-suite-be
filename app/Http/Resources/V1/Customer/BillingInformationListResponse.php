@@ -14,6 +14,6 @@ class BillingInformationListResponse extends BaseResponse
      */
     public function toArray($request)
     {
-        return $this->wrapped(['customer_billing_information' => new BillingInformationResource($this)]);
+        return $this->wrapped(['customer_billing_information' => BillingInformationResource::collection($this)]);
     }
 }

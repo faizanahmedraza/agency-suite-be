@@ -16,14 +16,14 @@ class BillingInformationBusiness
         return BillingInformationService::get();
     }
 
-    public static function first()
+    public static function first($id)
     {
-        return BillingInformationService::first(auth()->id(),['agency','customer']);
+        return BillingInformationService::first($id,['agency','customer']);
     }
 
-    public static function update($request)
+    public static function update($request,$id)
     {
-        $billing = self::first();
+        $billing = self::first($id);
         return BillingInformationService::update($request, $billing);
     }
 

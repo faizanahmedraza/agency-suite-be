@@ -17,7 +17,7 @@ class RequestServiceBusiness
             throw RequestValidationException::errorMessage("Please add your billing info first.");
         }
         $data = $request->all();
-        $service = ServiceBusinessService::first($data['service_id'], []);
+        $service = ServiceBusinessService::first($data['service_id']);
         if ($service->subscription_type == 1 && !isset($data['recurring_type'])) {
             throw RequestValidationException::errorMessage("Recurring type is required.");
         }

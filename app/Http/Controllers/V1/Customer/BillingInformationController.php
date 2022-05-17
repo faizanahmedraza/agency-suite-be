@@ -79,11 +79,13 @@ class BillingInformationController extends Controller
      *
      * @header Domain string required
      *
+     * @urlParam id integer required
+     *
      * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
      */
-    public function first()
+    public function first($id)
     {
-        $billing = BillingInformationBusiness::first();
+        $billing = BillingInformationBusiness::first($id);
         return (new BillingInformationResponse($billing));
     }
 
@@ -92,6 +94,8 @@ class BillingInformationController extends Controller
      * This api update billing information.
      *
      * @header Domain string required
+     *
+     * @urlParam id integer required
      *
      * @bodyParam  holder_name string required ex: haesw
      * @bodyParam  card_no numeric required ex: 1233321321321312
@@ -110,10 +114,10 @@ class BillingInformationController extends Controller
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public function update(BillingInformationRequest $request)
+    public function update(BillingInformationRequest $request,$id)
     {
         DB::beginTransaction();
-        $billing = BillingInformationBusiness::update($request);
+        $billing = BillingInformationBusiness::update($request,$id);
         DB::commit();
         return (new BillingInformationResponse($billing));
     }

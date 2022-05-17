@@ -23,7 +23,6 @@ class BillingInformationService
 
         $billing->holder_name = trim($request->holder_name);
         $billing->last_digits = trim(substr($request->card_no, -4));
-        $billing->cvc = trim($request->cvc);
         $billing->exp_month = trim($request->expiry_month);
         $billing->exp_year = trim($request->expiry_year);
         $billing->address = trim($request->address);
@@ -41,9 +40,9 @@ class BillingInformationService
         return $billing;
     }
 
-    public static function first($id, $with = ['customer', 'agency'], $bypass = false)
+    public static function first($id, $with = ['customer', 'agency'])
     {
-        return CustomerCardDetail::with($with)->where('agency_id', app('agency')->id)->where('customer_id', $id)->first();
+        return CustomerCardDetail::with($with)->where('id',$id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
     }
 
     public static function update(Request $request, CustomerCardDetail $billing)

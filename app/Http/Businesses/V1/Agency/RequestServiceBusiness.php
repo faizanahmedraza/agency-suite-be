@@ -6,6 +6,7 @@ use App\Exceptions\V1\RequestValidationException;
 use App\Exceptions\V1\ServerException;
 use App\Http\Services\V1\Agency\AgencyBusinessService;
 use App\Http\Services\V1\Agency\CustomerInvoiceService;
+use App\Http\Services\V1\Agency\CustomerService;
 use App\Http\Services\V1\Agency\CustomerServiceRequestService;
 use App\Http\Services\V1\Agency\TransactionService;
 use Illuminate\Http\Request;
@@ -21,9 +22,11 @@ class RequestServiceBusiness
 //            throw RequestValidationException::errorMessage("Please add customer billing info first.");
 //        }
 
-        $service = AgencyBusinessService::first($data['service_id'], []);
+        $service = AgencyBusinessService::first($data['service_id']);
 
-        if (auth()->user()->status == 2) {
+        $customer = CustomerService::first($data['customer_id']);
+
+        if ($customer->status == 2) {
             throw RequestValidationException::errorMessage('The customer you selected is blocked, if you would like quicker access please contact support',422);
         }
 

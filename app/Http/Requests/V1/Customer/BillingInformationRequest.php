@@ -39,7 +39,7 @@ class BillingInformationRequest extends RequestAbstract
             'card_no' => 'required|regex:/^[0-9]{13,19}$/',
             'cvc' => 'required|regex:/^[0-9]{3,4}$/',
             'expiry_month' => 'required|regex:/\d*[1-9]/',
-            'expiry_year' => 'required|regex:/^[0-9]{1,2}$/',
+            'expiry_year' => 'required|regex:/^[0-9]{2}$/',
             'address' => 'required|string',
             'country' => 'required|string',
             'city' => 'required|string|max:100',
