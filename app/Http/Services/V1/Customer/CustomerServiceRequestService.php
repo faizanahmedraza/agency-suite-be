@@ -84,7 +84,7 @@ class CustomerServiceRequestService
 
     }
 
-    public function getByCustomer($where=[])
+    public static function getByCustomer($where=[])
     {
         $service = CustomerServiceRequest::where('customer_id', Auth::id())
                                           ->where('agency_id', app('agency')->id)->where($where)->get();

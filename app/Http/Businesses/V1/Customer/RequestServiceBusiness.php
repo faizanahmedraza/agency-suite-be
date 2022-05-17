@@ -3,16 +3,18 @@
 namespace App\Http\Businesses\V1\Customer;
 
 use App\Exceptions\V1\RequestValidationException;
+use App\Http\Services\V1\Customer\BillingInformationService;
 use App\Http\Services\V1\Customer\TransactionService;
 use App\Http\Services\V1\Customer\CustomerInvoiceService;
 use App\Http\Services\V1\Customer\ServiceBusinessService;
 use App\Http\Services\V1\Customer\CustomerServiceRequestService;
+use App\Models\CustomerCardDetail;
 
 class RequestServiceBusiness
 {
     public static function requestService($request)
     {
-        $customerBillingInfo = BillingInformationBusiness::first();
+        $customerBillingInfo = CustomerCardDetail::where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
         if (empty($customerBillingInfo)) {
             throw RequestValidationException::errorMessage("Please add your billing info first.");
         }

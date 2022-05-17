@@ -11,7 +11,7 @@ class CustomerServiceRequest extends Model
 
     protected $table = "customer_service_requests";
 
-    const STATUS = ['pending' => 0, 'active' => 1, 'hold' => 3, 'completed' => 4];
+    const STATUS = ['pending' => 0, 'active' => 1, 'hold' => 2, 'completed' => 3];
 
     const RECURRING_TYPE = ['weekly', 'monthly', 'quarterly', 'biannually', 'annually'];
 
