@@ -30,7 +30,7 @@ class ServiceController extends Controller
      *
      * @urlParam services string 1,2,3,4
      * @urlParam name string ex: my service
-
+     * @urlParam service_type string ex: one-off,recurring
      * @urlParam order_by string ex: asc/desc
      * @urlParam from_date string Example: Y-m-d
      * @urlParam to_date string Example: Y-m-d

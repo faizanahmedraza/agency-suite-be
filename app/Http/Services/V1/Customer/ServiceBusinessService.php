@@ -6,6 +6,7 @@ use App\Exceptions\V1\ModelException;
 use App\Helpers\TimeStampHelper;
 use App\Models\Service;
 
+use function Clue\StreamFilter\fun;
 use Illuminate\Http\Request;
 
 class ServiceBusinessService
@@ -35,6 +36,10 @@ class ServiceBusinessService
 
         if ($request->query('name')) {
             $services->whereRaw("TRIM(LOWER(name)) = ? ", trim(strtolower($request->name)));
+        }
+
+        if ($request->query('service_type')) {
+            $services->where('subscription_type',trim(clean($request->service_type)));
         }
 
         if ($request->query('order_by')) {

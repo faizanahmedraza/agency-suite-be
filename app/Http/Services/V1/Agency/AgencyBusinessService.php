@@ -130,6 +130,10 @@ class AgencyBusinessService
             $services->whereRaw("TRIM(LOWER(name)) like ? ", '%' . trim(strtolower($request->name)) . '%');
         }
 
+        if ($request->query('service_type')) {
+            $services->where('subscription_type',trim(clean($request->service_type)));
+        }
+
         if ($request->query('status')) {
             $services->where('status', Service::STATUS[clean($request->status)]);
         }
