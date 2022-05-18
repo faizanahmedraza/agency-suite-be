@@ -92,8 +92,6 @@ class CustomerService
 
         if ($request->query('status')) {
             $users->where('status', User::STATUS[clean($request->status)]);
-        } else {
-            $users->where('status', User::STATUS['active']);
         }
 
         if ($request->query('order_by')) {

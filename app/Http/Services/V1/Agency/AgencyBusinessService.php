@@ -132,8 +132,6 @@ class AgencyBusinessService
 
         if ($request->query('status')) {
             $services->where('status', Service::STATUS[clean($request->status)]);
-        } else {
-            $services->where('status', Service::STATUS['active']);
         }
 
         if ($request->query('catalog_status')) {
