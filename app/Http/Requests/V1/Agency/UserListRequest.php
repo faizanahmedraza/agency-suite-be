@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1\Agency;
 
+use App\Models\User;
 use Pearl\RequestValidate\RequestAbstract;
 
 use Illuminate\Validation\Rule;
@@ -28,7 +29,7 @@ class UserListRequest extends RequestAbstract
         return [
             'from_date' => 'nullable|date_format:Y-m-d|date',
             'to_date' => 'nullable|date_format:Y-m-d|date',
-            'status' => 'string',
+            'status' => 'string|'.Rule::in(array_keys(User::STATUS)),
             'order_by' => 'string|'. Rule::in(['asc','desc']),
         ];
     }

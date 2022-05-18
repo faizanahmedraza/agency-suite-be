@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1\Agency;
 
+use App\Models\Service;
 use Pearl\RequestValidate\RequestAbstract;
 
 use Illuminate\Validation\Rule;
@@ -28,7 +29,8 @@ class ServiceListRequest extends RequestAbstract
         return [
             'from_date' => 'nullable|date_format:Y-m-d|date',
             'to_date' => 'nullable|date_format:Y-m-d|date',
-            'status' => 'string',
+            'status' => 'nullable|string|'.Rule::in(array_keys(Service::STATUS)),
+            'catalog_status' => 'nullable|string|'.Rule::in(array_keys(Service::CATALOG_STATUS)),
             'order_by' => 'string|'. Rule::in(['asc','desc']),
         ];
     }

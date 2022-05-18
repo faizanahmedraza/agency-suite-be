@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1\Agency;
 
+use App\Models\CustomerServiceRequest;
 use Pearl\RequestValidate\RequestAbstract;
 
 use Illuminate\Validation\Rule;
@@ -28,7 +29,7 @@ class CustomerRequestServiceListRequest extends RequestAbstract
         return [
             'from_date' => 'nullable|date_format:Y-m-d|date',
             'to_date' => 'nullable|date_format:Y-m-d|date',
-            'status' => 'nullable|string'. Rule::in(['pending','submitted']),
+            'status' => 'nullable|string|'. Rule::in(array_keys(CustomerServiceRequest::STATUS)),
             'order_by' => 'nullable|string|'. Rule::in(['asc','desc']),
             'customer_id' => ['nullable','exists:agency_customers,user_id,agency_id,'.app('agency')->id],
         ];
