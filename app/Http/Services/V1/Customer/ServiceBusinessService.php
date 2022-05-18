@@ -39,7 +39,7 @@ class ServiceBusinessService
         }
 
         if ($request->query('service_type')) {
-            $services->where('subscription_type',trim(clean($request->service_type)));
+            $services->where('subscription_type',Service::SUBSCRIPTION_TYPES[trim(clean($request->service_type))]);
         }
 
         if ($request->query('order_by')) {
