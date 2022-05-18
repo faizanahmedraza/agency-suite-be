@@ -135,8 +135,6 @@ class AuthenticationBusiness
     public function changePassword($request)
     {
         $user = Auth::user();
-        // check user status
-        UserService::checkStatus($user);
 
         if (!Hash::check($request->old_password, $user->password)) {
             throw RequestValidationException::errorMessage("Old Password not matched.", 422);
@@ -146,9 +144,10 @@ class AuthenticationBusiness
             throw RequestValidationException::errorMessage("The password is match with old password.", 422);
         }
 
+        UserService::changePassword($user, $request->password);
+
         //segment create password event
         SegmentWrapper::createPassword($user);
-        UserService::changePassword($user, $request->password);
     }
 
     public function logout($request)
