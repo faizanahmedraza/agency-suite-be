@@ -127,17 +127,17 @@ class AgencyBusinessService
         }
 
         if ($request->query('name')) {
-            $services->whereRaw("TRIM(LOWER(name)) like ? ", '%'.trim(strtolower($request->name)).'%');
+            $services->whereRaw("TRIM(LOWER(name)) like ? ", '%' . trim(strtolower($request->name)) . '%');
         }
 
         if ($request->query('status')) {
-            $arrStatus = getStatus(Service::STATUS, clean($request->status));
-            $services->whereIn('status', $arrStatus);
+            $services->where('status', Service::STATUS[clean($request->status)]);
+        } else {
+            $services->where('status', Service::STATUS['active']);
         }
 
         if ($request->query('catalog_status')) {
-            $arrStatus = getStatus(Service::CATALOG_STATUS, clean($request->catalog_status));
-            $services->whereIn('catalog_status', $arrStatus);
+            $services->where('catalog_status', Service::CATALOG_STATUS[clean($request->catalog_status)]);
         }
 
         if ($request->query('order_by')) {
@@ -156,7 +156,7 @@ class AgencyBusinessService
             $services->whereDate('created_at', '<=', $to);
         }
 
-        $services->where('agency_id',app('agency')->id);
+        $services->where('agency_id', app('agency')->id);
 
         return ($request->filled('pagination') && $request->get('pagination') == 'false')
             ? $services->get()

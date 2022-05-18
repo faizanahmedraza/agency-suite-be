@@ -79,7 +79,7 @@ class AuthenticationBusiness
         UserService::updateStatus($user);
 
         if ($user->owner) {
-            $agency = AgencyService::first($userVerification->agency_id,['domains']);
+            $agency = AgencyService::first($userVerification->agency_id, ['domains']);
             AgencyService::updateStatus($agency);
         }
 
@@ -137,6 +137,15 @@ class AuthenticationBusiness
         $user = Auth::user();
         // check user status
         UserService::checkStatus($user);
+
+        if (!Hash::check($request->old_password, $user->password)) {
+            throw RequestValidationException::errorMessage("Old Password not matched.", 422);
+        }
+
+        if (Hash::check($request->password, $user->password)) {
+            throw RequestValidationException::errorMessage("The password is match with old password.", 422);
+        }
+
         //segment create password event
         SegmentWrapper::createPassword($user);
         UserService::changePassword($user, $request->password);
