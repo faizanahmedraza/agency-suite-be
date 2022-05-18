@@ -12,7 +12,6 @@ class CustomerInvoice extends Model
     protected $table = "customer_invoices";
 
 
-
     public function agency()
     {
         return $this->belongsTo(Agency::class, 'agency_id', 'id');

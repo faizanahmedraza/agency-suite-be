@@ -131,6 +131,14 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->post('/', 'RequestServiceController@create');
                 $router->put('/change-status/{id}', 'RequestServiceController@changeStatus');
             });
+
+            // Invoices apis
+            $router->group(['prefix' => 'invoices'], function () use ($router) {
+                $router->get('/', 'InvoiceController@get');
+                $router->get('/{id}', 'InvoiceController@first');
+                $router->delete('/{id}', 'InvoiceController@destroy');
+                $router->put('/change-status/{id}', 'InvoiceController@changeStatus');
+            });
         });
     });
 
@@ -159,6 +167,13 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->post('/', 'BillingInformationController@store');
                 $router->put('/', 'BillingInformationController@update');
                 $router->delete('/', 'BillingInformationController@destroy');
+            });
+
+            // Invoices apis
+            $router->group(['prefix' => 'invoices'], function () use ($router) {
+                $router->get('/', 'InvoiceController@get');
+                $router->get('/{id}', 'InvoiceController@first');
+                $router->delete('/{id}', 'InvoiceController@destroy');
             });
         });
     });
