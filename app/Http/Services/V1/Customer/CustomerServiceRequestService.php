@@ -58,8 +58,7 @@ class CustomerServiceRequestService
             $customerServiceRequest->whereIn('service_id', $arrTitleIds);
         }
         if ($request->query('status')) {
-            $arrStatus = getStatus(CustomerServiceRequest::STATUS, clean($request->status));
-            $customerServiceRequest->whereIn('status', $arrStatus);
+            $customerServiceRequest->where('status', CustomerServiceRequest::STATUS[clean($request->status)]);
         }
 
         if ($request->query('order_by')) {
