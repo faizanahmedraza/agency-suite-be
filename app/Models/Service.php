@@ -41,4 +41,9 @@ class Service extends Model
     {
         return $this->hasOne(ServicePriceType::class, 'service_id', 'id');
     }
+
+    public function serviceRequest()
+    {
+        return $this->hasMany(CustomerServiceRequest::class, 'service_id', 'id');
+    }
 }
