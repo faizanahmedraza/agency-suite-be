@@ -35,7 +35,7 @@ class CustomerInvoiceService
 
     public static function get(Request $request)
     {
-        $invoices = CustomerInvoice::query()->with(['agency', 'customer']);
+        $invoices = CustomerInvoice::query()->with(['agency', 'customer','serviceRequest','serviceRequest.service']);
 
         if ($request->query("is_paid")) {
             $invoices->where('is_paid', trim(strtolower($request->is_paid)));
@@ -64,9 +64,9 @@ class CustomerInvoiceService
             : $invoices->paginate(\pageLimit($request));
     }
 
-    public static function first($id)
+    public static function first($id,$with = ['agency', 'customer','serviceRequest','serviceRequest.service'])
     {
-        $invoice = CustomerInvoice::where('id', $id)->where('agency_id', app('agency')->id)->first();
+        $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->first();
         if (!$invoice) {
             throw ModelException::dataNotFound();
         }

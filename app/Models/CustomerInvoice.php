@@ -21,8 +21,8 @@ class CustomerInvoice extends Model
         return $this->belongsTo(Customer::class, 'customer_id', 'user_id');
     }
 
-    // public function priceTypes()
-    // {
-    //     return $this->hasOne(ServicePriceType::class, 'service_id', 'id');
-    // }
+     public function serviceRequest()
+     {
+         return $this->belongsTo(CustomerServiceRequest::class, 'customer_service_request_id', 'id');
+     }
 }
