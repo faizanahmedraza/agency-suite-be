@@ -168,7 +168,7 @@ class CustomerService
 
     public static function destroy(User $user)
     {
-        if (!empty($user->agencyCustomer->serviceRequests)) {
+        if ($user->agencyCustomer->serviceRequests->isNotEmpty()) {
             throw RequestValidationException::errorMessage('Please delete the relational data first.', 422);
         }
         $user->delete();
