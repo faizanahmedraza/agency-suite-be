@@ -40,6 +40,7 @@ class InvoiceController extends Controller
     public function get(CustomerInvoiceRequest $request)
     {
         $invoices = InvoiceBusiness::get($request);
+        dd($invoices);
         return (new InvoicesResponse($invoices));
     }
 

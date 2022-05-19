@@ -56,7 +56,7 @@ class CustomerInvoiceService
             $invoices->whereDate('created_at', '<=', $to);
         }
 
-        $invoices->where('agency_id', app('agency')->id)->where('customer_service_request_id', \auth()->id());
+        $invoices->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id());
 
         return ($request->filled('pagination') && $request->get('pagination') == 'false')
             ? $invoices->get()
@@ -65,7 +65,7 @@ class CustomerInvoiceService
 
     public static function first($id,$with = ['agency', 'customer','serviceRequest','serviceRequest.service'])
     {
-        $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->where('customer_service_request_id', \auth()->id())->first();
+        $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
         if (!$invoice) {
             throw ModelException::dataNotFound();
         }
