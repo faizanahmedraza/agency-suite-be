@@ -16,7 +16,7 @@ class InvoiceResource extends Resource
     {
         return [
             'id' => $this->id ?? "",
-            'customer' => new CustomerResource($this->whenLoaded('customer')),
+            'customer' => new CustomerResource($this->customer->user),
             'invoice_number' => "INV-".substr('0000000'.$this->id,-7) ?? "",
             'customer_service_request' => new CustomersServiceRequestResource($this->whenLoaded('serviceRequest')),
             'is_paid' => $this->is_paid ?? "",
