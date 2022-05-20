@@ -22,4 +22,10 @@ class InvoiceBusiness
         $invoice = self::first($id);
         CustomerInvoiceService::destroy($invoice);
     }
+
+    public static function invoicePaid(Request $request)
+    {
+        $invoice = self::first($request->invoice_id);
+        CustomerInvoiceService::invoicePaid($invoice,$request);
+    }
 }

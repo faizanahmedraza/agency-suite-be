@@ -95,4 +95,9 @@ class CustomerServiceRequestService
         return $service;
     }
 
+    public static function changeStatus(CustomerServiceRequest $requestService, Request $request)
+    {
+        $requestService->status = CustomerServiceRequest::STATUS[trim(strtolower($request->status))];
+        $requestService->save();
+    }
 }

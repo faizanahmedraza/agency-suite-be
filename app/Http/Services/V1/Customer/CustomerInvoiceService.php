@@ -3,6 +3,8 @@
 namespace App\Http\Services\V1\Customer;
 
 use App\Exceptions\V1\ModelException;
+use App\Http\Businesses\V1\Customer\BillingInformationBusiness;
+use App\Http\Businesses\V1\Customer\RequestServiceBusiness;
 use Illuminate\Http\Request;
 use App\Models\CustomerInvoice;
 use App\Helpers\TimeStampHelper;
@@ -34,7 +36,7 @@ class CustomerInvoiceService
 
     public static function get(Request $request)
     {
-        $invoices = CustomerInvoice::query()->with(['agency', 'customer','serviceRequest','serviceRequest.service']);
+        $invoices = CustomerInvoice::query()->with(['agency', 'customer', 'serviceRequest', 'serviceRequest.service']);
 
         if ($request->query("is_paid")) {
             $invoices->where('is_paid', trim(strtolower($request->is_paid)));
@@ -63,7 +65,7 @@ class CustomerInvoiceService
             : $invoices->paginate(\pageLimit($request));
     }
 
-    public static function first($id,$with = ['agency', 'customer','serviceRequest','serviceRequest.service','serviceRequest.service.priceTypes'])
+    public static function first($id, $with = ['agency', 'customer', 'serviceRequest', 'serviceRequest.service', 'serviceRequest.service.priceTypes'])
     {
         $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
         if (!$invoice) {
@@ -75,5 +77,15 @@ class CustomerInvoiceService
     public static function destroy(CustomerInvoice $invoice)
     {
         $invoice->delete();
+    }
+
+    public static function invoicePaid(CustomerInvoice $invoice, Request $request)
+    {
+        $invoice->is_paid = true;
+        $invoice->save();
+        $serviceRequest = new Request();
+        $serviceRequest->replace(['status' => 'active']);
+        RequestServiceBusiness::changeStatus($invoice->customer_service_request_id,$serviceRequest);
+        $cardDetail = BillingInformationBusiness::first($request->card_id);
     }
 }

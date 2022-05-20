@@ -9,6 +9,7 @@ use App\Http\Services\V1\Customer\CustomerInvoiceService;
 use App\Http\Services\V1\Customer\ServiceBusinessService;
 use App\Http\Services\V1\Customer\CustomerServiceRequestService;
 use App\Models\CustomerCardDetail;
+use Illuminate\Http\Request;
 
 class RequestServiceBusiness
 {
@@ -43,10 +44,14 @@ class RequestServiceBusiness
         return CustomerServiceRequestService::get($request);
     }
 
-
     public static function first($id)
     {
         return CustomerServiceRequestService::first($id);
     }
 
+    public static function changeStatus($id,Request $request)
+    {
+        $requestService = self::first($id);
+        CustomerServiceRequestService::changeStatus($requestService, $request);
+    }
 }
