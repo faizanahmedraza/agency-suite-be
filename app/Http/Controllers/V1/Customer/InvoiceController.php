@@ -89,7 +89,7 @@ class InvoiceController extends Controller
      * @header Domain string required
      *
      * @bodyParam  card_id integer required
-     * @bodyParam  invoice_id integer required
+     * @bodyParam  invoice_id integer
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json

@@ -175,6 +175,11 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->get('/{id}', 'InvoiceController@first');
                 $router->delete('/{id}', 'InvoiceController@destroy');
             });
+
+            // Payment
+            $router->group(['prefix' => 'payments'], function () use ($router) {
+                $router->put('/payment', 'InvoiceController@invoicePaid');
+            });
         });
     });
 
