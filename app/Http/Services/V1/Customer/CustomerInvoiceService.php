@@ -94,7 +94,7 @@ class CustomerInvoiceService
             RequestServiceBusiness::changeStatus($invoice->customer_service_request_id, $serviceRequest);
             $transacData = new \stdClass();
             $transacData->id = $invoice->id;
-            $transaction = TransactionBusiness::create($transacData,Transaction::TYPE['card']);
+            $transaction = TransactionBusiness::create($transacData,'card');
         }
     }
 }
