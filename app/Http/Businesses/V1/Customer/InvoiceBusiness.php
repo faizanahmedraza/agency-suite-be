@@ -25,7 +25,6 @@ class InvoiceBusiness
 
     public static function invoicePaid(Request $request)
     {
-        $invoice = self::first($request->invoice_id);
-        CustomerInvoiceService::invoicePaid($invoice,$request);
+        CustomerInvoiceService::invoicePaid($request);
     }
 }

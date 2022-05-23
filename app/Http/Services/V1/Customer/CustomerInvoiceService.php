@@ -65,10 +65,10 @@ class CustomerInvoiceService
             : $invoices->paginate(\pageLimit($request));
     }
 
-    public static function first($id, $with = ['agency', 'customer', 'serviceRequest', 'serviceRequest.service', 'serviceRequest.service.priceTypes'])
+    public static function first($id, $with = ['agency', 'customer', 'serviceRequest', 'serviceRequest.service', 'serviceRequest.service.priceTypes'], $bypass = false)
     {
         $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
-        if (!$invoice) {
+        if (!$invoice && !$bypass) {
             throw ModelException::dataNotFound();
         }
         return $invoice;
@@ -79,13 +79,17 @@ class CustomerInvoiceService
         $invoice->delete();
     }
 
-    public static function invoicePaid(CustomerInvoice $invoice, Request $request)
+    public static function invoicePaid(Request $request)
     {
-        $invoice->is_paid = true;
-        $invoice->save();
-        $serviceRequest = new Request();
-        $serviceRequest->replace(['status' => 'active']);
-        RequestServiceBusiness::changeStatus($invoice->customer_service_request_id,$serviceRequest);
         $cardDetail = BillingInformationBusiness::first($request->card_id);
+        if (isset($request->invoice_id) && !is_null($request->invoice_id)) {
+            $invoice = self::first($request->invoice_id, [], true);
+            $invoice->is_paid = true;
+            $invoice->save();
+
+            $serviceRequest = new Request();
+            $serviceRequest->replace(['status' => 'active']);
+            RequestServiceBusiness::changeStatus($invoice->customer_service_request_id, $serviceRequest);
+        }
     }
 }

@@ -32,7 +32,8 @@ class InvoicePaidRequest extends RequestAbstract
                 })
             ],
             'invoice_id' => [
-                'required',
+                'sometimes',
+                'nullable',
                 Rule::exists('customer_invoices', 'id')->where(function ($query) {
                     $query->where('agency_id', app('agency')->id)->where('customer_id', auth()->id())->where('is_paid', false);
                 })
