@@ -12,7 +12,7 @@ use App\Exceptions\V1\FailureException;
 
 class TransactionService
 {
-    public static function create($data,$service,$type='bank')
+    public static function create($data,$type='bank')
     {
 
         $transaction = new Transaction();
@@ -20,7 +20,6 @@ class TransactionService
         $transaction->agency_id = app('agency')->id;
         $transaction->invoice_id =$data->id;
         $transaction->type =Transaction::TYPE[$type];
-        $transaction->reference_no =$data->reference_no;
         $transaction->save();
 
         if (!$transaction) {

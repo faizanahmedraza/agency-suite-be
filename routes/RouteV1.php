@@ -174,11 +174,12 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->get('/', 'InvoiceController@get');
                 $router->get('/{id}', 'InvoiceController@first');
                 $router->delete('/{id}', 'InvoiceController@destroy');
+                $router->put('/invoice-paid', 'InvoiceController@invoicePaid');
             });
 
             // Payment
             $router->group(['prefix' => 'payments'], function () use ($router) {
-                $router->put('/payment', 'InvoiceController@invoicePaid');
+//                $router->put('/payment', 'InvoiceController@invoicePaid');
             });
         });
     });

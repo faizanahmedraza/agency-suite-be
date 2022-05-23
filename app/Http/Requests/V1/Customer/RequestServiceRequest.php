@@ -34,7 +34,6 @@ class RequestServiceRequest extends RequestAbstract
                 })
             ],
             'recurring_type' => 'nullable|in:' . implode(",", CustomerServiceRequest::RECURRING_TYPE),
-            'reference_no' => 'required',
             'intake_form' => "required|array",
             'intake_form.0.title' => "required|string",
             'intake_form.0.description' => "required|string",

@@ -5,6 +5,8 @@ namespace App\Http\Services\V1\Customer;
 use App\Exceptions\V1\ModelException;
 use App\Http\Businesses\V1\Customer\BillingInformationBusiness;
 use App\Http\Businesses\V1\Customer\RequestServiceBusiness;
+use App\Http\Businesses\V1\Customer\TransactionBusiness;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\CustomerInvoice;
 use App\Helpers\TimeStampHelper;
@@ -90,6 +92,9 @@ class CustomerInvoiceService
             $serviceRequest = new Request();
             $serviceRequest->replace(['status' => 'active']);
             RequestServiceBusiness::changeStatus($invoice->customer_service_request_id, $serviceRequest);
+            $transacData = new \stdClass();
+            $transacData->invoice_id = $invoice->id;
+            $transaction = TransactionBusiness::create($transacData,Transaction::TYPE['card']);
         }
     }
 }

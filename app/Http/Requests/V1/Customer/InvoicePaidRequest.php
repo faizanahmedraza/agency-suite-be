@@ -49,7 +49,7 @@ class InvoicePaidRequest extends RequestAbstract
     public function messages(): array
     {
         return [
-            //
+            'invoice_id.exists' => 'This invoice is already paid.'
         ];
     }
 }
