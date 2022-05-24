@@ -42,7 +42,7 @@ class BillingInformationService
 
     public static function first($id, $with = ['customer', 'agency'])
     {
-        return CustomerCardDetail::with($with)->where('id',$id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
+        return CustomerCardDetail::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
     }
 
     public static function update(Request $request, CustomerCardDetail $billing)
@@ -70,5 +70,12 @@ class BillingInformationService
     public static function destroy(CustomerCardDetail $billing)
     {
         $billing->delete();
+    }
+
+    public static function makePrimary(CustomerCardDetail $billing)
+    {
+        $billing->is_primary = true;
+        $billing->save();
+        CustomerCardDetail::where('id','!=',$billing->id)->where('agency_id', app('agency')->id)->where('customer_id', auth()->id())->update(['is_primary' => false]);
     }
 }

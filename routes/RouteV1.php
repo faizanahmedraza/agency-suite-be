@@ -166,7 +166,8 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->get('/{id}', 'BillingInformationController@first');
                 $router->post('/', 'BillingInformationController@store');
                 $router->put('/', 'BillingInformationController@update');
-                $router->delete('/', 'BillingInformationController@destroy');
+                $router->delete('/{id}', 'BillingInformationController@destroy');
+                $router->put('/make-primary/{id}', 'BillingInformationController@makePrimary');
             });
 
             // Invoices apis

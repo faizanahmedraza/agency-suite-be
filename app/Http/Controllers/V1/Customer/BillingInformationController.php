@@ -129,13 +129,33 @@ class BillingInformationController extends Controller
      *
      * @header Domain string required
      *
+     * @urlParam id integer required
+     *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public function destroy()
+    public function destroy($id)
     {
-        BillingInformationBusiness::destroy();
+        BillingInformationBusiness::destroy($id);
+        return new SuccessResponse([]);
+    }
+
+    /**
+     * Delete Billing Information
+     *
+     * This api make primary card primary
+     *
+     * @header Domain string required
+     *
+     * @urlParam id integer required
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 401 responses/UnAuthorizedResponse.json
+     */
+    public function makePrimary($id)
+    {
+        BillingInformationBusiness::makePrimary($id);
         return new SuccessResponse([]);
     }
 }
