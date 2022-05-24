@@ -27,6 +27,7 @@ class BillingInformationResource extends Resource
             'state' => $this->state ?? '',
             'street' => $this->street ?? '',
             'zip_code' => $this->zip_code ?? '',
+            'is_primary' => $this->is_primary ?? '',
             'created_at' => $this->created_at ?? '',
         ];
     }
