@@ -12,7 +12,7 @@ class BillingInformationService
 {
     public static function get()
     {
-        return CustomerCardDetail::with(['customer', 'agency'])->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->get();
+        return CustomerCardDetail::with(['customer', 'agency'])->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->orderBy('id')->get();
     }
 
     public static function store(Request $request)
