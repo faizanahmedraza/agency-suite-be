@@ -35,7 +35,7 @@ class RequestServiceBusiness
         }
         $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
         $customerInvoice = CustomerInvoiceService::create($customerServiceRequest, $service);
-        $trancsaction = TransactionService::create($customerInvoice, $service);
+        $trancsaction = TransactionService::create($customerInvoice, 'card');
     }
 
     public static function get($request)

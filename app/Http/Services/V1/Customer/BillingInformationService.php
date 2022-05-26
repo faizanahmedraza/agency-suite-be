@@ -31,6 +31,11 @@ class BillingInformationService
         $billing->state = trim($request->state);
         $billing->street = trim($request->street);
         $billing->zip_code = trim($request->zip_code);
+        if (count(self::get()) > 0) {
+            $billing->is_primary = false;
+        } else {
+            $billing->is_primary = true;
+        }
         $billing->save();
 
         if (!$billing) {
@@ -76,6 +81,6 @@ class BillingInformationService
     {
         $billing->is_primary = true;
         $billing->save();
-        CustomerCardDetail::where('id','!=',$billing->id)->where('agency_id', app('agency')->id)->where('customer_id', auth()->id())->update(['is_primary' => false]);
+        CustomerCardDetail::where('id', '!=', $billing->id)->where('agency_id', app('agency')->id)->where('customer_id', auth()->id())->update(['is_primary' => false]);
     }
 }
