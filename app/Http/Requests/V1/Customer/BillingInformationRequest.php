@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1\Customer;
 
+use Carbon\Carbon;
 use Pearl\RequestValidate\RequestAbstract;
 
 class BillingInformationRequest extends RequestAbstract
@@ -38,8 +39,8 @@ class BillingInformationRequest extends RequestAbstract
             'holder_name' => 'required|max:100|regex:/^[a-zA-Z ]*$/i',
             'card_no' => 'required|regex:/^[0-9]{13,19}$/',
             'cvc' => 'required|regex:/^[0-9]{3,4}$/',
-            'expiry_month' => 'required|regex:/\d*[1-9]/',
-            'expiry_year' => 'required|regex:/^[0-9]{2}$/',
+            'expiry_month' => 'required|integer|min:1|max:12',
+            'expiry_year' => 'required|integer|min:'.Carbon::now()->format('y'),
             'address' => 'required|string',
             'country' => 'required|string',
             'city' => 'required|string|max:100',
