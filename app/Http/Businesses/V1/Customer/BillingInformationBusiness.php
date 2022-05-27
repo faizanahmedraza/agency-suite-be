@@ -13,7 +13,7 @@ class BillingInformationBusiness
         $date = Carbon::now();
         $month = $date->format('m');
         $year = $date->format('y');
-        if ($request->expiry_month < $month && $request->expiry_year < $year) {
+        if ($request->expiry_month < $month && $request->expiry_year == $year) {
             throw RequestValidationException::errorMessage("Expiry date cann't be less than current date.");
         }
         return BillingInformationService::store($request);

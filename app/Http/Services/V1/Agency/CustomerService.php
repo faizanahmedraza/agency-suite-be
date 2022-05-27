@@ -91,7 +91,8 @@ class CustomerService
         }
 
         if ($request->query('status')) {
-            $users->where('status', User::STATUS[clean($request->status)]);
+            $statusAll = getStatus(User::STATUS,trim(strtolower($request->status)));
+            $users->whereIn('status', $statusAll);
         }
 
         if ($request->query('order_by')) {

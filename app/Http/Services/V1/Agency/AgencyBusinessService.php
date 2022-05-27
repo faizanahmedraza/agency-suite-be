@@ -135,7 +135,8 @@ class AgencyBusinessService
         }
 
         if ($request->query('status')) {
-            $services->where('status', Service::STATUS[clean($request->status)]);
+            $statusAll = getStatus(Service::STATUS,trim(strtolower($request->status)));
+            $services->whereIn('status', $statusAll);
         }
 
         if ($request->query('catalog_status')) {
