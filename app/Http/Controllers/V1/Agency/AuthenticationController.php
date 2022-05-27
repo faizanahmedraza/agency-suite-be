@@ -90,7 +90,7 @@ class AuthenticationController extends Controller
      * @bodyParam password String required abcd1234 Example: abcd1234
      * @bodyParam password_confirmation String required  abcd1234 Example: abcd1234
      *
-     * @responseFile 200 responses/V1/Agency/AuthenticationResponse.json
+     * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
     public function userVerification(UserVerificationRequest $request)
@@ -98,7 +98,7 @@ class AuthenticationController extends Controller
         DB::beginTransaction();
         $auth = (new AuthenticationBusiness())->userVerification($request);
         DB::commit();
-        return new AuthenticationResponse($auth);
+        return new SuccessResponse([]);
     }
 
     /**
