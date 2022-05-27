@@ -1,12 +1,14 @@
-name: 'Agency Request Service'
+name: 'Agency Public Catalog'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: v1/agencies/request-services
+    uri: v1/public/catalog/services
     metadata:
-      title: 'Get Requested Services List'
+      title: |-
+        Get Services
+        This api return services collection.
       description: ''
       authenticated: true
       custom: []
@@ -15,32 +17,46 @@ endpoints:
       Accept: application/json
       Domain: 'string required'
     urlParameters:
-      status:
-        name: status
-        description: 'pending,submitted'
+      services:
+        name: services
+        description: '1,2,3,4'
         required: false
         example: et
         type: string
         custom: []
-      customer_id:
-        name: customer_id
-        description: ''
+      name:
+        name: name
+        description: 'ex: my service'
         required: false
-        example: 14
-        type: integer
+        example: velit
+        type: string
         custom: []
-      title:
-        name: title
-        description: 'ex: abc,xyz'
+      service_type:
+        name: service_type
+        description: 'ex: one-off,recurring'
         required: false
-        example: autem
+        example: placeat
+        type: string
+        custom: []
+      status:
+        name: status
+        description: 'ex: pending,active,blocked'
+        required: false
+        example: ipsam
+        type: string
+        custom: []
+      catalog_status:
+        name: catalog_status
+        description: 'ex: pending,active'
+        required: false
+        example: rem
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: et
+        example: veritatis
         type: string
         custom: []
       from_date:
@@ -61,21 +77,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 17
+        example: 6
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 18
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -83,7 +99,7 @@ endpoints:
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": {\r\n        \"customer_service_request\": [\r\n            {\r\n                \"id\": 11,\r\n                \"service_name\": \"qwerty-!@#\",\r\n                \"status\": \"submitted\",\r\n                \"created_at\": \"2022-03-28T13:16:51.000000Z\"\r\n            },\r\n            {\r\n                \"id\": 10,\r\n                \"service_name\": \"qwerty-!@#\",\r\n                \"status\": \"submitted\",\r\n                \"created_at\": \"2022-03-28T12:59:58.000000Z\"\r\n            }\r\n        ],\r\n        \"pagination\": {\r\n            \"total\": 2,\r\n            \"count\": 2,\r\n            \"per_page\": 20,\r\n            \"current_page\": 1,\r\n            \"total_pages\": 1\r\n        }\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        content: "{\r\n  \"data\": {\r\n    \"services\": [\r\n      {\r\n        \"id\": 1,\r\n        \"name\": \"serRvice 101\",\r\n        \"description\": \"test description\",\r\n        \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1647853184/service-62383e80c532e.jpg\",\r\n        \"subscription_type\": \"one-off\",\r\n        \"status\": \"pending\",\r\n        \"price_types\": {\r\n          \"id\": 1,\r\n          \"price\": 123,\r\n          \"purchase_limit\": 12,\r\n          \"weekly\": null,\r\n          \"monthly\": null,\r\n          \"quarterly\": null,\r\n          \"biannually\": null,\r\n          \"annually\": null,\r\n          \"max_concurrent_requests\": null,\r\n          \"max_requests_per_month\": null,\r\n          \"created_at\": \"2022-03-21T08:59:45.000000Z\",\r\n          \"updated_at\": \"2022-03-21T08:59:45.000000Z\"\r\n        },\r\n        \"intakes\": {\r\n          \"id\": 1,\r\n          \"intake\": [\r\n            {\r\n              \"field\": \"text\",\r\n              \"name\": \"title\"\r\n            },\r\n            {\r\n              \"field\": \"text\",\r\n              \"name\": \"description\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-03-21T08:59:45.000000Z\",\r\n          \"updated_at\": \"2022-03-21T08:59:45.000000Z\"\r\n        },\r\n        \"created_at\": \"2022-03-21T08:59:45.000000Z\",\r\n        \"updated_at\": \"2022-03-21T08:59:45.000000Z\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 1,\r\n      \"count\": 1,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
       -
@@ -95,101 +111,11 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'v1/agencies/request-services/{id}'
+    uri: 'v1/public/catalog/services/{id}'
     metadata:
-      title: 'Get Request Service details by Id'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 5
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": {\r\n        \"customer_service_request\": {\r\n            \"id\": 12,\r\n            \"service_name\": \"qwerty-!@#\",\r\n            \"status\": \"submitted\",\r\n            \"intake_form\": {\r\n                \"name\": \"test\",\r\n                \"description\": \"test description\"\r\n            },\r\n            \"invoices\": [\r\n                {\r\n                    \"id\": 6,\r\n                    \"invoice_number\": \"INV-0000006\",\r\n                    \"customer_service_request_id\": 12,\r\n                    \"is_paid\": false,\r\n                    \"amount\": \"2\",\r\n                    \"created_at\": \"2022-03-29T06:52:49.000000Z\"\r\n                }\r\n            ],\r\n            \"created_at\": \"2022-03-29T06:52:48.000000Z\"\r\n        }\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-    responseFields: []
-  -
-    httpMethods:
-      - POST
-    uri: v1/agencies/request-services
-    metadata:
-      title: 'Request Service'
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      service_id:
-        name: service_id
-        description: ''
-        required: true
-        example: 7
-        type: integer
-        custom: []
-      customer_id:
-        name: customer_id
-        description: ''
-        required: true
-        example: 13
-        type: integer
-        custom: []
-      recurring_type:
-        name: recurring_type
-        description: 'optional if one-off Example : weekly,monthly,quarterly,biannually,annually'
-        required: false
-        example: dolores
-        type: string
-        custom: []
-      intake_form:
-        name: intake_form
-        description: 'Example :{key1:value1,key2:value2}'
-        required: true
-        example:
-          - praesentium
-        type: 'string[]'
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: 'v1/agencies/request-services/change-status/{id}'
-    metadata:
-      title: 'Request Service Change Status'
+      title: |-
+        Show Service Details
+        This api show the service details.
       description: ''
       authenticated: true
       custom: []
@@ -202,27 +128,15 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: magnam
+        example: animi
         type: string
         custom: []
     queryParameters: []
-    bodyParameters:
-      status:
-        name: status
-        description: 'string ex: pending,active,hold,completed'
-        required: false
-        example: nam
-        type: required
-        custom: []
+    bodyParameters: []
     responses:
       -
         status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        content: "{\r\n  \"data\": {\r\n    \"service\": {\r\n      \"id\": 22,\r\n      \"name\": \"serRvice 101\",\r\n      \"description\": \"test description\",\r\n      \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1647847542/service-623828258538b.jpg\",\r\n      \"subscription_type\": \"one-off\",\r\n      \"status\": \"pending\",\r\n      \"price_types\": {\r\n        \"id\": 21,\r\n        \"price\": 1234,\r\n        \"purchase_limit\": 12,\r\n        \"weekly\": null,\r\n        \"monthly\": null,\r\n        \"quarterly\": null,\r\n        \"biannually\": null,\r\n        \"annually\": null,\r\n        \"max_concurrent_requests\": null,\r\n        \"max_requests_per_month\": null,\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"intakes\": {\r\n        \"id\": 22,\r\n        \"intake\": [\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"title\"\r\n          },\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"description\"\r\n          }\r\n        ],\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n      \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
     responseFields: []
