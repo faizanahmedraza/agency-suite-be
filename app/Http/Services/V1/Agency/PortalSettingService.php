@@ -50,10 +50,10 @@ class PortalSettingService
             $setting = new PortalSetting();
         }
 
-        if ($request->has('logo') && !empty($request->logo) && !Str::contains($request->logo, ['res', 'https', 'cloudinary'])) {
+        if ($request->has('logo') && !empty($request->logo) && !Str::contains($request->logo, ['https', 'cloudinary'])) {
             $setting->logo = CloudinaryService::upload($request->logo)->secureUrl;
         }
-        if ($request->has('favicon') && !empty($request->favicon) && !Str::contains($request->favicon, ['res', 'https', 'cloudinary'])) {
+        if ($request->has('favicon') && !empty($request->favicon) && !Str::contains($request->favicon, ['https', 'cloudinary'])) {
             $setting->favicon = CloudinaryService::upload($request->favicon)->secureUrl;
         }
         $setting->agency_id = app('agency')->id;

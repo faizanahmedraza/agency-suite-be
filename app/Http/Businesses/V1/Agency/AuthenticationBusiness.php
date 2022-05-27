@@ -178,7 +178,7 @@ class AuthenticationBusiness
 
     public function profileUpdate($request)
     {
-        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['res', 'https', 'cloudinary']) && !validate_base64($request->image, ['png', 'jpg', 'jpeg'])) {
+        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['https', 'cloudinary']) && !validate_base64($request->image, ['png', 'jpg', 'jpeg'])) {
             throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are png,jpg,jpeg.');
         }
         // update profile

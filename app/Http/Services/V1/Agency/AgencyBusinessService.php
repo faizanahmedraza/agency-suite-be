@@ -71,7 +71,7 @@ class AgencyBusinessService
 
     public static function update(Service $service, Request $request)
     {
-        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['res', 'https', 'cloudinary'])) {
+        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['https', 'cloudinary'])) {
             $service->image = CloudinaryService::upload($request->image)->secureUrl;
         }
         $service->name = $request->name;

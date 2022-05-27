@@ -56,7 +56,7 @@ class AgencyService
         }
         $user->first_name = trim($request->first_name);
         $user->last_name = trim($request->last_name);
-        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['res', 'https', 'cloudinary'])) {
+        if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['https', 'cloudinary'])) {
             $user->image = CloudinaryService::upload($request->image)->secureUrl;
         }
         $user->save();
