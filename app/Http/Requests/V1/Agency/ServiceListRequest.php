@@ -29,7 +29,7 @@ class ServiceListRequest extends RequestAbstract
         return [
             'from_date' => 'nullable|date_format:Y-m-d|date',
             'to_date' => 'nullable|date_format:Y-m-d|date',
-            'status' => 'nullable|string|'.Rule::in(array_keys(Service::STATUS)),
+            'status' => 'nullable|string',
             'catalog_status' => 'nullable|string|'.Rule::in(array_keys(Service::CATALOG_STATUS)),
             'order_by' => 'string|'. Rule::in(['asc','desc']),
         ];
