@@ -144,6 +144,11 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
     // Agencies Customers
     $router->group(['namespace' => 'Customer', 'middleware' => 'agency_domain'], function () use ($router) {
+        $router->group(['prefix' => 'catalog'], function () use ($router) {
+            $router->get('/services', 'CatalogController@getServices');
+            $router->get('/services/{id}', 'CatalogController@getService');
+        });
+
         $router->group(['prefix' => 'auth/customers', 'middleware' => 'client_credentials'], function () use ($router) {
             $router->post('/register', 'AuthenticationController@register');
         });
