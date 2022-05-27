@@ -74,6 +74,17 @@ if (!function_exists('validate_base64')) {
     }
 }
 
+if (!function_exists('GetDomainFromUrl')) {
+    function GetDomainFromUrl($domain)
+    {
+        $parseDomain = parse_url(trim(strtolower($domain)));
+        if (isset($parseDomain['host'])) {
+            return $parseDomain['host'];
+        }
+        return $parseDomain['path'];
+    }
+}
+
 function getIds($value)
 {
     return array_map('intval', explode(',', $value));

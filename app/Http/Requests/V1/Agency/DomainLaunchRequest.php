@@ -26,7 +26,7 @@ class DomainLaunchRequest extends RequestAbstract
         $all = parent::validationData();
         //Convert request value to lowercase
         if (isset($all['domain'])) {
-            $all['domain'] = preg_replace('/\s+/', '', strtolower(trim($all['domain'])));
+            $all['domain'] = GetDomainFromUrl($all['domain']);
         }
         return $all;
     }
