@@ -157,6 +157,7 @@ class CustomerService
     {
         $user->first_name = trim($request->first_name);
         $user->last_name = trim($request->last_name);
+        $user->username = clean($request->email);
         $user->updated_by = Auth::id();
         $user->save();
 

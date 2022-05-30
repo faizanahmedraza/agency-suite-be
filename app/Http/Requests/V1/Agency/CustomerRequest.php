@@ -42,7 +42,7 @@ class CustomerRequest extends RequestAbstract
         return [
             'first_name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/i|string|max:100',
             'last_name' => 'required|regex:/^[a-zA-Z]+(?:\s[a-zA-Z]+)*$/i|string|max:100',
-            'email' => ($this->isMethod('put')) ? '' : 'required|email:rfc,dns|max:50|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i|unique:users,username,NULL,id,agency_id,'.app('agency')->id.',deleted_at,NULL',
+            'email' => ($this->isMethod('put')) ? 'required|email:rfc,dns|max:50|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i|unique:users,username,'.$this->id.',id,agency_id,'.app('agency')->id.',deleted_at,NULL' : 'required|email:rfc,dns|max:50|regex:/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/i|unique:users,username,NULL,id,agency_id,'.app('agency')->id.',deleted_at,NULL',
         ];
     }
 
