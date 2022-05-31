@@ -27,6 +27,7 @@ class CustomerInvoiceService
         }
         $customerInvoice->customer_id = Auth::id();
         $customerInvoice->is_paid = 0;
+        $customerInvoice->created_by = auth()->id();
         $customerInvoice->save();
 
         if (!$customerInvoice) {
@@ -87,6 +88,8 @@ class CustomerInvoiceService
         if (isset($request->invoice_id) && !is_null($request->invoice_id)) {
             $invoice = self::first($request->invoice_id, [], true);
             $invoice->is_paid = true;
+            $invoice->paid_by = "customer";
+            $invoice->updated_by = auth()->id();
             $invoice->save();
 
             $serviceRequest = new Request();

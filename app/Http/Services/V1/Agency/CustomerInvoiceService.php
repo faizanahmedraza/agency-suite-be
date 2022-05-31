@@ -24,6 +24,7 @@ class CustomerInvoiceService
         }
         $customerInvoice->customer_id = $data->customer_id;
         $customerInvoice->is_paid = 0;
+        $customerInvoice->created_by = auth()->id();
         $customerInvoice->save();
 
         if (!$customerInvoice) {
@@ -76,6 +77,12 @@ class CustomerInvoiceService
     public static function changeStatus(CustomerInvoice $invoice)
     {
         $invoice->is_paid = $invoice->is_paid ? false : true;
+        if ($invoice->is_paid) {
+            $invoice->paid_by = "agency";
+        } else {
+            $invoice->paid_by = null;
+        }
+        $invoice->updated_by = auth()->id();
         $invoice->save();
         $serviceRequest = CustomerServiceRequest::where('id', $invoice->customer_service_request_id)->first();
         if (!$serviceRequest) {
