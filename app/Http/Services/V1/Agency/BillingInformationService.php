@@ -18,4 +18,15 @@ class BillingInformationService
         }
         return $billingInfo;
     }
+
+    public static function get(Request $request)
+    {
+        $billingInfo = CustomerCardDetail::query()->with(['customer', 'agency','customer.user'])->where('agency_id', app('agency')->id);
+
+        if ($request->query("customer_id")) {
+            $billingInfo->where('customer_id', trim((int)$request->customer_id));
+        }
+
+        return $billingInfo->latest()->get();
+    }
 }
