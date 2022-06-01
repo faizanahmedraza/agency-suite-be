@@ -144,6 +144,11 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->put('/change-status/{id}', 'InvoiceController@changeStatus');
                 $router->put('/invoice-paid', 'InvoiceController@invoicePaid');
             });
+
+            //customer billing information
+            $router->group(['prefix' => 'billing-information'], function () use ($router) {
+                $router->get('/', 'BillingInformationController@get');
+            });
         });
     });
 
