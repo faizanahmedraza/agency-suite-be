@@ -142,6 +142,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
                 $router->get('/{id}', 'InvoiceController@first');
                 $router->delete('/{id}', 'InvoiceController@destroy');
                 $router->put('/change-status/{id}', 'InvoiceController@changeStatus');
+                $router->put('/invoice-paid', 'InvoiceController@invoicePaid');
             });
         });
     });

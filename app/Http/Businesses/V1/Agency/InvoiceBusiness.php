@@ -28,4 +28,9 @@ class InvoiceBusiness
         $invoice = self::first($id);
         CustomerInvoiceService::changeStatus($invoice);
     }
+
+    public static function invoicePaid(Request $request)
+    {
+        CustomerInvoiceService::invoicePaid($request);
+    }
 }

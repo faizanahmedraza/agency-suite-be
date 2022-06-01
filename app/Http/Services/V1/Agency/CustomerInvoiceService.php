@@ -2,6 +2,9 @@
 
 namespace App\Http\Services\V1\Agency;
 
+use App\Http\Businesses\V1\Agency\BillingInformationBusiness;
+use App\Http\Businesses\V1\Agency\RequestServiceBusiness;
+use App\Http\Businesses\V1\Agency\TransactionBusiness;
 use App\Models\CustomerServiceRequest;
 use Illuminate\Http\Request;
 use App\Models\CustomerInvoice;
@@ -97,5 +100,25 @@ class CustomerInvoiceService
     public static function destroy(CustomerInvoice $invoice)
     {
         $invoice->delete();
+    }
+
+    public static function invoicePaid(Request $request)
+    {
+        $cardDetail = BillingInformationBusiness::first($request->card_id);
+        if (isset($request->invoice_id) && !is_null($request->invoice_id)) {
+            $invoice = self::first($request->invoice_id);
+            $invoice->is_paid = true;
+            $invoice->paid_by = "agency";
+            $invoice->updated_by = auth()->id();
+            $invoice->save();
+
+            $serviceRequest = new Request();
+            $serviceRequest->replace(['status' => 'active']);
+            RequestServiceBusiness::changeStatus($invoice->customer_service_request_id, $serviceRequest);
+            $transacData = new \stdClass();
+            $transacData->id = $invoice->id;
+            $transacData->customer_id = $invoice->customer_id;
+            $transaction = TransactionBusiness::create($transacData,'card');
+        }
     }
 }

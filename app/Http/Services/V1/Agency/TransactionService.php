@@ -14,7 +14,6 @@ class TransactionService
 {
     public static function create($data,$type = 'bank')
     {
-
         $transaction = new Transaction();
         $transaction->customer_id = $data->customer_id;
         $transaction->agency_id = app('agency')->id;
