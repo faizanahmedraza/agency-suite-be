@@ -23,7 +23,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 11
+        example: 6
         type: integer
         custom: []
     queryParameters: []
@@ -53,7 +53,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 14
+        example: 4
         type: integer
         custom: []
     queryParameters: []
@@ -88,7 +88,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 17
+        example: 14
         type: integer
         custom: []
     queryParameters: []
@@ -125,7 +125,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 8
+        example: 11
         type: integer
         custom: []
     queryParameters: []
@@ -155,7 +155,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 7
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -192,14 +192,56 @@ endpoints:
         name: card_id
         description: ''
         required: true
-        example: 18
+        example: 8
         type: integer
         custom: []
       invoice_id:
         name: invoice_id
         description: ''
         required: false
-        example: 3
+        example: 10
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: v1/agencies/invoices/invoice-paid
+    metadata:
+      title: 'Invoice Paid'
+      description: 'This api is for marking invoice paid'
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      card_id:
+        name: card_id
+        description: ''
+        required: true
+        example: 10
+        type: integer
+        custom: []
+      invoice_id:
+        name: invoice_id
+        description: ''
+        required: true
+        example: 16
         type: integer
         custom: []
     responses:
