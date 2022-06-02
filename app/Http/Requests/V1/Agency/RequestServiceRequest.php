@@ -3,6 +3,7 @@
 namespace App\Http\Requests\V1\Agency;
 
 use App\Models\CustomerServiceRequest;
+use App\Models\Service;
 use Illuminate\Validation\Rule;
 use Pearl\RequestValidate\RequestAbstract;
 
@@ -27,10 +28,31 @@ class RequestServiceRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'service_id' => 'required|exists:services,id',
-            'customer_id' => 'required|exists:agency_customers,user_id',
-            'recurring_type' => 'nullable|in:' . implode(",", CustomerServiceRequest::RECURRING_TYPE),
+            'service_id' => [
+                'required',
+                Rule::exists('services', 'id')->where(function ($query) {
+                    $query->where('agency_id', app('agency')->id);
+                })
+            ],
+            'customer_id' => [
+                'required',
+                Rule::exists('agency_customers', 'user_id')->where(function ($query) {
+                    $query->where('agency_id', app('agency')->id);
+                })
+            ],
+            'recurring_type' => [
+                Rule::requiredIf(function () {
+                    $service = Service::where('id', $this->service_id)->first();
+                    if (!empty($service) && $service->subscription_type == 1) {
+                        return true;
+                    }
+                    return false;
+                }),
+                'in:' . implode(",", CustomerServiceRequest::RECURRING_TYPE)
+            ],
             'intake_form' => "required|array",
+            'intake_form.0.title' => "required|string",
+            'intake_form.0.description' => "nullable|string",
         ];
     }
 
@@ -41,6 +63,10 @@ class RequestServiceRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [];
+        return [
+            'intake_form.0.title.required' => "The intake form title field is required.",
+            'intake_form.0.title.string' => "The intake form title must be a string.",
+            'intake_form.0.description.string' => "The intake form description must be a string.",
+        ];
     }
 }
