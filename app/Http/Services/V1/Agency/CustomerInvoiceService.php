@@ -114,7 +114,7 @@ class CustomerInvoiceService
 
             $serviceRequest = new Request();
             $serviceRequest->replace(['status' => 'active']);
-            RequestServiceBusiness::changeStatus($invoice->customer_service_request_id, $serviceRequest);
+            RequestServiceBusiness::changeStatus($serviceRequest,$invoice->customer_service_request_id);
             $transacData = new \stdClass();
             $transacData->id = $invoice->id;
             $transacData->customer_id = $invoice->customer_id;
