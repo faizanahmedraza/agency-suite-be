@@ -39,7 +39,7 @@ class CustomerInvoiceService
 
     public static function get(Request $request)
     {
-        $invoices = CustomerInvoice::query()->with(['agency', 'customer', 'serviceRequest', 'serviceRequest.service']);
+        $invoices = CustomerInvoice::query()->with(['agency', 'serviceRequest', 'serviceRequest.service']);
 
         if ($request->query("is_paid")) {
             $invoices->where('is_paid', trim(strtolower($request->is_paid)));
@@ -68,7 +68,7 @@ class CustomerInvoiceService
             : $invoices->paginate(\pageLimit($request));
     }
 
-    public static function first($id, $with = ['agency', 'customer', 'serviceRequest', 'serviceRequest.service', 'serviceRequest.service.priceTypes'], $bypass = false)
+    public static function first($id, $with = ['agency', 'serviceRequest', 'serviceRequest.service', 'serviceRequest.service.priceTypes'], $bypass = false)
     {
         $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
         if (!$invoice && !$bypass) {

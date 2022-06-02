@@ -48,70 +48,70 @@ endpoints:
         name: holder_name
         description: 'ex: haesw'
         required: true
-        example: facilis
+        example: est
         type: string
         custom: []
       card_no:
         name: card_no
         description: 'ex: 1233321321321312'
         required: true
-        example: 15
+        example: 10
         type: integer
         custom: []
       cvc:
         name: cvc
         description: 'ex: 123'
         required: true
-        example: 12
+        example: 8
         type: integer
         custom: []
       expiry_month:
         name: expiry_month
         description: 'ex: 20'
         required: true
-        example: 8
+        example: 6
         type: integer
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: totam
+        example: eum
         type: string
         custom: []
       country:
         name: country
         description: ''
         required: true
-        example: non
+        example: neque
         type: string
         custom: []
       city:
         name: city
         description: ''
         required: true
-        example: qui
+        example: exercitationem
         type: string
         custom: []
       state:
         name: state
         description: ''
         required: true
-        example: aliquam
+        example: voluptates
         type: string
         custom: []
       street:
         name: street
         description: optional
         required: false
-        example: non
+        example: ex
         type: string
         custom: []
       zip_code:
         name: zip_code
         description: 'ex: 2321'
         required: true
-        example: 17
+        example: 19
         type: integer
         custom: []
     responses:
@@ -151,7 +151,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 14
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -160,63 +160,63 @@ endpoints:
         name: holder_name
         description: 'ex: haesw'
         required: true
-        example: incidunt
+        example: quia
         type: string
         custom: []
       card_no:
         name: card_no
         description: 'ex: 1233321321321312'
         required: true
-        example: laudantium
+        example: aut
         type: numeric
         custom: []
       cvc:
         name: cvc
         description: 'ex: 123'
         required: true
-        example: 14
+        example: 17
         type: integer
         custom: []
       expiry_month:
         name: expiry_month
         description: 'ex: 20'
         required: true
-        example: 17
+        example: 14
         type: integer
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: quaerat
+        example: fugiat
         type: string
         custom: []
       country:
         name: country
         description: ''
         required: true
-        example: et
+        example: quo
         type: string
         custom: []
       city:
         name: city
         description: ''
         required: true
-        example: corporis
+        example: voluptatem
         type: string
         custom: []
       state:
         name: state
         description: ''
         required: true
-        example: quibusdam
+        example: vel
         type: string
         custom: []
       street:
         name: street
         description: optional
         required: false
-        example: unde
+        example: sunt
         type: string
         custom: []
       zip_code:
@@ -263,7 +263,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 18
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -293,7 +293,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 17
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -328,7 +328,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 16
+        example: 20
         type: integer
         custom: []
     queryParameters: []
@@ -344,4 +344,36 @@ endpoints:
         content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
         headers: []
         description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/agencies/billing-information
+    metadata:
+      title: |-
+        Show All Billings Information
+        This api show the billing information details.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      customer_id:
+        name: customer_id
+        description: 'ex:1'
+        required: false
+        example: 6
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": [\r\n      {\r\n        \"id\": 1,\r\n        \"customer\": {\r\n          \"id\": 7,\r\n          \"first_name\": \"Faizan\",\r\n          \"last_name\": \"Ahmed\",\r\n          \"email\": \"faizan102@saasfa.com\",\r\n          \"last_logged_in\": null,\r\n          \"status\": \"pending\"\r\n        },\r\n        \"holder_name\": \"Faizan\",\r\n        \"last_digits\": 3213,\r\n        \"exp_month\": 2,\r\n        \"exp_year\": 22,\r\n        \"address\": \"My new address ABC\",\r\n        \"country\": \"Pakistan\",\r\n        \"city\": \"Karachi\",\r\n        \"state\": \"Sindh\",\r\n        \"street\": \"dad fd addsad\",\r\n        \"zip_code\": \"12345                         \",\r\n        \"created_at\": \"2022-05-17T06:20:50.000000Z\"\r\n      }\r\n    ],\r\n    \"permissions\": [\r\n      \"access_all\",\r\n      \"services_read\",\r\n      \"services_request_all\",\r\n      \"services_request_read\",\r\n      \"services_request_create\",\r\n      \"services_request_update\",\r\n      \"services_request_delete\",\r\n      \"customers_billing_information_all\",\r\n      \"customers_billing_information_read\",\r\n      \"customers_billing_information_create\",\r\n      \"customers_billing_information_update\",\r\n      \"customers_billing_information_delete\",\r\n      \"profile_all\",\r\n      \"profile_read\",\r\n      \"profile_update\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
     responseFields: []

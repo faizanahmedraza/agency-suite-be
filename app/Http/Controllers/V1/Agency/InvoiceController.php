@@ -38,7 +38,7 @@ class InvoiceController extends Controller
      * @urlParam page_limit integer
      * @urlParam page integer
      *
-     * @responseFile 200 responses/V1/Customer/InvoicesResponse.json
+     * @responseFile 200 responses/V1/Agency/InvoicesResponse.json
      */
     public function get(CustomerInvoiceRequest $request)
     {
@@ -54,7 +54,7 @@ class InvoiceController extends Controller
      *
      * @urlParam id integer required
      *
-     * @responseFile 200 responses/V1/Customer/InvoiceResponse.json
+     * @responseFile 200 responses/V1/Agency/InvoiceResponse.json
      */
     public function first($id)
     {

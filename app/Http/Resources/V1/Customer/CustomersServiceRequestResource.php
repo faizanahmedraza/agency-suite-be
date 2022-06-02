@@ -19,12 +19,12 @@ class CustomersServiceRequestResource extends Resource
         $intakeForm=json_decode($this->intake_form,true) ?? [];
         return [
             'id' => $this->id ?? '',
-            'service' => new ServiceResource($this->service),
+            'service' => new ServiceResource($this->whenLoaded('service')),
             'is_recurring' => $this->is_recurring ?? '',
             'recurring_type' => $this->recurring_type ?? '',
             'status' =>$status[$this->status] ?? '',
-            'intake_form' => (object)$intakeForm,
-            'invoices' => InvoiceResource::collection($this->invoices) ??(object)[],
+            'intake_form' => $intakeForm,
+            'invoices' => InvoiceResource::collection($this->whenLoaded('invoices')) ??(object)[],
             'created_at' => $this->created_at ?? '',
         ];
     }

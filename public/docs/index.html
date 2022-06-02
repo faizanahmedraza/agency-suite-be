@@ -348,6 +348,10 @@ This api show the billing information details.</a>
                                     <li class="tocify-item level-2" data-unique="customer-billing-information-PUTv1-customers-billing-information-make-primary--id-">
                         <a href="#customer-billing-information-PUTv1-customers-billing-information-make-primary--id-">Delete Billing Information</a>
                     </li>
+                                    <li class="tocify-item level-2" data-unique="customer-billing-information-GETv1-agencies-billing-information">
+                        <a href="#customer-billing-information-GETv1-agencies-billing-information">Show All Billings Information
+This api show the billing information details.</a>
+                    </li>
                                                     </ul>
                             </ul>
                     <ul id="tocify-header-13" class="tocify-header">
@@ -404,6 +408,14 @@ This api show the invoice details.</a>
                     </li>
                                     <li class="tocify-item level-2" data-unique="endpoints-PUTv1-agencies-invoices-invoice-paid">
                         <a href="#endpoints-PUTv1-agencies-invoices-invoice-paid">Invoice Paid</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETv1-agencies-invoices">
+                        <a href="#endpoints-GETv1-agencies-invoices">Show All Invoices
+This api show the invoice.</a>
+                    </li>
+                                    <li class="tocify-item level-2" data-unique="endpoints-GETv1-customers-invoices">
+                        <a href="#endpoints-GETv1-customers-invoices">Show All Invoices
+This api show the invoice.</a>
                     </li>
                                                     </ul>
                             </ul>
@@ -502,7 +514,7 @@ other then customers.</a>
                             <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
                     </ul>
         <ul class="toc-footer" id="last-updated">
-        <li>Last updated: June 1 2022</li>
+        <li>Last updated: June 2 2022</li>
     </ul>
 </div>
 
@@ -675,7 +687,7 @@ fetch(url, {
                 <input type="text"
                name="customers"
                data-endpoint="GETv1-agencies-customers"
-               value="esse"
+               value="culpa"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -685,7 +697,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="GETv1-agencies-customers"
-               value="repellat"
+               value="dignissimos"
                data-component="url" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -695,7 +707,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="GETv1-agencies-customers"
-               value="nesciunt"
+               value="perferendis"
                data-component="url" hidden>
     <br>
 
@@ -705,7 +717,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="GETv1-agencies-customers"
-               value="libero"
+               value="et"
                data-component="url" hidden>
     <br>
 
@@ -715,7 +727,7 @@ fetch(url, {
                 <input type="text"
                name="full_name"
                data-endpoint="GETv1-agencies-customers"
-               value="voluptas"
+               value="ea"
                data-component="url" hidden>
     <br>
 
@@ -725,7 +737,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-agencies-customers"
-               value="est"
+               value="dignissimos"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -735,7 +747,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-customers"
-               value="ipsa"
+               value="sint"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -786,7 +798,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-agencies-customers"
-               value="1"
+               value="17"
                data-component="url" hidden>
     <br>
 
@@ -796,7 +808,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-customers"
-               value="10"
+               value="20"
                data-component="url" hidden>
     <br>
 
@@ -818,7 +830,7 @@ This api show the details of requested Customer.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/agencies/customers/alias" \
+    --get "http://agency.test/v1/agencies/customers/commodi" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
@@ -827,7 +839,7 @@ This api show the details of requested Customer.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/customers/alias"
+    "http://agency.test/v1/agencies/customers/commodi"
 );
 
 const headers = {
@@ -938,7 +950,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-agencies-customers--id-"
-               value="alias"
+               value="commodi"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -966,9 +978,9 @@ This api is for create new Customer</h2>
     --header "Domain: string required" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"first_name\": \"sint\",
-    \"last_name\": \"ab\",
-    \"email\": \"itaque\"
+    \"first_name\": \"assumenda\",
+    \"last_name\": \"minus\",
+    \"email\": \"tempore\"
 }"
 </code></pre></div>
 
@@ -986,9 +998,9 @@ const headers = {
 };
 
 let body = {
-    "first_name": "sint",
-    "last_name": "ab",
-    "email": "itaque"
+    "first_name": "assumenda",
+    "last_name": "minus",
+    "email": "tempore"
 };
 
 fetch(url, {
@@ -1093,7 +1105,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTv1-agencies-customers"
-               value="sint"
+               value="assumenda"
                data-component="body" hidden>
     <br>
 
@@ -1103,7 +1115,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTv1-agencies-customers"
-               value="ab"
+               value="minus"
                data-component="body" hidden>
     <br>
 
@@ -1113,7 +1125,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTv1-agencies-customers"
-               value="itaque"
+               value="tempore"
                data-component="body" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -1135,21 +1147,21 @@ This api update the details of requested Customer.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/customers/nihil" \
+    "http://agency.test/v1/agencies/customers/explicabo" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"first_name\": \"voluptas\",
-    \"last_name\": \"architecto\"
+    \"first_name\": \"eos\",
+    \"last_name\": \"est\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/customers/nihil"
+    "http://agency.test/v1/agencies/customers/explicabo"
 );
 
 const headers = {
@@ -1160,8 +1172,8 @@ const headers = {
 };
 
 let body = {
-    "first_name": "voluptas",
-    "last_name": "architecto"
+    "first_name": "eos",
+    "last_name": "est"
 };
 
 fetch(url, {
@@ -1283,7 +1295,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-customers--id-"
-               value="nihil"
+               value="explicabo"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -1294,7 +1306,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-agencies-customers--id-"
-               value="voluptas"
+               value="eos"
                data-component="body" hidden>
     <br>
 
@@ -1304,7 +1316,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-agencies-customers--id-"
-               value="architecto"
+               value="est"
                data-component="body" hidden>
     <br>
 
@@ -1325,7 +1337,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/agencies/customers/dolor" \
+    "http://agency.test/v1/agencies/customers/deserunt" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
@@ -1334,7 +1346,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/customers/dolor"
+    "http://agency.test/v1/agencies/customers/deserunt"
 );
 
 const headers = {
@@ -1433,7 +1445,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-agencies-customers--id-"
-               value="dolor"
+               value="deserunt"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -1455,7 +1467,7 @@ This api update the customers status to active or deactive</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/customers/change-status/10" \
+    "http://agency.test/v1/agencies/customers/change-status/19" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -1463,7 +1475,7 @@ This api update the customers status to active or deactive</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/customers/change-status/10"
+    "http://agency.test/v1/agencies/customers/change-status/19"
 );
 
 const headers = {
@@ -1561,7 +1573,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-agencies-customers-change-status--id-"
-               value="10"
+               value="19"
                data-component="url" hidden>
     <br>
 
@@ -1590,7 +1602,7 @@ This api to verify the domain before jump to agency portal.</h2>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"domain\": \"fugiat\"
+    \"domain\": \"magni\"
 }"
 </code></pre></div>
 
@@ -1606,7 +1618,7 @@ const headers = {
 };
 
 let body = {
-    "domain": "fugiat"
+    "domain": "magni"
 };
 
 fetch(url, {
@@ -1706,7 +1718,7 @@ fetch(url, {
                 <input type="text"
                name="domain"
                data-endpoint="POSTv1-public-domain-launch"
-               value="fugiat"
+               value="magni"
                data-component="body" hidden>
     <br>
 
@@ -2069,7 +2081,7 @@ fetch(url, {
                 <input type="text"
                name="services"
                data-endpoint="GETv1-public-catalog-services"
-               value="ipsa"
+               value="numquam"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -2079,7 +2091,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="GETv1-public-catalog-services"
-               value="ipsa"
+               value="iste"
                data-component="url" hidden>
     <br>
 <p>ex: my service</p>
@@ -2089,7 +2101,7 @@ fetch(url, {
                 <input type="text"
                name="service_type"
                data-endpoint="GETv1-public-catalog-services"
-               value="qui"
+               value="quia"
                data-component="url" hidden>
     <br>
 <p>ex: one-off,recurring</p>
@@ -2099,7 +2111,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-public-catalog-services"
-               value="eius"
+               value="sed"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -2109,7 +2121,7 @@ fetch(url, {
                 <input type="text"
                name="catalog_status"
                data-endpoint="GETv1-public-catalog-services"
-               value="ad"
+               value="et"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active</p>
@@ -2119,7 +2131,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-public-catalog-services"
-               value="necessitatibus"
+               value="dolorem"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -2170,7 +2182,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-public-catalog-services"
-               value="5"
+               value="8"
                data-component="url" hidden>
     <br>
 
@@ -2202,7 +2214,7 @@ This api show the service details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/public/catalog/services/ab" \
+    --get "http://agency.test/v1/public/catalog/services/quam" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -2210,7 +2222,7 @@ This api show the service details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/public/catalog/services/ab"
+    "http://agency.test/v1/public/catalog/services/quam"
 );
 
 const headers = {
@@ -2336,7 +2348,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-public-catalog-services--id-"
-               value="ab"
+               value="quam"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -2489,7 +2501,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-agencies-request-services"
-               value="nemo"
+               value="aperiam"
                data-component="url" hidden>
     <br>
 <p>pending,submitted</p>
@@ -2499,7 +2511,7 @@ fetch(url, {
                 <input type="number"
                name="customer_id"
                data-endpoint="GETv1-agencies-request-services"
-               value="14"
+               value="1"
                data-component="url" hidden>
     <br>
 
@@ -2509,7 +2521,7 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="GETv1-agencies-request-services"
-               value="qui"
+               value="odit"
                data-component="url" hidden>
     <br>
 <p>ex: abc,xyz</p>
@@ -2519,7 +2531,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-request-services"
-               value="in"
+               value="voluptas"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -2570,7 +2582,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-agencies-request-services"
-               value="16"
+               value="1"
                data-component="url" hidden>
     <br>
 
@@ -2580,7 +2592,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-request-services"
-               value="8"
+               value="12"
                data-component="url" hidden>
     <br>
 
@@ -2754,11 +2766,11 @@ fetch(url, {
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"service_id\": 12,
-    \"customer_id\": 2,
-    \"recurring_type\": \"aspernatur\",
+    \"service_id\": 18,
+    \"customer_id\": 17,
+    \"recurring_type\": \"dolores\",
     \"intake_form\": [
-        \"ut\"
+        \"assumenda\"
     ]
 }"
 </code></pre></div>
@@ -2776,11 +2788,11 @@ const headers = {
 };
 
 let body = {
-    "service_id": 12,
-    "customer_id": 2,
-    "recurring_type": "aspernatur",
+    "service_id": 18,
+    "customer_id": 17,
+    "recurring_type": "dolores",
     "intake_form": [
-        "ut"
+        "assumenda"
     ]
 };
 
@@ -2874,7 +2886,7 @@ fetch(url, {
                 <input type="number"
                name="service_id"
                data-endpoint="POSTv1-agencies-request-services"
-               value="12"
+               value="18"
                data-component="body" hidden>
     <br>
 
@@ -2884,7 +2896,7 @@ fetch(url, {
                 <input type="number"
                name="customer_id"
                data-endpoint="POSTv1-agencies-request-services"
-               value="2"
+               value="17"
                data-component="body" hidden>
     <br>
 
@@ -2894,7 +2906,7 @@ fetch(url, {
                 <input type="text"
                name="recurring_type"
                data-endpoint="POSTv1-agencies-request-services"
-               value="aspernatur"
+               value="dolores"
                data-component="body" hidden>
     <br>
 <p>optional if one-off Example : weekly,monthly,quarterly,biannually,annually</p>
@@ -2928,19 +2940,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/request-services/change-status/quia" \
+    "http://agency.test/v1/agencies/request-services/change-status/rerum" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"status\": \"aut\"
+    \"status\": \"officiis\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/request-services/change-status/quia"
+    "http://agency.test/v1/agencies/request-services/change-status/rerum"
 );
 
 const headers = {
@@ -2950,7 +2962,7 @@ const headers = {
 };
 
 let body = {
-    "status": "aut"
+    "status": "officiis"
 };
 
 fetch(url, {
@@ -3043,7 +3055,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-request-services-change-status--id-"
-               value="quia"
+               value="rerum"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -3054,7 +3066,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="PUTv1-agencies-request-services-change-status--id-"
-               value="aut"
+               value="officiis"
                data-component="body" hidden>
     <br>
 <p>string ex: pending,active,hold,completed</p>
@@ -3233,7 +3245,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-roles"
-               value="fugit"
+               value="at"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -3284,7 +3296,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-agencies-roles"
-               value="3"
+               value="14"
                data-component="url" hidden>
     <br>
 
@@ -3294,7 +3306,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-roles"
-               value="3"
+               value="2"
                data-component="url" hidden>
     <br>
 
@@ -3316,7 +3328,7 @@ This api show the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/agencies/roles/voluptas" \
+    --get "http://agency.test/v1/agencies/roles/quia" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
@@ -3325,7 +3337,7 @@ This api show the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/roles/voluptas"
+    "http://agency.test/v1/agencies/roles/quia"
 );
 
 const headers = {
@@ -3440,7 +3452,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-agencies-roles--id-"
-               value="voluptas"
+               value="quia"
                data-component="url" hidden>
     <br>
 
@@ -3450,7 +3462,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="GETv1-agencies-roles--id-"
-               value="facere"
+               value="magnam"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -3478,9 +3490,9 @@ This api is for create new Role</h2>
     --header "Domain: string required" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"name\": \"ullam\",
+    \"name\": \"ipsa\",
     \"permissions\": [
-        \"delectus\"
+        \"et\"
     ]
 }"
 </code></pre></div>
@@ -3499,9 +3511,9 @@ const headers = {
 };
 
 let body = {
-    "name": "ullam",
+    "name": "ipsa",
     "permissions": [
-        "delectus"
+        "et"
     ]
 };
 
@@ -3611,7 +3623,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTv1-agencies-roles"
-               value="ullam"
+               value="ipsa"
                data-component="body" hidden>
     <br>
 
@@ -3646,15 +3658,15 @@ This api update the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/roles/sed" \
+    "http://agency.test/v1/agencies/roles/voluptatem" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"name\": \"sapiente\",
+    \"name\": \"eius\",
     \"permissions\": [
-        \"corrupti\"
+        \"rerum\"
     ]
 }"
 </code></pre></div>
@@ -3662,7 +3674,7 @@ This api update the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/roles/sed"
+    "http://agency.test/v1/agencies/roles/voluptatem"
 );
 
 const headers = {
@@ -3673,9 +3685,9 @@ const headers = {
 };
 
 let body = {
-    "name": "sapiente",
+    "name": "eius",
     "permissions": [
-        "corrupti"
+        "rerum"
     ]
 };
 
@@ -3785,7 +3797,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-roles--id-"
-               value="sed"
+               value="voluptatem"
                data-component="url" hidden>
     <br>
 
@@ -3795,7 +3807,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="PUTv1-agencies-roles--id-"
-               value="blanditiis"
+               value="qui"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -3806,7 +3818,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTv1-agencies-roles--id-"
-               value="sapiente"
+               value="eius"
                data-component="body" hidden>
     <br>
 
@@ -3840,7 +3852,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/agencies/roles/dolores" \
+    "http://agency.test/v1/agencies/roles/omnis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
@@ -3849,7 +3861,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/roles/dolores"
+    "http://agency.test/v1/agencies/roles/omnis"
 );
 
 const headers = {
@@ -3948,7 +3960,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-agencies-roles--id-"
-               value="dolores"
+               value="omnis"
                data-component="url" hidden>
     <br>
 
@@ -3958,7 +3970,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="DELETEv1-agencies-roles--id-"
-               value="iste"
+               value="a"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -4142,7 +4154,7 @@ fetch(url, {
                 <input type="text"
                name="services"
                data-endpoint="GETv1-agencies-services"
-               value="et"
+               value="ut"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -4152,7 +4164,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="GETv1-agencies-services"
-               value="eum"
+               value="voluptas"
                data-component="url" hidden>
     <br>
 <p>ex: my service</p>
@@ -4162,7 +4174,7 @@ fetch(url, {
                 <input type="text"
                name="service_type"
                data-endpoint="GETv1-agencies-services"
-               value="dolorem"
+               value="quas"
                data-component="url" hidden>
     <br>
 <p>ex: one-off,recurring</p>
@@ -4172,7 +4184,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-agencies-services"
-               value="reprehenderit"
+               value="sed"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -4182,7 +4194,7 @@ fetch(url, {
                 <input type="text"
                name="catalog_status"
                data-endpoint="GETv1-agencies-services"
-               value="distinctio"
+               value="labore"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active</p>
@@ -4192,7 +4204,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-services"
-               value="eos"
+               value="ipsum"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -4253,7 +4265,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-services"
-               value="8"
+               value="18"
                data-component="url" hidden>
     <br>
 
@@ -4275,7 +4287,7 @@ This api show the service details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/agencies/services/veniam" \
+    --get "http://agency.test/v1/agencies/services/nisi" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -4283,7 +4295,7 @@ This api show the service details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/services/veniam"
+    "http://agency.test/v1/agencies/services/nisi"
 );
 
 const headers = {
@@ -4409,7 +4421,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-agencies-services--id-"
-               value="veniam"
+               value="nisi"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -4436,19 +4448,19 @@ This api create new service.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"name\": \"saepe\",
-    \"description\": \"et\",
-    \"image\": \"deleniti\",
-    \"subscription_type\": \"magni\",
-    \"price\": 9,
-    \"purchase_limit\": 10,
+    \"name\": \"at\",
+    \"description\": \"fuga\",
+    \"image\": \"ab\",
+    \"subscription_type\": \"tempora\",
+    \"price\": 13,
+    \"purchase_limit\": 6,
     \"weekly\": 16,
-    \"monthly\": 8,
-    \"quarterly\": 17,
-    \"biannually\": 19,
-    \"annually\": 13,
-    \"max_concurrent_requests\": 9,
-    \"max_requests_per_month\": 6
+    \"monthly\": 4,
+    \"quarterly\": 2,
+    \"biannually\": 9,
+    \"annually\": 10,
+    \"max_concurrent_requests\": 5,
+    \"max_requests_per_month\": 20
 }"
 </code></pre></div>
 
@@ -4465,19 +4477,19 @@ const headers = {
 };
 
 let body = {
-    "name": "saepe",
-    "description": "et",
-    "image": "deleniti",
-    "subscription_type": "magni",
-    "price": 9,
-    "purchase_limit": 10,
+    "name": "at",
+    "description": "fuga",
+    "image": "ab",
+    "subscription_type": "tempora",
+    "price": 13,
+    "purchase_limit": 6,
     "weekly": 16,
-    "monthly": 8,
-    "quarterly": 17,
-    "biannually": 19,
-    "annually": 13,
-    "max_concurrent_requests": 9,
-    "max_requests_per_month": 6
+    "monthly": 4,
+    "quarterly": 2,
+    "biannually": 9,
+    "annually": 10,
+    "max_concurrent_requests": 5,
+    "max_requests_per_month": 20
 };
 
 fetch(url, {
@@ -4628,7 +4640,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTv1-agencies-services"
-               value="saepe"
+               value="at"
                data-component="body" hidden>
     <br>
 
@@ -4638,7 +4650,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="POSTv1-agencies-services"
-               value="et"
+               value="fuga"
                data-component="body" hidden>
     <br>
 
@@ -4648,7 +4660,7 @@ fetch(url, {
                 <input type="text"
                name="image"
                data-endpoint="POSTv1-agencies-services"
-               value="deleniti"
+               value="ab"
                data-component="body" hidden>
     <br>
 <p>optional ex: base64imageFile formats: png,jpeg,jpg</p>
@@ -4658,7 +4670,7 @@ fetch(url, {
                 <input type="text"
                name="subscription_type"
                data-endpoint="POSTv1-agencies-services"
-               value="magni"
+               value="tempora"
                data-component="body" hidden>
     <br>
 <p>ex: 'one-off' ,'recurring'</p>
@@ -4668,7 +4680,7 @@ fetch(url, {
                 <input type="number"
                name="price"
                data-endpoint="POSTv1-agencies-services"
-               value="9"
+               value="13"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is one_off ex: 123</p>
@@ -4678,7 +4690,7 @@ fetch(url, {
                 <input type="number"
                name="purchase_limit"
                data-endpoint="POSTv1-agencies-services"
-               value="10"
+               value="6"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is one_off ex: 12</p>
@@ -4698,7 +4710,7 @@ fetch(url, {
                 <input type="number"
                name="monthly"
                data-endpoint="POSTv1-agencies-services"
-               value="8"
+               value="4"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4708,7 +4720,7 @@ fetch(url, {
                 <input type="number"
                name="quarterly"
                data-endpoint="POSTv1-agencies-services"
-               value="17"
+               value="2"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4718,7 +4730,7 @@ fetch(url, {
                 <input type="number"
                name="biannually"
                data-endpoint="POSTv1-agencies-services"
-               value="19"
+               value="9"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4728,7 +4740,7 @@ fetch(url, {
                 <input type="number"
                name="annually"
                data-endpoint="POSTv1-agencies-services"
-               value="13"
+               value="10"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -4738,7 +4750,7 @@ fetch(url, {
                 <input type="number"
                name="max_concurrent_requests"
                data-endpoint="POSTv1-agencies-services"
-               value="9"
+               value="5"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is recurring ex: 12</p>
@@ -4748,7 +4760,7 @@ fetch(url, {
                 <input type="number"
                name="max_requests_per_month"
                data-endpoint="POSTv1-agencies-services"
-               value="6"
+               value="20"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is recurring ex: 12</p>
@@ -4770,31 +4782,31 @@ This api update service.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/services/aspernatur" \
+    "http://agency.test/v1/agencies/services/praesentium" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"name\": \"ducimus\",
-    \"description\": \"fugit\",
-    \"image\": \"est\",
-    \"subscription_type\": \"ut\",
-    \"price\": 15,
-    \"purchase_limit\": 9,
-    \"weekly\": 18,
-    \"monthly\": 6,
-    \"quarterly\": 12,
-    \"biannually\": 18,
-    \"annually\": 6,
+    \"name\": \"maiores\",
+    \"description\": \"sint\",
+    \"image\": \"dignissimos\",
+    \"subscription_type\": \"quos\",
+    \"price\": 2,
+    \"purchase_limit\": 19,
+    \"weekly\": 8,
+    \"monthly\": 13,
+    \"quarterly\": 19,
+    \"biannually\": 10,
+    \"annually\": 5,
     \"max_concurrent_requests\": 4,
-    \"max_requests_per_month\": 16
+    \"max_requests_per_month\": 19
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/services/aspernatur"
+    "http://agency.test/v1/agencies/services/praesentium"
 );
 
 const headers = {
@@ -4804,19 +4816,19 @@ const headers = {
 };
 
 let body = {
-    "name": "ducimus",
-    "description": "fugit",
-    "image": "est",
-    "subscription_type": "ut",
-    "price": 15,
-    "purchase_limit": 9,
-    "weekly": 18,
-    "monthly": 6,
-    "quarterly": 12,
-    "biannually": 18,
-    "annually": 6,
+    "name": "maiores",
+    "description": "sint",
+    "image": "dignissimos",
+    "subscription_type": "quos",
+    "price": 2,
+    "purchase_limit": 19,
+    "weekly": 8,
+    "monthly": 13,
+    "quarterly": 19,
+    "biannually": 10,
+    "annually": 5,
     "max_concurrent_requests": 4,
-    "max_requests_per_month": 16
+    "max_requests_per_month": 19
 };
 
 fetch(url, {
@@ -4967,7 +4979,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="aspernatur"
+               value="praesentium"
                data-component="url" hidden>
     <br>
 
@@ -4978,7 +4990,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="ducimus"
+               value="maiores"
                data-component="body" hidden>
     <br>
 
@@ -4988,7 +5000,7 @@ fetch(url, {
                 <input type="text"
                name="description"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="fugit"
+               value="sint"
                data-component="body" hidden>
     <br>
 
@@ -4998,7 +5010,7 @@ fetch(url, {
                 <input type="text"
                name="image"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="est"
+               value="dignissimos"
                data-component="body" hidden>
     <br>
 <p>optional ex: base64imageFile formats: png,jpeg,jpg</p>
@@ -5008,7 +5020,7 @@ fetch(url, {
                 <input type="text"
                name="subscription_type"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="ut"
+               value="quos"
                data-component="body" hidden>
     <br>
 <p>ex: 'one-off' ,'recurring'</p>
@@ -5018,7 +5030,7 @@ fetch(url, {
                 <input type="number"
                name="price"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="15"
+               value="2"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is one_off ex: 123</p>
@@ -5028,7 +5040,7 @@ fetch(url, {
                 <input type="number"
                name="purchase_limit"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="9"
+               value="19"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is one_off ex: 12</p>
@@ -5038,7 +5050,7 @@ fetch(url, {
                 <input type="number"
                name="weekly"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="18"
+               value="8"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -5048,7 +5060,7 @@ fetch(url, {
                 <input type="number"
                name="monthly"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="6"
+               value="13"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -5058,7 +5070,7 @@ fetch(url, {
                 <input type="number"
                name="quarterly"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="12"
+               value="19"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -5068,7 +5080,7 @@ fetch(url, {
                 <input type="number"
                name="biannually"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="18"
+               value="10"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -5078,7 +5090,7 @@ fetch(url, {
                 <input type="number"
                name="annually"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="6"
+               value="5"
                data-component="body" hidden>
     <br>
 <p>only if subscription_type is recurring ex: 123</p>
@@ -5098,7 +5110,7 @@ fetch(url, {
                 <input type="number"
                name="max_requests_per_month"
                data-endpoint="PUTv1-agencies-services--id-"
-               value="16"
+               value="19"
                data-component="body" hidden>
     <br>
 <p>optional only if subscription_type is recurring ex: 12</p>
@@ -5119,7 +5131,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/agencies/services/perspiciatis" \
+    "http://agency.test/v1/agencies/services/nulla" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -5127,7 +5139,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/services/perspiciatis"
+    "http://agency.test/v1/agencies/services/nulla"
 );
 
 const headers = {
@@ -5225,7 +5237,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-agencies-services--id-"
-               value="perspiciatis"
+               value="nulla"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -5247,7 +5259,7 @@ This api update the service status to active or pending.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/services/change-status/19" \
+    "http://agency.test/v1/agencies/services/change-status/15" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -5255,7 +5267,7 @@ This api update the service status to active or pending.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/services/change-status/19"
+    "http://agency.test/v1/agencies/services/change-status/15"
 );
 
 const headers = {
@@ -5353,7 +5365,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-agencies-services-change-status--id-"
-               value="19"
+               value="15"
                data-component="url" hidden>
     <br>
 
@@ -5375,7 +5387,7 @@ This api update the service catalog status to active or pending.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/services/change-catalog-status/3" \
+    "http://agency.test/v1/agencies/services/change-catalog-status/4" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -5383,7 +5395,7 @@ This api update the service catalog status to active or pending.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/services/change-catalog-status/3"
+    "http://agency.test/v1/agencies/services/change-catalog-status/4"
 );
 
 const headers = {
@@ -5481,7 +5493,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-agencies-services-change-catalog-status--id-"
-               value="3"
+               value="4"
                data-component="url" hidden>
     <br>
 
@@ -5671,7 +5683,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="GETv1-customers-services"
-               value="architecto"
+               value="omnis"
                data-component="url" hidden>
     <br>
 <p>ex: my service</p>
@@ -5681,7 +5693,7 @@ fetch(url, {
                 <input type="text"
                name="service_type"
                data-endpoint="GETv1-customers-services"
-               value="saepe"
+               value="magnam"
                data-component="url" hidden>
     <br>
 <p>ex: one-off,recurring</p>
@@ -5691,7 +5703,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-customers-services"
-               value="provident"
+               value="rerum"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -5742,7 +5754,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-customers-services"
-               value="12"
+               value="14"
                data-component="url" hidden>
     <br>
 
@@ -5752,7 +5764,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-customers-services"
-               value="11"
+               value="8"
                data-component="url" hidden>
     <br>
 
@@ -5774,7 +5786,7 @@ This api show the service details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/customers/services/sed" \
+    --get "http://agency.test/v1/customers/services/quae" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -5782,7 +5794,7 @@ This api show the service details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/customers/services/sed"
+    "http://agency.test/v1/customers/services/quae"
 );
 
 const headers = {
@@ -5908,7 +5920,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-customers-services--id-"
-               value="sed"
+               value="quae"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -6228,7 +6240,7 @@ fetch(url, {
                 <input type="text"
                name="users"
                data-endpoint="GETv1-agencies-users"
-               value="aut"
+               value="corporis"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -6238,7 +6250,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="GETv1-agencies-users"
-               value="exercitationem"
+               value="quia"
                data-component="url" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -6248,7 +6260,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="GETv1-agencies-users"
-               value="ipsam"
+               value="et"
                data-component="url" hidden>
     <br>
 
@@ -6258,7 +6270,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="GETv1-agencies-users"
-               value="velit"
+               value="a"
                data-component="url" hidden>
     <br>
 
@@ -6268,7 +6280,7 @@ fetch(url, {
                 <input type="text"
                name="full_name"
                data-endpoint="GETv1-agencies-users"
-               value="dolor"
+               value="quidem"
                data-component="url" hidden>
     <br>
 
@@ -6278,7 +6290,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-agencies-users"
-               value="minus"
+               value="ab"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -6288,7 +6300,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-agencies-users"
-               value="rem"
+               value="amet"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -6339,7 +6351,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-agencies-users"
-               value="4"
+               value="15"
                data-component="url" hidden>
     <br>
 
@@ -6349,7 +6361,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-agencies-users"
-               value="18"
+               value="19"
                data-component="url" hidden>
     <br>
 
@@ -6359,7 +6371,7 @@ fetch(url, {
                 <input type="text"
                name="roles"
                data-endpoint="GETv1-agencies-users"
-               value="dolores"
+               value="quibusdam"
                data-component="url" hidden>
     <br>
 <p>ex: admin,test</p>
@@ -6381,7 +6393,7 @@ This api show the uer details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/agencies/users/dolorum" \
+    --get "http://agency.test/v1/agencies/users/vel" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -6389,7 +6401,7 @@ This api show the uer details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/users/dolorum"
+    "http://agency.test/v1/agencies/users/vel"
 );
 
 const headers = {
@@ -6522,7 +6534,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-agencies-users--id-"
-               value="dolorum"
+               value="vel"
                data-component="url" hidden>
     <br>
 
@@ -6532,7 +6544,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="GETv1-agencies-users--id-"
-               value="consequatur"
+               value="beatae"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -6559,17 +6571,17 @@ This api create new user.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"first_name\": \"distinctio\",
+    \"first_name\": \"occaecati\",
     \"last_name\": \"et\",
-    \"email\": \"autem\",
-    \"password\": \"sit\",
-    \"password_confirmation\": \"totam\",
-    \"status\": \"voluptatem\",
+    \"email\": \"animi\",
+    \"password\": \"quia\",
+    \"password_confirmation\": \"exercitationem\",
+    \"status\": \"debitis\",
     \"roles\": [
-        \"qui\"
+        \"voluptas\"
     ],
     \"permissions\": [
-        \"voluptatem\"
+        \"sint\"
     ]
 }"
 </code></pre></div>
@@ -6587,17 +6599,17 @@ const headers = {
 };
 
 let body = {
-    "first_name": "distinctio",
+    "first_name": "occaecati",
     "last_name": "et",
-    "email": "autem",
-    "password": "sit",
-    "password_confirmation": "totam",
-    "status": "voluptatem",
+    "email": "animi",
+    "password": "quia",
+    "password_confirmation": "exercitationem",
+    "status": "debitis",
     "roles": [
-        "qui"
+        "voluptas"
     ],
     "permissions": [
-        "voluptatem"
+        "sint"
     ]
 };
 
@@ -6726,7 +6738,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTv1-agencies-users"
-               value="distinctio"
+               value="occaecati"
                data-component="body" hidden>
     <br>
 
@@ -6746,7 +6758,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTv1-agencies-users"
-               value="autem"
+               value="animi"
                data-component="body" hidden>
     <br>
 
@@ -6756,7 +6768,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTv1-agencies-users"
-               value="sit"
+               value="quia"
                data-component="body" hidden>
     <br>
 
@@ -6766,7 +6778,7 @@ fetch(url, {
                 <input type="text"
                name="password_confirmation"
                data-endpoint="POSTv1-agencies-users"
-               value="totam"
+               value="exercitationem"
                data-component="body" hidden>
     <br>
 
@@ -6776,7 +6788,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="POSTv1-agencies-users"
-               value="voluptatem"
+               value="debitis"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -6823,19 +6835,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/users/ipsa" \
+    "http://agency.test/v1/agencies/users/in" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"first_name\": \"sed\",
-    \"last_name\": \"est\",
-    \"status\": \"optio\",
+    \"first_name\": \"et\",
+    \"last_name\": \"perferendis\",
+    \"status\": \"quasi\",
     \"roles\": [
-        \"quasi\"
+        \"voluptates\"
     ],
     \"permissions\": [
-        \"molestiae\"
+        \"quo\"
     ]
 }"
 </code></pre></div>
@@ -6843,7 +6855,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/users/ipsa"
+    "http://agency.test/v1/agencies/users/in"
 );
 
 const headers = {
@@ -6853,14 +6865,14 @@ const headers = {
 };
 
 let body = {
-    "first_name": "sed",
-    "last_name": "est",
-    "status": "optio",
+    "first_name": "et",
+    "last_name": "perferendis",
+    "status": "quasi",
     "roles": [
-        "quasi"
+        "voluptates"
     ],
     "permissions": [
-        "molestiae"
+        "quo"
     ]
 };
 
@@ -6989,7 +7001,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="ipsa"
+               value="in"
                data-component="url" hidden>
     <br>
 
@@ -6999,7 +7011,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="ut"
+               value="ex"
                data-component="url" hidden>
     <br>
 <p>Integer required</p>
@@ -7010,7 +7022,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="sed"
+               value="et"
                data-component="body" hidden>
     <br>
 
@@ -7020,7 +7032,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="est"
+               value="perferendis"
                data-component="body" hidden>
     <br>
 
@@ -7030,7 +7042,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="PUTv1-agencies-users--id-"
-               value="optio"
+               value="quasi"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -7077,7 +7089,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/agencies/users/ut" \
+    "http://agency.test/v1/agencies/users/quod" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -7085,7 +7097,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/users/ut"
+    "http://agency.test/v1/agencies/users/quod"
 );
 
 const headers = {
@@ -7183,7 +7195,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-agencies-users--id-"
-               value="ut"
+               value="quod"
                data-component="url" hidden>
     <br>
 
@@ -7193,7 +7205,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="DELETEv1-agencies-users--id-"
-               value="non"
+               value="temporibus"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -7216,7 +7228,7 @@ other then customers.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/users/change-status/omnis" \
+    "http://agency.test/v1/agencies/users/change-status/perspiciatis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -7224,7 +7236,7 @@ other then customers.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/users/change-status/omnis"
+    "http://agency.test/v1/agencies/users/change-status/perspiciatis"
 );
 
 const headers = {
@@ -7322,7 +7334,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-agencies-users-change-status--id-"
-               value="omnis"
+               value="perspiciatis"
                data-component="url" hidden>
     <br>
 
@@ -7332,7 +7344,7 @@ fetch(url, {
                 <input type="number"
                name="user_id"
                data-endpoint="PUTv1-agencies-users-change-status--id-"
-               value="6"
+               value="16"
                data-component="url" hidden>
     <br>
 
@@ -7353,19 +7365,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/users/change-password/14" \
+    "http://agency.test/v1/agencies/users/change-password/2" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"password\": \"consequatur\"
+    \"password\": \"quaerat\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/users/change-password/14"
+    "http://agency.test/v1/agencies/users/change-password/2"
 );
 
 const headers = {
@@ -7375,7 +7387,7 @@ const headers = {
 };
 
 let body = {
-    "password": "consequatur"
+    "password": "quaerat"
 };
 
 fetch(url, {
@@ -7453,7 +7465,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-agencies-users-change-password--id-"
-               value="14"
+               value="2"
                data-component="url" hidden>
     <br>
 
@@ -7464,7 +7476,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="PUTv1-agencies-users-change-password--id-"
-               value="consequatur"
+               value="quaerat"
                data-component="body" hidden>
     <br>
 <p>ex: 123456</p>
@@ -9190,9 +9202,9 @@ fetch(url, {
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"first_name\": \"mollitia\",
-    \"last_name\": \"pariatur\",
-    \"image\": \"mollitia\"
+    \"first_name\": \"qui\",
+    \"last_name\": \"voluptatem\",
+    \"image\": \"odit\"
 }"
 </code></pre></div>
 
@@ -9209,9 +9221,9 @@ const headers = {
 };
 
 let body = {
-    "first_name": "mollitia",
-    "last_name": "pariatur",
-    "image": "mollitia"
+    "first_name": "qui",
+    "last_name": "voluptatem",
+    "image": "odit"
 };
 
 fetch(url, {
@@ -9304,7 +9316,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-profile"
-               value="mollitia"
+               value="qui"
                data-component="body" hidden>
     <br>
 
@@ -9314,7 +9326,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-profile"
-               value="pariatur"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 
@@ -9324,7 +9336,7 @@ fetch(url, {
                 <input type="text"
                name="image"
                data-endpoint="PUTv1-profile"
-               value="mollitia"
+               value="odit"
                data-component="body" hidden>
     <br>
 <p>optional ex: base64imageFile formats: png,jpeg,jpg</p>
@@ -9491,16 +9503,16 @@ This api create new billing information.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"holder_name\": \"facilis\",
-    \"card_no\": 15,
-    \"cvc\": 12,
-    \"expiry_month\": 8,
-    \"address\": \"totam\",
-    \"country\": \"non\",
-    \"city\": \"qui\",
-    \"state\": \"aliquam\",
-    \"street\": \"non\",
-    \"zip_code\": 17
+    \"holder_name\": \"est\",
+    \"card_no\": 10,
+    \"cvc\": 8,
+    \"expiry_month\": 6,
+    \"address\": \"eum\",
+    \"country\": \"neque\",
+    \"city\": \"exercitationem\",
+    \"state\": \"voluptates\",
+    \"street\": \"ex\",
+    \"zip_code\": 19
 }"
 </code></pre></div>
 
@@ -9517,16 +9529,16 @@ const headers = {
 };
 
 let body = {
-    "holder_name": "facilis",
-    "card_no": 15,
-    "cvc": 12,
-    "expiry_month": 8,
-    "address": "totam",
-    "country": "non",
-    "city": "qui",
-    "state": "aliquam",
-    "street": "non",
-    "zip_code": 17
+    "holder_name": "est",
+    "card_no": 10,
+    "cvc": 8,
+    "expiry_month": 6,
+    "address": "eum",
+    "country": "neque",
+    "city": "exercitationem",
+    "state": "voluptates",
+    "street": "ex",
+    "zip_code": 19
 };
 
 fetch(url, {
@@ -9666,7 +9678,7 @@ fetch(url, {
                 <input type="text"
                name="holder_name"
                data-endpoint="POSTv1-customers-billing-information"
-               value="facilis"
+               value="est"
                data-component="body" hidden>
     <br>
 <p>ex: haesw</p>
@@ -9676,7 +9688,7 @@ fetch(url, {
                 <input type="number"
                name="card_no"
                data-endpoint="POSTv1-customers-billing-information"
-               value="15"
+               value="10"
                data-component="body" hidden>
     <br>
 <p>ex: 1233321321321312</p>
@@ -9686,7 +9698,7 @@ fetch(url, {
                 <input type="number"
                name="cvc"
                data-endpoint="POSTv1-customers-billing-information"
-               value="12"
+               value="8"
                data-component="body" hidden>
     <br>
 <p>ex: 123</p>
@@ -9696,7 +9708,7 @@ fetch(url, {
                 <input type="number"
                name="expiry_month"
                data-endpoint="POSTv1-customers-billing-information"
-               value="8"
+               value="6"
                data-component="body" hidden>
     <br>
 <p>ex: 20</p>
@@ -9706,7 +9718,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="POSTv1-customers-billing-information"
-               value="totam"
+               value="eum"
                data-component="body" hidden>
     <br>
 
@@ -9716,7 +9728,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="POSTv1-customers-billing-information"
-               value="non"
+               value="neque"
                data-component="body" hidden>
     <br>
 
@@ -9726,7 +9738,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="POSTv1-customers-billing-information"
-               value="qui"
+               value="exercitationem"
                data-component="body" hidden>
     <br>
 
@@ -9736,7 +9748,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="POSTv1-customers-billing-information"
-               value="aliquam"
+               value="voluptates"
                data-component="body" hidden>
     <br>
 
@@ -9746,7 +9758,7 @@ fetch(url, {
                 <input type="text"
                name="street"
                data-endpoint="POSTv1-customers-billing-information"
-               value="non"
+               value="ex"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -9756,7 +9768,7 @@ fetch(url, {
                 <input type="number"
                name="zip_code"
                data-endpoint="POSTv1-customers-billing-information"
-               value="17"
+               value="19"
                data-component="body" hidden>
     <br>
 <p>ex: 2321</p>
@@ -9783,15 +9795,15 @@ This api update billing information.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"holder_name\": \"incidunt\",
-    \"card_no\": \"laudantium\",
-    \"cvc\": 14,
-    \"expiry_month\": 17,
-    \"address\": \"quaerat\",
-    \"country\": \"et\",
-    \"city\": \"corporis\",
-    \"state\": \"quibusdam\",
-    \"street\": \"unde\",
+    \"holder_name\": \"quia\",
+    \"card_no\": \"aut\",
+    \"cvc\": 17,
+    \"expiry_month\": 14,
+    \"address\": \"fugiat\",
+    \"country\": \"quo\",
+    \"city\": \"voluptatem\",
+    \"state\": \"vel\",
+    \"street\": \"sunt\",
     \"zip_code\": 14
 }"
 </code></pre></div>
@@ -9809,15 +9821,15 @@ const headers = {
 };
 
 let body = {
-    "holder_name": "incidunt",
-    "card_no": "laudantium",
-    "cvc": 14,
-    "expiry_month": 17,
-    "address": "quaerat",
-    "country": "et",
-    "city": "corporis",
-    "state": "quibusdam",
-    "street": "unde",
+    "holder_name": "quia",
+    "card_no": "aut",
+    "cvc": 17,
+    "expiry_month": 14,
+    "address": "fugiat",
+    "country": "quo",
+    "city": "voluptatem",
+    "state": "vel",
+    "street": "sunt",
     "zip_code": 14
 };
 
@@ -9958,7 +9970,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-customers-billing-information"
-               value="14"
+               value="10"
                data-component="url" hidden>
     <br>
 
@@ -9969,7 +9981,7 @@ fetch(url, {
                 <input type="text"
                name="holder_name"
                data-endpoint="PUTv1-customers-billing-information"
-               value="incidunt"
+               value="quia"
                data-component="body" hidden>
     <br>
 <p>ex: haesw</p>
@@ -9979,7 +9991,7 @@ fetch(url, {
                 <input type="text"
                name="card_no"
                data-endpoint="PUTv1-customers-billing-information"
-               value="laudantium"
+               value="aut"
                data-component="body" hidden>
     <br>
 <p>ex: 1233321321321312</p>
@@ -9989,7 +10001,7 @@ fetch(url, {
                 <input type="number"
                name="cvc"
                data-endpoint="PUTv1-customers-billing-information"
-               value="14"
+               value="17"
                data-component="body" hidden>
     <br>
 <p>ex: 123</p>
@@ -9999,7 +10011,7 @@ fetch(url, {
                 <input type="number"
                name="expiry_month"
                data-endpoint="PUTv1-customers-billing-information"
-               value="17"
+               value="14"
                data-component="body" hidden>
     <br>
 <p>ex: 20</p>
@@ -10009,7 +10021,7 @@ fetch(url, {
                 <input type="text"
                name="address"
                data-endpoint="PUTv1-customers-billing-information"
-               value="quaerat"
+               value="fugiat"
                data-component="body" hidden>
     <br>
 
@@ -10019,7 +10031,7 @@ fetch(url, {
                 <input type="text"
                name="country"
                data-endpoint="PUTv1-customers-billing-information"
-               value="et"
+               value="quo"
                data-component="body" hidden>
     <br>
 
@@ -10029,7 +10041,7 @@ fetch(url, {
                 <input type="text"
                name="city"
                data-endpoint="PUTv1-customers-billing-information"
-               value="corporis"
+               value="voluptatem"
                data-component="body" hidden>
     <br>
 
@@ -10039,7 +10051,7 @@ fetch(url, {
                 <input type="text"
                name="state"
                data-endpoint="PUTv1-customers-billing-information"
-               value="quibusdam"
+               value="vel"
                data-component="body" hidden>
     <br>
 
@@ -10049,7 +10061,7 @@ fetch(url, {
                 <input type="text"
                name="street"
                data-endpoint="PUTv1-customers-billing-information"
-               value="unde"
+               value="sunt"
                data-component="body" hidden>
     <br>
 <p>optional</p>
@@ -10081,7 +10093,7 @@ This api show the billing information details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/customers/billing-information/18" \
+    --get "http://agency.test/v1/customers/billing-information/7" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -10089,7 +10101,7 @@ This api show the billing information details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/customers/billing-information/18"
+    "http://agency.test/v1/customers/billing-information/7"
 );
 
 const headers = {
@@ -10204,7 +10216,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="GETv1-customers-billing-information--id-"
-               value="18"
+               value="7"
                data-component="url" hidden>
     <br>
 
@@ -10225,7 +10237,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/customers/billing-information/17" \
+    "http://agency.test/v1/customers/billing-information/10" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -10233,7 +10245,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/customers/billing-information/17"
+    "http://agency.test/v1/customers/billing-information/10"
 );
 
 const headers = {
@@ -10331,7 +10343,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="DELETEv1-customers-billing-information--id-"
-               value="17"
+               value="10"
                data-component="url" hidden>
     <br>
 
@@ -10352,7 +10364,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/customers/billing-information/make-primary/16" \
+    "http://agency.test/v1/customers/billing-information/make-primary/20" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -10360,7 +10372,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/customers/billing-information/make-primary/16"
+    "http://agency.test/v1/customers/billing-information/make-primary/20"
 );
 
 const headers = {
@@ -10458,10 +10470,165 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-customers-billing-information-make-primary--id-"
-               value="16"
+               value="20"
                data-component="url" hidden>
     <br>
 
+            </p>
+                    </form>
+
+            <h2 id="customer-billing-information-GETv1-agencies-billing-information">Show All Billings Information
+This api show the billing information details.</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-GETv1-agencies-billing-information">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://agency.test/v1/agencies/billing-information" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Domain: string required"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/agencies/billing-information"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Domain": "string required",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETv1-agencies-billing-information">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;customer_billing_information&quot;: [
+            {
+                &quot;id&quot;: 1,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 7,
+                    &quot;first_name&quot;: &quot;Faizan&quot;,
+                    &quot;last_name&quot;: &quot;Ahmed&quot;,
+                    &quot;email&quot;: &quot;faizan102@saasfa.com&quot;,
+                    &quot;last_logged_in&quot;: null,
+                    &quot;status&quot;: &quot;pending&quot;
+                },
+                &quot;holder_name&quot;: &quot;Faizan&quot;,
+                &quot;last_digits&quot;: 3213,
+                &quot;exp_month&quot;: 2,
+                &quot;exp_year&quot;: 22,
+                &quot;address&quot;: &quot;My new address ABC&quot;,
+                &quot;country&quot;: &quot;Pakistan&quot;,
+                &quot;city&quot;: &quot;Karachi&quot;,
+                &quot;state&quot;: &quot;Sindh&quot;,
+                &quot;street&quot;: &quot;dad fd addsad&quot;,
+                &quot;zip_code&quot;: &quot;12345                         &quot;,
+                &quot;created_at&quot;: &quot;2022-05-17T06:20:50.000000Z&quot;
+            }
+        ],
+        &quot;permissions&quot;: [
+            &quot;access_all&quot;,
+            &quot;services_read&quot;,
+            &quot;services_request_all&quot;,
+            &quot;services_request_read&quot;,
+            &quot;services_request_create&quot;,
+            &quot;services_request_update&quot;,
+            &quot;services_request_delete&quot;,
+            &quot;customers_billing_information_all&quot;,
+            &quot;customers_billing_information_read&quot;,
+            &quot;customers_billing_information_create&quot;,
+            &quot;customers_billing_information_update&quot;,
+            &quot;customers_billing_information_delete&quot;,
+            &quot;profile_all&quot;,
+            &quot;profile_read&quot;,
+            &quot;profile_update&quot;
+        ]
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETv1-agencies-billing-information" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETv1-agencies-billing-information"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETv1-agencies-billing-information"></code></pre>
+</span>
+<span id="execution-error-GETv1-agencies-billing-information" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETv1-agencies-billing-information"></code></pre>
+</span>
+<form id="form-GETv1-agencies-billing-information" data-method="GET"
+      data-path="v1/agencies/billing-information"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Domain":"string required"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETv1-agencies-billing-information', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETv1-agencies-billing-information"
+                    onclick="tryItOut('GETv1-agencies-billing-information');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETv1-agencies-billing-information"
+                    onclick="cancelTryOut('GETv1-agencies-billing-information');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETv1-agencies-billing-information" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>v1/agencies/billing-information</code></b>
+        </p>
+                <p>
+            <label id="auth-GETv1-agencies-billing-information" hidden>Authorization header:
+                <b><code>Bearer </code></b><input type="text"
+                                                                name="Authorization"
+                                                                data-prefix="Bearer "
+                                                                data-endpoint="GETv1-agencies-billing-information"
+                                                                data-component="header"></label>
+        </p>
+                <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>customer_id</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="customer_id"
+               data-endpoint="GETv1-agencies-billing-information"
+               value="6"
+               data-component="url" hidden>
+    <br>
+<p>ex:1</p>
             </p>
                     </form>
 
@@ -10771,7 +10938,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-customers-request-services"
-               value="id"
+               value="in"
                data-component="url" hidden>
     <br>
 <p>pending,submitted</p>
@@ -10781,7 +10948,7 @@ fetch(url, {
                 <input type="text"
                name="title"
                data-endpoint="GETv1-customers-request-services"
-               value="unde"
+               value="ut"
                data-component="url" hidden>
     <br>
 <p>ex: abc,xyz</p>
@@ -10791,7 +10958,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-customers-request-services"
-               value="et"
+               value="voluptatem"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -10842,7 +11009,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-customers-request-services"
-               value="16"
+               value="17"
                data-component="url" hidden>
     <br>
 
@@ -10852,7 +11019,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-customers-request-services"
-               value="4"
+               value="1"
                data-component="url" hidden>
     <br>
 
@@ -10873,7 +11040,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/customers/request-services/5" \
+    --get "http://agency.test/v1/customers/request-services/14" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -10881,7 +11048,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/customers/request-services/5"
+    "http://agency.test/v1/customers/request-services/14"
 );
 
 const headers = {
@@ -11000,7 +11167,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="GETv1-customers-request-services--id-"
-               value="5"
+               value="14"
                data-component="url" hidden>
     <br>
 
@@ -11026,11 +11193,11 @@ fetch(url, {
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"service_id\": 14,
-    \"recurring_type\": \"praesentium\",
-    \"reference_no\": \"ea\",
+    \"service_id\": 17,
+    \"recurring_type\": \"animi\",
+    \"reference_no\": \"maxime\",
     \"intake_form\": [
-        \"fugit\"
+        \"dolorem\"
     ]
 }"
 </code></pre></div>
@@ -11048,11 +11215,11 @@ const headers = {
 };
 
 let body = {
-    "service_id": 14,
-    "recurring_type": "praesentium",
-    "reference_no": "ea",
+    "service_id": 17,
+    "recurring_type": "animi",
+    "reference_no": "maxime",
     "intake_form": [
-        "fugit"
+        "dolorem"
     ]
 };
 
@@ -11146,7 +11313,7 @@ fetch(url, {
                 <input type="number"
                name="service_id"
                data-endpoint="POSTv1-customers-request-services"
-               value="14"
+               value="17"
                data-component="body" hidden>
     <br>
 
@@ -11156,7 +11323,7 @@ fetch(url, {
                 <input type="text"
                name="recurring_type"
                data-endpoint="POSTv1-customers-request-services"
-               value="praesentium"
+               value="animi"
                data-component="body" hidden>
     <br>
 <p>Example : weekly,monthly,quarterly,biannually,annually</p>
@@ -11166,7 +11333,7 @@ fetch(url, {
                 <input type="text"
                name="reference_no"
                data-endpoint="POSTv1-customers-request-services"
-               value="ea"
+               value="maxime"
                data-component="body" hidden>
     <br>
 
@@ -11204,7 +11371,7 @@ This api show the invoice details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/agencies/invoices/6" \
+    --get "http://agency.test/v1/agencies/invoices/12" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -11212,7 +11379,7 @@ This api show the invoice details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/invoices/6"
+    "http://agency.test/v1/agencies/invoices/12"
 );
 
 const headers = {
@@ -11237,42 +11404,69 @@ fetch(url, {
 <code class="language-json">{
     &quot;data&quot;: {
         &quot;customer_invoice&quot;: {
-            &quot;id&quot;: 1,
-            &quot;holder_name&quot;: &quot;Faizan&quot;,
-            &quot;last_digits&quot;: &quot;3213&quot;,
-            &quot;exp_month&quot;: &quot;02&quot;,
-            &quot;exp_year&quot;: &quot;22&quot;,
-            &quot;address&quot;: &quot;My new address ABC&quot;,
-            &quot;country&quot;: &quot;Pakistan&quot;,
-            &quot;city&quot;: &quot;Karachi&quot;,
-            &quot;state&quot;: &quot;Sindh&quot;,
-            &quot;street&quot;: &quot;dad fd addsad&quot;,
-            &quot;zip_code&quot;: &quot;12345&quot;,
-            &quot;created_at&quot;: &quot;2022-05-17T06:20:50.000000Z&quot;
-        },
-        &quot;pagination&quot;: {
-            &quot;total&quot;: 2,
-            &quot;count&quot;: 2,
-            &quot;per_page&quot;: 20,
-            &quot;current_page&quot;: 1,
-            &quot;total_pages&quot;: 1
+            &quot;id&quot;: 158,
+            &quot;customer&quot;: {
+                &quot;id&quot;: 528,
+                &quot;first_name&quot;: &quot;badsha&quot;,
+                &quot;last_name&quot;: &quot;badsha&quot;,
+                &quot;email&quot;: &quot;badsha@hotmail.com&quot;,
+                &quot;last_logged_in&quot;: null,
+                &quot;status&quot;: &quot;active&quot;
+            },
+            &quot;invoice_number&quot;: &quot;INV-0000158&quot;,
+            &quot;customer_service_request&quot;: {
+                &quot;id&quot;: 164,
+                &quot;service&quot;: {
+                    &quot;id&quot;: 112,
+                    &quot;name&quot;: &quot;hosting&quot;,
+                    &quot;description&quot;: &quot;services&quot;,
+                    &quot;image&quot;: null,
+                    &quot;subscription_type&quot;: &quot;recurring&quot;,
+                    &quot;catalog_status&quot;: &quot;active&quot;,
+                    &quot;price_types&quot;: {
+                        &quot;id&quot;: 99,
+                        &quot;price&quot;: null,
+                        &quot;purchase_limit&quot;: null,
+                        &quot;weekly&quot;: 11,
+                        &quot;monthly&quot;: 11,
+                        &quot;quarterly&quot;: 11,
+                        &quot;biannually&quot;: 11,
+                        &quot;annually&quot;: 11,
+                        &quot;max_concurrent_requests&quot;: null,
+                        &quot;max_requests_per_month&quot;: null,
+                        &quot;created_at&quot;: &quot;2022-05-31T07:39:44.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-31T07:39:44.000000Z&quot;
+                    },
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2022-05-31T07:39:44.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2022-05-31T07:41:56.000000Z&quot;
+                },
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 528,
+                    &quot;first_name&quot;: &quot;badsha&quot;,
+                    &quot;last_name&quot;: &quot;badsha&quot;,
+                    &quot;email&quot;: &quot;badsha@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: null,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;is_recurring&quot;: true,
+                &quot;recurring_type&quot;: &quot;annually&quot;,
+                &quot;status&quot;: &quot;pending&quot;,
+                &quot;intake_form&quot;: [
+                    {
+                        &quot;title&quot;: &quot;afdfds&quot;,
+                        &quot;description&quot;: &quot;fdsfdsf&quot;
+                    }
+                ],
+                &quot;created_at&quot;: &quot;2022-06-02T07:01:49.000000Z&quot;
+            },
+            &quot;is_paid&quot;: false,
+            &quot;paid_by&quot;: &quot;&quot;,
+            &quot;amount&quot;: &quot;11&quot;,
+            &quot;created_at&quot;: &quot;2022-06-02T07:01:49.000000Z&quot;
         },
         &quot;permissions&quot;: [
-            &quot;access_all&quot;,
-            &quot;services_read&quot;,
-            &quot;services_request_all&quot;,
-            &quot;services_request_read&quot;,
-            &quot;services_request_create&quot;,
-            &quot;services_request_update&quot;,
-            &quot;services_request_delete&quot;,
-            &quot;customers_billing_information_all&quot;,
-            &quot;customers_billing_information_read&quot;,
-            &quot;customers_billing_information_create&quot;,
-            &quot;customers_billing_information_update&quot;,
-            &quot;customers_billing_information_delete&quot;,
-            &quot;profile_all&quot;,
-            &quot;profile_read&quot;,
-            &quot;profile_update&quot;
+            &quot;access_all&quot;
         ]
     },
     &quot;error&quot;: {},
@@ -11326,7 +11520,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="GETv1-agencies-invoices--id-"
-               value="6"
+               value="12"
                data-component="url" hidden>
     <br>
 
@@ -11346,7 +11540,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/agencies/invoices/4" \
+    "http://agency.test/v1/agencies/invoices/19" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -11354,7 +11548,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/invoices/4"
+    "http://agency.test/v1/agencies/invoices/19"
 );
 
 const headers = {
@@ -11444,7 +11638,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="DELETEv1-agencies-invoices--id-"
-               value="4"
+               value="19"
                data-component="url" hidden>
     <br>
 
@@ -11464,7 +11658,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/agencies/invoices/change-status/14" \
+    "http://agency.test/v1/agencies/invoices/change-status/11" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -11472,7 +11666,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/agencies/invoices/change-status/14"
+    "http://agency.test/v1/agencies/invoices/change-status/11"
 );
 
 const headers = {
@@ -11562,7 +11756,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-agencies-invoices-change-status--id-"
-               value="14"
+               value="11"
                data-component="url" hidden>
     <br>
 
@@ -11583,7 +11777,7 @@ This api show the invoice details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/customers/invoices/11" \
+    --get "http://agency.test/v1/customers/invoices/17" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -11591,7 +11785,7 @@ This api show the invoice details.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/customers/invoices/11"
+    "http://agency.test/v1/customers/invoices/17"
 );
 
 const headers = {
@@ -11616,25 +11810,49 @@ fetch(url, {
 <code class="language-json">{
     &quot;data&quot;: {
         &quot;customer_invoice&quot;: {
-            &quot;id&quot;: 1,
-            &quot;holder_name&quot;: &quot;Faizan&quot;,
-            &quot;last_digits&quot;: &quot;3213&quot;,
-            &quot;exp_month&quot;: &quot;02&quot;,
-            &quot;exp_year&quot;: &quot;22&quot;,
-            &quot;address&quot;: &quot;My new address ABC&quot;,
-            &quot;country&quot;: &quot;Pakistan&quot;,
-            &quot;city&quot;: &quot;Karachi&quot;,
-            &quot;state&quot;: &quot;Sindh&quot;,
-            &quot;street&quot;: &quot;dad fd addsad&quot;,
-            &quot;zip_code&quot;: &quot;12345&quot;,
-            &quot;created_at&quot;: &quot;2022-05-17T06:20:50.000000Z&quot;
-        },
-        &quot;pagination&quot;: {
-            &quot;total&quot;: 2,
-            &quot;count&quot;: 2,
-            &quot;per_page&quot;: 20,
-            &quot;current_page&quot;: 1,
-            &quot;total_pages&quot;: 1
+            &quot;id&quot;: 123,
+            &quot;invoice_number&quot;: &quot;INV-0000123&quot;,
+            &quot;customer_service_request&quot;: {
+                &quot;id&quot;: 129,
+                &quot;service&quot;: {
+                    &quot;id&quot;: 98,
+                    &quot;name&quot;: &quot;developing &quot;,
+                    &quot;description&quot;: &quot;aaaa&quot;,
+                    &quot;image&quot;: null,
+                    &quot;subscription_type&quot;: &quot;one-off&quot;,
+                    &quot;catalog_status&quot;: &quot;active&quot;,
+                    &quot;price_types&quot;: {
+                        &quot;id&quot;: 85,
+                        &quot;price&quot;: 12,
+                        &quot;purchase_limit&quot;: null,
+                        &quot;weekly&quot;: null,
+                        &quot;monthly&quot;: null,
+                        &quot;quarterly&quot;: null,
+                        &quot;biannually&quot;: null,
+                        &quot;annually&quot;: null,
+                        &quot;max_concurrent_requests&quot;: null,
+                        &quot;max_requests_per_month&quot;: null,
+                        &quot;created_at&quot;: &quot;2022-05-24T11:29:49.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-24T11:29:49.000000Z&quot;
+                    },
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;created_at&quot;: &quot;2022-05-24T11:29:49.000000Z&quot;,
+                    &quot;updated_at&quot;: &quot;2022-05-27T07:52:22.000000Z&quot;
+                },
+                &quot;is_recurring&quot;: false,
+                &quot;recurring_type&quot;: &quot;&quot;,
+                &quot;status&quot;: &quot;pending&quot;,
+                &quot;intake_form&quot;: [
+                    {
+                        &quot;title&quot;: &quot;test meh&quot;,
+                        &quot;description&quot;: &quot;dasd&quot;
+                    }
+                ],
+                &quot;created_at&quot;: &quot;2022-05-31T07:38:21.000000Z&quot;
+            },
+            &quot;is_paid&quot;: false,
+            &quot;amount&quot;: &quot;12&quot;,
+            &quot;created_at&quot;: &quot;2022-05-31T07:38:21.000000Z&quot;
         },
         &quot;permissions&quot;: [
             &quot;access_all&quot;,
@@ -11705,7 +11923,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="GETv1-customers-invoices--id-"
-               value="11"
+               value="17"
                data-component="url" hidden>
     <br>
 
@@ -11725,7 +11943,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/customers/invoices/10" \
+    "http://agency.test/v1/customers/invoices/14" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Domain: string required"</code></pre></div>
@@ -11733,7 +11951,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/customers/invoices/10"
+    "http://agency.test/v1/customers/invoices/14"
 );
 
 const headers = {
@@ -11823,7 +12041,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="DELETEv1-customers-invoices--id-"
-               value="10"
+               value="14"
                data-component="url" hidden>
     <br>
 
@@ -11848,8 +12066,8 @@ fetch(url, {
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"card_id\": 8,
-    \"invoice_id\": 10
+    \"card_id\": 20,
+    \"invoice_id\": 5
 }"
 </code></pre></div>
 
@@ -11866,8 +12084,8 @@ const headers = {
 };
 
 let body = {
-    "card_id": 8,
-    "invoice_id": 10
+    "card_id": 20,
+    "invoice_id": 5
 };
 
 fetch(url, {
@@ -11952,7 +12170,7 @@ fetch(url, {
                 <input type="number"
                name="card_id"
                data-endpoint="PUTv1-customers-invoices-invoice-paid"
-               value="8"
+               value="20"
                data-component="body" hidden>
     <br>
 
@@ -11962,7 +12180,7 @@ fetch(url, {
                 <input type="number"
                name="invoice_id"
                data-endpoint="PUTv1-customers-invoices-invoice-paid"
-               value="10"
+               value="5"
                data-component="body" hidden>
     <br>
 
@@ -11987,8 +12205,8 @@ fetch(url, {
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"card_id\": 10,
-    \"invoice_id\": 16
+    \"card_id\": 2,
+    \"invoice_id\": 6
 }"
 </code></pre></div>
 
@@ -12005,8 +12223,8 @@ const headers = {
 };
 
 let body = {
-    "card_id": 10,
-    "invoice_id": 16
+    "card_id": 2,
+    "invoice_id": 6
 };
 
 fetch(url, {
@@ -12091,7 +12309,7 @@ fetch(url, {
                 <input type="number"
                name="card_id"
                data-endpoint="PUTv1-agencies-invoices-invoice-paid"
-               value="10"
+               value="2"
                data-component="body" hidden>
     <br>
 
@@ -12101,12 +12319,1455 @@ fetch(url, {
                 <input type="number"
                name="invoice_id"
                data-endpoint="PUTv1-agencies-invoices-invoice-paid"
-               value="16"
+               value="6"
                data-component="body" hidden>
     <br>
 
         </p>
         </form>
+
+            <h2 id="endpoints-GETv1-agencies-invoices">Show All Invoices
+This api show the invoice.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETv1-agencies-invoices">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://agency.test/v1/agencies/invoices" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Domain: string required"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/agencies/invoices"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Domain": "string required",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETv1-agencies-invoices">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;customer_invoices&quot;: [
+            {
+                &quot;id&quot;: 158,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 528,
+                    &quot;first_name&quot;: &quot;badsha&quot;,
+                    &quot;last_name&quot;: &quot;badsha&quot;,
+                    &quot;email&quot;: &quot;badsha@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: null,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000158&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 164,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 112,
+                        &quot;name&quot;: &quot;hosting&quot;,
+                        &quot;description&quot;: &quot;services&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;recurring&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-31T07:39:44.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-31T07:41:56.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 528,
+                        &quot;first_name&quot;: &quot;badsha&quot;,
+                        &quot;last_name&quot;: &quot;badsha&quot;,
+                        &quot;email&quot;: &quot;badsha@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: null,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: true,
+                    &quot;recurring_type&quot;: &quot;annually&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;afdfds&quot;,
+                            &quot;description&quot;: &quot;fdsfdsf&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-06-02T07:01:49.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-06-02T07:01:49.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 157,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 528,
+                    &quot;first_name&quot;: &quot;badsha&quot;,
+                    &quot;last_name&quot;: &quot;badsha&quot;,
+                    &quot;email&quot;: &quot;badsha@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: null,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000157&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 163,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 112,
+                        &quot;name&quot;: &quot;hosting&quot;,
+                        &quot;description&quot;: &quot;services&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;recurring&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-31T07:39:44.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-31T07:41:56.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 528,
+                        &quot;first_name&quot;: &quot;badsha&quot;,
+                        &quot;last_name&quot;: &quot;badsha&quot;,
+                        &quot;email&quot;: &quot;badsha@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: null,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: true,
+                    &quot;recurring_type&quot;: &quot;annually&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;afdfds&quot;,
+                            &quot;description&quot;: &quot;fdsfdsf&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-06-02T06:55:21.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-06-02T06:55:22.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 156,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 528,
+                    &quot;first_name&quot;: &quot;badsha&quot;,
+                    &quot;last_name&quot;: &quot;badsha&quot;,
+                    &quot;email&quot;: &quot;badsha@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: null,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000156&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 162,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 119,
+                        &quot;name&quot;: &quot;design&quot;,
+                        &quot;description&quot;: &quot;services &quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;pending&quot;,
+                        &quot;status&quot;: &quot;pending&quot;,
+                        &quot;created_at&quot;: &quot;2022-06-01T10:21:57.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-06-01T10:21:57.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 528,
+                        &quot;first_name&quot;: &quot;badsha&quot;,
+                        &quot;last_name&quot;: &quot;badsha&quot;,
+                        &quot;email&quot;: &quot;badsha@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: null,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;afdfds&quot;,
+                            &quot;description&quot;: &quot;fdsfdsf&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-06-02T06:54:21.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;&quot;,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-06-02T06:54:22.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 147,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000147&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 153,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 92,
+                        &quot;name&quot;: &quot;#####&quot;,
+                        &quot;description&quot;: &quot;ddddddddd&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T12:16:14.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T11:56:33.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;developing&quot;,
+                            &quot;description&quot;: &quot;aaaa&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-06-01T06:08:59.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-06-01T06:08:59.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 146,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000146&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 152,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 92,
+                        &quot;name&quot;: &quot;#####&quot;,
+                        &quot;description&quot;: &quot;ddddddddd&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T12:16:14.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T11:56:33.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;developing&quot;,
+                            &quot;description&quot;: &quot;aaaa&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-06-01T06:07:21.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-06-01T06:07:21.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 145,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000145&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 151,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 92,
+                        &quot;name&quot;: &quot;#####&quot;,
+                        &quot;description&quot;: &quot;ddddddddd&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T12:16:14.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T11:56:33.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;developing&quot;,
+                            &quot;description&quot;: &quot;aaaa&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-06-01T06:03:30.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-06-01T06:03:30.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 144,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000144&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 150,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 92,
+                        &quot;name&quot;: &quot;#####&quot;,
+                        &quot;description&quot;: &quot;ddddddddd&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T12:16:14.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T11:56:33.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;developing&quot;,
+                            &quot;description&quot;: &quot;aaaa&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-06-01T06:02:21.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-06-01T06:02:21.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 143,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 513,
+                    &quot;first_name&quot;: &quot;khadija&quot;,
+                    &quot;last_name&quot;: &quot;khan&quot;,
+                    &quot;email&quot;: &quot;khadija@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: null,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000143&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 149,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 112,
+                        &quot;name&quot;: &quot;hosting&quot;,
+                        &quot;description&quot;: &quot;services&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;recurring&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-31T07:39:44.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-31T07:41:56.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 513,
+                        &quot;first_name&quot;: &quot;khadija&quot;,
+                        &quot;last_name&quot;: &quot;khan&quot;,
+                        &quot;email&quot;: &quot;khadija@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: null,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: true,
+                    &quot;recurring_type&quot;: &quot;biannually&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;Vitae enim earum tem&quot;,
+                            &quot;description&quot;: &quot;Velit tempore volup&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T12:26:02.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T12:26:02.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 139,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000139&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 145,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 94,
+                        &quot;name&quot;: &quot;web dev&quot;,
+                        &quot;description&quot;: &quot;aaaa&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-17T09:16:12.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-27T07:51:12.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services&quot;,
+                            &quot;description&quot;: &quot;services &quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:32:53.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:32:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 138,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000138&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 144,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 91,
+                        &quot;name&quot;: &quot;my domain service&quot;,
+                        &quot;description&quot;: &quot;my domain service&quot;,
+                        &quot;image&quot;: &quot;https://res.cloudinary.com/saasfa/image/upload/v1652701036/service-6282376bf2855.jpg&quot;,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T11:37:16.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T11:56:14.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services &quot;,
+                            &quot;description&quot;: &quot;services &quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:32:09.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;100&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:32:09.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 137,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000137&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 143,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 96,
+                        &quot;name&quot;: &quot;web&quot;,
+                        &quot;description&quot;: &quot;aaaa&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-19T13:02:52.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-27T08:08:58.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services &quot;,
+                            &quot;description&quot;: &quot;services &quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:31:00.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:31:00.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 136,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000136&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 142,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 92,
+                        &quot;name&quot;: &quot;#####&quot;,
+                        &quot;description&quot;: &quot;ddddddddd&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T12:16:14.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T11:56:33.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services &quot;,
+                            &quot;description&quot;: &quot;services &quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:26:22.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:26:22.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 131,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000131&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 137,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 89,
+                        &quot;name&quot;: &quot;@@@@&quot;,
+                        &quot;description&quot;: &quot;dfgggg&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T06:57:05.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T12:00:12.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services&quot;,
+                            &quot;description&quot;: &quot;services &quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:18:52.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:18:52.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 130,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000130&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 136,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 89,
+                        &quot;name&quot;: &quot;@@@@&quot;,
+                        &quot;description&quot;: &quot;dfgggg&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T06:57:05.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T12:00:12.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services &quot;,
+                            &quot;description&quot;: &quot;services &quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:18:26.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:18:26.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 129,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000129&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 135,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 89,
+                        &quot;name&quot;: &quot;@@@@&quot;,
+                        &quot;description&quot;: &quot;dfgggg&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T06:57:05.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T12:00:12.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services&quot;,
+                            &quot;description&quot;: &quot;services&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:17:05.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:17:05.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 128,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000128&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 134,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 89,
+                        &quot;name&quot;: &quot;@@@@&quot;,
+                        &quot;description&quot;: &quot;dfgggg&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T06:57:05.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T12:00:12.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services &quot;,
+                            &quot;description&quot;: &quot;services&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:16:45.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:16:45.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 127,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000127&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 133,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 91,
+                        &quot;name&quot;: &quot;my domain service&quot;,
+                        &quot;description&quot;: &quot;my domain service&quot;,
+                        &quot;image&quot;: &quot;https://res.cloudinary.com/saasfa/image/upload/v1652701036/service-6282376bf2855.jpg&quot;,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-16T11:37:16.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-25T11:56:14.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;services &quot;,
+                            &quot;description&quot;: &quot;services &quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:12:43.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;100&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:12:43.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 126,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000126&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 132,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 112,
+                        &quot;name&quot;: &quot;hosting&quot;,
+                        &quot;description&quot;: &quot;services&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;recurring&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-31T07:39:44.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-31T07:41:56.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: true,
+                    &quot;recurring_type&quot;: &quot;biannually&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;hosting&quot;,
+                            &quot;description&quot;: &quot;hosting&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T08:01:09.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T08:01:09.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 124,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 479,
+                    &quot;first_name&quot;: &quot;dolly&quot;,
+                    &quot;last_name&quot;: &quot;dolly&quot;,
+                    &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000124&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 130,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 112,
+                        &quot;name&quot;: &quot;hosting&quot;,
+                        &quot;description&quot;: &quot;services&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;recurring&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-31T07:39:44.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-31T07:41:56.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 479,
+                        &quot;first_name&quot;: &quot;dolly&quot;,
+                        &quot;last_name&quot;: &quot;dolly&quot;,
+                        &quot;email&quot;: &quot;dolly@hotmail.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-02 07:25:09&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: true,
+                    &quot;recurring_type&quot;: &quot;biannually&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;hosting&quot;,
+                            &quot;description&quot;: &quot;hosting&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T07:42:53.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T07:42:53.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 123,
+                &quot;customer&quot;: {
+                    &quot;id&quot;: 412,
+                    &quot;first_name&quot;: &quot;My Agency Tool&quot;,
+                    &quot;last_name&quot;: &quot;My Agency Tool name&quot;,
+                    &quot;email&quot;: &quot;irfan.mumtaz1@saasfa.com&quot;,
+                    &quot;last_logged_in&quot;: &quot;2022-06-01 06:05:22&quot;,
+                    &quot;status&quot;: &quot;active&quot;
+                },
+                &quot;invoice_number&quot;: &quot;INV-0000123&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 129,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 98,
+                        &quot;name&quot;: &quot;developing &quot;,
+                        &quot;description&quot;: &quot;aaaa&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-24T11:29:49.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-27T07:52:22.000000Z&quot;
+                    },
+                    &quot;customer&quot;: {
+                        &quot;id&quot;: 412,
+                        &quot;first_name&quot;: &quot;My Agency Tool&quot;,
+                        &quot;last_name&quot;: &quot;My Agency Tool name&quot;,
+                        &quot;email&quot;: &quot;irfan.mumtaz1@saasfa.com&quot;,
+                        &quot;last_logged_in&quot;: &quot;2022-06-01 06:05:22&quot;,
+                        &quot;status&quot;: &quot;active&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;test meh&quot;,
+                            &quot;description&quot;: &quot;dasd&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T07:38:21.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;paid_by&quot;: &quot;agency&quot;,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T07:38:21.000000Z&quot;
+            }
+        ],
+        &quot;pagination&quot;: {
+            &quot;total&quot;: 43,
+            &quot;count&quot;: 20,
+            &quot;per_page&quot;: 20,
+            &quot;current_page&quot;: 1,
+            &quot;total_pages&quot;: 3
+        },
+        &quot;permissions&quot;: [
+            &quot;access_all&quot;
+        ]
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETv1-agencies-invoices" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETv1-agencies-invoices"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETv1-agencies-invoices"></code></pre>
+</span>
+<span id="execution-error-GETv1-agencies-invoices" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETv1-agencies-invoices"></code></pre>
+</span>
+<form id="form-GETv1-agencies-invoices" data-method="GET"
+      data-path="v1/agencies/invoices"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Domain":"string required"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETv1-agencies-invoices', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETv1-agencies-invoices"
+                    onclick="tryItOut('GETv1-agencies-invoices');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETv1-agencies-invoices"
+                    onclick="cancelTryOut('GETv1-agencies-invoices');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETv1-agencies-invoices" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>v1/agencies/invoices</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>is_paid</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="is_paid"
+               data-endpoint="GETv1-agencies-invoices"
+               value="aut"
+               data-component="url" hidden>
+    <br>
+<p>boolean ex: true</p>
+            </p>
+                    <p>
+                <b><code>order_by</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order_by"
+               data-endpoint="GETv1-agencies-invoices"
+               value="et"
+               data-component="url" hidden>
+    <br>
+<p>ex: asc/desc</p>
+            </p>
+                    <p>
+                <b><code>from_date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="from_date"
+               data-endpoint="GETv1-agencies-invoices"
+               value="Y-m-d"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>to_date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="to_date"
+               data-endpoint="GETv1-agencies-invoices"
+               value="Y-m-d"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>pagination</code></b>&nbsp;&nbsp;<small>boolean</small>     <i>optional</i> &nbsp;
+                <label data-endpoint="GETv1-agencies-invoices" hidden>
+            <input type="radio" name="pagination"
+                   value="1"
+                   data-endpoint="GETv1-agencies-invoices"
+                   data-component="url"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETv1-agencies-invoices" hidden>
+            <input type="radio" name="pagination"
+                   value="0"
+                   data-endpoint="GETv1-agencies-invoices"
+                   data-component="url"
+            >
+            <code>false</code>
+        </label>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>page_limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page_limit"
+               data-endpoint="GETv1-agencies-invoices"
+               value="19"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETv1-agencies-invoices"
+               value="16"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
+
+            <h2 id="endpoints-GETv1-customers-invoices">Show All Invoices
+This api show the invoice.</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-GETv1-customers-invoices">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://agency.test/v1/customers/invoices" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "Domain: string required"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://agency.test/v1/customers/invoices"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Domain": "string required",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETv1-customers-invoices">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json">{
+    &quot;data&quot;: {
+        &quot;customer_invoices&quot;: [
+            {
+                &quot;id&quot;: 123,
+                &quot;invoice_number&quot;: &quot;INV-0000123&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 129,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 98,
+                        &quot;name&quot;: &quot;developing &quot;,
+                        &quot;description&quot;: &quot;aaaa&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-24T11:29:49.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-27T07:52:22.000000Z&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;pending&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;test meh&quot;,
+                            &quot;description&quot;: &quot;dasd&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-31T07:38:21.000000Z&quot;
+                },
+                &quot;is_paid&quot;: false,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-05-31T07:38:21.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 94,
+                &quot;invoice_number&quot;: &quot;INV-0000094&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 100,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 97,
+                        &quot;name&quot;: &quot;ui designing&quot;,
+                        &quot;description&quot;: &quot;aaaaa&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-24T11:29:01.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-27T08:08:41.000000Z&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;afdfds&quot;,
+                            &quot;description&quot;: &quot;fdsfdsf&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-26T08:04:45.000000Z&quot;
+                },
+                &quot;is_paid&quot;: true,
+                &quot;amount&quot;: &quot;12&quot;,
+                &quot;created_at&quot;: &quot;2022-05-26T08:04:45.000000Z&quot;
+            },
+            {
+                &quot;id&quot;: 71,
+                &quot;invoice_number&quot;: &quot;INV-0000071&quot;,
+                &quot;customer_service_request&quot;: {
+                    &quot;id&quot;: 77,
+                    &quot;service&quot;: {
+                        &quot;id&quot;: 96,
+                        &quot;name&quot;: &quot;web&quot;,
+                        &quot;description&quot;: &quot;aaaa&quot;,
+                        &quot;image&quot;: null,
+                        &quot;subscription_type&quot;: &quot;one-off&quot;,
+                        &quot;catalog_status&quot;: &quot;active&quot;,
+                        &quot;status&quot;: &quot;active&quot;,
+                        &quot;created_at&quot;: &quot;2022-05-19T13:02:52.000000Z&quot;,
+                        &quot;updated_at&quot;: &quot;2022-05-27T08:08:58.000000Z&quot;
+                    },
+                    &quot;is_recurring&quot;: false,
+                    &quot;recurring_type&quot;: &quot;&quot;,
+                    &quot;status&quot;: &quot;active&quot;,
+                    &quot;intake_form&quot;: [
+                        {
+                            &quot;title&quot;: &quot;&quot;,
+                            &quot;description&quot;: &quot;&quot;
+                        }
+                    ],
+                    &quot;created_at&quot;: &quot;2022-05-23T06:14:08.000000Z&quot;
+                },
+                &quot;is_paid&quot;: true,
+                &quot;amount&quot;: &quot;11&quot;,
+                &quot;created_at&quot;: &quot;2022-05-23T06:14:08.000000Z&quot;
+            }
+        ],
+        &quot;pagination&quot;: {
+            &quot;total&quot;: 3,
+            &quot;count&quot;: 3,
+            &quot;per_page&quot;: 20,
+            &quot;current_page&quot;: 1,
+            &quot;total_pages&quot;: 1
+        },
+        &quot;permissions&quot;: [
+            &quot;access_all&quot;,
+            &quot;services_read&quot;,
+            &quot;services_request_all&quot;,
+            &quot;services_request_read&quot;,
+            &quot;services_request_create&quot;,
+            &quot;services_request_update&quot;,
+            &quot;services_request_delete&quot;,
+            &quot;customers_billing_information_all&quot;,
+            &quot;customers_billing_information_read&quot;,
+            &quot;customers_billing_information_create&quot;,
+            &quot;customers_billing_information_update&quot;,
+            &quot;customers_billing_information_delete&quot;,
+            &quot;profile_all&quot;,
+            &quot;profile_read&quot;,
+            &quot;profile_update&quot;
+        ]
+    },
+    &quot;error&quot;: {},
+    &quot;success&quot;: true,
+    &quot;message&quot;: &quot;Operation successful&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-GETv1-customers-invoices" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETv1-customers-invoices"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETv1-customers-invoices"></code></pre>
+</span>
+<span id="execution-error-GETv1-customers-invoices" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETv1-customers-invoices"></code></pre>
+</span>
+<form id="form-GETv1-customers-invoices" data-method="GET"
+      data-path="v1/customers/invoices"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json","Domain":"string required"}'
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETv1-customers-invoices', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETv1-customers-invoices"
+                    onclick="tryItOut('GETv1-customers-invoices');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETv1-customers-invoices"
+                    onclick="cancelTryOut('GETv1-customers-invoices');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETv1-customers-invoices" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>v1/customers/invoices</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>is_paid</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="is_paid"
+               data-endpoint="GETv1-customers-invoices"
+               value="rerum"
+               data-component="url" hidden>
+    <br>
+<p>boolean ex: true</p>
+            </p>
+                    <p>
+                <b><code>order_by</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="order_by"
+               data-endpoint="GETv1-customers-invoices"
+               value="et"
+               data-component="url" hidden>
+    <br>
+<p>ex: asc/desc</p>
+            </p>
+                    <p>
+                <b><code>from_date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="from_date"
+               data-endpoint="GETv1-customers-invoices"
+               value="Y-m-d"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>to_date</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+                <input type="text"
+               name="to_date"
+               data-endpoint="GETv1-customers-invoices"
+               value="Y-m-d"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>pagination</code></b>&nbsp;&nbsp;<small>boolean</small>     <i>optional</i> &nbsp;
+                <label data-endpoint="GETv1-customers-invoices" hidden>
+            <input type="radio" name="pagination"
+                   value="1"
+                   data-endpoint="GETv1-customers-invoices"
+                   data-component="url"
+            >
+            <code>true</code>
+        </label>
+        <label data-endpoint="GETv1-customers-invoices" hidden>
+            <input type="radio" name="pagination"
+                   value="0"
+                   data-endpoint="GETv1-customers-invoices"
+                   data-component="url"
+            >
+            <code>false</code>
+        </label>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>page_limit</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page_limit"
+               data-endpoint="GETv1-customers-invoices"
+               value="12"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    <p>
+                <b><code>page</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+                <input type="number"
+               name="page"
+               data-endpoint="GETv1-customers-invoices"
+               value="16"
+               data-component="url" hidden>
+    <br>
+
+            </p>
+                    </form>
 
         <h1 id="permissions-api">Permissions Api</h1>
 
@@ -12309,11 +13970,11 @@ This api update portal settings.</h2>
     --header "Accept: application/json" \
     --header "Domain: string required" \
     --data "{
-    \"name\": \"reiciendis\",
-    \"logo\": \"quaerat\",
-    \"favicon\": \"unde\",
-    \"primary_color\": \"sed\",
-    \"secondary_color\": \"maxime\"
+    \"name\": \"expedita\",
+    \"logo\": \"labore\",
+    \"favicon\": \"culpa\",
+    \"primary_color\": \"facilis\",
+    \"secondary_color\": \"in\"
 }"
 </code></pre></div>
 
@@ -12330,11 +13991,11 @@ const headers = {
 };
 
 let body = {
-    "name": "reiciendis",
-    "logo": "quaerat",
-    "favicon": "unde",
-    "primary_color": "sed",
-    "secondary_color": "maxime"
+    "name": "expedita",
+    "logo": "labore",
+    "favicon": "culpa",
+    "primary_color": "facilis",
+    "secondary_color": "in"
 };
 
 fetch(url, {
@@ -12457,7 +14118,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="reiciendis"
+               value="expedita"
                data-component="body" hidden>
     <br>
 
@@ -12467,7 +14128,7 @@ fetch(url, {
                 <input type="text"
                name="logo"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="quaerat"
+               value="labore"
                data-component="body" hidden>
     <br>
 <p>ex: base64imageFile formats: png,jpeg,jpg</p>
@@ -12477,7 +14138,7 @@ fetch(url, {
                 <input type="text"
                name="favicon"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="unde"
+               value="culpa"
                data-component="body" hidden>
     <br>
 <p>ex: base64imageFile formats: png,x-icon</p>
@@ -12487,7 +14148,7 @@ fetch(url, {
                 <input type="text"
                name="primary_color"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="sed"
+               value="facilis"
                data-component="body" hidden>
     <br>
 <p>ex: '#fsfsd'</p>
@@ -12497,7 +14158,7 @@ fetch(url, {
                 <input type="text"
                name="secondary_color"
                data-endpoint="PUTv1-agencies-portal-settings"
-               value="maxime"
+               value="in"
                data-component="body" hidden>
     <br>
 <p>ex: '#fsfsd'</p>
@@ -12782,7 +14443,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-admins-roles"
-               value="laborum"
+               value="sunt"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -12833,7 +14494,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-admins-roles"
-               value="5"
+               value="13"
                data-component="url" hidden>
     <br>
 
@@ -12843,7 +14504,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-admins-roles"
-               value="11"
+               value="15"
                data-component="url" hidden>
     <br>
 
@@ -12865,7 +14526,7 @@ This api show the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/roles/natus" \
+    --get "http://agency.test/v1/admins/roles/aut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: String required Example: Bearer TOKEN"</code></pre></div>
@@ -12873,7 +14534,7 @@ This api show the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/natus"
+    "http://agency.test/v1/admins/roles/aut"
 );
 
 const headers = {
@@ -12987,7 +14648,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-admins-roles--id-"
-               value="natus"
+               value="aut"
                data-component="url" hidden>
     <br>
 
@@ -12997,7 +14658,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="GETv1-admins-roles--id-"
-               value="odit"
+               value="voluptas"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -13024,7 +14685,7 @@ This api is for create new Role</h2>
     --header "Accept: application/json" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"name\": \"esse\",
+    \"name\": \"exercitationem\",
     \"permissions\": [
         \"eos\"
     ]
@@ -13044,7 +14705,7 @@ const headers = {
 };
 
 let body = {
-    "name": "esse",
+    "name": "exercitationem",
     "permissions": [
         "eos"
     ]
@@ -13156,7 +14817,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="POSTv1-admins-roles"
-               value="esse"
+               value="exercitationem"
                data-component="body" hidden>
     <br>
 
@@ -13191,14 +14852,14 @@ This api update the details of requested Role.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/admins/roles/delectus" \
+    "http://agency.test/v1/admins/roles/quo" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: String required Example: Bearer TOKEN" \
     --data "{
-    \"name\": \"non\",
+    \"name\": \"facere\",
     \"permissions\": [
-        \"quidem\"
+        \"aut\"
     ]
 }"
 </code></pre></div>
@@ -13206,7 +14867,7 @@ This api update the details of requested Role.</h2>
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/delectus"
+    "http://agency.test/v1/admins/roles/quo"
 );
 
 const headers = {
@@ -13216,9 +14877,9 @@ const headers = {
 };
 
 let body = {
-    "name": "non",
+    "name": "facere",
     "permissions": [
-        "quidem"
+        "aut"
     ]
 };
 
@@ -13328,7 +14989,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-roles--id-"
-               value="delectus"
+               value="quo"
                data-component="url" hidden>
     <br>
 
@@ -13338,7 +14999,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="PUTv1-admins-roles--id-"
-               value="ut"
+               value="sapiente"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -13349,7 +15010,7 @@ fetch(url, {
                 <input type="text"
                name="name"
                data-endpoint="PUTv1-admins-roles--id-"
-               value="non"
+               value="facere"
                data-component="body" hidden>
     <br>
 
@@ -13383,7 +15044,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/admins/roles/et" \
+    "http://agency.test/v1/admins/roles/sapiente" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --header "Authorization: String required Example: Bearer TOKEN"</code></pre></div>
@@ -13391,7 +15052,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/roles/et"
+    "http://agency.test/v1/admins/roles/sapiente"
 );
 
 const headers = {
@@ -13489,7 +15150,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-admins-roles--id-"
-               value="et"
+               value="sapiente"
                data-component="url" hidden>
     <br>
 
@@ -13499,7 +15160,7 @@ fetch(url, {
                 <input type="text"
                name="role_id"
                data-endpoint="DELETEv1-admins-roles--id-"
-               value="accusamus"
+               value="consequatur"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -13817,7 +15478,7 @@ fetch(url, {
                 <input type="text"
                name="users"
                data-endpoint="GETv1-admins-users"
-               value="nesciunt"
+               value="quo"
                data-component="url" hidden>
     <br>
 <p>1,2,3,4</p>
@@ -13827,7 +15488,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="GETv1-admins-users"
-               value="quas"
+               value="quos"
                data-component="url" hidden>
     <br>
 <p>ex: abc.com,xyz.co</p>
@@ -13837,7 +15498,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="GETv1-admins-users"
-               value="rerum"
+               value="inventore"
                data-component="url" hidden>
     <br>
 
@@ -13847,7 +15508,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="GETv1-admins-users"
-               value="quis"
+               value="eum"
                data-component="url" hidden>
     <br>
 
@@ -13857,7 +15518,7 @@ fetch(url, {
                 <input type="text"
                name="full_name"
                data-endpoint="GETv1-admins-users"
-               value="est"
+               value="autem"
                data-component="url" hidden>
     <br>
 
@@ -13867,7 +15528,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="GETv1-admins-users"
-               value="asperiores"
+               value="tenetur"
                data-component="url" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -13877,7 +15538,7 @@ fetch(url, {
                 <input type="text"
                name="order_by"
                data-endpoint="GETv1-admins-users"
-               value="consequatur"
+               value="reprehenderit"
                data-component="url" hidden>
     <br>
 <p>ex: asc/desc</p>
@@ -13928,7 +15589,7 @@ fetch(url, {
                 <input type="number"
                name="page_limit"
                data-endpoint="GETv1-admins-users"
-               value="16"
+               value="15"
                data-component="url" hidden>
     <br>
 
@@ -13938,7 +15599,7 @@ fetch(url, {
                 <input type="number"
                name="page"
                data-endpoint="GETv1-admins-users"
-               value="20"
+               value="16"
                data-component="url" hidden>
     <br>
 
@@ -13948,7 +15609,7 @@ fetch(url, {
                 <input type="text"
                name="roles"
                data-endpoint="GETv1-admins-users"
-               value="accusantium"
+               value="ipsum"
                data-component="url" hidden>
     <br>
 <p>ex: admin,test</p>
@@ -13970,14 +15631,14 @@ This api show the uer details.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://agency.test/v1/admins/users/perspiciatis" \
+    --get "http://agency.test/v1/admins/users/occaecati" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/perspiciatis"
+    "http://agency.test/v1/admins/users/occaecati"
 );
 
 const headers = {
@@ -14109,7 +15770,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="GETv1-admins-users--id-"
-               value="perspiciatis"
+               value="occaecati"
                data-component="url" hidden>
     <br>
 
@@ -14119,7 +15780,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="GETv1-admins-users--id-"
-               value="et"
+               value="amet"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -14145,17 +15806,17 @@ This api create new user.</h2>
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"et\",
-    \"last_name\": \"atque\",
-    \"email\": \"quidem\",
-    \"password\": \"non\",
-    \"password_confirmation\": \"ipsa\",
-    \"status\": \"quaerat\",
+    \"first_name\": \"consequatur\",
+    \"last_name\": \"rem\",
+    \"email\": \"sit\",
+    \"password\": \"iste\",
+    \"password_confirmation\": \"rerum\",
+    \"status\": \"et\",
     \"roles\": [
-        \"sed\"
+        \"aperiam\"
     ],
     \"permissions\": [
-        \"labore\"
+        \"commodi\"
     ]
 }"
 </code></pre></div>
@@ -14172,17 +15833,17 @@ const headers = {
 };
 
 let body = {
-    "first_name": "et",
-    "last_name": "atque",
-    "email": "quidem",
-    "password": "non",
-    "password_confirmation": "ipsa",
-    "status": "quaerat",
+    "first_name": "consequatur",
+    "last_name": "rem",
+    "email": "sit",
+    "password": "iste",
+    "password_confirmation": "rerum",
+    "status": "et",
     "roles": [
-        "sed"
+        "aperiam"
     ],
     "permissions": [
-        "labore"
+        "commodi"
     ]
 };
 
@@ -14311,7 +15972,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="POSTv1-admins-users"
-               value="et"
+               value="consequatur"
                data-component="body" hidden>
     <br>
 
@@ -14321,7 +15982,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="POSTv1-admins-users"
-               value="atque"
+               value="rem"
                data-component="body" hidden>
     <br>
 
@@ -14331,7 +15992,7 @@ fetch(url, {
                 <input type="text"
                name="email"
                data-endpoint="POSTv1-admins-users"
-               value="quidem"
+               value="sit"
                data-component="body" hidden>
     <br>
 
@@ -14341,7 +16002,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="POSTv1-admins-users"
-               value="non"
+               value="iste"
                data-component="body" hidden>
     <br>
 
@@ -14351,7 +16012,7 @@ fetch(url, {
                 <input type="text"
                name="password_confirmation"
                data-endpoint="POSTv1-admins-users"
-               value="ipsa"
+               value="rerum"
                data-component="body" hidden>
     <br>
 
@@ -14361,7 +16022,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="POSTv1-admins-users"
-               value="quaerat"
+               value="et"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -14408,18 +16069,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/admins/users/maxime" \
+    "http://agency.test/v1/admins/users/quis" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"first_name\": \"cum\",
-    \"last_name\": \"doloribus\",
-    \"status\": \"vel\",
+    \"first_name\": \"nihil\",
+    \"last_name\": \"maiores\",
+    \"status\": \"ad\",
     \"roles\": [
-        \"veniam\"
+        \"non\"
     ],
     \"permissions\": [
-        \"qui\"
+        \"praesentium\"
     ]
 }"
 </code></pre></div>
@@ -14427,7 +16088,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/maxime"
+    "http://agency.test/v1/admins/users/quis"
 );
 
 const headers = {
@@ -14436,14 +16097,14 @@ const headers = {
 };
 
 let body = {
-    "first_name": "cum",
-    "last_name": "doloribus",
-    "status": "vel",
+    "first_name": "nihil",
+    "last_name": "maiores",
+    "status": "ad",
     "roles": [
-        "veniam"
+        "non"
     ],
     "permissions": [
-        "qui"
+        "praesentium"
     ]
 };
 
@@ -14572,7 +16233,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-users--id-"
-               value="maxime"
+               value="quis"
                data-component="url" hidden>
     <br>
 
@@ -14582,7 +16243,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="PUTv1-admins-users--id-"
-               value="qui"
+               value="amet"
                data-component="url" hidden>
     <br>
 <p>Integer required</p>
@@ -14593,7 +16254,7 @@ fetch(url, {
                 <input type="text"
                name="first_name"
                data-endpoint="PUTv1-admins-users--id-"
-               value="cum"
+               value="nihil"
                data-component="body" hidden>
     <br>
 
@@ -14603,7 +16264,7 @@ fetch(url, {
                 <input type="text"
                name="last_name"
                data-endpoint="PUTv1-admins-users--id-"
-               value="doloribus"
+               value="maiores"
                data-component="body" hidden>
     <br>
 
@@ -14613,7 +16274,7 @@ fetch(url, {
                 <input type="text"
                name="status"
                data-endpoint="PUTv1-admins-users--id-"
-               value="vel"
+               value="ad"
                data-component="body" hidden>
     <br>
 <p>ex: pending,active,blocked</p>
@@ -14660,14 +16321,14 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://agency.test/v1/admins/users/at" \
+    "http://agency.test/v1/admins/users/sed" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/at"
+    "http://agency.test/v1/admins/users/sed"
 );
 
 const headers = {
@@ -14764,7 +16425,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="DELETEv1-admins-users--id-"
-               value="at"
+               value="sed"
                data-component="url" hidden>
     <br>
 
@@ -14774,7 +16435,7 @@ fetch(url, {
                 <input type="text"
                name="user_id"
                data-endpoint="DELETEv1-admins-users--id-"
-               value="ex"
+               value="cupiditate"
                data-component="url" hidden>
     <br>
 <p>Integer</p>
@@ -14797,14 +16458,14 @@ other then customers.</h2>
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/admins/users/change-status/deleniti" \
+    "http://agency.test/v1/admins/users/change-status/itaque" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/change-status/deleniti"
+    "http://agency.test/v1/admins/users/change-status/itaque"
 );
 
 const headers = {
@@ -14901,7 +16562,7 @@ fetch(url, {
                 <input type="text"
                name="id"
                data-endpoint="PUTv1-admins-users-change-status--id-"
-               value="deleniti"
+               value="itaque"
                data-component="url" hidden>
     <br>
 
@@ -14911,7 +16572,7 @@ fetch(url, {
                 <input type="number"
                name="user_id"
                data-endpoint="PUTv1-admins-users-change-status--id-"
-               value="12"
+               value="9"
                data-component="url" hidden>
     <br>
 
@@ -14932,18 +16593,18 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://agency.test/v1/admins/users/change-password/15" \
+    "http://agency.test/v1/admins/users/change-password/11" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"password\": \"magnam\"
+    \"password\": \"saepe\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://agency.test/v1/admins/users/change-password/15"
+    "http://agency.test/v1/admins/users/change-password/11"
 );
 
 const headers = {
@@ -14952,7 +16613,7 @@ const headers = {
 };
 
 let body = {
-    "password": "magnam"
+    "password": "saepe"
 };
 
 fetch(url, {
@@ -15030,7 +16691,7 @@ fetch(url, {
                 <input type="number"
                name="id"
                data-endpoint="PUTv1-admins-users-change-password--id-"
-               value="15"
+               value="11"
                data-component="url" hidden>
     <br>
 
@@ -15041,7 +16702,7 @@ fetch(url, {
                 <input type="text"
                name="password"
                data-endpoint="PUTv1-admins-users-change-password--id-"
-               value="magnam"
+               value="saepe"
                data-component="body" hidden>
     <br>
 <p>ex: 123456</p>
