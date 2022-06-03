@@ -26,7 +26,7 @@ class AddSecondaryColorFieldToPortalSettings extends Migration
     public function down()
     {
         Schema::table('portal_settings', function (Blueprint $table) {
-            //
+            $table->dropColumn('secondary_color');
         });
     }
 }

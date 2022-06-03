@@ -13,8 +13,13 @@ class AddStatusFieldToServices extends Migration
      */
     public function up()
     {
+        if (Schema::hasColumn('services', 'status')) {
+            Schema::table('services', function (Blueprint $table) {
+                $table->dropColumn('status');
+            });
+        }
         Schema::table('services', function (Blueprint $table) {
-            $table->integer('status')->default(0);
+            $table->unsignedInteger('status')->default(0)->comment('[pending => 0, active => 1, blocked => 2]');
         });
     }
 
@@ -26,7 +31,7 @@ class AddStatusFieldToServices extends Migration
     public function down()
     {
         Schema::table('services', function (Blueprint $table) {
-            //
+            $table->dropColumn('status');
         });
     }
 }
