@@ -13,16 +13,17 @@ use Illuminate\Support\Facades\DB;
 
 class InvoiceController extends Controller
 {
-//    private $module;
-//
-//    public function __construct()
-//    {
-//        $this->module = 'agency_customer_invoices';
-//        $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
-//        $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
-//        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
-//        $this->middleware('permission:' . $this->module . '_status' . $ULP, ['only' => ['changeStatus']]);
-//    }
+    private $module;
+
+    public function __construct()
+    {
+        $this->module = 'agency_customer_invoices';
+        $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
+        $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
+        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
+        $this->middleware('permission:' . $this->module . '_status' . $ULP, ['only' => ['changeStatus']]);
+        $this->middleware('permission:' . $this->module . '_invoice_paid' . $ULP, ['only' => ['invoicePaid']]);
+    }
 
     /**
      * Show All Invoices

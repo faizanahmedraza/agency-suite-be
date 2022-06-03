@@ -21,6 +21,7 @@ class CustomerServiceRequestService
         $customerServiceRequest->is_recurring = $service->subscription_type;
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
         $customerServiceRequest->intake_form = json_encode($data['intake_form']);
+        $customerServiceRequest->created_at = auth()->id();
         if ($service->subscription_type == 1) {
             $customerServiceRequest->recurring_type = $data['recurring_type'];
         }

@@ -22,6 +22,7 @@ class CustomerServiceRequestService
         $customerServiceRequest->is_recurring = $service->subscription_type;
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
         $customerServiceRequest->intake_form = json_encode($data['intake_form']);
+        $customerServiceRequest->created_at = auth()->id();
         if($service->subscription_type == 1){
             $customerServiceRequest->recurring_type=$data['recurring_type'];
         }
@@ -36,17 +37,17 @@ class CustomerServiceRequestService
 
     public static function first(int $id, $with = ['agency', 'customer','service','service.priceTypes'])
     {
-        $service = CustomerServiceRequest::with($with)
+        $customerServiceRequest = CustomerServiceRequest::with($with)
             ->where('id', $id)
             ->where('customer_id', Auth::id())
             ->where('agency_id', app('agency')->id)
             ->first();
 
-        if (!$service) {
+        if (!$customerServiceRequest) {
             throw ModelException::dataNotFound();
         }
 
-        return $service;
+        return $customerServiceRequest;
     }
 
     public static function get(Request $request)

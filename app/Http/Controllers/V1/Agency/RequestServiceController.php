@@ -73,7 +73,6 @@ class RequestServiceController extends Controller
         return (new CustomersServiceRequestResponse($customerServiceRequest));
     }
 
-
     /**
      * Request Service
      *
