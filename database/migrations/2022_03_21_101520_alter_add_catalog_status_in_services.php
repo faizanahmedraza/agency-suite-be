@@ -13,8 +13,13 @@ class AlterAddCatalogStatusInServices extends Migration
      */
     public function up()
     {
+        if (Schema::hasColumn('services', 'catalog_status')) {
+            Schema::table('services', function (Blueprint $table) {
+                $table->dropColumn('catalog_status');
+            });
+        }
         Schema::table('services', function (Blueprint $table) {
-            //
+            $table->unsignedInteger('catalog_status')->default(0)->comment('pending => 0, active => 1');
         });
     }
 
@@ -26,7 +31,7 @@ class AlterAddCatalogStatusInServices extends Migration
     public function down()
     {
         Schema::table('services', function (Blueprint $table) {
-            //
+            $table->dropColumn('catalog_status');
         });
     }
 }
