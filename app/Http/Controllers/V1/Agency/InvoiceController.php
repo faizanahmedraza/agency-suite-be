@@ -11,6 +11,10 @@ use App\Http\Resources\V1\Agency\InvoiceResponse;
 use App\Http\Resources\V1\Agency\InvoicesResponse;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @group Agency Invoices
+ * @authenticated
+ */
 class InvoiceController extends Controller
 {
     private $module;

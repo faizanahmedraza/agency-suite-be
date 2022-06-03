@@ -11,6 +11,10 @@ use App\Http\Resources\V1\Customer\InvoiceResponse;
 use App\Http\Resources\V1\Customer\InvoicesResponse;
 use Illuminate\Support\Facades\DB;
 
+/**
+ * @group Customer Invoices Section
+ * @authenticated
+ */
 class InvoiceController extends Controller
 {
     private $module;
@@ -20,7 +24,6 @@ class InvoiceController extends Controller
         $this->module = 'agency_customer_invoices';
         $ULP = '|' . $this->module . '_all'; //UPPER LEVEL PERMISSIONS
         $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
-        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
         $this->middleware('permission:' . $this->module . '_invoice_paid' . $ULP, ['only' => ['invoicePaid']]);
     }
 
@@ -60,26 +63,6 @@ class InvoiceController extends Controller
     {
         $invoice = InvoiceBusiness::first($id);
         return (new InvoiceResponse($invoice));
-    }
-
-    /**
-     * Delete Invoice
-     *
-     * This api delete invoice
-     *
-     * @header Domain string required
-     *
-     * @urlParam id integer required
-     *
-     * @responseFile 200 responses/SuccessResponse.json
-     * @responseFile 401 responses/UnAuthorizedResponse.json
-     */
-    public function destroy($id)
-    {
-        DB::beginTransaction();
-        InvoiceBusiness::destroy($id);
-        DB::commit();
-        return new SuccessResponse([]);
     }
 
     /**

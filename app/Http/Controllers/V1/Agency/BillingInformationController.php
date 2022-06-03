@@ -8,7 +8,7 @@ use App\Http\Resources\V1\Customer\BillingInformationListResponse;
 use Illuminate\Http\Request;
 
 /**
- * @group Customer Billing Information
+ * @group Agency Customer Billing Information
  * @authenticated
  */
 class BillingInformationController extends Controller

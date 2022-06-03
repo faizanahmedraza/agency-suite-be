@@ -14,7 +14,7 @@ use App\Http\Services\V1\Agency\AgencyDomainService;
 class DomainLaunchController extends Controller
 {
     /**
-     * Public Agency Domain Launch Api
+     * Agency Domain Launch Api
      * This api to verify the domain before jump to agency portal.
      *
      * @bodyParam domain string required
@@ -24,8 +24,8 @@ class DomainLaunchController extends Controller
      */
     public function index(DomainLaunchRequest $request)
     {
-        $resp = AgencyDomainService::first('domain',GetDomainFromUrl($request->domain));
-        $setting  = PortalSettingBusiness::first($resp->agency_id);
+        $resp = AgencyDomainService::first('domain', GetDomainFromUrl($request->domain));
+        $setting = PortalSettingBusiness::first($resp->agency_id);
         return new PortalSettingResponse($setting);
     }
 }

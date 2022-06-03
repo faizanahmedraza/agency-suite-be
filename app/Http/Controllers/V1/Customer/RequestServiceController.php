@@ -12,7 +12,7 @@ use App\Http\Requests\V1\Customer\CustomerRequestServiceListRequest;
 use App\Http\Resources\V1\Customer\CustomersServiceRequestListResponse;
 
 /**
- * @group Customer Request Service
+ * @group Customer Services Request
  * @authenticated
  */
 class RequestServiceController extends Controller
@@ -25,8 +25,6 @@ class RequestServiceController extends Controller
         $ULP = '|' . $this->module . '_all'; //UPPER LEVEL PERMISSIONS
         $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
         $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['create']]);
-//        $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);
-//        $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
     }
 
     /**
@@ -36,7 +34,6 @@ class RequestServiceController extends Controller
      *
      * @bodyParam service_id integer required
      * @bodyParam recurring_type string required Example : weekly,monthly,quarterly,biannually,annually
-     * @bodyParam reference_no string required
      * @bodyParam intake_form array required Example :{key1:value1,key2:value2}
      *
      *

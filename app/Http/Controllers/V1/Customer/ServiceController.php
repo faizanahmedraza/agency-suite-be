@@ -9,7 +9,7 @@ use App\Http\Resources\V1\Customer\ServiceResponse;
 use App\Http\Resources\V1\Customer\ServicesResponse;
 
 /**
- * @group Agency Services
+ * @group Customer Services Section
  * @authenticated
  */
 class ServiceController extends Controller

@@ -12,7 +12,7 @@ use App\Http\Resources\V1\Agency\ServicesResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @group Agency Public Catalog
+ * @group Agency Services Catalog
  * @authenticated
  */
 class CatalogController extends Controller
@@ -26,8 +26,8 @@ class CatalogController extends Controller
      * @urlParam services string 1,2,3,4
      * @urlParam name string ex: my service
      * @urlParam service_type string ex: one-off,recurring
-     * @urlParam status string ex: pending,active,blocked
-     * @urlParam catalog_status string ex: pending,active
+     * @urlParam status string required ex: active
+     * @urlParam catalog_status required string ex: active
      * @urlParam order_by string ex: asc/desc
      * @urlParam from_date string Example: Y-m-d
      * @urlParam to_date string Example: Y-m-d

@@ -13,7 +13,7 @@ use App\Http\Resources\V1\Agency\CustomersServiceRequestListResponse;
 use Illuminate\Support\Facades\DB;
 
 /**
- * @group Agency Request Service
+ * @group Agency Services Requests
  * @authenticated
  */
 class RequestServiceController extends Controller
