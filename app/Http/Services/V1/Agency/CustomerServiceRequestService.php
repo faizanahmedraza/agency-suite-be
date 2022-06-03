@@ -35,16 +35,16 @@ class CustomerServiceRequestService
 
     public static function first(int $id, $with = ['agency', 'customer', 'service', 'service.priceTypes'])
     {
-        $service = CustomerServiceRequest::with($with)
+        $customerServiceRequest = CustomerServiceRequest::with($with)
             ->where('id', $id)
             ->where('agency_id', app('agency')->id)
             ->first();
 
-        if (!$service) {
+        if (!$customerServiceRequest) {
             throw ModelException::dataNotFound();
         }
 
-        return $service;
+        return $customerServiceRequest;
     }
 
     public static function get(Request $request)

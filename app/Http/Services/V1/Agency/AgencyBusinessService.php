@@ -3,6 +3,7 @@
 namespace App\Http\Services\V1\Agency;
 
 use App\Exceptions\V1\ModelException;
+use App\Exceptions\V1\RequestValidationException;
 use App\Helpers\TimeStampHelper;
 use App\Http\Services\V1\CloudinaryService;
 use App\Models\Service;
@@ -131,11 +132,11 @@ class AgencyBusinessService
         }
 
         if ($request->query('service_type')) {
-            $services->where('subscription_type',Service::SUBSCRIPTION_TYPES[trim(clean($request->service_type))]);
+            $services->where('subscription_type', Service::SUBSCRIPTION_TYPES[trim(clean($request->service_type))]);
         }
 
         if ($request->query('status')) {
-            $statusAll = getStatus(Service::STATUS,trim(strtolower($request->status)));
+            $statusAll = getStatus(Service::STATUS, trim(strtolower($request->status)));
             $services->whereIn('status', $statusAll);
         }
 
@@ -168,7 +169,11 @@ class AgencyBusinessService
 
     public static function destroy(Service $service)
     {
-        $service->delete();
+        if ($service->serviceRequests->isEmpty()) {
+            $service->delete();
+        } else {
+            throw RequestValidationException::errorMessage("This service is requested by customers.", 422);
+        }
     }
 
     public static function toggleCatalogStatus(Service $service)
