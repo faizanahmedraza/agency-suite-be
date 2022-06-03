@@ -14,7 +14,7 @@ class AddAgencyInRolesTable extends Migration
     public function up()
     {
         Schema::table('roles', function (Blueprint $table) {
-            $table->foreignId('agency_id')->nullable()->constrained('agencies');
+            $table->foreignId('agency_id')->nullable()->constrained('agencies')->cascadeOnDelete();
         });
     }
 
@@ -26,7 +26,7 @@ class AddAgencyInRolesTable extends Migration
     public function down()
     {
         Schema::table('roles', function (Blueprint $table) {
-            //
+            $table->dropForeign('roles_agency_id_foreign');
         });
     }
 }

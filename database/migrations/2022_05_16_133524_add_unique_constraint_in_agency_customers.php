@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUniqueConstraintInAgenciesTable extends Migration
+class AddUniqueConstraintInAgencyCustomers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddUniqueConstraintInAgenciesTable extends Migration
      */
     public function up()
     {
-        Schema::table('agencies', function (Blueprint $table) {
-            $table->unique('name');
+        Schema::table('agency_customers', function (Blueprint $table) {
+            $table->unique('user_id');
         });
     }
 
@@ -25,8 +25,8 @@ class AddUniqueConstraintInAgenciesTable extends Migration
      */
     public function down()
     {
-        Schema::table('agencies', function (Blueprint $table) {
-            $table->dropUnique('agencies_name_unique');
+        Schema::table('agency_customers', function (Blueprint $table) {
+            $table->dropUnique('agency_customers_user_id_unique');
         });
     }
 }
