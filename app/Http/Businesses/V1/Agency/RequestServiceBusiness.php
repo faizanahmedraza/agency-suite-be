@@ -64,7 +64,7 @@ class RequestServiceBusiness
 
     public static function first($id)
     {
-        return CustomerServiceRequestService::first($id, []);
+        return CustomerServiceRequestService::first($id);
     }
 
     public static function changeStatus(Request $request, $id)
