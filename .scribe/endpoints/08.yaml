@@ -1,43 +1,89 @@
-name: Authentication
+name: 'Agency Services Requests'
 description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: v1/admins/auth/login
+      - GET
+    uri: v1/agencies/request-services
     metadata:
-      title: |-
-        Access Token Or Login
-        This function is useful for login, to return access token for users.
+      title: 'Get Requested Services List'
       description: ''
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-      Client-ID: 'string required'
-      Client-Secret: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      email:
-        name: email
-        description: 'The username of user.'
-        required: true
-        example: admin@my-app.com
-        type: email
-        custom: []
-      password:
-        name: password
-        description: 'The password of user.'
-        required: true
-        example: 'Abc*123*'
+      Domain: 'string required'
+    urlParameters:
+      status:
+        name: status
+        description: 'pending,submitted'
+        required: false
+        example: in
         type: string
         custom: []
+      customer_id:
+        name: customer_id
+        description: ''
+        required: false
+        example: 16
+        type: integer
+        custom: []
+      title:
+        name: title
+        description: 'ex: abc,xyz'
+        required: false
+        example: ut
+        type: string
+        custom: []
+      order_by:
+        name: order_by
+        description: 'ex: asc/desc'
+        required: false
+        example: est
+        type: string
+        custom: []
+      from_date:
+        name: from_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      to_date:
+        name: to_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      pagination:
+        name: pagination
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      page_limit:
+        name: page_limit
+        description: ''
+        required: false
+        example: 8
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 4
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"authentication\": {\r\n      \"access_token\": \"eyJ0eXAiOiwrewqwqwqewqewqewqewqewqdWQiOiIxIiwianRpIjoiNmNmNzVhOTcdsadsadasdsadsadsadsadsaQzODRlYzFjMmYxYjVlNjdiYTc4MWQ3OTg4YWQ0Yzc2ZDQ0N2NiNjI2MDNiZmIxMmQyZWM5ZmQxMDUiLCJpYXQiOjE2NDY3MzI4MjcuMDczNzQ5LCJuYmYiOjE2NDY3MzI4MjcuMDczNzYsImV4cCI6MTY3ODI2ODgyNy4wMzA2MzMsInN1YiI6IjEiLCJzY29wZXMiOltdfQ.k5QtG7h6W4fwAILAgvDa439GEnEzqFc6zyxWKwUdRw9j9pbN9D14FpGpLck4ZNGptxEKN72fdKGVSbD6TDrcfPdHZe6nJv5Wbtuz_iFudLSimm12fEvzUUTzUC4oGZYUw8WtoO_0-X5l4CpAXWdE_sJVkb6Y2-M4SOmxMvsfsrzBzRIS-yaS2dgL9lANyyeyWu624OvuL1TVCZkeK_IyjGXBXNE-qaJvGGBBxAnzMC_xTQJOtNGxMeTMaBQbzkUSMU5vNcfFLF9z6SDUU9kxC0drke2pYMVg5Kzrp6cXLWIWJVwuJ1-nNoi2LjGIQPNO1-5zMuIJyEljrs4erARfkFYzuoEPjfm80TvrNyweGqCVol5CmT0dxYBaLRy15EEQ5n0iJCHj9aY-xwV3jis5wxiubtXBPChSkVQE799gpOvmyq_pVhoXeCoPpAsBmRLsQeN_VVG8PhI3p08YEHP4jTfnaNX3I-QkBxlVzpvVyBR1qQ_fvVDdeXqjw7frJ06oov8Wg83L-dCLgdRHLYzz8MXZ2nT1xfjLYdrk8QddOh6s9KQstH5avnAQZcmKIcFiQNTvXJAy2saysUWffygyN797JN0PhaTdCD6tiPlxyDguq0uT_Djp4YdFpWY2mIzONBVCqdSWxMbasJIMCBIa-3yH-8O-j_kpXIa3VuP_tKA\",\r\n      \"token_type\": \"Bearer\",\r\n      \"expiry\": \"2022-03-18 09:47:07\",\r\n      \"user\": {\r\n        \"id\": 1,\r\n        \"first_name\": \"Faizan Ahmed\",\r\n        \"last_name\": \"Raza\",\r\n        \"email\": \"faizan.raza@saasfa.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\",\r\n        \"roles\": [\r\n          {\r\n            \"id\": 1,\r\n            \"name\": \"Super Admin\",\r\n            \"created_at\": \"2022-03-04T14:54:53.000000Z\",\r\n            \"permissions\": [\r\n              {\r\n                \"id\": 1,\r\n                \"name\": \"access_all\",\r\n                \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n              }\r\n            ]\r\n          }\r\n        ],\r\n        \"permissions\": []\r\n      }\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n    \"data\": {\r\n        \"customer_service_request\": [\r\n            {\r\n                \"id\": 11,\r\n                \"service_name\": \"qwerty-!@#\",\r\n                \"status\": \"submitted\",\r\n                \"created_at\": \"2022-03-28T13:16:51.000000Z\"\r\n            },\r\n            {\r\n                \"id\": 10,\r\n                \"service_name\": \"qwerty-!@#\",\r\n                \"status\": \"submitted\",\r\n                \"created_at\": \"2022-03-28T12:59:58.000000Z\"\r\n            }\r\n        ],\r\n        \"pagination\": {\r\n            \"total\": 2,\r\n            \"count\": 2,\r\n            \"per_page\": 20,\r\n            \"current_page\": 1,\r\n            \"total_pages\": 1\r\n        }\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
         headers: []
         description: '200'
       -
@@ -48,34 +94,83 @@ endpoints:
     responseFields: []
   -
     httpMethods:
-      - PUT
-    uri: v1/admins/change-password
+      - GET
+    uri: 'v1/agencies/request-services/{id}'
     metadata:
-      title: |-
-        Change Password
-        change password request of user
+      title: 'Get Request Service details by Id'
       description: ''
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 18
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": {\r\n        \"customer_service_request\": {\r\n            \"id\": 12,\r\n            \"service_name\": \"qwerty-!@#\",\r\n            \"status\": \"submitted\",\r\n            \"intake_form\": {\r\n                \"name\": \"test\",\r\n                \"description\": \"test description\"\r\n            },\r\n            \"invoices\": [\r\n                {\r\n                    \"id\": 6,\r\n                    \"invoice_number\": \"INV-0000006\",\r\n                    \"customer_service_request_id\": 12,\r\n                    \"is_paid\": false,\r\n                    \"amount\": \"2\",\r\n                    \"created_at\": \"2022-03-29T06:52:49.000000Z\"\r\n                }\r\n            ],\r\n            \"created_at\": \"2022-03-29T06:52:48.000000Z\"\r\n        }\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/agencies/request-services
+    metadata:
+      title: 'Request Service'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      password:
-        name: password
-        description: abcd1234
+      service_id:
+        name: service_id
+        description: ''
         required: true
-        example: abcd1234
-        type: String
+        example: 10
+        type: integer
         custom: []
-      password_confirmation:
-        name: password_confirmation
-        description: abcd1234
+      customer_id:
+        name: customer_id
+        description: ''
         required: true
-        example: abcd1234
-        type: String
+        example: 19
+        type: integer
+        custom: []
+      recurring_type:
+        name: recurring_type
+        description: 'optional if one-off Example : weekly,monthly,quarterly,biannually,annually'
+        required: false
+        example: eos
+        type: string
+        custom: []
+      intake_form:
+        name: intake_form
+        description: 'Example :{key1:value1,key2:value2}'
+        required: true
+        example:
+          - omnis
+        type: 'string[]'
         custom: []
     responses:
       -
@@ -91,22 +186,34 @@ endpoints:
     responseFields: []
   -
     httpMethods:
-      - DELETE
-    uri: v1/admins/logout
+      - PUT
+    uri: 'v1/agencies/request-services/change-status/{id}'
     metadata:
-      title: |-
-        Logout
-        Hit api and session get out
+      title: 'Request Service Change Status'
       description: ''
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-      Authorization: 'string required'
-    urlParameters: []
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: Integer
+        required: true
+        example: adipisci
+        type: string
+        custom: []
     queryParameters: []
-    bodyParameters: []
+    bodyParameters:
+      status:
+        name: status
+        description: 'string ex: pending,active,hold,completed'
+        required: false
+        example: voluptatem
+        type: required
+        custom: []
     responses:
       -
         status: 200

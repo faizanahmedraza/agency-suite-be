@@ -1,46 +1,16 @@
-name: Endpoints
+name: 'Customer Invoices Section'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: 'v1/agencies/invoices/{id}'
+    uri: 'v1/customers/invoices/{id}'
     metadata:
       title: |-
         Show Invoice
         This api show the invoice details.
       description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 12
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_invoice\": {\r\n      \"id\": 158,\r\n      \"customer\": {\r\n        \"id\": 528,\r\n        \"first_name\": \"badsha\",\r\n        \"last_name\": \"badsha\",\r\n        \"email\": \"badsha@hotmail.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"active\"\r\n      },\r\n      \"invoice_number\": \"INV-0000158\",\r\n      \"customer_service_request\": {\r\n        \"id\": 164,\r\n        \"service\": {\r\n          \"id\": 112,\r\n          \"name\": \"hosting\",\r\n          \"description\": \"services\",\r\n          \"image\": null,\r\n          \"subscription_type\": \"recurring\",\r\n          \"catalog_status\": \"active\",\r\n          \"price_types\": {\r\n            \"id\": 99,\r\n            \"price\": null,\r\n            \"purchase_limit\": null,\r\n            \"weekly\": 11,\r\n            \"monthly\": 11,\r\n            \"quarterly\": 11,\r\n            \"biannually\": 11,\r\n            \"annually\": 11,\r\n            \"max_concurrent_requests\": null,\r\n            \"max_requests_per_month\": null,\r\n            \"created_at\": \"2022-05-31T07:39:44.000000Z\",\r\n            \"updated_at\": \"2022-05-31T07:39:44.000000Z\"\r\n          },\r\n          \"status\": \"active\",\r\n          \"created_at\": \"2022-05-31T07:39:44.000000Z\",\r\n          \"updated_at\": \"2022-05-31T07:41:56.000000Z\"\r\n        },\r\n        \"customer\": {\r\n          \"id\": 528,\r\n          \"first_name\": \"badsha\",\r\n          \"last_name\": \"badsha\",\r\n          \"email\": \"badsha@hotmail.com\",\r\n          \"last_logged_in\": null,\r\n          \"status\": \"active\"\r\n        },\r\n        \"is_recurring\": true,\r\n        \"recurring_type\": \"annually\",\r\n        \"status\": \"pending\",\r\n        \"intake_form\": [\r\n          {\r\n            \"title\": \"afdfds\",\r\n            \"description\": \"fdsfdsf\"\r\n          }\r\n        ],\r\n        \"created_at\": \"2022-06-02T07:01:49.000000Z\"\r\n      },\r\n      \"is_paid\": false,\r\n      \"paid_by\": \"\",\r\n      \"amount\": \"11\",\r\n      \"created_at\": \"2022-06-02T07:01:49.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'v1/agencies/invoices/{id}'
-    metadata:
-      title: 'Delete Invoice'
-      description: 'This api delete invoice'
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
@@ -52,78 +22,6 @@ endpoints:
         description: ''
         required: true
         example: 19
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: 'v1/agencies/invoices/change-status/{id}'
-    metadata:
-      title: 'Delete Invoice'
-      description: 'This api mark invoice paid or unpaid'
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 11
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: 'v1/customers/invoices/{id}'
-    metadata:
-      title: |-
-        Show Invoice
-        This api show the invoice details.
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 17
         type: integer
         custom: []
     queryParameters: []
@@ -137,47 +35,12 @@ endpoints:
     responseFields: []
   -
     httpMethods:
-      - DELETE
-    uri: 'v1/customers/invoices/{id}'
-    metadata:
-      title: 'Delete Invoice'
-      description: 'This api delete invoice'
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 14
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
       - PUT
     uri: v1/customers/invoices/invoice-paid
     metadata:
       title: 'Invoice Paid'
       description: 'This api is for marking invoice paid'
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
@@ -190,14 +53,14 @@ endpoints:
         name: card_id
         description: ''
         required: true
-        example: 20
+        example: 1
         type: integer
         custom: []
       invoice_id:
         name: invoice_id
         description: ''
         required: false
-        example: 5
+        example: 10
         type: integer
         custom: []
     responses:
@@ -211,122 +74,6 @@ endpoints:
         content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
         headers: []
         description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: v1/agencies/invoices/invoice-paid
-    metadata:
-      title: 'Invoice Paid'
-      description: 'This api is for marking invoice paid'
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters: []
-    queryParameters: []
-    bodyParameters:
-      card_id:
-        name: card_id
-        description: ''
-        required: true
-        example: 2
-        type: integer
-        custom: []
-      invoice_id:
-        name: invoice_id
-        description: ''
-        required: true
-        example: 6
-        type: integer
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
-        headers: []
-        description: '200'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - GET
-    uri: v1/agencies/invoices
-    metadata:
-      title: |-
-        Show All Invoices
-        This api show the invoice.
-      description: ''
-      authenticated: false
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      is_paid:
-        name: is_paid
-        description: 'boolean ex: true'
-        required: false
-        example: aut
-        type: string
-        custom: []
-      order_by:
-        name: order_by
-        description: 'ex: asc/desc'
-        required: false
-        example: et
-        type: string
-        custom: []
-      from_date:
-        name: from_date
-        description: ''
-        required: false
-        example: Y-m-d
-        type: string
-        custom: []
-      to_date:
-        name: to_date
-        description: ''
-        required: false
-        example: Y-m-d
-        type: string
-        custom: []
-      pagination:
-        name: pagination
-        description: ''
-        required: false
-        example: true
-        type: boolean
-        custom: []
-      page_limit:
-        name: page_limit
-        description: ''
-        required: false
-        example: 19
-        type: integer
-        custom: []
-      page:
-        name: page
-        description: ''
-        required: false
-        example: 16
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_invoices\": [\r\n      {\r\n        \"id\": 158,\r\n        \"customer\": {\r\n          \"id\": 528,\r\n          \"first_name\": \"badsha\",\r\n          \"last_name\": \"badsha\",\r\n          \"email\": \"badsha@hotmail.com\",\r\n          \"last_logged_in\": null,\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000158\",\r\n        \"customer_service_request\": {\r\n          \"id\": 164,\r\n          \"service\": {\r\n            \"id\": 112,\r\n            \"name\": \"hosting\",\r\n            \"description\": \"services\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"recurring\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-31T07:39:44.000000Z\",\r\n            \"updated_at\": \"2022-05-31T07:41:56.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 528,\r\n            \"first_name\": \"badsha\",\r\n            \"last_name\": \"badsha\",\r\n            \"email\": \"badsha@hotmail.com\",\r\n            \"last_logged_in\": null,\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": true,\r\n          \"recurring_type\": \"annually\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"afdfds\",\r\n              \"description\": \"fdsfdsf\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-06-02T07:01:49.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-06-02T07:01:49.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 157,\r\n        \"customer\": {\r\n          \"id\": 528,\r\n          \"first_name\": \"badsha\",\r\n          \"last_name\": \"badsha\",\r\n          \"email\": \"badsha@hotmail.com\",\r\n          \"last_logged_in\": null,\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000157\",\r\n        \"customer_service_request\": {\r\n          \"id\": 163,\r\n          \"service\": {\r\n            \"id\": 112,\r\n            \"name\": \"hosting\",\r\n            \"description\": \"services\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"recurring\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-31T07:39:44.000000Z\",\r\n            \"updated_at\": \"2022-05-31T07:41:56.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 528,\r\n            \"first_name\": \"badsha\",\r\n            \"last_name\": \"badsha\",\r\n            \"email\": \"badsha@hotmail.com\",\r\n            \"last_logged_in\": null,\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": true,\r\n          \"recurring_type\": \"annually\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"afdfds\",\r\n              \"description\": \"fdsfdsf\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-06-02T06:55:21.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-06-02T06:55:22.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 156,\r\n        \"customer\": {\r\n          \"id\": 528,\r\n          \"first_name\": \"badsha\",\r\n          \"last_name\": \"badsha\",\r\n          \"email\": \"badsha@hotmail.com\",\r\n          \"last_logged_in\": null,\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000156\",\r\n        \"customer_service_request\": {\r\n          \"id\": 162,\r\n          \"service\": {\r\n            \"id\": 119,\r\n            \"name\": \"design\",\r\n            \"description\": \"services \",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"pending\",\r\n            \"status\": \"pending\",\r\n            \"created_at\": \"2022-06-01T10:21:57.000000Z\",\r\n            \"updated_at\": \"2022-06-01T10:21:57.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 528,\r\n            \"first_name\": \"badsha\",\r\n            \"last_name\": \"badsha\",\r\n            \"email\": \"badsha@hotmail.com\",\r\n            \"last_logged_in\": null,\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"afdfds\",\r\n              \"description\": \"fdsfdsf\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-06-02T06:54:21.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"\",\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-06-02T06:54:22.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 147,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000147\",\r\n        \"customer_service_request\": {\r\n          \"id\": 153,\r\n          \"service\": {\r\n            \"id\": 92,\r\n            \"name\": \"#####\",\r\n            \"description\": \"ddddddddd\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T12:16:14.000000Z\",\r\n            \"updated_at\": \"2022-05-25T11:56:33.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"developing\",\r\n              \"description\": \"aaaa\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-06-01T06:08:59.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-06-01T06:08:59.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 146,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000146\",\r\n        \"customer_service_request\": {\r\n          \"id\": 152,\r\n          \"service\": {\r\n            \"id\": 92,\r\n            \"name\": \"#####\",\r\n            \"description\": \"ddddddddd\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T12:16:14.000000Z\",\r\n            \"updated_at\": \"2022-05-25T11:56:33.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"developing\",\r\n              \"description\": \"aaaa\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-06-01T06:07:21.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-06-01T06:07:21.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 145,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000145\",\r\n        \"customer_service_request\": {\r\n          \"id\": 151,\r\n          \"service\": {\r\n            \"id\": 92,\r\n            \"name\": \"#####\",\r\n            \"description\": \"ddddddddd\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T12:16:14.000000Z\",\r\n            \"updated_at\": \"2022-05-25T11:56:33.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"developing\",\r\n              \"description\": \"aaaa\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-06-01T06:03:30.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-06-01T06:03:30.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 144,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000144\",\r\n        \"customer_service_request\": {\r\n          \"id\": 150,\r\n          \"service\": {\r\n            \"id\": 92,\r\n            \"name\": \"#####\",\r\n            \"description\": \"ddddddddd\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T12:16:14.000000Z\",\r\n            \"updated_at\": \"2022-05-25T11:56:33.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"developing\",\r\n              \"description\": \"aaaa\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-06-01T06:02:21.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-06-01T06:02:21.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 143,\r\n        \"customer\": {\r\n          \"id\": 513,\r\n          \"first_name\": \"khadija\",\r\n          \"last_name\": \"khan\",\r\n          \"email\": \"khadija@hotmail.com\",\r\n          \"last_logged_in\": null,\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000143\",\r\n        \"customer_service_request\": {\r\n          \"id\": 149,\r\n          \"service\": {\r\n            \"id\": 112,\r\n            \"name\": \"hosting\",\r\n            \"description\": \"services\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"recurring\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-31T07:39:44.000000Z\",\r\n            \"updated_at\": \"2022-05-31T07:41:56.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 513,\r\n            \"first_name\": \"khadija\",\r\n            \"last_name\": \"khan\",\r\n            \"email\": \"khadija@hotmail.com\",\r\n            \"last_logged_in\": null,\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": true,\r\n          \"recurring_type\": \"biannually\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"Vitae enim earum tem\",\r\n              \"description\": \"Velit tempore volup\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T12:26:02.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-05-31T12:26:02.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 139,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000139\",\r\n        \"customer_service_request\": {\r\n          \"id\": 145,\r\n          \"service\": {\r\n            \"id\": 94,\r\n            \"name\": \"web dev\",\r\n            \"description\": \"aaaa\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-17T09:16:12.000000Z\",\r\n            \"updated_at\": \"2022-05-27T07:51:12.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services\",\r\n              \"description\": \"services \"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:32:53.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-05-31T08:32:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 138,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000138\",\r\n        \"customer_service_request\": {\r\n          \"id\": 144,\r\n          \"service\": {\r\n            \"id\": 91,\r\n            \"name\": \"my domain service\",\r\n            \"description\": \"my domain service\",\r\n            \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1652701036/service-6282376bf2855.jpg\",\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T11:37:16.000000Z\",\r\n            \"updated_at\": \"2022-05-25T11:56:14.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services \",\r\n              \"description\": \"services \"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:32:09.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"100\",\r\n        \"created_at\": \"2022-05-31T08:32:09.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 137,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000137\",\r\n        \"customer_service_request\": {\r\n          \"id\": 143,\r\n          \"service\": {\r\n            \"id\": 96,\r\n            \"name\": \"web\",\r\n            \"description\": \"aaaa\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-19T13:02:52.000000Z\",\r\n            \"updated_at\": \"2022-05-27T08:08:58.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services \",\r\n              \"description\": \"services \"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:31:00.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-05-31T08:31:00.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 136,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000136\",\r\n        \"customer_service_request\": {\r\n          \"id\": 142,\r\n          \"service\": {\r\n            \"id\": 92,\r\n            \"name\": \"#####\",\r\n            \"description\": \"ddddddddd\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T12:16:14.000000Z\",\r\n            \"updated_at\": \"2022-05-25T11:56:33.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services \",\r\n              \"description\": \"services \"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:26:22.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-05-31T08:26:22.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 131,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000131\",\r\n        \"customer_service_request\": {\r\n          \"id\": 137,\r\n          \"service\": {\r\n            \"id\": 89,\r\n            \"name\": \"@@@@\",\r\n            \"description\": \"dfgggg\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T06:57:05.000000Z\",\r\n            \"updated_at\": \"2022-05-25T12:00:12.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services\",\r\n              \"description\": \"services \"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:18:52.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-05-31T08:18:52.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 130,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000130\",\r\n        \"customer_service_request\": {\r\n          \"id\": 136,\r\n          \"service\": {\r\n            \"id\": 89,\r\n            \"name\": \"@@@@\",\r\n            \"description\": \"dfgggg\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T06:57:05.000000Z\",\r\n            \"updated_at\": \"2022-05-25T12:00:12.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services \",\r\n              \"description\": \"services \"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:18:26.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-05-31T08:18:26.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 129,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000129\",\r\n        \"customer_service_request\": {\r\n          \"id\": 135,\r\n          \"service\": {\r\n            \"id\": 89,\r\n            \"name\": \"@@@@\",\r\n            \"description\": \"dfgggg\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T06:57:05.000000Z\",\r\n            \"updated_at\": \"2022-05-25T12:00:12.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services\",\r\n              \"description\": \"services\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:17:05.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-05-31T08:17:05.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 128,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000128\",\r\n        \"customer_service_request\": {\r\n          \"id\": 134,\r\n          \"service\": {\r\n            \"id\": 89,\r\n            \"name\": \"@@@@\",\r\n            \"description\": \"dfgggg\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T06:57:05.000000Z\",\r\n            \"updated_at\": \"2022-05-25T12:00:12.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services \",\r\n              \"description\": \"services\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:16:45.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-05-31T08:16:45.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 127,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000127\",\r\n        \"customer_service_request\": {\r\n          \"id\": 133,\r\n          \"service\": {\r\n            \"id\": 91,\r\n            \"name\": \"my domain service\",\r\n            \"description\": \"my domain service\",\r\n            \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1652701036/service-6282376bf2855.jpg\",\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-16T11:37:16.000000Z\",\r\n            \"updated_at\": \"2022-05-25T11:56:14.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"services \",\r\n              \"description\": \"services \"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:12:43.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"100\",\r\n        \"created_at\": \"2022-05-31T08:12:43.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 126,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000126\",\r\n        \"customer_service_request\": {\r\n          \"id\": 132,\r\n          \"service\": {\r\n            \"id\": 112,\r\n            \"name\": \"hosting\",\r\n            \"description\": \"services\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"recurring\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-31T07:39:44.000000Z\",\r\n            \"updated_at\": \"2022-05-31T07:41:56.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": true,\r\n          \"recurring_type\": \"biannually\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"hosting\",\r\n              \"description\": \"hosting\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T08:01:09.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-05-31T08:01:09.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 124,\r\n        \"customer\": {\r\n          \"id\": 479,\r\n          \"first_name\": \"dolly\",\r\n          \"last_name\": \"dolly\",\r\n          \"email\": \"dolly@hotmail.com\",\r\n          \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000124\",\r\n        \"customer_service_request\": {\r\n          \"id\": 130,\r\n          \"service\": {\r\n            \"id\": 112,\r\n            \"name\": \"hosting\",\r\n            \"description\": \"services\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"recurring\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-31T07:39:44.000000Z\",\r\n            \"updated_at\": \"2022-05-31T07:41:56.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 479,\r\n            \"first_name\": \"dolly\",\r\n            \"last_name\": \"dolly\",\r\n            \"email\": \"dolly@hotmail.com\",\r\n            \"last_logged_in\": \"2022-06-02 07:25:09\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": true,\r\n          \"recurring_type\": \"biannually\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"hosting\",\r\n              \"description\": \"hosting\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T07:42:53.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-05-31T07:42:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 123,\r\n        \"customer\": {\r\n          \"id\": 412,\r\n          \"first_name\": \"My Agency Tool\",\r\n          \"last_name\": \"My Agency Tool name\",\r\n          \"email\": \"irfan.mumtaz1@saasfa.com\",\r\n          \"last_logged_in\": \"2022-06-01 06:05:22\",\r\n          \"status\": \"active\"\r\n        },\r\n        \"invoice_number\": \"INV-0000123\",\r\n        \"customer_service_request\": {\r\n          \"id\": 129,\r\n          \"service\": {\r\n            \"id\": 98,\r\n            \"name\": \"developing \",\r\n            \"description\": \"aaaa\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-24T11:29:49.000000Z\",\r\n            \"updated_at\": \"2022-05-27T07:52:22.000000Z\"\r\n          },\r\n          \"customer\": {\r\n            \"id\": 412,\r\n            \"first_name\": \"My Agency Tool\",\r\n            \"last_name\": \"My Agency Tool name\",\r\n            \"email\": \"irfan.mumtaz1@saasfa.com\",\r\n            \"last_logged_in\": \"2022-06-01 06:05:22\",\r\n            \"status\": \"active\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"test meh\",\r\n              \"description\": \"dasd\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T07:38:21.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"paid_by\": \"agency\",\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-05-31T07:38:21.000000Z\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 43,\r\n      \"count\": 20,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 3\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
     responseFields: []
   -
     httpMethods:
@@ -337,7 +84,7 @@ endpoints:
         Show All Invoices
         This api show the invoice.
       description: ''
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
@@ -348,14 +95,14 @@ endpoints:
         name: is_paid
         description: 'boolean ex: true'
         required: false
-        example: rerum
+        example: nostrum
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: et
+        example: dignissimos
         type: string
         custom: []
       from_date:
@@ -383,14 +130,14 @@ endpoints:
         name: page_limit
         description: ''
         required: false
-        example: 12
+        example: 13
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 16
+        example: 13
         type: integer
         custom: []
     queryParameters: []

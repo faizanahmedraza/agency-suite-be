@@ -1,10 +1,10 @@
-name: 'Agency Roles Management'
+name: 'Roles Management'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: v1/agencies/roles
+    uri: v1/admins/roles
     metadata:
       title: |-
         Roles List
@@ -15,14 +15,13 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
-      Domain: 'string required'
       Authorization: 'String required Example: Bearer TOKEN'
     urlParameters:
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: porro
+        example: velit
         type: string
         custom: []
       from_date:
@@ -50,14 +49,14 @@ endpoints:
         name: page_limit
         description: ''
         required: false
-        example: 15
+        example: 4
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 5
+        example: 12
         type: integer
         custom: []
     queryParameters: []
@@ -72,7 +71,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'v1/agencies/roles/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
       title: |-
         Role Details
@@ -83,21 +82,20 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
-      Domain: 'string required'
       Authorization: 'String required Example: Bearer TOKEN'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: optio
+        example: porro
         type: string
         custom: []
       role_id:
         name: role_id
         description: Integer
         required: true
-        example: est
+        example: sunt
         type: string
         custom: []
     queryParameters: []
@@ -117,7 +115,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: v1/agencies/roles
+    uri: v1/admins/roles
     metadata:
       title: |-
         Create Role
@@ -128,7 +126,6 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
-      Domain: 'string required'
       Authorization: 'String required Example: Bearer TOKEN'
     urlParameters: []
     queryParameters: []
@@ -137,7 +134,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: corrupti
+        example: sapiente
         type: String
         custom: []
       permissions:
@@ -145,7 +142,7 @@ endpoints:
         description: optional
         required: false
         example:
-          - rerum
+          - soluta
         type: 'string[]'
         custom: []
     responses:
@@ -163,7 +160,7 @@ endpoints:
   -
     httpMethods:
       - PUT
-    uri: 'v1/agencies/roles/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
       title: |-
         Role Update
@@ -174,21 +171,20 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
-      Domain: 'string required'
       Authorization: 'String required Example: Bearer TOKEN'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: iure
+        example: est
         type: string
         custom: []
       role_id:
         name: role_id
         description: Integer
         required: true
-        example: iste
+        example: temporibus
         type: string
         custom: []
     queryParameters: []
@@ -197,7 +193,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: dolores
+        example: facilis
         type: String
         custom: []
       permissions:
@@ -205,7 +201,7 @@ endpoints:
         description: optional
         required: false
         example:
-          - ea
+          - velit
         type: 'string[]'
         custom: []
     responses:
@@ -223,7 +219,7 @@ endpoints:
   -
     httpMethods:
       - DELETE
-    uri: 'v1/agencies/roles/{id}'
+    uri: 'v1/admins/roles/{id}'
     metadata:
       title: 'Delete Role'
       description: 'Delete Requested Record'
@@ -232,21 +228,20 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
-      Domain: 'string required'
       Authorization: 'String required Example: Bearer TOKEN'
     urlParameters:
       id:
         name: id
         description: ''
         required: true
-        example: quisquam
+        example: fuga
         type: string
         custom: []
       role_id:
         name: role_id
         description: Integer
         required: true
-        example: enim
+        example: maxime
         type: string
         custom: []
     queryParameters: []
