@@ -182,9 +182,9 @@ class AgencyBusinessService
         $service->save();
     }
 
-    public static function toggleStatus(Service $service)
+    public static function toggleStatus(Service $service,Request $request)
     {
-        ($service->status == Service::STATUS['pending'] || $service->status == Service::STATUS['active']) ? $service->status = Service::STATUS['blocked'] : $service->status = Service::STATUS['active'];
+        $service->status = Service::STATUS[trim(strtolower($request->status))];
         $service->save();
     }
 }

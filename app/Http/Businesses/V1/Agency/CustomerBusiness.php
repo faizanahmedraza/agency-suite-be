@@ -4,6 +4,7 @@ namespace App\Http\Businesses\V1\Agency;
 
 use App\Exceptions\V1\UserException;
 use App\Http\Services\V1\Agency\CustomerService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CustomerBusiness
@@ -39,7 +40,7 @@ class CustomerBusiness
         CustomerService::destroy($customer);
     }
 
-    public static function toggleStatus($id)
+    public static function toggleStatus($id,Request $request)
     {
         // get user
         $user = CustomerService::first($id);
@@ -48,6 +49,6 @@ class CustomerBusiness
             throw UserException::authUserRestrictStatus();
         }
         // status toggle
-        CustomerService::toggleStatus($user);
+        CustomerService::toggleStatus($user,$request);
     }
 }

@@ -128,9 +128,9 @@ class CustomerService
         }
     }
 
-    public static function toggleStatus(User $user)
+    public static function toggleStatus(User $user,Request $request)
     {
-        ($user->status == User::STATUS['pending'] || $user->status == User::STATUS['active']) ? $user->status = User::STATUS['blocked'] : $user->status = User::STATUS['active'];
+        $user->status = User::STATUS[trim(strtolower($request->status))];
         $user->save();
 
         if ($user->status = User::STATUS['blocked']) {

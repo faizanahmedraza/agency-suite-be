@@ -86,9 +86,9 @@ class InvoiceController extends Controller
     }
 
     /**
-     * Delete Invoice
+     * Change Invoice Status
      *
-     * This api mark invoice paid or unpaid
+     * This api is for change status to paid or unpaid
      *
      * @header Domain string required
      *

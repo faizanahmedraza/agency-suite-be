@@ -53,11 +53,11 @@ class ServiceBusiness
         AgencyBusinessService::toggleCatalogStatus($service);
     }
 
-    public static function toggleStatus($id)
+    public static function toggleStatus($id,Request $request)
     {
         // get service
-        $service = AgencyBusinessService::first($id);
+        $service = AgencyBusinessService::first($id,$request);
         // status toggle
-        AgencyBusinessService::toggleStatus($service);
+        AgencyBusinessService::toggleStatus($service,$request);
     }
 }

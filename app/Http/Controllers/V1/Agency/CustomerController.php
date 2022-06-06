@@ -5,6 +5,7 @@ namespace App\Http\Controllers\V1\Agency;
 use App\Http\Businesses\V1\Agency\CustomerBusiness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Agency\CustomerRequest;
+use App\Http\Requests\V1\Agency\CustomerToggleStatusRequest;
 use App\Http\Requests\V1\Agency\UserListRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\CustomersResponse;
@@ -154,14 +155,15 @@ class CustomerController extends Controller
      * @header Domain string required
      *
      * @urlParam id integer required
+     * @bodyParam status required string ex: pending,active,blocked
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public static function toggleStatus(int $id)
+    public static function toggleStatus(int $id,CustomerToggleStatusRequest $request)
     {
-        CustomerBusiness::toggleStatus($id);
+        CustomerBusiness::toggleStatus($id,$request);
         return new SuccessResponse([]);
     }
 }
