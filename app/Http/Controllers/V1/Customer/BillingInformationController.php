@@ -21,7 +21,7 @@ class BillingInformationController extends Controller
     public function __construct()
     {
         $this->module = 'agency_customers_billing_information';
-        $ULP = '|' . $this->module . '_all'; //UPPER LEVEL PERMISSIONS
+        $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
         $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
         $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['store']]);
         $this->middleware('permission:' . $this->module . '_update' . $ULP, ['only' => ['update']]);

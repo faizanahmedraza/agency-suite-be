@@ -7,7 +7,7 @@ use Pearl\RequestValidate\RequestAbstract;
 
 use Illuminate\Validation\Rule;
 
-class ServiceListRequest extends RequestAbstract
+class CatalogServiceListRequest extends RequestAbstract
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,8 +29,8 @@ class ServiceListRequest extends RequestAbstract
         return [
             'from_date' => 'nullable|date_format:Y-m-d|date',
             'to_date' => 'nullable|date_format:Y-m-d|date',
-            'status' => 'nullable|string',
-            'catalog_status' => 'nullable|string|'.Rule::in(array_keys(Service::CATALOG_STATUS)),
+            'status' => 'required|string',
+            'catalog_status' => 'required|string|'.Rule::in(array_keys(Service::CATALOG_STATUS)),
             'order_by' => 'string|'. Rule::in(['asc','desc']),
         ];
     }

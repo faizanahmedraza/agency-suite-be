@@ -4,12 +4,9 @@ namespace App\Http\Controllers\V1\Agency;
 
 use App\Http\Businesses\V1\Agency\ServiceBusiness;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\V1\Agency\ServiceListRequest;
-use App\Http\Requests\V1\Agency\ServiceRequest;
-use App\Http\Resources\SuccessResponse;
+use App\Http\Requests\V1\Agency\CatalogServiceListRequest;
 use App\Http\Resources\V1\Agency\ServiceResponse;
 use App\Http\Resources\V1\Agency\ServicesResponse;
-use Illuminate\Support\Facades\DB;
 
 /**
  * @group Agency Services Catalog
@@ -39,7 +36,7 @@ class CatalogController extends Controller
      * @responseFile 422 responses/ValidationResponse.json
      */
 
-    public function getServices(ServiceListRequest $request)
+    public function getServices(CatalogServiceListRequest $request)
     {
         $services = ServiceBusiness::get($request);
         return (new ServicesResponse($services));

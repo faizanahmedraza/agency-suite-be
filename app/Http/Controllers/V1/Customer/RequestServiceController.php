@@ -22,7 +22,7 @@ class RequestServiceController extends Controller
     public function __construct()
     {
         $this->module = 'agency_services_request';
-        $ULP = '|' . $this->module . '_all'; //UPPER LEVEL PERMISSIONS
+        $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
         $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
         $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['create']]);
     }

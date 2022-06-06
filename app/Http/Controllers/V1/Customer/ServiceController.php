@@ -19,7 +19,7 @@ class ServiceController extends Controller
     public function __construct()
     {
         $this->module = 'agency_services';
-        $this->middleware('permission:' . $this->module . '_read', ['only' => ['first', 'get']]);
+        $this->middleware('permission:' . $this->module . '_read|agency_access_all', ['only' => ['first', 'get']]);
     }
 
     /**
