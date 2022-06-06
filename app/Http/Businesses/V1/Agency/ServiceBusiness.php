@@ -56,7 +56,7 @@ class ServiceBusiness
     public static function toggleStatus($id,Request $request)
     {
         // get service
-        $service = AgencyBusinessService::first($id,$request);
+        $service = AgencyBusinessService::first($id);
         // status toggle
         AgencyBusinessService::toggleStatus($service,$request);
     }
