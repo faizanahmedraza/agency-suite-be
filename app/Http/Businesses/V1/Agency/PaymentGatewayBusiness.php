@@ -7,15 +7,21 @@ use Illuminate\Http\Request;
 
 class PaymentGatewayBusiness
 {
-    public static function first(Request $request,$bypass = false)
+    public static function first($gateway, $bypass = true)
     {
-        return PaymentGatewayService::first($request,$bypass);
+        return PaymentGatewayService::first($gateway, $bypass);
     }
 
     public static function create(Request $request)
     {
-        $gateway = self::first($request,true);
-        return PaymentGatewayService::create($request,$gateway);
+        $request->gateway = (isset($request->gateway) && !empty($request->gateway)) ? clean($request->gateway) : "stripe";
+        $paymentGateway = self::first("stripe", true);
+        PaymentGatewayService::create($request, $paymentGateway);
     }
 
+    public static function changeStatus($gateway)
+    {
+        $paymentGateway = self::first($gateway, true);
+        PaymentGatewayService::changeStatus($paymentGateway);
+    }
 }

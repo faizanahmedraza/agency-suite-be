@@ -2,42 +2,35 @@
 
 namespace App\Http\Services\V1\Agency;
 
-use App\Models\Service;
+use App\Models\PaymentGateway;
 use Illuminate\Http\Request;
-use App\Helpers\TimeStampHelper;
 
 use App\Exceptions\V1\ModelException;
-use App\Models\CustomerServiceRequest;
 use App\Exceptions\V1\FailureException;
 
 class PaymentGatewayService
 {
-    public static function create(Request $request, $service)
+    public static function create(Request $request, $gateway = null)
     {
-        $customerServiceRequest = new CustomerServiceRequest();
-        $customerServiceRequest->agency_id = app('agency')->id;
-        $customerServiceRequest->customer_id = $data['customer_id'];
-        $customerServiceRequest->service_id = $data['service_id'];
-        $customerServiceRequest->is_recurring = $service->subscription_type;
-        $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
-        $customerServiceRequest->intake_form = json_encode($data['intake_form']);
-        $customerServiceRequest->created_by = auth()->id();
-        if ($service->subscription_type == 1) {
-            $customerServiceRequest->recurring_type = $data['recurring_type'];
+        if (!empty($gateway)) {
+            $gateway = new PaymentGateway();
         }
-        $customerServiceRequest->save();
+        $gateway->gateway = (isset($request->gateway) && !empty($request->gateway)) ? clean($request->gateway) : "stripe";
+        $gateway->gateway_id = trim($request->gateway_id);
+        $gateway->gateway_code = trim($request->gateway_code);
+        $gateway->is_enable = false;
+        $gateway->created_by = auth()->id();
+        $gateway->save();
 
-        if (!$customerServiceRequest) {
+        if (!$gateway) {
             throw FailureException::serverError();
         }
-
-        return $customerServiceRequest;
     }
 
-    public static function first(Request $request,$gateway = null,$bypass = false)
+    public static function first($gateway = "stripe", $bypass = false)
     {
-        $gateway = CustomerServiceRequest::with($with)
-            ->where('id', $id)
+        $gateway = PaymentGateway::with(['agency'])
+            ->where('gateway', clean($gateway))
             ->where('agency_id', app('agency')->id)
             ->first();
 
@@ -46,5 +39,11 @@ class PaymentGatewayService
         }
 
         return $gateway;
+    }
+
+    public static function changeStatus(PaymentGateway $gateway)
+    {
+        $gateway->status = $gateway->is_enable ? false : true;
+        $gateway->save();
     }
 }

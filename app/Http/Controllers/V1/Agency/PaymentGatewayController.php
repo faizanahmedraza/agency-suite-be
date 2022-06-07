@@ -5,6 +5,8 @@ namespace App\Http\Controllers\V1\Agency;
 use App\Http\Businesses\V1\Agency\PaymentGatewayBusiness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Agency\PaymentGatewayRequest;
+use App\Http\Resources\SuccessResponse;
+use App\Http\Resources\V1\Agency\PaymentGatewayResponse;
 
 /**
  * @group Agency Payment Gateway
@@ -22,18 +24,56 @@ class PaymentGatewayController extends Controller
 //    }
 
     /**
+     * Get Payment Gateway
+     *
+     * @header Domain string required
+     *
+     * @urlParam gateway string required ex: stripe
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     */
+    public function first($gateway)
+    {
+        $paymentGateway = PaymentGatewayBusiness::first($gateway);
+        return (new PaymentGatewayResponse($paymentGateway));
+    }
+
+    /**
      * Create Payment Gateway
+     *
+     * This api is for change status
      *
      * @header Domain string required
      *
      * @bodyParam gateway string required ex: stripe
+     * @bodyParam gateway_id string required ex: stripe
+     * @bodyParam gateway_code string required ex: stripe
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
     public function create(PaymentGatewayRequest $request)
     {
-        $billings = PaymentGatewayBusiness::create($request);
-        return (new BillingInformationListResponse($billings));
+        PaymentGatewayBusiness::create($request);
+        return new SuccessResponse([]);
+    }
+
+    /**
+     * Change Payment Gateway Status
+     *
+     * This api is for change status
+     *
+     * @header Domain string required
+     *
+     * @urlParam gateway string required ex: stripe
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 401 responses/UnAuthorizedResponse.json
+     */
+    public function changeStatus($gateway)
+    {
+        PaymentGatewayBusiness::changeStatus($gateway);
+        return new SuccessResponse([]);
     }
 }
