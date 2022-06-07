@@ -12,12 +12,13 @@ class PaymentGatewayService
 {
     public static function create(Request $request, $gateway = null)
     {
-        if (!empty($gateway)) {
+        if (empty($gateway)) {
             $gateway = new PaymentGateway();
         }
         $gateway->gateway = (isset($request->gateway) && !empty($request->gateway)) ? clean($request->gateway) : "stripe";
         $gateway->gateway_id = trim($request->gateway_id);
         $gateway->gateway_code = trim($request->gateway_code);
+        $gateway->agency_id = app('agency')->id;
         $gateway->is_enable = false;
         $gateway->created_by = auth()->id();
         $gateway->save();
@@ -44,6 +45,7 @@ class PaymentGatewayService
     public static function changeStatus(PaymentGateway $gateway)
     {
         $gateway->status = $gateway->is_enable ? false : true;
+        $gateway->updated_by = auth()->id();
         $gateway->save();
     }
 }
