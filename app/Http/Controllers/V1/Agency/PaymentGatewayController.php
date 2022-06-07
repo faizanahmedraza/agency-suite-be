@@ -31,7 +31,7 @@ class PaymentGatewayController extends Controller
      * @urlParam gateway string required ex: stripe/paypal
      *
      * @responseFile 200 responses/SuccessResponse.json
-     * @responseFile 422 responses/ValidationResponse.json
+     * @responseFile 422 responses/V1/Agency/PaymentGatewayResponse.json
      */
     public function first($gateway)
     {
