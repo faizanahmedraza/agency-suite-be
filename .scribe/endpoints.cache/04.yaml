@@ -23,21 +23,21 @@ endpoints:
         name: gateway
         description: 'ex: stripe/paypal'
         required: true
-        example: aut
+        example: impedit
         type: string
         custom: []
       gateway_id:
         name: gateway_id
         description: 'ex: 321321'
         required: true
-        example: non
+        example: praesentium
         type: string
         custom: []
       gateway_code:
         name: gateway_code
         description: 'ex: qeqeqweqwewqewq21321dwdwewq'
         required: true
-        example: quam
+        example: est
         type: string
         custom: []
     responses:
@@ -70,7 +70,7 @@ endpoints:
         name: gateway
         description: 'ex: stripe/paypal'
         required: true
-        example: cum
+        example: sit
         type: string
         custom: []
     queryParameters: []
@@ -83,7 +83,7 @@ endpoints:
         description: '200'
       -
         status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        content: "{\r\n  \"data\": {\r\n    \"payment_gateway\": {\r\n      \"id\": 158,\r\n      \"gateway\": \"stripe\",\r\n      \"gateway_id\": \"321321\",\r\n      \"gateway_code\": \"qeqweqweqweqweqweq\",\r\n      \"is_enable\": \"yes\",\r\n      \"agency\": {\r\n        \"id\": 3,\r\n        \"name\": \"abc agency 123\",\r\n        \"default_domain\": \"abcagency123.agency.test\",\r\n        \"created_at\": \"2022-03-09T07:41:21.000000Z\"\r\n      },\r\n      \"created_at\": \"2022-06-02T07:01:49.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '422'
     responseFields: []
@@ -105,7 +105,7 @@ endpoints:
         name: gateway
         description: 'ex: stripe/paypal'
         required: true
-        example: quam
+        example: qui
         type: string
         custom: []
     queryParameters: []
