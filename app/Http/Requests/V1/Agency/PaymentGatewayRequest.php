@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1\Agency;
 
+use App\Models\PaymentGateway;
 use Pearl\RequestValidate\RequestAbstract;
 
 class PaymentGatewayRequest extends RequestAbstract
@@ -17,21 +18,6 @@ class PaymentGatewayRequest extends RequestAbstract
     }
 
     /**
-     * Get data to be validated from the request.
-     *
-     * @return array
-     */
-    protected function validationData(): array
-    {
-        $all = parent::validationData();
-        //Convert request value to lowercase
-        if (isset($all['email'])) {
-            $all['gateway'] = preg_replace('/\s+/', '', strtolower(trim($all['gateway'])));
-        }
-        return $all;
-    }
-
-    /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -39,9 +25,9 @@ class PaymentGatewayRequest extends RequestAbstract
     public function rules(): array
     {
         return [
-            'gateway' => 'required',
+            'gateway' => 'nullable|in:'.implode(',',PaymentGateway::PAYMENT_GATEWAYS),
             'gateway_id' => 'required',
-            'gateway_code' => '',
+            'gateway_code' => 'required',
         ];
     }
 
