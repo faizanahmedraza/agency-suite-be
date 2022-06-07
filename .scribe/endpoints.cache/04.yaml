@@ -9,7 +9,7 @@ endpoints:
     uri: v1/agencies/payment/gateway
     metadata:
       title: 'Create Payment Gateway'
-      description: 'This api is for change status'
+      description: 'This api is for create payment gateway'
       authenticated: true
       custom: []
     headers:
@@ -21,23 +21,23 @@ endpoints:
     bodyParameters:
       gateway:
         name: gateway
-        description: 'ex: stripe'
+        description: 'ex: stripe/paypal'
         required: true
         example: aut
         type: string
         custom: []
       gateway_id:
         name: gateway_id
-        description: 'ex: stripe'
+        description: 'ex: 321321'
         required: true
-        example: dolore
+        example: non
         type: string
         custom: []
       gateway_code:
         name: gateway_code
-        description: 'ex: stripe'
+        description: 'ex: qeqeqweqwewqewq21321dwdwewq'
         required: true
-        example: officiis
+        example: quam
         type: string
         custom: []
     responses:
@@ -68,9 +68,9 @@ endpoints:
     urlParameters:
       gateway:
         name: gateway
-        description: 'ex: stripe'
+        description: 'ex: stripe/paypal'
         required: true
-        example: rerum
+        example: cum
         type: string
         custom: []
     queryParameters: []
@@ -103,9 +103,9 @@ endpoints:
     urlParameters:
       gateway:
         name: gateway
-        description: 'ex: stripe'
+        description: 'ex: stripe/paypal'
         required: true
-        example: recusandae
+        example: quam
         type: string
         custom: []
     queryParameters: []
