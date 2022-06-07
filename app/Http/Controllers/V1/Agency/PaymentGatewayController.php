@@ -28,7 +28,7 @@ class PaymentGatewayController extends Controller
      *
      * @header Domain string required
      *
-     * @urlParam gateway string required ex: stripe
+     * @urlParam gateway string required ex: stripe/paypal
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -42,13 +42,13 @@ class PaymentGatewayController extends Controller
     /**
      * Create Payment Gateway
      *
-     * This api is for change status
+     * This api is for create payment gateway
      *
      * @header Domain string required
      *
-     * @bodyParam gateway string required ex: stripe
-     * @bodyParam gateway_id string required ex: stripe
-     * @bodyParam gateway_code string required ex: stripe
+     * @bodyParam gateway string required ex: stripe/paypal
+     * @bodyParam gateway_id string required ex: 321321
+     * @bodyParam gateway_code string required ex: qeqeqweqwewqewq21321dwdwewq
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json
@@ -66,7 +66,7 @@ class PaymentGatewayController extends Controller
      *
      * @header Domain string required
      *
-     * @urlParam gateway string required ex: stripe
+     * @urlParam gateway string required ex: stripe/paypal
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
