@@ -1,39 +1,307 @@
-name: 'Customer Billing Information'
+name: 'Authentication and Agency Profile Settings'
 description: ''
 endpoints:
   -
     httpMethods:
-      - GET
-    uri: v1/customers/billing-information
+      - POST
+    uri: v1/auth/agencies/register
     metadata:
       title: |-
-        Show All Billings Information
-        This api show the billing information details.
+        Register Agency
+        This api is useful for register new Agency and return access token with agency and user information
       description: ''
-      authenticated: true
+      authenticated: false
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-      Domain: 'string required'
+      Client-ID: 'string required'
+      Client-Secret: 'string required'
     urlParameters: []
     queryParameters: []
-    bodyParameters: []
+    bodyParameters:
+      agency_name:
+        name: agency_name
+        description: ''
+        required: true
+        example: 'abc-agency, abc agency'
+        type: string
+        custom: []
+      email:
+        name: email
+        description: 'User email address'
+        required: true
+        example: admin@bionicwp.com
+        type: email
+        custom: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": [\r\n      {\r\n        \"id\": 1,\r\n        \"holder_name\": \"Faizan\",\r\n        \"last_digits\": 3213,\r\n        \"exp_month\": 2,\r\n        \"exp_year\": 22,\r\n        \"address\": \"My new address ABC\",\r\n        \"country\": \"Pakistan\",\r\n        \"city\": \"Karachi\",\r\n        \"state\": \"Sindh\",\r\n        \"street\": \"dad fd addsad\",\r\n        \"zip_code\": \"12345                         \",\r\n        \"created_at\": \"2022-05-17T06:20:50.000000Z\"\r\n      }\r\n    ],\r\n    \"permissions\": [\r\n      \"access_all\",\r\n      \"services_read\",\r\n      \"services_request_all\",\r\n      \"services_request_read\",\r\n      \"services_request_create\",\r\n      \"services_request_update\",\r\n      \"services_request_delete\",\r\n      \"customers_billing_information_all\",\r\n      \"customers_billing_information_read\",\r\n      \"customers_billing_information_create\",\r\n      \"customers_billing_information_update\",\r\n      \"customers_billing_information_delete\",\r\n      \"profile_all\",\r\n      \"profile_read\",\r\n      \"profile_update\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
         headers: []
         description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
     responseFields: []
   -
     httpMethods:
       - POST
-    uri: v1/customers/billing-information
+    uri: v1/auth/login
     metadata:
       title: |-
-        Create Billing Information
-        This api create new billing information.
+        Access Token Or Login
+        This function is useful for login, to return access token for agencies.
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+      Client-ID: 'string required'
+      Client-Secret: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'The username of user.'
+        required: true
+        example: admin@my-app.com
+        type: email
+        custom: []
+      password:
+        name: password
+        description: 'The password of user.'
+        required: true
+        example: 'Abc*123*'
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"authentication\": {\r\n      \"access_token\": \"eyJ0eXAiOiJKV1dsadasdsadsadI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWVjsadsadsadsadsadsadasOWRkNGI1NGI0NDM1NjQ4Y2FjYmQ3NjE2Mzk5MmViNzU4NDVmYzQwYTBlMGE3MWViMTZhMzE1ZmFlOWEiLCJpYXQiOjE2NDY4MTE2ODIuMDg1MTY0LCJuYmYiOjE2NDY4MTE2ODIuMDg1MTgxLCJleHAiOjE2NzgzNDc2ODIuMDcxNDcsInN1YiI6IjE1Iiwic2NvcGVzIjpbXX0.D0tOC4p1lKX8EYOGedrNHvt1s5kzxVxAtFuYUz8zT2lg5ePDiBydjDrS1ARlshnrL71GIucMhpg1Nazt-3nJL4FbFKXmbZJX-Ltu-lYIxuKqCSqCZDA9XOFchfSuxwzsm9-vFCBhGzSWgxDQucYAKvcU3HiiTisHqaupMlx8sOhivt3PtNQe2VZRpvJHGUQNJsAhs3YavBaLjyUjulwp9j5gotfa4oDmVNB9c15ilTX38X8wxWhiV-zyEC2kSI1BQV9RhS2e54oyorgKxqq5m5S0fBxLIAK3F5B_-LGYKh4xrlNC-w0z0YZh1a1dmCGWnUmCB2qN_fHP_cZ8jXnfqxsf6j7qxrzHhv6WFa5qj1P-ofUDn4ZW3FIp-Ja-7FaNPzBDMbQUKpTlTet1rBFs5ayP8gIhcsp25gw8Q3yNKCcuT5Hm2FzHJQqUdKPv5iqD9wwK48dCYwoOqrtbdZAfgQU9norNzJysp9tuY3FXXGvtBZ6BbZiR_cFfQvyVD97YBGedvZrSlqi7kQJGAKTLx4iXes7LLjKOuvI_RgsNvyw4xsfe4ycjjZhSwqERH3jhd4fUomKO-aKh1WrCf1-4jnCvzNmIO6xZ29PX4XsyhndUctcysXY3tpFx_EGaI-a4oXhP4NQNfkIVvPAUEC0XSfwzRYg5FZDV71xnjTdausw\",\r\n      \"token_type\": \"Bearer\",\r\n      \"expiry\": \"2022-03-19 07:41:22\",\r\n      \"agency\": {\r\n        \"id\": 3,\r\n        \"name\": \"abc agency 123\",\r\n        \"default_domain\": \"abcagency123.agency.test\",\r\n        \"created_at\": \"2022-03-09T07:41:21.000000Z\"\r\n      },\r\n      \"user\": {\r\n        \"id\": 15,\r\n        \"first_name\": \"faizan\",\r\n        \"last_name\": \"raza\",\r\n        \"email\": \"agency102@agt.com\",\r\n        \"last_logged_in\": null,\r\n        \"status\": \"pending\"\r\n      }\r\n    }\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/auth/verify-token
+    metadata:
+      title: |-
+        Verify Agency
+        This function is used to verify a new agency
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+      Client-ID: 'string required'
+      Client-Secret: 'string required'
+    urlParameters: []
+    queryParameters:
+      token:
+        name: token
+        description: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+        required: true
+        example: S0OoOuegYqgQX8JMnbovfnaV7QjMEHLc
+        type: string
+        custom: []
+    bodyParameters:
+      password:
+        name: password
+        description: abcd1234
+        required: true
+        example: abcd1234
+        type: String
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: abcd1234
+        required: true
+        example: abcd1234
+        type: String
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/auth/forget-password
+    metadata:
+      title: |-
+        Forgot Password
+        This api will send an email to valid user with token for resetting his/her password
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+      Client-ID: 'string required'
+      Client-Secret: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: 'User valid email address'
+        required: true
+        example: user@bionicwp.com
+        type: String
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/auth/create-new-password
+    metadata:
+      title: |-
+        Create New Password
+        authenticate user request and then create new password
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+      Client-ID: 'string required'
+      Client-Secret: 'string required'
+    urlParameters: []
+    queryParameters:
+      token:
+        name: token
+        description: 'String T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA'
+        required: true
+        example: T5oqVFXCYiDjUtZpzvXJXvzw2xJClHNA
+        type: string
+        custom: []
+    bodyParameters:
+      password:
+        name: password
+        description: abcd1234
+        required: true
+        example: abcd1234
+        type: String
+        custom: []
+      password_confirmation:
+        name: password_confirmation
+        description: abcd1234
+        required: true
+        example: abcd1234
+        type: String
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: v1/logout
+    metadata:
+      title: |-
+        Logout
+        Hit api and session get out
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+      Authorization: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/verification
+    metadata:
+      title: |-
+        Generate Verification Token
+        This function generate new verification token of user
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+      Authorization: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: v1/change-password
+    metadata:
+      title: |-
+        Change Password
+        change password request of user
       description: ''
       authenticated: true
       custom: []
@@ -44,80 +312,24 @@ endpoints:
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      holder_name:
-        name: holder_name
-        description: 'ex: haesw'
+      password:
+        name: password
+        description: abcd1234
         required: true
-        example: enim
-        type: string
+        example: abcd1234
+        type: String
         custom: []
-      card_no:
-        name: card_no
-        description: 'ex: 1233321321321312'
+      password_confirmation:
+        name: password_confirmation
+        description: abcd1234
         required: true
-        example: 8
-        type: integer
-        custom: []
-      cvc:
-        name: cvc
-        description: 'ex: 123'
-        required: true
-        example: 16
-        type: integer
-        custom: []
-      expiry_month:
-        name: expiry_month
-        description: 'ex: 20'
-        required: true
-        example: 12
-        type: integer
-        custom: []
-      address:
-        name: address
-        description: ''
-        required: true
-        example: iure
-        type: string
-        custom: []
-      country:
-        name: country
-        description: ''
-        required: true
-        example: rerum
-        type: string
-        custom: []
-      city:
-        name: city
-        description: ''
-        required: true
-        example: fugit
-        type: string
-        custom: []
-      state:
-        name: state
-        description: ''
-        required: true
-        example: corporis
-        type: string
-        custom: []
-      street:
-        name: street
-        description: optional
-        required: false
-        example: minima
-        type: string
-        custom: []
-      zip_code:
-        name: zip_code
-        description: 'ex: 2321'
-        required: true
-        example: 12
-        type: integer
+        example: abcd1234
+        type: String
         custom: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"holder_name\": \"Faizan\",\r\n      \"last_digits\": \"3213\",\r\n      \"exp_month\": \"02\",\r\n      \"exp_year\": \"22\",\r\n      \"address\": \"My new address ABC\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"street\": \"dad fd addsad\",\r\n      \"zip_code\": \"12345\",\r\n      \"created_at\": \"2022-05-17T06:20:50.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\",\r\n      \"services_read\",\r\n      \"services_request_all\",\r\n      \"services_request_read\",\r\n      \"services_request_create\",\r\n      \"services_request_update\",\r\n      \"services_request_delete\",\r\n      \"customers_billing_information_all\",\r\n      \"customers_billing_information_read\",\r\n      \"customers_billing_information_create\",\r\n      \"customers_billing_information_update\",\r\n      \"customers_billing_information_delete\",\r\n      \"profile_all\",\r\n      \"profile_read\",\r\n      \"profile_update\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
         headers: []
         description: '200'
       -
@@ -125,132 +337,15 @@ endpoints:
         content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
         description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: v1/customers/billing-information
-    metadata:
-      title: |-
-        Update Billing Information
-        This api update billing information.
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 15
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      holder_name:
-        name: holder_name
-        description: 'ex: haesw'
-        required: true
-        example: error
-        type: string
-        custom: []
-      card_no:
-        name: card_no
-        description: 'ex: 1233321321321312'
-        required: true
-        example: delectus
-        type: numeric
-        custom: []
-      cvc:
-        name: cvc
-        description: 'ex: 123'
-        required: true
-        example: 6
-        type: integer
-        custom: []
-      expiry_month:
-        name: expiry_month
-        description: 'ex: 20'
-        required: true
-        example: 7
-        type: integer
-        custom: []
-      address:
-        name: address
-        description: ''
-        required: true
-        example: tempore
-        type: string
-        custom: []
-      country:
-        name: country
-        description: ''
-        required: true
-        example: ea
-        type: string
-        custom: []
-      city:
-        name: city
-        description: ''
-        required: true
-        example: dolores
-        type: string
-        custom: []
-      state:
-        name: state
-        description: ''
-        required: true
-        example: mollitia
-        type: string
-        custom: []
-      street:
-        name: street
-        description: optional
-        required: false
-        example: distinctio
-        type: string
-        custom: []
-      zip_code:
-        name: zip_code
-        description: 'ex: 2321'
-        required: true
-        example: 19
-        type: integer
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"holder_name\": \"Faizan\",\r\n      \"last_digits\": \"3213\",\r\n      \"exp_month\": \"02\",\r\n      \"exp_year\": \"22\",\r\n      \"address\": \"My new address ABC\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"street\": \"dad fd addsad\",\r\n      \"zip_code\": \"12345\",\r\n      \"created_at\": \"2022-05-17T06:20:50.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\",\r\n      \"services_read\",\r\n      \"services_request_all\",\r\n      \"services_request_read\",\r\n      \"services_request_create\",\r\n      \"services_request_update\",\r\n      \"services_request_delete\",\r\n      \"customers_billing_information_all\",\r\n      \"customers_billing_information_read\",\r\n      \"customers_billing_information_create\",\r\n      \"customers_billing_information_update\",\r\n      \"customers_billing_information_delete\",\r\n      \"profile_all\",\r\n      \"profile_read\",\r\n      \"profile_update\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
     responseFields: []
   -
     httpMethods:
       - GET
-    uri: 'v1/customers/billing-information/{id}'
+    uri: v1/profile
     metadata:
       title: |-
-        Show Billing Information
-        This api show the billing information details.
+        Profile
+        Get Profile Info
       description: ''
       authenticated: true
       custom: []
@@ -258,81 +353,58 @@ endpoints:
       Content-Type: application/json
       Accept: application/json
       Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 9
-        type: integer
-        custom: []
+    urlParameters: []
     queryParameters: []
     bodyParameters: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"holder_name\": \"Faizan\",\r\n      \"last_digits\": \"3213\",\r\n      \"exp_month\": \"02\",\r\n      \"exp_year\": \"22\",\r\n      \"address\": \"My new address ABC\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"street\": \"dad fd addsad\",\r\n      \"zip_code\": \"12345\",\r\n      \"created_at\": \"2022-05-17T06:20:50.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\",\r\n      \"services_read\",\r\n      \"services_request_all\",\r\n      \"services_request_read\",\r\n      \"services_request_create\",\r\n      \"services_request_update\",\r\n      \"services_request_delete\",\r\n      \"customers_billing_information_all\",\r\n      \"customers_billing_information_read\",\r\n      \"customers_billing_information_create\",\r\n      \"customers_billing_information_update\",\r\n      \"customers_billing_information_delete\",\r\n      \"profile_all\",\r\n      \"profile_read\",\r\n      \"profile_update\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
-    responseFields: []
-  -
-    httpMethods:
-      - DELETE
-    uri: 'v1/customers/billing-information/{id}'
-    metadata:
-      title: 'Delete Billing Information'
-      description: 'This api delete billing information'
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 17
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        content: "{\r\n    \"data\": {\r\n        \"profile\": {\r\n            \"name\": \"agencytest12\",\r\n            \"image\": \"\"\r\n        },\r\n        \"permissions\": [\r\n            \"access_all\"\r\n        ]\r\n    },\r\n    \"error\": {},\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
         headers: []
         description: '200'
       -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
-        description: '401'
+        description: '422'
     responseFields: []
   -
     httpMethods:
       - PUT
-    uri: 'v1/customers/billing-information/make-primary/{id}'
+    uri: v1/profile
     metadata:
-      title: 'Delete Billing Information'
-      description: 'This api make primary card primary'
+      title: 'Update Profile'
+      description: ''
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
         description: ''
         required: true
-        example: 11
-        type: integer
+        example: repellat
+        type: String
         custom: []
-    queryParameters: []
-    bodyParameters: []
+      last_name:
+        name: last_name
+        description: ''
+        required: true
+        example: corporis
+        type: String
+        custom: []
+      image:
+        name: image
+        description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
+        required: false
+        example: modi
+        type: String
+        custom: []
     responses:
       -
         status: 200
@@ -340,8 +412,8 @@ endpoints:
         headers: []
         description: '200'
       -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
         headers: []
-        description: '401'
+        description: '422'
     responseFields: []
