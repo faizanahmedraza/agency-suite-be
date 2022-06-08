@@ -18,6 +18,7 @@ class TransactionService
         $transaction->customer_id = $data->customer_id;
         $transaction->agency_id = app('agency')->id;
         $transaction->invoice_id = $data->id;
+        $transaction->card_id = $data->card_id;
         $transaction->type = Transaction::TYPE[$type];
         $transaction->save();
 

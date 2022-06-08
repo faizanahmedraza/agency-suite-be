@@ -2,27 +2,16 @@
 
 namespace App\Http\Wrappers;
 
+use App\Http\Businesses\V1\Agency\PaymentGatewayBusiness;
+use App\Models\CustomerCardDetail;
 use Illuminate\Http\Request;
 
 class StripeWrapper
 {
-    public static function initStripe()
+    public static function initStripe($gateway = "stripe")
     {
-        return new \Stripe\StripeClient(env('STRIPE_SECRET'));
-    }
-
-    public function getCustomer($customer_key)
-    {
-        $stripe = self::initStripe();
-        try {
-            $response = $stripe->customers->retrieve(
-                $customer_key,
-                []
-            );
-            return $response->toArray();
-        } catch (\Exception $e) {
-            error_log("Error occurred, ", $e->getMessage());
-        }
+        $secretKey = PaymentGatewayBusiness::first($gateway,false)->gateway_secret ?? env('STRIPE_SECRET');
+        return new \Stripe\StripeClient($secretKey);
     }
 
     public static function createCustomer()
@@ -35,26 +24,26 @@ class StripeWrapper
             ]);
             return $response->toArray();
         } catch (\Exception $e) {
-            error_log("Error occurred, ", $e->getMessage());
+            error_log("Error occurred, " . $e->getMessage(), 0);
         }
     }
 
-    public static function generateToken($request)
+    public static function generateToken(Request $request)
     {
         $stripe = self::initStripe();
         try {
-            $response = $stripe->tokens->create(array(
-                "card" => array(
-                    "number" => $request->input('card_number'),
-                    "exp_month" => $request->input('exp_month'),
-                    "exp_year" => $request->input('exp_year'),
-                    "cvc" => $request->input('cvc'),
-                    "name" => $request->input('name')
-                )
-            ));
+            $response = $stripe->tokens->create([
+                "card" => [
+                    "number" => $request->card_no,
+                    "exp_month" => $request->expiry_month,
+                    "exp_year" => $request->expiry_year,
+                    "cvc" => $request->cvc,
+                    "name" => $request->holder_name
+                ]
+            ]);
             return $response->toArray();
         } catch (\Exception $e) {
-            error_log("Error occurred, ", $e->getMessage());
+            error_log("Error occurred, " . $e->getMessage(), 0);
         }
     }
 
@@ -71,7 +60,38 @@ class StripeWrapper
             );
             return $response->toArray();
         } catch (\Exception $e) {
-            error_log("Error occurred, ", $e->getMessage());
+            error_log("Error occurred, " . $e->getMessage(), 0);
+        }
+    }
+
+    public static function deleteCard(CustomerCardDetail $card, $customer_key)
+    {
+        $stripe = self::initStripe();
+        try {
+            $response = $stripe->customers->deleteSource(
+                $customer_key,
+                $card->card_id,
+                []
+            );
+        } catch (\Exception $e) {
+            error_log("Error occurred, " . $e->getMessage(), 0);
+        }
+    }
+
+    public static function charge(Request $request)
+    {
+        $stripe = self::initStripe();
+        try {
+            $response = $stripe->charges->create([
+                "amount" => (int)$request->amount,
+                "capture" => true,
+                "currency" => "usd",
+                'customer' => $request->customer_key,
+                "source" => $request->card_id,
+                "description" => $request->description
+            ]);
+        } catch (\Exception $e) {
+            error_log("Error occurred, " . $e->getMessage(), 0);
         }
     }
 }

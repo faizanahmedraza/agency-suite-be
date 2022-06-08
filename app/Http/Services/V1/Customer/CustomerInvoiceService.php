@@ -6,7 +6,7 @@ use App\Exceptions\V1\ModelException;
 use App\Http\Businesses\V1\Customer\BillingInformationBusiness;
 use App\Http\Businesses\V1\Customer\RequestServiceBusiness;
 use App\Http\Businesses\V1\Customer\TransactionBusiness;
-use App\Models\Transaction;
+use App\Http\Wrappers\StripeWrapper;
 use Illuminate\Http\Request;
 use App\Models\CustomerInvoice;
 use App\Helpers\TimeStampHelper;
@@ -87,6 +87,16 @@ class CustomerInvoiceService
         $cardDetail = BillingInformationBusiness::first($request->card_id);
         if (isset($request->invoice_id) && !is_null($request->invoice_id)) {
             $invoice = self::first($request->invoice_id, [], true);
+            $paymentGateway = PaymentGatewayService::first('stripe');
+            $customerPaymentGateway = CustomerPaymentGatewayService::first($paymentGateway->id);
+
+            $chargeRequest = new Request();
+            $chargeRequest->amount = (int)$invoice->amount * 100;
+            $chargeRequest->customer_key = $customerPaymentGateway->customer_key;
+            $chargeRequest->card_id = $cardDetail->card_id;
+            $chargeRequest->description = "You have successfully purchases a service.";
+            StripeWrapper::charge($chargeRequest);
+
             $invoice->is_paid = true;
             $invoice->paid_by = "customer";
             $invoice->updated_by = auth()->id();
@@ -97,7 +107,8 @@ class CustomerInvoiceService
             RequestServiceBusiness::changeStatus($invoice->customer_service_request_id, $serviceRequest);
             $transacData = new \stdClass();
             $transacData->id = $invoice->id;
-            $transaction = TransactionBusiness::create($transacData,'card');
+            $transacData->card_id = $cardDetail->id;
+            $transaction = TransactionBusiness::create($transacData, 'card');
         }
     }
 }

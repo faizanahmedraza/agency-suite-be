@@ -27,7 +27,7 @@ class CustomerPaymentGatewayService
         }
     }
 
-    public static function first($customer_id,$gateway_id,$bypass = true)
+    public static function first($customer_id,$gateway_id)
     {
         $customer = CustomerPaymentGateway::with(['agency', 'customer'])
             ->where('agency_id', app('agency')->id)
@@ -35,7 +35,7 @@ class CustomerPaymentGatewayService
             ->where('payment_gateway_id', $gateway_id)
             ->first();
 
-        if (!$customer && !$bypass) {
+        if (!$customer) {
             throw ModelException::dataNotFound();
         }
 

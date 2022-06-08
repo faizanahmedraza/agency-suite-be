@@ -24,6 +24,7 @@ class CustomerPaymentGatewayService
         if (!$customer) {
             throw FailureException::serverError();
         }
+        return $customer;
     }
 
     public static function first($gateway_id, $bypass = true)
