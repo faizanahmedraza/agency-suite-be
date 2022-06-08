@@ -17,7 +17,7 @@ class PaymentGatewayService
         }
         $gateway->gateway = (isset($request->gateway) && !empty($request->gateway)) ? clean($request->gateway) : "stripe";
         $gateway->gateway_id = trim($request->gateway_id);
-        $gateway->gateway_code = trim($request->gateway_code);
+        $gateway->gateway_secret = trim($request->gateway_code);
         $gateway->agency_id = app('agency')->id;
         $gateway->is_enable = false;
         $gateway->created_by = auth()->id();

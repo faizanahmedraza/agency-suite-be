@@ -5,11 +5,11 @@ namespace App\Models;
 use App\Http\Traits\UserAuditTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerPaymentDetail extends Model
+class CustomerPaymentGateway extends Model
 {
     use UserAuditTrait;
 
-    protected $table = "customer_card_details";
+    protected $table = "customer_payment_gateways";
 
     protected $guarded = [];
 

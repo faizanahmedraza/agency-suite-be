@@ -18,7 +18,7 @@ class PaymentGatewayResource extends Resource
             'id' => $this->id ?? "",
             'gateway' => $this->gateway ?? "",
             'gateway_id' => $this->gateway_id ?? "",
-            'gateway_code' => $this->gateway_code ?? "",
+            'gateway_secret' => $this->gateway_secret ?? "",
             'is_enable' => isset($this->is_enable) ? ($this->is_enable ? "yes" : "no") : "",
             'agency' => isset($this->agency) ? new AgencyResource($this->whenLoaded('agency')) : "",
             'created_at' =>  $this->created_at ?? "",
