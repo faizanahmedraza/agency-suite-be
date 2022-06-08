@@ -2,6 +2,7 @@
 
 namespace App\Http\Wrappers;
 
+use App\Exceptions\V1\PaymentException;
 use App\Http\Businesses\V1\Agency\PaymentGatewayBusiness;
 use App\Models\CustomerCardDetail;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ class StripeWrapper
 {
     public static function initStripe($gateway = "stripe")
     {
-        $secretKey = PaymentGatewayBusiness::first($gateway,false)->gateway_secret ?? env('STRIPE_SECRET');
+        $secretKey = PaymentGatewayBusiness::first($gateway, false)->gateway_secret ?? env('STRIPE_SECRET');
         return new \Stripe\StripeClient($secretKey);
     }
 
@@ -22,6 +23,9 @@ class StripeWrapper
                 'name' => auth()->user()->full_name,
                 'email' => auth()->user()->username,
             ]);
+            if (empty($response)) {
+                throw PaymentException::stripeError();
+            }
             return $response->toArray();
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
@@ -41,16 +45,18 @@ class StripeWrapper
                     "name" => $request->holder_name
                 ]
             ]);
+            if (empty($response)) {
+                throw PaymentException::stripeError();
+            }
             return $response->toArray();
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
         }
     }
 
-    public static function createCard(Request $request, $customer_key = null)
+    public static function createCard(Request $request, $customer_key)
     {
         $stripe = self::initStripe();
-        $customer_key = empty($customer_key) ? self::createCustomer()['id'] : $customer_key;
         $token = self::generateToken($request);
 
         try {
@@ -58,6 +64,9 @@ class StripeWrapper
                 $customer_key,
                 ['source' => $token['id']]
             );
+            if (empty($response)) {
+                throw PaymentException::stripeError();
+            }
             return $response->toArray();
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
@@ -73,6 +82,9 @@ class StripeWrapper
                 $card->card_id,
                 []
             );
+            if (empty($response)) {
+                throw PaymentException::stripeError();
+            }
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
         }
@@ -90,6 +102,9 @@ class StripeWrapper
                 "source" => $request->card_id,
                 "description" => $request->description
             ]);
+            if (empty($response)) {
+                throw PaymentException::stripeError();
+            }
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
         }

@@ -14,6 +14,14 @@ class PaymentException extends BaseException
         );
     }
 
+    public static function stripeError(): self
+    {
+        return new self(
+            'There is an error in payment gateway method, please contact support!',
+            '500'
+        );
+    }
+
     public static function customMsg($msg,$code=422): self
     {
         return new self(
