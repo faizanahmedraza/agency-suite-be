@@ -16,7 +16,7 @@ class CreatePaymentGatewaysTable extends Migration
         Schema::create('payment_gateways', function (Blueprint $table) {
             $table->id();
             $table->string('gateway');
-            $table->string('gateway_id');
+            $table->string('gateway_id')->nullable();
             $table->string('gateway_secret');
             $table->boolean('is_enable')->default(0);
             $table->foreignId('agency_id')->constrained('agencies')->cascadeOnDelete();

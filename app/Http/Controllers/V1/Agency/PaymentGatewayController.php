@@ -46,9 +46,8 @@ class PaymentGatewayController extends Controller
      *
      * @header Domain string required
      *
-     * @bodyParam gateway string required ex: stripe/paypal
-     * @bodyParam gateway_id string required ex: 321321
-     * @bodyParam gateway_code string required ex: qeqeqweqwewqewq21321dwdwewq
+     * @bodyParam gateway string ex: stripe/paypal
+     * @bodyParam gateway_secret string required ex: sc_qeqeqweqwewqewq21321dwdwewq
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json

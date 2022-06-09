@@ -11,7 +11,7 @@ class PaymentGateway extends Model
 
     protected $table = "payment_gateways";
 
-    const PAYMENT_GATEWAYS = ['stripe','paypal'];
+    const PAYMENT_GATEWAYS = ['stripe'];
 
     protected $guarded = [];
 

@@ -26,8 +26,8 @@ class PaymentGatewayRequest extends RequestAbstract
     {
         return [
             'gateway' => 'nullable|in:'.implode(',',PaymentGateway::PAYMENT_GATEWAYS),
-            'gateway_id' => 'required',
-            'gateway_code' => 'required',
+            'gateway_id' => 'nullable|string',
+            'gateway_secret' => 'required|string',
         ];
     }
 
