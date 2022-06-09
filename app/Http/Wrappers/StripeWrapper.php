@@ -23,13 +23,13 @@ class StripeWrapper
                 'name' => auth()->user()->full_name,
                 'email' => auth()->user()->username,
             ]);
-            if (empty($response)) {
-                throw PaymentException::stripeError();
-            }
-            return $response->toArray();
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
         }
+        if (empty($response)) {
+            throw PaymentException::stripeError();
+        }
+        return $response->toArray();
     }
 
     public static function generateToken(Request $request)
@@ -45,13 +45,13 @@ class StripeWrapper
                     "name" => $request->holder_name
                 ]
             ]);
-            if (empty($response)) {
-                throw PaymentException::stripeError();
-            }
-            return $response->toArray();
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
         }
+        if (empty($response)) {
+            throw PaymentException::stripeError();
+        }
+        return $response->toArray();
     }
 
     public static function createCard(Request $request, $customer_key)
@@ -64,13 +64,13 @@ class StripeWrapper
                 $customer_key,
                 ['source' => $token['id']]
             );
-            if (empty($response)) {
-                throw PaymentException::stripeError();
-            }
-            return $response->toArray();
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
         }
+        if (empty($response)) {
+            throw PaymentException::stripeError();
+        }
+        return $response->toArray();
     }
 
     public static function deleteCard(CustomerCardDetail $card, $customer_key)
@@ -82,11 +82,11 @@ class StripeWrapper
                 $card->card_id,
                 []
             );
-            if (empty($response)) {
-                throw PaymentException::stripeError();
-            }
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
+        }
+        if (empty($response)) {
+            throw PaymentException::stripeError();
         }
     }
 
@@ -102,11 +102,11 @@ class StripeWrapper
                 "source" => $request->card_id,
                 "description" => $request->description
             ]);
-            if (empty($response)) {
-                throw PaymentException::stripeError();
-            }
         } catch (\Exception $e) {
             error_log("Error occurred, " . $e->getMessage(), 0);
+        }
+        if (empty($response)) {
+            throw PaymentException::stripeError();
         }
     }
 }
