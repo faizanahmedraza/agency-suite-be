@@ -154,7 +154,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             $router->group(['prefix' => 'payment'], function () use ($router) {
                 $router->post('/gateway', 'PaymentGatewayController@create');
                 $router->get('/{gateway}', 'PaymentGatewayController@first');
-                $router->get('/change-status/{gateway}', 'PaymentGatewayController@changeStatus');
+                $router->put('/change-status/{gateway}', 'PaymentGatewayController@changeStatus');
             });
         });
     });
