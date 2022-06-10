@@ -30,8 +30,8 @@ class PaymentGatewayController extends Controller
      *
      * @urlParam gateway string required ex: stripe/paypal
      *
-     * @responseFile 200 responses/SuccessResponse.json
-     * @responseFile 422 responses/V1/Agency/PaymentGatewayResponse.json
+     * @responseFile 200 responses/V1/Agency/PaymentGatewayResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
      */
     public function first($gateway)
     {
@@ -49,13 +49,13 @@ class PaymentGatewayController extends Controller
      * @bodyParam gateway string ex: stripe/paypal
      * @bodyParam gateway_secret string required ex: sc_qeqeqweqwewqewq21321dwdwewq
      *
-     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 200 responses/V1/Agency/PaymentGatewayResponse.json
      * @responseFile 422 responses/ValidationResponse.json
      */
     public function create(PaymentGatewayRequest $request)
     {
-        PaymentGatewayBusiness::create($request);
-        return new SuccessResponse([]);
+        $paymentGateway = PaymentGatewayBusiness::create($request);
+        return (new PaymentGatewayResponse($paymentGateway));
     }
 
     /**

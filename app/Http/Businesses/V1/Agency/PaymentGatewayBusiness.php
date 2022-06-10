@@ -16,7 +16,7 @@ class PaymentGatewayBusiness
     {
         $request->gateway = (isset($request->gateway) && !empty($request->gateway)) ? clean($request->gateway) : "stripe";
         $paymentGateway = self::first("stripe", true);
-        PaymentGatewayService::create($request, $paymentGateway);
+        return PaymentGatewayService::create($request, $paymentGateway);
     }
 
     public static function changeStatus($gateway)

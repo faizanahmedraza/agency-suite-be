@@ -27,6 +27,9 @@ class PaymentGatewayService
         if (!$gateway) {
             throw FailureException::serverError();
         }
+
+        $gateway->load('agency');
+        return $gateway;
     }
 
     public static function first($gateway = "stripe", $bypass = false)
