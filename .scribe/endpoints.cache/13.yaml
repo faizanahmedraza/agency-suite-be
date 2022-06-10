@@ -50,182 +50,70 @@ endpoints:
         name: holder_name
         description: 'ex: haesw'
         required: true
-        example: ipsa
+        example: recusandae
         type: string
         custom: []
       card_no:
         name: card_no
         description: 'ex: 1233321321321312'
         required: true
-        example: 10
+        example: 1
         type: integer
         custom: []
       cvc:
         name: cvc
         description: 'ex: 123'
         required: true
-        example: 3
+        example: 4
         type: integer
         custom: []
       expiry_month:
         name: expiry_month
         description: 'ex: 20'
-        required: true
-        example: 13
-        type: integer
-        custom: []
-      address:
-        name: address
-        description: ''
-        required: true
-        example: molestiae
-        type: string
-        custom: []
-      country:
-        name: country
-        description: ''
-        required: true
-        example: ut
-        type: string
-        custom: []
-      city:
-        name: city
-        description: ''
-        required: true
-        example: voluptatum
-        type: string
-        custom: []
-      state:
-        name: state
-        description: ''
-        required: true
-        example: qui
-        type: string
-        custom: []
-      street:
-        name: street
-        description: optional
-        required: false
-        example: et
-        type: string
-        custom: []
-      zip_code:
-        name: zip_code
-        description: 'ex: 2321'
-        required: true
-        example: 20
-        type: integer
-        custom: []
-    responses:
-      -
-        status: 200
-        content: "{\r\n  \"data\": {\r\n    \"customer_billing_information\": {\r\n      \"id\": 1,\r\n      \"holder_name\": \"Faizan\",\r\n      \"last_digits\": \"3213\",\r\n      \"exp_month\": \"02\",\r\n      \"exp_year\": \"22\",\r\n      \"address\": \"My new address ABC\",\r\n      \"country\": \"Pakistan\",\r\n      \"city\": \"Karachi\",\r\n      \"state\": \"Sindh\",\r\n      \"street\": \"dad fd addsad\",\r\n      \"zip_code\": \"12345\",\r\n      \"created_at\": \"2022-05-17T06:20:50.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\",\r\n      \"services_read\",\r\n      \"services_request_all\",\r\n      \"services_request_read\",\r\n      \"services_request_create\",\r\n      \"services_request_update\",\r\n      \"services_request_delete\",\r\n      \"customers_billing_information_all\",\r\n      \"customers_billing_information_read\",\r\n      \"customers_billing_information_create\",\r\n      \"customers_billing_information_update\",\r\n      \"customers_billing_information_delete\",\r\n      \"profile_all\",\r\n      \"profile_read\",\r\n      \"profile_update\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
-        headers: []
-        description: '200'
-      -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
-        headers: []
-        description: '422'
-      -
-        status: 401
-        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
-        headers: []
-        description: '401'
-    responseFields: []
-  -
-    httpMethods:
-      - PUT
-    uri: v1/customers/billing-information
-    metadata:
-      title: |-
-        Update Billing Information
-        This api update billing information.
-      description: ''
-      authenticated: true
-      custom: []
-    headers:
-      Content-Type: application/json
-      Accept: application/json
-      Domain: 'string required'
-    urlParameters:
-      id:
-        name: id
-        description: ''
-        required: true
-        example: 20
-        type: integer
-        custom: []
-    queryParameters: []
-    bodyParameters:
-      holder_name:
-        name: holder_name
-        description: 'ex: haesw'
-        required: true
-        example: eos
-        type: string
-        custom: []
-      card_no:
-        name: card_no
-        description: 'ex: 1233321321321312'
-        required: true
-        example: cumque
-        type: numeric
-        custom: []
-      cvc:
-        name: cvc
-        description: 'ex: 123'
-        required: true
-        example: 20
-        type: integer
-        custom: []
-      expiry_month:
-        name: expiry_month
-        description: 'ex: 20'
-        required: true
-        example: 2
-        type: integer
-        custom: []
-      address:
-        name: address
-        description: ''
-        required: true
-        example: in
-        type: string
-        custom: []
-      country:
-        name: country
-        description: ''
-        required: true
-        example: et
-        type: string
-        custom: []
-      city:
-        name: city
-        description: ''
-        required: true
-        example: ut
-        type: string
-        custom: []
-      state:
-        name: state
-        description: ''
-        required: true
-        example: rerum
-        type: string
-        custom: []
-      street:
-        name: street
-        description: optional
-        required: false
-        example: voluptatem
-        type: string
-        custom: []
-      zip_code:
-        name: zip_code
-        description: 'ex: 2321'
         required: true
         example: 11
+        type: integer
+        custom: []
+      address:
+        name: address
+        description: ''
+        required: true
+        example: ipsum
+        type: string
+        custom: []
+      country:
+        name: country
+        description: ''
+        required: true
+        example: rem
+        type: string
+        custom: []
+      city:
+        name: city
+        description: ''
+        required: true
+        example: aliquam
+        type: string
+        custom: []
+      state:
+        name: state
+        description: ''
+        required: true
+        example: quasi
+        type: string
+        custom: []
+      street:
+        name: street
+        description: optional
+        required: false
+        example: deserunt
+        type: string
+        custom: []
+      zip_code:
+        name: zip_code
+        description: 'ex: 2321'
+        required: true
+        example: 15
         type: integer
         custom: []
     responses:
@@ -265,7 +153,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 6
+        example: 3
         type: integer
         custom: []
     queryParameters: []
@@ -295,7 +183,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 10
+        example: 5
         type: integer
         custom: []
     queryParameters: []
@@ -330,7 +218,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 15
+        example: 10
         type: integer
         custom: []
     queryParameters: []
