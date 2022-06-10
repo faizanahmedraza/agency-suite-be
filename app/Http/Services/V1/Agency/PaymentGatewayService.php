@@ -48,7 +48,7 @@ class PaymentGatewayService
 
     public static function changeStatus(PaymentGateway $gateway)
     {
-        $gateway->status = $gateway->is_enable ? false : true;
+        $gateway->is_enable = $gateway->is_enable ? false : true;
         $gateway->updated_by = auth()->id();
         $gateway->save();
     }
