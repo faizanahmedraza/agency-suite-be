@@ -27,6 +27,11 @@ class AgencyDomain extends Model
         return Str::slug(strtolower(preg_replace('/[^A-Za-z0-9. -]/s', '', $data)));
     }
 
+    public static function cleanDomain($domain): String
+    {
+        return preg_replace('#^(http(s)?://)?w{3}\.#', '', clean($domain));
+    }
+
     public static function scopeDomainsFilter($filter, $domain)
     {
         return $filter->where(function ($query) use ($domain) {

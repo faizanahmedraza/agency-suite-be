@@ -2,6 +2,8 @@
 
 namespace App\Http\Requests\V1\Agency;
 
+use App\Models\AgencyDomain;
+use App\Rules\NotAllowedDomainRule;
 use Pearl\RequestValidate\RequestAbstract;
 
 
@@ -28,6 +30,7 @@ class PortalSettingRequest extends RequestAbstract
         //Convert request value to lowercase
         if (isset($all['name'])) {
             $all['name'] = preg_replace('/\s+/', ' ', $all['name']);
+            $all['domain'] = AgencyDomain::cleanDomain($all['domain']);
         }
         return $all;
     }
@@ -41,6 +44,7 @@ class PortalSettingRequest extends RequestAbstract
     {
         return [
             'name' => 'sometimes|nullable|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name,'.app('agency')->id,',deleted_at,NULL',
+            'domain' => ['required', 'string', 'max:100', 'regex:/^((?!http))[^*|\":<>[\]{}`\/\\()\';\s@&$#+]+$/i', new NotAllowedDomainRule],
             'logo' => 'sometimes|nullable|string',
             'favicon' => 'sometimes|nullable|string',
             'primary_color' => 'sometimes|nullable|string'
