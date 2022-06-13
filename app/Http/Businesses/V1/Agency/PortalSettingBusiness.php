@@ -21,9 +21,8 @@ class PortalSettingBusiness
     public static function update(Request $request)
     {
         $newDomain = AgencyDomain::cleanDomain($request->domain);
-        $domain = AgencyDomainService::first('domain', $newDomain, true);
-        $domainFilter = !empty($domain) ? AgencyDomain::domainsFilter($newDomain)->where('id', '!=', $domain->id)->first() : null;
-        if (!empty($domainFilter)) {
+        $domainFilter = AgencyDomain::domainsFilter($newDomain)->first();
+        if (!empty($domainFilter) && $domainFilter->domain != app('agency')->domain_name) {
             throw DomainException::alreadyAvaliable();
         }
 
@@ -34,7 +33,7 @@ class PortalSettingBusiness
             throw RequestValidationException::errorMessage('Invalid favicon. Base64 favicon string is required. Allowed formats are x-icon,png.');
         }
 
-        if (!isset($domain->domain) || $domain->domain != clean($newDomain)) {
+        if (empty($domainFilter) || (isset($domainFilter->domain) && $domainFilter->domain != app('agency')->domain_name)) {
             $domainData = new \stdClass;
             $domainData->agency_id = app('agency')->id;
             $domainData->domain = $newDomain;

@@ -24,12 +24,16 @@ class AgencyDomainService
     public static function create($data)
     {
         if (isset(app('agency')->id) && count(self::get()) > 0) {
-            self::first('agency_id',app('agency')->id)->update(['default' => false]);
+            self::first('agency_id', app('agency')->id)->update(['default' => false]);
         }
 
         $agency = new AgencyDomain();
         $agency->agency_id = $data->agency_id;
-        $agency->domain = $data->domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
+        if (isset(explode('.', $data->domain)[1])) {
+            $agency->domain = $data->domain;
+        } else {
+            $agency->domain = $data->domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
+        }
         $agency->type = $data->type;
         $agency->default = $data->default;
         $agency->save();
@@ -53,9 +57,9 @@ class AgencyDomainService
         return $agencyDomain;
     }
 
-    public static function first($attribute,$value,$bypass = false)
+    public static function first($attribute, $value, $bypass = false)
     {
-        $agencyDomain = AgencyDomain::where($attribute,$value)->first();
+        $agencyDomain = AgencyDomain::where($attribute, $value)->first();
 
         if (!$agencyDomain && !$bypass) {
             throw DomainException::agencyDomainNotExist();
@@ -65,7 +69,7 @@ class AgencyDomainService
 
     public static function get()
     {
-        $agencyDomains = AgencyDomain::where('agency_id',app('agency')->id)->get();
+        $agencyDomains = AgencyDomain::where('agency_id', app('agency')->id)->get();
         return $agencyDomains;
     }
 }
