@@ -30,7 +30,6 @@ class PortalSettingRequest extends RequestAbstract
         //Convert request value to lowercase
         if (isset($all['name'])) {
             $all['name'] = preg_replace('/\s+/', ' ', $all['name']);
-            $all['domain'] = AgencyDomain::cleanDomain($all['domain']);
         }
         return $all;
     }
