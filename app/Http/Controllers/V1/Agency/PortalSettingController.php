@@ -29,7 +29,8 @@ class PortalSettingController extends Controller
      * @authenticated
      * @header Domain string required
      *
-     * @bodyParam  name string
+     * @bodyParam  name string required ex: Agency Name
+     * @bodyParam  domain string required ex: myagency.test
      * @bodyParam  logo string ex: base64imageFile formats: png,jpeg,jpg
      * @bodyParam  favicon string ex: base64imageFile formats: png,x-icon
      * @bodyParam  primary_color string ex: '#fsfsd'

@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
             if ($hasDomainName) {
                 $domainName = $request->header('Domain');
             }
-            $agencyDomain = \App\Models\AgencyDomain::where('domain',clean($domainName))->first();
+            $agencyDomain = \App\Models\AgencyDomain::where('domain',clean($domainName))->where('default',true)->first();
 
             $agency = (object)[];
             if($agencyDomain){

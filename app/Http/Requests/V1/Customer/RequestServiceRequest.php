@@ -31,7 +31,7 @@ class RequestServiceRequest extends RequestAbstract
             'service_id' => [
                 'required',
                 Rule::exists('services','id')->where(function ($query) {
-                    $query->where('agency_id', app('agency')->id)->where('catalog_status', 1)->where('status', 1);
+                    $query->where('agency_id', app('agency')->id)->where('status', 1);
                 })
             ],
             'recurring_type' => [
