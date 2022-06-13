@@ -23,7 +23,7 @@ class AgencyDomainService
 {
     public static function create($data)
     {
-        if (count(self::get()) > 0) {
+        if (isset(app('agency')->id) && count(self::get()) > 0) {
             self::first('agency_id',app('agency')->id)->update(['default' => false]);
         }
 
