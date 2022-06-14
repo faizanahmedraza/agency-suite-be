@@ -20,12 +20,6 @@ class PortalSettingBusiness
 
     public static function update(Request $request)
     {
-        $newDomain = AgencyDomain::cleanDomain($request->domain);
-        $domainFilter = AgencyDomain::domainsFilter($newDomain)->first();
-        if (!empty($domainFilter) && $domainFilter->domain != app('agency')->domain_name) {
-            throw DomainException::alreadyAvaliable();
-        }
-
         if ($request->has('logo') && !empty($request->logo) && !validate_base64($request->logo, ['png', 'jpg', 'jpeg']) && !Str::contains($request->logo, ['https', 'cloudinary'])) {
             throw RequestValidationException::errorMessage('Invalid logo. Base64 logo string is required. Allowed formats are png,jpg,jpeg.');
         }
@@ -33,13 +27,20 @@ class PortalSettingBusiness
             throw RequestValidationException::errorMessage('Invalid favicon. Base64 favicon string is required. Allowed formats are x-icon,png.');
         }
 
-        if (empty($domainFilter) || (isset($domainFilter->domain) && $domainFilter->domain != app('agency')->domain_name)) {
-            $domainData = new \stdClass;
-            $domainData->agency_id = app('agency')->id;
-            $domainData->domain = $newDomain;
-            $domainData->type = AgencyDomain::TYPE['staging'];
-            $domainData->default = true;
-            AgencyDomainService::create($domainData);
+        if (!isset($request->domain)) {
+            $newDomain = AgencyDomain::cleanDomain($request->domain);
+            $domainFilter = AgencyDomain::domainsFilter($newDomain)->first();
+            if (!empty($domainFilter) && $domainFilter->agency_id != app('agency')->id) {
+                throw DomainException::alreadyAvaliable();
+            }
+            if (empty($domainFilter) || (isset($domainFilter->agency_id) && $domainFilter->agency_id != app('agency')->id)) {
+                $domainData = new \stdClass;
+                $domainData->agency_id = app('agency')->id;
+                $domainData->domain = $newDomain;
+                $domainData->type = AgencyDomain::TYPE['staging'];
+                $domainData->default = true;
+                AgencyDomainService::create($domainData);
+            }
         }
 
         return PortalSettingService::update($request);
