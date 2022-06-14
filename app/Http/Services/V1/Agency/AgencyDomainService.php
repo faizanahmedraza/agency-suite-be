@@ -31,7 +31,7 @@ class AgencyDomainService
             $agency->domain = $data->domain;
         }
         $agency->type = $data->type;
-        $agency->default = $data->default;
+        $agency->default = true;
         $agency->save();
 
         if (!$agency) {
@@ -39,6 +39,21 @@ class AgencyDomainService
         }
 
         return $agency;
+    }
+
+    public static function update(AgencyDomain $agency, $data)
+    {
+        $agency->agency_id = $data->agency_id;
+        $agency->domain = $data->domain;
+        $agency->type = $data->type;
+        $agency->default = true;
+        $agency->save();
+
+        if (!$agency) {
+            throw FailureException::serverError();
+        }
+
+        return $agency->fresh();
     }
 
     public static function first($attribute, $value, $bypass = false)
@@ -53,6 +68,12 @@ class AgencyDomainService
 
     public static function markDefault($default = false)
     {
-       AgencyDomain::where('agency_id', app('agency')->id)->update(['default' => $default]);
+        AgencyDomain::where('agency_id', app('agency')->id)->update(['default' => $default]);
     }
+
+    public static function customDomain()
+    {
+        return AgencyDomain::where('agency_id', app('agency')->id)->where('type', '!=', AgencyDomain::TYPE['staging'])->first();
+    }
+
 }

@@ -12,7 +12,7 @@ class AgencyDomain extends Model
 
     protected $table = "agency_domains";
 
-    const TYPE = ['live' => 1, 'staging' => 2, 'testing' => 3, 'pending' => 4];
+    const TYPE = ['custom' => 1, 'staging' => 2];
 
     protected $fillable = [
         'agency_id',
