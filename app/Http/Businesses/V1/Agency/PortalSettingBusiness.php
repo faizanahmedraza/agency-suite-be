@@ -30,17 +30,18 @@ class PortalSettingBusiness
         if (!isset($request->domain)) {
             $newDomain = AgencyDomain::cleanDomain($request->domain);
             $domainFilter = AgencyDomain::domainsFilter($newDomain)->first();
-            if (!empty($domainFilter) && $domainFilter->agency_id != app('agency')->id) {
+            if ($newDomain == app('agency')->domain_name || (!empty($domainFilter) && $domainFilter->agency_id != app('agency')->id)) {
                 throw DomainException::alreadyAvaliable();
             }
-            if (empty($domainFilter) || (isset($domainFilter->agency_id) && $domainFilter->agency_id != app('agency')->id)) {
-                $domainData = new \stdClass;
-                $domainData->agency_id = app('agency')->id;
-                $domainData->domain = $newDomain;
-                $domainData->type = AgencyDomain::TYPE['staging'];
-                $domainData->default = true;
-                AgencyDomainService::create($domainData);
-            }
+
+            AgencyDomainService::markDefault();
+
+            $domainData = new \stdClass;
+            $domainData->agency_id = app('agency')->id;
+            $domainData->domain = $newDomain;
+            $domainData->type = AgencyDomain::TYPE['staging'];
+            $domainData->default = true;
+            AgencyDomainService::create($domainData,false);
         }
 
         return PortalSettingService::update($request);

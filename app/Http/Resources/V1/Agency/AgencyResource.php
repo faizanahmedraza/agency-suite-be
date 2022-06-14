@@ -17,7 +17,8 @@ class AgencyResource extends Resource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'default_domain' => $this->defaultDomain(),
+            'default_domain' => $this->defaultDomain() ?? "",
+            'other_domain' => $this->otherDomain() ?? "",
             'created_at' => $this->created_at,
         ];
     }

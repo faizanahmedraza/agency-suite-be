@@ -33,4 +33,9 @@ class Agency extends Model
     {
         return $this->domains()->where('default',true)->first()->domain;
     }
+
+    public function otherDomain()
+    {
+        return $this->domains()->where('default','!=',true)->first()->domain;
+    }
 }

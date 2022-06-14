@@ -21,18 +21,14 @@ use App\Helpers\TimeStampHelper;
 
 class AgencyDomainService
 {
-    public static function create($data)
+    public static function create($data, $rootDomain = true)
     {
-        if (isset(app('agency')->id) && count(self::get()) > 0) {
-            self::first('agency_id', app('agency')->id)->update(['default' => false]);
-        }
-
         $agency = new AgencyDomain();
         $agency->agency_id = $data->agency_id;
-        if (isset(explode('.', $data->domain)[1])) {
-            $agency->domain = $data->domain;
-        } else {
+        if ($rootDomain) {
             $agency->domain = $data->domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
+        } else {
+            $agency->domain = $data->domain;
         }
         $agency->type = $data->type;
         $agency->default = $data->default;
@@ -45,18 +41,6 @@ class AgencyDomainService
         return $agency;
     }
 
-    public static function update(AgencyDomain $agencyDomain, $domain)
-    {
-        $agencyDomain->domain = clean($domain);
-        $agencyDomain->save();
-
-        if (!$agencyDomain) {
-            throw FailureException::serverError();
-        }
-
-        return $agencyDomain;
-    }
-
     public static function first($attribute, $value, $bypass = false)
     {
         $agencyDomain = AgencyDomain::where($attribute, $value)->first();
@@ -67,9 +51,8 @@ class AgencyDomainService
         return $agencyDomain;
     }
 
-    public static function get()
+    public static function markDefault($default = false)
     {
-        $agencyDomains = AgencyDomain::where('agency_id', app('agency')->id)->get();
-        return $agencyDomains;
+       AgencyDomain::where('agency_id', app('agency')->id)->update(['default' => $default]);
     }
 }

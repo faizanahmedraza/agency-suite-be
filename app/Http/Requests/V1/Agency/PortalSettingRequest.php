@@ -43,7 +43,7 @@ class PortalSettingRequest extends RequestAbstract
     {
         return [
             'name' => 'sometimes|nullable|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name,'.app('agency')->id,',deleted_at,NULL',
-            'domain' => ['nullable', 'string', 'max:100', 'regex:/^((?!http))(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/i', new NotAllowedDomainRule],
+            'domain' => ['nullable', 'string', 'max:100', 'regex:/^((?!http))(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]){2,}$/i', new NotAllowedDomainRule],
             'logo' => 'sometimes|nullable|string',
             'favicon' => 'sometimes|nullable|string',
             'primary_color' => 'sometimes|nullable|string'
@@ -57,6 +57,9 @@ class PortalSettingRequest extends RequestAbstract
      */
     public function messages(): array
     {
-        return [];
+        return [
+            'domain.required' => "Domain name is required without http and https",
+            'domain.regex' => "Domain name is invalid. Domain name is required without http and https",
+        ];
     }
 }
