@@ -27,7 +27,7 @@ class PortalSettingBusiness
             throw RequestValidationException::errorMessage('Invalid favicon. Base64 favicon string is required. Allowed formats are x-icon,png.');
         }
 
-        if (!isset($request->domain)) {
+        if (isset($request->domain)) {
             $newDomain = AgencyDomain::cleanDomain($request->domain);
             $domainFilter = AgencyDomain::domainsFilter($newDomain)->first();
             if ($newDomain == app('agency')->domain_name || (!empty($domainFilter) && $domainFilter->agency_id != app('agency')->id)) {
