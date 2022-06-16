@@ -43,7 +43,7 @@ class PortalSettingRequest extends RequestAbstract
     {
         return [
             'name' => 'sometimes|nullable|string|max:100|regex:/^[A-Za-z0-9]([\s_\.-]?\w+)+[A-Za-z0-9]$/i|unique:agencies,name,'.app('agency')->id,',deleted_at,NULL',
-            'domain' => ['nullable', 'string', 'max:100', 'regex:/^((?!http))(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9]){2,}$/i', new NotAllowedDomainRule],
+            'domain' => ['nullable', 'string', 'max:100', 'regex:/^((?!http\.|https\.))((?!www\.))(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/i', new NotAllowedDomainRule],
             'logo' => 'sometimes|nullable|string',
             'favicon' => 'sometimes|nullable|string',
             'primary_color' => 'sometimes|nullable|string'
