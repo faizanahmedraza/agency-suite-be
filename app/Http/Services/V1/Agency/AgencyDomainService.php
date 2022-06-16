@@ -76,4 +76,10 @@ class AgencyDomainService
         return AgencyDomain::where('agency_id', app('agency')->id)->where('type', '!=', AgencyDomain::TYPE['staging'])->first();
     }
 
+    public static function deleteDomain(AgencyDomain $domain)
+    {
+        if ($domain->type != AgencyDomain::TYPE['staging']) {
+            $domain->delete();
+        }
+    }
 }

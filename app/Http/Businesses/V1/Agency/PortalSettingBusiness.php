@@ -48,6 +48,12 @@ class PortalSettingBusiness
                 AgencyDomainService::markDefault();
                 AgencyDomainService::create($domainData, false);
             }
+        } else {
+            $customDomain = AgencyDomainService::customDomain();
+            if (!empty($customDomain)) {
+                AgencyDomainService::deleteDomain($customDomain);
+                AgencyDomainService::markDefault(true);
+            }
         }
 
         return PortalSettingService::update($request);
