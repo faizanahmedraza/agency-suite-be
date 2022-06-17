@@ -7,6 +7,7 @@ use App\Http\Businesses\V1\Customer\BillingInformationBusiness;
 use App\Http\Businesses\V1\Customer\RequestServiceBusiness;
 use App\Http\Businesses\V1\Customer\TransactionBusiness;
 use App\Http\Wrappers\StripeWrapper;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\CustomerInvoice;
 use App\Helpers\TimeStampHelper;
@@ -99,6 +100,7 @@ class CustomerInvoiceService
 
             $invoice->is_paid = true;
             $invoice->paid_by = "customer";
+            $invoice->paid_at = Carbon::now()->toDateTimeString();
             $invoice->updated_by = auth()->id();
             $invoice->save();
 

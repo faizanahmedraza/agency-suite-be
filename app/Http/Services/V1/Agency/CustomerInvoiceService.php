@@ -7,6 +7,7 @@ use App\Http\Businesses\V1\Agency\RequestServiceBusiness;
 use App\Http\Businesses\V1\Agency\TransactionBusiness;
 use App\Http\Wrappers\StripeWrapper;
 use App\Models\CustomerServiceRequest;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\CustomerInvoice;
 
@@ -86,6 +87,7 @@ class CustomerInvoiceService
         } else {
             $invoice->paid_by = null;
         }
+        $invoice->paid_at = Carbon::now()->toDateTimeString();
         $invoice->updated_by = auth()->id();
         $invoice->save();
         $serviceRequest = CustomerServiceRequest::where('id', $invoice->customer_service_request_id)->first();
@@ -120,6 +122,7 @@ class CustomerInvoiceService
 
             $invoice->is_paid = true;
             $invoice->paid_by = "agency";
+            $invoice->paid_at = Carbon::now()->toDateTimeString();
             $invoice->updated_by = auth()->id();
             $invoice->save();
 
