@@ -25,7 +25,7 @@ class CustomersServiceRequestResource extends Resource
             'recurring_type' => $this->recurring_type ?? '',
             'status' => $status[$this->status] ?? '',
             'intake_form' => $intakeForm,
-            'invoices' => InvoiceResource::collection($this->whenLoaded('invoices')) ?? (object)[],
+            'invoice' => $this->whenLoaded('invoice') ?? '',
             'created_at' => $this->created_at ?? '',
         ];
     }

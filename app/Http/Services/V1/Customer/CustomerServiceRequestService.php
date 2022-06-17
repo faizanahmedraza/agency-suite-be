@@ -101,4 +101,10 @@ class CustomerServiceRequestService
         $requestService->status = CustomerServiceRequest::STATUS[trim(strtolower($request->status))];
         $requestService->save();
     }
+
+    public static function cancelRequest(CustomerServiceRequest $requestService)
+    {
+        $requestService->status = CustomerServiceRequest::STATUS['cancelled'];
+        $requestService->save();
+    }
 }
