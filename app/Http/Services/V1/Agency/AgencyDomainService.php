@@ -31,7 +31,7 @@ class AgencyDomainService
             $agency->domain = $data->domain;
         }
         $agency->type = $data->type;
-        $agency->default = true;
+        $agency->default = $data->default ?? true;
         $agency->save();
 
         if (!$agency) {
@@ -46,7 +46,7 @@ class AgencyDomainService
         $agency->agency_id = $data->agency_id;
         $agency->domain = $data->domain;
         $agency->type = $data->type;
-        $agency->default = true;
+        $agency->default = $data->default ?? true;
         $agency->save();
 
         if (!$agency) {
