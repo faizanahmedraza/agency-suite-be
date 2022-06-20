@@ -38,15 +38,16 @@ class PortalSettingBusiness
             $domainData->agency_id = app('agency')->id;
             $domainData->domain = $newDomain;
             $domainData->type = AgencyDomain::TYPE['custom'];
+            $domainData->default = true;
 
             $customDomain = AgencyDomainService::customDomain();
 
-            if (!empty($customDomain) && $customDomain->domain != $newDomain) {
-                AgencyDomainService::markDefault();
-                AgencyDomainService::update($customDomain, $domainData);
-            } else if (empty($customDomain)) {
+            if (empty($customDomain)) {
                 AgencyDomainService::markDefault();
                 AgencyDomainService::create($domainData, false);
+            } elseif ($customDomain->domain != $newDomain) {
+                AgencyDomainService::markDefault();
+                AgencyDomainService::update($customDomain, $domainData);
             }
         } else {
             $customDomain = AgencyDomainService::customDomain();
