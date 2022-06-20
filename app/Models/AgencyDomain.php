@@ -14,12 +14,7 @@ class AgencyDomain extends Model
 
     const TYPE = ['custom' => 1, 'staging' => 2];
 
-    protected $fillable = [
-        'agency_id',
-        'domain',
-        'default',
-        'type'
-    ];
+    protected $guarded = [];
 
     public static function cleanAgencyDomainName($domain)
     {
