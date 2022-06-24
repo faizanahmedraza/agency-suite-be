@@ -90,39 +90,6 @@ class BillingInformationController extends Controller
     }
 
     /**
-     * Update Billing Information
-     * This api update billing information.
-     *
-     * @header Domain string required
-     *
-     * @urlParam id integer required
-     *
-     * @bodyParam  holder_name string required ex: haesw
-     * @bodyParam  card_no numeric required ex: 1233321321321312
-     * @bodyParam  cvc integer required ex: 123
-     * @bodyParam  expiry_month integer required ex: 12
-     * @bodyParam  expiry_month integer required ex: 20
-     * @bodyParam  address string required
-     * @bodyParam  country string required
-     * @bodyParam  city string required
-     * @bodyParam  state string required
-     * @bodyParam  street string optional
-     * @bodyParam  zip_code integer required ex: 2321
-     *
-     * @responseFile 200 responses/V1/Customer/BillingInformationResponse.json
-     * @responseFile 422 responses/ValidationResponse.json
-     * @responseFile 401 responses/UnAuthorizedResponse.json
-     */
-
-    public function update(BillingInformationRequest $request,$id)
-    {
-        DB::beginTransaction();
-        $billing = BillingInformationBusiness::update($request,$id);
-        DB::commit();
-        return (new BillingInformationResponse($billing));
-    }
-
-    /**
      * Delete Billing Information
      *
      * This api delete billing information

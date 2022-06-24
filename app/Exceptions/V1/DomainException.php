@@ -17,7 +17,7 @@ class DomainException extends BaseException
     public static function notAllowed(): self
     {
         return new self(
-            'Add domain is not allowed on staging sites.',
+            'The domain you are adding is already your staging domain.',
             '422'
         );
     }

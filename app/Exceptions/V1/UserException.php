@@ -52,7 +52,7 @@ class UserException extends BaseException
     {
         return new self(
             'Unauthorized access! User does not have access.',
-            '401'
+            '403'
         );
     }
 
@@ -60,7 +60,7 @@ class UserException extends BaseException
     {
         return new self(
             'Invalid credentials! Email or Password is invalid.',
-            '403'
+            '401'
         );
     }
 

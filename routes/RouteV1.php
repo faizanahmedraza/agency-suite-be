@@ -149,6 +149,13 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             $router->group(['prefix' => 'billing-information'], function () use ($router) {
                 $router->get('/', 'BillingInformationController@get');
             });
+
+            //payment
+            $router->group(['prefix' => 'payment'], function () use ($router) {
+                $router->post('/gateway', 'PaymentGatewayController@create');
+                $router->get('/{gateway}', 'PaymentGatewayController@first');
+                $router->put('/change-status/{gateway}', 'PaymentGatewayController@changeStatus');
+            });
         });
     });
 
@@ -166,8 +173,9 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
 
             $router->group(['prefix' => 'request-services'], function () use ($router) {
                 $router->get('/', 'RequestServiceController@get');
-                $router->get('/{id}', 'RequestServiceController@first');
                 $router->post('/', 'RequestServiceController@create');
+                $router->get('/{id}', 'RequestServiceController@first');
+                $router->put('/{id}', 'RequestServiceController@cancelRequest');
             });
 
             //customer billing information

@@ -21,7 +21,7 @@ class CustomerServiceRequestService
         $customerServiceRequest->is_recurring = $service->subscription_type;
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
         $customerServiceRequest->intake_form = json_encode($data['intake_form']);
-        $customerServiceRequest->created_at = auth()->id();
+        $customerServiceRequest->created_by = auth()->id();
         if ($service->subscription_type == 1) {
             $customerServiceRequest->recurring_type = $data['recurring_type'];
         }
@@ -100,6 +100,7 @@ class CustomerServiceRequestService
     public static function changeStatus(CustomerServiceRequest $requestService, Request $request)
     {
         $requestService->status = CustomerServiceRequest::STATUS[trim(strtolower($request->status))];
+        $requestService->updated_by = auth()->id();
         $requestService->save();
     }
 }

@@ -21,49 +21,49 @@ endpoints:
         name: customers
         description: '1,2,3,4'
         required: false
-        example: facere
+        example: voluptatum
         type: string
         custom: []
       email:
         name: email
         description: 'ex: abc.com,xyz.co'
         required: false
-        example: est
+        example: quibusdam
         type: string
         custom: []
       first_name:
         name: first_name
         description: ''
         required: false
-        example: id
+        example: incidunt
         type: string
         custom: []
       last_name:
         name: last_name
         description: ''
         required: false
-        example: voluptas
+        example: molestiae
         type: string
         custom: []
       full_name:
         name: full_name
         description: ''
         required: false
-        example: facere
+        example: nemo
         type: string
         custom: []
       status:
         name: status
         description: 'ex: pending,active,blocked'
         required: false
-        example: modi
+        example: eos
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: excepturi
+        example: iusto
         type: string
         custom: []
       from_date:
@@ -84,21 +84,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 13
+        example: 17
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 18
+        example: 17
         type: integer
         custom: []
     queryParameters: []
@@ -136,7 +136,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: non
+        example: amet
         type: string
         custom: []
     queryParameters: []
@@ -176,21 +176,21 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: velit
+        example: impedit
         type: String
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: earum
+        example: maiores
         type: String
         custom: []
       email:
         name: email
         description: 'ex: abc.com,xyz.co'
         required: true
-        example: fuga
+        example: facilis
         type: String
         custom: []
     responses:
@@ -226,7 +226,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: non
+        example: id
         type: string
         custom: []
     queryParameters: []
@@ -235,15 +235,22 @@ endpoints:
         name: first_name
         description: ''
         required: true
-        example: sequi
+        example: atque
         type: String
         custom: []
       last_name:
         name: last_name
         description: ''
         required: true
-        example: nemo
+        example: unde
         type: String
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: consequatur
+        type: email
         custom: []
     responses:
       -
@@ -276,7 +283,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: facere
+        example: quae
         type: string
         custom: []
     queryParameters: []
@@ -313,11 +320,18 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 6
+        example: 7
         type: integer
         custom: []
     queryParameters: []
-    bodyParameters: []
+    bodyParameters:
+      status:
+        name: status
+        description: 'string ex: pending,active,blocked'
+        required: false
+        example: suscipit
+        type: required
+        custom: []
     responses:
       -
         status: 200

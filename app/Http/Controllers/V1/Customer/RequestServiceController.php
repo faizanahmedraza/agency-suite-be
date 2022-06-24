@@ -87,4 +87,19 @@ class RequestServiceController extends Controller
         return (new CustomersServiceRequestResponse($customerServiceRequest));
     }
 
+    /**
+     * Cancel Request Service by Id
+     *
+     * @header Domain string required
+     *
+     * @urlParam id integer required
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     */
+    public function cancelRequest($id)
+    {
+        RequestServiceBusiness::cancelRequest($id);
+        return new SuccessResponse([]);
+    }
 }

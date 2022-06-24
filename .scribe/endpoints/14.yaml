@@ -1,46 +1,67 @@
-name: 'Customer Register and Profile Settings'
+name: 'Customer Invoices Section'
 description: ''
 endpoints:
   -
     httpMethods:
-      - POST
-    uri: v1/auth/customers/register
+      - GET
+    uri: 'v1/customers/invoices/{id}'
     metadata:
       title: |-
-        Register Customer
-        This api is useful for register new Customer and return access token with Customer information
+        Show Invoice
+        This api show the invoice details.
       description: ''
-      authenticated: false
+      authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
       Domain: 'string required'
-      Client-ID: 'string required'
-      Client-Secret: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"customer_invoice\": {\r\n      \"id\": 123,\r\n      \"invoice_number\": \"INV-0000123\",\r\n      \"customer_service_request\": {\r\n        \"id\": 129,\r\n        \"service\": {\r\n          \"id\": 98,\r\n          \"name\": \"developing \",\r\n          \"description\": \"aaaa\",\r\n          \"image\": null,\r\n          \"subscription_type\": \"one-off\",\r\n          \"catalog_status\": \"active\",\r\n          \"price_types\": {\r\n            \"id\": 85,\r\n            \"price\": 12,\r\n            \"purchase_limit\": null,\r\n            \"weekly\": null,\r\n            \"monthly\": null,\r\n            \"quarterly\": null,\r\n            \"biannually\": null,\r\n            \"annually\": null,\r\n            \"max_concurrent_requests\": null,\r\n            \"max_requests_per_month\": null,\r\n            \"created_at\": \"2022-05-24T11:29:49.000000Z\",\r\n            \"updated_at\": \"2022-05-24T11:29:49.000000Z\"\r\n          },\r\n          \"status\": \"active\",\r\n          \"created_at\": \"2022-05-24T11:29:49.000000Z\",\r\n          \"updated_at\": \"2022-05-27T07:52:22.000000Z\"\r\n        },\r\n        \"is_recurring\": false,\r\n        \"recurring_type\": \"\",\r\n        \"status\": \"pending\",\r\n        \"intake_form\": [\r\n          {\r\n            \"title\": \"test meh\",\r\n            \"description\": \"dasd\"\r\n          }\r\n        ],\r\n        \"created_at\": \"2022-05-31T07:38:21.000000Z\"\r\n      },\r\n      \"is_paid\": false,\r\n      \"amount\": \"12\",\r\n      \"created_at\": \"2022-05-31T07:38:21.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\",\r\n      \"services_read\",\r\n      \"services_request_all\",\r\n      \"services_request_read\",\r\n      \"services_request_create\",\r\n      \"services_request_update\",\r\n      \"services_request_delete\",\r\n      \"customers_billing_information_all\",\r\n      \"customers_billing_information_read\",\r\n      \"customers_billing_information_create\",\r\n      \"customers_billing_information_update\",\r\n      \"customers_billing_information_delete\",\r\n      \"profile_all\",\r\n      \"profile_read\",\r\n      \"profile_update\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: v1/customers/invoices/invoice-paid
+    metadata:
+      title: 'Invoice Paid'
+      description: 'This api is for marking invoice paid'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
     urlParameters: []
     queryParameters: []
     bodyParameters:
-      first_name:
-        name: first_name
-        description: 'User first name'
+      card_id:
+        name: card_id
+        description: ''
         required: true
-        example: Bionic
-        type: string
+        example: 13
+        type: integer
         custom: []
-      last_name:
-        name: last_name
-        description: 'User last name'
-        required: true
-        example: WP
-        type: string
-        custom: []
-      email:
-        name: email
-        description: 'User email address'
-        required: true
-        example: admin@bionicwp.com
-        type: email
+      invoice_id:
+        name: invoice_id
+        description: integer
+        required: false
+        example: similique
+        type: required
         custom: []
     responses:
       -
@@ -49,8 +70,82 @@ endpoints:
         headers: []
         description: '200'
       -
-        status: 422
-        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        status: 401
+        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
         headers: []
-        description: '422'
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/customers/invoices
+    metadata:
+      title: |-
+        Show All Invoices
+        This api show the invoice.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      is_paid:
+        name: is_paid
+        description: 'boolean ex: true'
+        required: false
+        example: aut
+        type: string
+        custom: []
+      order_by:
+        name: order_by
+        description: 'ex: asc/desc'
+        required: false
+        example: tempora
+        type: string
+        custom: []
+      from_date:
+        name: from_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      to_date:
+        name: to_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      pagination:
+        name: pagination
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        custom: []
+      page_limit:
+        name: page_limit
+        description: ''
+        required: false
+        example: 2
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 2
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"customer_invoices\": [\r\n      {\r\n        \"id\": 123,\r\n        \"invoice_number\": \"INV-0000123\",\r\n        \"customer_service_request\": {\r\n          \"id\": 129,\r\n          \"service\": {\r\n            \"id\": 98,\r\n            \"name\": \"developing \",\r\n            \"description\": \"aaaa\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-24T11:29:49.000000Z\",\r\n            \"updated_at\": \"2022-05-27T07:52:22.000000Z\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"pending\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"test meh\",\r\n              \"description\": \"dasd\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-31T07:38:21.000000Z\"\r\n        },\r\n        \"is_paid\": false,\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-05-31T07:38:21.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 94,\r\n        \"invoice_number\": \"INV-0000094\",\r\n        \"customer_service_request\": {\r\n          \"id\": 100,\r\n          \"service\": {\r\n            \"id\": 97,\r\n            \"name\": \"ui designing\",\r\n            \"description\": \"aaaaa\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-24T11:29:01.000000Z\",\r\n            \"updated_at\": \"2022-05-27T08:08:41.000000Z\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"active\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"afdfds\",\r\n              \"description\": \"fdsfdsf\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-26T08:04:45.000000Z\"\r\n        },\r\n        \"is_paid\": true,\r\n        \"amount\": \"12\",\r\n        \"created_at\": \"2022-05-26T08:04:45.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 71,\r\n        \"invoice_number\": \"INV-0000071\",\r\n        \"customer_service_request\": {\r\n          \"id\": 77,\r\n          \"service\": {\r\n            \"id\": 96,\r\n            \"name\": \"web\",\r\n            \"description\": \"aaaa\",\r\n            \"image\": null,\r\n            \"subscription_type\": \"one-off\",\r\n            \"catalog_status\": \"active\",\r\n            \"status\": \"active\",\r\n            \"created_at\": \"2022-05-19T13:02:52.000000Z\",\r\n            \"updated_at\": \"2022-05-27T08:08:58.000000Z\"\r\n          },\r\n          \"is_recurring\": false,\r\n          \"recurring_type\": \"\",\r\n          \"status\": \"active\",\r\n          \"intake_form\": [\r\n            {\r\n              \"title\": \"\",\r\n              \"description\": \"\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-05-23T06:14:08.000000Z\"\r\n        },\r\n        \"is_paid\": true,\r\n        \"amount\": \"11\",\r\n        \"created_at\": \"2022-05-23T06:14:08.000000Z\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 3,\r\n      \"count\": 3,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\",\r\n      \"services_read\",\r\n      \"services_request_all\",\r\n      \"services_request_read\",\r\n      \"services_request_create\",\r\n      \"services_request_update\",\r\n      \"services_request_delete\",\r\n      \"customers_billing_information_all\",\r\n      \"customers_billing_information_read\",\r\n      \"customers_billing_information_create\",\r\n      \"customers_billing_information_update\",\r\n      \"customers_billing_information_delete\",\r\n      \"profile_all\",\r\n      \"profile_read\",\r\n      \"profile_update\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
     responseFields: []

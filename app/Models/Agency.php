@@ -31,6 +31,11 @@ class Agency extends Model
 
     public function defaultDomain()
     {
-        return $this->domains()->where('default',true)->first()->domain;
+        return $this->domains()->where('default',true)->first();
+    }
+
+    public function customDomain()
+    {
+        return $this->domains()->where('type',AgencyDomain::TYPE['custom'])->first();
     }
 }

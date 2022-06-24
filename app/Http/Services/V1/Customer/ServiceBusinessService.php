@@ -58,7 +58,7 @@ class ServiceBusinessService
             $services->whereDate('created_at', '<=', $to);
         }
 
-        $services->where('agency_id', app('agency')->id)->where('catalog_status', 1)->where('status', 1);
+        $services->where('agency_id', app('agency')->id)->where('status', 1);
 
         return ($request->filled('pagination') && $request->get('pagination') == 'false')
             ? $services->get()

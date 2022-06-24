@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCustomerPaymentDetailsTable extends Migration
+class CreatePaymentGatewaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateCustomerPaymentDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('customer_payment_details', function (Blueprint $table) {
+        Schema::create('payment_gateways', function (Blueprint $table) {
             $table->id();
-            $table->string('gateway_code');
-            $table->string('gateway_customer_id');
-            $table->foreignId('agency_id')->nullable()->constrained('agencies')->cascadeOnDelete();
-            $table->foreignId('customer_id')->constrained('agency_customers','user_id')->cascadeOnDelete();
+            $table->string('gateway');
+            $table->string('gateway_id')->nullable();
+            $table->string('gateway_secret');
+            $table->boolean('is_enable')->default(0);
+            $table->foreignId('agency_id')->constrained('agencies')->cascadeOnDelete();
             $table->unsignedInteger('created_by')->nullable();
             $table->unsignedInteger('updated_by')->nullable();
             $table->timestamps();
@@ -33,6 +34,6 @@ class CreateCustomerPaymentDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('customer_payment_details');
+        Schema::dropIfExists('payment_gateways');
     }
 }

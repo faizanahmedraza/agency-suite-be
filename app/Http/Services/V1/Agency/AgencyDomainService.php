@@ -21,13 +21,17 @@ use App\Helpers\TimeStampHelper;
 
 class AgencyDomainService
 {
-    public static function create($data)
+    public static function create($data, $rootDomain = true)
     {
         $agency = new AgencyDomain();
         $agency->agency_id = $data->agency_id;
-        $agency->domain = $data->domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
+        if ($rootDomain) {
+            $agency->domain = $data->domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
+        } else {
+            $agency->domain = $data->domain;
+        }
         $agency->type = $data->type;
-        $agency->default = $data->default;
+        $agency->default = $data->default ?? true;
         $agency->save();
 
         if (!$agency) {
@@ -37,25 +41,45 @@ class AgencyDomainService
         return $agency;
     }
 
-    public static function update(AgencyDomain $agencyDomain, $domain)
+    public static function update(AgencyDomain $agency, $data)
     {
-        $agencyDomain->domain = $domain . (env('AGENCY_BASE_DOMAIN', '.agency.test'));
-        $agencyDomain->save();
+        $agency->agency_id = $data->agency_id;
+        $agency->domain = $data->domain;
+        $agency->type = $data->type;
+        $agency->default = $data->default ?? true;
+        $agency->save();
 
-        if (!$agencyDomain) {
+        if (!$agency) {
             throw FailureException::serverError();
         }
 
-        return $agencyDomain;
+        return $agency->fresh();
     }
 
-    public static function first($attribute,$value,$operator = "=")
+    public static function first($attribute, $value, $bypass = false)
     {
-        $agencyDomain = AgencyDomain::where($attribute,$operator,$value)->first();
+        $agencyDomain = AgencyDomain::where($attribute, $value)->first();
 
-        if (!$agencyDomain) {
+        if (!$agencyDomain && !$bypass) {
             throw DomainException::agencyDomainNotExist();
         }
         return $agencyDomain;
+    }
+
+    public static function markDefault($default = false)
+    {
+        AgencyDomain::where('agency_id', app('agency')->id)->update(['default' => $default]);
+    }
+
+    public static function customDomain()
+    {
+        return AgencyDomain::where('agency_id', app('agency')->id)->where('type', '!=', AgencyDomain::TYPE['staging'])->first();
+    }
+
+    public static function deleteDomain(AgencyDomain $domain)
+    {
+        if ($domain->type != AgencyDomain::TYPE['staging']) {
+            $domain->delete();
+        }
     }
 }

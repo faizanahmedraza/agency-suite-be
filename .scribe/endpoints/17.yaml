@@ -1,28 +1,128 @@
-name: 'Permissions Api'
+name: 'Customer Services Section'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: v1/admins/permissions
+    uri: v1/customers/services
     metadata:
       title: |-
-        Permission List
-        This api return the collection of all Permissions created.
+        Get Services
+        This api return services collection.
       description: ''
       authenticated: true
       custom: []
     headers:
       Content-Type: application/json
       Accept: application/json
-      Authorization: 'String required Example: Bearer TOKEN'
-    urlParameters: []
+      Domain: 'string required'
+    urlParameters:
+      services:
+        name: services
+        description: '1,2,3,4'
+        required: false
+        example: consequatur
+        type: string
+        custom: []
+      name:
+        name: name
+        description: 'ex: my service'
+        required: false
+        example: necessitatibus
+        type: string
+        custom: []
+      service_type:
+        name: service_type
+        description: 'ex: one-off,recurring'
+        required: false
+        example: sint
+        type: string
+        custom: []
+      order_by:
+        name: order_by
+        description: 'ex: asc/desc'
+        required: false
+        example: consequatur
+        type: string
+        custom: []
+      from_date:
+        name: from_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      to_date:
+        name: to_date
+        description: ''
+        required: false
+        example: Y-m-d
+        type: string
+        custom: []
+      pagination:
+        name: pagination
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        custom: []
+      page_limit:
+        name: page_limit
+        description: ''
+        required: false
+        example: 14
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: ''
+        required: false
+        example: 5
+        type: integer
+        custom: []
     queryParameters: []
     bodyParameters: []
     responses:
       -
         status: 200
-        content: "{\r\n  \"data\": {\r\n    \"collections\": [\r\n      {\r\n        \"id\": 13,\r\n        \"name\": \"users_toggle_status\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 12,\r\n        \"name\": \"users_delete\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 11,\r\n        \"name\": \"users_update\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 10,\r\n        \"name\": \"users_create\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 9,\r\n        \"name\": \"users_read\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 8,\r\n        \"name\": \"users_all\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 7,\r\n        \"name\": \"permissions_list\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 6,\r\n        \"name\": \"roles_delete\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 5,\r\n        \"name\": \"roles_update\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 4,\r\n        \"name\": \"roles_create\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 3,\r\n        \"name\": \"roles_read\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 2,\r\n        \"name\": \"roles_all\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      },\r\n      {\r\n        \"id\": 1,\r\n        \"name\": \"access_all\",\r\n        \"created_at\": \"2022-03-04T14:54:53.000000Z\"\r\n      }\r\n    ],\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        content: "{\r\n  \"data\": {\r\n    \"services\": [\r\n      {\r\n        \"id\": 1,\r\n        \"name\": \"serRvice 101\",\r\n        \"description\": \"test description\",\r\n        \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1647853184/service-62383e80c532e.jpg\",\r\n        \"subscription_type\": \"one-off\",\r\n        \"status\": \"pending\",\r\n        \"price_types\": {\r\n          \"id\": 1,\r\n          \"price\": 123,\r\n          \"purchase_limit\": 12,\r\n          \"weekly\": null,\r\n          \"monthly\": null,\r\n          \"quarterly\": null,\r\n          \"biannually\": null,\r\n          \"annually\": null,\r\n          \"max_concurrent_requests\": null,\r\n          \"max_requests_per_month\": null,\r\n          \"created_at\": \"2022-03-21T08:59:45.000000Z\",\r\n          \"updated_at\": \"2022-03-21T08:59:45.000000Z\"\r\n        },\r\n        \"intakes\": {\r\n          \"id\": 1,\r\n          \"intake\": [\r\n            {\r\n              \"field\": \"text\",\r\n              \"name\": \"title\"\r\n            },\r\n            {\r\n              \"field\": \"text\",\r\n              \"name\": \"description\"\r\n            }\r\n          ],\r\n          \"created_at\": \"2022-03-21T08:59:45.000000Z\",\r\n          \"updated_at\": \"2022-03-21T08:59:45.000000Z\"\r\n        },\r\n        \"created_at\": \"2022-03-21T08:59:45.000000Z\",\r\n        \"updated_at\": \"2022-03-21T08:59:45.000000Z\"\r\n      }\r\n    ],\r\n    \"pagination\": {\r\n      \"total\": 1,\r\n      \"count\": 1,\r\n      \"per_page\": 20,\r\n      \"current_page\": 1,\r\n      \"total_pages\": 1\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'v1/customers/services/{id}'
+    metadata:
+      title: |-
+        Show Service Details
+        This api show the service details.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: Integer
+        required: true
+        example: molestias
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"service\": {\r\n      \"id\": 22,\r\n      \"name\": \"serRvice 101\",\r\n      \"description\": \"test description\",\r\n      \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1647847542/service-623828258538b.jpg\",\r\n      \"subscription_type\": \"one-off\",\r\n      \"status\": \"pending\",\r\n      \"price_types\": {\r\n        \"id\": 21,\r\n        \"price\": 1234,\r\n        \"purchase_limit\": 12,\r\n        \"weekly\": null,\r\n        \"monthly\": null,\r\n        \"quarterly\": null,\r\n        \"biannually\": null,\r\n        \"annually\": null,\r\n        \"max_concurrent_requests\": null,\r\n        \"max_requests_per_month\": null,\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"intakes\": {\r\n        \"id\": 22,\r\n        \"intake\": [\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"title\"\r\n          },\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"description\"\r\n          }\r\n        ],\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n      \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
     responseFields: []

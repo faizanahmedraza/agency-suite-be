@@ -48,7 +48,6 @@ class RequestServiceRequest extends RequestAbstract
                     }
                     return false;
                 }),
-                'in:' . implode(",", CustomerServiceRequest::RECURRING_TYPE)
             ],
             'intake_form' => "required|array",
             'intake_form.0.title' => "required|string",

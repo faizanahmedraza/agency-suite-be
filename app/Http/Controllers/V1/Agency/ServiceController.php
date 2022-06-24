@@ -6,6 +6,7 @@ use App\Http\Businesses\V1\Agency\ServiceBusiness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Agency\ServiceListRequest;
 use App\Http\Requests\V1\Agency\ServiceRequest;
+use App\Http\Requests\V1\Agency\ServiceToggleStatusRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\ServiceResponse;
 use App\Http\Resources\V1\Agency\ServicesResponse;
@@ -162,19 +163,20 @@ class ServiceController extends Controller
 
     /**
      * Toggle Service Status
-     * This api update the service status to active or pending.
+     * This api update the service status.
      *
      * @header Domain string required
      *
      * @urlParam id integer required
+     * @bodyParam status required string ex: pending,active,blocked
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 401 responses/UnAuthorizedResponse.json
      */
 
-    public static function toggleStatus(int $id)
+    public static function toggleStatus(int $id,ServiceToggleStatusRequest $request)
     {
-        ServiceBusiness::toggleStatus($id);
+        ServiceBusiness::toggleStatus($id,$request);
         return new SuccessResponse([]);
     }
 

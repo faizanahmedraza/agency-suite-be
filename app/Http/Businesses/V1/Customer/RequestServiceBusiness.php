@@ -53,4 +53,10 @@ class RequestServiceBusiness
         $requestService = self::first($id);
         CustomerServiceRequestService::changeStatus($requestService, $request);
     }
+
+    public static function cancelRequest($id)
+    {
+        $requestService = self::first($id);
+        CustomerServiceRequestService::cancelRequest($requestService);
+    }
 }

@@ -1,10 +1,10 @@
-name: 'Agency Services Catalog'
+name: 'Agency Services'
 description: ''
 endpoints:
   -
     httpMethods:
       - GET
-    uri: v1/public/catalog/services
+    uri: v1/agencies/services
     metadata:
       title: |-
         Get Services
@@ -21,42 +21,42 @@ endpoints:
         name: services
         description: '1,2,3,4'
         required: false
-        example: qui
+        example: vel
         type: string
         custom: []
       name:
         name: name
         description: 'ex: my service'
         required: false
-        example: dolor
+        example: molestias
         type: string
         custom: []
       service_type:
         name: service_type
         description: 'ex: one-off,recurring'
         required: false
-        example: sint
+        example: error
         type: string
         custom: []
       status:
         name: status
-        description: 'ex: active'
-        required: true
-        example: quod
+        description: 'ex: pending,active,blocked'
+        required: false
+        example: rerum
         type: string
         custom: []
       catalog_status:
         name: catalog_status
-        description: 'string ex: active'
-        required: true
-        example: eos
+        description: 'ex: pending,active'
+        required: false
+        example: hic
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: inventore
+        example: qui
         type: string
         custom: []
       from_date:
@@ -77,21 +77,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 7
+        example: 10
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 1
+        example: 10
         type: integer
         custom: []
     queryParameters: []
@@ -111,7 +111,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: 'v1/public/catalog/services/{id}'
+    uri: 'v1/agencies/services/{id}'
     metadata:
       title: |-
         Show Service Details
@@ -128,7 +128,7 @@ endpoints:
         name: id
         description: Integer
         required: true
-        example: maxime
+        example: in
         type: string
         custom: []
     queryParameters: []
@@ -139,4 +139,379 @@ endpoints:
         content: "{\r\n  \"data\": {\r\n    \"service\": {\r\n      \"id\": 22,\r\n      \"name\": \"serRvice 101\",\r\n      \"description\": \"test description\",\r\n      \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1647847542/service-623828258538b.jpg\",\r\n      \"subscription_type\": \"one-off\",\r\n      \"status\": \"pending\",\r\n      \"price_types\": {\r\n        \"id\": 21,\r\n        \"price\": 1234,\r\n        \"purchase_limit\": 12,\r\n        \"weekly\": null,\r\n        \"monthly\": null,\r\n        \"quarterly\": null,\r\n        \"biannually\": null,\r\n        \"annually\": null,\r\n        \"max_concurrent_requests\": null,\r\n        \"max_requests_per_month\": null,\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"intakes\": {\r\n        \"id\": 22,\r\n        \"intake\": [\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"title\"\r\n          },\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"description\"\r\n          }\r\n        ],\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n      \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
         headers: []
         description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/agencies/services
+    metadata:
+      title: |-
+        Create Service
+        This api create new service.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: ea
+        type: string
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: true
+        example: explicabo
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
+        required: false
+        example: sit
+        type: string
+        custom: []
+      subscription_type:
+        name: subscription_type
+        description: 'ex: ''one-off'' ,''recurring'''
+        required: true
+        example: autem
+        type: string
+        custom: []
+      price:
+        name: price
+        description: 'only if subscription_type is one_off ex: 123'
+        required: true
+        example: 8
+        type: integer
+        custom: []
+      purchase_limit:
+        name: purchase_limit
+        description: 'optional only if subscription_type is one_off ex: 12'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+      weekly:
+        name: weekly
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 18
+        type: integer
+        custom: []
+      monthly:
+        name: monthly
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 16
+        type: integer
+        custom: []
+      quarterly:
+        name: quarterly
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 18
+        type: integer
+        custom: []
+      biannually:
+        name: biannually
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 18
+        type: integer
+        custom: []
+      annually:
+        name: annually
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 13
+        type: integer
+        custom: []
+      max_concurrent_requests:
+        name: max_concurrent_requests
+        description: 'optional only if subscription_type is recurring ex: 12'
+        required: false
+        example: 18
+        type: integer
+        custom: []
+      max_requests_per_month:
+        name: max_requests_per_month
+        description: 'optional only if subscription_type is recurring ex: 12'
+        required: false
+        example: 11
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"service\": {\r\n      \"id\": 22,\r\n      \"name\": \"serRvice 101\",\r\n      \"description\": \"test description\",\r\n      \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1647847542/service-623828258538b.jpg\",\r\n      \"subscription_type\": \"one-off\",\r\n      \"status\": \"pending\",\r\n      \"price_types\": {\r\n        \"id\": 21,\r\n        \"price\": 1234,\r\n        \"purchase_limit\": 12,\r\n        \"weekly\": null,\r\n        \"monthly\": null,\r\n        \"quarterly\": null,\r\n        \"biannually\": null,\r\n        \"annually\": null,\r\n        \"max_concurrent_requests\": null,\r\n        \"max_requests_per_month\": null,\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"intakes\": {\r\n        \"id\": 22,\r\n        \"intake\": [\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"title\"\r\n          },\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"description\"\r\n          }\r\n        ],\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n      \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+      -
+        status: 401
+        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'v1/agencies/services/{id}'
+    metadata:
+      title: |-
+        Update Service
+        This api update service.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: dolorem
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: true
+        example: atque
+        type: string
+        custom: []
+      image:
+        name: image
+        description: 'optional ex: base64imageFile formats: png,jpeg,jpg'
+        required: false
+        example: distinctio
+        type: string
+        custom: []
+      subscription_type:
+        name: subscription_type
+        description: 'ex: ''one-off'' ,''recurring'''
+        required: true
+        example: et
+        type: string
+        custom: []
+      price:
+        name: price
+        description: 'only if subscription_type is one_off ex: 123'
+        required: true
+        example: 12
+        type: integer
+        custom: []
+      purchase_limit:
+        name: purchase_limit
+        description: 'optional only if subscription_type is one_off ex: 12'
+        required: false
+        example: 2
+        type: integer
+        custom: []
+      weekly:
+        name: weekly
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+      monthly:
+        name: monthly
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 7
+        type: integer
+        custom: []
+      quarterly:
+        name: quarterly
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 10
+        type: integer
+        custom: []
+      biannually:
+        name: biannually
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+      annually:
+        name: annually
+        description: 'only if subscription_type is recurring ex: 123'
+        required: true
+        example: 17
+        type: integer
+        custom: []
+      max_concurrent_requests:
+        name: max_concurrent_requests
+        description: 'optional only if subscription_type is recurring ex: 12'
+        required: false
+        example: 10
+        type: integer
+        custom: []
+      max_requests_per_month:
+        name: max_requests_per_month
+        description: 'optional only if subscription_type is recurring ex: 12'
+        required: false
+        example: 11
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n  \"data\": {\r\n    \"service\": {\r\n      \"id\": 22,\r\n      \"name\": \"serRvice 101\",\r\n      \"description\": \"test description\",\r\n      \"image\": \"https://res.cloudinary.com/saasfa/image/upload/v1647847542/service-623828258538b.jpg\",\r\n      \"subscription_type\": \"one-off\",\r\n      \"status\": \"pending\",\r\n      \"price_types\": {\r\n        \"id\": 21,\r\n        \"price\": 1234,\r\n        \"purchase_limit\": 12,\r\n        \"weekly\": null,\r\n        \"monthly\": null,\r\n        \"quarterly\": null,\r\n        \"biannually\": null,\r\n        \"annually\": null,\r\n        \"max_concurrent_requests\": null,\r\n        \"max_requests_per_month\": null,\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"intakes\": {\r\n        \"id\": 22,\r\n        \"intake\": [\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"title\"\r\n          },\r\n          {\r\n            \"field\": \"text\",\r\n            \"name\": \"description\"\r\n          }\r\n        ],\r\n        \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n        \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n      },\r\n      \"created_at\": \"2022-03-21T07:24:22.000000Z\",\r\n      \"updated_at\": \"2022-03-21T07:24:22.000000Z\"\r\n    },\r\n    \"permissions\": [\r\n      \"access_all\"\r\n    ]\r\n  },\r\n  \"error\": {},\r\n  \"success\": true,\r\n  \"message\": \"Operation successful\"\r\n}"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+      -
+        status: 401
+        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'v1/agencies/services/{id}'
+    metadata:
+      title: 'Delete Service'
+      description: 'This api delete service'
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: Integer
+        required: true
+        example: aut
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'v1/agencies/services/change-status/{id}'
+    metadata:
+      title: |-
+        Toggle Service Status
+        This api update the service status.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      status:
+        name: status
+        description: 'string ex: pending,active,blocked'
+        required: false
+        example: est
+        type: required
+        custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'v1/agencies/services/change-catalog-status/{id}'
+    metadata:
+      title: |-
+        Toggle Service Catalog Status
+        This api update the service catalog status to active or pending.
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: "{\r\n    \"data\": [],\r\n    \"error\": {\r\n        \"code\": 401,\r\n        \"message\": \"Unaothorized access! User does not have access.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}"
+        headers: []
+        description: '401'
     responseFields: []

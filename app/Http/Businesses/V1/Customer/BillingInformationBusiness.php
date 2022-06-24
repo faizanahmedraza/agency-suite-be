@@ -29,12 +29,6 @@ class BillingInformationBusiness
         return BillingInformationService::first($id, ['agency', 'customer']);
     }
 
-    public static function update($request, $id)
-    {
-        $billing = self::first($id);
-        return BillingInformationService::update($request, $billing);
-    }
-
     public static function destroy($id)
     {
         $billing = self::first($id);

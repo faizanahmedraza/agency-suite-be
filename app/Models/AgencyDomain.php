@@ -12,19 +12,19 @@ class AgencyDomain extends Model
 
     protected $table = "agency_domains";
 
-    const TYPE = ['live' => 1, 'staging' => 2, 'testing' => 3, 'pending' => 4];
+    const TYPE = ['custom' => 1, 'staging' => 2];
 
-    protected $fillable = [
-        'agency_id',
-        'domain',
-        'default',
-        'type'
-    ];
+    protected $guarded = [];
 
     public static function cleanAgencyDomainName($domain)
     {
         $data = preg_replace('#^(http(s)?://)?w{3}\.#', '', $domain);
         return Str::slug(strtolower(preg_replace('/[^A-Za-z0-9. -]/s', '', $data)));
+    }
+
+    public static function cleanDomain($domain): String
+    {
+        return preg_replace('#^(http(s)?://)?w{3}\.#', '', clean($domain));
     }
 
     public static function scopeDomainsFilter($filter, $domain)
