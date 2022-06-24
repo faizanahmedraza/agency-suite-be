@@ -9,6 +9,7 @@ use App\Http\Services\V1\Customer\CustomerInvoiceService;
 use App\Http\Services\V1\Customer\ServiceBusinessService;
 use App\Http\Services\V1\Customer\CustomerServiceRequestService;
 use App\Models\CustomerCardDetail;
+use App\Models\CustomerServiceRequest;
 use Illuminate\Http\Request;
 
 class RequestServiceBusiness
@@ -48,7 +49,7 @@ class RequestServiceBusiness
         return CustomerServiceRequestService::first($id);
     }
 
-    public static function changeStatus($id,Request $request)
+    public static function changeStatus($id, Request $request)
     {
         $requestService = self::first($id);
         CustomerServiceRequestService::changeStatus($requestService, $request);
@@ -57,6 +58,9 @@ class RequestServiceBusiness
     public static function cancelRequest($id)
     {
         $requestService = self::first($id);
+        if ($requestService->status == CustomerServiceRequest::STATUS['completed']) {
+            throw RequestValidationException::errorMessage('This service cannot be cancelled. It is already completed.');
+        }
         CustomerServiceRequestService::cancelRequest($requestService);
     }
 }

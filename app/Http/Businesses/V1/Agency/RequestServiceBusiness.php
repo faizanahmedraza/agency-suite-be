@@ -9,6 +9,7 @@ use App\Http\Services\V1\Agency\CustomerInvoiceService;
 use App\Http\Services\V1\Agency\CustomerService;
 use App\Http\Services\V1\Agency\CustomerServiceRequestService;
 use App\Http\Services\V1\Agency\TransactionService;
+use App\Models\CustomerServiceRequest;
 use Illuminate\Http\Request;
 
 class RequestServiceBusiness
@@ -70,6 +71,9 @@ class RequestServiceBusiness
     public static function changeStatus(Request $request, $id)
     {
         $requestService = self::first($id);
+        if ($requestService->status == CustomerServiceRequest::STATUS['completed']) {
+            throw RequestValidationException::errorMessage('This service cannot be cancelled. It is already completed.');
+        }
         CustomerServiceRequestService::changeStatus($requestService, $request);
     }
 }
