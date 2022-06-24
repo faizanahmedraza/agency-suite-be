@@ -103,4 +103,16 @@ class CustomerServiceRequestService
         $requestService->updated_by = auth()->id();
         $requestService->save();
     }
+
+    public static function getRecurringServiceRequests(Request $request)
+    {
+        return CustomerServiceRequest::where('is_recurring', true)->where('status', CustomerServiceRequest::STATUS[clean($request->status)])->get();
+    }
+
+    public static function UpdateRecurringDateWhere($id, $next_recurring_date)
+    {
+        return CustomerServiceRequest::where('id', $id)->update([
+            "next_recurring_date" => $next_recurring_date
+        ]);
+    }
 }

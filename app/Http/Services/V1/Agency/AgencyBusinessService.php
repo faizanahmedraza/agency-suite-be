@@ -187,4 +187,17 @@ class AgencyBusinessService
         $service->status = Service::STATUS[trim(strtolower($request->status))];
         $service->save();
     }
+
+    public static function getServiceById(int $id, $with = ['intakes', 'priceTypes'])
+    {
+        $service = Service::with($with)
+            ->where('id', $id)
+            ->first();
+
+        if (!$service) {
+            throw ModelException::dataNotFound();
+        }
+
+        return $service;
+    }
 }

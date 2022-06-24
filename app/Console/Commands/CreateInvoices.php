@@ -2,7 +2,11 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Businesses\V1\Agency\RequestServiceBusiness;
+use App\Http\Services\V1\Agency\CustomerServiceRequestService;
+use App\Jobs\CreateInvoiceJob;
 use Illuminate\Console\Command;
+use Illuminate\Http\Request;
 
 class CreateInvoices extends Command
 {
@@ -11,7 +15,7 @@ class CreateInvoices extends Command
      *
      * @var string
      */
-    protected $signature = 'create:invoice {--user=} {--agency=}';
+    protected $signature = 'create:invoice';
 
     /**
      * The console command description.
@@ -37,7 +41,15 @@ class CreateInvoices extends Command
      */
     public function handle()
     {
-        $user = $this->option('user');
-        $agency = $this->option('agency');
+        $request = new Request();
+        $request->status = "active";
+        $serviceRequests = CustomerServiceRequestService::getRecurringServiceRequests($request);
+
+        if ($serviceRequests->isNotEmpty()) {
+            $chunks = $serviceRequests->chunk(1000);
+            foreach ($chunks as $serviceRequests) {
+                dispatch(new CreateInvoiceJob($serviceRequests))->onQueue('create_invoice');
+            }
+        }
     }
 }

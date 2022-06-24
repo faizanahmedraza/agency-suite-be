@@ -21,7 +21,7 @@ class CustomerInvoiceService
     {
         $type = $data->recurring_type;
         $customerInvoice = new CustomerInvoice();
-        $customerInvoice->agency_id = app('agency')->id;
+        $customerInvoice->agency_id = isset(app('agency')->id) ? app('agency')->id : $data->agency_id;
         $customerInvoice->customer_service_request_id = $data->id;
         $customerInvoice->amount = $service->priceTypes->price;
         if ($service->subscription_type == 1) {
@@ -29,7 +29,10 @@ class CustomerInvoiceService
         }
         $customerInvoice->customer_id = $data->customer_id;
         $customerInvoice->is_paid = 0;
-        $customerInvoice->created_by = auth()->id();
+        $checkAuth = auth()->check();
+        if ($checkAuth) {
+            $customerInvoice->created_by = auth()->id();
+        }
         $customerInvoice->save();
 
         if (!$customerInvoice) {
@@ -70,7 +73,7 @@ class CustomerInvoiceService
             : $invoices->paginate(\pageLimit($request));
     }
 
-    public static function first($id, $with = ['agency','customer', 'serviceRequest', 'serviceRequest.service', 'serviceRequest.service.priceTypes'])
+    public static function first($id, $with = ['agency', 'customer', 'serviceRequest', 'serviceRequest.service', 'serviceRequest.service.priceTypes'])
     {
         $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->first();
         if (!$invoice) {
@@ -111,7 +114,7 @@ class CustomerInvoiceService
         if (isset($request->invoice_id) && !is_null($request->invoice_id)) {
             $invoice = self::first($request->invoice_id);
             $paymentGateway = PaymentGatewayService::first('stripe');
-            $customerPaymentGateway = CustomerPaymentGatewayService::first($invoice->customer_id,$paymentGateway->id);
+            $customerPaymentGateway = CustomerPaymentGatewayService::first($invoice->customer_id, $paymentGateway->id);
 
             $chargeRequest = new Request();
             $chargeRequest->amount = (int)$invoice->amount * 100;
@@ -128,12 +131,12 @@ class CustomerInvoiceService
 
             $serviceRequest = new Request();
             $serviceRequest->replace(['status' => 'active']);
-            RequestServiceBusiness::changeStatus($serviceRequest,$invoice->customer_service_request_id);
+            RequestServiceBusiness::changeStatus($serviceRequest, $invoice->customer_service_request_id);
             $transacData = new \stdClass();
             $transacData->id = $invoice->id;
             $transacData->customer_id = $invoice->customer_id;
             $transacData->card_id = $cardDetail->id;
-            $transaction = TransactionBusiness::create($transacData,'card');
+            $transaction = TransactionBusiness::create($transacData, 'card');
         }
     }
 }
