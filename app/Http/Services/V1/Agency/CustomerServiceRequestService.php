@@ -19,11 +19,13 @@ class CustomerServiceRequestService
         $customerServiceRequest->customer_id = $data['customer_id'];
         $customerServiceRequest->service_id = $data['service_id'];
         $customerServiceRequest->is_recurring = $service->subscription_type;
+        $customerServiceRequest->quantity = $data['quantity'];
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
         $customerServiceRequest->intake_form = json_encode($data['intake_form']);
         $customerServiceRequest->created_by = auth()->id();
         if ($service->subscription_type == 1) {
             $customerServiceRequest->recurring_type = $data['recurring_type'];
+            $customerServiceRequest->next_recurring_date = recurringInvoiceDate($customerServiceRequest->recurring_type);
         }
         $customerServiceRequest->save();
 
@@ -111,7 +113,7 @@ class CustomerServiceRequestService
 
     public static function UpdateRecurringDateWhere($id, $next_recurring_date)
     {
-        return CustomerServiceRequest::where('id', $id)->update([
+        CustomerServiceRequest::where('id', $id)->update([
             "next_recurring_date" => $next_recurring_date
         ]);
     }

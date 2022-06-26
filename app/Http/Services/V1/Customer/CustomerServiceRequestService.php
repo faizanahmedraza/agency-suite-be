@@ -20,6 +20,7 @@ class CustomerServiceRequestService
         $customerServiceRequest->customer_id = Auth::id();
         $customerServiceRequest->service_id = $data['service_id'];
         $customerServiceRequest->is_recurring = $service->subscription_type;
+        $customerServiceRequest->quantity = $data['quantity'];
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
         $customerServiceRequest->intake_form = json_encode($data['intake_form']);
         $customerServiceRequest->created_by = auth()->id();

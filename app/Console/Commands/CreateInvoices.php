@@ -48,8 +48,11 @@ class CreateInvoices extends Command
         if ($serviceRequests->isNotEmpty()) {
             $chunks = $serviceRequests->chunk(1000);
             foreach ($chunks as $serviceRequests) {
-                dispatch(new CreateInvoiceJob($serviceRequests))->onQueue('create_invoice');
+                dispatch(new CreateInvoiceJob($serviceRequests))->onQueue('create_invoices');
             }
+            $this->info('Recurring invoices created successfully!');
+        } else {
+            $this->info('No invoices found!');
         }
     }
 }

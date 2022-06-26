@@ -1,4 +1,8 @@
 <?php
+
+use App\Helpers\TimeStampHelper;
+use App\Models\CustomerServiceRequest;
+
 if (!function_exists('asset')) {
     /**
      * Generate an asset path for the application.
@@ -85,6 +89,36 @@ if (!function_exists('GetDomainFromUrl')) {
     }
 }
 
+if (!function_exists('recurringInvoiceDate')) {
+    function recurringInvoiceDate($recurringType, $incStartDate = null)
+    {
+        if (is_null($incStartDate)) {
+            $incStartDate = date('Y-m-d');
+        }
+        switch ($recurringType) {
+            case CustomerServiceRequest::RECURRING_TYPE[0]:
+                //weekly
+                return TimeStampHelper::incrementInDate($incStartDate, ' +1 week') . " 00:00:00";
+                break;
+            case CustomerServiceRequest::RECURRING_TYPE[1]:
+                //monthly
+                return TimeStampHelper::incrementInDate($incStartDate, ' +1 month') . " 00:00:00";
+                break;
+            case CustomerServiceRequest::RECURRING_TYPE[2]:
+                //quarterly
+                return TimeStampHelper::incrementInDate($incStartDate, ' +3 months') . " 00:00:00";
+                break;
+            case CustomerServiceRequest::RECURRING_TYPE[3]:
+                //biannually
+                return TimeStampHelper::incrementInDate($incStartDate, ' +2 years') . " 00:00:00";
+                break;
+            default:
+                //annually
+                return TimeStampHelper::incrementInDate($incStartDate, ' +1 year') . " 00:00:00";
+        }
+    }
+}
+
 function getIds($value)
 {
     return array_map('intval', explode(',', $value));
@@ -94,7 +128,6 @@ function pageLimit($request): int
 {
     return ($request->filled('page_limit') && is_numeric($request->input('page_limit'))) ? $request->input('page_limit') : env('PAGE_LIMIT', 20);
 }
-
 
 function stringToUpper($string)
 {

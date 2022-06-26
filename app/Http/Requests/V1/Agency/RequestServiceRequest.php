@@ -49,6 +49,7 @@ class RequestServiceRequest extends RequestAbstract
                     return false;
                 }),
             ],
+            'quantity' => 'sometimes|nullable|numeric',
             'intake_form' => "required|array",
             'intake_form.0.title' => "required|string",
             'intake_form.0.description' => "nullable|string",

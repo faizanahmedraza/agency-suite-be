@@ -20,18 +20,24 @@ class CustomerInvoiceService
     public static function create($data, $service)
     {
         $type = $data->recurring_type;
+        if (empty($data->quantity)) {
+            $quantity = 1;
+        } else {
+            $quantity = $data->quantity;
+        }
         $customerInvoice = new CustomerInvoice();
-        $customerInvoice->agency_id = isset(app('agency')->id) ? app('agency')->id : $data->agency_id;
         $customerInvoice->customer_service_request_id = $data->id;
-        $customerInvoice->amount = $service->priceTypes->price;
+        $customerInvoice->amount = $service->priceTypes->price * $quantity;
         if ($service->subscription_type == 1) {
-            $customerInvoice->amount = $service->priceTypes->$type;
+            $customerInvoice->amount = $service->priceTypes->$type * $quantity;
         }
         $customerInvoice->customer_id = $data->customer_id;
         $customerInvoice->is_paid = 0;
-        $checkAuth = auth()->check();
-        if ($checkAuth) {
+        if (auth()->check()) {
+            $customerInvoice->agency_id = app('agency')->id;
             $customerInvoice->created_by = auth()->id();
+        } else {
+            $customerInvoice->agency_id = $data->agency_id;
         }
         $customerInvoice->save();
 
