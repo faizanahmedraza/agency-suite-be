@@ -75,19 +75,11 @@ class InvoiceController extends Controller
      *
      * @header Domain string required
      *
-     * @bodyParam  name string required
-     * @bodyParam  description string required
-     * @bodyParam  image string optional ex: base64imageFile formats: png,jpeg,jpg
-     * @bodyParam  subscription_type string required ex: 'one-off' ,'recurring'
-     * @bodyParam  price integer required only if subscription_type is one_off ex: 123
-     * @bodyParam  purchase_limit integer optional only if subscription_type is one_off ex: 12
-     * @bodyParam  weekly integer required only if subscription_type is recurring ex: 123
-     * @bodyParam  monthly integer required only if subscription_type is recurring ex: 123
-     * @bodyParam  quarterly integer required only if subscription_type is recurring ex: 123
-     * @bodyParam  biannually integer required only if subscription_type is recurring ex: 123
-     * @bodyParam  annually integer required only if subscription_type is recurring ex: 123
-     * @bodyParam  max_concurrent_requests integer optional only if subscription_type is recurring ex: 12
-     * @bodyParam  max_requests_per_month integer optional only if subscription_type is recurring ex: 12
+     * @bodyParam service_id integer required
+     * @bodyParam customer_id integer required
+     * @bodyParam recurring_type string optional if one-off Example : weekly,monthly,quarterly,biannually,annually
+     * @bodyParam intake_form array required Example :{key1:value1,key2:value2}
+     * @bodyParam quantity array Example :2
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json

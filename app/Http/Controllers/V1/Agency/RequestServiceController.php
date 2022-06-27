@@ -82,6 +82,7 @@ class RequestServiceController extends Controller
      * @bodyParam customer_id integer required
      * @bodyParam recurring_type string optional if one-off Example : weekly,monthly,quarterly,biannually,annually
      * @bodyParam intake_form array required Example :{key1:value1,key2:value2}
+     * @bodyParam quantity array Example :2
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json

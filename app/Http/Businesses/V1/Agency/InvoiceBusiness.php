@@ -26,7 +26,7 @@ class InvoiceBusiness
         $service = AgencyBusinessService::first($data['service_id']);
         $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
         $invoice = CustomerInvoiceService::create($customerServiceRequest,$service);
-        $trancsaction = TransactionService::create($invoice, 'card');
+        $transaction = TransactionService::create($invoice, 'card');
     }
 
     public static function destroy($id)
