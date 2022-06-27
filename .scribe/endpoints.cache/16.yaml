@@ -21,21 +21,21 @@ endpoints:
         name: status
         description: 'pending,submitted'
         required: false
-        example: dolor
+        example: consequatur
         type: string
         custom: []
       title:
         name: title
         description: 'ex: abc,xyz'
         required: false
-        example: quod
+        example: et
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: quaerat
+        example: et
         type: string
         custom: []
       from_date:
@@ -56,21 +56,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: false
+        example: true
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 6
+        example: 16
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 15
+        example: 7
         type: integer
         custom: []
     queryParameters: []
@@ -105,7 +105,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 18
+        example: 8
         type: integer
         custom: []
     queryParameters: []
@@ -142,14 +142,14 @@ endpoints:
         name: service_id
         description: ''
         required: true
-        example: 1
+        example: 9
         type: integer
         custom: []
       recurring_type:
         name: recurring_type
         description: 'Example : weekly,monthly,quarterly,biannually,annually'
         required: true
-        example: labore
+        example: libero
         type: string
         custom: []
       intake_form:
@@ -157,9 +157,44 @@ endpoints:
         description: 'Example :{key1:value1,key2:value2}'
         required: true
         example:
-          - consequatur
+          - animi
         type: 'string[]'
         custom: []
+    responses:
+      -
+        status: 200
+        content: "{\r\n    \"data\": [],\r\n    \"error\": null,\r\n    \"success\": true,\r\n    \"message\": \"Operation successful\"\r\n}\r\n"
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: "{\r\n    \"data\": {},\r\n    \"error\": {\r\n        \"code\": \"Error code\",\r\n        \"message\": \"Error Message.\"\r\n    },\r\n    \"success\": false,\r\n    \"message\": \"Operation failed\"\r\n}\r\n"
+        headers: []
+        description: '422'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'v1/customers/request-services/{id}'
+    metadata:
+      title: 'Cancel Request Service by Id'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      Domain: 'string required'
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 15
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
     responses:
       -
         status: 200
