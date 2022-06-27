@@ -139,6 +139,7 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
             // Invoices apis
             $router->group(['prefix' => 'invoices'], function () use ($router) {
                 $router->get('/', 'InvoiceController@get');
+                $router->post('/', 'InvoiceController@store');
                 $router->get('/{id}', 'InvoiceController@first');
                 $router->delete('/{id}', 'InvoiceController@destroy');
                 $router->put('/change-status/{id}', 'InvoiceController@changeStatus');
