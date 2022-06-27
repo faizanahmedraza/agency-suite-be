@@ -16,6 +16,7 @@ class AddTwoAttrsInCustomerServiceRequests extends Migration
         Schema::table('customer_service_requests', function (Blueprint $table) {
             $table->integer('quantity')->nullable();
             $table->timestamp('next_recurring_date')->nullable();
+            $table->timestamp('expiry_date')->nullable();
         });
     }
 
@@ -27,7 +28,7 @@ class AddTwoAttrsInCustomerServiceRequests extends Migration
     public function down()
     {
         Schema::table('customer_service_requests', function (Blueprint $table) {
-            $table->dropColumn(['quantity','next_recurring_date']);
+            $table->dropColumn(['quantity','next_recurring_date','expiry_date']);
         });
     }
 }

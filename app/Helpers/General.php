@@ -110,7 +110,7 @@ if (!function_exists('recurringInvoiceDate')) {
                 break;
             case CustomerServiceRequest::RECURRING_TYPE[3]:
                 //biannually
-                return TimeStampHelper::incrementInDate($incStartDate, ' +2 years') . " 00:00:00";
+                return TimeStampHelper::incrementInDate($incStartDate, ' +6 months') . " 00:00:00";
                 break;
             default:
                 //annually

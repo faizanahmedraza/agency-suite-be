@@ -38,18 +38,18 @@ class CreateInvoiceJob extends Job
                 dispatch(new CreateInvoiceJob($serviceRequests))->onQueue('create_invoices');
             }
         } else {
-            $currentDate = date('Y-m-d');
             $serviceRequest = $this->serviceRequests->first();
             $service = AgencyBusinessService::getServiceById($serviceRequest->service_id);
-            if ($serviceRequest->next_recurring_date == $currentDate . " 00:00:00") {
+            if (!empty($serviceRequest->next_recurring_date) && $serviceRequest->next_recurring_date <= date('Y-m-d') . " 00:00:00") {
                 DB::beginTransaction();
+                $currRecurringDate = date('Y-m-d', strtotime($serviceRequest->next_recurring_date));
                 $data = new \stdClass();
                 $data->id = $serviceRequest->id;
                 $data->agency_id = $serviceRequest->agency_id;
                 $data->customer_id = $serviceRequest->customer_id;
                 $data->recurring_type = $serviceRequest->recurring_type;
                 $data->quantity = $serviceRequest->quantity;
-                CustomerServiceRequestService::UpdateRecurringDateWhere($serviceRequest->id, recurringInvoiceDate($serviceRequest->recurring_type, $currentDate));
+                CustomerServiceRequestService::UpdateRecurringDateWhere($serviceRequest->id, recurringInvoiceDate($serviceRequest->recurring_type, $currRecurringDate));
                 CustomerInvoiceService::create($data, $service);
                 DB::commit();
             }
