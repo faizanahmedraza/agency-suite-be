@@ -20,6 +20,7 @@ class CustomersServiceRequestListResource extends Resource
             'id' => $this->id ?? '',
             'service' => new ServiceResource($this->service),
             'customer' => new CustomerResource($this->customer->user),
+            'quantity' => $this->quantity ?? '',
             'status' =>$status[$this->status] ?? '',
             'created_at' => $this->created_at ?? '',
         ];

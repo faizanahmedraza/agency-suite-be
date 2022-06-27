@@ -6,6 +6,7 @@ use App\Http\Businesses\V1\Agency\InvoiceBusiness;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\V1\Agency\CustomerInvoiceRequest;
 use App\Http\Requests\V1\Agency\InvoicePaidRequest;
+use App\Http\Requests\V1\Agency\InvoiceRequest;
 use App\Http\Resources\SuccessResponse;
 use App\Http\Resources\V1\Agency\InvoiceResponse;
 use App\Http\Resources\V1\Agency\InvoicesResponse;
@@ -24,6 +25,7 @@ class InvoiceController extends Controller
         $this->module = 'agency_customer_invoices';
         $ULP = '|' . $this->module . '_all|agency_access_all'; //UPPER LEVEL PERMISSIONS
         $this->middleware('permission:' . $this->module . '_read' . $ULP, ['only' => ['first','get']]);
+        $this->middleware('permission:' . $this->module . '_create' . $ULP, ['only' => ['store']]);
         $this->middleware('permission:' . $this->module . '_delete' . $ULP, ['only' => ['destroy']]);
         $this->middleware('permission:' . $this->module . '_status' . $ULP, ['only' => ['changeStatus']]);
         $this->middleware('permission:' . $this->module . '_invoice_paid' . $ULP, ['only' => ['invoicePaid']]);
@@ -66,6 +68,40 @@ class InvoiceController extends Controller
         $invoice = InvoiceBusiness::first($id);
         return (new InvoiceResponse($invoice));
     }
+
+    /**
+     * Create Invoice
+     * This api create new custom invoice.
+     *
+     * @header Domain string required
+     *
+     * @bodyParam  name string required
+     * @bodyParam  description string required
+     * @bodyParam  image string optional ex: base64imageFile formats: png,jpeg,jpg
+     * @bodyParam  subscription_type string required ex: 'one-off' ,'recurring'
+     * @bodyParam  price integer required only if subscription_type is one_off ex: 123
+     * @bodyParam  purchase_limit integer optional only if subscription_type is one_off ex: 12
+     * @bodyParam  weekly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  monthly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  quarterly integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  biannually integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  annually integer required only if subscription_type is recurring ex: 123
+     * @bodyParam  max_concurrent_requests integer optional only if subscription_type is recurring ex: 12
+     * @bodyParam  max_requests_per_month integer optional only if subscription_type is recurring ex: 12
+     *
+     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 422 responses/ValidationResponse.json
+     * @responseFile 401 responses/UnAuthorizedResponse.json
+     */
+
+    public function store(InvoiceRequest $request)
+    {
+        DB::beginTransaction();
+        InvoiceBusiness::store($request);
+        DB::commit();
+        return new SuccessResponse([]);
+    }
+
 
     /**
      * Delete Invoice

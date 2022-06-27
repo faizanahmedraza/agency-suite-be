@@ -23,6 +23,7 @@ class CustomersServiceRequestResource extends Resource
             'customer' => new CustomerResource($this->customer->user),
             'is_recurring' => $this->is_recurring ?? '',
             'recurring_type' => $this->recurring_type ?? '',
+            'quantity' => $this->quantity ?? '',
             'status' => $status[$this->status] ?? '',
             'intake_form' => $intakeForm,
             'invoice' => $this->whenLoaded('invoice') ?? '',
