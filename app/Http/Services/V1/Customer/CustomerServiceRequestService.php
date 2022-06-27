@@ -13,19 +13,21 @@ use App\Exceptions\V1\FailureException;
 
 class CustomerServiceRequestService
 {
-    public static function create(array $data,$service)
+    public static function create(array $data, $service)
     {
         $customerServiceRequest = new CustomerServiceRequest();
         $customerServiceRequest->agency_id = app('agency')->id;
         $customerServiceRequest->customer_id = Auth::id();
         $customerServiceRequest->service_id = $data['service_id'];
         $customerServiceRequest->is_recurring = $service->subscription_type;
-        $customerServiceRequest->quantity = $data['quantity'];
+        if (!empty($data['quantity'])) {
+            $customerServiceRequest->quantity = $data['quantity'];
+        }
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
         $customerServiceRequest->intake_form = json_encode($data['intake_form']);
         $customerServiceRequest->created_by = auth()->id();
-        if($service->subscription_type == 1){
-            $customerServiceRequest->recurring_type=$data['recurring_type'];
+        if ($service->subscription_type == 1) {
+            $customerServiceRequest->recurring_type = $data['recurring_type'];
         }
         $customerServiceRequest->save();
 
@@ -36,7 +38,7 @@ class CustomerServiceRequestService
         return $customerServiceRequest;
     }
 
-    public static function first(int $id, $with = ['agency', 'customer','service','service.priceTypes'])
+    public static function first(int $id, $with = ['agency', 'customer', 'service', 'service.priceTypes'])
     {
         $customerServiceRequest = CustomerServiceRequest::with($with)
             ->where('id', $id)
@@ -53,7 +55,7 @@ class CustomerServiceRequestService
 
     public static function get(Request $request)
     {
-        $customerServiceRequest = CustomerServiceRequest::query()->with(['service','customer','customer.user'])->where('customer_id', Auth::id())->where('agency_id', app('agency')->id);
+        $customerServiceRequest = CustomerServiceRequest::query()->with(['service', 'customer', 'customer.user'])->where('customer_id', Auth::id())->where('agency_id', app('agency')->id);
 
         if ($request->query('title')) {
             $arrTitleIds = Service::where('name', 'like', '%' . $request->query('title') . '%')->pluck('id');
@@ -85,10 +87,10 @@ class CustomerServiceRequestService
 
     }
 
-    public static function getByCustomer($where=[])
+    public static function getByCustomer($where = [])
     {
         $service = CustomerServiceRequest::where('customer_id', Auth::id())
-                                          ->where('agency_id', app('agency')->id)->where($where)->get();
+            ->where('agency_id', app('agency')->id)->where($where)->get();
 
         if (!$service) {
             throw ModelException::dataNotFound();
