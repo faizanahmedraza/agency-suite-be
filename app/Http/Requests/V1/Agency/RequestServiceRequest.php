@@ -42,9 +42,11 @@ class RequestServiceRequest extends RequestAbstract
             ],
             'recurring_type' => [
                 Rule::requiredIf(function () {
-                    $service = Service::where('id', $this->service_id)->first();
-                    if (!empty($service) && $service->subscription_type == 1) {
-                        return true;
+                    if (!empty($this->service_id)) {
+                        $service = Service::where('id', $this->service_id)->first();
+                        if (!empty($service) && $service->subscription_type == 1) {
+                            return true;
+                        }
                     }
                     return false;
                 }),

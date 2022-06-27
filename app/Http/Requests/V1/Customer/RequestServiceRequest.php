@@ -30,15 +30,17 @@ class RequestServiceRequest extends RequestAbstract
         return [
             'service_id' => [
                 'required',
-                Rule::exists('services','id')->where(function ($query) {
+                Rule::exists('services', 'id')->where(function ($query) {
                     $query->where('agency_id', app('agency')->id)->where('status', 1);
                 })
             ],
             'recurring_type' => [
                 Rule::requiredIf(function () {
-                    $service = Service::where('id', $this->service_id)->where('agency_id', app('agency')->id)->first();
-                    if (!empty($service) && $service->subscription_type == 1) {
-                        return true;
+                    if (!empty($this->service_id)) {
+                        $service = Service::where('id', $this->service_id)->where('agency_id', app('agency')->id)->first();
+                        if (!empty($service) && $service->subscription_type == 1) {
+                            return true;
+                        }
                     }
                     return false;
                 }),
