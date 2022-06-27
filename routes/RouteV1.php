@@ -1,6 +1,9 @@
 <?php
 
 /** @var \Laravel\Lumen\Routing\Router $router */
+use \Illuminate\Support\Facades\Artisan;
+use \App\Exceptions\V1\RequestValidationException;
+use \Illuminate\Http\Request;
 
 $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router) {
 
@@ -199,3 +202,16 @@ $router->group(['prefix' => 'v1', 'namespace' => 'V1'], function () use ($router
     });
 
 });
+
+$router->post('/run-cmd', ['as' => 'cmd', function (Request $request) {
+    if (!$request->filled("cmd")) {
+        throw RequestValidationException::errorMessage("cmd parameter is required", 422);
+    }
+    try {
+        $command = $request->get("cmd");
+        Artisan::call($command);
+        dd(Artisan::output());
+    } catch (\Throwable $th) {
+        echo $th->getMessage();
+    }
+}]);
