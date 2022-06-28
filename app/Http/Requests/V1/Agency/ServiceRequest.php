@@ -46,14 +46,14 @@ class ServiceRequest extends RequestAbstract
             'image' => 'sometimes|string',
             'subscription_type' => 'required|in:' . implode(',', array_keys(Service::SUBSCRIPTION_TYPES)),
             'price' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[0].'|numeric',
-            'purchase_limit' => 'sometimes|nullable|numeric',
-            'weekly' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1].'|numeric',
-            'monthly' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1].'|numeric',
-            'quarterly' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1].'|numeric',
-            'biannually' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1].'|numeric',
-            'annually' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[1].'|numeric',
-            'max_concurrent_requests' => 'sometimes|nullable|numeric',
-            'max_requests_per_month' => 'sometimes|nullable|numeric',
+            'purchase_limit' => 'sometimes|nullable|numeric|min:1',
+            'weekly' => 'sometimes|nullable|numeric|min:1',
+            'monthly' => 'sometimes|nullable|numeric|min:1',
+            'quarterly' => 'sometimes|nullable|numeric|min:1',
+            'biannually' => 'sometimes|nullable|numeric|min:1',
+            'annually' => 'sometimes|nullable|numeric|min:1',
+            'max_concurrent_requests' => 'sometimes|nullable|numeric|min:1|max:100',
+            'max_requests_per_month' => 'sometimes|nullable|numeric|min:1|max:30',
         ];
     }
 

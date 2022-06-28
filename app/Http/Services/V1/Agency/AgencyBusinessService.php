@@ -36,7 +36,7 @@ class AgencyBusinessService
         if ($request->has('image') && !empty($request->image)) {
             $service->image = CloudinaryService::upload($request->image)->secureUrl;
         }
-        $service->subscription_type = Service::SUBSCRIPTION_TYPES[$request->subscription_type];
+        $service->subscription_type = Service::SUBSCRIPTION_TYPES[clean($request->subscription_type)];
         $service->catalog_status = Service::CATALOG_STATUS['pending'];
         $service->status = Service::STATUS['pending'];
         $service->agency_id = app('agency')->id;
