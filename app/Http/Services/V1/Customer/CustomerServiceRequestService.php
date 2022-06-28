@@ -102,16 +102,15 @@ class CustomerServiceRequestService
     public static function changeStatus(CustomerServiceRequest $requestService, Request $request)
     {
         $requestService->status = CustomerServiceRequest::STATUS[trim(strtolower($request->status))];
-        if ($requestService->is_recurring) {
+        if ($requestService->is_recurring && in_array($requestService->status,  array_slice(CustomerServiceRequest::STATUS,0,3,true))) {
             if ($requestService->status == CustomerServiceRequest::STATUS['active']) {
-                $currRecurringDate = empty($requestService->next_recurring_date) ? date('Y-m-d') : date('Y-m-d', strtotime($requestService->next_recurring_date));
-                if (empty($requestService->expiry_date)) {
-                    $requestService->next_recurring_date = recurringInvoiceDate($requestService->recurring_type, $currRecurringDate);
-                } elseif ($requestService->expiry_date <= date('Y-m-d') . " 00:00:00") {
+                if (empty($requestService->next_recurring_date)) {
+                    $requestService->next_recurring_date = recurringInvoiceDate($requestService->recurring_type);
+                } elseif (!empty($requestService->expiry_date) && $requestService->expiry_date <= date('Y-m-d') . " 00:00:00") {
                     $service = ServiceBusinessService::first($requestService->service_id);
                     $customerInvoice = CustomerInvoiceService::create($requestService, $service);
                     $trancsaction = TransactionService::create($customerInvoice, 'card');
-                    $requestService->next_recurring_date = recurringInvoiceDate($requestService->recurring_type, $currRecurringDate);
+                    $requestService->next_recurring_date = recurringInvoiceDate($requestService->recurring_type);
                 }
             } elseif (!empty($requestService->next_recurring_date)) {
                 $requestService->expiry_date = $requestService->next_recurring_date;

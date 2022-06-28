@@ -103,7 +103,7 @@ class CustomerServiceRequestService
     public static function changeStatus(CustomerServiceRequest $requestService, Request $request)
     {
         $requestService->status = CustomerServiceRequest::STATUS[trim(strtolower($request->status))];
-        if ($requestService->is_recurring) {
+        if ($requestService->is_recurring && in_array($requestService->status,  array_slice(CustomerServiceRequest::STATUS,0,3,true))) {
             if ($requestService->status == CustomerServiceRequest::STATUS['active']) {
                 if (empty($requestService->next_recurring_date)) {
                     $requestService->next_recurring_date = recurringInvoiceDate($requestService->recurring_type);
