@@ -3,9 +3,11 @@
 namespace App\Http\Businesses\V1\Agency;
 
 use App\Http\Services\V1\Agency\AgencyBusinessService;
+use App\Http\Services\V1\Agency\CustomerInvoiceItemService;
 use App\Http\Services\V1\Agency\CustomerInvoiceService;
 use App\Http\Services\V1\Agency\CustomerServiceRequestService;
 use App\Http\Services\V1\Agency\TransactionService;
+use App\Models\CustomerInvoice;
 use Illuminate\Http\Request;
 
 class InvoiceBusiness
@@ -23,9 +25,15 @@ class InvoiceBusiness
     public static function store(Request $request)
     {
         $data = $request->all();
-        $service = AgencyBusinessService::first($data['service_id']);
-        $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
-        $invoice = CustomerInvoiceService::create($customerServiceRequest,$service);
+        if ($request->invoice_type == CustomerInvoice::TYPES[0]) {
+            $service = AgencyBusinessService::first($data['service_id']);
+            $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
+            $invoice = CustomerInvoiceService::create($customerServiceRequest, $service);
+        } else {
+            $invoice = CustomerInvoiceService::createForInvoiceItem($request);
+            $netAmount = CustomerInvoiceItemService::createMany($invoice, $request);
+            CustomerInvoiceService::updateForInvoiceItem($invoice, $netAmount);
+        }
         $transaction = TransactionService::create($invoice, 'card');
     }
 

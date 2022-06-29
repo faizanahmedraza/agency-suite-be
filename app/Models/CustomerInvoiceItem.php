@@ -5,19 +5,17 @@ namespace App\Models;
 use App\Http\Traits\UserAuditTrait;
 use Illuminate\Database\Eloquent\Model;
 
-class CustomerInvoice extends Model
+class CustomerInvoiceItem extends Model
 {
     use UserAuditTrait;
 
-    protected $table = "customer_invoices";
+    protected $table = "customer_invoice_items";
 
     protected $guarded = [];
 
-    const TYPES = ['service','custom'];
-
-    public function invoiceItems()
+    public function invoice()
     {
-        return $this->hasMany(CustomerInvoiceItem::class,'invoice_id','id');
+        return $this->belongsTo(CustomerInvoice::class, 'invoice_id', 'id');
     }
 
     public function agency()
@@ -28,10 +26,5 @@ class CustomerInvoice extends Model
     public function customer()
     {
         return $this->belongsTo(Customer::class, 'customer_id', 'user_id');
-    }
-
-    public function serviceRequest()
-    {
-        return $this->belongsTo(CustomerServiceRequest::class, 'customer_service_request_id', 'id');
     }
 }

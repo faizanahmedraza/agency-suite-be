@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\V1\Agency;
 
+use App\Models\CustomerInvoice;
 use App\Models\CustomerServiceRequest;
 use App\Models\Service;
 use Illuminate\Validation\Rule;
@@ -28,8 +29,17 @@ class InvoiceRequest extends RequestAbstract
     public function rules(): array
     {
         return [
+            'invoice_type' => 'required|in:' . implode(',', CustomerInvoice::TYPES),
             'service_id' => [
-                'required',
+                Rule::requiredIf(function () {
+                    $type = $this->invoice_type;
+                    if (!empty($type)) {
+                        if ($type == CustomerInvoice::TYPES[0]) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }),
                 Rule::exists('services', 'id')->where(function ($query) {
                     $query->where('agency_id', app('agency')->id);
                 })
@@ -52,9 +62,36 @@ class InvoiceRequest extends RequestAbstract
                 }),
             ],
             'quantity' => 'sometimes|nullable|numeric',
-            'intake_form' => "required|array",
+            'intake_form' => [
+                Rule::requiredIf(function () {
+                    $type = $this->invoice_type;
+                    if (!empty($type)) {
+                        if ($type == CustomerInvoice::TYPES[0]) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }),
+                'array'
+            ],
             'intake_form.0.title' => "required|string",
             'intake_form.0.description' => "nullable|string",
+            'invoice_items' => [
+                Rule::requiredIf(function () {
+                    $type = $this->invoice_type;
+                    if (!empty($type)) {
+                        if ($type == CustomerInvoice::TYPES[0]) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }),
+                'array'
+            ],
+            'invoice_items.*.name' => 'required|string',
+            'invoice_items.*.rate' => 'required|numeric',
+            'invoice_items.*.quantity' => 'required|numeric',
+            'invoice_items.*.discount' => 'sometimes|nullable|numeric',
         ];
     }
 

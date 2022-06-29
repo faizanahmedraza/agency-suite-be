@@ -48,6 +48,29 @@ class CustomerInvoiceService
         return $customerInvoice;
     }
 
+    public static function createForInvoiceItem(Request $request)
+    {
+        $customerInvoice = new CustomerInvoice();
+        $customerInvoice->customer_id = $request->customer_id;
+        $customerInvoice->agency_id = app('agency')->id;
+        $customerInvoice->created_by = auth()->id();
+        $customerInvoice->save();
+        if (!$customerInvoice) {
+            throw FailureException::serverError();
+        }
+        return $customerInvoice;
+    }
+
+    public static function updateForInvoiceItem(CustomerInvoice $customerInvoice, $amount)
+    {
+        $customerInvoice->gross_amount = $amount;
+        $customerInvoice->amount = $amount;
+        if (!empty($customerInvoice->discount)) {
+            $customerInvoice->amount = $amount - $customerInvoice->discount;
+        }
+        $customerInvoice->save();
+    }
+
     public static function get(Request $request)
     {
         $invoices = CustomerInvoice::query()->with(['agency', 'customer', 'serviceRequest', 'serviceRequest.service']);
