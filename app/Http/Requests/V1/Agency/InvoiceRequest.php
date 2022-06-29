@@ -61,7 +61,7 @@ class InvoiceRequest extends RequestAbstract
                     return false;
                 }),
             ],
-            'quantity' => 'sometimes|nullable|numeric',
+            'quantity' => 'sometimes|nullable|numeric|min:1',
             'intake_form' => [
                 Rule::requiredIf(function () {
                     $type = $this->invoice_type;
@@ -88,10 +88,37 @@ class InvoiceRequest extends RequestAbstract
                 }),
                 'array'
             ],
-            'invoice_items.*.name' => 'required|string',
-            'invoice_items.*.rate' => 'required|numeric',
-            'invoice_items.*.quantity' => 'required|numeric',
-            'invoice_items.*.discount' => 'sometimes|nullable|numeric',
+            'invoice_items.*.name' => [
+                Rule::requiredIf(function () {
+                $type = $this->invoice_type;
+                if (!empty($type)) {
+                    if ($type == CustomerInvoice::TYPES[0]) {
+                        return true;
+                    }
+                }
+                return false;
+            }), 'string'],
+            'invoice_items.*.rate' => [
+                Rule::requiredIf(function () {
+                    $type = $this->invoice_type;
+                    if (!empty($type)) {
+                        if ($type == CustomerInvoice::TYPES[0]) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }), 'numeric','min:1'],
+            'invoice_items.*.quantity' => [
+                Rule::requiredIf(function () {
+                    $type = $this->invoice_type;
+                    if (!empty($type)) {
+                        if ($type == CustomerInvoice::TYPES[0]) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }), 'numeric','min:1'],
+            'invoice_items.*.discount' => 'sometimes|nullable|numeric|min:1',
         ];
     }
 

@@ -53,6 +53,7 @@ class CustomerInvoiceService
         $customerInvoice = new CustomerInvoice();
         $customerInvoice->customer_id = $request->customer_id;
         $customerInvoice->agency_id = app('agency')->id;
+        $customerInvoice->amount = 1;
         $customerInvoice->created_by = auth()->id();
         $customerInvoice->save();
         if (!$customerInvoice) {

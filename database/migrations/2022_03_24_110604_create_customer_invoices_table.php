@@ -17,7 +17,7 @@ class CreateCustomerInvoicesTable extends Migration
             $table->id();
             $table->integer('agency_id');
             $table->integer('customer_id');
-            $table->integer('customer_service_request_id');
+            $table->integer('customer_service_request_id')->nullable();
             $table->double('amount');
             $table->boolean('is_paid')->default(0);
             $table->timestamps();
