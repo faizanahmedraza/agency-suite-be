@@ -28,6 +28,7 @@ class CustomersServiceRequestResource extends Resource
             'intake_form' => $intakeForm,
             'invoice' => $this->whenLoaded('invoice') ?? '',
             'created_at' => $this->created_at ?? '',
+            'next_recurring_date' => $this->next_recurring_date ?? '',
         ];
     }
 }

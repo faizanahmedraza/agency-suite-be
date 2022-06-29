@@ -23,6 +23,7 @@ class CustomersServiceRequestListResource extends Resource
             'quantity' => $this->quantity ?? '',
             'status' =>$status[$this->status] ?? '',
             'created_at' => $this->created_at ?? '',
+            'next_recurring_date' => $this->next_recurring_date ?? '',
         ];
     }
 }
