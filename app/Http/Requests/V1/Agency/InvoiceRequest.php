@@ -74,13 +74,24 @@ class InvoiceRequest extends RequestAbstract
                 }),
                 'array'
             ],
-            'intake_form.0.title' => "required|string",
+            'intake_form.0.title' => [
+                Rule::requiredIf(function () {
+                    $type = $this->invoice_type;
+                    if (!empty($type)) {
+                        if ($type == CustomerInvoice::TYPES[0]) {
+                            return true;
+                        }
+                    }
+                    return false;
+                }),
+                "string"
+            ],
             'intake_form.0.description' => "nullable|string",
             'invoice_items' => [
                 Rule::requiredIf(function () {
                     $type = $this->invoice_type;
                     if (!empty($type)) {
-                        if ($type == CustomerInvoice::TYPES[0]) {
+                        if ($type == CustomerInvoice::TYPES[1]) {
                             return true;
                         }
                     }
@@ -92,7 +103,7 @@ class InvoiceRequest extends RequestAbstract
                 Rule::requiredIf(function () {
                 $type = $this->invoice_type;
                 if (!empty($type)) {
-                    if ($type == CustomerInvoice::TYPES[0]) {
+                    if ($type == CustomerInvoice::TYPES[1]) {
                         return true;
                     }
                 }
@@ -102,7 +113,7 @@ class InvoiceRequest extends RequestAbstract
                 Rule::requiredIf(function () {
                     $type = $this->invoice_type;
                     if (!empty($type)) {
-                        if ($type == CustomerInvoice::TYPES[0]) {
+                        if ($type == CustomerInvoice::TYPES[1]) {
                             return true;
                         }
                     }
@@ -112,7 +123,7 @@ class InvoiceRequest extends RequestAbstract
                 Rule::requiredIf(function () {
                     $type = $this->invoice_type;
                     if (!empty($type)) {
-                        if ($type == CustomerInvoice::TYPES[0]) {
+                        if ($type == CustomerInvoice::TYPES[1]) {
                             return true;
                         }
                     }
