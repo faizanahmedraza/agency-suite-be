@@ -75,11 +75,13 @@ class InvoiceController extends Controller
      *
      * @header Domain string required
      *
-     * @bodyParam service_id integer required
+     * @bodyParam invoice_type integer required ex: custom/service
+     * @bodyParam service_id integer required if invoice_type = service
      * @bodyParam customer_id integer required
      * @bodyParam recurring_type string optional if one-off Example : weekly,monthly,quarterly,biannually,annually
-     * @bodyParam intake_form array required Example :{key1:value1,key2:value2}
-     * @bodyParam quantity array Example :2
+     * @bodyParam intake_form array required if invoice_type = service Example :{key1:value1,key2:value2}
+     * @bodyParam quantity integer required if invoice_type = service Example :2
+     * @bodyParam invoice_items array Example :[]
      *
      * @responseFile 200 responses/SuccessResponse.json
      * @responseFile 422 responses/ValidationResponse.json

@@ -23,14 +23,14 @@ class CustomerInvoiceItemService
         $invoiceItems = [];
         $netTotalAmount = 0;
         foreach ($request->invoice_items as $item) {
-            $discount = empty($item->discount) ? 0.00 : $item->discount;
-            $grossAmount = $item->rate * $item->quantity;
+            $discount = empty($item['discount']) ? 0 : $item['discount'];
+            $grossAmount = $item['rate'] * $item['quantity'];
             $netAmount = $grossAmount - $discount;
             $netTotalAmount += $netAmount;
             $invoiceItems[] = new CustomerInvoiceItem([
-                'name' => $item->name,
-                'rate' => $item->rate,
-                'quantity' => $item->quantity,
+                'name' => $item['name'],
+                'rate' => $item['rate'],
+                'quantity' => $item['quantity'],
                 'discount' => $discount,
                 'gross_amount' => $grossAmount,
                 'net_amount' => $netAmount,

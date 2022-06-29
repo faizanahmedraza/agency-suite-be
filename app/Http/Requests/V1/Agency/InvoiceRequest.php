@@ -129,7 +129,7 @@ class InvoiceRequest extends RequestAbstract
                     }
                     return false;
                 }), 'numeric','min:1'],
-            'invoice_items.*.discount' => 'sometimes|nullable|numeric|min:1',
+            'invoice_items.*.discount' => 'sometimes|nullable|numeric|min:0',
         ];
     }
 
