@@ -32,7 +32,7 @@ class AgencyBusinessService
     {
         $service = new Service();
         $service->name = $request->name;
-        $service->description = $request->description;
+        $service->description = serialize($request->description);
         if ($request->has('image') && !empty($request->image)) {
             $service->image = CloudinaryService::upload($request->image)->secureUrl;
         }

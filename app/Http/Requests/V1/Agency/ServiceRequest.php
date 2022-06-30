@@ -42,7 +42,7 @@ class ServiceRequest extends RequestAbstract
     {
         return [
             'name' => 'required|string|max:150',
-            'description' => 'required|string',
+            'description' => 'required|string|max:10000',
             'image' => 'sometimes|string',
             'subscription_type' => 'required|in:' . implode(',', array_keys(Service::SUBSCRIPTION_TYPES)),
             'price' => 'required_if:subscription_type,'.array_keys(Service::SUBSCRIPTION_TYPES)[0].'|numeric',

@@ -18,7 +18,7 @@ class ServiceResource extends Resource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'description' => $this->description,
+            'description' => unserialize($this->description),
             'image' => $this->image,
             'subscription_type' => array_search($this->subscription_type,Service::SUBSCRIPTION_TYPES),
             'catalog_status' => array_search($this->catalog_status, Service::CATALOG_STATUS),
