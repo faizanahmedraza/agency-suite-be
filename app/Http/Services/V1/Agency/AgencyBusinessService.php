@@ -76,7 +76,7 @@ class AgencyBusinessService
             $service->image = CloudinaryService::upload($request->image)->secureUrl;
         }
         $service->name = $request->name;
-        $service->description = $request->description;
+        $service->description = serialize($request->description);
         $service->subscription_type = Service::SUBSCRIPTION_TYPES[$request->subscription_type];
         $service->agency_id = app('agency')->id;
         $service->save();
