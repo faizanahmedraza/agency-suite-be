@@ -119,6 +119,18 @@ if (!function_exists('recurringInvoiceDate')) {
     }
 }
 
+if (!function_exists('returnIfSerialize')) {
+    function returnIfSerialize($str)
+    {
+        $data = @unserialize($str);
+        if ($data !== false) {
+            return $data;
+        } else {
+            return false;
+        }
+    }
+}
+
 function getIds($value)
 {
     return array_map('intval', explode(',', $value));
