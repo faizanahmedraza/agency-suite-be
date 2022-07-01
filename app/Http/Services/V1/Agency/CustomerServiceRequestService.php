@@ -112,6 +112,7 @@ class CustomerServiceRequestService
                     $customerInvoice = CustomerInvoiceService::create($requestService, $service);
                     $trancsaction = TransactionService::create($customerInvoice, 'card');
                     $requestService->next_recurring_date = recurringInvoiceDate($requestService->recurring_type);
+                    $requestService->expiry_date = null;
                 }
             } elseif (!empty($requestService->next_recurring_date)) {
                 $requestService->expiry_date = $requestService->next_recurring_date;
