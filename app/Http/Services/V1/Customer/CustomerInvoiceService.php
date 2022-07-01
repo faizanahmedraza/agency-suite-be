@@ -74,7 +74,7 @@ class CustomerInvoiceService
             : $invoices->paginate(\pageLimit($request));
     }
 
-    public static function first($id, $with = ['agency', 'serviceRequest', 'serviceRequest.service', 'serviceRequest.service.priceTypes'], $bypass = false)
+    public static function first($id, $with = ['agency', 'serviceRequest','invoiceItems', 'serviceRequest.service', 'serviceRequest.service.priceTypes'], $bypass = false)
     {
         $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
         if (!$invoice && !$bypass) {

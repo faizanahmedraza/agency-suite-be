@@ -4,7 +4,7 @@ namespace App\Http\Resources\V1\Customer;
 
 use Illuminate\Http\Resources\Json\JsonResource as Resource;
 
-class InvoiceResource extends Resource
+class InvoiceItemResource extends Resource
 {
     /**
      * Transform the resource into an array.
@@ -16,15 +16,12 @@ class InvoiceResource extends Resource
     {
         return [
             'id' => $this->id ?? "",
-            'invoice_number' => "INV-".substr('0000000'.$this->id,-7) ?? "",
-            'customer_service_request' => new CustomersServiceRequestResource($this->whenLoaded('serviceRequest')),
-            'invoice_items' => InvoiceItemResource::collection($this->whenLoaded('invoiceItems')),
-            'is_paid' => $this->is_paid ? "yes" : "no",
-            'paid_by' => $this->paid_by ?? "",
-            'paid_at' => $this->paid_at ?? "",
+            'name' => $this->name ?? "",
+            'rate' => $this->rate ?? "",
+            'quantity' =>  $this->quantity ?? "",
             'discount' =>  $this->discount ?? "",
             'gross_amount' =>  $this->gross_amount ?? "",
-            'amount' =>  $this->amount ?? "",
+            'net_amount' =>  $this->net_amount ?? "",
             'created_at' =>  $this->created_at ?? "",
         ];
     }
