@@ -30,10 +30,10 @@ class CustomerInvoiceItemService
             $invoiceItems[] = new CustomerInvoiceItem([
                 'name' => $item['name'],
                 'rate' => $item['rate'],
-                'quantity' => $item['quantity'],
-                'discount' => $discount,
-                'gross_amount' => $grossAmount,
-                'net_amount' => $netAmount,
+                'quantity' => (int)$item['quantity'],
+                'discount' => (int)$discount,
+                'gross_amount' => floatval($grossAmount),
+                'net_amount' => floatval($netAmount),
                 'agency_id' => app('agency')->id,
                 'customer_id' => $request->customer_id,
             ]);

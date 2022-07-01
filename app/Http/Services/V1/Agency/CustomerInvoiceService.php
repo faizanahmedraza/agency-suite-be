@@ -64,10 +64,10 @@ class CustomerInvoiceService
 
     public static function updateForInvoiceItem(CustomerInvoice $customerInvoice, $amount)
     {
-        $customerInvoice->gross_amount = $amount;
-        $customerInvoice->amount = $amount;
+        $customerInvoice->gross_amount = floatval($amount);
+        $customerInvoice->amount = floatval($amount);
         if (!empty($customerInvoice->discount)) {
-            $customerInvoice->amount = $amount - $customerInvoice->discount;
+            $customerInvoice->amount = floatval($amount) - (int)$customerInvoice->discount;
         }
         $customerInvoice->save();
     }
