@@ -103,7 +103,7 @@ class CustomerInvoiceService
             : $invoices->paginate(\pageLimit($request));
     }
 
-    public static function first($id, $with = ['agency', 'customer', 'serviceRequest','invoiceItems','serviceRequest.service', 'serviceRequest.service.priceTypes'])
+    public static function first($id, $with = ['agency', 'customer', 'serviceRequest', 'invoiceItems', 'serviceRequest.service', 'serviceRequest.service.priceTypes'])
     {
         $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->first();
         if (!$invoice) {
@@ -159,9 +159,11 @@ class CustomerInvoiceService
             $invoice->updated_by = auth()->id();
             $invoice->save();
 
-            $serviceRequest = new Request();
-            $serviceRequest->replace(['status' => 'active']);
-            RequestServiceBusiness::changeStatus($serviceRequest, $invoice->customer_service_request_id);
+            if (!empty($invoice->customer_service_request_id)) {
+                $serviceRequest = new Request();
+                $serviceRequest->replace(['status' => 'active']);
+                RequestServiceBusiness::changeStatus($serviceRequest, $invoice->customer_service_request_id);
+            }
             $transacData = new \stdClass();
             $transacData->id = $invoice->id;
             $transacData->customer_id = $invoice->customer_id;

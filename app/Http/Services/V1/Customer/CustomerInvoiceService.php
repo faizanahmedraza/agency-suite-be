@@ -74,7 +74,7 @@ class CustomerInvoiceService
             : $invoices->paginate(\pageLimit($request));
     }
 
-    public static function first($id, $with = ['agency', 'serviceRequest','invoiceItems', 'serviceRequest.service', 'serviceRequest.service.priceTypes'], $bypass = false)
+    public static function first($id, $with = ['agency', 'serviceRequest', 'invoiceItems', 'serviceRequest.service', 'serviceRequest.service.priceTypes'], $bypass = false)
     {
         $invoice = CustomerInvoice::with($with)->where('id', $id)->where('agency_id', app('agency')->id)->where('customer_id', \auth()->id())->first();
         if (!$invoice && !$bypass) {
@@ -109,9 +109,11 @@ class CustomerInvoiceService
             $invoice->updated_by = auth()->id();
             $invoice->save();
 
-            $serviceRequest = new Request();
-            $serviceRequest->replace(['status' => 'active']);
-            RequestServiceBusiness::changeStatus($invoice->customer_service_request_id, $serviceRequest);
+            if (!empty($invoice->customer_service_request_id)) {
+                $serviceRequest = new Request();
+                $serviceRequest->replace(['status' => 'active']);
+                RequestServiceBusiness::changeStatus($invoice->customer_service_request_id, $serviceRequest);
+            }
             $transacData = new \stdClass();
             $transacData->id = $invoice->id;
             $transacData->card_id = $cardDetail->id;
