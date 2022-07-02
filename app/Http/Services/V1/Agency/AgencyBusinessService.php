@@ -30,6 +30,10 @@ class AgencyBusinessService
 
     public static function create(Request $request)
     {
+        if (isset(json_decode($request->description, true)['blocks']) && empty(json_decode($request->description, true)['blocks'][0]['text'])) {
+            throw RequestValidationException::errorMessage('Description field is required.');
+        }
+
         $service = new Service();
         $service->name = $request->name;
         $service->description = serialize($request->description);
@@ -72,6 +76,9 @@ class AgencyBusinessService
 
     public static function update(Service $service, Request $request)
     {
+        if (isset(json_decode($request->description, true)['blocks']) && empty(json_decode($request->description, true)['blocks'][0]['text'])) {
+            throw RequestValidationException::errorMessage('Description field is required.');
+        }
         if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['https', 'cloudinary'])) {
             $service->image = CloudinaryService::upload($request->image)->secureUrl;
         }
@@ -182,7 +189,7 @@ class AgencyBusinessService
         $service->save();
     }
 
-    public static function toggleStatus(Service $service,Request $request)
+    public static function toggleStatus(Service $service, Request $request)
     {
         $service->status = Service::STATUS[trim(strtolower($request->status))];
         $service->save();
