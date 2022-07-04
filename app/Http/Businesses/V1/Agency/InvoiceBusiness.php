@@ -2,6 +2,7 @@
 
 namespace App\Http\Businesses\V1\Agency;
 
+use App\Exceptions\V1\RequestValidationException;
 use App\Http\Services\V1\Agency\AgencyBusinessService;
 use App\Http\Services\V1\Agency\CustomerInvoiceItemService;
 use App\Http\Services\V1\Agency\CustomerInvoiceService;
@@ -27,6 +28,15 @@ class InvoiceBusiness
         $data = $request->all();
         if ($request->invoice_type == CustomerInvoice::TYPES[0]) {
             $service = AgencyBusinessService::first($data['service_id']);
+            if ($service->subscription_type == 1) {
+                $maxReq = $service->priceTypes->max_requests_per_month;
+            } else {
+                $maxReq = $service->priceTypes->purchase_limit;
+            }
+            $customerRequests = CustomerServiceRequestService::getByCustomer($data['customer_id'], ['service_id' => $data['service_id']]);
+            if (!is_null($maxReq) && count($customerRequests) == $maxReq) {
+                throw RequestValidationException::errorMessage("Request limit reached.");
+            }
             $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
             $invoice = CustomerInvoiceService::create($customerServiceRequest, $service);
         } else {
