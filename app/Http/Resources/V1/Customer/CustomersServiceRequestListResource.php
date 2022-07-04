@@ -18,7 +18,7 @@ class CustomersServiceRequestListResource extends Resource
         $status=array_flip(CustomerServiceRequest::STATUS);
         return [
             'id' => $this->id ?? '',
-            'service_name' => optional($this->service)->name ?? '',
+            'service' => new ServiceResource($this->whenLoaded('service')),
             'is_recurring' => $this->is_recurring ?? '',
             'recurring_type' => $this->recurring_type ?? '',
             'quantity' => $this->quantity ?? '',
