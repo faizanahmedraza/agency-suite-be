@@ -28,15 +28,7 @@ class InvoiceBusiness
         $data = $request->all();
         if ($request->invoice_type == CustomerInvoice::TYPES[0]) {
             $service = AgencyBusinessService::first($data['service_id']);
-            if ($service->subscription_type == 1) {
-                $maxReq = $service->priceTypes->max_requests_per_month;
-            } else {
-                $maxReq = $service->priceTypes->purchase_limit;
-            }
-            $customerRequests = CustomerServiceRequestService::getByCustomer($data['customer_id'], ['service_id' => $data['service_id']]);
-            if (!is_null($maxReq) && count($customerRequests) == $maxReq) {
-                throw RequestValidationException::errorMessage("Request limit reached.");
-            }
+            RequestServiceBusiness::concurrentRequests($service,$data);
             $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
             $invoice = CustomerInvoiceService::create($customerServiceRequest, $service);
         } else {

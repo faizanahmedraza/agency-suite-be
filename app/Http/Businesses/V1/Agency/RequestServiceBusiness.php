@@ -28,28 +28,18 @@ class RequestServiceBusiness
         $customer = CustomerService::first($data['customer_id']);
 
         if ($customer->status == 2) {
-            throw RequestValidationException::errorMessage('The customer you selected is blocked, if you would like quicker access please contact support',422);
+            throw RequestValidationException::errorMessage('The customer you selected is blocked, if you would like quicker access please contact support', 422);
         }
 
         if ($service->status == 2) {
-            throw ServerException::errorMessage('The service you selected is blocked, if you would like quicker access please contact support',422);
+            throw ServerException::errorMessage('The service you selected is blocked, if you would like quicker access please contact support', 422);
         }
 
         if ($service->subscription_type == 1 && !isset($data['recurring_type'])) {
             throw RequestValidationException::errorMessage("Recurring type is required.");
         }
 
-        if ($service->subscription_type == 1) {
-            $maxReq = $service->priceTypes->max_requests_per_month;
-        } else {
-            $maxReq = $service->priceTypes->purchase_limit;
-        }
-
-        $customerRequests = CustomerServiceRequestService::getByCustomer($data['customer_id'], ['service_id' => $data['service_id']]);
-
-        if (!is_null($maxReq) && count($customerRequests) == $maxReq) {
-            throw RequestValidationException::errorMessage("Request limit reached.");
-        }
+        self::concurrentRequests($service, $data);
 
         $customerServiceRequest = CustomerServiceRequestService::create($data, $service);
 
@@ -75,5 +65,25 @@ class RequestServiceBusiness
             throw RequestValidationException::errorMessage('This service cannot be cancelled. It is already completed.');
         }
         CustomerServiceRequestService::changeStatus($requestService, $request);
+    }
+
+    public static function concurrentRequests($service, $data)
+    {
+        $maxMonthReq = null;
+        $customerMonthRequests = null;
+        $customerRequests = null;
+        if ($service->subscription_type == 1) {
+            $maxMonthReq = $service->priceTypes->max_requests_per_month;
+            $maxReq = $service->priceTypes->max_concurrent_requests;
+        } else {
+            $maxReq = $service->priceTypes->purchase_limit;
+        }
+        if (!is_null($maxMonthReq)) {
+            $customerMonthRequests = CustomerServiceRequestService::getCustomerByRequests($data['customer_id'], $data['service_id'], date('m'));
+        }
+        $customerRequests = CustomerServiceRequestService::getCustomerByRequests($data['customer_id'], $data['service_id'], null, date('Y'));
+        if ((!is_null($maxMonthReq) && $customerMonthRequests == $maxMonthReq) || (!is_null($maxReq) && $customerRequests == $maxReq)) {
+            throw RequestValidationException::errorMessage("Request limit reached.");
+        }
     }
 }

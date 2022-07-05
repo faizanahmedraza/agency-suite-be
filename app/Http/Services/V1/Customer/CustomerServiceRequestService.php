@@ -22,7 +22,7 @@ class CustomerServiceRequestService
         $customerServiceRequest->is_recurring = $service->subscription_type;
         $customerServiceRequest->quantity = !empty($data['quantity']) ? (int)$data['quantity'] : 1;
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
-        $customerServiceRequest->intake_form = json_encode(array_map('mapDescriptionSerialize',$data['intake_form']));
+        $customerServiceRequest->intake_form = json_encode(array_map('mapDescriptionSerialize', $data['intake_form']));
         $customerServiceRequest->created_by = auth()->id();
         if ($service->subscription_type == 1) {
             $customerServiceRequest->recurring_type = $data['recurring_type'];
@@ -85,22 +85,24 @@ class CustomerServiceRequestService
 
     }
 
-    public static function getByCustomer($where = [])
+    public static function getCustomerByRequests($serviceId, $month = null, $year = null)
     {
-        $service = CustomerServiceRequest::where('customer_id', Auth::id())
-            ->where('agency_id', app('agency')->id)->where($where)->get();
-
-        if (!$service) {
-            throw ModelException::dataNotFound();
+        $serviceRequest = CustomerServiceRequest::query()
+            ->where('customer_id', \auth()->id())
+            ->where('agency_id', app('agency')->id)->where('service_id', $serviceId);
+        if (!is_null($month)) {
+            $serviceRequest->whereMonth('created_at', $month);
         }
-
-        return $service;
+        if (!is_null($year)) {
+            $serviceRequest->whereYear('created_at', $year);
+        }
+        return $serviceRequest->count();
     }
 
     public static function changeStatus(CustomerServiceRequest $requestService, Request $request)
     {
         $requestService->status = CustomerServiceRequest::STATUS[trim(strtolower($request->status))];
-        if ($requestService->is_recurring && in_array($requestService->status,  array_slice(CustomerServiceRequest::STATUS,0,3,true))) {
+        if ($requestService->is_recurring && in_array($requestService->status, array_slice(CustomerServiceRequest::STATUS, 0, 3, true))) {
             if ($requestService->status == CustomerServiceRequest::STATUS['active']) {
                 if (empty($requestService->next_recurring_date)) {
                     $requestService->next_recurring_date = recurringInvoiceDate($requestService->recurring_type);

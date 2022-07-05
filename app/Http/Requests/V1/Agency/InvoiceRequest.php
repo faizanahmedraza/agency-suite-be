@@ -141,6 +141,16 @@ class InvoiceRequest extends RequestAbstract
     public function messages(): array
     {
         return [
+            'invoice_items.*.name.required' => "The name field is required.",
+            'invoice_items.*.name.string' => "Each name must be a string.",
+            'invoice_items.*.rate.required' => "The rate field is required.",
+            'invoice_items.*.rate.numeric' => "Each rate must be a number.",
+            'invoice_items.*.rate.min' => "Each rate must be at least 1.",
+            'invoice_items.*.quantity.required' => "The quantity field is required.",
+            'invoice_items.*.quantity.numeric' => "Each quantity must be a number.",
+            'invoice_items.*.quantity.min' => "Each quantity must be at least 1.",
+            'invoice_items.*.discount.numeric' => "Each discount must be a number.",
+            'invoice_items.*.discount.min' => "Each discount must be at least 0.",
             'intake_form.0.title.required' => "The intake form title field is required.",
             'intake_form.0.title.string' => "The intake form title must be a string.",
             'intake_form.0.description.string' => "The intake form description must be a string.",
