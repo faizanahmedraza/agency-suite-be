@@ -24,7 +24,7 @@ class CustomersServiceRequestResource extends Resource
             'recurring_type' => $this->recurring_type ?? '',
             'status' =>$status[$this->status] ?? '',
             'quantity' => $this->quantity ?? '',
-            'intake_form' => $intakeForm,
+            'intake_form' => array_map('mapDescriptionUnSerialize',$intakeForm),
             'invoice' => $this->whenLoaded('invoice') ?? '',
             'created_at' => $this->created_at ?? '',
             'next_recurring_date' => $this->next_recurring_date ?? '',

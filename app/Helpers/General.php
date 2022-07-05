@@ -131,6 +131,29 @@ if (!function_exists('returnIfSerialize')) {
     }
 }
 
+if (!function_exists('mapDescriptionSerialize')) {
+    function mapDescriptionSerialize($data)
+    {
+        if (isset($data['description'])) {
+            $data['description'] = serialize($data['description']);
+        }
+        return $data;
+    }
+}
+
+if (!function_exists('mapDescriptionUnSerialize')) {
+    function mapDescriptionUnSerialize($data)
+    {
+        if (isset($data['description'])) {
+            $str = @unserialize($data['description']);
+            if ($str !== false) {
+                $data['description'] = $str;
+            }
+        }
+        return $data;
+    }
+}
+
 function getIds($value)
 {
     return array_map('intval', explode(',', $value));

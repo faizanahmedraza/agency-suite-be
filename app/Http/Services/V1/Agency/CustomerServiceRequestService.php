@@ -19,9 +19,9 @@ class CustomerServiceRequestService
         $customerServiceRequest->customer_id = $data['customer_id'];
         $customerServiceRequest->service_id = $data['service_id'];
         $customerServiceRequest->is_recurring = $service->subscription_type;
-        $customerServiceRequest->quantity = $data['quantity'] ?? 1;
+        $customerServiceRequest->quantity = !empty($data['quantity']) ? (int)$data['quantity'] : 1;
         $customerServiceRequest->status = CustomerServiceRequest::STATUS['pending'];
-        $customerServiceRequest->intake_form = json_encode($data['intake_form']);
+        $customerServiceRequest->intake_form = json_encode(array_map('mapDescriptionSerialize',$data['intake_form']));
         $customerServiceRequest->created_by = auth()->id();
         if ($service->subscription_type == 1) {
             $customerServiceRequest->recurring_type = $data['recurring_type'];
