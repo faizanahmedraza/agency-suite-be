@@ -59,11 +59,11 @@ class AgencyBusinessService
             $servicePriceType->price = (int)$request->price;
             $servicePriceType->purchase_limit = !empty($request->purchase_limit) ? (int)$request->purchase_limit : null;
         } else {
-            $servicePriceType->weekly = (int)$request->weekly;
-            $servicePriceType->monthly = (int)$request->monthly;
-            $servicePriceType->quarterly = (int)$request->quarterly;
-            $servicePriceType->biannually = (int)$request->biannually;
-            $servicePriceType->annually = (int)$request->annually;
+            $servicePriceType->weekly = !empty($request->weekly) ? (int)$request->weekly : null;
+            $servicePriceType->monthly = !empty($request->monthly) ? (int)$request->monthly : null;
+            $servicePriceType->quarterly = !empty($request->quarterly) ? (int)$request->quarterly : null;
+            $servicePriceType->biannually = !empty($request->biannually) ? (int)$request->biannually : null;
+            $servicePriceType->annually = !empty($request->annually) ? (int)$request->annually : null;
             $servicePriceType->max_concurrent_requests = !empty($request->max_concurrent_requests) ? (int)$request->max_concurrent_requests : null;
             $servicePriceType->max_requests_per_month = !empty($request->max_requests_per_month) ? (int)$request->max_requests_per_month : null;
         }
@@ -110,11 +110,11 @@ class AgencyBusinessService
         } else {
             $servicePriceType->price = null;
             $servicePriceType->purchase_limit = null;
-            $servicePriceType->weekly = (int)$request->weekly;
-            $servicePriceType->monthly = (int)$request->monthly;
-            $servicePriceType->quarterly = (int)$request->quarterly;
-            $servicePriceType->biannually = (int)$request->biannually;
-            $servicePriceType->annually = (int)$request->annually;
+            $servicePriceType->weekly = !empty($request->weekly) ? (int)$request->weekly : null;
+            $servicePriceType->monthly = !empty($request->monthly) ? (int)$request->monthly : null;
+            $servicePriceType->quarterly = !empty($request->quarterly) ? (int)$request->quarterly : null;
+            $servicePriceType->biannually = !empty($request->biannually) ? (int)$request->biannually : null;
+            $servicePriceType->annually = !empty($request->annually) ? (int)$request->annually : null;
             $servicePriceType->max_concurrent_requests = !empty($request->max_concurrent_requests) ? (int)$request->max_concurrent_requests : null;
             $servicePriceType->max_requests_per_month = !empty($request->max_requests_per_month) ? (int)$request->max_requests_per_month : null;
         }
