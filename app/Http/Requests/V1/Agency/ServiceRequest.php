@@ -52,8 +52,8 @@ class ServiceRequest extends RequestAbstract
             'quarterly' => 'sometimes|nullable|numeric|min:1',
             'biannually' => 'sometimes|nullable|numeric|min:1',
             'annually' => 'sometimes|nullable|numeric|min:1',
-            'max_concurrent_requests' => 'sometimes|nullable|numeric|min:1|max:100',
             'max_requests_per_month' => 'sometimes|nullable|numeric|min:1|max:30',
+            'max_concurrent_requests' => 'sometimes|nullable|numeric|min:1|max:100|gte:max_requests_per_month',
         ];
     }
 
