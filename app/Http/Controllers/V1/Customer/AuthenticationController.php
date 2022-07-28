@@ -31,7 +31,7 @@ class AuthenticationController extends Controller
      * @header Client-ID string required
      * @header Client-Secret string required
      *
-     * @responseFile 200 responses/CustomerVerificationLinkResponse.json
+     * @responseFile 200 responses/V1/Customer/CustomerVerificationLinkResponse.json
      * @responseFile 422 responses/ValidationResponse.json
     */
     public function register(RegisterRequest $request)
