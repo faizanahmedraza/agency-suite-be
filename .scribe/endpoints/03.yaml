@@ -21,7 +21,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 2
+        example: 13
         type: integer
         custom: []
     queryParameters: []
@@ -51,7 +51,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 19
+        example: 3
         type: integer
         custom: []
     queryParameters: []
@@ -86,7 +86,7 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 9
+        example: 6
         type: integer
         custom: []
     queryParameters: []
@@ -123,14 +123,14 @@ endpoints:
         name: card_id
         description: ''
         required: true
-        example: 5
+        example: 19
         type: integer
         custom: []
       invoice_id:
         name: invoice_id
         description: ''
         required: true
-        example: 20
+        example: 17
         type: integer
         custom: []
     responses:
@@ -165,14 +165,14 @@ endpoints:
         name: is_paid
         description: 'boolean ex: true'
         required: false
-        example: quos
+        example: voluptatem
         type: string
         custom: []
       order_by:
         name: order_by
         description: 'ex: asc/desc'
         required: false
-        example: provident
+        example: aliquam
         type: string
         custom: []
       from_date:
@@ -193,21 +193,21 @@ endpoints:
         name: pagination
         description: ''
         required: false
-        example: true
+        example: false
         type: boolean
         custom: []
       page_limit:
         name: page_limit
         description: ''
         required: false
-        example: 8
+        example: 6
         type: integer
         custom: []
       page:
         name: page
         description: ''
         required: false
-        example: 4
+        example: 16
         type: integer
         custom: []
     queryParameters: []
@@ -237,41 +237,55 @@ endpoints:
     urlParameters: []
     queryParameters: []
     bodyParameters:
+      invoice_type:
+        name: invoice_type
+        description: 'ex: custom/service'
+        required: true
+        example: 12
+        type: integer
+        custom: []
       service_id:
         name: service_id
-        description: ''
+        description: 'if invoice_type = service'
         required: true
-        example: 17
+        example: 13
         type: integer
         custom: []
       customer_id:
         name: customer_id
         description: ''
         required: true
-        example: 5
+        example: 4
         type: integer
         custom: []
       recurring_type:
         name: recurring_type
         description: 'optional if one-off Example : weekly,monthly,quarterly,biannually,annually'
         required: false
-        example: excepturi
+        example: voluptas
         type: string
         custom: []
       intake_form:
         name: intake_form
-        description: 'Example :{key1:value1,key2:value2}'
+        description: 'if invoice_type = service Example :{key1:value1,key2:value2}'
         required: true
         example:
-          - voluptatem
+          - placeat
         type: 'string[]'
         custom: []
       quantity:
         name: quantity
-        description: 'Example :2'
+        description: 'if invoice_type = service Example :2'
+        required: true
+        example: 15
+        type: integer
+        custom: []
+      invoice_items:
+        name: invoice_items
+        description: 'Example :[]'
         required: false
         example:
-          - quis
+          - recusandae
         type: 'string[]'
         custom: []
     responses:

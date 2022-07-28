@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\V1\Customer;
 
+use App\Http\Resources\V1\Customer\CustomerVerificationLinkResponse;
 use App\Http\Resources\V1\Customer\UserResponse;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -30,14 +31,14 @@ class AuthenticationController extends Controller
      * @header Client-ID string required
      * @header Client-Secret string required
      *
-     * @responseFile 200 responses/SuccessResponse.json
+     * @responseFile 200 responses/V1/Customer/CustomerVerificationLinkResponse.json
      * @responseFile 422 responses/ValidationResponse.json
     */
     public function register(RegisterRequest $request)
     {
         DB::beginTransaction();
-        (new CustomerBusiness())->register($request);
+        $response = (new CustomerBusiness())->register($request);
         DB::commit();
-        return new SuccessResponse([]);
+        return new CustomerVerificationLinkResponse($response);
     }
 }
