@@ -68,6 +68,7 @@ $app->configure('sentry');
 $app->configure('segment');
 $app->configure('agency_events');
 $app->configure('portal_settings');
+$app->configure('mail');
 
 if (env('APP_ENV') === "local") {
     //scribe for documentation
@@ -126,6 +127,7 @@ $app->register(Spatie\Permission\PermissionServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
 $app->register(Nord\Lumen\Cors\CorsServiceProvider::class);
 $app->register(Sentry\Laravel\ServiceProvider::class);
+$app->register(Illuminate\Mail\MailServiceProvider::class);
 
 if (env('APP_ENV') === "local") {
     //scribe for documentation
@@ -136,6 +138,12 @@ if (env('APP_ENV') === "local") {
 
 $app->alias('cache', \Illuminate\Cache\CacheManager::class);
 $app->alias('Cloudinary', \CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class);
+$app->alias('mail.manager', Illuminate\Mail\MailManager::class);
+$app->alias('mail.manager', Illuminate\Contracts\Mail\Factory::class);
+
+$app->alias('mailer', Illuminate\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\Mailer::class);
+$app->alias('mailer', Illuminate\Contracts\Mail\MailQueue::class);
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

@@ -34,6 +34,8 @@ class CustomerBusiness
         //segment registration event
         SegmentWrapper::registration($user);
 
-        (new UserVerificationService())->generateVerificationCode($user);
+        $userVerification = (new UserVerificationService())->generateVerificationCode($user);
+
+        return $userVerification;
     }
 }
