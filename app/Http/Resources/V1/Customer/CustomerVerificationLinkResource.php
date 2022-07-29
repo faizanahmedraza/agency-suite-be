@@ -15,7 +15,7 @@ class CustomerVerificationLinkResource extends Resource
     public function toArray($request)
     {
         return [
-            'code' => $this->code ?? "",
+            'code' => $this->verification_code ?? "",
         ];
     }
 }
