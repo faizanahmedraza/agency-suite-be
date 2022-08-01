@@ -16,7 +16,7 @@ class ServiceBusiness
             throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are png,jpg,jpeg.');
         }
         if (Service::SUBSCRIPTION_TYPES[clean($request->subscription_type)] == Service::SUBSCRIPTION_TYPES['recurring'] && (empty($request->weekly) && empty($request->monthly) && empty($request->quarterly) && empty($request->biannually) && empty($request->annually))) {
-            throw RequestValidationException::errorMessage('Please create atleast one recurring type.');
+            throw RequestValidationException::errorMessage('Please add atleast one recurring type.');
         }
         // create agency service
         return AgencyBusinessService::create($request);
@@ -26,6 +26,9 @@ class ServiceBusiness
     {
         if ($request->has('image') && !empty($request->image) && !Str::contains($request->image, ['https', 'cloudinary']) && !validate_base64($request->image, ['png', 'jpg', 'jpeg'])) {
             throw RequestValidationException::errorMessage('Invalid image. Base64 image string is required. Allowed formats are png,jpg,jpeg.');
+        }
+        if (Service::SUBSCRIPTION_TYPES[clean($request->subscription_type)] == Service::SUBSCRIPTION_TYPES['recurring'] && (empty($request->weekly) && empty($request->monthly) && empty($request->quarterly) && empty($request->biannually) && empty($request->annually))) {
+            throw RequestValidationException::errorMessage('Please add atleast one recurring type.');
         }
         //get service
         $service = AgencyBusinessService::first($id);
